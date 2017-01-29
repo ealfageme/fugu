@@ -47,7 +47,9 @@
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#slider"><a href="#slider"><img class="logo2" id="logo2" src="images/logo2.png" alt="logo2"></a></a>
+                            <a href="#slider">
+                                <a href="#slider"><img class="logo2" id="logo2" src="images/logo2.png" alt="logo2"></a>
+                            </a>
                         </li>
                         <li>
                             <a href="#cities">CITIES</a>
@@ -59,7 +61,12 @@
                             <a href="#clients">FEEDBACK</a>
                         </li>
                         <li>
-                            <a href="signinup.html">SIGN IN/SIGN UP</a>
+                            <a href="#modalwindow1" data-toggle="modal">SIGN IN</a>
+
+                        </li>
+                        <li>
+                            <a href="#modalwindow2" data-toggle="modal">SIGN UP</a>
+
                         </li>
                         <li>
                             <a href="#contact">CONTACT US</a>
@@ -111,7 +118,7 @@
     <!-- Main Slider End -->
 
     <!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
-    <section id="cities" >
+    <section id="cities">
         <div class="container">
             <div class="row">
 
@@ -157,7 +164,7 @@
                                 <img src="images/sevilla.jpg" alt="Custom Image">
                             </div>
                         </div>
-                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
                                     <h3>Zaragoza</h3>
@@ -165,7 +172,7 @@
                                 <img src="images/zaragoza.jpg" alt="Custom Image">
                             </div>
                         </div>
-                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
                                     <h3>Bilbao</h3>
@@ -190,16 +197,16 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
                     <h2><span class="highlight-text">Top-Rated Restaurants</span></h2>
                     <div id="portfolio-filter" class="portfolio-filter-btn-group">
-                <ul>
-                    <li>
-                        <a href="#" class="selected" data-filter="*">ALL</a>
-                        <a href="#" data-filter=".web">CHINES</a>
-                        <a href="#" data-filter=".seo">CONTINENTAL</a>
-                        <a href="#" data-filter=".works">ASIAN</a>
-                        <a href="#" data-filter=".brands">EUROPEN</a>
-                    </li>
-                </ul>
-            </div>
+                        <ul>
+                            <li>
+                                <a href="#" class="selected" data-filter="*">ALL</a>
+                                <a href="#" data-filter=".web">CHINES</a>
+                                <a href="#" data-filter=".seo">CONTINENTAL</a>
+                                <a href="#" data-filter=".works">ASIAN</a>
+                                <a href="#" data-filter=".brands">EUROPEN</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- Section Header End -->
 
@@ -496,8 +503,69 @@
             </div>
         </div>
     </section>
-
-
+    <section>
+        <div class="modal fade" id="modalwindow1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button style="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h2 class="modal-title"> SIGN IN TO OUR PAGE </h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Introduce your user and password: </p>
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="username" placeholder="Username">
+                                <input type="text" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div>
+                                <br>
+                                <button type="submit" class="btn btn-default"><span>Log In</span></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="modal fade" id="modalwindow2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button style="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h2 class="modal-title"> SIGN UP TO OUR PAGE </h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Introduce your following details: </p>
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="restaurantname" placeholder="Resaurant name">
+                                <input type="text" class="form-control" id="address" placeholder="Address">
+                                <br>
+                                <input type="text" class="form-control" id="kindoffood" placeholder="Kind of food">
+                                <input type="text" class="form-control" id="username" placeholder="User name">
+                                <br>
+                                <input type="text" class="form-control" id="password" placeholder="Password">
+                                <input type="text" class="form-control" id="confirmpassword" placeholder="Confirm password">
+                                <br>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="submit" class="btn btn-default"><span>Register</span></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer>
 
         <div class="container">
