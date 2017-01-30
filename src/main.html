@@ -75,7 +75,7 @@
         <div class="sp-slides">
 
             <!-- Slides -->
-            <div class="sp-slide main-slides">
+            <div class="sp-slide main-slides" id="custom-search-input">
                 <div class="img-overlay"></div>
 
                 <img class="sp-image" src="images/slider/slider-img-1.jpg" alt="Slider 1" />
@@ -84,9 +84,16 @@
                 <span class="highlight-texts">The Best Healthy Food</span>
                 </h1>
 
-                <p class="sp-layer" data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200" data-show-transition="left" data-hide-transition="right">
-                    Lorem ipsum dolor sit amectetur adipici
-                </p>
+                <div >
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
             </div>
             <!-- Slides End -->
 
@@ -463,7 +470,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <textarea rows="10" cols="100" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
+                                <textarea rows="7" cols="100" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
                             </div>
 
                             <div class="col-md-8 col-md-offset-2">
