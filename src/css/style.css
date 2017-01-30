@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300);
 @import url(https://fonts.googleapis.com/css?family=Muli);
-@import url('https://fonts.googleapis.com/css?family=Satisfy');
-@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+@import url('https://fonts.googleapis.com/css?family=Cookie');
 body {
   font-family: 'Open Sans', sans-serif;
   background: #fff;
@@ -70,7 +69,7 @@ header.page-header{
 
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'Oleo Script', cursive;
+font-family: 'Cookie', cursive;
     /* font-weight: 700; */
     line-height: 1.2;
     margin-top: 0;
@@ -84,13 +83,13 @@ h1{
 	font-size: 36px;
 }
 .slider-text-big{
-font-family: 'Oleo Script', cursive;
+font-family: 'Cookie', cursive;
 
 }
 .sp-layer{
 	color:#fff;
 	font-size:28px;
-	 font-family: 'Oleo Script', cursive;
+	 font-family: 'Cookie', cursive;
 }
 h2{
 	font-size: 30px;
