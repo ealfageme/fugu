@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300);
 @import url(https://fonts.googleapis.com/css?family=Muli);
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
 body {
   font-family: 'Open Sans', sans-serif;
   background: #fff;
@@ -69,7 +70,7 @@ header.page-header{
 
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'Satisfy', cursive;
+font-family: 'Oleo Script', cursive;
     /* font-weight: 700; */
     line-height: 1.2;
     margin-top: 0;
@@ -83,13 +84,13 @@ h1{
 	font-size: 36px;
 }
 .slider-text-big{
-font-family: 'Satisfy', cursive;
+font-family: 'Oleo Script', cursive;
 
 }
 .sp-layer{
 	color:#fff;
 	font-size:28px;
-	/* font-family: 'Satisfy', cursive; */
+	 font-family: 'Oleo Script', cursive;
 }
 h2{
 	font-size: 30px;
@@ -1140,6 +1141,15 @@ header.page-header .main-menu.minified{
 	    -ms-transform: translateY(-50%);
 	     -o-transform: translateY(-50%);
 	        transform: translateY(-50%);
+}
+video#bgvid {
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
 }
 
 .teams-wrapper{
