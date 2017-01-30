@@ -592,7 +592,7 @@ section#services {
     border-radius: 0;
     position: fixed;
     width: 100%;
-    padding: 10px 0 20px !important;
+    padding: 0px 0 0px !important;*/
     margin-bottom: 0;
     z-index: 10;
     -webkit-transition: all .35s;
@@ -615,8 +615,8 @@ header.page-header .main-menu{
 	border-radius: 50px;
 }
 .main-menu .navbar-nav{
-    padding: 20px 0;
-    /* margin-top: 33px; */
+    padding: 0px 0;
+    margin-top: 0px;
     margin-left: -133px;
     /*display: inline-block;*/
 }
@@ -1894,7 +1894,7 @@ footer ul li a i{
 
   .main-menu.minified {
     background-color: #28292e;
-    padding: 20px 0 0;
+    padding: 0px 0 0;
     position: fixed;
   }
 
@@ -1922,7 +1922,7 @@ footer ul li a i{
   .navbar-nav > li {
     display: inline-block;
     float: none;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
   }
 
   .portfolio-items .portfolio-item {
