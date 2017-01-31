@@ -1165,3 +1165,13 @@ text-shadow: none;
 .btn-success {
     width: 100%;
 }
+
+.borde {
+    color: #fff ;
+
+    text-shadow:
+   -2px -2px 0 #000,
+    2px -2px 0 #000,
+   -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
