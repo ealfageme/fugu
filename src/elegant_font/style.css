@@ -1159,5 +1159,20 @@ text-shadow: none;
 
 
 #search {
-    padding-top: 350px;
+    padding-top: 25%;
+}
+
+.btn-success {
+    width: 100%;
+}
+
+.borde {
+    color: #fff ;
+    font-size : 6em;
+
+    text-shadow:
+   -2px -2px 0 #000,
+    2px -2px 0 #000,
+   -2px 2px 0 #000,
+    2px 2px 0 #000;
 }
