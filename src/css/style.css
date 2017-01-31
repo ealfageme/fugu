@@ -587,7 +587,7 @@ section#services {
 
 .main-menu{
     /* background-color: #ffffff; */
-    background-color: transparent;
+    background-color: #28292e;
     border: 0 none;
     border-radius: 0;
     position: fixed;
@@ -2152,3 +2152,7 @@ footer ul li a i{
 
 }
 
+
+#recommendations-filter {
+    margin-left: 50px;
+}
