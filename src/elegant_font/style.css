@@ -1161,3 +1161,7 @@ text-shadow: none;
 #search {
     padding-top: 25%;
 }
+
+.btn-success {
+    width: 100%;
+}
