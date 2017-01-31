@@ -2153,3 +2153,15 @@ footer ul li a i{
 
 }
 
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+a h1 {
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+}
