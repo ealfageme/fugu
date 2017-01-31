@@ -1894,7 +1894,6 @@ footer ul li a i{
 	-webkit-background-size: cover;
 	background-size: cover;
 	position: relative;
-	padding: 100px 0;
 	overflow: hidden;
 }
 
@@ -2164,4 +2163,5 @@ a h1 {
     top: 40%;
     left: 0;
     width: 100%;
+
 }
