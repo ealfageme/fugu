@@ -647,6 +647,7 @@ header.page-header .main-menu {
 .main-menu .navbar-nav {
     padding: 0px 0;
     margin-top: 0px;
+    align-self: center;
     /*display: inline-block;*/
 }
 
