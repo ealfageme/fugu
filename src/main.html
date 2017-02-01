@@ -42,10 +42,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#about">CITIES</a>
+                            <a href="#cities">CITIES</a>
                         </li>
                         <li>
-                            <a href="#services">TOP-RATED</a>
+                            <a href="#top-rated">TOP-RATED</a>
                         </li>
                         <li>
                             <a href="#menuCard">SIGN IN</a>
@@ -54,7 +54,10 @@
                             <a href="#portfolio">SIGN UP</a>
                         </li>
                         <li>
-                            <a href="#team">FEEDBACK</a>
+                            <a href="#contact">CONTACT US</a>
+                        </li>
+                        <li>
+                           <button type="button" class="btn btn-danger">SIGN IN     </button>
                         </li>
                     </ul>
                 </div>
@@ -67,13 +70,17 @@
             <video autoplay loop class="embed-responsive-item">
                 <source src="backgroundvideo.mp4" type="video/mp4"> </video>
             <div class="container" id="search">
+
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div id="imaginary_container">
                             <div class="input-group stylish-input-group">
-                                <input type="text" class="form-control" placeholder="Search"> <span class="input-group-addon">
+                                <input type="text" class="form-control" placeholder="Search restaurant, city or street"> <span class="input-group-addon">
                         <button type="submit">
-                            <span class=" icon-search"></span> </button>
+
+                            <span class="glyphicon glyphicon-search"></span>
+                                </button>
+
                                 </span>
                             </div>
                         </div>
@@ -88,50 +95,54 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Cities</span></h2> </div>
+                    <a href="city.html"><h2><span class="highlight-text">Cities</span></h2></a> </div>
                 <!-- Section Header End -->
                 <div class="our-services">
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Madrid</h3> </div>
-                                <a href="city.html"> <img src="images/madrid.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html">
+
+                                    <h1  class ="borde" class="display-4">Madrid</h1><img src="images/madrid.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Barcelona</h3> </div>
-                                <a href="city.html"> <img src="images/barcelona.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html">
+                                    <h1 class="display-4">Barcelona</h1><img src="images/barcelona.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Valencia</h3> </div>
-                                <a href="city.html"> <img src="images/valencia.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html">
+                                    <h1 class="display-4">Valencia</h1><img src="images/valencia.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Sevilla</h3> </div>
-                                <a href="city.html"> <img src="images/sevilla.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html"><h1  class ="borde" class="display-4">Sevilla</h1> <img src="images/sevilla.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Zaragoza</h3> </div>
-                                <a href="city.html"> <img src="images/zaragoza.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html"><h1 class="display-4">Zaragoza</h1> <img src="images/zaragoza.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
-                                    <h3>Bilbao</h3> </div>
-                                <a href="city.html"> <img src="images/bilbao.jpg" alt="Custom Image"> </a>
+                                </div>
+                                <a href="city.html"><h1 class="display-4">Bilbao</h1> <img src="images/bilbao.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                     </div>
@@ -151,7 +162,7 @@
                     <div class="menu row">
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
-                                <div class="food">
+                                <button onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Chicken Masala</h6>
                                         <div class="dots"></div>
@@ -161,9 +172,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Madrid</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Mango Rice with Curd</h6>
                                         <div class="dots"></div>
@@ -173,9 +184,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Barcelona</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Mutton Fry Rice</h6>
                                         <div class="dots"></div>
@@ -185,9 +196,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Madrid</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Eggs Mancuriya</h6>
                                         <div class="dots"></div>
@@ -197,9 +208,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Valencia</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Chicken Currey </h6>
                                         <div class="dots"></div>
@@ -209,7 +220,7 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Zamora</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
                             </div>
                             <!-- /menu-column -->
@@ -217,7 +228,7 @@
                         <!-- /col-md-6 -->
                         <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
                             <div class="menu-column">
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Pure Veg Salad</h6>
                                         <div class="dots"></div>
@@ -227,9 +238,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Cáceres</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Veg Fry Rice</h6>
                                         <div class="dots"></div>
@@ -239,9 +250,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Malaga</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Chines Noodles</h6>
                                         <div class="dots"></div>
@@ -251,9 +262,9 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Vigo</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
-                                <div class="food">
+                                <button  onClick=" window.location.href='restaurant.html'" class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">Chicken Manchuriah</h6>
                                         <div class="dots"></div>
@@ -263,10 +274,10 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>Santander</span> </div>
                                     <!-- /food-details -->
-                                </div>
+                                </button>
                                 <!-- /food -->
                                 <div class="item portfolio-item web seo">
-                                    <div class="food">
+                                    <button  onClick=" window.location.href='restaurant.html'" class="food">
                                         <div class="food-desc">
                                             <h6 class="food-name">Veg Fry Rice </h6>
                                             <div class="dots"></div>
@@ -276,7 +287,7 @@
                                         <!-- /food-desc -->
                                         <div class="food-details"> <span>Burgos </span> </div>
                                         <!-- /food-details -->
-                                    </div>
+                                </button>
                                 </div>
                                 <!-- /food -->
                             </div>
@@ -296,27 +307,7 @@
     <section id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
         <div class="parallax-overlay"></div>
         <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Customer Feedback</span></h2> </div>
-                <!-- Section Header End -->
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="testimonials">
-                            <div class="active item">
-                                <blockquote>
-                                    <p><span class="testimonials-name">Here you have some opinions of our main costumers</span></p>
-                                </blockquote>
-                                <div class="carousel-info"> <img alt="" src="http://keenthemes.com/assets/bootsnipp/img1-small.jpg" class="pull-left">
-                                    <div class="pull-left">
-                                        <h3 class="food-name"> "It´s really easy to find your perfect restaurant" </h3> <span class="testimonials-name">Lina Mars</span> <span class="testimonials-post">Commercial Director</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
@@ -341,7 +332,7 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <br>
                                 <div id="success"> </div>
-                                <button type="submit" class="btn btn-primary">Submit Message</button>
+                                <button type="submit" class="btn btn-primary footermargin">Submit Message</button>
                             </div>
                         </form>
                     </div>
