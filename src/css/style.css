@@ -646,6 +646,7 @@ header.page-header .main-menu {
 .main-menu .navbar-nav {
     display: inline-block;
     margin: auto;
+    float: none;
 }
 
 .main-menu .navbar-nav li {
