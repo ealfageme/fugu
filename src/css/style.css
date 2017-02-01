@@ -2155,5 +2155,8 @@ footer ul li a i{
 
 
 #recommendations-filter {
-    margin-left: 50px;
+    text-align: center;
+    background-color: gainsboro;
+    border: 2px solid;
+    border-color: grey;
 }
