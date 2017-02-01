@@ -1176,3 +1176,36 @@ text-shadow: none;
    -2px 2px 0 #000,
     2px 2px 0 #000;
 }
+
+#navButton {
+
+}
+
+
+
+#profileForm {
+border: 3px solid #6E6E6E;
+ background-color: #BDBDBD;
+ border-radius: 15px;
+
+}
+
+#followingRestaurants {
+ margin: auto;
+ text-align: center;
+
+
+
+}
+
+#followingPeople {
+    margin: auto;
+    text-align: center;
+}
+
+
+
+#imgPerfil {
+    width: 150px;
+    height: 150px;
+}

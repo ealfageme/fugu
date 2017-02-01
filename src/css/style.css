@@ -614,7 +614,7 @@ input {
 
 .main-menu {
     /* background-color: #ffffff; */
-    background-color: #28292e !important;
+    background-color: #28292e;
     border: 0 none;
     border-radius: 0;
     position: fixed;
@@ -629,7 +629,6 @@ input {
     transition: all .35s;
     -webkit-backface-visibility: hidden;
     text-align: center;
-    margin-bottom: 0px !important;
 }
 
 header.page-header .main-menu {
@@ -645,10 +644,8 @@ header.page-header .main-menu {
 }
 
 .main-menu .navbar-nav {
-    padding: 0px 0;
-    margin-top: 0px;
-    align-self: center;
-    /*display: inline-block;*/
+    display: inline-block;
+    margin: auto;
 }
 
 .main-menu .navbar-nav li {
@@ -696,8 +693,6 @@ header.page-header .main-menu.minified {
 }
 
 .collapse.in {
-    float: left;
-    width: 100%;
 }
 
 .slider {
@@ -1284,21 +1279,11 @@ video#bgvid {
     float: left;
 }
 
-.menus.white-bg .menu .food {
-    color: #23292c;
-}
 
-.menus .menu .food .food-name {
-    font-size: 22px;
-    margin-bottom: 12px;
-    font-weight: 500;
-}
 
-.menus .menu .food .food-desc {
-    font-size: 18px;
-    font-style: italic;
-    display: table;
-}
+
+
+
 
 .menus .menu .food .food-desc > div {
     display: table-cell;
@@ -1370,9 +1355,7 @@ video#bgvid {
     margin-top: -6px;
 }
 
-.menus-full .menu .food {
-    color: #23292c;
-}
+
 
 .menus-full .menu .food .food-desc .dots {
     background: url(../img/template-assets/dots-dark.png) left 14px repeat-x;
@@ -1513,11 +1496,7 @@ video#bgvid {
     margin-bottom: 20px;
 }
 
-.menus-full.style2 .menu .food .food-name {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-}
+
 
 .menus-full.style2 .menu-meals-container ul .owl-item li h3 {
     font-family: 'bebas_neue', sans-serif;
@@ -1545,11 +1524,7 @@ video#bgvid {
     padding-top: 0;
 }
 
-.menus-full.style3 .menu .food .food-name {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-}
+
 
 .menus-full.style3 .menu-meals-container ul .owl-item li h3 {
     font-family: 'nevis-Bold', sans-serif;
@@ -1588,7 +1563,7 @@ video#bgvid {
 }
 
 .menus.style3 .menu .food .food-name {
-    width: 1%;
+    width: 5%;
     white-space: nowrap;
     display: table-cell;
     color: #555;
@@ -2054,10 +2029,7 @@ footer ul li a i {
     .navbar-collapse {
         text-align: center;
     }
-    .main-menu .navbar-nav {
-        display: inline-block;
-        float: none;
-    }
+
     .navbar-nav > li {
         display: inline-block;
         float: none;
@@ -2090,10 +2062,7 @@ footer ul li a i {
     .navbar-collapse {
         text-align: center;
     }
-    .main-menu .navbar-nav {
-        display: inline-block;
-        float: none;
-    }
+
     .navbar-nav > li {
         display: inline-block;
         float: none;
@@ -2155,11 +2124,7 @@ footer ul li a i {
     .main-menu {
         padding: 0 !important;
     }
-    .main-menu .navbar-nav {
-        float: right;
-        padding: 10px 0;
-        width: 100%;
-    }
+
     .main-menu .navbar-nav li {
         display: block;
         width: 100%;
@@ -2288,3 +2253,11 @@ a h1 {
     border: 2px solid;
     border-color: grey;
 
+
+#topNav {
+    margin: auto;
+}
+
+#profile_Features {
+    background: url(../images/clients/profileBackground.jpg);
+}
