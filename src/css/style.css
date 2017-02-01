@@ -2277,6 +2277,9 @@ a h1 {
     width: 100%;
 }
 
+.footermargin {
+    margin-bottom: 30px;
+}
 
 #recommendations-filter {
     text-align: center;
@@ -2284,6 +2287,3 @@ a h1 {
     border: 2px solid;
     border-color: grey;
 
-.footermargin {
-    margin-bottom: 30px;
-}
