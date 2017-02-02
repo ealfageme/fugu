@@ -1209,3 +1209,8 @@ border: 3px solid #6E6E6E;
     width: 150px;
     height: 150px;
 }
+
+.contact-details {
+    position: relative;
+    margin-bottom: 400px;
+}

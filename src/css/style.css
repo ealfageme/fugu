@@ -1227,7 +1227,7 @@ video#bgvid {
 
 .menus .menus-container {
     position: relative;
-    margin-bottom: 85px;
+    margin-bottom: 8px;
 }
 
 .menus .menu-carousel-nav {
@@ -1558,7 +1558,7 @@ video#bgvid {
 .menus.style3 .menu .food .food-name,
 .menus.style3 .menu .food .food-price {
     font-family: 'Open Sans', sans-serif;
-    font-size: 19px;
+    font-size: 40px;
     font-style: normal;
     line-height: 30px;
 }
