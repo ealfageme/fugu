@@ -40,8 +40,8 @@
                         <li> <a href="#cities">CITIES</a> </li>
                         <li> <a href="#top-rated">TOP-RATED</a> </li>
                         <li> <a href="#contact">CONTACT US</a> </li>
-                        <li>
-                            <form id="signin" class="navbar-form navbar-right" role="form">
+                        <li class="signin">
+                            <form  class="navbar-form navbar-right" role="form">
                                 <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                     <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address"> </div>
                                 <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -122,7 +122,7 @@
 
             </div>
             <div  class="col-md-2 col-md-offset-5" >
-            <button type="submit" class="btn btn-primary" >MORE CITIES</button>
+            <button type="submit" class="btn btn-primary more" >MORE CITIES</button>
             </div>
         </div>
     </section>
@@ -135,7 +135,7 @@
                 <!-- Section Header End -->
                 <div class="menus-container">
                     <!-- menu -->
-                    <div class="menu row">
+                    <div class="menu row rowmar">
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
                                 <button onClick=" window.location.href='restaurant.html'" class="food">
@@ -287,7 +287,7 @@
                 <!-- Section Header -->
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
                     <h2><span class="highlight-text">Contact Us</span></h2>
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 feedbackmar">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
                 </div>
                 <!-- Section Header End -->
                 <div class="contact-details">
@@ -299,15 +299,15 @@
                                 <input type="text" class="form-control" placeholder="Full Name" id="name" required data-validation-required-message="Please enter your name" />
                                 <p class="help-block"></p>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 emailmar">
                                 <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Please enter your email" /> </div>
                             <div class="col-md-12">
                                 <textarea rows="7" cols="100" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
                             </div>
-                            <div  class="col-md-2 col-md-offset-5" >
+                            <div  class="col-md-2 col-md-offset-5 footermargin" >
                                 <br>
                                 <div id="success"> </div>
-                                <button type="submit" class=" btn btn-primary footermargin">Submit Message</button>
+                                <button type="submit" class=" btn btn-primary ">Submit Message</button>
                             </div>
                         </form>
                     </div>

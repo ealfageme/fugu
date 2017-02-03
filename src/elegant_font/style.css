@@ -1168,7 +1168,8 @@ text-shadow: none;
 
 .border {
     color: #fff ;
-    font-size : 6em;
+    font-size : 5em;
+    margin-top: 0px !important;
 
     text-shadow:
    -2px -2px 0 #000,
