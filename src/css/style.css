@@ -2225,6 +2225,11 @@ footer ul li a i {
         width: 100% !important;
         height: 100% !important;
     }
+    .morediv{
+        margin-left: 41.66666667% !important;
+        padding: 0px !important;
+        margin-top: 30px;
+    }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -2249,6 +2254,7 @@ a h1 {
 
 .footermargin {
     margin-bottom: 30px;
+    margin-top: 30px;
     margin-left: 41.66666667% !important;
 }
 
@@ -2270,10 +2276,11 @@ a h1 {
 }
 
 
-
-.more{
-    margin-left: 41.66666667% !important;
+.modal-edit{
+    padding: 15px;
 }
+
+
 .rowmar{
     margin-top: 70px;
 }
@@ -2284,4 +2291,7 @@ a h1 {
 .feedbackmar{
     margin-left: 16.66666667% !important;
     width: 66.66666667% !important;
+}
+.section-color{
+    color: #80cc0c;
 }
