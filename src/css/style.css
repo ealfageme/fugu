@@ -614,7 +614,8 @@ input {
 
 .main-menu {
     /* background-color: #ffffff; */
-    background-color: #28292e;
+    margin-bottom: 0px !important;
+    background-color: #28292e !important;
     border: 0 none;
     border-radius: 0;
     position: fixed;
