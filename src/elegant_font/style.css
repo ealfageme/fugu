@@ -1215,7 +1215,7 @@ border: 3px solid #6E6E6E;
      background-color: #efefef;
      border-radius: 5px;
      text-align: center;
-    float: left;
+    float: center;
 }
 
 #submit {
