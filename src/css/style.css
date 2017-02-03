@@ -2295,3 +2295,12 @@ a h1 {
 .section-color{
     color: #80cc0c;
 }
+.logo2{
+    position:absolute;
+    top:0;
+    left:2%;
+}
+
+.contpad{
+    padding-left: 60px!important;
+}
