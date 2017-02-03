@@ -1214,3 +1214,7 @@ border: 3px solid #6E6E6E;
     position: relative;
     margin-bottom: 400px;
 }
+
+#button {
+    float: right
+}
