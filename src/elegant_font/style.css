@@ -1236,5 +1236,7 @@ border: 3px solid #6E6E6E;
 }
 
 #button {
-    float: right;
+    margin: 0 auto;
 }
+
+
