@@ -1277,6 +1277,7 @@ video#bgvid {
     background: #efefef;
     padding: 28px;
     float: left;
+
 }
 
 
@@ -2261,3 +2262,7 @@ a h1 {
 #profile_Features {
     background: url(../images/clients/profileBackground.jpg);
 }
+
+
+
+

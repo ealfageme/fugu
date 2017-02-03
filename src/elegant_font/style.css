@@ -1209,3 +1209,28 @@ border: 3px solid #6E6E6E;
     width: 150px;
     height: 150px;
 }
+
+.btnMore{
+     border: 2px solid grey;
+     background-color: #efefef;
+     border-radius: 5px;
+     text-align: center;
+    float: left;
+}
+
+#formCol {
+
+}
+
+#submit {
+    padding-top: 200px;
+    padding-left: 85px;
+
+}
+
+
+
+#update {
+         height: 40px;
+     width: 75px;
+}
