@@ -149,6 +149,7 @@ a {
     -o-transition: all .3s;
     transition: all .3s;
     color: #80cc0c;
+    margin-top: 15px;
 }
 
 a:hover,
@@ -383,7 +384,7 @@ a:active {
 }
 
 .about-sec {
-    padding: 100px 0;
+    padding: 10px 0;
 }
 
 .info-section {
@@ -393,7 +394,7 @@ a:active {
 
 section#services {
     background: #E6E6E6;
-    padding: 100px 0;
+
 }
 
 .btn-primary {
@@ -614,7 +615,8 @@ input {
 
 .main-menu {
     /* background-color: #ffffff; */
-    background-color: #28292e;
+    margin-bottom: 0px !important;
+    background-color: #28292e !important;
     border: 0 none;
     border-radius: 0;
     position: fixed;
@@ -646,6 +648,7 @@ header.page-header .main-menu {
 .main-menu .navbar-nav {
     display: inline-block;
     margin: auto;
+    float: none;
 }
 
 .main-menu .navbar-nav li {
@@ -770,7 +773,7 @@ header.page-header .main-menu.minified {
 }
 
 .portfolio-section {
-    padding: 100px 0 0;
+    padding: 10px 0 0;
 }
 
 .portfolio-work-item {
@@ -1226,7 +1229,7 @@ video#bgvid {
 
 .menus .menus-container {
     position: relative;
-    margin-bottom: 85px;
+    margin-bottom: 8px;
 }
 
 .menus .menu-carousel-nav {
@@ -1558,7 +1561,7 @@ video#bgvid {
 .menus.style3 .menu .food .food-name,
 .menus.style3 .menu .food .food-price {
     font-family: 'Open Sans', sans-serif;
-    font-size: 19px;
+    font-size: 40px;
     font-style: normal;
     line-height: 30px;
 }
@@ -2246,6 +2249,7 @@ a h1 {
 
 .footermargin {
     margin-bottom: 30px;
+    margin-left: 41.66666667% !important;
 }
 
 #recommendations-filter {
@@ -2253,8 +2257,10 @@ a h1 {
     background-color: gainsboro;
     border: 2px solid;
     border-color: grey;
-
-
+}
+.signin{
+    margin-top:15px;
+}
 #topNav {
     margin: auto;
 }
@@ -2265,4 +2271,17 @@ a h1 {
 
 
 
+.more{
+    margin-left: 41.66666667% !important;
+}
+.rowmar{
+    margin-top: 70px;
+}
+.emailmar{
+    margin-bottom: 15px;
+}
 
+.feedbackmar{
+    margin-left: 16.66666667% !important;
+    width: 66.66666667% !important;
+}

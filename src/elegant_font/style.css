@@ -1168,7 +1168,8 @@ text-shadow: none;
 
 .border {
     color: #fff ;
-    font-size : 6em;
+    font-size : 5em;
+    margin-top: 0px !important;
 
     text-shadow:
    -2px -2px 0 #000,
@@ -1209,17 +1210,12 @@ border: 3px solid #6E6E6E;
     width: 150px;
     height: 150px;
 }
-
 .btnMore{
      border: 2px solid grey;
      background-color: #efefef;
      border-radius: 5px;
      text-align: center;
     float: left;
-}
-
-#formCol {
-
 }
 
 #submit {
@@ -1232,5 +1228,13 @@ border: 3px solid #6E6E6E;
 
 #update {
          height: 40px;
-     width: 75px;
+         width: 75px;
+}
+.contact-details {
+    position: relative;
+    margin-bottom: 400px;
+}
+
+#button {
+    float: right;
 }
