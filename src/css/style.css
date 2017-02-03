@@ -384,7 +384,7 @@ a:active {
 }
 
 .about-sec {
-    padding: 100px 0;
+    padding: 10px 0;
 }
 
 .info-section {
@@ -394,7 +394,7 @@ a:active {
 
 section#services {
     background: #E6E6E6;
-    padding: 100px 0;
+
 }
 
 .btn-primary {
@@ -773,7 +773,7 @@ header.page-header .main-menu.minified {
 }
 
 .portfolio-section {
-    padding: 100px 0 0;
+    padding: 10px 0 0;
 }
 
 .portfolio-work-item {
