@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="elegant_font/style.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,26 +32,24 @@
 
     <!-- Header End -->
     <header>
-        <!-- Navigation Menu start-->
-
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-                    ☰
-                </button>
-                <a class="navbar-brand page-scroll" href="#slider"></a>
+                <img class="logo2" id="logo2" src="images/logo2.png" alt="logo2">
+                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#slider">
-                                <a href="main.html"><img class="logo2" id="logo2" src="images/logo2.png" alt="logo2"></a>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#cities">SELECT CITY</a>
-                        </li>
-                        <li>
-                            <a href="#top-rated">CITY RESTAURANTS</a>
+                        <li> <a href="#cities">CITIES</a> </li>
+                        <li> <a href="#top-rated">TOP-RATED</a> </li>
+                        <li> <a href="#contact">CONTACT US</a> </li>
+                        <li class="signin">
+                            <form class="navbar-form navbar-right" role="form">
+                                <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address"> </div>
+                                <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password"> </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <a href="#modalwindow2" data-toggle="modal"><button type="submit" class="btn btn-warning">Sign in</button></a>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -62,122 +61,66 @@
     <!-- Header End -->
 
 
-    <section class="slider-pro slider" id="slider">
-        <div class="sp-slides">
-            <h2>CITY NAME</h2>
-            <!-- Slides -->
-            <div class="sp-slide main-slides">
-                <div class="img-overlay"></div>
+    <section>
+        <!-- Slides -->
+        <div class="image section-header">
 
-                <img class="sp-image" src="images/slider/slider-img-1.jpg" alt="Slider 1" />
+            <img src="images/granvia.jpg" alt="Slider 1" />
 
-
-            </div>
-            <!-- Slides End -->
-
-            <!-- Slides -->
-            <div class="sp-slide main-slides">
-                <div class="img-overlay"></div>
-                <img class="sp-image" src="images/slider/slider-img-2.jpg" alt="Slider 2" />
-
-
-            </div>
-            <!-- Slides End -->
-
-            <!-- Slides -->
-            <div class="sp-slide main-slides">
-                <div class="img-overlay"></div>
-
-                <img class="sp-image" src="images/slider/slider-img-3.jpg" alt="Slider 3" />
-
-
-            </div>
-            <!-- Slides End -->
-
+            <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
+                <span class="highlight-texts"><span class="section-color2 highlight-text border2">MADRID</span>
+                </h2>
         </div>
+        <!-- Slides End -->
     </section>
-    <!-- Main Slider End -->
 
     <!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
     <section id="cities">
         <div class="container">
             <div class="row">
-
                 <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Cities</span></h2>
-                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "> <a href="city.html"><h2><span class="highlight-text">Cities</span></h2></a> </div>
                 <!-- Section Header End -->
-
                 <div class="our-services">
-
-
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Madrid</h3>
-                                </div>
+                                <div class="icon"> </div>
                                 <a href="city.html">
-                                    <img src="images/madrid.jpg" alt="Custom Image">
-                                </a>
+                                    <h1 class="display-4 border">Madrid</h1><img src="images/madrid.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Barcelona</h3>
-                                </div>
+                                <div class="icon"> </div>
                                 <a href="city.html">
-                                    <img src="images/barcelona.jpg" alt="Custom Image">
-                                </a>
+                                    <h1 class="display-4 border">Barcelona</h1><img src="images/barcelona.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Valencia</h3>
-                                </div>
+                                <div class="icon"> </div>
                                 <a href="city.html">
-                                    <img src="images/valencia.jpg" alt="Custom Image">
-                                </a>
+                                    <h1 class="display-4 border">Valencia</h1><img src="images/valencia.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Sevilla</h3>
-                                </div>
-                                <a href="city.html">
-                                    <img src="images/sevilla.jpg" alt="Custom Image">
-                                </a>
-                            </div>
+                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Sevilla</h1> <img src="images/sevilla.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Zaragoza</h3>
-                                </div>
-                                <a href="city.html">
-                                    <img src="images/zaragoza.jpg" alt="Custom Image">
-                                </a>
-                            </div>
+                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Zaragoza</h1> <img src="images/zaragoza.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon">
-                                    <h3>Bilbao</h3>
-                                </div>
-                                <a href="city.html">
-                                    <img src="images/bilbao.jpg" alt="Custom Image">
-                                </a>
-                            </div>
+                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Bilbao</h1> <img src="images/bilbao.jpg" alt="Custom Image"> </a> </div>
                         </div>
-
                     </div>
-
                 </div>
-
+            </div>
+            <div class="col-md-2 col-md-offset-5 morediv">
+                <button type="submit" class="btn btn-primary ">MORE CITIES</button>
             </div>
         </div>
     </section>
