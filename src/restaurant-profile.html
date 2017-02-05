@@ -178,7 +178,9 @@
                                 <button onClick=" window.location.href='restaurant.html'" class="food">
                                     <img src="images/voucher1.jpg" alt="Custom Image">
                                 </button>
-                                <button type="button" class="btnMore"  style="margin-left:0!important;">Modify</button>
+                                <br>
+                                <button type="button" class="btnMore" style="margin-left:0!important;">Modify</button>
+
                             </div>
                         </div>
                         <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
@@ -190,13 +192,17 @@
                                 <p>Recive the dicount bringing this voucher</p>
                                 <button onClick=" window.location.href='restaurant.html'" class="food">
                                     <img src="images/voucher2.jpg" alt="Custom Image">
+                                    <br>
                                     <button type="button" class="btnMore" style="margin-left:0!important;">Modify</button>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btnMore">New Discount</button>
+                <div class="col-md-1 col-md-offset-5 col-sm-4 col-xs-12"></div>
+                <button type="button" class="btnMore">New discount</button>
             </div>
+        </div>
         </div>
     </section>
     <section id="menu-card" class="menus style3" id="menuCard">
@@ -394,10 +400,12 @@
                     </div>
                     <!-- /row -->
                 </div>
-                <button type="button" class="btnMore" style="margin-left:0!important;">Modify</button>
-                <!-- /menu-carousel -->
+                <div class="col-md-1 col-md-offset-5 col-sm-4 col-xs-12"></div>
+                <button type="button" class="btnMore">Modify</button>
             </div>
-            <!-- /menus-container -->
+            <!-- /menu-carousel -->
+        </div>
+        <!-- /menus-container -->
         </div>
 
         <!-- /container -->
@@ -471,9 +479,10 @@
                 </div>
 
             </div>
-            <button type="button" class="btnMore">See More</button>
+            <div class="col-md-1 col-md-offset-5 col-sm-4 col-xs-12">
+                <button type="button" class="btnMore">See More</button>
+            </div>
         </div>
-
     </section>
 
     <section class="menus style3" id="clients">
@@ -487,6 +496,64 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
                     <h2><span class="highlight-text">Clients</span></h2>
                     <h3> Send offers to your potential clients in only one click</h3>
+                </div>
+                <div class="search">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-section">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&gt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Min">
+                                                    <span class="input-group-addon">€</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&lt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Max">
+                                                    <span class="input-group-addon">€</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="guest">Guest</label>
+                                                    <select id="guest" name="guest" class="form-control">
+                                                        <option value="1">Vegan food</option>
+                                                        <option value="2">American food</option>
+                                                        <option value="3">Indian food</option>
+                                                        <option value="4">Fast food</option>
+                                                        <option value="5">Chinese food</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&gt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0">
+                                                    <span class="input-group-addon">Age</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&lt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="99">
+                                                    <span class="input-group-addon">Age</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-default btn-primary">Send group offer</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Section Header End -->
 
@@ -545,14 +612,16 @@
                         </div>
                         <!-- /col-md-6 -->
                     </div>
+                    <div class="col-md-1 col-md-offset-5 col-sm-4 col-xs-12"></div>
+                    <button type="button" class="btnMore">See More</button>
                 </div>
-                <!-- /menu-carousel -->
             </div>
-            <button type="button" class="btnMore">See more</button>
-            <br>
-            <br>
-            <!-- /menus-container -->
+            <!-- /menu-carousel -->
         </div>
+
+        <!-- /menus-container -->
+        </div>
+
         <!-- /container -->
     </section>
     <!-- Contact Section End -->
