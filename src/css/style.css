@@ -42,7 +42,7 @@ ul {
     margin-bottom: 0;
 }
 .bookingbtn{
-    background-color:#1abc9c!important;
+    background-color: #80cc0c !important;
     margin: 10px !important;
     float: right;
 }
@@ -2473,3 +2473,11 @@ body {
     }
     .dropdown.dropdown-lg .dropdown-menu {
         min-width: 500px;
+    }
+}
+.active-date{
+     background-color: #80cc0c !important;
+ }
+.imgbor{
+    border-style: solid;
+}
