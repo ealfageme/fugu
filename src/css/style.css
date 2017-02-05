@@ -41,6 +41,11 @@ ul {
     list-style: none;
     margin-bottom: 0;
 }
+.bookingbtn{
+    background-color:#1abc9c!important;
+    margin: 10px !important;
+    float: right;
+}
 
 header.page-header {
     -webkit-background-size: cover;
@@ -2420,9 +2425,9 @@ body {
     color: white !important
 }
 
-body {
+/*body {
     padding-top: 50px;
-}
+}*/
 
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;

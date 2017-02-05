@@ -69,10 +69,9 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Booking</span></h2>
-                </div>
+                    <h2><span class="highlight-text">Booking</span></h2> </div>
                 <!-- Section Header End -->
-                <div class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
+                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
                     <div class="month">
                         <ul>
                             <li class="prev">&#10094;</li>
@@ -125,32 +124,49 @@
                         <li>31</li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
-                    <div class="month">
+                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
+                    <div class="month" style="padding: 10px 10px !important">
                         <ul>
-                            <li style="text-align: center;">  10th August
+                            <li style="text-align: center;"> 10th August
                                 <br> <span style="font-size:18px">2016</span> </li>
-                            <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose the date</p>
+                            <li style="text-align: center;">Choose the date</li>
                         </ul>
                     </div>
                     <ul class="days">
-                        <li>12:00</li>
+                        <li><span class="active">12:00</span></li>
                         <li>12:30</li>
-                        <li>13:00</li>
+                        <li><span class="active">13:00</span></li>
                         <li><span class="active">13:30</span></li>
                         <li>14:00</li>
                         <li><span class="active">14:30</span></li>
                         <li>15:00</li>
-                        <li>15:30</li>
+                        <li><span class="active">15:30</span></li>
                     </ul>
                     <ul class="days">
-                        <li>20:00</li>
+                        <li><span class="active">20:00</span></li>
                         <li>20:30</li>
-                        <li>21:00</li>
+                        <li><span class="active">21:00</span></li>
                         <li><span class="active">21:30</span></li>
                         <li>22:00</li>
                         <li><span class="active">22:30</span></li>
                     </ul>
+                    <br>
+                    <label for="name">How many people is coming?</label>
+                    <select name="guests">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                    </select>
+                    <button type="button" class="  btn btn-primary bookingbtn">Book <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name">Any special requeriment? Tell us.</label>
+                            <textarea class="form-control" id="exampleTextarea" rows="2" placeholder=></textarea>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
