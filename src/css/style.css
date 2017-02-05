@@ -1279,7 +1279,9 @@
             margin-bottom: 32px;
             background: #efefef;
             padding: 28px;
-            float: left;
+            white-space: normal !important;
+            word-wrap: break-word;
+
         }
 
         .menus .menu .food .food-desc > div {
@@ -1291,6 +1293,7 @@
         .menus .menu .food .food-desc .food-price {
             width: 1%;
             white-space: nowrap;
+            position: fixed;
         }
 
         .menus-full {
