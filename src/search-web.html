@@ -28,8 +28,8 @@
         <!-- Navigation Menu start-->
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html"><img class="logo2" id="logo2" src="images/logo2.png" alt="logo2"></a>
-                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
+                <img class="logo2" id="logo2" src="images/logo2.png" alt="logo2">
+                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ? </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
                         <li class="signin">
@@ -103,8 +103,66 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Searched Restaurants</span></h2> </div>
+                    <h2><span class="highlight-text">Searched Restaurants</span></h2>
+                    <h3 class="food-name">Filters</h3>
+                </div>
                 <!-- Section Header End -->
+                <div class="search">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="form-section">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&gt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Min">
+                                                    <span class="input-group-addon">€</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&lt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Max">
+                                                    <span class="input-group-addon">€</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <label class="sr-only" for="checkin">Date</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">=</span>
+                                                        <input type="text" class="form-control" id="checkin" placeholder="Date">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&gt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0">
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&lt;</span>
+                                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="5">
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-default btn-primary">Search</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="menus-container">
                     <!-- menu -->
                     <div class="menu row rowmar">
@@ -300,7 +358,7 @@
                             </div>
                             <div class="col-md-6 col-md-offset-5 footermargin morediv">
                                 <div id="success"> </div>
-                                <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Message</button>
+                                <button type="button" class=" btn btn-primary " data-toggle="modal" data-target="#exampleModalLong">Submit Message</button>
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
