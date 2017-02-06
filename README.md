@@ -28,7 +28,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
  
 * __[Template](https://webthemez.com/city-cafe-restaurant-bootstrap-4-free-website-template/)__
 
-* __Diagrama de Navegacion__
+* __Navigation Board__
     ![Diagrama de Navegacion](src/images/captures/diagrama-de-navegacion.png)
      
  * __Pages:__
