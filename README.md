@@ -27,8 +27,8 @@ Both sign up as restaurant and user options availables. As user, you can see the
 * __[Trello's Board](https://trello.com/b/CYp9X8sK/fugu)__
  
 * __[Template](https://webthemez.com/city-cafe-restaurant-bootstrap-4-free-website-template/)__
-
-* __Navigation Board__
+    * We have left the footer, we have modified the navbar, we have created a fugu logo, we have included a browser, we have left the contact us secion in some pages, and we have left the font type, and we have added other pages based on the main page style.
+* __Diagrama de Navegacion__
     ![Diagrama de Navegacion](src/images/captures/diagrama-de-navegacion.png)
      
  * __Pages:__
@@ -37,7 +37,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
     ![main page](src/images/captures/main-1.png)
     ![main page](src/images/captures/main-2.png)
     ![main page](src/images/captures/main-3.png)
-      * Description: This is the first page you can see in our aplication. You have a login section and a sign in section too. If you only want to see some superficial information you have some sections to inspect our services.
+      * Description: This is the first page you can see in our application. You have a login section and a sign in section too. If you only want to see some superficial information you have some sections to inspect our services.
 * __City__
     ![city](src/images/captures/city-1.png)
     ![city](src/images/captures/city-2.png)
