@@ -1244,3 +1244,7 @@ border: 3px solid #6E6E6E;
 .activedate{
     background-color: #80cc0c!important;
 }
+
+.list {
+    margin-left: 4em;
+}
