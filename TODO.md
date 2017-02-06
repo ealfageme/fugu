@@ -8,7 +8,7 @@
 - [x] Booking calendar on restaurant page
 - [x] Restaurant can send group offers
 - [ ] Improve Sign in setting a difference between Client and Restaurant
-- [ ] Modify buttons implemented in Restaurant profile
+- [x] Modify buttons implemented in Restaurant profile
 - [ ] Feedback design in Restaurant profile can be improved so more opinions fit in the space
 - [ ] Improve offers and vouchers sending section
 - [ ] How vouchers are implemented and used? Print the voucher/Click the button and book a table at the same time/...
