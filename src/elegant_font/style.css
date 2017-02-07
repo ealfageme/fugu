@@ -1248,3 +1248,12 @@ border: 3px solid #6E6E6E;
 .list {
     margin-left: 4em;
 }
+
+#paddingColour {
+      border-style: solid;
+    border-top: thick double #ff0000;
+}
+
+.paddingtop {
+    padding-top: 0.8em;
+}
