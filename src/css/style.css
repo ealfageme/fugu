@@ -2246,9 +2246,9 @@
 
         #recommendations-filter {
             text-align: center;
-            background-color: gainsboro;
-            border: 2px solid;
-            border-color: grey;
+            background-color: #efefef;
+
+
         }
 
         .signin {
