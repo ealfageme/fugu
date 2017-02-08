@@ -1222,8 +1222,9 @@ text-shadow: none;
 }
 
 #submit {
-    padding-top: 200px;
-    padding-left: 85px;
+    padding-top: 1em;
+    padding-left: 5em;
+    padding-bottom: 1em;
 
 }
 
@@ -1265,4 +1266,15 @@ text-shadow: none;
 
 .fuguletter {
     margin:auto;
+}
+
+.btnMore2{
+     color:white;
+     border: 2px solid grey;
+     background-color: #333;
+
+     text-align: center;
+    margin: auto;
+
+     /*float: right;*/
 }
