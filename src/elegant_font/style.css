@@ -1217,6 +1217,7 @@ text-shadow: none;
      border-radius: 5px;
      text-align: center;
     margin: auto;
+    padding-right: 10 px;
      /*float: right;*/
 }
 
