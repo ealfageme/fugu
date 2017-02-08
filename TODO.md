@@ -16,4 +16,4 @@
 - [ ] Follow the same design on every webpage
 - [x] Restaurant-profile has a calendar on its page with the people that is coming on a day and they can accept reservations, or manage them.
 - [ ] Restaurant-profile -> number of people coming out of the total tables
-- [x] Modify chef images, adding a button to set a new chef or deleted a previous one.
+- [x ] Modify chef images, adding a button to set a new chef or deleted a previous one.
