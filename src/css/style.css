@@ -2247,8 +2247,6 @@
         #recommendations-filter {
             text-align: center;
             background-color: #efefef;
-
-
         }
 
         .signin {
@@ -2385,7 +2383,6 @@
             padding: 10px 0;
             background: #eee;
             margin: 0;
-
         }
 
         .days li {
@@ -2479,7 +2476,7 @@
             margin-right: auto;
         }
 
-.formmargin{
-    margin:5px !important;
-    border-radius: 0 !important;
-}
+        .formmargin {
+            margin: 5px !important;
+            border-radius: 0 !important;
+        }
