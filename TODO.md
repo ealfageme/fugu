@@ -11,7 +11,7 @@
 - [x] Modify buttons implemented in Restaurant profile
 - [x] Feedback design in Restaurant profile can be improved so more opinions fit in the space
 - [x] Improve offers and vouchers sending section
-- [ ] How vouchers are implemented and used? Print the voucher/Click the button and book a table at the same time/...
+- [x] How vouchers are implemented and used? Print the voucher/Click the button and book a table at the same time/...
 - [ ] Changes in profiles section have to follow the same design as the rest of the web
 - [ ] Follow the same design on every webpage
 - [x] Restaurant-profile has a calendar on its page with the people that is coming on a day and they can accept reservations, or manage them.
