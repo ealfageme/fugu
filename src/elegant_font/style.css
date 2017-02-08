@@ -1214,9 +1214,10 @@ text-shadow: none;
      color:white;
      border: 2px solid grey;
      background-color: #333;
-     border-radius: 5px;
+
      text-align: center;
     margin: auto;
+    padding-right: 10 px;
      /*float: right;*/
 }
 
@@ -1262,6 +1263,7 @@ text-shadow: none;
     padding-top: 2em;
 }
 
+<<<<<<< HEAD
 .puntuation {
      height: 90px;
      color:white;
@@ -1274,4 +1276,8 @@ text-shadow: none;
 
 .votes {
     font-size: 25px;
+=======
+.fuguletter {
+    margin:auto;
+>>>>>>> origin/master
 }
