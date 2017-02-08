@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-      <link rel="shortcut icon" href="images/logo/logo.ico">
+    <link rel="shortcut icon" href="images/logo/logo.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
@@ -68,7 +68,7 @@
                 </div>
                 <!-- Section Header End -->
                 <div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-                    <div id="formCol" class="col-l-7 col-md-7 col-sm-7 col-xs-12">
+                    <div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
                         <h1>Change data</h1>
                         <form role="form">
                             <div class="form-group">
@@ -112,9 +112,10 @@
                             <option>35 </option>
                         </select>
                         <br>
-                        <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <button type="button" class="btnMore" id="update">Update</button>
-                    </div>
+                        <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
+                            <button type="button" class="btnMore" id="update">Update</button>
+                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2">Delete profile</button>
+                        </div>
                     </div>
 
                 </div>
@@ -152,8 +153,12 @@
                                 <p>All you can eat paying only 15 euros </p>
                                 <a href="public-restaurant.html"> <img src="images/day-food/lunch.jpg" alt="Custom Image"> </a>
                                 <p style="margin-top:5px;">Expiry date: Tuesday 5th November 2017 </p>
-                                <a href="images/QR/qr1.tif"><button type="button" class="btnMore">Download QR</button></a>
-                                <div class="btnMorePadding"><button type="button" class="btnMore">See More</button></div>
+                                <a href="images/QR/qr1.tif">
+                                    <button type="button" class="btnMore">Download QR</button>
+                                </a>
+                                <div class="btnMorePadding">
+                                    <button type="button" class="btnMore">See More</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
@@ -168,7 +173,7 @@
                         </div>
                     </div>
                 </div>
-        </div>
+            </div>
     </section>
     <section class="menus style3" id="following">
 
@@ -543,6 +548,23 @@
             <br>
         </div>
 
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="section-header">
+                                                <span class="section-color">You want to delete your profile. Are you sure?</span>
+
+                                            </h2> </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Got it!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Works End -->
     </section>
     <!-- Contact Section End -->
