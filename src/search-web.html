@@ -388,73 +388,72 @@
         </div>
     </section>
     <section id="register">
-        <div class="modal fade" id="modalwindow2">
+        <div class="modal " id="modalwindow2">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button style="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title"> SIGN IN TO OUR PAGE </h2> </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#">Restaurant</a></li>
-                            <li><a href="#modalwindow" data-toggle="modal" data-dismiss="modal">Client</a></li>
+                <div class="modal-content" style="background-color:#efefef;border-radius: 0;">
+                    <div class="modal-header" style="background-color:#28292e !important;">
+                        <button type="button" class="close" data-dismiss="modal" style="color:#ffffff;">&times;</button>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#" style="border-radius: 0!important;color:#777;font-weight: 700; background-color:#efefef">RESTAURANT</a></li>
+                            <li><a href="#modalwindow" data-toggle="modal" data-dismiss="modal" style="border-radius: 0!important;color:#777;font-weight: 700;">CLIENT</a></li>
                         </ul>
-                        <p>Introduce your following details: </p>
+                    </div>
+                    <div class="modal-body">
+                        <p class="formmargin">Introduce your following details: </p>
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="restaurantname" placeholder="Resaurant name">
-                                <input type="text" class="form-control" id="address" placeholder="Address">
+                                <input type="text" class="form-control formmargin" id="restaurantname" placeholder="Resaurant name">
+                                <input type="text" class="form-control formmargin" id="address" placeholder="Address">
                                 <br>
-                                <input type="text" class="form-control" id="kindoffood" placeholder="Kind of food">
-                                <input type="text" class="form-control" id="username" placeholder="Email">
+                                <input type="text" class="form-control formmargin" id="kindoffood" placeholder="Kind of food">
+                                <input type="text" class="form-control formmargin" id="username" placeholder="Email">
                                 <br>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
-                                <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm password">
+                                <input type="password" class="form-control formmargin" id="password" placeholder="Password">
+                                <input type="password" class="form-control formmargin" id="confirmpassword" placeholder="Confirm password">
                                 <br> </div>
-                            <div>
-                                <br>
-                                <button type="submit" class="btn btn-warning"><span>Register</span></button>
-                            </div>
+                            <img src="images/restaurant.png">
+                            <p class="formmargin">Upload a profile picture </p>
+                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btnMore">Sign in</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="modalwindow">
+      <div class="modal " id="modalwindow">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button style="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title"> SIGN IN TO OUR PAGE </h2> </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs">
-                            <li><a href="#modalwindow2" data-toggle="modal" data-dismiss="modal">Restaurant</a></li>
-                            <li class="active"><a href="#">Client</a></li>
+                <div class="modal-content" style="background-color:#efefef;border-radius: 0;">
+                    <div class="modal-header" style="background-color:#28292e !important;">
+                        <button type="button" class="close" data-dismiss="modal" style="color:#ffffff;">&times;</button>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#modalwindow2" data-toggle="modal" data-dismiss="modal" style="border-radius: 0!important;color:#777;font-weight: 700;;">RESTAURANT</a></li>
+                            <li><a href="#" style="border-radius: 0!important;color:#777;font-weight: 700; background-color:#efefef">CLIENT</a></li>
                         </ul>
-                        <p>Introduce your following details: </p>
+                    </div>
+                    <div class="modal-body">
+                        <p class="formmargin">Introduce your following details: </p>
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" placeholder="Name">
-                                <input type="text" class="form-control" id="address" placeholder="Address">
+                                <input type="text" class="form-control formmargin" id="restaurantname" placeholder="Name">
+                                <input type="text" class="form-control formmargin" id="address" placeholder="Address">
                                 <br>
-                                <input type="text" class="form-control" id="age" placeholder="Age">
-                                <input type="text" class="form-control" id="username" placeholder="Email">
+                                <input type="text" class="form-control formmargin" id="kindoffood" placeholder="Kind of food">
+                                <input type="text" class="form-control formmargin" id="username" placeholder="Email">
                                 <br>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
-                                <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm password">
+                                <input type="password" class="form-control formmargin" id="password" placeholder="Password">
+                                <input type="password" class="form-control formmargin" id="confirmpassword" placeholder="Confirm password">
                                 <br> </div>
-                            <div>
-                                <br>
-                                <button type="submit" class="btn btn-warning"><span>Register</span></button>
-                            </div>
+                            <img src="images/profile.png">
+                            <p class="formmargin">Upload a profile picture </p>
+                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                         </form>
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btnMore">Sign in</button>
                     </div>
                 </div>
             </div>
