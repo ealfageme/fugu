@@ -1264,8 +1264,23 @@ text-shadow: none;
     padding-top: 2em;
 }
 
+<<<<<<< HEAD
+.puntuation {
+     height: 90px;
+     color:white;
+     border: 2px solid grey;
+     background-color: #333;
+
+}
+
+
+
+.votes {
+    font-size: 25px;
+=======
 .fuguletter {
     margin:auto;
+>>>>>>> origin/master
 }
 
 .btnMore2{
