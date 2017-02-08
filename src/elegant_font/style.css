@@ -1257,3 +1257,7 @@ text-shadow: none;
 .paddingtop {
     padding-top: 0.8em;
 }
+
+.btnMorePadding {
+    padding-top: 2em;
+}
