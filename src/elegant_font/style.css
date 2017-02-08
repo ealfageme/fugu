@@ -1261,3 +1261,17 @@ text-shadow: none;
 .btnMorePadding {
     padding-top: 2em;
 }
+
+.puntuation {
+     height: 90px;
+     color:white;
+     border: 2px solid grey;
+     background-color: #333;
+
+}
+
+
+
+.votes {
+    font-size: 25px;
+}
