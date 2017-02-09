@@ -53,6 +53,8 @@
             </div>
         </nav>
     </header>
+
+
     <section>
         <!-- Slides -->
         <div class="image section-header">
@@ -66,10 +68,6 @@
         </div>
         <!-- Slides End -->
     </section>
-
-    <!-- Main Slider End -->
-
-
     <section id="profile" class="profile-sec section-wrapper description">
         <br>
         <br>
@@ -82,7 +80,7 @@
                     <p>Gourmet Food restaurant</p>
                     <br>
                     <spam id="button">
-                        <button type="submit" class="btnMore" id "changeImg">Change profile image</button>
+                        <button type="submit" class="btnMore" id="changeImg">Change profile image</button>
                     </spam>
                 </div>
                 <!-- Section Header End -->
@@ -93,14 +91,12 @@
                             <div class="form-group">
                                 <label for="name">Restaurant Name:</label>
                                 <input type="name" class="form-control" id="name" value="Santos Restaurant">
-
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Location:</label>
                                 <input type="name" class="form-control" id="name" value="Liberty Street 32">
-
                             </div>
                         </form>
                         <form role="form">
@@ -141,16 +137,14 @@
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
                             <button type="button" class="btnMore" id="update">Update</button>
-                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2">Delete profile</button>
+                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2" id="update">Delete</button>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
-
+    <!-- Main Slider End -->
     <section id="reservations" class="about-sec section-wrapper description">
         <div class="container">
             <div class="row">
@@ -911,10 +905,10 @@
                     <div class="modal-body">
                         <h2 class="section-header">
                                                 <span class="section-color">You want to delete your profile. Are you sure?</span>
-
                                             </h2> </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Got it!</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Accept</button>
                     </div>
                 </div>
             </div>

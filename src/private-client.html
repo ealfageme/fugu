@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="elegant_font/style.css" />
-    <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/slider-pro.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
@@ -22,11 +21,6 @@
     <link rel="stylesheet" href="elegant_font/style.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-        <script type="text/javascript" src="js/selectivizr.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -59,11 +53,11 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Pedro_León<img src="images/clients/250x250_24105534pedro-leon.jpg" class="img-circle" alt="Custom Image"></span></h2>
+                    <h2><span class="highlight-text">Pedro_Leon<img src="images/clients/250x250_24105534pedro-leon.jpg" class="img-circle" alt="Custom Image"></span></h2>
                     <p>Football player, italian's food lover.</p>
                     <br>
                     <spam id="button">
-                        <button type="submit" class="btnMore" id="changeImg">Update profile photo</button>
+                        <button type="submit" class="btnMore" id="changeImg">Change profile image</button>
                     </spam>
                 </div>
                 <!-- Section Header End -->
@@ -73,51 +67,44 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Account Name:</label>
-                                <input type="name" class="form-control" id="name" value="Peter Lion"> </div>
+                                <input type="name" class="form-control" id="name" value="Peter Lion">
+                            </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" value="peterlion@website.com"> </div>
+                                <input type="email" class="form-control" id="email" value="peterlion@website.com">
+                            </div>
+                        </form>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name">Description:</label>
+                                <textarea class="form-control" id="exampleTextarea" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                            </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="pwd">New password</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"> </div>
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter new password">
+                            </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Repeat new password</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Repeat new password"> </div>
+                                <input type="password" class="form-control" id="pwd" placeholder="Repeat new password">
+                            </div>
                         </form>
-                        <label for="age" style="margin-bottom:10px;">How old are you?</label>
-                        <select name="guests">
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                            <option>32</option>
-                            <option>33</option>
-                            <option>34</option>
-                            <option>35 </option>
-                        </select>
-                        <br>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="age" style="margin-bottom:10px;">How old are you?</label>
+                                <input type="text" class="form-control" id="age" value="25">
+                            </div>
+                        </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
                             <button type="button" class="btnMore" id="update">Update</button>
-                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2">Delete profile</button>
+                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2" id="update">Delete</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -174,6 +161,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <section class="menus style3" id="following">
 
@@ -312,7 +300,6 @@
         <br>
         <br>
         <br>
-        <div class="parallax-overlay"></div>
         <div class="ratings-wrapper wow bounceIn">
             <div class="container">
                 <div class="row">
@@ -557,10 +544,10 @@
                     <div class="modal-body">
                         <h2 class="section-header">
                                                 <span class="section-color">You want to delete your profile. Are you sure?</span>
-
                                             </h2> </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Got it!</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Accept</button>
                     </div>
                 </div>
             </div>
