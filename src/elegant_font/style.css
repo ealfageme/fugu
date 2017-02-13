@@ -1277,10 +1277,9 @@ text-shadow: none;
 
 .votes {
     font-size: 25px;
-=======
+}
 .fuguletter {
     margin:auto;
->>>>>>> origin/master
 }
 
 .btnMore2{
@@ -1292,4 +1291,25 @@ text-shadow: none;
     margin: auto;
 
      /*float: right;*/
+}
+
+.signInBtn{
+    color:white;
+    border: 2px solid grey;
+    background-color: #80cc0c;
+
+    text-align: center;
+    margin: auto;
+    padding: 6px 12px!important;
+    /*float: right;*/
+}
+.logInBtn{
+    color:black;
+    border: 2px solid grey;
+    background-color: #eee;
+
+    text-align: center;
+    margin: auto;
+    padding: 6px 12px!important;
+    /*float: right;*/
 }
