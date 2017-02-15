@@ -1295,7 +1295,7 @@ text-shadow: none;
 
 .signInBtn{
     color:white;
-    border: 2px solid grey;
+    border: 1px solid grey;
     background-color: #80cc0c;
 
     text-align: center;
@@ -1305,7 +1305,7 @@ text-shadow: none;
 }
 .logInBtn{
     color:black;
-    border: 2px solid grey;
+    border: 1px solid grey;
     background-color: #eee;
 
     text-align: center;
