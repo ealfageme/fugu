@@ -49,6 +49,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
     ![Private client](src/main/resources/static/images/captures/private-client-3.png)
     ![Private client](src/main/resources/static/images/captures/private-client-4.png)
     ![Private client](src/main/resources/static/images/captures/private-client-5.png)
+    ![Private client](src/main/resources/static/images/captures/private-client-6.png)
       * Description: Similar to the previous page, but in this case, you have to be identified and you can change some properties about your personal details.
 * __Private restaurant__
     ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-1.png)
@@ -56,6 +57,9 @@ Both sign up as restaurant and user options availables. As user, you can see the
     ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-3.png)
     ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-4.png)
     ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-5.png)
+    ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-6.png)
+    ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-7.png)
+    ![Private restaurant](src/main/resources/static/images/captures/private-restaurant-8.png)
     * Description: If you are identified like a restaurant, you have the possibility of change offers, menu or send offers to a potential group of clients.
 * __Public client__
     ![Public client](src/main/resources/static/images/captures/public-client-1.png)
