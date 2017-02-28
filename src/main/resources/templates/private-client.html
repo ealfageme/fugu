@@ -54,7 +54,7 @@
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
                     <h2><span class="highlight-text">{{username}}<img src="images/clients/250x250_24105534pedro-leon.jpg" class="img-circle" alt="Custom Image"></span></h2>
-                    <p>Football player, italian's food lover.</p>
+                    <p>{{userdescription}}</p>
                     <br>
                     <spam id="button">
                         <button type="submit" class="btnMore" id="changeImg">Change profile image</button>
@@ -67,19 +67,19 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Account Name:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="Peter Lion">
+                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{username}}>
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value="peterlion@website.com">
+                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value={{useremail}} >
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Description:</label>
-                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">{{userdescription}}</textarea>
                             </div>
                         </form>
                         <form role="form">
@@ -97,7 +97,7 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="age" style="margin-bottom:10px;">How old are you?</label>
-                                <input style="border-radius:0px!important" type="text" class="form-control" id="age" value="25">
+                                <input style="border-radius:0px!important" type="text" class="form-control" id="age" value={{userage}}>
                             </div>
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">

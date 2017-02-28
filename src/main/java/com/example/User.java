@@ -24,11 +24,11 @@ public class User {
 
 	private String name;
 	private String email;
-	/*private String description;
+	private String description;
 	private String password;
 	private int age;
-	private List<String> preferences; 
-	private List<String> starredRestaurants; 
+	/*private List<String> preferences; 
+	/*private List<String> starredRestaurants; 
 	private List<String> reviews; 
 	private double userRate;
 	
@@ -45,12 +45,17 @@ public class User {
 		this.reviews = reviews;
 		this.userRate = userRate;
 	}*/
-	public User(String name,String email){
+	public User(String name,String email,String description, String password,int age){
 		this.name=name;
 		this.email=email;
+		this.description= description;
+		this.password= password;
+		this.age = age;
+
 		
 	}
 	public User(){}
+	
 	public String getName() {
 		return name;
 	}
@@ -66,7 +71,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-/*
+
 	public String getDescription() {
 		return description;
 	}
@@ -90,16 +95,16 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+	/*
 	public List<String> getPreferences() {
 		return preferences;
 	}
 
-	public void setPreferences(ArrayList<String> preferences) {
+	public void setPreferences(List<String> preferences) {
 		this.preferences = preferences;
 	}
 
-	public List<String> getStarredRestaurants() {
+	/*public List<String> getStarredRestaurants() {
 		return starredRestaurants;
 	}
 

@@ -1,7 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,9 +21,10 @@ public class DataBaseUsage implements CommandLineRunner{
 	
 	@Override
 	public void run (String... args) throws Exception{
-		//userRepository.save(new User("John","1","2","3",4,new ArrayList<String>(),new ArrayList<String>(),new ArrayList<String>(),9));
 		
-		userRepository.save(new User("john","Cena"));
+		userRepository.save(new User("john-snow","john-snow@website.com","GoT actor","yomuero",21));
+		userRepository.save(new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31));
+		userRepository.save(new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54));
 	}
 
 	@RequestMapping("main")
@@ -38,9 +39,12 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("private-client")
 	public String privateCity(Model model) {
-		List<User> users=new ArrayList<User>();
-		users = userRepository.findAll();
+		ArrayList<User> users=new ArrayList<User>();
+		users = (ArrayList<User>) userRepository.findAll();
 		model.addAttribute("username",users.get(0).getName()) ;
+		model.addAttribute("useremail",users.get(0).getEmail());
+		model.addAttribute("userage",users.get(0).getAge());
+		model.addAttribute("userdescription",users.get(0).getDescription());
 		return "private-client";
 	}
 	@RequestMapping("private-restaurant")
