@@ -38,7 +38,8 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("private-client")
 	public String privateCity(Model model) {
-		List<User> users=new ArrayList<User>(userRepository.findAll());
+		List<User> users=new ArrayList<User>();
+		users = userRepository.findAll();
 		model.addAttribute("username",users.get(0).getName()) ;
 		return "private-client";
 	}
