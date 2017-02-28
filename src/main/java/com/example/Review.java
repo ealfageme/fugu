@@ -3,6 +3,9 @@ package com.example;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Review {
@@ -10,7 +13,18 @@ public class Review {
 	private String content;
 	private double rate;
 	private Date date;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public Review(User user, String content, double rate, Date date) {
 		super();
 		this.user = user;
