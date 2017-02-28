@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,16 +24,16 @@ public class User {
 
 	private String name;
 	private String email;
-	private String description;
+	/*private String description;
 	private String password;
 	private int age;
-	private ArrayList<String> preferences; 
-	private ArrayList<String> starredRestaurants; 
-	private ArrayList<Review> reviews; 
+	private List<String> preferences; 
+	private List<String> starredRestaurants; 
+	private List<String> reviews; 
 	private double userRate;
 	
 	public User(String name, String email, String description, String password, int age, ArrayList<String> preferences,
-			ArrayList<String> starredRestaurants, ArrayList<Review> reviews, double userRate) {
+			ArrayList<String> starredRestaurants, ArrayList<String> reviews, double userRate) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -43,6 +44,11 @@ public class User {
 		this.starredRestaurants = starredRestaurants;
 		this.reviews = reviews;
 		this.userRate = userRate;
+	}*/
+	public User(String name,String email){
+		this.name=name;
+		this.email=email;
+		
 	}
 
 	public String getName() {
@@ -60,7 +66,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+/*
 	public String getDescription() {
 		return description;
 	}
@@ -85,7 +91,7 @@ public class User {
 		this.age = age;
 	}
 
-	public ArrayList<String> getPreferences() {
+	public List<String> getPreferences() {
 		return preferences;
 	}
 
@@ -93,7 +99,7 @@ public class User {
 		this.preferences = preferences;
 	}
 
-	public ArrayList<String> getStarredRestaurants() {
+	public List<String> getStarredRestaurants() {
 		return starredRestaurants;
 	}
 
@@ -101,11 +107,11 @@ public class User {
 		this.starredRestaurants = starredRestaurants;
 	}
 
-	public ArrayList<Review> getReviews() {
+	public List<String> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(ArrayList<Review> reviews) {
+	public void setReviews(ArrayList<String> reviews) {
 		this.reviews = reviews;
 	}
 
@@ -116,6 +122,6 @@ public class User {
 	public void setUserRate(double userRate) {
 		this.userRate = userRate;
 	}
-	
+	*/
 	
 }

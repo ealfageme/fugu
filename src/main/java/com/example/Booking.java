@@ -12,7 +12,7 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private Restaurant restaurant;
+	//private Restaurant restaurant;
 	public long getId() {
 		return id;
 	}
@@ -22,23 +22,23 @@ public class Booking {
 	}
 
 	private Date date;
-	private User user;
+	//private User user;
 	private int number;
 	
 	public Booking(Restaurant restaurant, Date date, User user, int number) {
 		super();
-		this.restaurant = restaurant;
+		//this.restaurant = restaurant;
 		this.date = date;
-		this.user = user;
+		//this.user = user;
 		this.number = number;
 	}
 
 	public Restaurant getRestaurant() {
-		return restaurant;
+		return null;//restaurant;
 	}
 
 	public void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
+		//this.restaurant = restaurant;
 	}
 
 	public Date getDate() {
@@ -50,11 +50,11 @@ public class Booking {
 	}
 
 	public User getUser() {
-		return user;
+		return null;//user;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		//this.user = user;
 	}
 
 	public int getNumber() {

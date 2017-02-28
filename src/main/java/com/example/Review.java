@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Review {
-	private User user;
+	//private User user;
 	private String content;
 	private double rate;
 	private Date date;
@@ -27,7 +27,7 @@ public class Review {
 
 	public Review(User user, String content, double rate, Date date) {
 		super();
-		this.user = user;
+		//this.user = user;
 		this.content = content;
 		this.rate = rate;
 		this.date = new Date();
@@ -37,11 +37,11 @@ public class Review {
 	}
 
 	public User getUser() {
-		return user;
+		return null;//user;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		//this.user = user;
 	}
 
 	public String getContent() {

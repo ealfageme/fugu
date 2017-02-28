@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FuguController {
 	
 
-	@RequestMapping("main")
+	/*@RequestMapping("main")
 	public String main(Model model) {
 
 		return "main";
@@ -22,7 +22,7 @@ public class FuguController {
 	}
 	@RequestMapping("private-client")
 	public String privateCity(Model model) {
-
+		
 		return "private-client";
 	}
 	@RequestMapping("private-restaurant")
@@ -44,7 +44,7 @@ public class FuguController {
 	public String searchWeb(Model model) {
 
 		return "search-web";
-	}
+	}*/
 
 	
 }
