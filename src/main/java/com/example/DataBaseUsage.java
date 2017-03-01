@@ -17,16 +17,29 @@ public class DataBaseUsage implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RestaurantRepository restaurantRepository;
+	@Autowired
+	private MenuRepository menuRepository;
 	/*private ReviewRepository reviewRepository;
 	private VoucherRepository voucherRepository;
 	private BookingRepository bookingRepository;*/
 	
 	@Override
 	public void run (String... args) throws Exception{
+		Menu menu1 = new Menu("espaguetis", 10.5);
+		Menu menu2 = new Menu("EloyMolaMil", 200.5);
+		Menu menu3 = new Menu("Cosa verde (lechugo)", 0.0);
+		menuRepository.save(menu1);
+		menuRepository.save(menu2);
+		menuRepository.save(menu3);
 		Restaurant rest1 = new Restaurant ("nombre","dire","desc","email","italian",123213123,"sadd");
 		Restaurant rest2 = new Restaurant ("nombre1","dire1","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest3 = new Restaurant ("nombre3","dire3","desc3","email3","italian3",123233,"sallmushalim");
+		rest1.getMenus().add(menu1);
+		rest2.getMenus().add(menu2);
+		rest3.getMenus().add(menu3);
 		restaurantRepository.save(rest1);
 		restaurantRepository.save(rest2);
+		restaurantRepository.save(rest3);
 		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54);
