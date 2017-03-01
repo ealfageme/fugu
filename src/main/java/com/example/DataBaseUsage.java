@@ -132,6 +132,16 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("public-restaurant")
 	public String publicRestaurant(Model model) {
+	model.addAttribute("nameRestaurant",restaurantRepository.findAll().get(0).getName());
+	model.addAttribute("locRestaurant",restaurantRepository.findAll().get(0).getAddress());
+	model.addAttribute("desRestaurant",restaurantRepository.findAll().get(0).getDescription());
+	model.addAttribute("telRestaurant",restaurantRepository.findAll().get(0).getPhone()+"");
+	model.addAttribute("emailRestaurant",restaurantRepository.findAll().get(0).getEmail());
+	model.addAttribute("menu1",menuRepository.findAll().get(0).getDish());
+	model.addAttribute("menu2",menuRepository.findAll().get(1).getDish());
+	model.addAttribute("price1",menuRepository.findAll().get(0).getPrice());
+	model.addAttribute("price2",menuRepository.findAll().get(1).getPrice());
+	
 
 		return "public-restaurant";
 	}
