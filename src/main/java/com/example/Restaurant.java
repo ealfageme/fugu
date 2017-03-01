@@ -9,18 +9,32 @@ import javax.persistence.Id;
 
 @Entity
 public class Restaurant {
-	//Name, address, rate, menu, vouchers and discounts.
-	//Crear clase chef
-	//Crear clase reservas
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
+	
+	private String name;
+	private String address;
+	private String description;
+	private String email;
+	private String foodTypes;
+	private long phone;
+	private String password;
+	//Crear clase menu
+	
+	public Restaurant(long id, String name, String address, String description, String email, String foodTypes,
+			long phone, String password) {
+		super();
 		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.description = description;
+		this.email = email;
+		this.foodTypes = foodTypes;
+		this.phone = phone;
+		this.password = password;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -33,23 +47,11 @@ public class Restaurant {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getWeb() {
-		return web;
+	public String getDescription() {
+		return description;
 	}
-	public void setWeb(String web) {
-		this.web = web;
-	}
-	public String getFoodTypes() {
-		return foodTypes;
-	}
-	public void setFoodTypes(String foodTypes) {
-		this.foodTypes = foodTypes;
-	}
-	public String getMenu() {
-		return menu;
-	}
-	public void setMenu(String menu) {
-		this.menu = menu;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getEmail() {
 		return email;
@@ -57,11 +59,11 @@ public class Restaurant {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDescription() {
-		return description;
+	public String getFoodTypes() {
+		return foodTypes;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setFoodTypes(String foodTypes) {
+		this.foodTypes = foodTypes;
 	}
 	public long getPhone() {
 		return phone;
@@ -75,35 +77,11 @@ public class Restaurant {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public ArrayList<User> getPotentialUsers() {
-		return potentialUsers;
+	public long getId() {
+		return id;
 	}
-	public void setPotentialUsers(ArrayList<User> potentialUsers) {
-		this.potentialUsers = potentialUsers;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public ArrayList<String> getReviews() {
-		return reviews;
-	}
-	public void setReviews(ArrayList<String> reviews) {
-		this.reviews = reviews;
-	}
-	public double getUserRate() {
-		return userRate;
-	}
-	public void setUserRate(double userRate) {
-		this.userRate = userRate;
-	}
-	private String name;
-	private String address;
-	private String web;
-	private String foodTypes;
-	//Crear clase menu
-	private String menu;
-	private String email;
-	private String description;
-	private long phone;
-	private String password;
-	private ArrayList<User> potentialUsers; 
-	private ArrayList<String> reviews; 
-	private double userRate;
+
 }
