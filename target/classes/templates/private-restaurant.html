@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
-    <title>Santos Restaurant</title>
+    <title>{{nameRestaurant}}</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
@@ -41,7 +41,7 @@
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
-                        <li> <a href="#profile">SANTOS RESTAURANT</a> </li>
+                        <li> <a href="#profile">{{nameRestaurant}}</a> </li>
                         <li> <a href="#reservations">RESERVATIONS</a> </li>
                         <li> <a href="#current-deals">CURRENT DEALS</a> </li>
                         <li> <a href="#menu-card">MENU CARD</a> </li>
@@ -62,7 +62,7 @@
             <img src="images/santo-restaurant/santo-restaurant.jpg" alt="Slider 1" />
 
             <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
-                <span class="highlight-texts"><span class="section-color2 highlight-text border2">Welcome to your profile, Santos Restaurant</span>
+                <span class="highlight-texts"><span class="section-color2 highlight-text border2">Welcome to your profile,{{nameRestaurant}}</span>
                 </span>
                 </h2>
         </div>
@@ -76,7 +76,7 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Santos Restaurant<img src="images/santo-restaurant/restaurant-sign.jpg" class="img-thumbnail" alt="Custom Image"></span></h2>
+                    <h2><span class="highlight-text">{{nameRestaurant}}<img src="images/santo-restaurant/restaurant-sign.jpg" class="img-thumbnail" alt="Custom Image"></span></h2>
                     <p>Gourmet Food restaurant</p>
                     <br>
                     <spam id="button">
@@ -90,31 +90,31 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Restaurant Name:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="Santos Restaurant">
+                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{nameRestaurant}}>
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Location:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="Liberty Street 32">
+                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{locRestaurant}}>
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Description:</label>
-                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">{{desRestaurant}}</textarea>
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="name">Telephone:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="+065 658 744 000">
+                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{telRestaurant}}>
                             </div>
                         </form>
                         <form role="form">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value="santosrestaurant@restaurant.com">
+                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value={{emailRestaurant}}>
                             </div>
                         </form>
                         <form role="form">

@@ -31,7 +31,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
 		menuRepository.save(menu3);
-		Restaurant rest1 = new Restaurant ("Mesón Paco","Madrid","desc","email","italian",123213123,"sadd");
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 Madrid","tipical american food","american@whey.com","italian",658742154,"password");
 		Restaurant rest2 = new Restaurant ("Mesón mariano","Barcelona","desc1","email1","italian1",123213123,"s1add");
 		Restaurant rest3 = new Restaurant ("Mesón Felipe","Valencia","desc","email","italian",123213123,"sadd");
 		Restaurant rest4 = new Restaurant ("Mesón Lito","Sevilla","desc1","email1","italian1",123213123,"s1add");
@@ -123,7 +123,11 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("private-restaurant")
 	public String privateRestaurtan(Model model) {
-		
+		model.addAttribute("nameRestaurant",restaurantRepository.findAll().get(0).getName());
+		model.addAttribute("locRestaurant",restaurantRepository.findAll().get(0).getAddress());
+		model.addAttribute("desRestaurant",restaurantRepository.findAll().get(0).getDescription());
+		model.addAttribute("telRestaurant",restaurantRepository.findAll().get(0).getPhone()+"");
+		model.addAttribute("emailRestaurant",restaurantRepository.findAll().get(0).getEmail());
 		return "private-restaurant";
 	}
 	@RequestMapping("public-restaurant")
