@@ -9,12 +9,14 @@ import javax.persistence.Id;
 public class Menu {
 	private String dish;
 	private Double price;
+	private String Description;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	public Menu(String name, Double price){
+	public Menu(String name, Double price, String description){
 		this.dish = name;
 		this.price = price;
+		this.Description= description;
 	}
 	public Menu(){}
 	public long getId() {
@@ -35,5 +37,10 @@ public class Menu {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
+	public void setDescription(String description){
+		this.Description= description;
+	}
+	public String getDescription(){
+		return this.Description;
+	}
 }

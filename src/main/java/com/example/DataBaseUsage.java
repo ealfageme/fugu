@@ -25,9 +25,9 @@ public class DataBaseUsage implements CommandLineRunner{
 	
 	@Override
 	public void run (String... args) throws Exception{
-		Menu menu1 = new Menu("espaguetis", 10.5);
-		Menu menu2 = new Menu("EloyMolaMil", 200.5);
-		Menu menu3 = new Menu("Cosa verde (lechugo)", 0.0);
+		Menu menu1 = new Menu("espaguetis", 10.5," with BBQ");
+		Menu menu2 = new Menu("EloyMolaMil", 200.5, "with sauce");
+		Menu menu3 = new Menu("Cosa verde (lechugo)", 0.0,"with Salad" );
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
 		menuRepository.save(menu3);
@@ -141,7 +141,8 @@ public class DataBaseUsage implements CommandLineRunner{
 	model.addAttribute("menu2",menuRepository.findAll().get(1).getDish());
 	model.addAttribute("price1",menuRepository.findAll().get(0).getPrice());
 	model.addAttribute("price2",menuRepository.findAll().get(1).getPrice());
-	
+	model.addAttribute("foodDesc1",menuRepository.findAll().get(0).getDescription());
+	model.addAttribute("foodDesc2",menuRepository.findAll().get(1).getDescription());
 
 		return "public-restaurant";
 	}
