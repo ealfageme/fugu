@@ -7,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
 public class User {
+	public interface BasicAtt{}
+	public interface RestaurantAtt{}
+	@JsonView(BasicAtt.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -21,12 +27,20 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	@JsonView(BasicAtt.class)
 	private String name;
+	@JsonView(BasicAtt.class)
 	private String email;
+	@JsonView(BasicAtt.class)
 	private String description;
+	@JsonView(BasicAtt.class)
 	private String password;
+	@JsonView(BasicAtt.class)
 	private int age;
+	
+	@JsonView(RestaurantAtt.class)
+	@ManyToMany
+	private List<Restaurant> restaurants = new ArrayList<>();
 	/*private List<String> preferences; 
 	/*private List<String> starredRestaurants; 
 	private List<String> reviews; 
@@ -104,14 +118,15 @@ public class User {
 		this.preferences = preferences;
 	}
 
-	/*public List<String> getStarredRestaurants() {
-		return starredRestaurants;
+	*/
+	public List<Restaurant> getRestaurant() {
+		return restaurants;
 	}
 
-	public void setStarredRestaurants(ArrayList<String> starredRestaurants) {
-		this.starredRestaurants = starredRestaurants;
+	public void setRestaurant(ArrayList<Restaurant> Restaurant) {
+		this.restaurants = Restaurant;
 	}
-
+/*
 	public List<String> getReviews() {
 		return reviews;
 	}

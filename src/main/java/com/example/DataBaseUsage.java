@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,19 +15,45 @@ public class DataBaseUsage implements CommandLineRunner{
 	
 	@Autowired
 	private UserRepository userRepository;
-	/*private RestaurantRepository restaurantRepository;
-	private ReviewRepository reviewRepository;
+	@Autowired
+	private RestaurantRepository restaurantRepository;
+	/*private ReviewRepository reviewRepository;
 	private VoucherRepository voucherRepository;
 	private BookingRepository bookingRepository;*/
 	
 	@Override
 	public void run (String... args) throws Exception{
+		Restaurant rest1 = new Restaurant ("nombre","dire","desc","email","italian",123213123,"sadd");
+		Restaurant rest2 = new Restaurant ("nombre1","dire1","desc1","email1","italian1",123213123,"s1add");
+		restaurantRepository.save(rest1);
+		restaurantRepository.save(rest2);
+		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
+		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
+		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54);
 		
-		userRepository.save(new User("john-snow","john-snow@website.com","GoT actor","yomuero",21));
-		userRepository.save(new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31));
-		userRepository.save(new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54));
+		/*rest1.getUsers().add(user1);
+		rest1.getUsers().add(user2);
+		rest2.getUsers().add(user3);*/
+		user1.getRestaurant().add(rest1);
+		user1.getRestaurant().add(rest2);
+		user2.getRestaurant().add(rest1);
+		user3.getRestaurant().add(rest2);
+		
+		userRepository.save(user1);
+		userRepository.save(user2);
+		userRepository.save(user3);
+		
+		
+	
 	}
-
+	@PostConstruct
+	public void init (){
+		
+		
+	}
+	
+	interface RestaurantListView extends Restaurant.BasicAtt, Restaurant.UserAtt, User.BasicAtt{}
+	
 	@RequestMapping("main")
 	public String main(Model model) {
 
@@ -49,7 +76,7 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("private-restaurant")
 	public String privateRestaurtan(Model model) {
-
+		
 		return "private-restaurant";
 	}
 	@RequestMapping("public-restaurant")

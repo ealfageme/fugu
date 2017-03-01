@@ -1,31 +1,47 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Restaurant {
+	public interface BasicAtt{}
+	public interface UserAtt{}
+	@JsonView(BasicAtt.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+	@JsonView(BasicAtt.class)
 	private String name;
+	@JsonView(BasicAtt.class)
 	private String address;
+	@JsonView(BasicAtt.class)
 	private String description;
+	@JsonView(BasicAtt.class)
 	private String email;
+	@JsonView(BasicAtt.class)
 	private String foodTypes;
+	@JsonView(BasicAtt.class)
 	private long phone;
+	@JsonView(BasicAtt.class)
 	private String password;
-	//Crear clase menu
+	@JsonView(UserAtt.class)
+	@ManyToMany (mappedBy="restaurants")
+	private List<User> users = new ArrayList<>();
 	
-	public Restaurant(long id, String name, String address, String description, String email, String foodTypes,
+	
+	public Restaurant( String name, String address, String description, String email, String foodTypes,
 			long phone, String password) {
 		super();
-		this.id = id;
+		
 		this.name = name;
 		this.address = address;
 		this.description = description;
@@ -34,6 +50,16 @@ public class Restaurant {
 		this.phone = phone;
 		this.password = password;
 	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public Restaurant (){}
 	
 	public String getName() {
 		return name;
