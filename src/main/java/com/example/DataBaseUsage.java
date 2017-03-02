@@ -28,14 +28,26 @@ public class DataBaseUsage implements CommandLineRunner{
 	
 	@Override
 	public void run (String... args) throws Exception{
-		Menu menu1 = new Menu("espaguetis", 10.5," with BBQ");
-		Menu menu2 = new Menu("EloyMolaMil", 200.5, "with sauce");
-		Menu menu3 = new Menu("Cosa verde (lechugo)", 0.0,"with Salad" );
+		Menu menu1 = new Menu("Nachos", 10.5," with cheese");
+		Menu menu2 = new Menu("BBQ Wings Chicken Bites", 20.5, "with sauce");
+		Menu menu3 = new Menu("Fries", 5.0,"with ketchup" );
+		Menu menu4 = new Menu("Mediterranean Chicken", 12.5," with BBQ");
+		Menu menu5 = new Menu("Chicken Pasta",3.5, "with sauce");
+		Menu menu6 = new Menu("Vegetarian Pasta", 8.0,"with Salad" );
+		Menu menu7 = new Menu("Beef Fajita", 6.5,"with ketchup" );
+		Menu menu8 = new Menu("Beef Triple Burger", 12.5," with BBQ");
+		Menu menu9 = new Menu("Georgian Wings",3.5, "with sauce");
+		Menu menu10 = new Menu("Chicken Breast Sandwich", 8.0,"with Salad" );
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
 		menuRepository.save(menu3);
-		
-
+		menuRepository.save(menu4);
+		menuRepository.save(menu5);
+		menuRepository.save(menu6);
+		menuRepository.save(menu7);
+		menuRepository.save(menu8);
+		menuRepository.save(menu9);
+		menuRepository.save(menu10);
 		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 Madrid","tipical american food","american@whey.com","italian",658742154,"password");
 		Restaurant rest2 = new Restaurant ("Mesón mariano","Barcelona","desc1","email1","italian1",123213123,"s1add");
 		Restaurant rest3 = new Restaurant ("Mesón Felipe","Valencia","desc","email","italian",123213123,"sadd");
@@ -136,32 +148,42 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("private-restaurant")
 	public String privateRestaurtan(Model model) {
-		model.addAttribute("nameRestaurant",restaurantRepository.findAll().get(0).getName());
-		model.addAttribute("locRestaurant",restaurantRepository.findAll().get(0).getAddress());
-		model.addAttribute("desRestaurant",restaurantRepository.findAll().get(0).getDescription());
-		model.addAttribute("telRestaurant",restaurantRepository.findAll().get(0).getPhone()+"");
-		model.addAttribute("emailRestaurant",restaurantRepository.findAll().get(0).getEmail());
+		model.addAttribute("restaurant",restaurantRepository.findAll().get(0));
+		model.addAttribute("menu1",menuRepository.findAll().get(0));
+		model.addAttribute("menu2",menuRepository.findAll().get(1));
+		model.addAttribute("menu3",menuRepository.findAll().get(2));
+		model.addAttribute("menu4",menuRepository.findAll().get(3));
+		model.addAttribute("menu5",menuRepository.findAll().get(4));
+		model.addAttribute("menu6",menuRepository.findAll().get(5));
+		model.addAttribute("menu7",menuRepository.findAll().get(6));
+		model.addAttribute("menu8",menuRepository.findAll().get(7));
+		model.addAttribute("menu9",menuRepository.findAll().get(8));
+		model.addAttribute("menu10",menuRepository.findAll().get(9));
 		return "private-restaurant";
 	}
 	@RequestMapping("public-restaurant")
 	public String publicRestaurant(Model model) {
-	model.addAttribute("nameRestaurant",restaurantRepository.findAll().get(0).getName());
-	model.addAttribute("locRestaurant",restaurantRepository.findAll().get(0).getAddress());
-	model.addAttribute("desRestaurant",restaurantRepository.findAll().get(0).getDescription());
-	model.addAttribute("telRestaurant",restaurantRepository.findAll().get(0).getPhone()+"");
-	model.addAttribute("emailRestaurant",restaurantRepository.findAll().get(0).getEmail());
-	model.addAttribute("menu1",menuRepository.findAll().get(0).getDish());
-	model.addAttribute("menu2",menuRepository.findAll().get(1).getDish());
-	model.addAttribute("price1",menuRepository.findAll().get(0).getPrice());
-	model.addAttribute("price2",menuRepository.findAll().get(1).getPrice());
-	model.addAttribute("foodDesc1",menuRepository.findAll().get(0).getDescription());
-	model.addAttribute("foodDesc2",menuRepository.findAll().get(1).getDescription());
-
+		model.addAttribute("restaurant",restaurantRepository.findAll().get(0));
+		model.addAttribute("menu1",menuRepository.findAll().get(0));
+		model.addAttribute("menu2",menuRepository.findAll().get(1));
+		model.addAttribute("menu3",menuRepository.findAll().get(2));
+		model.addAttribute("menu4",menuRepository.findAll().get(3));
+		model.addAttribute("menu5",menuRepository.findAll().get(4));
+		model.addAttribute("menu6",menuRepository.findAll().get(5));
+		model.addAttribute("menu7",menuRepository.findAll().get(6));
+		model.addAttribute("menu8",menuRepository.findAll().get(7));
+		model.addAttribute("menu9",menuRepository.findAll().get(8));
+		model.addAttribute("menu10",menuRepository.findAll().get(9));
 		return "public-restaurant";
 	}
 	@RequestMapping("public-client")
 	public String publicClient(Model model) {
-
+		ArrayList<User> users=new ArrayList<User>();
+		users = (ArrayList<User>) userRepository.findAll();
+		model.addAttribute("username",users.get(0).getName()) ;
+		model.addAttribute("useremail",users.get(0).getEmail());
+		model.addAttribute("userage",users.get(0).getAge());
+		model.addAttribute("userdescription",users.get(0).getDescription());
 		return "public-client";
 	}
 	@RequestMapping("search-web")

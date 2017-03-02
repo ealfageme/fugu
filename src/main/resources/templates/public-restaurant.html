@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
-    <title>{{nameRestaurant}}</title>
+    <title>{{restaurant.name}}</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
@@ -206,7 +206,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-11"> <strong>Adress <span class="glyphicon glyphicon-home"></span></strong>
-                            <p>{{locRestaurant}}</p>
+                            <p>{{restaurant.address}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -216,7 +216,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-11"> <strong>Telephone  <span class="glyphicon glyphicon-earphone"></span></strong>
-                            <p>{{telRestaurant}}</p>
+                            <p>{{restaurant.phone}}</p>
                         </div>
                     </div>
                 </div>
@@ -279,61 +279,61 @@
                             <div class="menu-column">
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{menu1}}</h6>
+                                        <h6 class="food-name">{{menu1.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>{{price1}}</span> </div>
+                                        <div class="food-price"> <span>{{menu1.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{foodDesc1}}</span> </div>
+                                    <div class="food-details"> <span>{{menu1.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{menu2}}</h6>
+                                        <h6 class="food-name">{{menu2.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>{{price1}}</span> </div>
+                                        <div class="food-price"> <span>{{menu2.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{foodDesc2}}</span> </div>
+                                    <div class="food-details"> <span>{{menu2.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Missouri St. Louis</h6>
+                                        <h6 class="food-name">{{menu3.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>22.00</span> </div>
+                                        <div class="food-price"> <span>{{menu3.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with BBQ</span> </div>
+                                    <div class="food-details"> <span>{{menu3.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Kansas baby back</h6>
+                                        <h6 class="food-name">{{menu4.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>22.00</span> </div>
+                                        <div class="food-price"> <span>{{menu4.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with pepper</span> </div>
+                                    <div class="food-details"> <span>{{menu4.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Maui salad</h6>
+                                        <h6 class="food-name">{{menu5.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>15.00</span> </div>
+                                        <div class="food-price"> <span>{{menu5.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with chicken</span> </div>
+                                    <div class="food-details"> <span>{{menu5.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
@@ -345,61 +345,61 @@
                             <div class="menu-column">
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">California salad</h6>
+                                        <h6 class="food-name">{{menu6.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>5.00</span> </div>
+                                        <div class="food-price"> <span>{{menu6.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with BBQ</span> </div>
+                                    <div class="food-details"> <span>{{menu6.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">“Roll & Rock"</h6>
+                                        <h6 class="food-name">{{menu7.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>16.00</span> </div>
+                                        <div class="food-price"> <span>{{menu7.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with cheese</span> </div>
+                                    <div class="food-details"> <span>{{menu7.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">"Caesar” Sandwich</h6>
+                                        <h6 class="food-name">{{menu8.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>22.00</span> </div>
+                                        <div class="food-price"> <span>{{menu8.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with bacon</span> </div>
+                                    <div class="food-details"> <span>{{menu8.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Chicken enchilada</h6>
+                                        <h6 class="food-name">{{menu9.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>22.00</span> </div>
+                                        <div class="food-price"> <span>{{menu9.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with tomato</span> </div>
+                                    <div class="food-details"> <span>{{menu9.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Sonora steak tacos</h6>
+                                        <h6 class="food-name">{{menu10.dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>15.00</span> </div>
+                                        <div class="food-price"> <span>{{menu10.price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>with BBQ</span> </div>
+                                    <div class="food-details"> <span>{{menu10.description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
                                 <!-- /food -->

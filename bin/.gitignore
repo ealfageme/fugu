@@ -4,4 +4,10 @@
 .settings/
 
 /target/
-/bin/
+/.gitignore
+/README.md
+/TODO.md
+/mvnw
+/mvnw.cmd
+/pom.xml
+/src/
