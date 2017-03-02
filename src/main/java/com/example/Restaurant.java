@@ -15,33 +15,35 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Restaurant {
-	public interface BasicAtt{}
-	public interface UserAtt{}
-	@JsonView(BasicAtt.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@JsonView(BasicAtt.class)
 	private String name;
-	@JsonView(BasicAtt.class)
 	private String address;
-	@JsonView(BasicAtt.class)
 	private String description;
-	@JsonView(BasicAtt.class)
 	private String email;
-	@JsonView(BasicAtt.class)
 	private String foodTypes;
-	@JsonView(BasicAtt.class)
 	private long phone;
-	@JsonView(BasicAtt.class)
 	private String password;
-	@JsonView(UserAtt.class)
 	@ManyToMany (mappedBy="restaurants")
 	private List<User> users = new ArrayList<>();
 	@OneToMany
 	private List<Menu> menus = new ArrayList<>();
-	@OneToMany
+	@OneToMany(mappedBy="restaurant")
 	private List<Voucher> vouchers = new ArrayList<>();
+	@ManyToOne
+	 private City city;
+	@OneToMany(mappedBy="reviewRestaurant")
+	 private List<Review> restaurantReviews = new ArrayList<>();
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
 	public List<Voucher> getVouchers() {
 		return vouchers;
 	}
@@ -57,6 +59,8 @@ public class Restaurant {
 	public void setMenus(List<Menu> menus) {
 		this.menus = menus;
 	}
+	
+	public Restaurant (){}
 
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
 			long phone, String password) {
@@ -78,8 +82,6 @@ public class Restaurant {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-	public Restaurant (){}
 	
 	public String getName() {
 		return name;

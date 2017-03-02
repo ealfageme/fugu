@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -17,6 +18,18 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@ManyToOne
+	private User user = new User();
+	@ManyToOne
+	 private Restaurant reviewRestaurant = new Restaurant();
+	public Restaurant getReviewRestaurant() {
+		return reviewRestaurant;
+	}
+
+	public void setReviewRestaurant(Restaurant reviewRestaurant) {
+		this.reviewRestaurant = reviewRestaurant;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -24,10 +37,9 @@ public class Review {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public Review(User user, String content, double rate, Date date) {
+	public Review(){}
+	public Review(String content, double rate, Date date) {
 		super();
-		//this.user = user;
 		this.content = content;
 		this.rate = rate;
 		this.date = new Date();

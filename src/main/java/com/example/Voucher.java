@@ -1,11 +1,14 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -28,9 +31,19 @@ public class Voucher {
 	private Date expiryDate;
 	private double amount;
 	@ManyToOne
-	private Restaurant restaurant= new Restaurant();
+	private Restaurant restaurant = new Restaurant();
+	@ManyToMany
+	 private List<User> voucherUsers = new ArrayList<>();
 	public String getName() {
 		return name;
+	}
+
+	public List<User> getVoucherUsers() {
+		return voucherUsers;
+	}
+
+	public void setVoucherUsers(List<User> voucherUsers) {
+		this.voucherUsers = voucherUsers;
 	}
 
 	public void setName(String name) {

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Booking {
@@ -13,6 +14,8 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	//private Restaurant restaurant;
+	@ManyToOne
+	private User bookingUser = new User();
 	public long getId() {
 		return id;
 	}
@@ -24,8 +27,9 @@ public class Booking {
 	private Date date;
 	//private User user;
 	private int number;
+	public Booking(){}
 	
-	public Booking(Restaurant restaurant, Date date, User user, int number) {
+	public Booking(Date date, int number) {
 		super();
 		//this.restaurant = restaurant;
 		this.date = date;

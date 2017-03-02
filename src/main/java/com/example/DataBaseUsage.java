@@ -22,12 +22,16 @@ public class DataBaseUsage implements CommandLineRunner{
 	private MenuRepository menuRepository;
 	@Autowired
 	private VoucherRepository voucherRepository;
-	/*private ReviewRepository reviewRepository;
-	
-	private BookingRepository bookingRepository;*/
+	@Autowired
+	private ReviewRepository reviewRepository;
+	@Autowired
+	private CityRepository cityRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
 	
 	@Override
 	public void run (String... args) throws Exception{
+		
 		Menu menu1 = new Menu("Nachos", 10.5," with cheese");
 		Menu menu2 = new Menu("BBQ Wings Chicken Bites", 20.5, "with sauce");
 		Menu menu3 = new Menu("Fries", 5.0,"with ketchup" );
@@ -48,23 +52,42 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu8);
 		menuRepository.save(menu9);
 		menuRepository.save(menu10);
-		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 Madrid","tipical american food","american@whey.com","italian",658742154,"password");
-		Restaurant rest2 = new Restaurant ("Mesón mariano","Barcelona","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest3 = new Restaurant ("Mesón Felipe","Valencia","desc","email","italian",123213123,"sadd");
-		Restaurant rest4 = new Restaurant ("Mesón Lito","Sevilla","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest5 = new Restaurant ("Mesón Daniel","Valladolid","desc","email","italian",123213123,"sadd");
-		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Sevilla","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Málaga","desc","email","italian",123213123,"sadd");
-		Restaurant rest8 = new Restaurant ("Mesón Gento","Burgos","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest9 = new Restaurant ("Mesón Genaro","Cáceres","desc","email","italian",123213123,"sadd");
-		Restaurant rest10 = new Restaurant ("Mesón Agapito","Santiago","desc1","email1","italian1",123213123,"s1add");
-		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date(),10.5);
-		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date(),10.5);
 		
+		City city1 = new City("Madrid");
+		City city2 = new City("Barcelona");
+		City city3 = new City("Valencia");
+		City city4 = new City("Cáceres");
+		City city5 = new City("Málaga");
+		cityRepository.save(city1);
+		cityRepository.save(city2);
+		cityRepository.save(city3);
+		cityRepository.save(city4);
+		cityRepository.save(city5);
+		
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","tipical american food","american@whey.com","italian",658742154,"password");
+		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","desc","email","italian",123213123,"sadd");
+		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","desc","email","italian",123213123,"sadd");
+		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","desc","email","italian",123213123,"sadd");
+		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","desc","email","italian",123213123,"sadd");
+		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","desc1","email1","italian1",123213123,"s1add");
 		rest1.getMenus().add(menu1);
 		rest2.getMenus().add(menu2);
 		rest3.getMenus().add(menu3);
-		
+		rest1.setCity(city1);
+		rest2.setCity(city2);
+		rest3.setCity(city3);
+		rest4.setCity(city3);
+		rest5.setCity(city5);
+		rest6.setCity(city4);
+		rest7.setCity(city4);
+		rest8.setCity(city1);
+		rest9.setCity(city3);
+		rest10.setCity(city1);
+
 		restaurantRepository.save(rest1);
 		restaurantRepository.save(rest2);
 		restaurantRepository.save(rest3);
@@ -75,28 +98,74 @@ public class DataBaseUsage implements CommandLineRunner{
 		restaurantRepository.save(rest8);
 		restaurantRepository.save(rest9);
 		restaurantRepository.save(rest10);
-		voucher1.setRestaurant(rest1);
-		voucher2.setRestaurant(rest1);
-		voucherRepository.save(voucher1);
-		voucherRepository.save(voucher2);
+
 		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
-		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54);
-		
-		/*rest1.getUsers().add(user1);
-		rest1.getUsers().add(user2);
-		rest2.getUsers().add(user3);*/
+		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54);	
 		user1.getRestaurant().add(rest1);
 		user1.getRestaurant().add(rest2);
 		user2.getRestaurant().add(rest1);
 		user3.getRestaurant().add(rest2);
-		
 		userRepository.save(user1);
 		userRepository.save(user2);
 		userRepository.save(user3);
 		
+		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date(),10.5);
+		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date(),10.5);
+		voucher1.getVoucherUsers().add(user1);
+		voucher2.getVoucherUsers().add(user1);
+		voucher1.setRestaurant(rest1);
+		voucher2.setRestaurant(rest1);
+		voucherRepository.save(voucher1);
+		voucherRepository.save(voucher2);
 		
-	
+		//RELACION USER - REVIEW
+		/*
+		Review review1 = new Review("Fucking amazing", 5.0, new Date());
+		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
+		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
+		review1.setUser(user1);
+		review2.setUser(user2);
+		review3.setUser(user3);
+		reviewRepository.save(review1);
+		reviewRepository.save(review2);
+		reviewRepository.save(review3);
+		*/
+		
+		//RELACION USER - BOOKING
+		/*Booking booking1 = new Booking(new Date(), 5);
+		Booking booking2 = new Booking(new Date(), 2);
+		
+		booking1.setUser(user1);
+		booking2.setUser(user3);
+		
+		bookingRepository.save(booking1);
+		bookingRepository.save(booking2);*/
+		
+		//RELACION RESTAURANTE - REVIEW
+		/*Review review1 = new Review("Fucking amazing", 5.0, new Date());
+		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
+		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
+		
+		review1.setReviewRestaurant(rest1);
+		review2.setReviewRestaurant(rest2);
+		review3.setReviewRestaurant(rest3);
+		
+		reviewRepository.save(review1);
+		reviewRepository.save(review2);
+		reviewRepository.save(review3);*/
+		
+		Review review1 = new Review("Fucking amazing", 5.0, new Date());
+		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
+		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
+		
+		review1.setReviewRestaurant(rest1);
+		review2.setReviewRestaurant(rest2);
+		review3.setReviewRestaurant(rest3);
+		
+		reviewRepository.save(review1);
+		reviewRepository.save(review2);
+		reviewRepository.save(review3);
 	}
 	@PostConstruct
 	public void init (){
@@ -104,7 +173,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 	}
 	
-	interface RestaurantListView extends Restaurant.BasicAtt, Restaurant.UserAtt, User.BasicAtt{}
 	
 	@RequestMapping("main")
 	public String main(Model model) {
