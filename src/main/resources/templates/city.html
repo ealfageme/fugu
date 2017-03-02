@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
-    <title>Madrid</title>
+    <title>{{cityname}}</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
@@ -56,7 +56,7 @@
             <img src="images/cities/granvia.jpg" alt="Slider 1" />
 
             <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
-                <span class="highlight-texts"><span class="section-color2 highlight-text border2">MADRID</span>
+                <span class="highlight-texts"><span class="section-color2 highlight-text border2">{{cityname}}</span>
                 </span></h2>
         </div>
         <!-- Slides End -->
@@ -139,7 +139,7 @@
                             <div class="menu-column">
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Fugu Fish & Chips</h6>
+                                        <h6 class="food-name">{{restaurant1.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
@@ -147,13 +147,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Madrid</span> </div>
+                                    <div class="food-details"> <span>{{restaurant1.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Golden Chippy</h6>
+                                        <h6 class="food-name">{{restaurant3.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
@@ -161,13 +161,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Barcelona</span> </div>
+                                    <div class="food-details"> <span>{{restaurant3.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">The Five Fields</h6>
+                                        <h6 class="food-name">{{restaurant5.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
@@ -175,13 +175,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Madrid</span> </div>
+                                    <div class="food-details"> <span>{{restaurant5.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Gastronhome</h6>
+                                        <h6 class="food-name">{{restaurant7.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
@@ -189,13 +189,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Valencia</span> </div>
+                                    <div class="food-details"> <span>{{restaurant7.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">TortelliniCup </h6>
+                                        <h6 class="food-name">{{restaurant9.name}} </h6>
 
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
@@ -204,7 +204,7 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Zamora</span> </div>
+                                    <div class="food-details"> <span>{{restaurant.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
@@ -216,7 +216,7 @@
                             <div class="menu-column">
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Marianne Buffet</h6>
+                                        <h6 class="food-name">{{restaurant2.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
                                         <div class="dots"></div>
@@ -224,13 +224,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Cáceres</span> </div>
+                                    <div class="food-details"> <span>{{restaurant2.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Seven Park Place</h6>
+                                        <h6 class="food-name">{{restaurant4.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
                                         <div class="dots"></div>
@@ -238,13 +238,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Malaga</span> </div>
+                                    <div class="food-details"> <span>{{restaurant4.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Medlar</h6>
+                                        <h6 class="food-name">{{restaurant6.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
                                         <div class="dots"></div>
@@ -252,13 +252,13 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Vigo</span> </div>
+                                    <div class="food-details"> <span>{{restaurant7.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Le Gavroche</h6>
+                                        <h6 class="food-name">{{restaurant8.name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
                                         <div class="dots"></div>
@@ -266,14 +266,14 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Santander</span> </div>
+                                    <div class="food-details"> <span>{{restaurant8.adress}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
                                 <!-- /food -->
                                 <div class="item portfolio-item web seo">
                                     <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                         <div class="food-desc">
-                                            <h4 class="food-name">Gauthier Soho </h4>
+                                            <h4 class="food-name">{{restaurant10.name}}</h4>
                                             <br>
                                             <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
                                             <div class="dots"></div>
@@ -281,7 +281,7 @@
                                             <!-- /food-price -->
                                         </div>
                                         <!-- /food-desc -->
-                                        <div class="food-details"> <span>Burgos </span> </div>
+                                        <div class="food-details"> <span>{{restaurant10.adress}} </span> </div>
                                         <!-- /food-details -->
                                     </button>
                                 </div>
