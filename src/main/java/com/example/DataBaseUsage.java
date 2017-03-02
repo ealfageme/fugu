@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
@@ -19,8 +20,10 @@ public class DataBaseUsage implements CommandLineRunner{
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
-	/*private ReviewRepository reviewRepository;
+	@Autowired
 	private VoucherRepository voucherRepository;
+	/*private ReviewRepository reviewRepository;
+	
 	private BookingRepository bookingRepository;*/
 	
 	@Override
@@ -31,6 +34,8 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
 		menuRepository.save(menu3);
+		
+
 		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 Madrid","tipical american food","american@whey.com","italian",658742154,"password");
 		Restaurant rest2 = new Restaurant ("Mesón mariano","Barcelona","desc1","email1","italian1",123213123,"s1add");
 		Restaurant rest3 = new Restaurant ("Mesón Felipe","Valencia","desc","email","italian",123213123,"sadd");
@@ -41,9 +46,13 @@ public class DataBaseUsage implements CommandLineRunner{
 		Restaurant rest8 = new Restaurant ("Mesón Gento","Burgos","desc1","email1","italian1",123213123,"s1add");
 		Restaurant rest9 = new Restaurant ("Mesón Genaro","Cáceres","desc","email","italian",123213123,"sadd");
 		Restaurant rest10 = new Restaurant ("Mesón Agapito","Santiago","desc1","email1","italian1",123213123,"s1add");
+		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date(),10.5);
+		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date(),10.5);
+		
 		rest1.getMenus().add(menu1);
 		rest2.getMenus().add(menu2);
 		rest3.getMenus().add(menu3);
+		
 		restaurantRepository.save(rest1);
 		restaurantRepository.save(rest2);
 		restaurantRepository.save(rest3);
@@ -54,6 +63,10 @@ public class DataBaseUsage implements CommandLineRunner{
 		restaurantRepository.save(rest8);
 		restaurantRepository.save(rest9);
 		restaurantRepository.save(rest10);
+		voucher1.setRestaurant(rest1);
+		voucher2.setRestaurant(rest1);
+		voucherRepository.save(voucher1);
+		voucherRepository.save(voucher2);
 		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54);

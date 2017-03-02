@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -39,7 +40,16 @@ public class Restaurant {
 	private List<User> users = new ArrayList<>();
 	@OneToMany
 	private List<Menu> menus = new ArrayList<>();
-	
+	@OneToMany
+	private List<Voucher> vouchers = new ArrayList<>();
+	public List<Voucher> getVouchers() {
+		return vouchers;
+	}
+
+	public void setVouchers(List<Voucher> vouchers) {
+		this.vouchers = vouchers;
+	}
+
 	public List<Menu> getMenus() {
 		return menus;
 	}
