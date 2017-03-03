@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Restaurant {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -23,21 +24,6 @@ public class Restaurant {
 	private String description;
 	private String email;
 	private String foodTypes;
-	public List<Booking> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
-	}
-
-	public List<Review> getRestaurantReviews() {
-		return restaurantReviews;
-	}
-
-	public void setRestaurantReviews(List<Review> restaurantReviews) {
-		this.restaurantReviews = restaurantReviews;
-	}
 	private long phone;
 	private String password;
 	@ManyToMany (mappedBy="restaurants")
@@ -49,40 +35,14 @@ public class Restaurant {
 	@OneToMany(mappedBy="bookingRestaurant")
 	private List<Booking> bookings = new ArrayList<>();
 	@ManyToOne
-	 private City city;
+	private City city;
 	@OneToMany(mappedBy="reviewRestaurant")
-	 private List<Review> restaurantReviews = new ArrayList<>();
-
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	public List<Voucher> getVouchers() {
-		return vouchers;
-	}
-
-	public void setVouchers(List<Voucher> vouchers) {
-		this.vouchers = vouchers;
-	}
-
-	public List<Menu> getMenus() {
-		return menus;
-	}
-
-	public void setMenus(List<Menu> menus) {
-		this.menus = menus;
-	}
+	private List<Review> restaurantReviews = new ArrayList<>();
 	
 	public Restaurant (){}
-
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
 			long phone, String password) {
 		super();
-		
 		this.name = name;
 		this.address = address;
 		this.description = description;
@@ -92,14 +52,42 @@ public class Restaurant {
 		this.password = password;
 	}
 	
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+	public List<Review> getRestaurantReviews() {
+		return restaurantReviews;
+	}
+	public void setRestaurantReviews(List<Review> restaurantReviews) {
+		this.restaurantReviews = restaurantReviews;
+	}
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
+	public List<Voucher> getVouchers() {
+		return vouchers;
+	}
+	public void setVouchers(List<Voucher> vouchers) {
+		this.vouchers = vouchers;
+	}
+	public List<Menu> getMenus() {
+		return menus;
+	}
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 	public List<User> getUsers() {
 		return users;
 	}
-
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	
 	public String getName() {
 		return name;
 	}
@@ -148,5 +136,4 @@ public class Restaurant {
 	public void setId(long id) {
 		this.id = id;
 	}
-
 }

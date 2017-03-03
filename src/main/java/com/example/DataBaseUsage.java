@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -90,6 +91,9 @@ public class DataBaseUsage implements CommandLineRunner{
 		Menu menu8 = new Menu("Beef Triple Burger", 12.5," with BBQ");
 		Menu menu9 = new Menu("Georgian Wings",3.5, "with sauce");
 		Menu menu10 = new Menu("Chicken Breast Sandwich", 8.0,"with Salad" );
+		Menu menu11 = new Menu("Beef Double Burger", 15.5," with BBQ");
+		Menu menu12 = new Menu("Bulgarian Wings",3.5, "with sauce");
+		Menu menu13 = new Menu("Chicken Finger Sandwich", 8.0,"with Salad" );
 
 		menu1.setRestaurantMenu(rest1);
 		menu2.setRestaurantMenu(rest1);
@@ -97,10 +101,13 @@ public class DataBaseUsage implements CommandLineRunner{
 		menu4.setRestaurantMenu(rest1);
 		menu5.setRestaurantMenu(rest1);
 		menu6.setRestaurantMenu(rest1);
-		menu7.setRestaurantMenu(rest2);
-		menu8.setRestaurantMenu(rest2);
-		menu9.setRestaurantMenu(rest2);
-		menu10.setRestaurantMenu(rest3);
+		menu7.setRestaurantMenu(rest1);
+		menu8.setRestaurantMenu(rest1);
+		menu9.setRestaurantMenu(rest1);
+		menu10.setRestaurantMenu(rest1);
+		menu11.setRestaurantMenu(rest2);
+		menu12.setRestaurantMenu(rest2);
+		menu13.setRestaurantMenu(rest3);
 		
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
@@ -124,8 +131,8 @@ public class DataBaseUsage implements CommandLineRunner{
 		userRepository.save(user2);
 		userRepository.save(user3);
 		
-		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date(),10.5);
-		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date(),10.5);
+		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date());
+		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date());
 		voucher1.getVoucherUsers().add(user1);
 		voucher2.getVoucherUsers().add(user1);
 		voucher1.setRestaurant(rest1);
@@ -142,7 +149,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		review2.setUser(user2);
 		review3.setUser(user3);
 		review1.setReviewRestaurant(rest1);
-		review2.setReviewRestaurant(rest2);
+		review2.setReviewRestaurant(rest1);
 		review3.setReviewRestaurant(rest3);
 		reviewRepository.save(review1);
 		reviewRepository.save(review2);
@@ -234,9 +241,12 @@ public class DataBaseUsage implements CommandLineRunner{
 	public String privateRestaurtan(Model model,@PathVariable long id) {
 		model.addAttribute("restaurant",restaurantRepository.findOne(id));
 		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
-		
+		model.addAttribute("bookings",restaurantRepository.findOne(id).getBookings());
+		model.addAttribute("vouchers",restaurantRepository.findOne(id).getVouchers());
+		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
 		return "private-restaurant";
 	}
+		
 	@RequestMapping("public-restaurant")
 	public String publicRestaurant(Model model) {
 		model.addAttribute("restaurant",restaurantRepository.findAll().get(0));

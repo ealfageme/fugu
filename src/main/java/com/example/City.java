@@ -12,24 +12,25 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class City {
+	
+	private String name;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String name;
-	//Restaurant List
 	@OneToMany(mappedBy="city")
-	 private List<Restaurant> cityResturants = new ArrayList<>();
+	private List<Restaurant> cityResturants = new ArrayList<>();
+	
+	public City(){}
 	public City(String name){
 		this.name= name;
 	}
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public City(){}
-	
+	}	
 	public void setName(String name){
 		this.name= name;
 	}

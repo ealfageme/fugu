@@ -10,33 +10,18 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
-	//private User user;
+
 	private String content;
 	private double rate;
 	private Date date;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@ManyToOne
+	private User reviewUser = new User();
+	@ManyToOne
+	private Restaurant reviewRestaurant = new Restaurant();
 	
-	@ManyToOne
-	private User user = new User();
-	@ManyToOne
-	 private Restaurant reviewRestaurant = new Restaurant();
-	public Restaurant getReviewRestaurant() {
-		return reviewRestaurant;
-	}
-
-	public void setReviewRestaurant(Restaurant reviewRestaurant) {
-		this.reviewRestaurant = reviewRestaurant;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 	public Review(){}
 	public Review(String content, double rate, Date date) {
 		super();
@@ -47,13 +32,27 @@ public class Review {
 		//dateFormat.format(cal);
 
 	}
-
-	public User getUser() {
-		return null;//user;
+	
+	public Restaurant getReviewRestaurant() {
+		return reviewRestaurant;
+	}
+	public void setReviewRestaurant(Restaurant reviewRestaurant) {
+		this.reviewRestaurant = reviewRestaurant;
+	}
+	public long getId() {
+		return id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public User getUser() {
+		return reviewUser;//user;
+	}
+
+	public void setUser(User reviewUser) {
+		this.reviewUser = reviewUser;
 	}
 
 	public String getContent() {
@@ -78,8 +77,5 @@ public class Review {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	
-	
-	
+	}	
 }

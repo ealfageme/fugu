@@ -15,9 +15,25 @@ import javax.persistence.OneToMany;
 @Entity
 public class Voucher {
 	//Name, description, expiration day and amount
+	private String name;
+	private String description;
+	private Date expiryDate;
+	@ManyToOne
+	private Restaurant restaurant = new Restaurant();
+	@ManyToMany
+	 private List<User> voucherUsers = new ArrayList<>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	public Voucher(){}
+	public Voucher(String name, String description, Date expiryDate) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.expiryDate = expiryDate;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -26,14 +42,6 @@ public class Voucher {
 		this.id = id;
 	}
 
-	private String name;
-	private String description;
-	private Date expiryDate;
-	private double amount;
-	@ManyToOne
-	private Restaurant restaurant = new Restaurant();
-	@ManyToMany
-	 private List<User> voucherUsers = new ArrayList<>();
 	public String getName() {
 		return name;
 	}
@@ -74,21 +82,6 @@ public class Voucher {
 		this.expiryDate = expiryDate;
 	}
 
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	public Voucher(String name, String description, Date expiryDate, double amount) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.expiryDate = expiryDate;
-		this.amount = amount;
-	}
 	
 	
 }

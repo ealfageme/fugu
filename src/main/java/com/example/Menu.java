@@ -8,11 +8,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Menu {
+	
 	private String dish;
 	private Double price;
 	private String description;
 	@ManyToOne 
 	private Restaurant restaurantMenu;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+	public Menu(){}
+	public Menu(String name, Double price, String description){
+		this.dish = name;
+		this.price = price;
+		this.description= description;
+	}
 	
 	public Restaurant getRestaurantMenu() {
 		return restaurantMenu;
@@ -20,15 +31,6 @@ public class Menu {
 	public void setRestaurantMenu(Restaurant menuRestaurant) {
 		this.restaurantMenu = menuRestaurant;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	public Menu(String name, Double price, String description){
-		this.dish = name;
-		this.price = price;
-		this.description= description;
-	}
-	public Menu(){}
 	public long getId() {
 		return id;
 	}
