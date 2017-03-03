@@ -155,17 +155,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		reviewRepository.save(review2);
 		reviewRepository.save(review3);*/
 		
-		Review review1 = new Review("Fucking amazing", 5.0, new Date());
-		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
-		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
-		
-		review1.setReviewRestaurant(rest1);
-		review2.setReviewRestaurant(rest2);
-		review3.setReviewRestaurant(rest3);
-		
-		reviewRepository.save(review1);
-		reviewRepository.save(review2);
-		reviewRepository.save(review3);
+	
 	}
 	@PostConstruct
 	public void init (){
@@ -201,7 +191,27 @@ public class DataBaseUsage implements CommandLineRunner{
 	}
 	@RequestMapping("city")
 	public String city(Model model) {
-
+		model.addAttribute("cityname",cityRepository.findAll().get(1).getName());
+		model.addAttribute("restaurant1",restaurantRepository.findAll().get(0));
+		model.addAttribute("restaurant2",restaurantRepository.findAll().get(1));
+		model.addAttribute("restaurant3",restaurantRepository.findAll().get(2));
+		model.addAttribute("restaurant4",restaurantRepository.findAll().get(3));
+		model.addAttribute("restaurant5",restaurantRepository.findAll().get(4));
+		model.addAttribute("restaurant6",restaurantRepository.findAll().get(5));
+		model.addAttribute("restaurant7",restaurantRepository.findAll().get(6));
+		model.addAttribute("restaurant8",restaurantRepository.findAll().get(7));
+		model.addAttribute("restaurant9",restaurantRepository.findAll().get(8));
+		model.addAttribute("restaurant10",restaurantRepository.findAll().get(9));
+		model.addAttribute("restaurant1",restaurantRepository.findAll().get(0));
+		model.addAttribute("restaurant2",restaurantRepository.findAll().get(1));
+		model.addAttribute("restaurant3",restaurantRepository.findAll().get(2));
+		model.addAttribute("restaurant4",restaurantRepository.findAll().get(3));
+		model.addAttribute("restaurant5",restaurantRepository.findAll().get(4));
+		model.addAttribute("restaurant6",restaurantRepository.findAll().get(5));
+		model.addAttribute("restaurant7",restaurantRepository.findAll().get(6));
+		model.addAttribute("restaurant8",restaurantRepository.findAll().get(7));
+		model.addAttribute("restaurant9",restaurantRepository.findAll().get(8));
+		model.addAttribute("restaurant10",restaurantRepository.findAll().get(9));
 		return "city";
 	}
 	@RequestMapping("private-client")
