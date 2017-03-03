@@ -120,52 +120,35 @@ public class DataBaseUsage implements CommandLineRunner{
 		voucherRepository.save(voucher2);
 		
 		//RELACION USER - REVIEW
-		/*
+		
 		Review review1 = new Review("Fucking amazing", 5.0, new Date());
 		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
 		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
 		review1.setUser(user1);
 		review2.setUser(user2);
 		review3.setUser(user3);
+		review1.setReviewRestaurant(rest1);
+		review2.setReviewRestaurant(rest2);
+		review3.setReviewRestaurant(rest3);
 		reviewRepository.save(review1);
 		reviewRepository.save(review2);
 		reviewRepository.save(review3);
-		*/
+		
+
 		
 		//RELACION USER - BOOKING
-		/*Booking booking1 = new Booking(new Date(), 5);
+		Booking booking1 = new Booking(new Date(), 5);
 		Booking booking2 = new Booking(new Date(), 2);
 		
 		booking1.setUser(user1);
 		booking2.setUser(user3);
 		
 		bookingRepository.save(booking1);
-		bookingRepository.save(booking2);*/
+		bookingRepository.save(booking2);
+
+
+
 		
-		//RELACION RESTAURANTE - REVIEW
-		/*Review review1 = new Review("Fucking amazing", 5.0, new Date());
-		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
-		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
-		
-		review1.setReviewRestaurant(rest1);
-		review2.setReviewRestaurant(rest2);
-		review3.setReviewRestaurant(rest3);
-		
-		reviewRepository.save(review1);
-		reviewRepository.save(review2);
-		reviewRepository.save(review3);*/
-		
-		Review review1 = new Review("Fucking amazing", 5.0, new Date());
-		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
-		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
-		
-		review1.setReviewRestaurant(rest1);
-		review2.setReviewRestaurant(rest2);
-		review3.setReviewRestaurant(rest3);
-		
-		reviewRepository.save(review1);
-		reviewRepository.save(review2);
-		reviewRepository.save(review3);
 	}
 	@PostConstruct
 	public void init (){
