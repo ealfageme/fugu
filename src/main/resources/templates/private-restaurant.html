@@ -8,19 +8,19 @@
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
     <title>{{restaurant.name}}</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="elegant_font/style.css" />
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/elegant_font/style.css" />
     <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slider-pro.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="elegant_font/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/slider-pro.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+    <link rel="stylesheet" href="/css/owl.transitions.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/elegant_font/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
         <!-- Navigation Menu start-->
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html"><img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2"></a>
+                <a href="main.html"><img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2"></a>
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
@@ -59,7 +59,7 @@
         <!-- Slides -->
         <div class="image section-header">
 
-            <img src="images/santo-restaurant/santo-restaurant.jpg" alt="Slider 1" />
+            <img src="/images/santo-restaurant/santo-restaurant.jpg" alt="Slider 1" />
 
             <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
                 <span class="highlight-texts"><span class="section-color2 highlight-text border2">Welcome to your profile, {{restaurant.name}}</span>
@@ -76,7 +76,7 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">{{restaurant.name}}<img src="images/santo-restaurant/restaurant-sign.jpg" class="img-thumbnail" alt="Custom Image"></span></h2>
+                    <h2><span class="highlight-text">{{restaurant.name}}<img src="/images/santo-restaurant/restaurant-sign.jpg" class="img-thumbnail" alt="Custom Image"></span></h2>
                     <p>{{restaurant.description}}</p>
                     <br>
                     <spam id="button">
@@ -409,7 +409,7 @@
                                 </div>
                                 <p>Enjoy 2 courses paying just one</p>
                                 <button onClick=" window.location.href='private-restaurant.html'" class="food">
-                                    <img src="images/voucher1.jpg" alt="Custom Image">
+                                    <img src="/images/voucher1.jpg" alt="Custom Image">
                                 </button>
                                 <br>
                                 <br>
@@ -423,7 +423,7 @@
                                 </div>
                                 <p>Recive the dicount bringing this voucher</p>
                                 <button onClick=" window.location.href='private-restaurant.html'" class="food">
-                                    <img src="images/voucher2.jpeg" alt="Custom Image">
+                                    <img src="/images/voucher2.jpeg" alt="Custom Image">
                                 </button>
                                 <br>
                                 <br>
@@ -456,138 +456,24 @@
                 <div class="menus-container">
                     <!-- menu -->
                     <div class="menu row">
+                    	{{#menu}}
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{menu1.dish}}</h6>
+                                        <h6 class="food-name">{{dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu1.price}}€</span> </div>
+                                        <div class="food-price"> <span>{{price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu1.description}}</span> </div>
+                                    <div class="food-details"> <span>{{description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu2.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu2.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu2.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu3.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu3.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu3.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu4.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu4.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu4.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu5.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu5.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu5.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
                             </div>
                             <!-- /menu-column -->
                         </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="menu-column">
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu6.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu6.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu6.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu7.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu7.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu7.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu8.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu8.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu8.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu9.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu9.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu9.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu10.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu10.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu10.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
+                        {{/menu}}            
                     </div>
                     <!-- /row -->
                 </div>
@@ -608,9 +494,9 @@
                         <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Because the quality is the most immportant thing for us, we have the best professionals in our team.</p>
                     </div>
                     <!-- teams Slider -->
-                    <div id="teams" class="owl-carousel teams">
+                    <div id="teams" class="col-md-12 col-sm-12 col-xs-12 owl-carousel teams">
                         <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef1.png" alt="">
+                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="/images/img-teams/chef1.png" alt="">
                             <p class="client-info">Chris Willam</p>
                             <p>American chef</p>
                             <div class="center-block"></div>
@@ -618,7 +504,7 @@
                         </div>
                         <!-- Slides End -->
                         <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef2.jpg" alt="">
+                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="/images/img-teams/chef2.jpg" alt="">
                             <p class="client-info">Randy Dode</p>
                             <p>Canadian chef</p>
                             <div class="center-block"></div>
@@ -626,7 +512,7 @@
                         </div>
                         <!-- Slides End -->
                         <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef3.jpg" alt="">
+                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="/images/img-teams/chef3.jpg" alt="">
                             <p class="client-info">Michel Kimte</p>
                             <p>French chef</p>
                             <div class="center-block"></div>
@@ -874,7 +760,7 @@
     <section class="footer-container">
         <div class="container">
             <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="images/logo/logo.png" alt=""> </div>
+                <div class="col-md-4"> <img src="/images/logo/logo.png" alt=""> </div>
                 <div class="col-md-4">
                     <h4>Fugu</h4>
                     <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
