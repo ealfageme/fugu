@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
@@ -154,18 +156,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		reviewRepository.save(review1);
 		reviewRepository.save(review2);
 		reviewRepository.save(review3);*/
-		
-		Review review1 = new Review("Fucking amazing", 5.0, new Date());
-		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
-		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
-		
-		review1.setReviewRestaurant(rest1);
-		review2.setReviewRestaurant(rest2);
-		review3.setReviewRestaurant(rest3);
-		
-		reviewRepository.save(review1);
-		reviewRepository.save(review2);
-		reviewRepository.save(review3);
+	
 	}
 	@PostConstruct
 	public void init (){
@@ -214,19 +205,11 @@ public class DataBaseUsage implements CommandLineRunner{
 		model.addAttribute("userdescription",users.get(0).getDescription());
 		return "private-client";
 	}
-	@RequestMapping("private-restaurant")
-	public String privateRestaurtan(Model model) {
-		model.addAttribute("restaurant",restaurantRepository.findAll().get(0));
-		model.addAttribute("menu1",menuRepository.findAll().get(0));
-		model.addAttribute("menu2",menuRepository.findAll().get(1));
-		model.addAttribute("menu3",menuRepository.findAll().get(2));
-		model.addAttribute("menu4",menuRepository.findAll().get(3));
-		model.addAttribute("menu5",menuRepository.findAll().get(4));
-		model.addAttribute("menu6",menuRepository.findAll().get(5));
-		model.addAttribute("menu7",menuRepository.findAll().get(6));
-		model.addAttribute("menu8",menuRepository.findAll().get(7));
-		model.addAttribute("menu9",menuRepository.findAll().get(8));
-		model.addAttribute("menu10",menuRepository.findAll().get(9));
+	@RequestMapping("/private-restaurant/{id}")
+	public String privateRestaurtan(Model model,@PathVariable long id) {
+		model.addAttribute("restaurant",restaurantRepository.findOne(id));
+		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
+		
 		return "private-restaurant";
 	}
 	@RequestMapping("public-restaurant")
