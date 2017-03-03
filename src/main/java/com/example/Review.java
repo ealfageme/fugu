@@ -53,7 +53,7 @@ public class Review {
 	}
 
 	public void setUser(User user) {
-		//this.user = user;
+		this.user = user;
 	}
 
 	public String getContent() {
