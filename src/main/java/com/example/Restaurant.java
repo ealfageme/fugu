@@ -23,14 +23,31 @@ public class Restaurant {
 	private String description;
 	private String email;
 	private String foodTypes;
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
+	public List<Review> getRestaurantReviews() {
+		return restaurantReviews;
+	}
+
+	public void setRestaurantReviews(List<Review> restaurantReviews) {
+		this.restaurantReviews = restaurantReviews;
+	}
 	private long phone;
 	private String password;
 	@ManyToMany (mappedBy="restaurants")
 	private List<User> users = new ArrayList<>();
-	@OneToMany
+	@OneToMany (mappedBy="restaurantMenu")
 	private List<Menu> menus = new ArrayList<>();
 	@OneToMany(mappedBy="restaurant")
 	private List<Voucher> vouchers = new ArrayList<>();
+	@OneToMany(mappedBy="bookingRestaurant")
+	private List<Booking> bookings = new ArrayList<>();
 	@ManyToOne
 	 private City city;
 	@OneToMany(mappedBy="reviewRestaurant")

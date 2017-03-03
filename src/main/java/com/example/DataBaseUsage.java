@@ -32,26 +32,7 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Override
 	public void run (String... args) throws Exception{
 		
-		Menu menu1 = new Menu("Nachos", 10.5," with cheese");
-		Menu menu2 = new Menu("BBQ Wings Chicken Bites", 20.5, "with sauce");
-		Menu menu3 = new Menu("Fries", 5.0,"with ketchup" );
-		Menu menu4 = new Menu("Mediterranean Chicken", 12.5," with BBQ");
-		Menu menu5 = new Menu("Chicken Pasta",3.5, "with sauce");
-		Menu menu6 = new Menu("Vegetarian Pasta", 8.0,"with Salad" );
-		Menu menu7 = new Menu("Beef Fajita", 6.5,"with ketchup" );
-		Menu menu8 = new Menu("Beef Triple Burger", 12.5," with BBQ");
-		Menu menu9 = new Menu("Georgian Wings",3.5, "with sauce");
-		Menu menu10 = new Menu("Chicken Breast Sandwich", 8.0,"with Salad" );
-		menuRepository.save(menu1);
-		menuRepository.save(menu2);
-		menuRepository.save(menu3);
-		menuRepository.save(menu4);
-		menuRepository.save(menu5);
-		menuRepository.save(menu6);
-		menuRepository.save(menu7);
-		menuRepository.save(menu8);
-		menuRepository.save(menu9);
-		menuRepository.save(menu10);
+		
 		
 		City city1 = new City("Madrid");
 		City city2 = new City("Barcelona");
@@ -74,9 +55,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","desc1","email1","italian1",123213123,"s1add");
 		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","desc","email","italian",123213123,"sadd");
 		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","desc1","email1","italian1",123213123,"s1add");
-		rest1.getMenus().add(menu1);
-		rest2.getMenus().add(menu2);
-		rest3.getMenus().add(menu3);
+		
 		rest1.setCity(city1);
 		rest2.setCity(city2);
 		rest3.setCity(city3);
@@ -98,6 +77,39 @@ public class DataBaseUsage implements CommandLineRunner{
 		restaurantRepository.save(rest8);
 		restaurantRepository.save(rest9);
 		restaurantRepository.save(rest10);
+		
+		Menu menu1 = new Menu("Nachos", 10.5," with cheese");
+		Menu menu2 = new Menu("BBQ Wings Chicken Bites", 20.5, "with sauce");
+		Menu menu3 = new Menu("Fries", 5.0,"with ketchup" );
+		Menu menu4 = new Menu("Mediterranean Chicken", 12.5," with BBQ");
+		Menu menu5 = new Menu("Chicken Pasta",3.5, "with sauce");
+		Menu menu6 = new Menu("Vegetarian Pasta", 8.0,"with Salad" );
+		Menu menu7 = new Menu("Beef Fajita", 6.5,"with ketchup" );
+		Menu menu8 = new Menu("Beef Triple Burger", 12.5," with BBQ");
+		Menu menu9 = new Menu("Georgian Wings",3.5, "with sauce");
+		Menu menu10 = new Menu("Chicken Breast Sandwich", 8.0,"with Salad" );
+
+		menu1.setRestaurantMenu(rest1);
+		menu2.setRestaurantMenu(rest1);
+		menu3.setRestaurantMenu(rest1);
+		menu4.setRestaurantMenu(rest1);
+		menu5.setRestaurantMenu(rest1);
+		menu6.setRestaurantMenu(rest1);
+		menu7.setRestaurantMenu(rest2);
+		menu8.setRestaurantMenu(rest2);
+		menu9.setRestaurantMenu(rest2);
+		menu10.setRestaurantMenu(rest3);
+		
+		menuRepository.save(menu1);
+		menuRepository.save(menu2);
+		menuRepository.save(menu3);
+		menuRepository.save(menu4);
+		menuRepository.save(menu5);
+		menuRepository.save(menu6);
+		menuRepository.save(menu7);
+		menuRepository.save(menu8);
+		menuRepository.save(menu9);
+		menuRepository.save(menu10);
 
 		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
@@ -142,6 +154,8 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		booking1.setUser(user1);
 		booking2.setUser(user3);
+		booking1.setBookingRestaurant(rest1);
+		booking2.setBookingRestaurant(rest3);
 		
 		bookingRepository.save(booking1);
 

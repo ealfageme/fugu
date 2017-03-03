@@ -16,6 +16,24 @@ public class Booking {
 	//private Restaurant restaurant;
 	@ManyToOne
 	private User bookingUser = new User();
+	@ManyToOne
+	private Restaurant bookingRestaurant = new Restaurant();
+	public User getBookingUser() {
+		return bookingUser;
+	}
+
+	public void setBookingUser(User bookingUser) {
+		this.bookingUser = bookingUser;
+	}
+
+	public Restaurant getBookingRestaurant() {
+		return bookingRestaurant;
+	}
+
+	public void setBookingRestaurant(Restaurant bookingRestaurant) {
+		this.bookingRestaurant = bookingRestaurant;
+	}
+
 	public long getId() {
 		return id;
 	}

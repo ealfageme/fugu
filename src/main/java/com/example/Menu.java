@@ -4,12 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Menu {
 	private String dish;
 	private Double price;
 	private String description;
+	@ManyToOne 
+	private Restaurant restaurantMenu;
+	
+	public Restaurant getRestaurantMenu() {
+		return restaurantMenu;
+	}
+	public void setRestaurantMenu(Restaurant menuRestaurant) {
+		this.restaurantMenu = menuRestaurant;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
