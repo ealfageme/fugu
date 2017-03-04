@@ -135,11 +135,12 @@
                 <div class="menus-container">
                     <!-- menu -->
                     <div class="menu row rowmar">
+                    {{#restaurant}}
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
                                 <button onClick=" window.location.href='public-restaurant.html'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant1.name}}</h6>
+                                        <h6 class="food-name">{{name}}</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
@@ -147,144 +148,11 @@
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant1.address}}</span> </div>
+                                    <div class="food-details"> <span>{{address}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant3.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.5/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant3.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant5.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant5.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant7.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.5/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant7.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant9.name}} </h6>
-
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.2/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant9.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant2.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.7/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant2.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant4.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.4/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant4.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant6.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.9/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant7.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{restaurant8.name}}</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.3/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{restaurant8.address}}</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <div class="item portfolio-item web seo">
-                                    <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                        <div class="food-desc">
-                                            <h4 class="food-name">{{restaurant10.name}}</h4>
-                                            <br>
-                                            <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                            <div class="dots"></div>
-                                            <div class="food-price"> <span>7.2/10</span> </div>
-                                            <!-- /food-price -->
-                                        </div>
-                                        <!-- /food-desc -->
-                                        <div class="food-details"> <span>{{restaurant10.address}} </span> </div>
-                                        <!-- /food-details -->
-                                    </button>
-                                </div>
+                               
+                                </div>{{/restaurant}}
                                 <!-- /food -->
                             </div>
                             <!-- /menu-column -->
