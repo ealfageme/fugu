@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="images/logo/logo.ico">
+    <link rel="shortcut icon" href="/images/logo/logo.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
     <title>{{restaurant.name}}</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="elegant_font/style.css" />
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/elegant_font/style.css" />
     <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slider-pro.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="elegant_font/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/slider-pro.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+    <link rel="stylesheet" href="/css/owl.transitions.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/elegant_font/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> </head>
 
 <body>
@@ -30,7 +30,7 @@
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
                 <a href="main.html">
-                    <img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2">
+                    <img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2">
                 </a>
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
@@ -40,7 +40,8 @@
                         <li> <a href="#services">SERVICES</a> </li>
                         <li> <a href="#menu">MENU</a> </li>
                         <li> <a href="#gallery">GALLERY</a> </li>
-                        <li> <a href="#chefs">CHEFS</a> </li>
+                        <li> <a href="#vouchers">VOUCHERS</a> </li>
+                        <li> <a href="#reviews">REVIEWS</a> </li>
                         <li> <a href="#feedback">FEEDBACK</a> </li>
                     </ul>
                 </div>
@@ -52,15 +53,15 @@
         <div class="sp-slides">
             <!-- Slides -->
             <div class="sp-slide main-slides">
-                <div class="img-overlay"></div> <img class="sp-image" src="images/slider/fosters1.jpg" alt="Slider 1" /> </div>
+                <div class="img-overlay"></div> <img class="sp-image" src="/images/slider/fosters1.jpg" alt="Slider 1" /> </div>
             <!-- Slides End -->
             <!-- Slides -->
             <div class="sp-slide main-slides">
-                <div class="img-overlay"></div> <img class="sp-image" src="images/slider/fosters2.jpg" alt="Slider 2" /> </div>
+                <div class="img-overlay"></div> <img class="sp-image" src="/images/slider/fosters2.jpg" alt="Slider 2" /> </div>
             <!-- Slides End -->
             <!-- Slides -->
             <div class="sp-slide main-slides">
-                <div class="img-overlay"></div> <img class="sp-image" src="images/slider/fosters3.jpg" alt="Slider 3" /> </div>
+                <div class="img-overlay"></div> <img class="sp-image" src="/images/slider/fosters3.jpg" alt="Slider 3" /> </div>
             <!-- Slides End -->
         </div>
     </section>
@@ -173,6 +174,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <section id="about" class="about-sec section-wrapper description">
         <div class="container">
@@ -190,28 +192,18 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 customized-text wow fadeInDown black-ed">
                     <div class="row">
-                        <div class="col-md-11"> <strong>Perfect location  <span class="glyphicon glyphicon-map-marker"></span></strong>
-                            <p>We are waiting for you near to your house. A lot of restaurants are ready to offer you the best products.</p>
+                        <div class="col-md-11"> <strong>Description  <span class="glyphicon glyphicon-modal-window"></span></strong>
+                            <p>{{restaurant.description}}</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-11"> <strong>The American Dream Letter  <span class="glyphicon glyphicon-modal-window"></span></strong>
-                            <p>You do not have to cross an ocean to enjoy the authentic American flavor. Come to Foster's Hollywood and enjoy our varied menu born in the USA.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-11"> <strong>The best offers  <span class="glyphicon glyphicon-tag"></span></strong>
-                            <p>At Foster's Hollywood we always have news for you. If you want to check our news, open the new restaurants, our offers and promotions or stay to the latest, check it out and stay informed of the coolest!</p>
+                        <div class="col-md-11"> <strong>Email  <span class="glyphicon glyphicon-envelope"></span></strong>
+                            <p>{{restaurant.email}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-11"> <strong>Adress <span class="glyphicon glyphicon-home"></span></strong>
                             <p>{{restaurant.address}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-11"> <strong>Capacity  <span class="glyphicon glyphicon-user"></span></strong>
-                            <p>500 diners.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -238,19 +230,19 @@
                             <div class="service-box">
                                 <div class="icon">
                                     <h3>Breakfast</h3> </div>
-                                <p>To start the day in the perfect way</p> <img src="images/day-food/breakfast.jpg" alt="Custom Image"> </div>
+                                <p>To start the day in the perfect way</p> <img src="/images/day-food/breakfast.jpg" alt="Custom Image"> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
                                     <h3>Lunch </h3> </div>
-                                <p>Take strength for the rest of the day</p> <img src="images/day-food/lunch.jpg" alt="Custom Image"> </div>
+                                <p>Take strength for the rest of the day</p> <img src="/images/day-food/lunch.jpg" alt="Custom Image"> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon">
                                     <h3>Dinner</h3> </div>
-                                <p>End the day with your favourite meal</p> <img src="images/day-food/dinner.jpg" alt="Custom Image"> </div>
+                                <p>End the day with your favourite meal</p> <img src="/images/day-food/dinner.jpg" alt="Custom Image"> </div>
                         </div>
                     </div>
                     <div class="row"> </div>
@@ -275,137 +267,24 @@
                 <div class="menus-container">
                     <!-- menu -->
                     <div class="menu row">
+                        {{#menu}}
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
                                 <div class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{menu1.dish}}</h6>
+                                        <h6 class="food-name">{{dish}}</h6>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu1.price}}€</span> </div>
+                                        <div class="food-price"> <span>{{price}}€</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu1.description}}</span> </div>
+                                    <div class="food-details"> <span>{{description}}</span> </div>
                                     <!-- /food-details -->
                                 </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu2.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu2.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu2.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu3.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu3.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu3.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu4.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu4.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu4.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu5.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu5.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu5.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
                             </div>
                             <!-- /menu-column -->
                         </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="menu-column">
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu6.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu6.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu6.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu7.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu7.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu7.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu8.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu8.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu8.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu9.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu9.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu9.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">{{menu10.dish}}</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>{{menu10.price}}€</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>{{menu10.description}}</span> </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
+                        {{/menu}} 
                         <!-- /col-md-6 -->
                     </div>
                     <!-- /row -->
@@ -438,12 +317,12 @@
             <!-- Filter Button End -->
             <div class="portfolio-items">
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item bur imgbor"> <img src="images/img-portfolio/hamburguesa1.png" alt="">
+                <div class="item portfolio-item bur imgbor"> <img src="/images/img-portfolio/hamburguesa1.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/hamburguesa1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/hamburguesa1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -451,12 +330,12 @@
                 </div>
                 <!-- Portfolio Items End -->
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item mea imgbor"> <img src="images/img-portfolio/carne1.png" alt="">
+                <div class="item portfolio-item mea imgbor"> <img src="/images/img-portfolio/carne1.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/carne1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/carne1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -464,12 +343,12 @@
                 </div>
                 <!-- Portfolio Items End -->
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item imgbor sal"> <img src="images/img-portfolio/ensalada1.png" alt="">
+                <div class="item portfolio-item imgbor sal"> <img src="/images/img-portfolio/ensalada1.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/ensalada1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/ensalada1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -477,12 +356,12 @@
                 </div>
                 <!-- Portfolio Items End -->
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item imgbor bur"> <img src="images/img-portfolio/hamburguesa2.png" alt="">
+                <div class="item portfolio-item imgbor bur"> <img src="/images/img-portfolio/hamburguesa2.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/hamburguesa2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/hamburguesa2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -490,37 +369,12 @@
                 </div>
                 <!-- Portfolio Items -->
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item imgbor san"> <img src="images/img-portfolio/sandwich1.png" alt="">
+                <div class="item portfolio-item imgbor san"> <img src="/images/img-portfolio/sandwich1.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/sandwich1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item imgbor sal"> <img src="images/img-portfolio/ensalada2.png" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/ensalada2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <div class="item portfolio-item imgbor san"> <img src="images/img-portfolio/sandwich2.png" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/sandwich2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/sandwich1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -528,12 +382,37 @@
                 </div>
                 <!-- Portfolio Items End -->
                 <!-- Portfolio Items -->
-                <div class="item portfolio-item imgbor mea"> <img src="images/img-portfolio/carne2.png" alt="">
+                <div class="item portfolio-item imgbor sal"> <img src="/images/img-portfolio/ensalada2.png" alt="">
                     <div class="portfolio-details-wrapper">
                         <div class="portfolio-details">
                             <div class="portfolio-meta-btn">
                                 <ul class="work-meta">
-                                    <li class="lighbox"><a href="images/img-portfolio/carne2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                    <li class="lighbox"><a href="/images/img-portfolio/ensalada2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Items End -->
+                <div class="item portfolio-item imgbor san"> <img src="/images/img-portfolio/sandwich2.png" alt="">
+                    <div class="portfolio-details-wrapper">
+                        <div class="portfolio-details">
+                            <div class="portfolio-meta-btn">
+                                <ul class="work-meta">
+                                    <li class="lighbox"><a href="/images/img-portfolio/sandwich2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Items End -->
+                <!-- Portfolio Items -->
+                <div class="item portfolio-item imgbor mea"> <img src="/images/img-portfolio/carne2.png" alt="">
+                    <div class="portfolio-details-wrapper">
+                        <div class="portfolio-details">
+                            <div class="portfolio-meta-btn">
+                                <ul class="work-meta">
+                                    <li class="lighbox"><a href="/images/img-portfolio/carne2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -544,37 +423,91 @@
         </div>
         <!-- Works End -->
     </section>
+    <section id="vouchers" class="section-wrapper">
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+                    <h2><span class="highlight-text">Current deals</span></h2>
+
+                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you can see the vouchers that the restaurant is offering</p>
+                </div>
+                <!-- Section Header End -->
+
+                <div class="our-offers">
+
+					
+                    <div class="row">
+                    	{{#vouchers}}
+                        <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                            <div class="service-box">
+                                <div class="icon">
+                                    <h3>{{name}}</h3>
+                                </div>
+                                <p>{{description}}</p>
+                                <p>{{expiryDate}}</p>
+                                    <img src="/images/voucher1.jpg" alt="Custom Image">
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                        {{/vouchers}}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Portfolio Section End -->
-    <section id="chefs" class="bgSection teams-section">
+    <section id=reviews" class="bgSection ratings-section">
+        <br>
+        <br>
+        <br>
         <div class="parallax-overlay"></div>
-        <div class="teams-wrapper wow bounceIn">
+        <div class="ratings-wrapper wow bounceIn">
             <div class="container">
                 <div class="row">
                     <!-- Section Header -->
                     <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <h2><span class="highlight-text-inverted">Chefs</span></h2>
-                        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Because the quality is the most immportant thing for us, we have the best professionals in our team.</p>
-                    </div>
-                    <!-- teams Slider -->
-                    <div id="teams" class="owl-carousel teams">
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/team1.jpg" alt="">
-                            <p class="client-info">Chris Willam</p>
-                            <p>American chef</p>
+                        <h2><span class="highlight-text-inverted">Reviews</span></h2>
+                        <p>Here you have some opinions of our clients </p>
+                        <!-- Works -->
+                        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+                            <div class="row">
+                            
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                {{#reviews}}
+                                    <!-- Filter Button Start -->
+                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
+                                        <div class="item recommendations-item web seo">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+                                                    <ul>
+                                                        <li>
+                                                            <h1 class="shadow">{{reviewUser.name}}</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
+                                                    <p style="margin:5px;">{{content}}</p>
+                                                    <p style="margin:5px;">{{date}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Filter Button End -->
+                                        <!-- Portfolio Items -->
+                                    </div>
+                                    <br>
+                                    {{/reviews}}
+                                </div>
+                                <button type="button" class="btnMore">See more</button>
+                            </div>
+                            <br>
+                            <!-- Slides End -->
                         </div>
-                        <!-- Slides End -->
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/team2.jpg" alt="">
-                            <p class="client-info">Randy Dode</p>
-                            <p>Canadian chef</p>
-                        </div>
-                        <!-- Slides End -->
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/team3.jpg" alt="">
-                            <p class="client-info">Michel Kimte</p>
-                            <p>French chef</p>
-                        </div>
-                        <!-- Slides End -->
                     </div>
                 </div>
             </div>
@@ -597,23 +530,9 @@
                         <form name="sentMessage" id="contactForm" novalidate>
 
                             <div class="form-group col-md-3 col-l-3 col-s-3 col-xs-12 "id="recommendations-filter" style="height: 235px">
-                                        <h2 style="color:#80cc0c !important;">Foster's Hollywood</h2> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star-empty" style="color:#80cc0c !important;"></span>
+                                        <h2 style="color:#80cc0c !important;">{{restaurant.name}}</h2> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color:#80cc0c !important;"></span> <span class="glyphicon glyphicon-star-empty" style="color:#80cc0c !important;"></span>
                                     <br>
                                 <br>
-                                        <div class="col-xs-1 col-s-1 col-md-1 col-l-1" >
-
-                                            </div>
-                                            <div class="col-xs-4 col-s-4 col-md-4 col-l-4 puntuation" >
-                                                <h1>8.1</h1>
-                                            </div>
-                                            <div class="col-xs-2 col-s-2 col-md-2 col-l-2" >
-
-                                            </div>
-                                            <div class="col-xs-4 col-s-4 col-md-4 col-l-4 puntuation">
-                                                <h1 class="votes">Votes 112</h1>
-                                            </div>
-
-
                             </div>
                             <div class="col-l-9 col-md-9 col-s-9 col-xs-12">
                                 <textarea  style="border-radius:0px!important" rows="7" cols="100" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="3" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
@@ -653,7 +572,7 @@
     <section class="footer-container">
         <div class="container">
             <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="images/logo/logo.png" alt=""> </div>
+                <div class="col-md-4"> <img src="/images/logo/logo.png" alt=""> </div>
                 <div class="col-md-4">
                     <h4>Fugu</h4>
                     <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
@@ -687,26 +606,26 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.easypiechart.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.fitvids.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.sliderPro.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="contact/jqBootstrapValidation.js"></script>
-    <script src="contact/contact_me.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/contact/jqBootstrapValidation.js"></script>
+    <script src="/contact/contact_me.js"></script>
+    <script src="/js/custom.js"></script>
 </body>
 
 </html>

@@ -23,6 +23,30 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	public List<Restaurant> getRestaurants() {
+		return restaurants;
+	}
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+	public List<Voucher> getUserVouchers() {
+		return userVouchers;
+	}
+	public void setUserVouchers(List<Voucher> userVouchers) {
+		this.userVouchers = userVouchers;
+	}
 	@ManyToMany
 	private List<Restaurant> restaurants = new ArrayList<>();
 	@OneToMany(mappedBy = "reviewUser")
