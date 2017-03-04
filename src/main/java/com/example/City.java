@@ -20,6 +20,12 @@ public class City {
 	@OneToMany(mappedBy="city")
 	private List<Restaurant> cityResturants = new ArrayList<>();
 	
+	public List<Restaurant> getCityResturants() {
+		return cityResturants;
+	}
+	public void setCityResturants(List<Restaurant> cityResturants) {
+		this.cityResturants = cityResturants;
+	}
 	public City(){}
 	public City(String name){
 		this.name= name;

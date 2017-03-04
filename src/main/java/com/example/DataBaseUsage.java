@@ -183,10 +183,10 @@ public class DataBaseUsage implements CommandLineRunner{
 		model.addAttribute("restaurant",restaurantRepository.findAll());
 		return "main";
 	}
-	@RequestMapping("city")
-	public String city(Model model) {
-		model.addAttribute("cityname",cityRepository.findAll().get(1).getName());
-		model.addAttribute("restaurant",restaurantRepository.findAll());
+	@RequestMapping("/city/{id}")
+	public String city(Model model, @PathVariable long id) {
+		model.addAttribute("city", cityRepository.findOne(id));
+		model.addAttribute("restaurants", cityRepository.findOne(id).getCityResturants());
 		
 		return "city";
 	}
@@ -197,6 +197,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
 		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
+		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "private-client";
 	}
 	@RequestMapping("/private-restaurant/{id}")
@@ -218,14 +219,14 @@ public class DataBaseUsage implements CommandLineRunner{
 		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
 		return "public-restaurant";
 	}
-	@RequestMapping("public-client")
-	public String publicClient(Model model) {
-		ArrayList<User> users=new ArrayList<User>();
-		users = (ArrayList<User>) userRepository.findAll();
-		model.addAttribute("username",users.get(0).getName()) ;
-		model.addAttribute("useremail",users.get(0).getEmail());
-		model.addAttribute("userage",users.get(0).getAge());
-		model.addAttribute("userdescription",users.get(0).getDescription());
+	@RequestMapping("/public-client/{id}")
+	public String publicClient(Model model, @PathVariable long id) {
+		model.addAttribute("user", userRepository.findOne(id));
+		model.addAttribute("restaurants", userRepository.findOne(id).getRestaurants());
+		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
+		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
+		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
+		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "public-client";
 	}
 	@RequestMapping("search-web")

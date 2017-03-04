@@ -2,603 +2,615 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="images/logo/logo.ico">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Businnes, Portfolio, Corporate">
-    <meta name="Author" content="WebThemez">
-    <title>{{user.name}}</title>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/elegant_font/style.css" />
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/slider-pro.css">
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" href="/css/owl.theme.css">
-    <link rel="stylesheet" href="/css/owl.transitions.css">
-    <link rel="stylesheet" href="/css/animate.css">
-    <link rel="stylesheet" href="/elegant_font/style.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="images/logo/logo.ico">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Businnes, Portfolio, Corporate">
+<meta name="Author" content="WebThemez">
+<title>{{user.name}}</title>
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="/elegant_font/style.css" />
+<link rel="stylesheet" href="/css/magnific-popup.css">
+<link rel="stylesheet" href="/css/slider-pro.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+<link rel="stylesheet" href="/css/owl.transitions.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/elegant_font/style.css">
+<link rel="stylesheet" href="/css/style.css">
+<link
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <!-- Navigation Menu start-->
-        <nav id="topNav" class="navbar navbar-default main-menu">
-            <div class="container">
-                <a href="main.html">
-                    <img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2">
-                </a>
-                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
-                <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-                    <ul class="nav navbar-nav">
-                        <li> <a href="#profile">PROFILE</a> </li>
-                        <li> <a href="#deals">DEALS</a> </li>
-                        <li> <a href="#following">FOLLOWING</a> </li>
-                        <li> <a href="#recommendations">RECOMMENDATIONS</a> </li>
-                        <li> <a href="#opinions">OPINIONS</a> </li>
-                        <li> <a href="#gallery">RESTAURANTS</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <section id="profile" class="profile-sec section-wrapper description">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">{{user.name}}<img src="/images/clients/250x250_24105534pedro-leon.jpg" class="img-circle" alt="Custom Image"></span></h2>
-                    <p>{{user.description}}</p>
-                    <br>
-                    <spam id="button">
-                        <button type="submit" class="btnMore" id="changeImg">Change profile image</button>
-                    </spam>
-                </div>
-                <!-- Section Header End -->
-                <div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-                    <div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-                        <h1>Change data</h1>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Account Name:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="{{user.name}}">
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value="{{user.email}}" >
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Description:</label>
-                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">{{user.description}}</textarea>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="pwd">New password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Enter new password">
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="pwd">Repeat new password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Repeat new password">
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="age" style="margin-bottom:10px;">How old are you?</label>
-                                <input style="border-radius:0px!important" type="text" class="form-control" id="age" value={{user.age}}>
-                            </div>
-                        </form>
-                        <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-                            <button type="button" class="btnMore" id="update">Update</button>
-                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2" id="update">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="deals" class="section-wrapper">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Deals</span></h2>
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Three new restaurants have sent offers to you</p>
-                </div>
-                <!-- Section Header End -->
-                <div class="our-offers">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon">
-                                    <h3>TeleAsia</h3> </div>
-                                <p>Monday-Friday. Pay one menu and get two.</p>
-                                <a href="public-restaurant.html"> <img src="/images/day-food/breakfast.jpg" alt="Custom Image"> </a>
-                                <p style="margin-top:5px;">Expiry date: Friday 26nd March 2017</p>
-                                <button type="button" class="btnMore" href="images/QR/qr1.png">Download QR</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon">
-                                    <h3>Peperonni</h3> </div>
-                                <p>All you can eat paying only 15 euros </p>
-                                <a href="public-restaurant.html"> <img src="/images/day-food/lunch.jpg" alt="Custom Image"> </a>
-                                <p style="margin-top:5px;">Expiry date: Tuesday 5th November 2017 </p>
-                                <a href="images/QR/qr1.tif">
-                                    <button type="button" class="btnMore">Download QR</button>
-                                </a>
-                                <div class="btnMorePadding">
-                                    <button type="button" class="btnMore">See More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon">
-                                    <h3>FosterHollywood</h3> </div>
-                                <p>Saturdays all menus for only 15 euros </p>
-                                <a href="public-restaurant.html"> <img src="/images/day-food/dinner.jpg" alt="Custom Image"> </a>
-                                <p style="margin-top:5px;">Expiry date: Monday 2nd February 2017 </p>
-                                <button type="button" class="btnMore">Download QR</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="menus style3" id="following">
+	<header>
+		<!-- Navigation Menu start-->
+		<nav id="topNav" class="navbar navbar-default main-menu">
+			<div class="container">
+				<a href="main.html"> <img class="logo2" id="logo2"
+					src="/images/logo/logo2.png" alt="logo2">
+				</a>
+				<button class="navbar-toggler hidden-md-up pull-right" type="button"
+					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="#profile">PROFILE</a></li>
+						<li><a href="#deals">DEALS</a></li>
+						<li><a href="#following">FOLLOWING</a></li>
+						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
+						<li><a href="#opinions">OPINIONS</a></li>
+						<li><a href="#gallery">RESTAURANTS</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">{{user.name}}<img
+							src="/images/clients/250x250_24105534pedro-leon.jpg"
+							class="img-circle" alt="Custom Image"></span>
+					</h2>
+					<p>{{user.description}}</p>
+					<br>
+					<spam id="button">
+					<button type="submit" class="btnMore" id="changeImg">Change
+						profile image</button>
+					</spam>
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+						<form role="form">
+							<div class="form-group">
+								<label for="name">Account Name:</label> <input
+									style="border-radius: 0px !important" type="name"
+									class="form-control" id="name" value="{{user.name}}">
+							</div>
+						</form>
+						<form role="form">
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" id="email" value="{{user.email}}">
+							</div>
+						</form>
+						<form role="form">
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea" rows="3">{{user.description}}</textarea>
+							</div>
+						</form>
+						<form role="form">
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" placeholder="Enter new password">
+							</div>
+						</form>
+						<form role="form">
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" placeholder="Repeat new password">
+							</div>
+						</form>
+						<form role="form">
+							<div class="form-group">
+								<label for="age" style="margin-bottom: 10px;">How old
+									are you?</label> <input style="border-radius: 0px !important"
+									type="text" class="form-control" id="age" value={{user.age}}>
+							</div>
+						</form>
+						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
+							<button type="button" class="btnMore" id="update">Update</button>
+							<button type="button" class="btnMore" data-toggle="modal"
+								data-target="#exampleModal2" id="update">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="deals" class="section-wrapper">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Deals</span>
+					</h2>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Some
+						restaurants have sent offers to you</p>
+				</div>
+				<!-- Section Header End -->
+				<div class="our-offers">
+					<div class="row">
+						{{#vouchers}}
+						<div
+							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
+							data-wow-delay=".2s">
+							<div class="service-box">
+								<div class="icon">
+									<h2>{{restaurant.name}}</h2>
+									<h3>{{name}}</h3>
+								</div>
+								<p>{{description}}</p>
+								<a href="public-restaurant.html"> <img
+									src="/images/day-food/breakfast.jpg" alt="Custom Image">
+								</a>
+								<p style="margin-top: 5px;">Expiry date : {{expiryDate}}</p>
+								<button type="button" class="btnMore" href="images/QR/qr1.png">Download
+									QR</button>
+							</div>
+						</div>
+						{{/vouchers}}
+						<div
+							class="col-md-12 col-sm-12 col-xs-12 text-xs-center wow fadeInDown"
+							data-wow-delay=".2s">
+							<div class="btnMorePadding">
+								<button type="button" class="btnMore">See More</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+	<section class="menus style3" id="following">
 
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Following</span></h2> </div>
-                <!-- Section Header End -->
-                <div class="menus-container">
-                    <!-- menu -->
-                    <div class="menu row">
-                        <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
-                            <h2>Restaurants</h2>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/clients/natural.png" class="img-circle" id="imgPerfil">Natural</h6> </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/clients/aztec.png" class="img-circle" id="imgPerfil">Scaroli</h6> </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/clients/cityairline.png" class="img-circle" id="imgPerfil">huttanHome</h6> </div>
-                                </button>
-                            </div>
-                            <button type="button" class="btnMore">See more</button>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;" id="followingPeople">
-                            <h2>People</h2>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/profile-pictures/foto-perfil1.jpg" class="img-circle" id="imgPerfil">Masseto</h6> </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/profile-pictures/foto-perfil2.jpg" class="img-circle" id="imgPerfil">Jhonas</h6> </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="/images/profile-pictures/foto-perfil3.jpg" class="img-circle" id="imgPerfil">Julio</h6> </div>
-                                </button>
-                            </div>
-                            <button type="button" class="btnMore">See more</button>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                    </div>
-                </div>
-                <!-- /menu-carousel -->
-            </div>
-            <!-- /menus-container -->
-        </div>
-        <!-- /container -->
-    </section>
-    <section id="recommendations" class="bgSection recommendations-section">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Recommendations</span></h2>
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We have found the next restaurants based on previous experience</p>
-                </div>
-                <!-- Section Header End -->
-            </div>
-        </div>
-        <!-- Works -->
-        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-1">
-                    <!-- Filter Button Start -->
-                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                        <ul>
-                            <li>
-                                <h1>La muralla</h1> </li>
-                        </ul>
-                    </div>
-                    <!-- Filter Button End -->
-                    <!-- Portfolio Items -->
-                    <div class="item recommendations-item web seo">
-                        <a href="public-restaurant.html"><img src="/images/img-portfolio/portfolio1.jpg"> </a>
-                    </div>
-                    <br>
-                </div>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Following</span>
+					</h2>
+				</div>
+				<!-- Section Header End -->
+				<div class="menus-container">
+					<!-- menu -->
+					<div class="menu row">
+						<div class="col-md-6 wow fadeInRight animated"
+							style="visibility: visible; animation-name: fadeInRight;"
+							id="followingRestaurants">
+							<h2>Restaurants</h2>
+							{{#restaurants}}
+							<div class="menu-column">
+								<button onClick=" window.location.href='public-restaurant.html'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/clients/natural.png" class="img-circle"
+												id="imgPerfil">{{name}}
+										</h6>
+									</div>
+								</button>
+							</div>
+							{{/restaurants}}
+							<button type="button" class="btnMore">See more</button>
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+						<div class="col-md-6 wow fadeInLeft animated"
+							style="visibility: visible; animation-name: fadeInLeft;"
+							id="followingPeople">
+							<h2>People</h2>
+							<div class="menu-column">
+								<button onClick=" window.location.href='public-client.html'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/profile-pictures/foto-perfil1.jpg"
+												class="img-circle" id="imgPerfil">Masseto
+										</h6>
+									</div>
+								</button>
+							</div>
+							<div class="menu-column">
+								<button onClick=" window.location.href='public-client.html'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/profile-pictures/foto-perfil2.jpg"
+												class="img-circle" id="imgPerfil">Jhonas
+										</h6>
+									</div>
+								</button>
+							</div>
+							<div class="menu-column">
+								<button onClick=" window.location.href='public-client.html'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/profile-pictures/foto-perfil3.jpg"
+												class="img-circle" id="imgPerfil">Julio
+										</h6>
+									</div>
+								</button>
+							</div>
+							<button type="button" class="btnMore">See more</button>
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+					</div>
+				</div>
+				<!-- /menu-carousel -->
+			</div>
+			<!-- /menus-container -->
+		</div>
+		<!-- /container -->
+	</section>
+	<section id="recommendations" class="bgSection recommendations-section">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Recommendations</span>
+					</h2>
 
-                <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-2">
-                    <!-- Filter Button Start -->
-                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                        <ul>
-                            <li>
-                                <h1>Mesón Mariano</h1> </li>
-                        </ul>
-                    </div>
-                    <!-- Portfolio Items -->
-                    <div class="item recommendations-item works seo">
-                        <a href="public-restaurant.html"><img src="/images/img-portfolio/portfolio3.jpg" alt=""> </a>
-                        <br> </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-2">
-                    <!-- Filter Button Start -->
-                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                        <ul>
-                            <li>
-                                <h1>Bangkok Res</h1> </li>
-                        </ul>
-                    </div>
-                    <!-- Portfolio Items -->
-                    <div class="item recommendations-item works seo">
-                        <a href="public-restaurant.html"><img src="/images/img-portfolio/portfolio5.jpg" alt=""></a>
-                        <br> </div>
-                </div>
-            </div>
-        </div>
-        <div class=" col-lg-2 col-lg-offset-5">
-            <button type="button" class="btnMore btn-block">See more</button>
-        </div>
-    </section>
-    <!-- Portfolio Section End -->
-    <section id="opinions" class="bgSection ratings-section">
-        <br>
-        <br>
-        <br>
-        <div class="ratings-wrapper wow bounceIn">
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <h2><span class="highlight-text-inverted">Opinions</span></h2>
-                        <!-- Works -->
-                        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <!-- Filter Button Start -->
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">AsiaHome</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Raviolli</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Only Tapas</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">DonnerLand</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br> </div>
-                                <button type="button" class="btnMore">See more</button>
-                            </div>
-                            <br>
-                            <!-- Slides End -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="gallery" class="bgSection portfolio-section">
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Restaurants</span></h2>
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you have some photos of our most important restaurants, sorted by the food type.</p>
-                </div>
-                <!-- Section Header End -->
-            </div>
-        </div>
-        <!-- Works -->
-        <div class="portfolio-works wow fadeIn" data-wow-duration="2s">
-            <!-- Filter Button Start -->
-            <div id="portfolio-filter" class="portfolio-filter-btn-group">
-                <ul>
-                    <li> <a href="#" class="selected" data-filter="*">ALL</a> <a href="#" data-filter=".ind">INDIAN</a> <a href="#" data-filter=".chi">CHINESE</a> <a href="#" data-filter=".ame">AMERICAN</a> <a href="#" data-filter=".veg">VEGETARIAN</a> </li>
-                </ul>
-            </div>
-            <!-- Filter Button End -->
-            <div class="portfolio-items">
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item ind imgbor"> <img src="/images/restaurant-recommendation/indian1.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/indian1.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">INDIAN RESTAURANT</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item chi imgbor"> <img src="/images/restaurant-recommendation/chinese1.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/chinese1.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">CHINESE RESTAURANT</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item veg imgbor"> <img src="/images/restaurant-recommendation/vegetarian1.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/vegetarian1.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">VEGETARIAN RESTAURANT</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item ind imgbor"> <img src="/images/restaurant-recommendation/indian2.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/indian2.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">INDIAN RESTAURANT 2</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item ame imgbor"> <img src="/images/restaurant-recommendation/american1.png" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/american1.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">AMERICAN RESTAURANT 1</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item veg imgbor"> <img src="/images/restaurant-recommendation/vegetarian2.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/vegetarian2.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">VEGETARIAN RESTAURANT 2</i></a> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <div class="item portfolio-item ame imgbor"> <img src="/images/restaurant-recommendation/american2.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/american2.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">AMERICAN RESTAURANT 2</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-                <!-- Portfolio Items -->
-                <div class="item portfolio-item chi imgbor"> <img src="/images/restaurant-recommendation/chinese2.jpg" alt="">
-                    <div class="portfolio-details-wrapper">
-                        <div class="portfolio-details">
-                            <div class="portfolio-meta-btn">
-                                <ul class="work-meta">
-                                    <li class="lighbox"><a href="/images/restaurant-recommendation/chinese2.jpg" class="featured-work-img"><a href="/public-restaurant/1"><i class="fa fa-search-plus">CHINESE RESTAURANT 2</i></a></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio Items End -->
-            </div>
-            <br>
-            <br>
-            <div class=" col-lg-2 col-lg-offset-5">
-                <button type="button" class="btnMore btn-block">See more</button>
-            </div>
-            <br>
-            <br>
-        </div>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We
+						have found the next restaurants based on previous experience</p>
+				</div>
+				<!-- Section Header End -->
+			</div>
+		</div>
+		<!-- Works -->
+		<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+			<div class="row">
+				{{#generalRestaurants}}
+				<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-1">
+					<!-- Filter Button Start -->
+					<div id="recommendations-filter"
+						class="recommendations-filter-btn-group">
+						<ul>
+							<li>
+								<h1>{{name}}</h1>
+							</li>
+						</ul>
+					</div>
+					<!-- Filter Button End -->
+					<!-- Portfolio Items -->
+					<div class="item recommendations-item web seo">
+						<a href="public-restaurant.html"><img
+							src="/images/img-portfolio/portfolio1.jpg"> </a>
+					</div>
+					<br>
+				</div>
+				{{/generalRestaurants}}
 
-        <!-- Works End -->
-    </section>
-    <!-- Contact Section End -->
+			</div>
+		</div>
+		<div class=" col-lg-2 col-lg-offset-5">
+			<button type="button" class="btnMore btn-block">See more</button>
+		</div>
+	</section>
+	<!-- Portfolio Section End -->
+	<section id="opinions" class="bgSection ratings-section">
+		<br> <br> <br>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<h2>
+							<span class="highlight-text-inverted">Opinions</span>
+						</h2>
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<!-- Filter Button Start -->
+									{{#reviews}}
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{reviewRestaurant.name}}</h1> 
+															<p>{{rate}}</p>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">{{content}} - {{date}}</p>
+												</div>
+												<button type="button" class="btnMore">Delete</button>
+												<button type="button" class="btnMore">Modify</button>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br>
+									{{/reviews}}	
+								</div>
+								<button type="button" class="btnMore">See more</button>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="gallery" class="bgSection portfolio-section">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Restaurants</span>
+					</h2>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here
+						you have some photos of our most important restaurants, sorted by
+						the food type.</p>
+				</div>
+				<!-- Section Header End -->
+			</div>
+		</div>
+		<!-- Works -->
+		<div class="portfolio-works wow fadeIn" data-wow-duration="2s">
+			<!-- Filter Button Start -->
+			<div id="portfolio-filter" class="portfolio-filter-btn-group">
+				<ul>
+					<li><a href="#" class="selected" data-filter="*">ALL</a> <a
+						href="#" data-filter=".ind">INDIAN</a> <a href="#"
+						data-filter=".chi">CHINESE</a> <a href="#" data-filter=".ame">AMERICAN</a>
+						<a href="#" data-filter=".veg">VEGETARIAN</a></li>
+				</ul>
+			</div>
+			<!-- Filter Button End -->
+			<div class="portfolio-items">
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item ind imgbor">
+					<img src="/images/restaurant-recommendation/indian1.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/indian1.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">INDIAN RESTAURANT</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item chi imgbor">
+					<img src="/images/restaurant-recommendation/chinese1.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/chinese1.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">CHINESE RESTAURANT</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item veg imgbor">
+					<img src="/images/restaurant-recommendation/vegetarian1.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/vegetarian1.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">VEGETARIAN RESTAURANT</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item ind imgbor">
+					<img src="/images/restaurant-recommendation/indian2.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/indian2.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">INDIAN RESTAURANT 2</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item ame imgbor">
+					<img src="/images/restaurant-recommendation/american1.png" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/american1.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">AMERICAN RESTAURANT 1</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item veg imgbor">
+					<img src="/images/restaurant-recommendation/vegetarian2.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/vegetarian2.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">VEGETARIAN RESTAURANT 2</i></a> </a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<div class="item portfolio-item ame imgbor">
+					<img src="/images/restaurant-recommendation/american2.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/american2.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">AMERICAN RESTAURANT 2</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+				<!-- Portfolio Items -->
+				<div class="item portfolio-item chi imgbor">
+					<img src="/images/restaurant-recommendation/chinese2.jpg" alt="">
+					<div class="portfolio-details-wrapper">
+						<div class="portfolio-details">
+							<div class="portfolio-meta-btn">
+								<ul class="work-meta">
+									<li class="lighbox"><a
+										href="/images/restaurant-recommendation/chinese2.jpg"
+										class="featured-work-img"><a href="/public-restaurant/1"><i
+												class="fa fa-search-plus">CHINESE RESTAURANT 2</i></a></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio Items End -->
+			</div>
+			<br> <br>
+			<div class=" col-lg-2 col-lg-offset-5">
+				<button type="button" class="btnMore btn-block">See more</button>
+			</div>
+			<br> <br>
+		</div>
 
-    <!-- Portfolio Section End -->
-    <!-- Contact Section End -->
-    <section class="footer-container">
-        <div class="container">
-            <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="/images/logo/logo.png" alt=""> </div>
-                <div class="col-md-4">
-                    <h4>Fugu</h4>
-                    <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
-                    <h4>News & Updates</h4> </div>
-                <div class="col-md-4 contac-us">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li><i class="fa fa-home"></i>C/Tulipan, Mostoles</li>
-                        <li><i class="fa fa-phone"></i>+034 600 000 000</li>
-                        <li><i class="fa fa-envelope-o"></i>fugu@website.com</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio Section End -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="footer-containertent">
-                    <ul class="footer-social-info">
-                        <li> <a href="https://es-es.facebook.com/"><i class="fa fa-facebook"></i></a> </li>
-                        <li> <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a> </li>
-                        <li> <a href="https://es.pinterest.com/"><i class="fa fa-pinterest"></i></a> </li>
-                        <li> <a href="https://plus.google.com/?hl=es"><i class="fa fa-google-plus"></i></a> </li>
-                    </ul>
-                    <br/>
-                    <br/>
-                    <p>Copyright © 2018. Template by: <a href="http://webthemez.com/free-bootstrap-templates/">WebThemez</a>, All rights reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer End -->
-    <script src="/js/jquery-1.11.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/modernizr.min.js"></script>
-    <script src="/js/jquery.easing.1.3.js"></script>
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/jquery.easypiechart.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
-    <script src="/js/jquery.fitvids.js"></script>
-    <script src="/js/jquery.stellar.min.js"></script>
-    <script src="/js/jquery.waypoints.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/jquery.nav.js"></script>
-    <script src="/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/smooth-scroll.min.js"></script>
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    <script src="/js/jquery.sliderPro.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/contact/jqBootstrapValidation.js"></script>
-    <script src="/contact/contact_me.js"></script>
-    <script src="/js/custom.js"></script>
+		<!-- Works End -->
+	</section>
+	<!-- Contact Section End -->
+
+	<!-- Portfolio Section End -->
+	<!-- Contact Section End -->
+	<section class="footer-container">
+		<div class="container">
+			<div class="row footer-containertent">
+				<div class="col-md-4">
+					<img src="/images/logo/logo.png" alt="">
+				</div>
+				<div class="col-md-4">
+					<h4>Fugu</h4>
+					<p>Both sign up as restaurant and user options availables. As
+						user, you can see the restaurant page, send feedback and rate
+						them. The restaurant user can upload the menu info, discounts and
+						vouchers, and information about the address and who's the chef.</p>
+					<h4>News & Updates</h4>
+				</div>
+				<div class="col-md-4 contac-us">
+					<h4>Contact Us</h4>
+					<ul>
+						<li><i class="fa fa-home"></i>C/Tulipan, Mostoles</li>
+						<li><i class="fa fa-phone"></i>+034 600 000 000</li>
+						<li><i class="fa fa-envelope-o"></i>fugu@website.com</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Portfolio Section End -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="footer-containertent">
+					<ul class="footer-social-info">
+						<li><a href="https://es-es.facebook.com/"><i
+								class="fa fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/"><i
+								class="fa fa-twitter"></i></a></li>
+						<li><a href="https://es.pinterest.com/"><i
+								class="fa fa-pinterest"></i></a></li>
+						<li><a href="https://plus.google.com/?hl=es"><i
+								class="fa fa-google-plus"></i></a></li>
+					</ul>
+					<br /> <br />
+					<p>
+						Copyright © 2018. Template by: <a
+							href="http://webthemez.com/free-bootstrap-templates/">WebThemez</a>,
+						All rights reserved
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End -->
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/modernizr.min.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.scrollUp.min.js"></script>
+	<script src="/js/jquery.easypiechart.js"></script>
+	<script src="/js/isotope.pkgd.min.js"></script>
+	<script src="/js/jquery.fitvids.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/wow.min.js"></script>
+	<script src="/js/jquery.nav.js"></script>
+	<script src="/js/imagesloaded.pkgd.min.js"></script>
+	<script src="/js/smooth-scroll.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery.sliderPro.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/contact/jqBootstrapValidation.js"></script>
+	<script src="/contact/contact_me.js"></script>
+	<script src="/js/custom.js"></script>
 </body>
 
 </html>

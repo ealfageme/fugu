@@ -12,6 +12,13 @@ import javax.persistence.ManyToOne;
 public class Review {
 
 	private String content;
+	public User getReviewUser() {
+		return reviewUser;
+	}
+	public void setReviewUser(User reviewUser) {
+		this.reviewUser = reviewUser;
+	}
+
 	private double rate;
 	private Date date;
 	@Id
