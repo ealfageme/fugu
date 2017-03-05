@@ -215,7 +215,7 @@
 												<h6 class="food-name" align="center">Opinions</h6>
 												<br>
 												{{#restaurantReviews}}
-												<p>{{content}}</p>
+												<p>"{{content}}"</p>
 												{{/restaurantReviews}}
 											</div>
 											<div class="col-md-2 col-xs-9">
@@ -224,7 +224,7 @@
 														<span class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
-														class="glyphicon glyphicon-star-empty"></span> <br>RATE: {{rate}}</span><br>MENU: {{menuPrice}}€</span>
+														class="glyphicon glyphicon-star"></span> <br>RATE: {{rate}}</span><br>MENU: {{menuPrice}}€</span>
 													<hr>
 												</div>
 											</div>
@@ -233,8 +233,8 @@
 									</div>
 									<!-- /food-desc -->
 									<div class="food-details">
-										<span><span class="glyphicon glyphicon-map-marker"></span>{{address}} - {{city.name}}</span><span><span
-											class="glyphicon glyphicon-phone">{{phone}}</span></span>
+										<span><span class="glyphicon glyphicon-map-marker"></span> {{address}} - {{city.name}}  </span><span><span
+											class="glyphicon glyphicon-phone">{{phone}} </span></span>
 									</div>
 									<!-- /food-details -->
 								</button>

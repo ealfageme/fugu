@@ -18,6 +18,13 @@ public class User {
 	private String name;
 	private String email;
 	private String description;
+	private String favouriteFood;
+	public String getFavouriteFood() {
+		return favouriteFood;
+	}
+	public void setFavouriteFood(String favouriteFood) {
+		this.favouriteFood = favouriteFood;
+	}
 	private String password;
 	private int age;
 	@Id
@@ -57,12 +64,13 @@ public class User {
 	private List<Voucher> userVouchers = new ArrayList<>();
 
 	public User() {}
-	public User(String name, String email, String description, String password, int age) {
+	public User(String name, String email, String description, String password, int age, String favouriteFood) {
 		this.name = name;
 		this.email = email;
 		this.description = description;
 		this.password = password;
 		this.age = age;
+		this.favouriteFood = favouriteFood;
 
 	}
 	
