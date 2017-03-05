@@ -29,7 +29,7 @@
         <!-- Navigation Menu start-->
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html"><img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2"></a>
+                <a href="/main/"><img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2"></a>
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
@@ -42,7 +42,8 @@
                                     <input id="email" type="email" class="form-control" style="border-radius:0px!important" name="email" value="" placeholder="Email Address"> </div>
                                 <div class="input-group"> <span class="input-group-addon" style="border-radius:0px!important; background: #fff;"><i class="glyphicon glyphicon-lock"></i></span>
                                     <input id="password" type="password" class="form-control" style="border-radius:0px!important" name="password" value="" placeholder="Password"> </div>
-                                <button type="submit" class="logInBtn" onClick=" window.location.href='private-client.html'">Login</button>
+                                <button type="submit" class="logInBtn" onClick=" window.location.href='/private-client/1'">Login</button>
+                                <!--<button type="submit" class="logInBtn" onClick=" window.location.href='private-client.html'">Login Restaurant</button>-->
                                 <a href="#modalwindow2" data-toggle="modal" style="padding:0px!important">
                                     <button type="submit" class="signInBtn">Sign in</button>
                                 </a>
@@ -64,7 +65,7 @@
                         <div id="imaginary_container">
                             <div class="input-group stylish-input-group">
                                 <input type="text" class="form-control" style="border-radius:0px!important" placeholder="Search restaurant, city or street"> <span class="input-group-addon" style="border-radius:0px!important; background: #fff;">
-                                <a href="search-web.html"><span style="color:#232323" class="glyphicon glyphicon-search"></span> </a>
+                                <a href="/search-web/"><span style="color:#232323" class="glyphicon glyphicon-search"></span> </a>
                                 </span>
                             </div>
                         </div>
@@ -78,7 +79,7 @@
         <div class="container">
             <div class="row">
                 <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "> <a href="city.html"><h2><span class="highlight-text">Cities</span></h2></a> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "><h2><span class="highlight-text">Cities</span></h2></div>
                 <!-- Section Header End -->
                 <div class="our-services">
                     <div class="row">
@@ -141,12 +142,12 @@
                             
                             <div class="menu-column">
                             
-                                <button onClick=" window.location.href='/public-restaurant/1'" class="food">
+                                <button onClick=" window.location.href='/public-restaurant/{{id}}'" class="food">
                                 
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{name}}</h6>
+                                        <h6 class="food-name">{{name}} ({{foodType}})</h6>
                                         <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
+                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"> {{rate}}</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->

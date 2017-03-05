@@ -33,7 +33,7 @@
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
 			<div class="container">
-				<a href="main.html"><img class="logo2" id="logo2"
+				<a href="/main/"><img class="logo2" id="logo2"
 					src="/images/logo/logo2.png" alt="logo2"></a>
 				<button class="navbar-toggler hidden-md-up pull-right" type="button"
 					data-toggle="collapse" data-target="#collapsingNavbar">?</button>
@@ -199,16 +199,16 @@
 							style="visibility: visible; animation-name: fadeInRight;">
 							<div class="menu-column">
 								{{#restaurants}}
-								<button onClick=" window.location.href='/public-restaurant/1'"
+								<button onClick=" window.location.href='/public-restaurant/{{id}}'"
 									class="food">
 									<div class="food-desc">
 										<h3 class="food-name">
-											<strong>{{name}}</strong>
+											<strong>{{name}} ({{foodType}})</strong>
 										</h3>
 										<br>
 										<div class="row">
 											<div class="col-md-4 col-xs-9">
-												<img src="/images/search-page/search1.jpg" />
+												<img src="/images/search-page/search{{foodType}}.jpg" />
 											</div>
 											<div class="col-md-6 col-xs-9">
 												<br>
@@ -224,7 +224,7 @@
 														<span class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
-														class="glyphicon glyphicon-star-empty"></span> <br>RATE : {{rate}}</span><br>MENU : {{menuPrice}} €</span>
+														class="glyphicon glyphicon-star-empty"></span> <br>RATE: {{rate}}</span><br>MENU: {{menuPrice}}€</span>
 													<hr>
 												</div>
 											</div>

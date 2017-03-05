@@ -1,7 +1,14 @@
 package com.example;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +33,8 @@ public class FuguController {
 	private BookingRepository bookingRepository;
 
 	@RequestMapping("/main/")
-	public String main(Model model) {	
-		model.addAttribute("restaurant",restaurantRepository.findAll());
+	public String main(Model model, Restaurant restaurant) {	
+		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		return "main";
 	}
 	@RequestMapping("/city/{id}")

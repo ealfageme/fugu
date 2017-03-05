@@ -31,7 +31,7 @@
     <header>
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html">
+                <a href="/main/">
                     <img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2">
                 </a>
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
@@ -67,28 +67,28 @@
         <div class="container">
             <div class="row">
                 <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "> <a href="/public-restaurant/1"><h2><span class="highlight-text">Featured types of restaurant in {{city.name}}</span></h2></a> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "><h2><span class="highlight-text">Featured types of restaurant in {{city.name}}</span></h2></div>
                 <!-- Section Header End -->
                 <div class="our-services">
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
+                                <a href="/search-web/">
                                     <h1 class="display-4 border">Tapas</h1><img src="/images/restaurant-type/tapas.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
+                                <a href="/search-web/">
                                     <h1 class="display-4 border">Galician</h1><img src="/images/restaurant-type/galician.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
+                                <a href="/search-web/">
                                     <h1 class="display-4 border">Italian</h1><img src="/images/restaurant-type/italian.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
@@ -138,13 +138,13 @@
                     {{#restaurants}}
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
-                                <button onClick=" window.location.href='/public-restaurant/1'" class="food">
+                                <button onClick=" window.location.href='/public-restaurant/{{id}}'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">{{name}}</h6>
+                                        <h6 class="food-name">{{name}} ({{foodType}})</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>8.7/10</span> </div>
+                                        <div class="food-price"> <span>{{rate}}</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
