@@ -34,30 +34,30 @@ public class DataBaseUsage implements CommandLineRunner{
 	
 	@Override
 	public void run (String... args) throws Exception{
-		
-		
-		
+	
 		City city1 = new City("Madrid");
 		City city2 = new City("Barcelona");
 		City city3 = new City("Valencia");
-		City city4 = new City("Cáceres");
-		City city5 = new City("Málaga");
+		City city4 = new City("Sevilla");
+		City city5 = new City("Zaragoza");
+		City city6 = new City("Bilbao");
 		cityRepository.save(city1);
 		cityRepository.save(city2);
 		cityRepository.save(city3);
 		cityRepository.save(city4);
 		cityRepository.save(city5);
+		cityRepository.save(city6);
 		
-		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","tipical american food","american@whey.com","italian",658742154,"password");
-		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","desc","email","italian",123213123,"sadd");
-		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","desc","email","italian",123213123,"sadd");
-		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","desc","email","italian",123213123,"sadd");
-		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","desc1","email1","italian1",123213123,"s1add");
-		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","desc","email","italian",123213123,"sadd");
-		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","desc1","email1","italian1",123213123,"s1add");
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","American","american@whey.com","italian",658742154, 5.0, 15.0,"password");
+		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","Tapas","email1","italian1",123213123, 4.2,12.0,"s1add");
+		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Galician","email","italian",123213123, 3.5,5.0,"sadd");
+		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Italian","email1","italian1",123213123, 1.6,13.0,"s1add");
+		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Japanese","email","italian",123213123, 3.2,16.0,"sadd");
+		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Chinese","email1","italian1",123213123, 4.8,18.0,"s1add");
+		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Mexican","email","italian", 123213123,3.1,12.0,"sadd");
+		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Indian","email1","italian1",123213123, 3.5,15.0,"s1add");
+		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Thai","email","italian",123213123, 4.1,20.0,"sadd");
+		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Galician","email1","italian1",123213123,2.6,8.0,"s1add");
 		
 		rest1.setCity(city1);
 		rest2.setCity(city2);
@@ -97,17 +97,18 @@ public class DataBaseUsage implements CommandLineRunner{
 
 		menu1.setRestaurantMenu(rest1);
 		menu2.setRestaurantMenu(rest1);
-		menu3.setRestaurantMenu(rest1);
-		menu4.setRestaurantMenu(rest1);
-		menu5.setRestaurantMenu(rest1);
-		menu6.setRestaurantMenu(rest1);
-		menu7.setRestaurantMenu(rest1);
-		menu8.setRestaurantMenu(rest1);
-		menu9.setRestaurantMenu(rest1);
-		menu10.setRestaurantMenu(rest1);
+		menu3.setRestaurantMenu(rest4);
+		menu4.setRestaurantMenu(rest4);
+		menu5.setRestaurantMenu(rest5);
+		menu6.setRestaurantMenu(rest6);
+		menu7.setRestaurantMenu(rest7);
+		menu8.setRestaurantMenu(rest8);
+		menu9.setRestaurantMenu(rest9);
+		menu10.setRestaurantMenu(rest10);
 		menu11.setRestaurantMenu(rest2);
 		menu12.setRestaurantMenu(rest2);
 		menu13.setRestaurantMenu(rest3);
+		
 		
 		menuRepository.save(menu1);
 		menuRepository.save(menu2);
@@ -119,6 +120,9 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu8);
 		menuRepository.save(menu9);
 		menuRepository.save(menu10);
+		menuRepository.save(menu11);
+		menuRepository.save(menu12);
+		menuRepository.save(menu13);
 
 		User user1 = new User("john-snow","john-snow@website.com","GoT actor","yomuero",21);
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31);
@@ -133,106 +137,89 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date());
 		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date());
+		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date());
+		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date());
+		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date());
+		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date());
 		voucher1.getVoucherUsers().add(user1);
 		voucher2.getVoucherUsers().add(user1);
+		voucher3.getVoucherUsers().add(user2);
+		voucher4.getVoucherUsers().add(user2);
+		voucher5.getVoucherUsers().add(user3);
+		voucher6.getVoucherUsers().add(user3);
 		voucher1.setRestaurant(rest1);
-		voucher2.setRestaurant(rest1);
+		voucher2.setRestaurant(rest2);
+		voucher3.setRestaurant(rest3);
+		voucher4.setRestaurant(rest4);
+		voucher5.setRestaurant(rest5);
+		voucher6.setRestaurant(rest6);
 		voucherRepository.save(voucher1);
 		voucherRepository.save(voucher2);
+		voucherRepository.save(voucher3);
+		voucherRepository.save(voucher4);
+		voucherRepository.save(voucher5);
+		voucherRepository.save(voucher6);
 		
 		//RELACION USER - REVIEW
 		
 		Review review1 = new Review("Fucking amazing", 5.0, new Date());
 		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
 		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
+		Review review4 = new Review("Cute decoration, friendly staff and a good cook, also dogs allowed My favourite restaurant for English Breakfast!!!", 5.0, new Date());
+		Review review5 = new Review("This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!", 2.2, new Date());
+		Review review6 = new Review("Nice and near to Liverpool Street station. Lovely food with good service and the atmosphere is buzzing as it gets quite busy in the evening would definitely go again.", 4.1, new Date());
 		review1.setUser(user1);
 		review2.setUser(user2);
 		review3.setUser(user3);
+		review4.setUser(user1);
+		review5.setUser(user2);
+		review6.setUser(user3);
 		review1.setReviewRestaurant(rest1);
 		review2.setReviewRestaurant(rest1);
 		review3.setReviewRestaurant(rest3);
+		review4.setReviewRestaurant(rest4);
+		review5.setReviewRestaurant(rest2);
+		review6.setReviewRestaurant(rest5);
 		reviewRepository.save(review1);
 		reviewRepository.save(review2);
 		reviewRepository.save(review3);
-		
+		reviewRepository.save(review4);
+		reviewRepository.save(review5);
+		reviewRepository.save(review6);
 
 		
 		//RELACION USER - BOOKING
 		Booking booking1 = new Booking(new Date(), 5);
 		Booking booking2 = new Booking(new Date(), 2);
-		
+		Booking booking3 = new Booking(new Date(), 3);
+		Booking booking4 = new Booking(new Date(), 4);
+		Booking booking5 = new Booking(new Date(), 1);
+		Booking booking6 = new Booking(new Date(), 6);
 		booking1.setUser(user1);
 		booking2.setUser(user3);
+		booking3.setUser(user1);
+		booking4.setUser(user3);
+		booking5.setUser(user2);
+		booking6.setUser(user2);
 		booking1.setBookingRestaurant(rest1);
 		booking2.setBookingRestaurant(rest3);
+		booking3.setBookingRestaurant(rest2);
+		booking4.setBookingRestaurant(rest4);
+		booking5.setBookingRestaurant(rest5);
+		booking6.setBookingRestaurant(rest5);
 		
 		bookingRepository.save(booking1);
 		bookingRepository.save(booking2);
+		bookingRepository.save(booking3);
+		bookingRepository.save(booking4);
+		bookingRepository.save(booking5);
+		bookingRepository.save(booking6);
 
 	}
 	@PostConstruct
 	public void init (){
 		
 		
-	}
-	
-	
-	@RequestMapping("main")
-	public String main(Model model) {
-		
-		model.addAttribute("restaurant",restaurantRepository.findAll());
-		return "main";
-	}
-	@RequestMapping("/city/{id}")
-	public String city(Model model, @PathVariable long id) {
-		model.addAttribute("city", cityRepository.findOne(id));
-		model.addAttribute("restaurants", cityRepository.findOne(id).getCityResturants());
-		
-		return "city";
-	}
-	@RequestMapping("/private-client/{id}")
-	public String privateClient(Model model, @PathVariable long id) {
-		model.addAttribute("user", userRepository.findOne(id));
-		model.addAttribute("restaurants", userRepository.findOne(id).getRestaurants());
-		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
-		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
-		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-		return "private-client";
-	}
-	@RequestMapping("/private-restaurant/{id}")
-	public String privateRestaurant(Model model,@PathVariable long id) {
-		model.addAttribute("restaurant",restaurantRepository.findOne(id));
-		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
-		model.addAttribute("bookings",restaurantRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers",restaurantRepository.findOne(id).getVouchers());
-		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
-		return "private-restaurant";
-	}
-		
-	@RequestMapping("/public-restaurant/{id}")
-	public String publicRestaurant(Model model, @PathVariable long id) {
-		
-		model.addAttribute("restaurant",restaurantRepository.findOne(id));
-		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
-		model.addAttribute("vouchers",restaurantRepository.findOne(id).getVouchers());
-		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
-		return "public-restaurant";
-	}
-	@RequestMapping("/public-client/{id}")
-	public String publicClient(Model model, @PathVariable long id) {
-		model.addAttribute("user", userRepository.findOne(id));
-		model.addAttribute("restaurants", userRepository.findOne(id).getRestaurants());
-		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
-		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
-		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-		return "public-client";
-	}
-	@RequestMapping("search-web")
-	public String searchWeb(Model model) {
-
-		return "search-web";
 	}
 
 	

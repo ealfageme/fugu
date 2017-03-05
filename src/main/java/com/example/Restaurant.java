@@ -23,7 +23,21 @@ public class Restaurant {
 	private String address;
 	private String description;
 	private String email;
-	private String foodTypes;
+	private String foodType;
+	private double menuPrice;
+	public double getMenuPrice() {
+		return menuPrice;
+	}
+	public void setMenuPrice(double menuPrice) {
+		this.menuPrice = menuPrice;
+	}
+	private double rate;
+	public double getRate() {
+		return rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
 	private long phone;
 	private String password;
 	@ManyToMany (mappedBy="restaurants")
@@ -41,14 +55,16 @@ public class Restaurant {
 	
 	public Restaurant (){}
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
-			long phone, String password) {
+			long phone, double rate, double menuPrice, String password) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.description = description;
 		this.email = email;
-		this.foodTypes = foodTypes;
+		this.foodType = foodTypes;
 		this.phone = phone;
+		this.rate = rate;
+		this.menuPrice = menuPrice;
 		this.password = password;
 	}
 	
@@ -113,10 +129,10 @@ public class Restaurant {
 		this.email = email;
 	}
 	public String getFoodTypes() {
-		return foodTypes;
+		return foodType;
 	}
 	public void setFoodTypes(String foodTypes) {
-		this.foodTypes = foodTypes;
+		this.foodType = foodTypes;
 	}
 	public long getPhone() {
 		return phone;
