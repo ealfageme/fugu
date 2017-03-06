@@ -30,6 +30,34 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@ManyToMany
+	private List<Restaurant> restaurants = new ArrayList<>();
+	@ManyToMany
+	private List<User> followingUsers = new ArrayList<>();
+
+	public List<User> getFollowingUsers() {
+		return followingUsers;
+	}
+	public void setFollowingUsers(List<User> followingUsers) {
+		this.followingUsers = followingUsers;
+	}
+	@OneToMany(mappedBy = "reviewUser")
+	private List<Review> reviews = new ArrayList<>();
+	@OneToMany(mappedBy = "bookingUser")
+	private List<Booking> bookings = new ArrayList<>();
+	@ManyToMany(mappedBy="voucherUsers")
+	private List<Voucher> userVouchers = new ArrayList<>();
+
+	public User() {}
+	public User(String name, String email, String description, String password, int age, String favouriteFood) {
+		this.name = name;
+		this.email = email;
+		this.description = description;
+		this.password = password;
+		this.age = age;
+		this.favouriteFood = favouriteFood;
+
+	}
 	public List<Restaurant> getRestaurants() {
 		return restaurants;
 	}
@@ -54,26 +82,6 @@ public class User {
 	public void setUserVouchers(List<Voucher> userVouchers) {
 		this.userVouchers = userVouchers;
 	}
-	@ManyToMany
-	private List<Restaurant> restaurants = new ArrayList<>();
-	@OneToMany(mappedBy = "reviewUser")
-	private List<Review> reviews = new ArrayList<>();
-	@OneToMany(mappedBy = "bookingUser")
-	private List<Booking> bookings = new ArrayList<>();
-	@ManyToMany(mappedBy="voucherUsers")
-	private List<Voucher> userVouchers = new ArrayList<>();
-
-	public User() {}
-	public User(String name, String email, String description, String password, int age, String favouriteFood) {
-		this.name = name;
-		this.email = email;
-		this.description = description;
-		this.password = password;
-		this.age = age;
-		this.favouriteFood = favouriteFood;
-
-	}
-	
 	public long getId() {
 		return id;
 	}
