@@ -127,13 +127,28 @@ public class DataBaseUsage implements CommandLineRunner{
 		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian");
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas");
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai");	
+		
 		user1.getRestaurant().add(rest1);
 		user1.getRestaurant().add(rest2);
 		user2.getRestaurant().add(rest1);
 		user3.getRestaurant().add(rest2);
+		
 		userRepository.save(user1);
 		userRepository.save(user2);
+		
+		user3.getFollowingUsers().add(user1);
+		user3.getFollowingUsers().add(user2);
+		
 		userRepository.save(user3);
+		
+		user1.getFollowingUsers().add(user3);
+		user1.getFollowingUsers().add(user2);
+
+		userRepository.save(user1);
+		
+		user2.getFollowingUsers().add(user3);
+		
+		userRepository.save(user2);
 		
 		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date());
 		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date());
