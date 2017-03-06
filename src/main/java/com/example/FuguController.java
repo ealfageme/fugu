@@ -37,49 +37,49 @@ public class FuguController {
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		return "main";
 	}
-	@RequestMapping("/city/{id}")
-	public String city(Model model, @PathVariable long id) {
-		model.addAttribute("city", cityRepository.findOne(id));
-		model.addAttribute("restaurants", cityRepository.findOne(id).getCityResturants());
+	@RequestMapping("/city/{name}")
+	public String city(Model model, @PathVariable String name) {
+		model.addAttribute("city", cityRepository.findByName(name));
+		model.addAttribute("restaurants", cityRepository.findByName(name).getCityResturants());
 		
 		return "city";
 	}
-	@RequestMapping("/private-client/{id}")
-	public String privateClient(Model model, @PathVariable long id) {
-		model.addAttribute("user", userRepository.findOne(id));
-		model.addAttribute("restaurants", userRepository.findOne(id).getRestaurants());
-		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
-		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
+	@RequestMapping("/private-client/{name}")
+	public String privateClient(Model model, @PathVariable String name) {
+		model.addAttribute("user", userRepository.findByName(name));
+		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
+		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
+		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "private-client";
 	}
-	@RequestMapping("/private-restaurant/{id}")
-	public String privateRestaurant(Model model,@PathVariable long id) {
-		model.addAttribute("restaurant",restaurantRepository.findOne(id));
-		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
-		model.addAttribute("bookings",restaurantRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers",restaurantRepository.findOne(id).getVouchers());
-		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
+	@RequestMapping("/private-restaurant/{name}")
+	public String privateRestaurant(Model model,@PathVariable String name) {
+		model.addAttribute("restaurant",restaurantRepository.findByName(name));
+		model.addAttribute("menu",restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("bookings",restaurantRepository.findByName(name).getBookings());
+		model.addAttribute("vouchers",restaurantRepository.findByName(name).getVouchers());
+		model.addAttribute("reviews",restaurantRepository.findByName(name).getRestaurantReviews());
 		return "private-restaurant";
 	}
 		
-	@RequestMapping("/public-restaurant/{id}")
-	public String publicRestaurant(Model model, @PathVariable long id) {
+	@RequestMapping("/public-restaurant/{name}")
+	public String publicRestaurant(Model model, @PathVariable String name) {
 		
-		model.addAttribute("restaurant",restaurantRepository.findOne(id));
-		model.addAttribute("menu",restaurantRepository.findOne(id).getMenus());
-		model.addAttribute("vouchers",restaurantRepository.findOne(id).getVouchers());
-		model.addAttribute("reviews",restaurantRepository.findOne(id).getRestaurantReviews());
+		model.addAttribute("restaurant",restaurantRepository.findByName(name));
+		model.addAttribute("menu",restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("vouchers",restaurantRepository.findByName(name).getVouchers());
+		model.addAttribute("reviews",restaurantRepository.findByName(name).getRestaurantReviews());
 		return "public-restaurant";
 	}
-	@RequestMapping("/public-client/{id}")
-	public String publicClient(Model model, @PathVariable long id) {
-		model.addAttribute("user", userRepository.findOne(id));
-		model.addAttribute("restaurants", userRepository.findOne(id).getRestaurants());
-		model.addAttribute("bookings", userRepository.findOne(id).getBookings());
-		model.addAttribute("vouchers", userRepository.findOne(id).getUserVouchers());
-		model.addAttribute("reviews", userRepository.findOne(id).getReviews());
+	@RequestMapping("/public-client/{name}")
+	public String publicClient(Model model, @PathVariable String name) {
+		model.addAttribute("user", userRepository.findByName(name));
+		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
+		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
+		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "public-client";
 	}

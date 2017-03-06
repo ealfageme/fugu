@@ -11,7 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Restaurant {
@@ -68,6 +67,12 @@ public class Restaurant {
 		this.password = password;
 	}
 	
+	public String getFoodType() {
+		return foodType;
+	}
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
+	}
 	public List<Booking> getBookings() {
 		return bookings;
 	}
