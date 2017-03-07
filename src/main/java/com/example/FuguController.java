@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FuguController {
@@ -83,9 +84,14 @@ public class FuguController {
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "public-client";
 	}
+
 	@RequestMapping("/search-web/")
-	public String searchWeb(Model model) {
-		model.addAttribute("restaurants", restaurantRepository.findAll());
+	public String searchWeb(Model model, @RequestParam(required=false) String city, @RequestParam(required=false) String foodType) {
+		if(city==null||foodType==null){
+			model.addAttribute("restaurants", restaurantRepository.findAll());
+		}else{
+			System.out.println("Hola que ase");
+		}
 		return "search-web";
 	}
 
