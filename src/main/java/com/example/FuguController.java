@@ -47,6 +47,7 @@ public class FuguController {
 		userRepository.save(user);}
 		return "main";
 	}
+	
 
 	@RequestMapping("/city/{name}")
 	public String city(Model model, @PathVariable String name) {
@@ -113,8 +114,6 @@ public class FuguController {
 		}
 		else if(min!=null&&max!=null&&minPrice!=null&&maxPrice!=null){	
 			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
-		}else{
-			model.addAttribute("restaurants", restaurantRepository.findAll());
 		}
 		
 		return "search-web";
