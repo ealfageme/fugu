@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,16 +63,6 @@ public class FuguController {
 		return "private-client";
 	}
 
-	@RequestMapping("/private-restaurant/{name}")
-	public String privateRestaurant(Model model, @PathVariable String name) {
-		model.addAttribute("restaurant", restaurantRepository.findByName(name));
-		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
-		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
-		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
-		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		return "private-restaurant";
-	}
-
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name) {
 
@@ -92,6 +83,21 @@ public class FuguController {
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		return "public-client";
+	}
+
+	@RequestMapping("/private-restaurant/{name}")
+	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type, @RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min, @RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription) {
+		model.addAttribute("restaurant", restaurantRepository.findByName(name));
+		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
+		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
+		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
+		if (vouchername!=null){
+			Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
+			voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
+			voucher.setRestaurant(restaurantRepository.findByName(name));
+			voucherRepository.save(voucher);}
+		return "private-restaurant";
 	}
 
 	@RequestMapping("/search-web/")
