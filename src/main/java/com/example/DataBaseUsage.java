@@ -136,17 +136,17 @@ public class DataBaseUsage implements CommandLineRunner{
 		userRepository.save(user1);
 		userRepository.save(user2);
 		
-		user3.getFollowingUsers().add(user1);
-		user3.getFollowingUsers().add(user2);
+		user3.getFollowing().add(user1);
+		user3.getFollowing().add(user2);
 		
 		userRepository.save(user3);
 		
-		user1.getFollowingUsers().add(user3);
-		user1.getFollowingUsers().add(user2);
+		user1.getFollowing().add(user3);
+		user1.getFollowing().add(user2);
 
 		userRepository.save(user1);
 		
-		user2.getFollowingUsers().add(user3);
+		user2.getFollowing().add(user3);
 		
 		userRepository.save(user2);
 		

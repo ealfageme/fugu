@@ -220,39 +220,19 @@
 							style="visibility: visible; animation-name: fadeInLeft;"
 							id="followingPeople">
 							<h2>People</h2>
+							{{#following}}
 							<div class="menu-column">
 								<button onClick=" window.location.href='public-client.html'"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
 											<img src="/images/profile-pictures/foto-perfil1.jpg"
-												class="img-circle" id="imgPerfil">Masseto
+												class="img-circle" id="imgPerfil">{{name}}
 										</h6>
 									</div>
 								</button>
 							</div>
-							<div class="menu-column">
-								<button onClick=" window.location.href='public-client.html'"
-									class="food">
-									<div class="food-desc">
-										<h6 class="food-name">
-											<img src="/images/profile-pictures/foto-perfil2.jpg"
-												class="img-circle" id="imgPerfil">Jhonas
-										</h6>
-									</div>
-								</button>
-							</div>
-							<div class="menu-column">
-								<button onClick=" window.location.href='public-client.html'"
-									class="food">
-									<div class="food-desc">
-										<h6 class="food-name">
-											<img src="/images/profile-pictures/foto-perfil3.jpg"
-												class="img-circle" id="imgPerfil">Julio
-										</h6>
-									</div>
-								</button>
-							</div>
+							{{/following}}
 							<button type="button" class="btnMore">See more</button>
 							<!-- /menu-column -->
 						</div>
