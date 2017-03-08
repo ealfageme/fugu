@@ -35,11 +35,17 @@ public class FuguController {
 
 	@RequestMapping("/main/")
 	public String main(Model model, Restaurant restaurant, @RequestParam(required=false) String restaurantname, 
-			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood, @RequestParam(required=false) String email,@RequestParam(required=false) String password) {	
+			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood,
+			 @RequestParam(required=false) String email,@RequestParam(required=false) String password,
+			 @RequestParam(required=false) String name,@RequestParam(required=false) String useremail,
+			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		if (restaurantname!=null){
 		Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password);
 		restaurantRepository.save(rest);}
+		if (name!=null){
+		User user = new User(name,useremail,"", userpassword ,18,favouritefood);
+		userRepository.save(user);}
 		return "main";
 	}
 	@RequestMapping("/city/{name}")

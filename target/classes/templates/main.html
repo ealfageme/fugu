@@ -311,13 +311,12 @@
                         <p class="formmargin">Introduce your following details: </p>
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <input type="text" class="form-control formmargin" id="restaurantname" placeholder="Name">
-                                <input type="text" class="form-control formmargin" id="address" placeholder="Address">
+                                <input type="text" class="form-control formmargin" name='name' placeholder="Name">
+                                <input type="text" class="form-control formmargin" name='useremail' placeholder="email">
                                 <br>
-                                <input type="text" class="form-control formmargin" id="kindoffood" placeholder="Kind of food">
-                                <input type="text" class="form-control formmargin" id="username" placeholder="Email">
+                                <input type="text" class="form-control formmargin" name='favouritefood' placeholder="Favourite food">
                                 <br>
-                                <input name="password" id="password_client" type="password" class="form-control formmargin" placeholder="Password">
+                                <input name='userpassword'  type="password" class="form-control formmargin" placeholder="Password">
                                 <input type="password" id="confirm_password_client" name="confirm_password"  class="form-control formmargin"  placeholder="Confirm password">
                                 
                                 <br> </div>
@@ -325,12 +324,11 @@
                             <span id="message_client"></span>  
                             <p class="formmargin">Upload a profile picture </p>
                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                            <input type='submit' value='Enviar'> 
                         </form>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btnMore">Sign in</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
