@@ -19,3 +19,23 @@ function validate() {
   }
   return false;
 }
+
+$('#password_restaurant, #confirm_password_restaurant').on('keyup', function () {
+	if($('#password_restaurant').val().length>=6){
+		if ($('#password_restaurant').val() !== $('#confirm_password_restaurant').val()&&$('#confirm_password_restaurant').val().length>=6) {
+			$('#message_restaurant').html('Passwords not matching').css('color', 'red');
+	    } else{
+	    	$('#message_restaurant').html('');
+	    }
+	}
+});
+
+$('#password_client, #confirm_password_client').on('keyup', function () {
+	if($('#password_client').val().length>=6){
+		if ($('#password_client').val() !== $('#confirm_password_client').val()&&$('#confirm_password_client').val().length>=6) {
+			$('#message_client').html('Passwords not matching').css('color', 'red');
+	    } else{
+	    	$('#message_client').html('');
+	    }
+	}
+});
