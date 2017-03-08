@@ -53,6 +53,7 @@ public class FuguController {
 	public String privateClient(Model model, @PathVariable String name) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("following", userRepository.findByName(name).getFollowing());
 		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
@@ -82,6 +83,7 @@ public class FuguController {
 	public String publicClient(Model model, @PathVariable String name) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("following", userRepository.findByName(name).getFollowing());
 		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());

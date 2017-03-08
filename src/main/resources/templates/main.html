@@ -64,7 +64,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div id="imaginary_container">
                             <div class="input-group stylish-input-group">
-                                <input type="text" class="form-control" style="border-radius:0px!important" placeholder="Search restaurant, city or street"> <span class="input-group-addon" style="border-radius:0px!important; background: #fff;">
+                                <input type="text" class="form-control" style="border-radius:0px!important" placeholder="Search restaurant, city"> <span class="input-group-addon" style="border-radius:0px!important; background: #fff;">
                                 <a href="/search-web/"><span style="color:#232323" class="glyphicon glyphicon-search"></span> </a>
                                 </span>
                             </div>
@@ -264,16 +264,30 @@
                                 <input type="text" class="form-control formmargin" name='restaurantname' placeholder="Resaurant name">
                                 <input type="text" class="form-control formmargin" name='address' placeholder="Address">
                                 <br>
-                                <input type="text" class="form-control formmargin" name='kindoffood' placeholder="Kind of food">
+                                <!--  <input type="text" class="form-control formmargin" name='city' placeholder="city"> -->
+                            </div>
+                                <div class="form-group">
+										<label for="filter">Food type </label> <select
+											class="form-control"  style="border-radius:0px!important"  name='kindoffood'>												
+											<option value="Chinese"selected  style="border-radius:0px!important" >Chinese</option>
+											<option value="Japanese"  style="border-radius:0px!important">Japanese</option>
+											<option value="American"  style="border-radius:0px!important">American</option>
+											<option value="Thai"  style="border-radius:0px!important">Thai</option>
+											<option value="Tapas"  style="border-radius:0px!important">Tapas</option>
+											<option value="Golician"  style="border-radius:0px!important">Galician</option>
+											<option value="Mexican"  style="border-radius:0px!important">Mexican</option>
+											<option value="Indian"  style="border-radius:0px!important">Indian</option>
+											<option value="Italian" style="border-radius:0px!important">Italian</option>
+										</select>
+								</div>
                                 <input type="text" class="form-control formmargin" name='email' placeholder="Email">
                                 <br>
-                                <!--  <input type="text" class="form-control formmargin" name='city' placeholder="city"> -->
-                                <br>
-                                <input type="password" class="form-control formmargin" name='password' placeholder="Password">
-                                <input type="password" class="form-control formmargin" name='confpassword' placeholder="Confirm password">
-                                <br>
-                            </div>
+                                <input name="password" id="password_restaurant" type="password" class="form-control formmargin" placeholder="Password">
+                                <input type="password" name="confirm_password" id="confirm_password_restaurant" class="form-control formmargin"  placeholder="Confirm password">                                                
+                                <br> 
+                                </div>                    
                             <img src="/images/restaurant.png">
+                            <span id='message_restaurant'></span>
                             <p class="formmargin">Upload a profile picture </p>
                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                         	<input type='submit' value='Enviar'> 
@@ -303,10 +317,12 @@
                                 <input type="text" class="form-control formmargin" id="kindoffood" placeholder="Kind of food">
                                 <input type="text" class="form-control formmargin" id="username" placeholder="Email">
                                 <br>
-                                <input type="password" class="form-control formmargin" id="password" placeholder="Password">
-                                <input type="password" class="form-control formmargin" id="confirmpassword" placeholder="Confirm password">
+                                <input name="password" id="password_client" type="password" class="form-control formmargin" placeholder="Password">
+                                <input type="password" id="confirm_password_client" name="confirm_password"  class="form-control formmargin"  placeholder="Confirm password">
+                                
                                 <br> </div>
                             <img src="/images/profile.png">
+                            <span id="message_client"></span>  
                             <p class="formmargin">Upload a profile picture </p>
                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                         </form>
