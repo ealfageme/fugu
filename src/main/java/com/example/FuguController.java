@@ -57,7 +57,7 @@ public class FuguController {
 	}
 
 	@RequestMapping("/private-client/{name}")
-	public String privateClient(Model model, @PathVariable String name) {
+	public String privateClient(Model model, @PathVariable String name, @RequestParam(required=false) String username) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
 		model.addAttribute("following", userRepository.findByName(name).getFollowing());
@@ -65,6 +65,11 @@ public class FuguController {
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+		if (username!=null) {
+			User user = userRepository.findByName(name);
+			user.setName(username);
+			userRepository.save(user);
+		}
 		return "private-client";
 	}
 
