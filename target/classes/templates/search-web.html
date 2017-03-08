@@ -70,37 +70,32 @@
 					<div class="col-md-12">
 						<div class="input-group" id="adv-search">
 							<input type="text" class="form-control"
-								placeholder="Search restaurant, city or street" />
+								placeholder="Search by city or food type" />
 							<div class="input-group-btn">
 								<div class="btn-group" role="group">
 									<div class="dropdown dropdown-lg">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown" aria-expanded="false"></button>
 										<div class="dropdown-menu dropdown-menu-right" role="menu">
-											<form class="form-horizontal" role="form">
+											<form class="form-horizontal" role="form" action="">
 												<div class="form-group">
 													<label for="filter">Food type</label> <select
-														class="form-control">
-														<option value="0" selected></option>
-														<option value="1">Chinese</option>
-														<option value="2">Japanese</option>
-														<option value="3">American</option>
-														<option value="4">Thai</option>
-														<option value="5">Tapas</option>
-														<option value="6">Galician</option>
-														<option value="7">Mexican</option>
-														<option value="8">Indian</option>
-														<option value="9">Italian</option>
+														class="form-control" name="foodType">
+														<option value="" selected></option>
+														<option value="Chinese">Chinese</option>
+														<option value="Japanese">Japanese</option>
+														<option value="American">American</option>
+														<option value="Thai">Thai</option>
+														<option value="Tapas">Tapas</option>
+														<option value="Galician">Galician</option>
+														<option value="Mexican">Mexican</option>
+														<option value="Indian">Indian</option>
+														<option value="Italian">Italian</option>
 													</select>
-												</div>
-
-												<div class="form-group">
-													<label for="contain">Address</label> <input
-														class="form-control" type="text" />
 												</div>
 												<div class="form-group">
 													<label for="contain">City</label> <input
-														class="form-control" type="text" />
+														class="form-control" type="text" name="city"/>
 												</div>
 												<button type="submit" class="btn btn-primary">
 													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -145,7 +140,7 @@
 													<span class="input-group-addon">&gt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="Min"> <span class="input-group-addon">€</span>
+														name="minPrice"> <span class="input-group-addon">€</span>
 												</div>
 											</div>
 											<div class="col-md-3">
@@ -153,7 +148,7 @@
 													<span class="input-group-addon">&lt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="Max"> <span class="input-group-addon">€</span>
+														name="maxPrice"> <span class="input-group-addon">€</span>
 												</div>
 											</div>										
 											<div class="col-md-2">
@@ -161,8 +156,8 @@
 													<span class="input-group-addon">&gt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="0"> <span class="input-group-addon"><span
-														class="glyphicon glyphicon-star"></span></span>
+														name="min"> <span class="input-group-addon"><span
+														class="glyphicon glyphicon-star" ></span></span>
 												</div>
 											</div>
 											<div class="col-md-2">
@@ -170,7 +165,7 @@
 													<span class="input-group-addon">&lt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="5"> <span class="input-group-addon"><span
+														name="max"> <span class="input-group-addon"><span
 														class="glyphicon glyphicon-star"></span></span>
 												</div>
 											</div>
