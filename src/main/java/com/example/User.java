@@ -33,13 +33,13 @@ public class User {
 	@ManyToMany
 	private List<Restaurant> restaurants = new ArrayList<>();
 	@ManyToMany
-	private List<User> followingUsers = new ArrayList<>();
+	private List<User> following = new ArrayList<>();
 
-	public List<User> getFollowingUsers() {
-		return followingUsers;
+	public List<User> getFollowing() {
+		return following;
 	}
-	public void setFollowingUsers(List<User> followingUsers) {
-		this.followingUsers = followingUsers;
+	public void setFollowing(List<User> following) {
+		this.following = following;
 	}
 	@OneToMany(mappedBy = "reviewUser")
 	private List<Review> reviews = new ArrayList<>();

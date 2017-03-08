@@ -33,9 +33,12 @@ public class FuguController {
 	private BookingRepository bookingRepository;
 
 	@RequestMapping("/main/")
-	public String main(Model model, Restaurant restaurant) {
-		model.addAttribute("restaurant",
-				restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
+	public String main(Model model, Restaurant restaurant, @RequestParam(required=false) String restaurantname, 
+			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood, @RequestParam(required=false) String email,@RequestParam(required=false) String password) {	
+		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
+		if (restaurantname!=null){
+		Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password);
+		restaurantRepository.save(rest);}
 		return "main";
 	}
 
@@ -51,6 +54,7 @@ public class FuguController {
 	public String privateClient(Model model, @PathVariable String name) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("following", userRepository.findByName(name).getFollowing());
 		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
@@ -82,6 +86,7 @@ public class FuguController {
 	public String publicClient(Model model, @PathVariable String name) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
+		model.addAttribute("following", userRepository.findByName(name).getFollowing());
 		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
@@ -90,16 +95,21 @@ public class FuguController {
 	}
 
 	@RequestMapping("/search-web/")
-	public String searchWeb(Model model, @RequestParam(required=false) String city, @RequestParam(required=false) String foodType, @RequestParam(required=false) Double min, @RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice, @RequestParam(required=false) Double maxPrice) {
-		if(city!=null&&foodType!=null){
+	public String searchWeb(Model model, @RequestParam(required=false) String name, @RequestParam(required=false) String city, @RequestParam(required=false) String foodType, @RequestParam(required=false) Double min, @RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice, @RequestParam(required=false) Double maxPrice) {
+		if(name!=null){
+			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+		}
+		else if(city!=null&&foodType!=null){
 			model.addAttribute("restaurants", restaurantRepository.findByFoodTypeAndCityName(foodType, city));
 		}
-		if(min!=null&&max!=null&&minPrice!=null&&maxPrice!=null){
-			
-			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, minPrice, maxPrice));
-		}/*else{
+		if(name!=null){
+			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+		}
+		else if(min!=null&&max!=null&&minPrice!=null&&maxPrice!=null){	
+			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
+		}else{
 			model.addAttribute("restaurants", restaurantRepository.findAll());
-		}*/
+		}
 		
 		return "search-web";
 	}

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long>{
 	Restaurant findByName(String name);
+	Restaurant findByNameIgnoreCase(String name);
 	List<Restaurant> findByMenuPriceBetween(Double minPrice, Double maxPrice);
 	List<Restaurant> findByRateBetween(Double min, Double max);
 	List<Restaurant> findByCityName(String city);
