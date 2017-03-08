@@ -40,18 +40,32 @@
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 					<ul class="nav navbar-nav">
 						<li class="signin">
-							<li class="signin">
-                            <form class="navbar-form navbar-right" role="form">
-                                <div class="input-group" > <span class="input-group-addon" style="border-radius:0px!important; background: #fff;"><i class="glyphicon glyphicon-user" ></i></span>
-                                    <input id="email" type="email" class="form-control" style="border-radius:0px!important" name="email" value="" placeholder="Email Address"> </div>
-                                <div class="input-group"> <span class="input-group-addon" style="border-radius:0px!important; background: #fff;"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input id="password" type="password" class="form-control" style="border-radius:0px!important" name="password" value="" placeholder="Password"> </div>
-                                <button type="submit" class="logInBtn" onClick=" window.location.href='private-client.html'">Login</button>
-                                <a href="#modalwindow2" data-toggle="modal" style="padding:0px!important">
-                                    <button type="submit" class="signInBtn">Sign in</button>
-                                </a>
-                            </form>
-                        </li>
+						<li class="signin">
+							<form class="navbar-form navbar-right" role="form">
+								<div class="input-group">
+									<span class="input-group-addon"
+										style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-user"></i></span> <input id="email"
+										type="email" class="form-control"
+										style="border-radius: 0px !important" name="email" value=""
+										placeholder="Email Address">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"
+										style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-lock"></i></span> <input id="password"
+										type="password" class="form-control"
+										style="border-radius: 0px !important" name="password" value=""
+										placeholder="Password">
+								</div>
+								<button type="submit" class="logInBtn"
+									onClick=" window.location.href='private-client.html'">Login</button>
+								<a href="#modalwindow2" data-toggle="modal"
+									style="padding: 0px !important">
+									<button type="submit" class="signInBtn">Sign in</button>
+								</a>
+							</form>
+						</li>
 						</li>
 						<li><a href="#contact">CONTACT US</a></li>
 					</ul>
@@ -69,38 +83,35 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="input-group" id="adv-search">
-							<input type="text" class="form-control"
-								placeholder="Search restaurant, city or street" />
+							<form class="form-horizontal" role="form" action="">
+									<input type="text" class="form-control"
+										placeholder="Search by a restaurant name" name="name" />
+							</form>
 							<div class="input-group-btn">
 								<div class="btn-group" role="group">
 									<div class="dropdown dropdown-lg">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown" aria-expanded="false"></button>
 										<div class="dropdown-menu dropdown-menu-right" role="menu">
-											<form class="form-horizontal" role="form">
+											<form class="form-horizontal" role="form" action="">
 												<div class="form-group">
 													<label for="filter">Food type</label> <select
-														class="form-control">
-														<option value="0" selected></option>
-														<option value="1">Chinese</option>
-														<option value="2">Japanese</option>
-														<option value="3">American</option>
-														<option value="4">Thai</option>
-														<option value="5">Tapas</option>
-														<option value="6">Galician</option>
-														<option value="7">Mexican</option>
-														<option value="8">Indian</option>
-														<option value="9">Italian</option>
+														class="form-control" name="foodType">
+														<option value="" selected></option>
+														<option value="Chinese">Chinese</option>
+														<option value="Japanese">Japanese</option>
+														<option value="American">American</option>
+														<option value="Thai">Thai</option>
+														<option value="Tapas">Tapas</option>
+														<option value="Galician">Galician</option>
+														<option value="Mexican">Mexican</option>
+														<option value="Indian">Indian</option>
+														<option value="Italian">Italian</option>
 													</select>
-												</div>
-
-												<div class="form-group">
-													<label for="contain">Address</label> <input
-														class="form-control" type="text" />
 												</div>
 												<div class="form-group">
 													<label for="contain">City</label> <input
-														class="form-control" type="text" />
+														class="form-control" type="text" name="city" />
 												</div>
 												<button type="submit" class="btn btn-primary">
 													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -108,9 +119,6 @@
 											</form>
 										</div>
 									</div>
-									<button type="button" class="btn btn-primary">
-										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-									</button>
 								</div>
 							</div>
 						</div>
@@ -145,7 +153,7 @@
 													<span class="input-group-addon">&gt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="Min"> <span class="input-group-addon">€</span>
+														name="minPrice"> <span class="input-group-addon">€</span>
 												</div>
 											</div>
 											<div class="col-md-3">
@@ -153,15 +161,15 @@
 													<span class="input-group-addon">&lt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														placeholder="Max"> <span class="input-group-addon">€</span>
+														name="maxPrice"> <span class="input-group-addon">€</span>
 												</div>
-											</div>										
+											</div>
 											<div class="col-md-2">
 												<div class="input-group">
 													<span class="input-group-addon">&gt;</span> <input
 														type="text" class="form-control"
-														aria-label="Amount (to the nearest dollar)"
-														placeholder="0"> <span class="input-group-addon"><span
+														aria-label="Amount (to the nearest dollar)" name="min">
+													<span class="input-group-addon"><span
 														class="glyphicon glyphicon-star"></span></span>
 												</div>
 											</div>
@@ -169,8 +177,8 @@
 												<div class="input-group">
 													<span class="input-group-addon">&lt;</span> <input
 														type="text" class="form-control"
-														aria-label="Amount (to the nearest dollar)"
-														placeholder="5"> <span class="input-group-addon"><span
+														aria-label="Amount (to the nearest dollar)" name="max">
+													<span class="input-group-addon"><span
 														class="glyphicon glyphicon-star"></span></span>
 												</div>
 											</div>
@@ -192,7 +200,8 @@
 							style="visibility: visible; animation-name: fadeInRight;">
 							<div class="menu-column">
 								{{#restaurants}}
-								<button onClick=" window.location.href='/public-restaurant/{{name}}'"
+								<button
+									onClick=" window.location.href='/public-restaurant/{{name}}'"
 									class="food">
 									<div class="food-desc">
 										<h3 class="food-name">
@@ -206,8 +215,7 @@
 											<div class="col-md-6 col-xs-9">
 												<br>
 												<h6 class="food-name" align="center">Opinions</h6>
-												<br>
-												{{#restaurantReviews}}
+												<br> {{#restaurantReviews}}
 												<p>"{{content}}"</p>
 												{{/restaurantReviews}}
 											</div>
@@ -217,7 +225,8 @@
 														<span class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
 														class="glyphicon glyphicon-star"></span> <span
-														class="glyphicon glyphicon-star"></span> <br>RATE: {{rate}}</span><br>MENU: {{menuPrice}}€</span>
+														class="glyphicon glyphicon-star"></span> <br>RATE:
+														{{rate}}</span><br>MENU: {{menuPrice}}€</span>
 													<hr>
 												</div>
 											</div>
@@ -226,7 +235,8 @@
 									</div>
 									<!-- /food-desc -->
 									<div class="food-details">
-										<span><span class="glyphicon glyphicon-map-marker"></span> {{address}} - {{city.name}}  </span><span><span
+										<span><span class="glyphicon glyphicon-map-marker"></span>
+											{{address}} - {{city.name}} </span><span><span
 											class="glyphicon glyphicon-phone">{{phone}} </span></span>
 									</div>
 									<!-- /food-details -->
@@ -267,14 +277,14 @@
 						<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
 						<form name="sentMessage" id="contactForm" novalidate>
 							<div class="col-md-6">
-								<input id="username" type="text" class="form-control" placeholder="Full Name"
-									id="name" required
+								<input id="username" type="text" class="form-control"
+									placeholder="Full Name" id="name" required
 									data-validation-required-message="Please enter your name" />
 								<p class="help-block"></p>
 							</div>
 							<div class="col-md-6 emailmar">
-								<input id="useremail" type="email" class="form-control" placeholder="Email"
-									id="email" required
+								<input id="useremail" type="email" class="form-control"
+									placeholder="Email" id="email" required
 									data-validation-required-message="Please enter your email" />
 							</div>
 							<div class="col-md-12">
@@ -288,7 +298,9 @@
 							<div class="col-md-6 col-md-offset-5 footermargin morediv">
 								<div id="success"></div>
 								<button type="button" class=" btnMore " data-toggle="modal"
-									data-target="#exampleModalLong"><a onClick="sendFuguFeedback()">Submit Messages</a></button>
+									data-target="#exampleModalLong">
+									<a onClick="sendFuguFeedback()">Submit Messages</a>
+								</button>
 							</div>
 							<!-- Modal -->
 							<div class="modal fade" id="exampleModalLong" tabindex="-1"

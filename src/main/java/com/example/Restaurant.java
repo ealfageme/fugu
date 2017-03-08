@@ -23,18 +23,18 @@ public class Restaurant {
 	private String description;
 	private String email;
 	private String foodType;
-	private double menuPrice;
-	public double getMenuPrice() {
+	private Double menuPrice;
+	public Double getMenuPrice() {
 		return menuPrice;
 	}
-	public void setMenuPrice(double menuPrice) {
+	public void setMenuPrice(Double menuPrice) {
 		this.menuPrice = menuPrice;
 	}
-	private double rate;
-	public double getRate() {
+	private Double rate;
+	public Double getRate() {
 		return rate;
 	}
-	public void setRate(double rate) {
+	public void setRate(Double rate) {
 		this.rate = rate;
 	}
 	private long phone;
