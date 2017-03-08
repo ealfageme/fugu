@@ -261,23 +261,25 @@
                         <p class="formmargin">Introduce your following details: </p>
                         <form class="form-inline" role="form">
                             <div class="form-group">
-                                <input type="text" class="form-control formmargin" id="restaurantname" placeholder="Resaurant name">
-                                <input type="text" class="form-control formmargin" id="address" placeholder="Address">
+                                <input type="text" class="form-control formmargin" name='restaurantname' placeholder="Resaurant name">
+                                <input type="text" class="form-control formmargin" name='address' placeholder="Address">
                                 <br>
-                                <input type="text" class="form-control formmargin" id="kindoffood" placeholder="Kind of food">
-                                <input type="text" class="form-control formmargin" id="username" placeholder="Email">
+                                <input type="text" class="form-control formmargin" name='kindoffood' placeholder="Kind of food">
+                                <input type="text" class="form-control formmargin" name='email' placeholder="Email">
                                 <br>
-                                <input type="password" class="form-control formmargin" id="password" placeholder="Password">
-                                <input type="password" class="form-control formmargin" id="confirmpassword" placeholder="Confirm password">
-                                <br> </div>
+                                <!--  <input type="text" class="form-control formmargin" name='city' placeholder="city"> -->
+                                <br>
+                                <input type="password" class="form-control formmargin" name='password' placeholder="Password">
+                                <input type="password" class="form-control formmargin" name='confpassword' placeholder="Confirm password">
+                                <br>
+                            </div>
                             <img src="/images/restaurant.png">
                             <p class="formmargin">Upload a profile picture </p>
                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        	<input type='submit' value='Enviar'> 
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btnMore">Sign in</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
