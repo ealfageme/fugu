@@ -165,7 +165,14 @@ public class FuguController {
 	}
 
 	@RequestMapping("/search-web/")
-	public String searchWeb(Model model, @RequestParam(required=false) String name, @RequestParam(required=false) String city, @RequestParam(required=false) String foodType, @RequestParam(required=false) Double min, @RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice, @RequestParam(required=false) Double maxPrice) {
+	public String searchWeb(Model model, @RequestParam(required=false) String name, @RequestParam(required=false) String city,
+			@RequestParam(required=false) String foodType, @RequestParam(required=false) Double min,
+			@RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice,
+			@RequestParam(required=false) Double maxPrice,@RequestParam(required=false) String restaurantname, 
+			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood,
+			 @RequestParam(required=false) String email,@RequestParam(required=false) String password,
+			 @RequestParam(required=false) String username,@RequestParam(required=false) String useremail,
+			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood ) {
 		if(name!=null){
 			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
 		}
@@ -178,6 +185,12 @@ public class FuguController {
 		else if(min!=null&&max!=null&&minPrice!=null&&maxPrice!=null){	
 			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
 		}
+		if (restaurantname!=null){
+			Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password);
+			restaurantRepository.save(rest);}
+			if (username!=null){
+			User user = new User(username,useremail,"", userpassword ,18,favouritefood);
+			userRepository.save(user);}
 		
 		return "search-web";
 	}
