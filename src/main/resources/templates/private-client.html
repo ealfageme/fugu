@@ -76,7 +76,7 @@
 							<div class="form-group">
 								<label for="name">Account Name:</label> <input
 									style="border-radius: 0px !important" 
-									class="form-control" name='username' value="{{user.name}}">
+									class="form-control" name='username' id = 'username' value="{{user.name}}">
 							</div>
 						
 							<div class="form-group">
@@ -93,7 +93,7 @@
 						
 							<div class="form-group">
 								<label for="email">Favourite food:</label> <input
-									style="border-radius: 0px !important" type="email"
+									style="border-radius: 0px !important"
 									class="form-control" name='favouritefood' value="{{user.favouriteFood}}">
 							</div>
 						
@@ -118,7 +118,7 @@
 							</div>
 						
 						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-							 <input type='submit' value='Update'> 
+							<button type='submit' class="btnMore"> Update</button>
 							<button type="button" class="btnMore" data-toggle="modal"
 								data-target="#exampleModal2" id="update">Delete</button>
 						</div>
