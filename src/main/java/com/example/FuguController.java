@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class FuguController {
 		userRepository.save(user);}
 		return "main";
 	}
+	
 
 	@RequestMapping("/city/{name}")
 	public String city(Model model, @PathVariable String name) {
@@ -73,16 +75,6 @@ public class FuguController {
 		return "private-client";
 	}
 
-	@RequestMapping("/private-restaurant/{name}")
-	public String privateRestaurant(Model model, @PathVariable String name) {
-		model.addAttribute("restaurant", restaurantRepository.findByName(name));
-		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
-		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
-		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
-		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		return "private-restaurant";
-	}
-
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name) {
 
@@ -105,6 +97,21 @@ public class FuguController {
 		return "public-client";
 	}
 
+	@RequestMapping("/private-restaurant/{name}")
+	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type, @RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min, @RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription) {
+		model.addAttribute("restaurant", restaurantRepository.findByName(name));
+		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
+		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
+		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
+		if (vouchername!=null){
+			Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
+			voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
+			voucher.setRestaurant(restaurantRepository.findByName(name));
+			voucherRepository.save(voucher);}
+		return "private-restaurant";
+	}
+
 	@RequestMapping("/search-web/")
 	public String searchWeb(Model model, @RequestParam(required=false) String name, @RequestParam(required=false) String city, @RequestParam(required=false) String foodType, @RequestParam(required=false) Double min, @RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice, @RequestParam(required=false) Double maxPrice) {
 		if(name!=null){
@@ -118,8 +125,6 @@ public class FuguController {
 		}
 		else if(min!=null&&max!=null&&minPrice!=null&&maxPrice!=null){	
 			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
-		}else{
-			model.addAttribute("restaurants", restaurantRepository.findAll());
 		}
 		
 		return "search-web";

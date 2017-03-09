@@ -482,63 +482,35 @@
                                 <div class="form-section">
                                     <div class="row">
                                         <form role="form">
-                                            <div class="col-md-2">
-                                                <div class="input-group">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&gt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Min">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">€</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="input-group">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&lt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Max">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">€</span>
-                                                </div>
-                                            </div>
                                             <div style="border-radius:0px!important" class="col-md-3">
                                                 <div style="border-radius:0px!important" class="form-group">
                                                     <label style="border-radius:0px!important"  class="sr-only" for="guest">Guest</label>
                                                     <select style="border-radius:0px!important" id="guest" name="guest" class="form-control">
-                                                        <option value="1">Vegan food lovers</option>
-                                                        <option value="2">American food lovers</option>
-                                                        <option value="3">Indian food lovers</option>
-                                                        <option value="4">Fast food lovers</option>
-                                                        <option value="5">Chinese food lovers</option>
-                                                        <option value="1">Thai food lovers</option>
-                                                        <option value="1">People who already visited you</option>
-                                                        <option value="6">Everyone</option>
+                                                        <option value="foodType"name="type">{{restaurant.foodType}}</option>
                                                     </select>
                                                 </div>
                                             </div>
-
-
-
-                                            <div class="col-md-2">
+                                                <div class="form-group">
+												<div class="col-md-2">
                                                 <div class="input-group">
                                                     <span style="border-radius:0px!important" class="input-group-addon">&gt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">Age</span>
+                                                    <input style="border-radius:0px!important" type="text" class="form-control"  name='min' aria-label="Amount (to the nearest dollar)" placeholder="0">
+                                                    <span style="border-radius:0px!important" class="input-group-addon"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="input-group" >
                                                     <span style="border-radius:0px!important" class="input-group-addon">&lt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="99">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">Age</span>
+                                                    <input style="border-radius:0px!important" type="text" class="form-control" name='max' aria-label="Amount (to the nearest dollar)" placeholder="99">
+                                                    <span style="border-radius:0px!important" class="input-group-addon"></span>
                                                 </div>
                                             </div>
-
-
-                                            <form role="form">
-                                                <div class="form-group">
-
                                                     <label for="name"></label>
                                                     <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
                                                         <h3>Offer</h3></div>
-                                                    <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer"></textarea>
+                                                        <input type="text" class="form-control formmargin" name='vouchername' placeholder="Voucher name">
+                                                    <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer" name='voucherdescription'></textarea>
                                                 </div>
-                                            </form>
                                             <div class="col-md-3">
                                                 <div class="paddingtop">
                                                     <div class="form-group">
@@ -557,7 +529,7 @@
                                                 <input style="border-radius:0px!important" type="file" class="form-control-file" id="exampleInputFi" aria-describedby="fileHelp">
                                             </div>
                                             <div class="col-md-3 col-md-offset-10">
-                                                <button type="submit" class="btnMore">Send group offer</button>
+                                                <input type="submit" class="btnMore" value='Send group offer'>
                                             </div>
                                     </div>
 
