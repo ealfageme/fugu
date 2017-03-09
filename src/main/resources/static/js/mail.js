@@ -39,3 +39,26 @@ $('#password_client, #confirm_password_client').on('keyup', function () {
 	    }
 	}
 });
+
+let oldDay="13";
+function selectDay(newDay) {
+	document.getElementById(oldDay+"class").className = "";
+	document.getElementById(newDay+"class").className = "active active-date";
+	oldDay=newDay;
+	document.getElementById("day").innerHTML=newDay+"th";
+	return false;
+}
+
+let oldHour="1";
+function selectHour(newHour) {
+	document.getElementById("hour"+oldHour).className = "";
+	document.getElementById("hour"+newHour).className = "active active-date";
+	oldHour=newHour;
+	return false;
+}
+function book(){
+	alert(oldDay+"th March 2017. "+document.getElementById("hour"+oldHour).innerHTML);
+}
+
+
+
