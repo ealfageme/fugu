@@ -91,7 +91,7 @@ public class FuguController {
 
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
-			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests) {
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements) {
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();
@@ -100,7 +100,7 @@ public class FuguController {
 		     } catch (ParseException e) {
 		         return null;
 		     }
-			Booking booking=new Booking(date,Integer.parseInt(guests));
+			Booking booking=new Booking(date,Integer.parseInt(guests),specialRequirements);
 			booking.setBookingRestaurant(restaurantRepository.findByName(name));
 			long id=1;
 			booking.setBookingUser(userRepository.findOne(id));

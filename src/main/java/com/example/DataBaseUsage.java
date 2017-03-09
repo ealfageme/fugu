@@ -204,18 +204,18 @@ public class DataBaseUsage implements CommandLineRunner{
 
 		
 		//RELACION USER - BOOKING
-		Booking booking1 = new Booking(new Date(), 5);
-		Booking booking2 = new Booking(new Date(), 2);
-		Booking booking3 = new Booking(new Date(), 3);
-		Booking booking4 = new Booking(new Date(), 4);
-		Booking booking5 = new Booking(new Date(), 1);
-		Booking booking6 = new Booking(new Date(), 6);
-		booking1.setUser(user1);
-		booking2.setUser(user3);
-		booking3.setUser(user1);
-		booking4.setUser(user3);
-		booking5.setUser(user2);
-		booking6.setUser(user2);
+		Booking booking1 = new Booking(new Date(), 5,"One high chair for the baby");
+		Booking booking2 = new Booking(new Date(), 2,"Champagne");
+		Booking booking3 = new Booking(new Date(), 3,"High chair");
+		Booking booking4 = new Booking(new Date(), 4,"");
+		Booking booking5 = new Booking(new Date(), 1,"");
+		Booking booking6 = new Booking(new Date(), 6,"");
+		booking1.setBookingUser(user1);
+		booking2.setBookingUser(user3);
+		booking3.setBookingUser(user1);
+		booking4.setBookingUser(user3);
+		booking5.setBookingUser(user2);
+		booking6.setBookingUser(user2);
 		booking1.setBookingRestaurant(rest1);
 		booking2.setBookingRestaurant(rest3);
 		booking3.setBookingRestaurant(rest2);
