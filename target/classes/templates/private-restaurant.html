@@ -87,34 +87,34 @@
                 <div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
                     <div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
                         <h1>Change data</h1>
-                        <form role="form">
+                        <form role="form" method='post'>
                             <div class="form-group">
                                 <label for="name">Restaurant Name:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="{{restaurant.name}}">
+                                <input style="border-radius:0px!important" type="name" class="form-control" name="namerest" value="{{restaurant.name}}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Location:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="{{restaurant.address}}">
+                                <input style="border-radius:0px!important" type="name" class="form-control" name="location" value="{{restaurant.address}}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Description:</label>
-                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">{{restaurant.description}}</textarea>
+                                <textarea style="border-radius:0px!important" class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="name">Telephone:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value="{{restaurant.phone}}">
+                                <input style="border-radius:0px!important" type="name" class="form-control" name="telephone" value="{{restaurant.phone}}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value="{{restaurant.email}}">
+                                <input style="border-radius:0px!important" type="email" class="form-control" name="emailrest" value="{{restaurant.email}}">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">New password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Enter new password">
+                                <input style="border-radius:0px!important" type="password" class="form-control" name="pwd" placeholder="Enter new password">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Repeat new password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Repeat new password">
+                                <input style="border-radius:0px!important" type="password" class="form-control" name="confirmpwd" placeholder="Repeat new password">
                             </div>
                         		<label for="pwd">Foods you serve:</label><br>
                         		 <input type="checkbox" name="breakfast" value="Breakfast" checked="checked"> breakfast 
@@ -125,7 +125,7 @@
                                 <input style="border-radius:0px!important" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                             </div>
                             <div class="col-md-3 col-md-offset-10">
-                                                <input type="submit" class="btnMore" value='Update'>
+                                            <button type='submit' class="btnMore"> Update</button>
                             </div>
                         </form>
                             
