@@ -268,7 +268,7 @@
                                     <!-- Filter Button Start -->
                                     {{#bookings}}
                                     <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
+                                        <div id="{{-index}}" class="item recommendations-item web seo">
                                             <div class="row">
                                                 <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
                                                     <ul>
@@ -283,7 +283,7 @@
                                                 <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
                                                     <br>
                                                     <button type="button" class="btnMore">Contact</button>
-                                                    <span class="hiddenclass"> <button type="button" class="btnMore" onClick="this.style.display='none'">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
+                                                    <span class="hiddenclass"> <button type="button" class="btnMore" onClick="acceptReservation({{-index}})" id="{{-index}}-button">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -659,6 +659,7 @@
     <script src="/contact/jqBootstrapValidation.js"></script>
     <script src="/contact/contact_me.js"></script>
     <script src="/js/custom.js"></script>
+    <script src="/js/fugu.js"></script>
 
 </body>
 
