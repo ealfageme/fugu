@@ -1,5 +1,7 @@
 package com.example;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -88,13 +90,27 @@ public class FuguController {
 	}
 
 	@RequestMapping("/public-restaurant/{name}")
-	public String publicRestaurant(Model model, @PathVariable String name) {
-
+	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests) {
+		if(bookingday!=null && bookinghour!=null){
+			System.out.println(bookingday+" "+bookinghour);
+			Date date=new Date();
+			try {
+				date= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-"+bookingday+" "+bookinghour);
+		     } catch (ParseException e) {
+		         return null;
+		     }
+			Booking booking=new Booking(date,Integer.parseInt(guests));
+			booking.setBookingRestaurant(restaurantRepository.findByName(name));
+			long id=1;
+			booking.setBookingUser(userRepository.findOne(id));
+			bookingRepository.save(booking);
+		}	
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		
+	
 		return "public-restaurant";
 	}
 

@@ -46,6 +46,7 @@ function selectDay(newDay) {
 	document.getElementById(newDay+"class").className = "active active-date";
 	oldDay=newDay;
 	document.getElementById("day").innerHTML=newDay+"th";
+	document.getElementById("bookingday").value = newDay;
 	return false;
 }
 
@@ -54,10 +55,11 @@ function selectHour(newHour) {
 	document.getElementById("hour"+oldHour).className = "";
 	document.getElementById("hour"+newHour).className = "active active-date";
 	oldHour=newHour;
+	document.getElementById("bookinghour").value = document.getElementById("hour"+newHour).innerHTML;
 	return false;
 }
 function book(){
-	alert(oldDay+"th March 2017. "+document.getElementById("hour"+oldHour).innerHTML);
+	alert(document.getElementById("bookingday").value+"th March 2017. "+document.getElementById("bookinghour").value);
 }
 
 

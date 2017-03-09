@@ -221,6 +221,7 @@
 						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1">&nbsp &nbsp</td>
 					</tr>
 					</table>
+					
 				</div>
 				<div
 					class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown"
@@ -254,20 +255,23 @@
 						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(14)"><span id="hour14">22:30</span></td>
 					</tr>
 					</table>
+					
 					<br> 
-					<label for="name">How many people is coming?</label> 
-					<select name="guests">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-					</select>
-					<button onclick="book()" type="submit" formmethod="post" formaction="/public-client/" class="btn btn-primary bookingbtn">
-						Book <span class="glyphicon glyphicon-ok-circle"
-							aria-hidden="true"></span>
-					</button>
+					<form role="form" method='post'  action="/public-restaurant/{{restaurant.name}}">
+						<label for="name">How many people is coming?</label> 
+						<select name="guests">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+						<input id="bookingday" type="hidden" name='bookingday' value=''>
+						<input id="bookinghour" type="hidden" name='bookinghour' value=''>
+						<button  type="submit" class="btn btn-primary bookingbtn">Book <span class="glyphicon glyphicon-ok-circle"aria-hidden="true"></span>
+						</button>
+					</form>
 					<form role="form">
 						<label for="name">Available tables: 45</label>
 						<div class="form-group">
