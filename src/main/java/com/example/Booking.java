@@ -13,22 +13,22 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	//private Restaurant restaurant;
 	@ManyToOne
 	private User bookingUser = new User();
 	@ManyToOne
 	private Restaurant bookingRestaurant = new Restaurant();
 	private Date date;
-	//private User user;
 	private int number;
+	private String specialRequirements;
 	
 	public Booking(){}
-	public Booking(Date date, int number) {
+	public Booking(Date date, int number,String specialRequirements) {
 		super();
 		//this.restaurant = restaurant;
 		this.date = date;
 		//this.user = user;
 		this.number = number;
+		this.specialRequirements=specialRequirements;
 	}
 
 	public User getBookingUser() {
@@ -61,16 +61,17 @@ public class Booking {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public User getUser() {
-		return null;//user;
-	}
-	public void setUser(User user) {
-		this.bookingUser = user;
-	}
 	public int getNumber() {
 		return number;
 	}
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	public String getSpecialRequirements() {
+		return specialRequirements;
+	}
+	public void setSpecialRequirements(String specialRequirements) {
+		this.specialRequirements = specialRequirements;
+	}
+	
 }

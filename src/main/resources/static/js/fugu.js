@@ -58,8 +58,10 @@ function selectHour(newHour) {
 	document.getElementById("bookinghour").value = document.getElementById("hour"+newHour).innerHTML;
 	return false;
 }
-function book(){
-	alert(document.getElementById("bookingday").value+"th March 2017. "+document.getElementById("bookinghour").value);
+
+function acceptReservation(index){
+	$("#" + index).css('background', '#80cc0c');
+	document.getElementById(index+'-button').style.display = 'none'; 
 }
 
 
