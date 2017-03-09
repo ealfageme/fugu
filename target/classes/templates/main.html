@@ -207,6 +207,7 @@
 									onClick=" window.location.href='/public-restaurant/{{name}}'"
 									class="food">
 
+
 									<div class="food-desc">
 										<h6 class="food-name">{{name}} ({{foodType}})</h6>
 										<br>
@@ -372,7 +373,7 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form class="form-inline" role="form">
+						<form class="form-inline" role="form" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin"
 									name='restaurantname' placeholder="Resaurant name"> <input
@@ -403,13 +404,13 @@
 							<input type="password" name="confirm_password"
 								id="confirm_password_restaurant" class="form-control formmargin"
 								placeholder="Confirm password"> <br>
-					</div>
+					
 					<img src="/images/restaurant.png"> <span
 						id='message_restaurant'></span>
 					<p class="formmargin">Upload a profile picture</p>
 					<input type="file" class="form-control-file" id="exampleInputFile"
-						aria-describedby="fileHelp"> <input type='submit'
-						value='Enviar'>
+						aria-describedby="fileHelp">
+						 <button type='submit' class="btnMore">Send</button>
 					</form>
 				</div>
 
@@ -434,7 +435,7 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form class="form-inline" role="form">
+						<form class="form-inline" role="form" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin" name='name'
 									placeholder="Name"> <input type="text"
@@ -451,11 +452,12 @@
 							<img src="/images/profile.png"> <span id="message_client"></span>
 							<p class="formmargin">Upload a profile picture</p>
 							<input type="file" class="form-control-file"
-								id="exampleInputFile" aria-describedby="fileHelp"> <input
-								type='submit' value='Enviar'>
+								id="exampleInputFile" aria-describedby="fileHelp"> 
+								<button type='submit' class="btnMore">Send</button>
 						</form>
 
 					</div>
+
 
 				</div>
 			</div>
