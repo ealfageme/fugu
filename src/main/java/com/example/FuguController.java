@@ -93,7 +93,7 @@ public class FuguController {
 	}
 
 	@RequestMapping("/private-restaurant/{name}")
-	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type, @RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min, @RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription) {
+	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type, @RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min, @RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,@RequestParam(required=false) Double menuprice) {
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
@@ -104,6 +104,10 @@ public class FuguController {
 			voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
 			voucher.setRestaurant(restaurantRepository.findByName(name));
 			voucherRepository.save(voucher);}
+		if (menuname!=null){
+			Menu menu= new Menu(menuname,menuprice,menudescription);
+			menu.setRestaurantMenu(restaurantRepository.findByName(name));
+			menuRepository.save(menu);}
 		return "private-restaurant";
 	}
 
