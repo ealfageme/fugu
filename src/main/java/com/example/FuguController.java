@@ -100,7 +100,7 @@ public class FuguController {
 
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
-			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements) {
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName) {
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();
@@ -119,12 +119,18 @@ public class FuguController {
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-	
+		System.out.println(name);
+		if (restaurantName!=null) {				
+			userRepository.findByName("john-lenon").getRestaurant().add(restaurantRepository.findByName(name));
+			userRepository.save(userRepository.findByName("john-lenon"));
+			restaurantRepository.findByName(name).getUsers().add(userRepository.findByName("john-lenon"));
+			restaurantRepository.save(restaurantRepository.findByName(name));
+			}
 		return "public-restaurant";
 	}
 
 	@RequestMapping("/public-client/{name}")
-	public String publicClient(Model model, @PathVariable String name) {
+	public String publicClient(Model model, @PathVariable String name,  @RequestParam(required=false) String userName) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
 		model.addAttribute("following", userRepository.findByName(name).getFollowing());
@@ -132,6 +138,9 @@ public class FuguController {
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+		if (userName!=null) {			
+			userRepository.findByName("john-lenon").getFollowing().add(userRepository.findByName(name));
+			userRepository.save(userRepository.findByName("john-lenon"));}
 		return "public-client";
 	}
 
@@ -203,6 +212,11 @@ public class FuguController {
 			userRepository.save(user);}
 		
 		return "search-web";
+	}
+	
+	@RequestMapping("/error/")
+	public String error(Model model) {
+		return "error";
 	}
 
 	
