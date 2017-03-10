@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
 	
@@ -271,10 +272,10 @@ public class DataBaseUsage implements CommandLineRunner{
 
 	}
 	@PostConstruct
-	public void init (){
-		
-		
-	}
+    private void initDatabase() {
+    	
+    	userRepository.save(new User("user","john-lenon@website.com","singler singer", "pass",69, "American", "ROLE_USER"));
+    }
 
 	
 	
