@@ -59,6 +59,7 @@ function selectHour(newHour) {
 	return false;
 }
 
+
 function acceptReservation(index){
 	$("#" + index).css('background', '#80cc0c');
 	document.getElementById(index+'-button').style.display = 'none'; 
