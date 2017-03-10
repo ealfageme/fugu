@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -25,8 +27,7 @@ public class User {
 	private String password;
 	private int age;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
+	private String roles;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,14 +49,14 @@ public class User {
 	private List<Voucher> userVouchers = new ArrayList<>();
 
 	public User() {}
-	public User(String name, String email, String description, String password, int age, String favouriteFood, String... roles) {
+	public User(String name, String email, String description, String password, int age, String favouriteFood, String roles) {
 		this.name = name;
 		this.email = email;
 		this.description = description;
-		this.password = password;
+		this.password = new BCryptPasswordEncoder().encode(password);
 		this.age = age;
 		this.favouriteFood = favouriteFood;
-		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.roles = roles;
 
 	}
 	public List<User> getFollowing() {
@@ -83,10 +84,10 @@ public class User {
 		this.reviews = reviews;
 	}
 
-	public List<String> getRoles() {
+	public String getRoles() {
 		return roles;
 	}
-	public void setRoles(List<String> roles) {
+	public void setRoles(String roles) {
 		this.roles = roles;
 	}
 	public List<Booking> getBookings() {

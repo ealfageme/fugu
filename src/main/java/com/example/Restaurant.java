@@ -1,15 +1,20 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Entity
@@ -25,6 +30,14 @@ public class Restaurant {
 	private String foodType;
 	private Double menuPrice;
 	private boolean breakfast, lunch, dinner;
+	private String roles;
+
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 	public Double getMenuPrice() {
 		return menuPrice;
 	}
@@ -55,7 +68,7 @@ public class Restaurant {
 	
 	public Restaurant (){}
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
-			long phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner) {
+			long phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner,String roles) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -64,11 +77,13 @@ public class Restaurant {
 		this.foodType = foodTypes;
 		this.phone = phone;
 		this.rate = rate;
+		this.roles = roles;
 		this.menuPrice = menuPrice;
-		this.password = password;
+		this.password = new BCryptPasswordEncoder().encode(password);
 		this.breakfast=breakfast;
 		this.lunch = lunch;
 		this.dinner = dinner;
+		
 	}
 	
 	public String getFoodType() {

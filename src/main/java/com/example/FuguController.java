@@ -47,12 +47,12 @@ public class FuguController {
 			 @RequestParam(required=false) String age) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password,true,true,true);
+			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password,true,true,true,"ROLE_RESTAURANT"+restaurantname);
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
 		if (name!=null){
-			User user = new User(name,useremail,clientdescription, userpassword ,Integer.parseInt(age),favouritefood);
+			User user = new User(name,useremail,clientdescription, userpassword ,Integer.parseInt(age),favouritefood,"ROLE_USER"+name);
 			userRepository.save(user);
 		}
 		return "main";
@@ -221,10 +221,10 @@ public class FuguController {
 			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
 		}
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password,true,true,true);
+			Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password,true,true,true,"ROLE_RESTAURANT"+restaurantname);
 			restaurantRepository.save(rest);}
 			if (username!=null){
-			User user = new User(username,useremail,"", userpassword ,18,favouritefood);
+			User user = new User(username,useremail,"", userpassword ,18,favouritefood,"ROLE_USER"+username);
 			userRepository.save(user);}
 		
 		return "search-web";
