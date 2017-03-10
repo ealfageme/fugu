@@ -390,9 +390,10 @@
 						<form  role="form" method='post'>
 							<div class="form-group" >
 								<input type="text" class="form-control formmargin"
-									name='restaurantname' placeholder="Restaurant name"> <input
+									name='restaurantname' placeholder="Restaurant name" id="restaurantname" required> 
+								<input
 									type="text" class="form-control formmargin" name='address'
-									placeholder="Address"> <br>
+									placeholder="Address" id="restaurantaddress" required> <br>
 								<div class="form-group">
 									  <label for="filter">City </label> <select
 										class="form-control" style="border-radius: 0px !important"
@@ -423,28 +424,32 @@
 									</select>
 								</div>
 								<br>
-								<input type="text" class="form-control formmargin" name='email'
-									placeholder="Email"> 
+								<input type="email" class="form-control formmargin" name='email'
+									placeholder="Email" id="restaurantemail" required> 
 								<input type="text" class="form-control formmargin" name='phone'
-									placeholder="Phone">  
+									placeholder="Phone" id="restaurantphone" required> 
+								<span id='message_restaurant_phone'></span>  
 								<br>
-								<label for="name">Description:</label>
+								<label for="name" >Description:</label>
 								<br>
 									<textarea style="border-radius: 0px !important"
-										class="form-control" id="exampleTextarea" name='restaurantdescription' rows="3"></textarea>
-								<br>			
+										class="form-control" id="restaurantdescription" name='restaurantdescription' rows="3" required></textarea>
+								<br>	
+								<label for="name" >Password (6 characters min.):</label>		
 								<input name="password"
 									id="password_restaurant" type="password"
-									class="form-control formmargin" placeholder="Password">
+									class="form-control formmargin" placeholder="Password" required>
 								<input type="password" name="confirm_password"
 									id="confirm_password_restaurant" class="form-control formmargin"
-									placeholder="Confirm password"> <br>					
-								<img src="/images/restaurant.png"> <span
-									id='message_restaurant'></span>
+									placeholder="Confirm password" required> <br>
+														
+								<img src="/images/restaurant.png">
+								<span id='message_restaurant'></span> 
 								<p class="formmargin">Upload a profile picture</p>
 								<input type="file" class="form-control-file" id="exampleInputFile"
-									aria-describedby="fileHelp">
-									 <button type='submit' class="btnMore">Send</button>
+									aria-describedby="fileHelp"><!-- logInBtn btnMore -->
+									 <button type='submit' class="logInBtn" id='sendrestaurant' disabled>Send</button>
+									 <span id='message_restaurant_button'>Fill the form before register</span> 
 						</div>
 					</form>
 				</div>
@@ -473,12 +478,14 @@
 						<form  role="form" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin" name='name'
-									placeholder="Name"> <input type="text"
+									placeholder="Name" id="usernameform"> 
+								<input type="text"
 									class="form-control formmargin" name='useremail'
-									placeholder="Email"> 
+									placeholder="Email" id="useremailform"> 
 								<br> 
 								<input type="text" class="form-control formmargin" name='age'
-									placeholder="Age">
+									placeholder="Age" id="userageform">
+									<span id='message_user_age'></span>  
 								<div class="form-group">
 									<label for="filter">Favourite food</label> <select
 										class="form-control" style="border-radius: 0px !important"
@@ -499,20 +506,24 @@
 								<label for="name">Description:</label>
 								<br>
 									<textarea style="border-radius: 0px !important"
-										class="form-control" id="exampleTextarea" name='clientdescription' rows="3"></textarea>
+										class="form-control" id="userdescriptionform" name='clientdescription' rows="3"></textarea>
 								<br> 
+								<label for="name" >Password (6 characters min.):</label>		
 								<input
 									name='userpassword' type="password"
-									class="form-control formmargin" placeholder="Password">
+									class="form-control formmargin" placeholder="Password" id="password_client">
 								<input type="password" id="confirm_password_client"
 									name="confirm_password" class="form-control formmargin"
-									placeholder="Confirm password"> <br>
+									placeholder="Confirm password" id="confirm_password_client"> <br>
 							</div>
-							<img src="/images/profile.png"> <span id="message_client"></span>
+							
+							<img src="/images/profile.png"> 
+							<span id="message_client"></span>
 							<p class="formmargin">Upload a profile picture</p>
 							<input type="file" class="form-control-file"
 								id="exampleInputFile" aria-describedby="fileHelp"> 
-								<button type='submit' class="btnMore">Send</button>
+								<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
+								<span id='message_user_button'>Fill the form before register</span> 
 						</form>
 
 					</div>
