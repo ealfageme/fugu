@@ -121,7 +121,6 @@ public class FuguController {
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		System.out.println(name);
 		if (restaurantName!=null) {				
 			userRepository.findByName("john-lenon").getRestaurant().add(restaurantRepository.findByName(name));
 			userRepository.save(userRepository.findByName("john-lenon"));
