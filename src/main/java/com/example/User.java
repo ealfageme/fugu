@@ -1,9 +1,12 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,44 +22,53 @@ public class User {
 	private String email;
 	private String description;
 	private String favouriteFood;
-	public String getFavouriteFood() {
-		return favouriteFood;
-	}
-	public void setFavouriteFood(String favouriteFood) {
-		this.favouriteFood = favouriteFood;
-	}
 	private String password;
 	private int age;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	@ManyToMany
 	private List<Restaurant> restaurants = new ArrayList<>();
+	
 	@ManyToMany
 	private List<User> following = new ArrayList<>();
-
-	public List<User> getFollowing() {
-		return following;
-	}
-	public void setFollowing(List<User> following) {
-		this.following = following;
-	}
+	
 	@OneToMany(mappedBy = "reviewUser")
 	private List<Review> reviews = new ArrayList<>();
+	
 	@OneToMany(mappedBy = "bookingUser")
 	private List<Booking> bookings = new ArrayList<>();
+	
 	@ManyToMany(mappedBy="voucherUsers")
 	private List<Voucher> userVouchers = new ArrayList<>();
 
 	public User() {}
-	public User(String name, String email, String description, String password, int age, String favouriteFood) {
+	public User(String name, String email, String description, String password, int age, String favouriteFood, String... roles) {
 		this.name = name;
 		this.email = email;
 		this.description = description;
 		this.password = password;
 		this.age = age;
 		this.favouriteFood = favouriteFood;
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 
+	}
+	public List<User> getFollowing() {
+		return following;
+	}
+	public void setFollowing(List<User> following) {
+		this.following = following;
+	}
+	public String getFavouriteFood() {
+		return favouriteFood;
+	}
+	public void setFavouriteFood(String favouriteFood) {
+		this.favouriteFood = favouriteFood;
 	}
 	public List<Restaurant> getRestaurants() {
 		return restaurants;
@@ -69,6 +81,13 @@ public class User {
 	}
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
 	}
 	public List<Booking> getBookings() {
 		return bookings;
