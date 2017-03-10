@@ -194,6 +194,11 @@ public class FuguController {
 		
 		return "search-web";
 	}
+	
+	@RequestMapping("/error/")
+	public String error(Model model) {
+		return "error";
+	}
 
 	
 }
