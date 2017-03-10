@@ -41,14 +41,20 @@ public class FuguController {
 			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood,
 			 @RequestParam(required=false) String email,@RequestParam(required=false) String password,
 			 @RequestParam(required=false) String name,@RequestParam(required=false) String useremail,
-			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood) {	
+			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood,
+			 @RequestParam(required=false) String restaurantcity,@RequestParam(required=false) String phone,
+			 @RequestParam(required=false) String restaurantdescription,@RequestParam(required=false) String clientdescription,
+			 @RequestParam(required=false) String age) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		if (restaurantname!=null){
-		Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password);
-		restaurantRepository.save(rest);}
+			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password);
+			rest.setCity(cityRepository.findByName(restaurantcity));
+			restaurantRepository.save(rest);
+		}
 		if (name!=null){
-		User user = new User(name,useremail,"", userpassword ,18,favouritefood);
-		userRepository.save(user);}
+			User user = new User(name,useremail,clientdescription, userpassword ,Integer.parseInt(age),favouritefood);
+			userRepository.save(user);
+		}
 		return "main";
 	}
 	
@@ -65,7 +71,7 @@ public class FuguController {
 	public String privateClient(Model model, @PathVariable String name,@RequestParam(required=false) String username,
 			@RequestParam(required=false) String useremail,@RequestParam(required=false) String userdescription,
 			@RequestParam(required=false) String favouritefood, @RequestParam(required=false) String password,
-			@RequestParam(required=false) String confirmpassword) {
+			@RequestParam(required=false) String confirmpassword, @RequestParam(required= false) Integer userage) {
 
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
@@ -85,6 +91,8 @@ public class FuguController {
 				user.setPassword(password);
 			}
 			userRepository.save(user);
+			if ((userage>10) && (userage<100))
+				user.setAge(userage);
 		}
 		return "private-client";
 	}
