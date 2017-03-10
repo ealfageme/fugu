@@ -751,9 +751,9 @@
 								<h4>RATE : {{restaurant.rate}}</h4>
 								<br>
 							</div>
-							<div class="col-l-9 col-md-9 col-s-9 col-xs-12">
+							<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
 								<textarea style="border-radius: 0px !important" rows="7"
-									cols="100" class="form-control" placeholder="Message"
+									cols="100" class="form-control" name="content" placeholder="Message"
 									id="message" required
 									data-validation-required-message="Please enter your message"
 									minlength="3"
@@ -763,13 +763,13 @@
 									type="file" class="form-control-file" id="exampleInputFile"
 									aria-describedby="fileHelp">
 							</div>
-
-							<div class="col-md-6 col-md-offset-5 footermargin morediv">
-								<div id="success"></div>
-								<button type="button" class="btnMore" data-toggle="modal"
-									data-target="#exampleModalLong">
-									<a>Submit Message</a>
-								</button>
+							<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
+								<div class="form-group">
+								<label>Rate: </label> <input
+									style="border-radius: 0px !important" type="text"
+									class="form-control" id="rate" name='rate' placeholder="5">
+							</div>
+								<button type="submit"  class="btnMore">send</button>
 							</div>
 							<!-- Modal -->
 							<div class="modal fade" id="exampleModalLong" tabindex="-1"

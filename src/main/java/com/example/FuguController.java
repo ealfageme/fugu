@@ -102,7 +102,7 @@ public class FuguController {
 
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
-			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName) {
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName, @RequestParam(required=false) Integer rate, @RequestParam(required=false) String content) {
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();
@@ -122,10 +122,16 @@ public class FuguController {
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
 		if (restaurantName!=null) {				
-			userRepository.findByName("john-lenon").getRestaurant().add(restaurantRepository.findByName(name));
-			userRepository.save(userRepository.findByName("john-lenon"));
-			restaurantRepository.findByName(name).getUsers().add(userRepository.findByName("john-lenon"));
+			userRepository.findByName("john-lennon").getRestaurant().add(restaurantRepository.findByName(name));
+			userRepository.save(userRepository.findByName("john-lennon"));
+			restaurantRepository.findByName(name).getUsers().add(userRepository.findByName("john-lennon"));
 			restaurantRepository.save(restaurantRepository.findByName(name));
+			}
+		if (rate!=null) {	
+			Review review = new Review(content,rate,new Date());
+			review.setReviewRestaurant(restaurantRepository.findByName(name));
+			review.setReviewUser(userRepository.findByName("john-lennon"));
+			reviewRepository.save(review);
 			}
 		return "public-restaurant";
 	}
@@ -140,8 +146,8 @@ public class FuguController {
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		if (userName!=null) {			
-			userRepository.findByName("john-lenon").getFollowing().add(userRepository.findByName(name));
-			userRepository.save(userRepository.findByName("john-lenon"));}
+			userRepository.findByName("john-lennon").getFollowing().add(userRepository.findByName(name));
+			userRepository.save(userRepository.findByName("john-lennon"));}
 		return "public-client";
 	}
 
