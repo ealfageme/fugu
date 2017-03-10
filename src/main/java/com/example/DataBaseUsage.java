@@ -127,14 +127,53 @@ public class DataBaseUsage implements CommandLineRunner{
 		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian");
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas");
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai");	
+		User user4 = new User("john-lenon","john-lenon@website.com","singler singer","visca catalonia",69, "American");	
 		
 		user1.getRestaurant().add(rest1);
 		user1.getRestaurant().add(rest2);
 		user2.getRestaurant().add(rest1);
 		user3.getRestaurant().add(rest2);
-		
+		user4.getRestaurant().add(rest2);
+		user1.getRestaurant().add(rest4);
+		user1.getRestaurant().add(rest5);
+		user2.getRestaurant().add(rest6);
+		user3.getRestaurant().add(rest7);
+		user4.getRestaurant().add(rest8);
+		user1.getRestaurant().add(rest9);
+		user1.getRestaurant().add(rest8);
+		user2.getRestaurant().add(rest10);
+		user3.getRestaurant().add(rest10);
+		user4.getRestaurant().add(rest1);
 		userRepository.save(user1);
 		userRepository.save(user2);
+		userRepository.save(user4);
+
+		rest1.getUsers().add(user1);
+		rest2.getUsers().add(user1);
+		rest1.getUsers().add(user2);
+		rest2.getUsers().add(user3);
+		rest2.getUsers().add(user4);
+		rest4.getUsers().add(user1);
+		rest5.getUsers().add(user1);
+		rest6.getUsers().add(user2);
+		rest7.getUsers().add(user3);
+		rest8.getUsers().add(user4);
+		rest9.getUsers().add(user1);
+		rest8.getUsers().add(user1);
+		rest10.getUsers().add(user2);
+		rest10.getUsers().add(user3);
+		rest1.getUsers().add(user4);
+		
+		restaurantRepository.save(rest1);
+		restaurantRepository.save(rest2);
+		restaurantRepository.save(rest3);
+		restaurantRepository.save(rest4);
+		restaurantRepository.save(rest5);
+		restaurantRepository.save(rest6);
+		restaurantRepository.save(rest7);
+		restaurantRepository.save(rest8);
+		restaurantRepository.save(rest9);
+		restaurantRepository.save(rest10);
 		
 		user3.getFollowing().add(user1);
 		user3.getFollowing().add(user2);
