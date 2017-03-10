@@ -93,6 +93,7 @@ public class FuguController {
 			userRepository.save(user);
 			if ((userage>10) && (userage<100))
 				user.setAge(userage);
+			return "redirect:/private-client/"+username+".html";
 		}
 		return "private-client";
 	}
@@ -159,6 +160,7 @@ public class FuguController {
 				restaurant.setPassword(pwd);
 			}
 			restaurantRepository.save(restaurant);
+			return "redirect:/private-restaurant/"+namerest+".html";
 		}
 		if (vouchername!=null){
 			Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
