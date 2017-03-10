@@ -48,16 +48,16 @@ public class DataBaseUsage implements CommandLineRunner{
 		cityRepository.save(city5);
 		cityRepository.save(city6);
 		
-		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password");
-		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","Description","email1","Tapas",123213123, 4.2,12.0,"s1add");
-		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Description","email","Galician",123213123, 3.5,5.0,"sadd");
-		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Description","email1","Italian",123213123, 1.6,13.0,"s1add");
-		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Description","email","Japanese",123213123, 3.2,16.0,"sadd");
-		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Description","email1","Chinese",123213123, 4.8,18.0,"s1add");
-		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Description","email","Mexican", 123213123,3.1,12.0,"sadd");
-		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Description","email1","Indian",123213123, 3.5,15.0,"s1add");
-		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Description","email","Thai",123213123, 4.1,20.0,"sadd");
-		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Description","email1","Galician",123213123,2.6,8.0,"s1add");
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,false,true);
+		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","Description","email1","Tapas",123213123, 4.2,12.0,"s1add",true,true,true);
+		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Description","email","Galician",123213123, 3.5,5.0,"sadd",true,true,true);
+		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Description","email1","Italian",123213123, 1.6,13.0,"s1add",true,true,true);
+		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Description","email","Japanese",123213123, 3.2,16.0,"sadd",true,true,true);
+		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Description","email1","Chinese",123213123, 4.8,18.0,"s1add",true,true,true);
+		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Description","email","Mexican", 123213123,3.1,12.0,"sadd",true,true,true);
+		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Description","email1","Indian",123213123, 3.5,15.0,"s1add",true,true,true);
+		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Description","email","Thai",123213123, 4.1,20.0,"sadd",true,true,true);
+		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Description","email1","Galician",123213123,2.6,8.0,"s1add",true,true,true);
 		
 		rest1.setCity(city1);
 		rest2.setCity(city2);

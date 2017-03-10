@@ -403,9 +403,11 @@
 				<!-- Section Header End -->
 				<div class="our-services">
 					<div class="row">
+					{{#restaurant.breakfast}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
+							
 							<div class="service-box">
 								<div class="icon">
 									<h3>Breakfast</h3>
@@ -413,7 +415,10 @@
 								<p>To start the day in the perfect way</p>
 								<img src="/images/day-food/breakfast.jpg" alt="Custom Image">
 							</div>
+							
 						</div>
+						{{/restaurant.breakfast}}
+						{{#restaurant.lunch}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
@@ -425,6 +430,8 @@
 								<img src="/images/day-food/lunch.jpg" alt="Custom Image">
 							</div>
 						</div>
+						{{/restaurant.lunch}}
+						{{#restaurant.dinner}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
@@ -436,6 +443,7 @@
 								<img src="/images/day-food/dinner.jpg" alt="Custom Image">
 							</div>
 						</div>
+						{{/restaurant.dinner}}
 					</div>
 					<div class="row"></div>
 				</div>

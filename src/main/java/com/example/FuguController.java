@@ -47,7 +47,7 @@ public class FuguController {
 			 @RequestParam(required=false) String age) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password);
+			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password,true,true,true);
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
@@ -93,6 +93,7 @@ public class FuguController {
 			userRepository.save(user);
 			if ((userage>10) && (userage<100))
 				user.setAge(userage);
+
 		}
 		return "private-client";
 	}
@@ -142,7 +143,9 @@ public class FuguController {
 	@RequestParam(required=false) Double menuprice, @RequestParam(required=false)String namerest,
 	@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
-	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd) {
+	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
+	@RequestParam(required=false)Boolean breakf,@RequestParam(required=false)Boolean lunc,
+	@RequestParam(required=false)Boolean dinne) {
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
@@ -158,6 +161,9 @@ public class FuguController {
 			if (pwd.equals(confirmpwd)){
 				restaurant.setPassword(pwd);
 			}
+			restaurant.setBreakfast(breakf);
+			restaurant.setLunch(lunc);
+			restaurant.setDinner(dinne);
 			restaurantRepository.save(restaurant);
 		}
 		if (vouchername!=null){
@@ -194,7 +200,7 @@ public class FuguController {
 			model.addAttribute("restaurants", restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
 		}
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password);
+			Restaurant rest= new Restaurant (restaurantname,address,"",email,kindoffood,0, 0, 0,password,true,true,true);
 			restaurantRepository.save(rest);}
 			if (username!=null){
 			User user = new User(username,useremail,"", userpassword ,18,favouritefood);

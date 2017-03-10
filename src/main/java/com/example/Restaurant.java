@@ -24,6 +24,7 @@ public class Restaurant {
 	private String email;
 	private String foodType;
 	private Double menuPrice;
+	private boolean breakfast, lunch, dinner;
 	public Double getMenuPrice() {
 		return menuPrice;
 	}
@@ -54,7 +55,7 @@ public class Restaurant {
 	
 	public Restaurant (){}
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
-			long phone, double rate, double menuPrice, String password) {
+			long phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -65,6 +66,9 @@ public class Restaurant {
 		this.rate = rate;
 		this.menuPrice = menuPrice;
 		this.password = password;
+		this.breakfast=breakfast;
+		this.lunch = lunch;
+		this.dinner = dinner;
 	}
 	
 	public String getFoodType() {
@@ -157,4 +161,23 @@ public class Restaurant {
 	public void setId(long id) {
 		this.id = id;
 	}
+	public boolean isBreakfast() {
+		return breakfast;
+	}
+	public void setBreakfast(boolean breakfast) {
+		this.breakfast = breakfast;
+	}
+	public boolean isLunch() {
+		return lunch;
+	}
+	public void setLunch(boolean lunch) {
+		this.lunch = lunch;
+	}
+	public boolean isDinner() {
+		return dinner;
+	}
+	public void setDinner(boolean dinner) {
+		this.dinner = dinner;
+	}
+	
 }
