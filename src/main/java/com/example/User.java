@@ -1,14 +1,19 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -19,44 +24,52 @@ public class User {
 	private String email;
 	private String description;
 	private String favouriteFood;
-	public String getFavouriteFood() {
-		return favouriteFood;
-	}
-	public void setFavouriteFood(String favouriteFood) {
-		this.favouriteFood = favouriteFood;
-	}
 	private String password;
 	private int age;
+	
+	private String roles;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	@ManyToMany
 	private List<Restaurant> restaurants = new ArrayList<>();
+	
 	@ManyToMany
 	private List<User> following = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "reviewUser")
+	private List<Review> reviews = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "bookingUser")
+	private List<Booking> bookings = new ArrayList<>();
+	
+	@ManyToMany(mappedBy="voucherUsers")
+	private List<Voucher> userVouchers = new ArrayList<>();
 
+	public User() {}
+	public User(String name, String email, String description, String password, int age, String favouriteFood, String roles) {
+		this.name = name;
+		this.email = email;
+		this.description = description;
+		this.password = new BCryptPasswordEncoder().encode(password);
+		this.age = age;
+		this.favouriteFood = favouriteFood;
+		this.roles = roles;
+
+	}
 	public List<User> getFollowing() {
 		return following;
 	}
 	public void setFollowing(List<User> following) {
 		this.following = following;
 	}
-	@OneToMany(mappedBy = "reviewUser")
-	private List<Review> reviews = new ArrayList<>();
-	@OneToMany(mappedBy = "bookingUser")
-	private List<Booking> bookings = new ArrayList<>();
-	@ManyToMany(mappedBy="voucherUsers")
-	private List<Voucher> userVouchers = new ArrayList<>();
-
-	public User() {}
-	public User(String name, String email, String description, String password, int age, String favouriteFood) {
-		this.name = name;
-		this.email = email;
-		this.description = description;
-		this.password = password;
-		this.age = age;
+	public String getFavouriteFood() {
+		return favouriteFood;
+	}
+	public void setFavouriteFood(String favouriteFood) {
 		this.favouriteFood = favouriteFood;
-
 	}
 	public List<Restaurant> getRestaurants() {
 		return restaurants;
@@ -69,6 +82,13 @@ public class User {
 	}
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	public List<Booking> getBookings() {
 		return bookings;

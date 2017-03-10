@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
 	
@@ -48,16 +49,16 @@ public class DataBaseUsage implements CommandLineRunner{
 		cityRepository.save(city5);
 		cityRepository.save(city6);
 		
-		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,false,true);
-		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","Description","email1","Tapas",123213123, 4.2,12.0,"s1add",true,true,true);
-		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Description","email","Galician",123213123, 3.5,5.0,"sadd",true,true,true);
-		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Description","email1","Italian",123213123, 1.6,13.0,"s1add",true,true,true);
-		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Description","email","Japanese",123213123, 3.2,16.0,"sadd",true,true,true);
-		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Description","email1","Chinese",123213123, 4.8,18.0,"s1add",true,true,true);
-		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Description","email","Mexican", 123213123,3.1,12.0,"sadd",true,true,true);
-		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Description","email1","Indian",123213123, 3.5,15.0,"s1add",true,true,true);
-		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Description","email","Thai",123213123, 4.1,20.0,"sadd",true,true,true);
-		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Description","email1","Galician",123213123,2.6,8.0,"s1add",true,true,true);
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey");
+		Restaurant rest2 = new Restaurant ("Mesón mariano","Avenida Colombia 4","Description","email1","Tapas",123213123, 4.2,12.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón mariano");
+		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Description","email","Galician",123213123, 3.5,5.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Felipe");
+		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Description","email1","Italian",123213123, 1.6,13.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Lito");
+		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Description","email","Japanese",123213123, 3.2,16.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Daniel");
+		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Description","email1","Chinese",123213123, 4.8,18.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Eulalio");
+		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Description","email","Mexican", 123213123,3.1,12.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Eusebio");
+		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Description","email1","Indian",123213123, 3.5,15.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Gento");
+		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Description","email","Thai",123213123, 4.1,20.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Genaro");
+		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Description","email1","Galician",123213123,2.6,8.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Agapito");
 		
 		rest1.setCity(city1);
 		rest2.setCity(city2);
@@ -124,10 +125,10 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu12);
 		menuRepository.save(menu13);
 
-		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian");
-		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas");
-		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai");	
-		User user4 = new User("john-lenon","john-lenon@website.com","singler singer","visca catalonia",69, "American");	
+		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian","ROLE_USER"+"john");
+		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas","ROLE_USER"+"john-cena");
+		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai","ROLE_USER"+"john-travolta");	
+		User user4 = new User("john-lennon","john-lenon@website.com","singler singer","visca catalonia",69, "American","ROLE_USER"+"john-lennon");	
 		
 		user1.getRestaurant().add(rest1);
 		user1.getRestaurant().add(rest2);
@@ -271,10 +272,11 @@ public class DataBaseUsage implements CommandLineRunner{
 
 	}
 	@PostConstruct
-	public void init (){
-		
-		
-	}
+    private void initDatabase() {
+    	
+    	userRepository.save(new User("alfageme","john-lenon@website.com","singler singer", "pass",69, "American", "ROLE_USER"+"alfageme"));
+    	restaurantRepository.save(new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey"));
+    }
 
 	
 	
