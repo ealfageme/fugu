@@ -155,8 +155,8 @@ public class FuguController {
 	@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
-	@RequestParam(required=false)Boolean breakf,@RequestParam(required=false)Boolean lunc,
-	@RequestParam(required=false)Boolean dinne) {
+	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
+	@RequestParam(required=false)Boolean Dinner) {
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
@@ -172,9 +172,18 @@ public class FuguController {
 			if (pwd.equals(confirmpwd)){
 				restaurant.setPassword(pwd);
 			}
-			restaurant.setBreakfast(breakf);
-			restaurant.setLunch(lunc);
-			restaurant.setDinner(dinne);
+			if (Breakfast != null)
+				restaurant.setBreakfast(true);
+			else 
+				restaurant.setBreakfast(false);
+			if (Lunch != null)
+				restaurant.setLunch(true);
+			else 
+				restaurant.setLunch(false);
+			if (Dinner != null)
+				restaurant.setDinner(true);
+			else 
+				restaurant.setDinner(false);
 			restaurantRepository.save(restaurant);
 			return "redirect:/private-restaurant/"+namerest+".html";
 		}
