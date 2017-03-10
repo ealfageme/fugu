@@ -81,16 +81,23 @@
 			</video>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-							<a href="/search-web/"><img src="/images/logo/logo.png" alt=""> </a>
+					<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<br> <br> <br> <br> <br> <br> <br>
+						<br><br> <br> <br> <br> <br> <br> <br>
+						<br>
+						<h2 class="imagetext1" data-position="center"
+							data-show-transition="left" data-hide-transition="right"
+							data-show-delay="1500" data-hide-delay="200">
+							<span class="highlight-texts"><span
+								class="section-color2 highlight-text border2">Search your perfect restaurant here</span> </span>
+						</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<br> <br>
+						<br> <a href="/search-web/"><img
+							src="/images/search-icon.png" alt=""> </a>
 					</div>
 				</div>
 			</div>
@@ -373,44 +380,65 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form class="form-inline" role="form" method='post'>
-							<div class="form-group">
+						<form  role="form" method='post'>
+							<div class="form-group" >
 								<input type="text" class="form-control formmargin"
-									name='restaurantname' placeholder="Resaurant name"> <input
+									name='restaurantname' placeholder="Restaurant name"> <input
 									type="text" class="form-control formmargin" name='address'
 									placeholder="Address"> <br>
-								<!--  <input type="text" class="form-control formmargin" name='city' placeholder="city"> -->
-							</div>
-							<div class="form-group">
-								<label for="filter">Food type </label> <select
-									class="form-control" style="border-radius: 0px !important"
-									name='kindoffood'>
-									<option value="Chinese" selected
-										style="border-radius: 0px !important">Chinese</option>
-									<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
-									<option value="American" style="border-radius: 0px !important">American</option>
-									<option value="Thai" style="border-radius: 0px !important">Thai</option>
-									<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
-									<option value="Golician" style="border-radius: 0px !important">Galician</option>
-									<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
-									<option value="Indian" style="border-radius: 0px !important">Indian</option>
-									<option value="Italian" style="border-radius: 0px !important">Italian</option>
-								</select>
-							</div>
-							<input type="text" class="form-control formmargin" name='email'
-								placeholder="Email"> <br> <input name="password"
-								id="password_restaurant" type="password"
-								class="form-control formmargin" placeholder="Password">
-							<input type="password" name="confirm_password"
-								id="confirm_password_restaurant" class="form-control formmargin"
-								placeholder="Confirm password"> <br>
-					
-					<img src="/images/restaurant.png"> <span
-						id='message_restaurant'></span>
-					<p class="formmargin">Upload a profile picture</p>
-					<input type="file" class="form-control-file" id="exampleInputFile"
-						aria-describedby="fileHelp">
-						 <button type='submit' class="btnMore">Send</button>
+								<div class="form-group">
+									  <label for="filter">City </label> <select
+										class="form-control" style="border-radius: 0px !important"
+										name='restaurantcity'>
+										  <option value="Madrid" selected
+											style="border-radius: 0px !important">Madrid</option>
+										<option value="Barcelona" style="border-radius: 0px !important">Barcelona</option>
+										<option value="Valencia" style="border-radius: 0px !important">Valencia</option>
+										<option value="Sevilla" style="border-radius: 0px !important">Sevilla</option>
+										<option value="Zaragoza" style="border-radius: 0px !important">Zaragoza</option>
+										<option value="Bilbao" style="border-radius: 0px !important">Bilbao</option>		
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="filter">Food type </label> <select
+										class="form-control" style="border-radius: 0px !important"
+										name='kindoffood'>
+										<option value="Chinese" selected
+											style="border-radius: 0px !important">Chinese</option>
+										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
+										<option value="American" style="border-radius: 0px !important">American</option>
+										<option value="Thai" style="border-radius: 0px !important">Thai</option>
+										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
+										<option value="Golician" style="border-radius: 0px !important">Galician</option>
+										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
+										<option value="Indian" style="border-radius: 0px !important">Indian</option>
+										<option value="Italian" style="border-radius: 0px !important">Italian</option>
+									</select>
+								</div>
+								<br>
+								<input type="text" class="form-control formmargin" name='email'
+									placeholder="Email"> 
+								<input type="text" class="form-control formmargin" name='phone'
+									placeholder="Phone">  
+								<br>
+								<label for="name">Description:</label>
+								<br>
+									<textarea style="border-radius: 0px !important"
+										class="form-control" id="exampleTextarea" name='restaurantdescription' rows="3"></textarea>
+								<br>			
+								<input name="password"
+									id="password_restaurant" type="password"
+									class="form-control formmargin" placeholder="Password">
+								<input type="password" name="confirm_password"
+									id="confirm_password_restaurant" class="form-control formmargin"
+									placeholder="Confirm password"> <br>					
+								<img src="/images/restaurant.png"> <span
+									id='message_restaurant'></span>
+								<p class="formmargin">Upload a profile picture</p>
+								<input type="file" class="form-control-file" id="exampleInputFile"
+									aria-describedby="fileHelp">
+									 <button type='submit' class="btnMore">Send</button>
+						</div>
 					</form>
 				</div>
 
@@ -435,14 +463,38 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form class="form-inline" role="form" method='post'>
+						<form  role="form" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin" name='name'
 									placeholder="Name"> <input type="text"
 									class="form-control formmargin" name='useremail'
-									placeholder="email"> <br> <input type="text"
-									class="form-control formmargin" name='favouritefood'
-									placeholder="Favourite food"> <br> <input
+									placeholder="Email"> 
+								<br> 
+								<input type="text" class="form-control formmargin" name='age'
+									placeholder="Age">
+								<div class="form-group">
+									<label for="filter">Favourite food</label> <select
+										class="form-control" style="border-radius: 0px !important"
+										name='favouritefood'>
+										<option value="Chinese" selected
+											style="border-radius: 0px !important">Chinese</option>
+										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
+										<option value="American" style="border-radius: 0px !important">American</option>
+										<option value="Thai" style="border-radius: 0px !important">Thai</option>
+										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
+										<option value="Golician" style="border-radius: 0px !important">Galician</option>
+										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
+										<option value="Indian" style="border-radius: 0px !important">Indian</option>
+										<option value="Italian" style="border-radius: 0px !important">Italian</option>
+									</select>
+								</div>							
+								<br>
+								<label for="name">Description:</label>
+								<br>
+									<textarea style="border-radius: 0px !important"
+										class="form-control" id="exampleTextarea" name='clientdescription' rows="3"></textarea>
+								<br> 
+								<input
 									name='userpassword' type="password"
 									class="form-control formmargin" placeholder="Password">
 								<input type="password" id="confirm_password_client"
@@ -462,89 +514,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="modalwindow3">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button style="" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h2 class="modal-title">More cities</h2>
-					</div>
-					<div class="container">
-						<div class="row">
-							<span class="col-md-2 col-sm-3 col-xs-3">
-								<ul>
-									<li><a href="/city/1">Alava</a></li>
-									<li><a href="/city/1">Albacete</a></li>
-									<li><a href="/city/1">Alicante</a></li>
-									<li><a href="/city/1">Almeria</a></li>
-									<li><a href="/city/1">Asturias</a></li>
-									<li><a href="/city/1">Avila</a></li>
-									<li><a href="/city/1">Badajoz</a></li>
-									<li><a href="/city/1">Barcelona</a></li>
-									<li><a href="/city/1">Burgos</a></li>
-									<li><a href="/city/1">Cáceres</a></li>
-									<li><a href="/city/1">Cádiz</a></li>
-									<li><a href="/city/1">Cantabria</a></li>
-									<li><a href="/city/1">Castellón</a></li>
-									<li><a href="/city/1">Ciudad Real</a></li>
-									<li><a href="/city/1">Córdoba</a></li>
-									<li><a href="/city/1">Cuenca</a></li>
-									<li><a href="/city/1">Gerona</a></li>
-								</ul>
-
-
-							</span>
-							<div class="col-md-2 col-sm-3 col-xs-3">
-								<ul>
-									<li><a href="/city/1">Granada</a></li>
-									<li><a href="/city/1">Guadalajara</a></li>
-									<li><a href="/city/1">Guipúzcoa</a></li>
-									<li><a href="/city/1">Huelva</a></li>
-									<li><a href="/city/1">Huesca</a></li>
-									<li><a href="/city/1">Islas Baleares</a></li>
-									<li><a href="/city/1">Jaén</a></li>
-									<li><a href="/city/1">La Coruña</a></li>
-									<li><a href="/city/1">La Rioja</a></li>
-									<li><a href="/city/1">Las Palmas</a></li>
-									<li><a href="/city/1">León</a></li>
-									<li><a href="/city/1">Lérida</a></li>
-									<li><a href="/city/1">Lugo</a></li>
-									<li><a href="/city/1">Madrid</a></li>
-									<li><a href="/city/1">Málaga</a></li>
-									<li><a href="/city/1">Murcia</a></li>
-									<li><a href="/city/1">Navarra</a></li>
-								</ul>
-
-
-							</div>
-							<div class="col-md-2 col-sm-3 col-xs-3">
-								<ul>
-									<li><a href="/city/1">Orense</a></li>
-									<li><a href="/city/1">Palencia</a></li>
-									<li><a href="/city/1">Pontevedra</a></li>
-									<li><a href="/city/1">Salamanca</a></li>
-									<li><a href="/city/1">Segovia</a></li>
-									<li><a href="/city/1">Sevilla</a></li>
-									<li><a href="/city/1">Soria</a></li>
-									<li><a href="/city/1">Tarragona</a></li>
-									<li><a href="/city/1">Tenerife</a></li>
-									<li><a href="/city/1">Teruel</a></li>
-									<li><a href="/city/1">Toledo</a></li>
-									<li><a href="/city/1">Valencia</a></li>
-									<li><a href="/city/1">Valladolid</a></li>
-									<li><a href="/city/1">Vizcaya</a></li>
-									<li><a href="/city/1">Zamora</a></li>
-									<li><a href="/city/1">Zaragoza</a></li>
-
-								</ul>
-
-
-							</div>
-						</div>
-
-					</div>
-				</div>
 	</section>
 	<footer>
 		<div class="container">

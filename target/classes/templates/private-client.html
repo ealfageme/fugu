@@ -119,13 +119,41 @@
 						
 						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 							<button type='submit' class="btnMore"> Update</button>
-							<button type="button" class="btnMore" data-toggle="modal"
-								data-target="#exampleModal2" id="update">Delete</button>
+							<a href="#modalwindow" data-toggle="modal">
+								<button type="submit" class="btnMore">Delete</button>
+							</a>
 						</div>
 						</form>
 					</div>
 				</div>
 			</div>
+			<div class="modal " id="modalwindow">
+			<div class="modal-dialog">
+				<div class="modal-content"
+					style="background-color: #efefef; border-radius: 0;">
+					<div class="modal-header"
+						style="background-color: #28292e !important;">
+						<button type="button" class="close" data-dismiss="modal"
+							style="color: #ffffff;">&times;</button>
+						
+					</div>
+					<div class="modal-body">
+						<h2>Are you sure that you want to delete your profile?</h2>
+						
+							<div >
+								<button type='submit' class="btnMore">Yes</button>
+								
+							</div>
+						
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		
+	</section>
 		</div>
 	</section>
 	<section id="deals" class="section-wrapper">
@@ -139,9 +167,8 @@
 						<span class="highlight-text">Deals</span>
 					</h2>
 					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Some
-						restaurants have sent offers to you</p>
-				</div>
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"><h3>Some
+						restaurants have sent offers to you</h3>
 				<!-- Section Header End -->
 				<div class="our-offers">
 					<div class="row">
