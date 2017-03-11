@@ -27,13 +27,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/search-web").permitAll();
 
         // Private pages (all other pages)
-        for(Restaurant restaurant : restaurantRepository.findAll()){
+        /*for(Restaurant restaurant : restaurantRepository.findAll()){
         	http.authorizeRequests().antMatchers("/private-restaurant/"+restaurant.getName()).hasAnyRole("RESTAURANT"+restaurant.getName());
         }
         for(User user : userRepository.findAll()){
         	 http.authorizeRequests().antMatchers("/private-client/"+user.getName()).hasAnyRole("USER"+user.getName());
-        }
-       
+        }*/
+        http.authorizeRequests().antMatchers("/private-client/jhon").hasAnyRole("USER");
         
 
         // Login form

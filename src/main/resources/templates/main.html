@@ -43,7 +43,7 @@
 						<li><a href="#top-rated">TOP-RATED</a></li>
 						<li><a href="#contact">CONTACT US</a></li>
 						<li class="signin">
-							<form class="navbar-form navbar-right" role="form">
+							<form class="navbar-form navbar-right" method="post">
 								<div class="input-group">
 									<span class="input-group-addon"
 										style="border-radius: 0px !important; background: #fff;"><i
@@ -60,7 +60,8 @@
 										style="border-radius: 0px !important" name="password" value=""
 										placeholder="Password">
 								</div>
-								<button type="submit" class="logInBtn">Login</button>
+								<input type="submit" class="logInBtn" value="Login" /><br />				
+								<!--><input type="hidden" name="_csrf" value="{{token}}"/><!-->
 								<!--<button type="submit" class="logInBtn" onClick=" window.location.href='private-client.html'">Login Restaurant</button>-->
 								<a href="#modalwindow2" data-toggle="modal"
 									style="padding: 0px !important">

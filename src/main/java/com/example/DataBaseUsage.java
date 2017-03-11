@@ -125,7 +125,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu12);
 		menuRepository.save(menu13);
 
-		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian","ROLE_USER"+"john");
+		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian","ROLE_USER");
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas","ROLE_USER"+"john-cena");
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai","ROLE_USER"+"john-travolta");	
 		User user4 = new User("john-lennon","john-lenon@website.com","singler singer","visca catalonia",69, "American","ROLE_USER"+"john-lennon");	
