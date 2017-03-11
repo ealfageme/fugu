@@ -235,10 +235,10 @@ public class FuguController {
 		return "search-web";
 	}
 	
-	@RequestMapping("/error/")
+	/*@RequestMapping("/error/")
 	public String error(Model model) {
 		return "error";
-	}
+	}*/
 
 	
 }
