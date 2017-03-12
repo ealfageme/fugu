@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Autowired
 	    public UserRepositoryAuthenticationProvider authenticationProviderUser;
+	 @Autowired
+	    public UserRepository users;
 	 @Override
 	 protected void configure(HttpSecurity http) throws Exception {
 	
@@ -22,14 +24,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.authorizeRequests().antMatchers("/city/**").permitAll();
 		 // Private pages (all other pages)
 		 //http.authorizeRequests().anyRequest().authenticated();
-		 http.authorizeRequests().antMatchers("/private-client/*").hasAnyRole("USER");
-		 http.authorizeRequests().antMatchers("/private-restaurant/*").hasAnyRole("RESTAURANT");
+		 for(User user : users.findAll()){
+			 http.authorizeRequests().antMatchers("/private-client/"+user.getName()).hasAnyRole("USER"+user.getName());
+		 }
+		 
+		 http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
+		 //http.authorizeRequests().antMatchers("/private-restaurant/*").hasAnyRole("RESTAURANT");
 		 // Login form
 		 http.formLogin().loginPage("/main/");
 		 http.formLogin().usernameParameter("loginemail");
 		 http.formLogin().passwordParameter("loginpassword");
 		 http.formLogin().defaultSuccessUrl("/private-client/john-cena");
-		 http.formLogin().defaultSuccessUrl("/default");
+		 http.formLogin().defaultSuccessUrl("/private-client/john-lennon");
+		 //http.formLogin().defaultSuccessUrl("/default");
 		 http.formLogin().failureUrl("/public-client/john/");
 		 // Logout
 		 http.logout().logoutUrl("/private-client-john-cena/");
@@ -46,8 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 // User
 		 // Database authentication provider
 	     auth.authenticationProvider(authenticationProviderUser);
-		 auth.inMemoryAuthentication()
-		 .withUser("american@whey.com").password("password").roles("RESTAURANT");
+		 //auth.inMemoryAuthentication()
+		 //.withUser("american@whey.com").password("password").roles("RESTAURANT");
 	 }
 
 }
