@@ -35,7 +35,7 @@ public class FuguController {
 	@Autowired
 	private BookingRepository bookingRepository;
 
-	@RequestMapping(value = "/main/", method = RequestMethod.GET)
+	@RequestMapping("/main/")
 	public String main(Model model, Restaurant restaurant, @RequestParam(required=false) String restaurantname, 
 			 @RequestParam(required=false) String restaurantaddress,@RequestParam(required=false) String kindoffood,
 			 @RequestParam(required=false) String restaurantcity,	@RequestParam(required=false) String restaurantemail,
@@ -59,7 +59,7 @@ public class FuguController {
 	}
 	
 
-	@RequestMapping(value = "/city/{name}", method = RequestMethod.GET)
+	@RequestMapping("/city/{name}")
 	public String city(Model model, @PathVariable String name) {
 		model.addAttribute("city", cityRepository.findByName(name));
 		model.addAttribute("restaurants", cityRepository.findByName(name).getCityResturants());
@@ -67,7 +67,7 @@ public class FuguController {
 		return "city";
 	}
 
-	@RequestMapping(value = "/private-client/{name}", method = RequestMethod.GET)
+	@RequestMapping("/private-client/{name}")
 	public String privateClient(Model model, @PathVariable String name,@RequestParam(required=false) String username,
 			@RequestParam(required=false) String useremail,@RequestParam(required=false) String userdescription,
 			@RequestParam(required=false) String favouritefood, @RequestParam(required=false) String password,
@@ -100,7 +100,7 @@ public class FuguController {
 		return "private-client";
 	}
 
-	@RequestMapping(value = "/public-restaurant/{name}", method = RequestMethod.GET)
+	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
 			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName, @RequestParam(required=false) Integer rate, @RequestParam(required=false) String content) {
 		if(bookingday!=null && bookinghour!=null){
@@ -136,7 +136,7 @@ public class FuguController {
 		return "public-restaurant";
 	}
 
-	@RequestMapping(value = "/public-client/{name}", method = RequestMethod.GET)
+	@RequestMapping("/public-client/{name}")
 	public String publicClient(Model model, @PathVariable String name,  @RequestParam(required=false) String userName) {
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
@@ -151,7 +151,7 @@ public class FuguController {
 		return "public-client";
 	}
 
-	@RequestMapping(value = "/private-restaurant/{name}", method = RequestMethod.GET)
+	@RequestMapping("/private-restaurant/{name}")
 	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type,
 	@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,
 	@RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,
@@ -204,7 +204,7 @@ public class FuguController {
 		return "private-restaurant";
 	}
 
-	@RequestMapping(value = "/search-web/", method = RequestMethod.GET)
+	@RequestMapping("/search-web/")
 	public String searchWeb(Model model, @RequestParam(required=false) String name, @RequestParam(required=false) String city,
 			@RequestParam(required=false) String foodType, @RequestParam(required=false) Double min,
 			@RequestParam(required=false) Double max, @RequestParam(required=false) Double minPrice,
