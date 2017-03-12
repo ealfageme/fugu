@@ -48,7 +48,7 @@
 									<span class="input-group-addon"
 										style="border-radius: 0px !important; background: #fff;"><i
 										class="glyphicon glyphicon-user"></i></span> <input id="email"
-										type="email" class="form-control"
+										type="email" class="form-control method='post'"
 										style="border-radius: 0px !important" name="loginemail" value=""
 										placeholder="Email Address">
 								</div>
@@ -271,7 +271,7 @@
 					<!-- Contact Form -->
 					<div class="contact-form wow bounceInRight">
 						<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-						<form name="sentMessage" id="contactForm" novalidate>
+						<form name="sentMessage" id="contactForm" novalidate method='post'>
 							<div class="col-md-6">
 								<input id="username" type="text"
 									style="border-radius: 0px !important" class="form-control"
@@ -379,7 +379,7 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form"  action="/main/">
+						<form  role="form"  action="/main/" method='post'>
 							<div class="form-group" >
 								<input type="text" class="form-control formmargin"
 									name='restaurantname' placeholder="Restaurant name" id="restaurantname" required> 
@@ -469,7 +469,7 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form" action="/main/">
+						<form  role="form" action="/main/" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin" name='username'
 									placeholder="Name" id="usernameform"> 

@@ -154,7 +154,7 @@
 			</div>
 		</div>
 		<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <form role="form">
+                        <form role="form" method='post'>
                         <input id="restaurantName" type="hidden" name='restaurantName' value={{restaurant.name}}>
                         <button type="submit" class="btnMore"  id="sendmess" style="margin:10px;">Fav</button>
                          <button type="submit" style='display:none;' class="btnMore" id="sendmess" style="margin:10px;">UnFav</button>
@@ -734,7 +734,7 @@
 					<!-- Contact Form -->
 					<div class="contact-form wow bounceInRight">
 						<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-						<form name="sentMessage" id="contactForm" novalidate>
+						<form name="sentMessage" id="contactForm" novalidate method='post'>
 
 							<div class="form-group col-md-3 col-l-3 col-s-3 col-xs-12 "
 								id="recommendations-filter" style="height: 235px">
