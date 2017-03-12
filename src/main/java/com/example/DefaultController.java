@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DefaultController {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private RestaurantRepository restaurantRepository;
 	
     @RequestMapping("/default/")
     public String defaultAfterLogin(HttpServletRequest request,Authentication authentication) {
@@ -20,6 +22,7 @@ public class DefaultController {
         	User user=userRepository.findByEmail(authentication.getName());
             return "redirect:/private-client/"+user.getName();
         }
-        return "redirect:/private-restaurant/American%20Whey/";
+        Restaurant restaurant=restaurantRepository.findByEmail(authentication.getName());
+        return "redirect:/private-restaurant/"+restaurant.getName();
     }
 }

@@ -13,6 +13,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    public UserRepositoryAuthenticationProvider authenticationProviderUser;
 	 @Autowired
 	    public UserRepository users;
+
+	 @Autowired
+	 public RestaurantRepositoryAuthenticationProvider authenticationProviderRestaurant;
 	 @Override
 	 protected void configure(HttpSecurity http) throws Exception {
 	
@@ -51,9 +54,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		 // User
 		 // Database authentication provider
+	     
+	     auth.authenticationProvider(authenticationProviderRestaurant);
 	     auth.authenticationProvider(authenticationProviderUser);
-		 //auth.inMemoryAuthentication()
-		 //.withUser("american@whey.com").password("password").roles("RESTAURANT");
+
 	 }
 
 }
