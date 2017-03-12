@@ -45,8 +45,9 @@
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
 					</ul>
-					<form action="/logout/" method="post">
+					<form action="/main/" method="post">
 					<button type="submit" class="signInBtn"> SignOut</button>
+					<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form> 
 				</div>
 			</div>

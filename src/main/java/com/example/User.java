@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -53,7 +53,7 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.description = description;
-		this.password =  password;//new BCryptPasswordEncoder().encode(password);
+		this.password =  new BCryptPasswordEncoder().encode(password);
 		this.age = age;
 		this.favouriteFood = favouriteFood;
 		this.roles = roles;
