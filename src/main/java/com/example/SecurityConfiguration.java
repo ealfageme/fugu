@@ -13,6 +13,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    public UserRepositoryAuthenticationProvider authenticationProviderUser;
 	 @Autowired
 	    public UserRepository users;
+	 @Autowired
+	    public RestaurantRepository restaurants;
 
 	 @Autowired
 	 public RestaurantRepositoryAuthenticationProvider authenticationProviderRestaurant;
@@ -32,7 +34,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			 http.authorizeRequests().antMatchers("/private-client/"+user.getName()).hasAnyRole("USER"+user.getName());
 		 }
 		 
-		 http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
+		 for(Restaurant restaurant : restaurants.findAll()){
+			 System.out.println(restaurant.getName());
+			 http.authorizeRequests().antMatchers("/private-client/"+restaurant.getName()).hasAnyRole("RESTAURANT"+restaurant.getName());
+		 }
+		 
+		 //http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
 		 //http.authorizeRequests().antMatchers("/private-restaurant/*").hasAnyRole("RESTAURANT");
 		 // Login form
 		 http.formLogin().loginPage("/main/");

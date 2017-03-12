@@ -24,7 +24,6 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 		System.out.println(auth.getName());
 		Restaurant restaurant = restaurantRepository.findByEmail(auth.getName());
-		System.out.println("Restaurant ");
 		if (restaurant == null) {
 			System.out.println("Restaurant not found");
 			throw new BadCredentialsException("Restaurant not found");

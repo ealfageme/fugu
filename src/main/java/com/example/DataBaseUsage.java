@@ -57,14 +57,14 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey");
 		Restaurant rest2 = new Restaurant ("Mesonmariano","Avenida Colombia 4","Description","meson@mariano.com","Tapas",123213123, 4.2,12.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón mariano");
-		Restaurant rest3 = new Restaurant ("Mesón Felipe","Avenida Barcelona 43","Description","email","Galician",123213123, 3.5,5.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Felipe");
-		Restaurant rest4 = new Restaurant ("Mesón Lito","Calle de la amagura 5","Description","email1","Italian",123213123, 1.6,13.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Lito");
-		Restaurant rest5 = new Restaurant ("Mesón Daniel","Plaza de España 69","Description","email","Japanese",123213123, 3.2,16.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Daniel");
-		Restaurant rest6 = new Restaurant ("Mesón Eulalio","Calle Margaret 12","Description","email1","Chinese",123213123, 4.8,18.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Eulalio");
-		Restaurant rest7 = new Restaurant ("Mesón Eusebio","Callejón Paco 1","Description","email","Mexican", 123213123,3.1,12.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Eusebio");
-		Restaurant rest8 = new Restaurant ("Mesón Gento","Calle azulona 76","Description","email1","Indian",123213123, 3.5,15.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Gento");
-		Restaurant rest9 = new Restaurant ("Mesón Genaro","Plaza de la reina 3","Description","email","Thai",123213123, 4.1,20.0,"sadd",true,true,true,"ROLE_RESTAURANT"+"Mesón Genaro");
-		Restaurant rest10 = new Restaurant ("Mesón Agapito","Avenida Pablo","Description","email1","Galician",123213123,2.6,8.0,"s1add",true,true,true,"ROLE_RESTAURANT"+"Mesón Agapito");
+		Restaurant rest3 = new Restaurant ("Meson Felipe","Avenida Barcelona 43","Description","meson@felipe.com","Galician",123213123, 3.5,5.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Felipe");
+		Restaurant rest4 = new Restaurant ("Meson Lito","Calle de la amagura 5","Description","meson@lito.com","Italian",123213123, 1.6,13.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Lito");
+		Restaurant rest5 = new Restaurant ("Meson Daniel","Plaza de España 69","Description","meson@daniel.com","Japanese",123213123, 3.2,16.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Daniel");
+		Restaurant rest6 = new Restaurant ("Meson Eulalio","Calle Margaret 12","Description","meson@eulalio.com","Chinese",123213123, 4.8,18.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Eulalio");
+		Restaurant rest7 = new Restaurant ("Meson Eusebio","Callejón Paco 1","Description","meson@eusebio.com","Mexican", 123213123,3.1,12.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Eusebio");
+		Restaurant rest8 = new Restaurant ("Meson Gento","Calle azulona 76","Description","meson@gento.com","Indian",123213123, 3.5,15.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Gento");
+		Restaurant rest9 = new Restaurant ("Meson Genaro","Plaza de la reina 3","Description","meson@genaro.com","Thai",123213123, 4.1,20.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Genaro");
+		Restaurant rest10 = new Restaurant ("Meson Agapito","Avenida Pablo","Description","meson@agapito.com","Galician",123213123,2.6,8.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Agapito");
 		
 		rest1.setCity(city1);
 		rest2.setCity(city2);
@@ -132,7 +132,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu13);
 
 		User user1 = new User("john","john-snow@website.com","GoT actor","yomuero",21, "Italian","ROLE_USER"+"john");
-		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas","ROLE_USER"+"john-cena");
+		User user2 = new User("john-cena","john-cena@website.com","WWE actor","johncena",31, "Tapas","ROLE_USER"+"john-cena");
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai","ROLE_USER"+"john-travolta");	
 		User user4 = new User("john-lennon","john-lenon@website.com","singler singer","pass",69, "American","ROLE_USER"+"john-lennon");	
 
