@@ -36,6 +36,12 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Override
 	public void run (String... args) throws Exception{
 	
+	}
+	@PostConstruct
+    private void initDatabase() {
+    	
+    	userRepository.save(new User("alfageme","molomil@website.com","singler singer", "pass",69, "American", "ROLE_USER"+"alfageme"));
+
 		City city1 = new City("Madrid");
 		City city2 = new City("Barcelona");
 		City city3 = new City("Valencia");
@@ -129,6 +135,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		User user2 = new User("john-cena","john-cena@website.com","WWE actor","tututuuu",31, "Tapas","ROLE_USER"+"john-cena");
 		User user3 = new User("john-travolta","john-travolta@website.com","singler actor","sdfmd",54, "Thai","ROLE_USER"+"john-travolta");	
 		User user4 = new User("john-lennon","john-lenon@website.com","singler singer","pass",69, "American","ROLE_USER"+"john-lennon");	
+
 		
 		user1.getRestaurant().add(rest1);
 		user1.getRestaurant().add(rest2);
@@ -269,12 +276,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		bookingRepository.save(booking4);
 		bookingRepository.save(booking5);
 		bookingRepository.save(booking6);
-
-	}
-	@PostConstruct
-    private void initDatabase() {
-    	
-    	userRepository.save(new User("alfageme","molomil@website.com","singler singer", "pass",69, "American", "ROLE_USER"+"alfageme"));
     	//restaurantRepository.save(new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey"));
     }
 

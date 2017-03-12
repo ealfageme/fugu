@@ -25,6 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 // Private pages (all other pages)
 		 //http.authorizeRequests().anyRequest().authenticated();
 		 for(User user : users.findAll()){
+			 System.out.println(user.getName());
 			 http.authorizeRequests().antMatchers("/private-client/"+user.getName()).hasAnyRole("USER"+user.getName());
 		 }
 		 
@@ -34,10 +35,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.formLogin().loginPage("/main/");
 		 http.formLogin().usernameParameter("loginemail");
 		 http.formLogin().passwordParameter("loginpassword");
-		 http.formLogin().defaultSuccessUrl("/private-client/john-cena");
-		 http.formLogin().defaultSuccessUrl("/private-client/john-lennon");
-		 //http.formLogin().defaultSuccessUrl("/default");
-		 http.formLogin().failureUrl("/public-client/john/");
+		 http.formLogin().defaultSuccessUrl("/default/");
+		 http.formLogin().failureUrl("/main/");
 		 // Logout
 		 http.logout().logoutUrl("/private-client-john-cena/");
 		 http.logout().logoutSuccessUrl("/main/");
