@@ -29,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.formLogin().usernameParameter("loginemail");
 		 http.formLogin().passwordParameter("loginpassword");
 		 http.formLogin().defaultSuccessUrl("/private-client/john-cena");
+		 http.formLogin().defaultSuccessUrl("/default");
 		 http.formLogin().failureUrl("/public-client/john/");
 		 // Logout
 		 http.logout().logoutUrl("/private-client-john-cena/");
@@ -45,8 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 // User
 		 // Database authentication provider
 	     auth.authenticationProvider(authenticationProviderUser);
-		 //auth.inMemoryAuthentication()
-		 //.withUser("american@whey.com").password("password").roles("RESTAURANT");
+		 auth.inMemoryAuthentication()
+		 .withUser("american@whey.com").password("password").roles("RESTAURANT");
 	 }
 
 }
