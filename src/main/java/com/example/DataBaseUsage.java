@@ -275,7 +275,7 @@ public class DataBaseUsage implements CommandLineRunner{
     private void initDatabase() {
     	
     	userRepository.save(new User("alfageme","john-lenon@website.com","singler singer", "pass",69, "American", "ROLE_USER"+"alfageme"));
-    	restaurantRepository.save(new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey"));
+    	//restaurantRepository.save(new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey"));
     }
 
 	

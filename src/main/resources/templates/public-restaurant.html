@@ -158,6 +158,7 @@
                         <input id="restaurantName" type="hidden" name='restaurantName' value={{restaurant.name}}>
                         <button type="submit" class="btnMore"  id="sendmess" style="margin:10px;">Fav</button>
                          <button type="submit" style='display:none;' class="btnMore" id="sendmess" style="margin:10px;">UnFav</button>
+                         <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
 	</section>
@@ -388,6 +389,7 @@
 							<textarea class="form-control" id="exampleTextarea" rows="2"
 								style="border-radius: 0px !important" name="specialRequirements"></textarea>
 						</div>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form>
 				</div>
 			</div>
@@ -798,6 +800,7 @@
 								</div>
 							
 							</div>
+							<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 					</div>
 				</div>

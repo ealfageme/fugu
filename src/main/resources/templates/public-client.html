@@ -69,37 +69,26 @@
                 <div id="profileForm" class="col-l-7 col-md-7 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
                     <div id="formCol" class="col-l-7 col-md-7 col-sm-7 col-xs-12">
                         <h1>Data</h1>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="name">Name:</label>
                                 <label>{{user.name}}</label>
-
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 <label>{{user.email}}</label>
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Bio:</label>
                                 <label>{{user.description}}</label>
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Age:</label>
                                 <label>{{user.age}}</label>
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Favourite food:</label>
                                 <label>{{user.favouriteFood}}</label>
                             </div>
-                        </form>
                     </div>
                     <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
                         <button type="button" class="btnMore" id="sendmess" style="margin:10px;">Send Message</button>
@@ -107,6 +96,7 @@
                         <input id="userName" type="hidden" name='userName' value={{user.name}}>
                         <button type="submit" class="btnMore"  id="sendmess" style="margin:10px;">Follow</button>
                          <button type="submit" style='display:none;' class="btnMore" id="sendmess" style="margin:10px;">Unfollow</button>
+                         <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
                 </div>
