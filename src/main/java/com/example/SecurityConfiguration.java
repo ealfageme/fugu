@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 
 		 for(Restaurant restaurant : restaurants.findAll()){
 			 System.out.println(restaurant.getName());
-			 http.authorizeRequests().antMatchers("/private-client/"+restaurant.getName()).hasAnyRole("RESTAURANT"+restaurant.getName());
+			 http.authorizeRequests().antMatchers("/private-restaurant/"+restaurant.getName()).hasAnyRole("RESTAURANT"+restaurant.getName());
 		 }
 		 
 		 //http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
@@ -48,7 +48,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.formLogin().defaultSuccessUrl("/default/");
 		 http.formLogin().failureUrl("/main/");
 		 // Logout
-		 http.logout().logoutUrl("/private-client-john-cena/");
 		 http.logout().logoutSuccessUrl("/main/");
 		
 		 // Disable CSRF at the moment
