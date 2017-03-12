@@ -36,21 +36,22 @@ public class FuguController {
 
 	@RequestMapping(value = "/main/", method = RequestMethod.GET)
 	public String main(Model model, Restaurant restaurant, @RequestParam(required=false) String restaurantname, 
-			 @RequestParam(required=false) String address,@RequestParam(required=false) String kindoffood,
-			 @RequestParam(required=false) String email,@RequestParam(required=false) String password,
-			 @RequestParam(required=false) String name,@RequestParam(required=false) String useremail,
-			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood,
-			 @RequestParam(required=false) String restaurantcity,@RequestParam(required=false) String phone,
-			 @RequestParam(required=false) String restaurantdescription,@RequestParam(required=false) String clientdescription,
-			 @RequestParam(required=false) String age,  HttpServletRequest request) {	
+			 @RequestParam(required=false) String restaurantaddress,@RequestParam(required=false) String kindoffood,
+			 @RequestParam(required=false) String restaurantcity,	@RequestParam(required=false) String restaurantemail,
+			 @RequestParam(required=false) String restaurantphone,			@RequestParam(required=false) String restaurantdescription,
+			 @RequestParam(required=false) String restaurantpassword,	@RequestParam(required=false) String username,
+				@RequestParam(required=false) String useremail,	@RequestParam(required=false) String userage,
+				@RequestParam(required=false) String favouritefood,	@RequestParam(required=false) String userdescription,
+				@RequestParam(required=false) String userpassword) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
+		System.out.println(restaurantname);
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password,true,true,true,"ROLE_RESTAURANT"+restaurantname);
+			Restaurant rest= new Restaurant (restaurantname,restaurantaddress,restaurantdescription,restaurantemail,kindoffood,Long.parseLong(restaurantphone), 0, 0,restaurantpassword,true,true,true,"ROLE_RESTAURANT"+restaurantname);
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
-		if (name!=null){
-			User user = new User(name,useremail,clientdescription, userpassword ,Integer.parseInt(age),favouritefood,"ROLE_USER"+name);
+		if (username!=null){
+			User user = new User(username,useremail,userdescription, userpassword ,Integer.parseInt(userage),favouritefood,"ROLE_USER"+username);
 			userRepository.save(user);
 		}
 		return "main";

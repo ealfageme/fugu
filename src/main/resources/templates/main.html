@@ -383,12 +383,12 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form" method='post'>
+						<form  role="form"  action="/main/">
 							<div class="form-group" >
 								<input type="text" class="form-control formmargin"
 									name='restaurantname' placeholder="Restaurant name" id="restaurantname" required> 
 								<input
-									type="text" class="form-control formmargin" name='address'
+									type="text" class="form-control formmargin" name='restaurantaddress'
 									placeholder="Address" id="restaurantaddress" required> <br>
 								<div class="form-group">
 									  <label for="filter">City </label> <select
@@ -420,9 +420,9 @@
 									</select>
 								</div>
 								<br>
-								<input type="email" class="form-control formmargin" name='email'
+								<input type="email" class="form-control formmargin" name='restaurantemail'
 									placeholder="Email" id="restaurantemail" required> 
-								<input type="text" class="form-control formmargin" name='phone'
+								<input type="text" class="form-control formmargin" name='resturantphone'
 									placeholder="Phone" id="restaurantphone" required> 
 								<span id='message_restaurant_phone'></span>  
 								<br>
@@ -432,7 +432,7 @@
 										class="form-control" id="restaurantdescription" name='restaurantdescription' rows="3" required></textarea>
 								<br>	
 								<label for="name" >Password (6 characters min.):</label>		
-								<input name="password"
+								<input name="restaurantpassword"
 									id="password_restaurant" type="password"
 									class="form-control formmargin" placeholder="Password" required>
 								<input type="password" name="confirm_password"
@@ -444,10 +444,11 @@
 								<p class="formmargin">Upload a profile picture</p>
 								<input type="file" class="form-control-file" id="exampleInputFile"
 									aria-describedby="fileHelp"><!-- logInBtn btnMore -->
-									 <button type='submit' class="logInBtn" id='sendrestaurant' disabled>Send</button>
+									 <button type="submit" class="logInBtn" id='sendrestaurant' >Send</button>
+									 <input type="hidden" name="_csrf" value="{{token}}"/>
 									 <span id='message_restaurant_button'>Fill the form before register</span> 
 						</div>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
+						
 					</form>
 				</div>
 
@@ -472,15 +473,15 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form" method='post'>
+						<form  role="form" action="/main/">
 							<div class="form-group">
-								<input type="text" class="form-control formmargin" name='name'
+								<input type="text" class="form-control formmargin" name='username'
 									placeholder="Name" id="usernameform"> 
 								<input type="text"
 									class="form-control formmargin" name='useremail'
 									placeholder="Email" id="useremailform"> 
 								<br> 
-								<input type="text" class="form-control formmargin" name='age'
+								<input type="text" class="form-control formmargin" name='userage'
 									placeholder="Age" id="userageform">
 									<span id='message_user_age'></span>  
 								<div class="form-group">
@@ -503,7 +504,7 @@
 								<label for="name">Description:</label>
 								<br>
 									<textarea style="border-radius: 0px !important"
-										class="form-control" id="userdescriptionform" name='clientdescription' rows="3"></textarea>
+										class="form-control" id="userdescriptionform" name='userdescription' rows="3"></textarea>
 								<br> 
 								<label for="name" >Password (6 characters min.):</label>		
 								<input
