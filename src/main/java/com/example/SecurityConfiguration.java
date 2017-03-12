@@ -17,7 +17,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.authorizeRequests().antMatchers("/search-web/").permitAll();
 		 http.authorizeRequests().antMatchers("/city/**").permitAll();
 		 // Private pages (all other pages)
-		 http.authorizeRequests().anyRequest().authenticated();
+		 //http.authorizeRequests().anyRequest().authenticated();
+		 http.authorizeRequests().antMatchers("/private-client/*").hasAnyRole("USER");
+		 http.authorizeRequests().antMatchers("/private-restaurant/*").hasAnyRole("RESTAURANT");
 		 // Login form
 		 http.formLogin().loginPage("/main/");
 		 http.formLogin().usernameParameter("loginemail");
@@ -29,17 +31,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.logout().logoutSuccessUrl("/main/");
 		
 		 // Disable CSRF at the moment
-		 http.csrf().disable();
+		 //http.csrf().disable();
 		// User
 		
 	 }
 	 
 	 @Override
 	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		 System.out.println("ENTRA");
 		 // User
 		 auth.inMemoryAuthentication()
 		 .withUser("john-snow@website.com").password("yomuero").roles("USER");
+		 auth.inMemoryAuthentication()
+		 .withUser("american@whey.com").password("password").roles("RESTAURANT");
 	 }
 
 }

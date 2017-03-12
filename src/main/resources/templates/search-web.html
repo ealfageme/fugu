@@ -64,8 +64,8 @@
 									style="padding: 0px !important">
 									<button type="submit" class="signInBtn">Sign in</button>
 								</a>
+								<input type="hidden" name="_csrf" value="{{token}}"/>
 							</form>
-						</li>
 						</li>
 						<li><a href="#contact">CONTACT US</a></li>
 					</ul>
@@ -86,6 +86,7 @@
 							<form class="form-horizontal" role="form" action="">
 									<input type="text" class="form-control"
 										placeholder="Search by a restaurant name" name="name" />
+										<input type="hidden" name="_csrf" value="{{token}}"/>
 							</form>
 							<div class="input-group-btn">
 								<div class="btn-group" role="group">
@@ -124,6 +125,7 @@
 												<button type="submit" class="btn btn-primary">
 													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 												</button>
+												<input type="hidden" name="_csrf" value="{{token}}"/>
 											</form>
 										</div>
 									</div>
@@ -193,6 +195,7 @@
 											<div class="col-md-2">
 												<button type="submit" class="btnMore">Search</button>
 											</div>
+											<input type="hidden" name="_csrf" value="{{token}}"/>
 										</form>
 									</div>
 								</div>
@@ -336,6 +339,7 @@
 									</div>
 								</div>
 							</div>
+							<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 					</div>
 				</div>
@@ -451,6 +455,7 @@
 									 <button type='submit' class="logInBtn" id='sendrestaurant' disabled>Send</button>
 									 <span id='message_restaurant_button'>Fill the form before register</span> 
 						</div>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form>
 				</div>
 
@@ -524,6 +529,7 @@
 								id="exampleInputFile" aria-describedby="fileHelp"> 
 								<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
 								<span id='message_user_button'>Fill the form before register</span> 
+								<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 
 					</div>

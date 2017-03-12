@@ -67,6 +67,7 @@
 									style="padding: 0px !important">
 									<button type="submit" class="signInBtn">Sign in</button>
 								</a>
+								<input type="hidden" name="_csrf" value="{{token}}"/>
 							</form>
 						</li>
 					</ul>
@@ -330,6 +331,7 @@
 									</div>
 								</div>
 							</div>
+							<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 					</div>
 				</div>
@@ -445,6 +447,7 @@
 									 <button type='submit' class="logInBtn" id='sendrestaurant' disabled>Send</button>
 									 <span id='message_restaurant_button'>Fill the form before register</span> 
 						</div>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form>
 				</div>
 
@@ -518,6 +521,7 @@
 								id="exampleInputFile" aria-describedby="fileHelp"> 
 								<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
 								<span id='message_user_button'>Fill the form before register</span> 
+								<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 
 					</div>

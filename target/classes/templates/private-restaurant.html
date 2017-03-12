@@ -156,6 +156,7 @@
 							<div class="col-md-3 col-md-offset-10">
 								<button type='submit' class="btnMore">Update</button>
 							</div>
+							<input type="hidden" name="_csrf" value="{{token}}"/>
 						</form>
 
 					</div>
@@ -382,6 +383,7 @@
 										<div class="col-md-3 col-md-offset-10">
 											<input type="submit" class="btnMore" value='Create'>
 										</div>
+										<input type="hidden" name="_csrf" value="{{token}}"/>
 									</form>
 
 								</div>
@@ -548,9 +550,7 @@
 												<input type="submit" class="btnMore"
 													value='Send group offer'>
 											</div>
-									
-
-
+											<input type="hidden" name="_csrf" value="{{token}}"/>	
 									</form>
 									</div>
 								</div>

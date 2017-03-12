@@ -5,12 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +47,7 @@ public class FuguController {
 			 @RequestParam(required=false) String userpassword,@RequestParam(required=false) String favouritefood,
 			 @RequestParam(required=false) String restaurantcity,@RequestParam(required=false) String phone,
 			 @RequestParam(required=false) String restaurantdescription,@RequestParam(required=false) String clientdescription,
-			 @RequestParam(required=false) String age) {	
+			 @RequestParam(required=false) String age,  HttpServletRequest request) {	
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		if (restaurantname!=null){
 			Restaurant rest= new Restaurant (restaurantname,address,restaurantdescription,email,kindoffood,Long.parseLong(phone), 0, 0,password,true,true,true,"ROLE_RESTAURANT"+restaurantname);
