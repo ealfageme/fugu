@@ -10,7 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Autowired
-	    public UserRepositoryAuthenticationProvider authenticationProviderUser;
+	 public UserRepositoryAuthenticationProvider authenticationProviderUser;
+	 @Autowired
+	 public RestaurantRepositoryAuthenticationProvider authenticationProviderRestaurant;
 	 @Override
 	 protected void configure(HttpSecurity http) throws Exception {
 	
@@ -44,9 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		 // User
 		 // Database authentication provider
+	     
+	     auth.authenticationProvider(authenticationProviderRestaurant);
 	     auth.authenticationProvider(authenticationProviderUser);
-		 auth.inMemoryAuthentication()
-		 .withUser("american@whey.com").password("password").roles("RESTAURANT");
 	 }
 
 }

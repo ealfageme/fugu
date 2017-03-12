@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
@@ -79,7 +81,7 @@ public class Restaurant {
 		this.rate = rate;
 		this.roles = roles;
 		this.menuPrice = menuPrice;
-		this.password = password;//new BCryptPasswordEncoder().encode(password);
+		this.password = new BCryptPasswordEncoder().encode(password);
 		this.breakfast=breakfast;
 		this.lunch = lunch;
 		this.dinner = dinner;
