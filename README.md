@@ -30,6 +30,8 @@ Both sign up as restaurant and user options availables. As user, you can see the
     * We have left the footer, we have modified the navbar, we have created a fugu logo, we have included a browser, we have left the contact us secion in some pages, and we have left the font type, and we have added other pages based on the main page style.
 * __Classes Diagram__
     ![Classes diagram](src/main/resources/static/images/ClassesDiagram.png)
+* __Templates Diagram__
+    ![Templates diagram](src/main/resources/static/images/TemplatesDiagram.png)
 * __Navigation Board__
     ![Browse navigation](src/main/resources/static/images/captures/navigation-board.png)
      
