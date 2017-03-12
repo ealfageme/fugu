@@ -56,7 +56,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		cityRepository.save(city6);
 		
 		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey");
-		Restaurant rest2 = new Restaurant ("Mesonmariano","Avenida Colombia 4","Description","meson@mariano.com","Tapas",123213123, 4.2,12.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón mariano");
+		Restaurant rest2 = new Restaurant ("Meson mariano","Avenida Colombia 4","Description","meson@mariano.com","Tapas",123213123, 4.2,12.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón mariano");
 		Restaurant rest3 = new Restaurant ("Meson Felipe","Avenida Barcelona 43","Description","meson@felipe.com","Galician",123213123, 3.5,5.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Felipe");
 		Restaurant rest4 = new Restaurant ("Meson Lito","Calle de la amagura 5","Description","meson@lito.com","Italian",123213123, 1.6,13.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Lito");
 		Restaurant rest5 = new Restaurant ("Meson Daniel","Plaza de España 69","Description","meson@daniel.com","Japanese",123213123, 3.2,16.0,"password",true,true,true,"ROLE_RESTAURANT"+"Mesón Daniel");

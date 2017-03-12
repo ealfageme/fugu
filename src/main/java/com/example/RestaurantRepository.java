@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long>{
@@ -17,6 +19,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant,Long>{
 	List<Restaurant> findByMenuPriceLessThan(Double maxPrice);
 	List<Restaurant> findByRateGreaterThan(Double min);
 	List<Restaurant> findByRateLessThan(Double max);
+	Page<Restaurant> findByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page);
 	//City es null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndFoodType(Double minPrice, Double maxPrice, Double min, Double max, String food);
 	//Food type es null
