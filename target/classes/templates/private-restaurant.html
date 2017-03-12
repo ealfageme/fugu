@@ -53,6 +53,10 @@
 						<li><a href="#feedback">FEEDBACK</a></li>
 						<li><a href="#clients">CLIENTS</a></li>
 					</ul>
+					<form action="/main/" method="post">
+					<button type="submit" class="signInBtn"> SignOut</button>
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+					</form> 
 				</div>
 			</div>
 		</nav>

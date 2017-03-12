@@ -53,7 +53,7 @@ public class Restaurant {
 	public void setRate(Double rate) {
 		this.rate = rate;
 	}
-	private long phone;
+	private Integer phone;
 	private String password;
 	@ManyToMany (mappedBy="restaurants")
 	private List<User> users = new ArrayList<>();
@@ -70,7 +70,7 @@ public class Restaurant {
 	
 	public Restaurant (){}
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
-			long phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner,String roles) {
+			Integer phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner,String roles) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -160,10 +160,10 @@ public class Restaurant {
 	public void setFoodTypes(String foodTypes) {
 		this.foodType = foodTypes;
 	}
-	public long getPhone() {
+	public Integer getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
 	public String getPassword() {

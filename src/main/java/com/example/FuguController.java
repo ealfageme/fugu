@@ -46,7 +46,7 @@ public class FuguController {
 		model.addAttribute("restaurant", restaurantRepository.findAll(new Sort(new Order(Sort.Direction.DESC, "rate"))));
 		System.out.println(restaurantname);
 		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,restaurantaddress,restaurantdescription,restaurantemail,kindoffood,Long.parseLong(restaurantphone), 0, 0,restaurantpassword,true,true,true,"ROLE_RESTAURANT"+restaurantname);
+			Restaurant rest= new Restaurant (restaurantname,restaurantaddress,restaurantdescription,restaurantemail,kindoffood,Integer.parseInt(restaurantphone), 0, 0,restaurantpassword,true,true,true,"ROLE_RESTAURANT"+restaurantname);
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
