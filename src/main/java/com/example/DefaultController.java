@@ -18,12 +18,21 @@ public class DefaultController {
 	
     @RequestMapping("/default/")
     public String defaultAfterLogin(HttpServletRequest request,Authentication authentication) {
+    	try{
     		if (request.isUserInRole("USER"+userRepository.findByEmail(authentication.getName()).getName())) {
             	User user=userRepository.findByEmail(authentication.getName());
                 return "redirect:/private-client/"+user.getName();}
+    	}catch(NullPointerException e){
+    		
+    	}
+    	try{
     		if (request.isUserInRole("RESTAURANT"+restaurantRepository.findByEmail(authentication.getName()).getName())) {
-        	Restaurant restaurant=restaurantRepository.findByEmail(authentication.getName());
-            return "redirect:/private-restaurant/"+restaurant.getName();}
+            	Restaurant restaurant=restaurantRepository.findByEmail(authentication.getName());
+                return "redirect:/private-restaurant/"+restaurant.getName();}
+    	}catch(NullPointerException e){
+    		
+    	}
+    		
 
     	return "redirect:/main/";
     }
