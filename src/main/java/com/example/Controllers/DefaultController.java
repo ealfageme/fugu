@@ -26,17 +26,14 @@ public class DefaultController {
             	User user=userRepository.findByEmail(authentication.getName());
                 return "redirect:/private-client/"+user.getName();}
     	}catch(NullPointerException e){
-    		
+    		try{
+        		if (request.isUserInRole("RESTAURANT"+restaurantRepository.findByEmail(authentication.getName()).getName())) {
+                	Restaurant restaurant=restaurantRepository.findByEmail(authentication.getName());
+                    return "redirect:/private-restaurant/"+restaurant.getName();}
+        	}catch(NullPointerException ex){
+        		ex.printStackTrace();
+        	}
     	}
-    	try{
-    		if (request.isUserInRole("RESTAURANT"+restaurantRepository.findByEmail(authentication.getName()).getName())) {
-            	Restaurant restaurant=restaurantRepository.findByEmail(authentication.getName());
-                return "redirect:/private-restaurant/"+restaurant.getName();}
-    	}catch(NullPointerException e){
-    		
-    	}
-    		
-
     	return "redirect:/main/";
     }
 }
