@@ -6,17 +6,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.City.Basic;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Menu {
+	interface Basic {
+	}
+
+	interface Restaurants {
+	}
 	
+	@JsonView(Basic.class)
 	private String dish;
+	@JsonView(Basic.class)
 	private Double price;
+	@JsonView(Basic.class)
 	private String description;
-	@ManyToOne 
-	private Restaurant restaurantMenu;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
+	
+	@ManyToOne 
+	@JsonView(Restaurants.class)
+	private Restaurant restaurantMenu;
 	
 	public Menu(){}
 	public Menu(String name, Double price, String description){

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Controller
 public class FuguController {
 
@@ -58,7 +61,7 @@ public class FuguController {
 		return "main";
 	}
 	
-
+	@JsonView(City.Basic.class)
 	@RequestMapping("/city/{name}")
 	public String city(Model model, @PathVariable String name) {
 		model.addAttribute("city", cityRepository.findByName(name));
@@ -67,6 +70,7 @@ public class FuguController {
 		return "city";
 	}
 
+	@JsonView(User.Basic.class)
 	@RequestMapping("/private-client/{name}")
 	public String privateClient(Model model, @PathVariable String name,@RequestParam(required=false) String username,
 			@RequestParam(required=false) String useremail,@RequestParam(required=false) String userdescription,
@@ -100,6 +104,7 @@ public class FuguController {
 		return "private-client";
 	}
 
+	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
 			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName, @RequestParam(required=false) Integer rate, @RequestParam(required=false) String content) {
@@ -136,6 +141,7 @@ public class FuguController {
 		return "public-restaurant";
 	}
 
+	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
 	public String publicClient(Model model, @PathVariable String name,  @RequestParam(required=false) String userName) {
 		model.addAttribute("user", userRepository.findByName(name));
@@ -151,6 +157,7 @@ public class FuguController {
 		return "public-client";
 	}
 
+	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/private-restaurant/{name}")
 	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type,
 	@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,

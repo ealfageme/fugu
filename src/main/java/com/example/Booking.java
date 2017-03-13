@@ -1,6 +1,8 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,17 +10,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity
 public class Booking {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	
+	interface Basic {
+	}
+
+	interface Restaurants {
+	}
+
+	interface Users {
+	}
+
 	@ManyToOne
+	@JsonView(Users.class)
 	private User bookingUser = new User();
 	@ManyToOne
+	@JsonView(Restaurants.class)
 	private Restaurant bookingRestaurant = new Restaurant();
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
+	private long id;
+	@JsonView(Basic.class)
 	private Date date;
+	@JsonView(Basic.class)
 	private int number;
+	@JsonView(Basic.class)
 	private String specialRequirements;
 	
 	public Booking(){}

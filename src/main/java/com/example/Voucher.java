@@ -12,19 +12,36 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.example.User.Basic;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Voucher {
-	//Name, description, expiration day and amount
+	interface Basic {
+	}
+	interface Users {
+	}
+	interface Restaurants {
+	}
+	
+	@JsonView(Basic.class)
 	private String name;
+	@JsonView(Basic.class)
 	private String description;
+	@JsonView(Basic.class)
 	private Date expiryDate;
-	@ManyToOne
-	private Restaurant restaurant = new Restaurant();
-	@ManyToMany
-	 private List<User> voucherUsers = new ArrayList<>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
+	
+	@ManyToOne
+	@JsonView(Restaurants.class)
+	private Restaurant restaurant = new Restaurant();
+	@ManyToMany
+	@JsonView(Users.class)
+	 private List<User> voucherUsers = new ArrayList<>();
+
 	
 	public Voucher(){}
 	public Voucher(String name, String description, Date expiryDate) {

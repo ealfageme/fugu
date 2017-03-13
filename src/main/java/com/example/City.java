@@ -10,15 +10,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.example.Booking.Users;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class City {
-	
+
+	interface Basic {
+	}
+
+	interface Restaurants {
+	}
+	@JsonView(Basic.class)
 	private String name;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
+	
 	@OneToMany(mappedBy="city")
+	@JsonView(Restaurants.class)
 	private List<Restaurant> cityResturants = new ArrayList<>();
+	
+	
+	public City(){}
+	public City(String name){
+		this.name= name;
+	}
 	
 	public List<Restaurant> getCityResturants() {
 		return cityResturants;
@@ -26,11 +44,6 @@ public class City {
 	public void setCityResturants(List<Restaurant> cityResturants) {
 		this.cityResturants = cityResturants;
 	}
-	public City(){}
-	public City(String name){
-		this.name= name;
-	}
-	
 	public long getId() {
 		return id;
 	}

@@ -8,25 +8,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.Menu.Basic;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Review {
+	interface Basic {
+	}
 
+	interface Users {
+	}
+	interface Restaurants {
+	}
+	
+	@JsonView(Basic.class)
 	private String content;
-	public User getReviewUser() {
-		return reviewUser;
-	}
-	public void setReviewUser(User reviewUser) {
-		this.reviewUser = reviewUser;
-	}
-
+	@JsonView(Basic.class)
 	private double rate;
+	@JsonView(Basic.class)
 	private Date date;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
+	
 	@ManyToOne
+	@JsonView(Users.class)
 	private User reviewUser = new User();
 	@ManyToOne
+	@JsonView(Restaurants.class)
 	private Restaurant reviewRestaurant = new Restaurant();
 	
 	public Review(){}
@@ -39,7 +49,12 @@ public class Review {
 		//dateFormat.format(cal);
 
 	}
-	
+	public User getReviewUser() {
+		return reviewUser;
+	}
+	public void setReviewUser(User reviewUser) {
+		this.reviewUser = reviewUser;
+	}
 	public Restaurant getReviewRestaurant() {
 		return reviewRestaurant;
 	}
