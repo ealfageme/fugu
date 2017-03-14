@@ -98,12 +98,15 @@ public class RestaurantController {
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		if (rate!=null) {	
-			Review review = new Review(content,rate,new Date());
-			review.setReviewRestaurant(restaurantRepository.findByName(name));
-			review.setReviewUser(userRepository.findByName("john-lennon"));
-			reviewRepository.save(review);
-			}
+		if(request.isUserInRole("USER")){
+			String userloggin = authentication.getName();
+			if (rate!=null) {	
+				Review review = new Review(content,rate,new Date());
+				review.setReviewRestaurant(restaurantRepository.findByName(name));
+				review.setReviewUser(userRepository.findByEmail(userloggin));
+				reviewRepository.save(review);
+				}
+		}
 		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
 			if (favPulsed!=null) {	
