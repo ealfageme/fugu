@@ -10,6 +10,7 @@ import com.example.Repositories.*;
 import com.example.Security.*;
 import com.example.Controllers.*;
 
+
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Autowired
@@ -34,12 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 //http.authorizeRequests().anyRequest().authenticated();
 		 for(User user : users.findAll()){
 			 System.out.println(user.getName());
-			 http.authorizeRequests().antMatchers("/private-client/"+user.getName()).hasAnyRole("USER"+user.getName());
+			 http.authorizeRequests().antMatchers("/private-client/").hasAnyRole("USER");
 		 }
 		 
 		 for(Restaurant restaurant : restaurants.findAll()){
 			 System.out.println(restaurant.getName());
-			 http.authorizeRequests().antMatchers("/private-restaurant/"+restaurant.getName()).hasAnyRole("RESTAURANT"+restaurant.getName());
+			 http.authorizeRequests().antMatchers("/private-restaurant/"+restaurant.getName()).hasAnyRole("RESTAURANT");
 		 }
 		 
 		 //http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");

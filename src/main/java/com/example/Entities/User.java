@@ -21,7 +21,9 @@ import com.example.Entities.*;
 import com.example.Repositories.*;
 import com.example.Security.*;
 import com.example.Controllers.*;
+
 @Entity
+
 public class User {
 	public interface Basic {
 	}
