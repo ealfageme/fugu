@@ -8,6 +8,11 @@ import org.springframework.security.core.Authentication;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -72,10 +77,24 @@ public class ClientController {
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/", method=RequestMethod.GET)
+	public ResponseEntity<Page<User>> getClients(HttpSession session) {
+		session.setMaxInactiveInterval(-1);
+		Pageable page = createPageRequest();
+		Page<User> pages=userRepository.findAll(page);
+		System.out.println(pages.getNumberOfElements());
+		return new ResponseEntity<>(userRepository.findAll(page), HttpStatus.OK);
+	}
+	private Pageable createPageRequest() {
+	    return new PageRequest(0, 2);
+	}
+	
+	/*@ResponseBody
+	@JsonView(User.Basic.class)
+	@RequestMapping(value="/clients/", method=RequestMethod.GET)
 	public ResponseEntity<List<User>> getClients(HttpSession session) {
 		session.setMaxInactiveInterval(-1);
 		return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
-	}
+	}*/
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)

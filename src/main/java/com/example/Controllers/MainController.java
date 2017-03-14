@@ -36,13 +36,14 @@ public class MainController {
 	@RequestMapping("/main/")
 	public String main(Model model, Restaurant restaurant, @RequestParam(required=false) String restaurantname, 
 			 @RequestParam(required=false) String restaurantaddress,@RequestParam(required=false) String kindoffood,
-			 @RequestParam(required=false) String restaurantcity,	@RequestParam(required=false) String restaurantemail,
-			 @RequestParam(required=false) String restaurantphone,			@RequestParam(required=false) String restaurantdescription,
-			 @RequestParam(required=false) String restaurantpassword,	@RequestParam(required=false) String username,
-				@RequestParam(required=false) String useremail,	@RequestParam(required=false) String userage,
-				@RequestParam(required=false) String favouritefood,	@RequestParam(required=false) String userdescription,
-				@RequestParam(required=false) String userpassword) {	
-		model.addAttribute("restaurant", restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), new PageRequest(0, 4)));
+			 @RequestParam(required=false) String restaurantcity,@RequestParam(required=false) String restaurantemail,
+			 @RequestParam(required=false) String restaurantphone,@RequestParam(required=false) String restaurantdescription,
+			 @RequestParam(required=false) String restaurantpassword,@RequestParam(required=false) String username,
+			@RequestParam(required=false) String useremail,@RequestParam(required=false) String userage,
+			@RequestParam(required=false) String favouritefood,@RequestParam(required=false) String userdescription,
+			@RequestParam(required=false) String userpassword,@RequestParam(required=false) String pagenumber) {	
+		if(pagenumber==null) pagenumber="0";
+		model.addAttribute("restaurant", restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), new PageRequest(Integer.parseInt(pagenumber), 4)));
 		System.out.println(restaurantname);
 		if (restaurantname!=null){
 			Restaurant rest= new Restaurant (restaurantname,restaurantaddress,restaurantdescription,restaurantemail,kindoffood,Integer.parseInt(restaurantphone), 0, 0,restaurantpassword,true,true,true,"ROLE_RESTAURANT"+restaurantname);
