@@ -77,13 +77,13 @@ public class ClientController {
 	@RequestMapping(value="/clients/", method=RequestMethod.GET)
 	public ResponseEntity<List<User>> getClients(HttpSession session) {
 		session.setMaxInactiveInterval(-1);
-		return  new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/{id}", method=RequestMethod.GET)
-	public ResponseEntity<User> getClient(@PathVariable long id,HttpSession session) {
+	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
 		session.setMaxInactiveInterval(-1);
 		return  new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
 	}
