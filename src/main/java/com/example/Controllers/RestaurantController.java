@@ -4,7 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,8 +81,8 @@ public class RestaurantController {
 	}
 	
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping("/private-restaurant/{name}")
-	public String privateRestaurant(Model model, @PathVariable String name, @RequestParam(required=false) String type,
+	@RequestMapping("/private-restaurant/")
+	public String privateRestaurant(Model model, HttpServletRequest request,Authentication authentication, @RequestParam(required=false) String type,
 	@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,
 	@RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,
 	@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,
@@ -89,45 +92,54 @@ public class RestaurantController {
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
 	@RequestParam(required=false)Boolean Dinner) {
-		model.addAttribute("restaurant", restaurantRepository.findByName(name));
-		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
-		model.addAttribute("bookings", restaurantRepository.findByName(name).getBookings());
-		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
-		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		if (namerest!=null){
-			Restaurant restaurant = restaurantRepository.findByName(name);
-			restaurant.setName(namerest);
-			restaurant.setAddress(location);
-			restaurant.setDescription(descriptionrest);
-			restaurant.setPhone(telephone);
-			restaurant.setEmail(emailrest);
-			if (pwd.equals(confirmpwd)){
-				restaurant.setPassword(pwd);
+		try{
+			if(request.isUserInRole("RESTAURANT")){
+		
+				String restaurantloggin = authentication.getName();
+				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));
+				model.addAttribute("menu", restaurantRepository.findByEmail(restaurantloggin).getMenus());
+				model.addAttribute("bookings", restaurantRepository.findByEmail(restaurantloggin).getBookings());
+				model.addAttribute("vouchers", restaurantRepository.findByEmail(restaurantloggin).getVouchers());
+				model.addAttribute("reviews", restaurantRepository.findByEmail(restaurantloggin).getRestaurantReviews());
+				if (namerest!=null){
+					Restaurant restaurant = restaurantRepository.findByEmail(restaurantloggin);
+					restaurant.setName(namerest);
+					restaurant.setAddress(location);
+					restaurant.setDescription(descriptionrest);
+					restaurant.setPhone(telephone);
+					restaurant.setEmail(emailrest);
+					if (pwd.equals(confirmpwd)){
+						restaurant.setPassword(pwd);
+					}
+					if (Breakfast != null)
+						restaurant.setBreakfast(true);
+					else 
+						restaurant.setBreakfast(false);
+					if (Lunch != null)
+						restaurant.setLunch(true);
+					else 
+						restaurant.setLunch(false);
+					if (Dinner != null)
+						restaurant.setDinner(true);
+					else 
+						restaurant.setDinner(false);
+					restaurantRepository.save(restaurant);
+				
+				}
+				if (vouchername!=null){
+					Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
+					voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
+					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
+					voucherRepository.save(voucher);}
+				if (menuname!=null){
+					Menu menu= new Menu(menuname,menuprice,menudescription);
+					menu.setRestaurantMenu(restaurantRepository.findByEmail(restaurantloggin));
+					menuRepository.save(menu);}
 			}
-			if (Breakfast != null)
-				restaurant.setBreakfast(true);
-			else 
-				restaurant.setBreakfast(false);
-			if (Lunch != null)
-				restaurant.setLunch(true);
-			else 
-				restaurant.setLunch(false);
-			if (Dinner != null)
-				restaurant.setDinner(true);
-			else 
-				restaurant.setDinner(false);
-			restaurantRepository.save(restaurant);
-			return "redirect:/private-restaurant/"+namerest+".html";
+		}catch(NullPointerException ex){
+			ex.printStackTrace();
+			
 		}
-		if (vouchername!=null){
-			Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
-			voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
-			voucher.setRestaurant(restaurantRepository.findByName(name));
-			voucherRepository.save(voucher);}
-		if (menuname!=null){
-			Menu menu= new Menu(menuname,menuprice,menudescription);
-			menu.setRestaurantMenu(restaurantRepository.findByName(name));
-			menuRepository.save(menu);}
 		return "private-restaurant";
-	}
+			}
 }

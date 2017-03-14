@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 
 		 for(Restaurant restaurant : restaurants.findAll()){
 			 System.out.println(restaurant.getName());
-			 http.authorizeRequests().antMatchers("/private-restaurant/"+restaurant.getName()).hasAnyRole("RESTAURANT");
+			 http.authorizeRequests().antMatchers("/private-restaurant/").hasAnyRole("RESTAURANT");
 		 }
 		 
 		 //http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
