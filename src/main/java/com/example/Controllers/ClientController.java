@@ -38,7 +38,7 @@ public class ClientController {
 	
 	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
-	public String publicClient(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,  @RequestParam(required=false) String followPulsed) {
+	public String publicClient(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,  @RequestParam(required=false) String followPulsed, @RequestParam(required=false) String unfollowPulsed) {
 		
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
@@ -54,6 +54,9 @@ public class ClientController {
 				String userloggin = authentication.getName();
 				if (followPulsed!=null) {			
 					userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
+					userRepository.save(userRepository.findByEmail(userloggin));
+				}else if (unfollowPulsed!=null) {			
+					userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
 					userRepository.save(userRepository.findByEmail(userloggin));
 				}
 			}

@@ -5,10 +5,31 @@ function sendFuguFeedback() {
 	window.location.href = "mailto:feedback@fugu.com?subject=Feedback&body="+body+"%0A%0AMessage written by: "+username+" ("+email+").";
 }
 
-function buttonPulsed(){
+function followButtonPulsed(){
+	document.getElementById("unfollowPulsed").value=null;
 	document.getElementById("followPulsed").value="pulsed";
+	document.getElementById("follow").style.display = 'none'; 
+	document.getElementById("unfollow").style.display = 'inline'; 
+}
+function unfollowButtonPulsed(){
+	document.getElementById("unfollowPulsed").value="pulsed";
+	document.getElementById("followPulsed").value=null;
+	document.getElementById("follow").style.display = 'inline'; 
+	document.getElementById("unfollow").style.display = 'none'; 
 }
 
+function favButtonPulsed(){
+	document.getElementById("unfavPulsed").value=null;
+	document.getElementById("favPulsed").value="pulsed";
+	document.getElementById("fav").style.display = 'none'; 
+	document.getElementById("unfav").style.display = 'inline'; 
+}
+function unfavButtonPulsed(){
+	document.getElementById("unfavPulsed").value="pulsed";
+	document.getElementById("favPulsed").value=null;
+	document.getElementById("fav").style.display ='inline'; 
+	document.getElementById("unfav").style.display = 'none'; 
+}
 $('#password_restaurant, #confirm_password_restaurant').on('keyup', function () {
 	if($('#password_restaurant').val().length>=6){
 		if ($('#password_restaurant').val() !== $('#confirm_password_restaurant').val()&&$('#confirm_password_restaurant').val().length>=6) {
@@ -89,7 +110,7 @@ $('#userageform').on('keyup', function () {
 		$('#message_user_age').html('Age must be nuberic').css('color', 'red');
 		$('#message_user_button').html('Fill the form before register');
 		document.getElementById('senduser').className = "logInBtn";
-	}else{
+	}else{f
 		$('#message_user_age').html('');
 		if($('#userdescriptionform').val().length>0 && $('#usernameform').val().length>0 && $('#usernameform').val().length>0 
 		    	&& $('#password_client').val() == $('#confirm_password_client').val()

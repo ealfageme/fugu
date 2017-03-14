@@ -91,11 +91,11 @@
                             </div>
                     </div>
                     <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <button type="button" class="btnMore" id="sendmess" style="margin:10px;">Send Message</button>
                         <form role="form" method='post'>
                         <input id="followPulsed" type="hidden" name='followPulsed' value="">
-                        <button type="submit" class="btnMore"  id="sendmess" style="margin:10px;" onClick="buttonPulsed()">Follow</button>
-                         <button type="submit" style='display:none;' class="btnMore" id="sendmess" style="margin:10px;">Unfollow</button>
+                        <button type="submit" class="btnMore"  id="follow" style="margin:10px;" onClick="followButtonPulsed()">Follow</button>
+                        <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="">
+                         <button type="submit" style='display:none;' class="btnMore" id="unfollow" style="margin:10px;" onClick="unfollowButtonPulsed()">Unfollow</button>
                          <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
@@ -291,6 +291,7 @@
     <!--<script src="/contact/jqBootstrapValidation.js"></script>
     <script src="/contact/contact_me.js"></script>-->
     <script src="/js/custom.js"></script>
+    <script src="/js/fugu.js"></script>
 </body>
 
 </html>
