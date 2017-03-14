@@ -50,7 +50,7 @@ public class MainController {
 			restaurantRepository.save(rest);
 		}
 		if (username!=null){
-			User user = new User(username,useremail,userdescription, userpassword ,Integer.parseInt(userage),favouritefood,"ROLE_USER"+username);
+			User user = new User(username,useremail,userdescription, userpassword ,Integer.parseInt(userage),favouritefood,"ROLE_USER");
 			userRepository.save(user);
 		}
 		return "main";
