@@ -233,7 +233,7 @@
 							<h2>Restaurants</h2>
 							{{#restaurants}}
 							<div class="menu-column">
-								<button onClick=" window.location.href='public-restaurant.html'"
+								<button onClick=" window.location.href='/public-restaurant/{{name}}'"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
@@ -254,7 +254,7 @@
 							<h2>People</h2>
 							{{#following}}
 							<div class="menu-column">
-								<button onClick=" window.location.href='public-client.html'"
+								<button onClick=" window.location.href='/public-client/{{name}}'"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">

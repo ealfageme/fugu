@@ -155,9 +155,10 @@
 		</div>
 		<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
                         <form role="form" method='post'>
-                        <input id="restaurantName" type="hidden" name='restaurantName' value={{restaurant.name}}>
-                        <button type="submit" class="btnMore"  id="sendmess" style="margin:10px;">Fav</button>
-                         <button type="submit" style='display:none;' class="btnMore" id="sendmess" style="margin:10px;">UnFav</button>
+                        <input type="hidden" id="favPulsed" name="favPulsed" />
+                        <button type="submit" class="btnMore"  id="fav" style="margin:10px;" onClick="favButtonPulsed()">Fav</button>
+                         <input type="hidden" id="unfavPulsed" name="unfavPulsed" />
+                         <button type="submit" style='display:none;' class="btnMore" id="unfav" onClick="favButtonPulsed()"  style="margin:10px;">UnFav</button>
                          <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
@@ -772,6 +773,7 @@
 									class="form-control" id="rate" name='rate' placeholder="5">
 							</div>
 								<button type="submit"  class="btnMore">send</button>
+								<input type="hidden" name="_csrf" value="{{token}}"/>
 							</div>
 							<!-- Modal -->
 							<div class="modal fade" id="exampleModalLong" tabindex="-1"

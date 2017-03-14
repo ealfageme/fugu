@@ -10,10 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.security.core.Authentication;
 
 import org.springframework.http.HttpStatus;
@@ -85,8 +89,11 @@ public class RestaurantController {
 	
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
-	public String publicRestaurant(Model model, @PathVariable String name,@RequestParam(required=false) String bookingday,
-			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,@RequestParam(required=false) String specialRequirements,@RequestParam(required=false) String restaurantName, @RequestParam(required=false) Integer rate, @RequestParam(required=false) String content) {
+	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,@RequestParam(required=false) String bookingday,
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
+			@RequestParam(required=false) String specialRequirements,
+			@RequestParam(required=false) Integer rate, @RequestParam(required=false) String content,
+			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();
@@ -105,18 +112,30 @@ public class RestaurantController {
 		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		if (restaurantName!=null) {				
-			userRepository.findByName("john-lennon").getRestaurant().add(restaurantRepository.findByName(name));
-			userRepository.save(userRepository.findByName("john-lennon"));
-			restaurantRepository.findByName(name).getUsers().add(userRepository.findByName("john-lennon"));
-			restaurantRepository.save(restaurantRepository.findByName(name));
+		if(request.isUserInRole("USER")){
+			String userloggin = authentication.getName();
+			if (rate!=null) {	
+				Review review = new Review(content,rate,new Date());
+				review.setReviewRestaurant(restaurantRepository.findByName(name));
+				review.setReviewUser(userRepository.findByEmail(userloggin));
+				reviewRepository.save(review);
+				}
+		}
+		if(request.isUserInRole("USER")){
+			String userloggin = authentication.getName();
+			if (favPulsed!=null) {	
+				
+				userRepository.findByEmail(userloggin).getRestaurants().add(restaurantRepository.findByName(name));
+				userRepository.save(userRepository.findByEmail(userloggin));
+				restaurantRepository.findByName(name).getUsers().add(userRepository.findByEmail(userloggin));
+				restaurantRepository.save(restaurantRepository.findByName(name));
+			}else if (unfavPulsed!=null) {
+				userRepository.findByEmail(userloggin).getRestaurants().remove(restaurantRepository.findByName(name));
+				userRepository.save(userRepository.findByEmail(userloggin));
+				restaurantRepository.findByName(name).getUsers().remove(userRepository.findByEmail(userloggin));
+				restaurantRepository.save(restaurantRepository.findByName(name));
 			}
-		if (rate!=null) {	
-			Review review = new Review(content,rate,new Date());
-			review.setReviewRestaurant(restaurantRepository.findByName(name));
-			review.setReviewUser(userRepository.findByName("john-lennon"));
-			reviewRepository.save(review);
-			}
+		}
 		return "public-restaurant";
 	}
 	
