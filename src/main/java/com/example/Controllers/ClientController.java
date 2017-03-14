@@ -38,7 +38,8 @@ public class ClientController {
 	
 	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
-	public String publicClient(Model model, @PathVariable String name,  @RequestParam(required=false) String userName) {
+	public String publicClient(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,  @RequestParam(required=false) String followPulsed) {
+		
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
 		model.addAttribute("following", userRepository.findByName(name).getFollowing());
@@ -49,9 +50,13 @@ public class ClientController {
 		/*
 		 * Following feature has to be implemented
 		 */
-		if (userName!=null) {			
-			userRepository.findByName("john-lennon").getFollowing().add(userRepository.findByName(name));
-			userRepository.save(userRepository.findByName("john-lennon"));}
+			if(request.isUserInRole("USER")){
+				String userloggin = authentication.getName();
+				if (followPulsed!=null) {			
+					userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
+					userRepository.save(userRepository.findByEmail(userloggin));
+				}
+			}
 		return "public-client";
 	}
 	
