@@ -64,7 +64,8 @@ public class ClientController {
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public User addClient(@RequestBody User user) {
+	public User addClient(@RequestBody User user,HttpSession session) {
+		session.setMaxInactiveInterval(-1);
 		return user;
 	}
 	
