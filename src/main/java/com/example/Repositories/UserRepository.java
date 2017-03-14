@@ -8,6 +8,7 @@ import com.example.Repositories.*;
 import com.example.Security.*;
 import com.example.Controllers.*;
 public interface UserRepository extends JpaRepository<User,Long>{
+	User findById(long id);
 	User findByName(String name);
 	List<User> findByAgeBetween(int min, int max);
 	User findByEmail(String email);

@@ -23,38 +23,32 @@ import com.example.Security.*;
 import com.example.Controllers.*;
 @Entity
 public class User {
-	public interface Basic {
-	}
-
-	interface Users {
-	}
-	interface Restaurants {
-	}
-	interface Reviews {
-	}
-
-	interface Bookigns {
-	}
-	interface Vouchers {
-	}
+	public interface Basic {}
+	interface Users {}
+	interface Restaurants {}
+	interface Reviews {}
+	interface Bookigns {}
+	interface Vouchers {}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
+	private long id;
 	@JsonView(Basic.class)
 	private String name;
 	@JsonView(Basic.class)
+	private String password;
+	@JsonView(Basic.class)
 	private String email;
+	@JsonView(Basic.class)
+	private int age;
 	@JsonView(Basic.class)
 	private String description;
 	@JsonView(Basic.class)
 	private String favouriteFood;
 	@JsonView(Basic.class)
-	private String password;
-	@JsonView(Basic.class)
-	private int age;
-	@JsonView(Basic.class)
 	private String roles;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonView(Basic.class)
-	private long id;
+
 	
 	@ManyToMany
 	@JsonView(Restaurants.class)
