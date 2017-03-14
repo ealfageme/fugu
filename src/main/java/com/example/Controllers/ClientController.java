@@ -2,6 +2,7 @@ package com.example.Controllers;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 
@@ -58,21 +59,24 @@ public class ClientController {
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/", method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public User addClient(@RequestBody User user) {
+	public User addClient(@RequestBody User user,HttpSession session) {
+		session.setMaxInactiveInterval(-1);
 		return user;
 	}
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/", method=RequestMethod.GET)
-	public ResponseEntity<List<User>> getClients() {
+	public ResponseEntity<List<User>> getClients(HttpSession session) {
+		session.setMaxInactiveInterval(-1);
 		return  new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/{id}", method=RequestMethod.GET)
-	public ResponseEntity<User> getClient(@PathVariable long id) {
+	public ResponseEntity<User> getClient(@PathVariable long id,HttpSession session) {
+		session.setMaxInactiveInterval(-1);
 		return  new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
 	}
 	

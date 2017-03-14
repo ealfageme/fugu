@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.authorizeRequests().antMatchers("/public-restaurant/**").permitAll();
 		 http.authorizeRequests().antMatchers("/search-web/").permitAll();
 		 http.authorizeRequests().antMatchers("/city/**").permitAll();
+		 http.authorizeRequests().antMatchers("/clients/").permitAll();
 		 // Private pages (all other pages)
 		 //http.authorizeRequests().anyRequest().authenticated();
 		 for(User user : users.findAll()){
