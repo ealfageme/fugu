@@ -5,7 +5,9 @@ function sendFuguFeedback() {
 	window.location.href = "mailto:feedback@fugu.com?subject=Feedback&body="+body+"%0A%0AMessage written by: "+username+" ("+email+").";
 }
 
-
+function buttonPulsed(){
+	document.getElementById("followPulsed").value="pulsed";
+}
 
 $('#password_restaurant, #confirm_password_restaurant').on('keyup', function () {
 	if($('#password_restaurant').val().length>=6){
