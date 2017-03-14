@@ -3,18 +3,26 @@ package com.example.Controllers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.Entities.Booking;
 import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
 import com.example.Entities.Review;
+import com.example.Entities.User;
 import com.example.Entities.Voucher;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.MenuRepository;
@@ -39,6 +47,22 @@ public class RestaurantController {
 	private MenuRepository menuRepository;
 	@Autowired
 	private VoucherRepository voucherRepository;
+	
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session) {
+		session.setMaxInactiveInterval(-1);
+		return new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value="/restaurants/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		return new ResponseEntity<>(restaurantRepository.findOne(id), HttpStatus.OK);
+	}
 	
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
