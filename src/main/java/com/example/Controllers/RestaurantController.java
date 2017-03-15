@@ -81,6 +81,7 @@ public class RestaurantController {
 			@RequestParam(required=false) String specialRequirements,
 			@RequestParam(required=false) Integer rate, @RequestParam(required=false) String content,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
+		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();

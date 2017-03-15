@@ -46,7 +46,7 @@
 						<li><a href="#menu">MENU</a></li>
 						<li><a href="#gallery">GALLERY</a></li>
 						<li><a href="#vouchers">VOUCHERS</a></li>
-						<li><a href="#reviews">REVIEWS</a></li>
+						<li>{{#inSession}}<a href="#reviews">REVIEWS</a>{{/inSession}}</li>
 						<li><a href="#feedback">FEEDBACK</a></li>
 					</ul>
 				</div>
@@ -663,6 +663,7 @@
 		</div>
 	</section>
 	<!-- Portfolio Section End -->
+	{{#inSession}}
 	<section id="reviews" class="bgSection ratings-section">
 		<br> <br> <br>
 		<div class="parallax-overlay"></div>
@@ -722,6 +723,7 @@
 			</div>
 		</div>
 	</section>
+	{{/inSession}}
 	<section id="feedback" class="section-wrapper contact-section"
 		data-stellar-background-ratio="0.5">
 		<div class="parallax-overlay"></div>
