@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.security.core.Authentication;
@@ -69,7 +70,7 @@ public class RestaurantController {
 	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(10);
 		
-		return new ResponseEntity<>(restaurantRepository.findAll(page), HttpStatus.OK);
+		return new ResponseEntity<>(restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), page), HttpStatus.OK);
 	}
 	
 	/*@ResponseBody
