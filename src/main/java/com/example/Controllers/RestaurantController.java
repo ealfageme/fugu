@@ -2,6 +2,7 @@ package com.example.Controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -76,16 +77,31 @@ public class RestaurantController {
 		session.setMaxInactiveInterval(-1);
 		return new ResponseEntity<>(restaurantRepository.findOne(id), HttpStatus.OK);
 	}
+	
 	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session,@RequestParam(required=false) String pagenumber) {
+		session.setMaxInactiveInterval(-1);
+		if(pagenumber==null)pagenumber="0";
+		Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
+		Page<Restaurant> restaurants = restaurantRepository.findAll(page);
+		List<Restaurant> resList=new ArrayList<>();
+		for(Restaurant restaurant:restaurants){
+			resList.add(restaurant);
+		}
+		System.out.println(restaurants.getTotalPages());
+		return new ResponseEntity<>(resList, HttpStatus.OK);
+	}
+	
+	/*@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
-	public ResponseEntity<Page<Restaurant>> getClients(HttpSession session,@RequestParam String pagenumber) {
+	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session,@RequestParam(required=false) String pagenumber) {
 		session.setMaxInactiveInterval(-1);
-		Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
-		Page<Restaurant> pages=restaurantRepository.findAll(page);
-		Iterator <Restaurant> iter=pages.iterator();		
-		return new ResponseEntity<>(restaurantRepository.findAll(page), HttpStatus.OK);
-	}
+		//Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
+		return  new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
+	}*/
 	
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")

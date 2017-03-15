@@ -80,12 +80,13 @@ public class ClientController {
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value="/clients/", method=RequestMethod.GET)
-	public ResponseEntity<Page<User>> getClients(HttpSession session) {
+	public ResponseEntity<List<User>> getClients(HttpSession session) {
 		session.setMaxInactiveInterval(-1);
 		Pageable page = createPageRequest();
 		Page<User> pages=userRepository.findAll(page);
 		System.out.println(pages.getNumberOfElements());
-		return new ResponseEntity<>(userRepository.findAll(page), HttpStatus.OK);
+		//return new ResponseEntity<>(userRepository.findAll(page), HttpStatus.OK);
+		return  new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
 	}
 	private Pageable createPageRequest() {
 	    return new PageRequest(0, 2);
