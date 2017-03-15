@@ -48,16 +48,16 @@
 						<li><a href="#profile">{{restaurant.name}}</a></li>
 						<li><a href="#reservations">RESERVATIONS</a></li>
 						<li><a href="#current-deals">CURRENT DEALS</a></li>
-						<li><a href="#menu-card">MENU CARD</a></li>
-						<li><a href="#chefs">CHEFS</a></li>
+						<li><a href="#menu">MENU CARD</a></li>
+						<li><a href="#voucher">VOUCHERS</a></li>
 						<li><a href="#feedback">FEEDBACK</a></li>
 						<li><a href="#clients">CLIENTS</a></li>
-					
+						<li class="signin"><form action="/main/" method='post'>
+						<button type="submit" class="signInBtn"> SignOut</button>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
+						</form> </li>
 					</ul>
-					<form action="/main/" method='post' >
-					<button type="submit" class="signInBtn"> SignOut</button>
-					<input type="hidden" name="_csrf" value="{{token}}"/>
-					</form> 
+					
 				</div>
 			</div>
 		</nav>
@@ -108,13 +108,13 @@
 						<form role="form" method='post'>
 							<div class="form-group">
 								<label for="name">Restaurant Name:</label> <input
-									style="border-radius: 0px !important" type="name"
+									style="border-radius: 0px !important" 
 									class="form-control" name="namerest"
 									value="{{restaurant.name}}">
 							</div>
 							<div class="form-group">
 								<label for="name">Location:</label> <input
-									style="border-radius: 0px !important" type="name"
+									style="border-radius: 0px !important" 
 									class="form-control" name="location"
 									value="{{restaurant.address}}">
 							</div>
@@ -125,7 +125,7 @@
 							</div>
 							<div class="form-group">
 								<label for="name">Telephone:</label> <input
-									style="border-radius: 0px !important" type="name"
+									style="border-radius: 0px !important"
 									class="form-control" name="telephone"
 									value="{{restaurant.phone}}">
 							</div>
@@ -247,7 +247,7 @@
 				</div>
 			</div>
 		</div>
-		</div>
+		
 	</section>
 
 	<section id="current-deals" class="section-wrapper">
@@ -288,8 +288,6 @@
 									<img src="/images/voucher1.jpg" alt="Custom Image">
 								</button>
 								<br> <br>
-								<button type="button" class="btnMore"
-									style="margin-left: 0 !important;">Modify</button>
 							</div>
 						</div>
 						{{/vouchers}}
@@ -297,7 +295,7 @@
 
 				</div>
 				<div class="col-md-5 col-md-offset-5 col-sm-5 col-xs-5">
-					<button type="button" class="btnMore">New discount</button>
+					<a type="button" class="btnMore" href="#voucher">New discount</a>
 				</div>
 			</div>
 		</div>
@@ -343,6 +341,13 @@
 							<!-- /menu-column -->
 						</div>
 						{{/menu}}
+						<section id="voucher">
+						<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+							<h2>
+								<span class="highlight-text">Vouchers</span>
+							</h2>
+						</div>
+					</section>
 					</div>
 					<div class="container">
 						<div class="row">
@@ -351,14 +356,14 @@
 								class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 								<h2>
 									<span class="highlight-text">Dish image<img
-										src="/images/santo-restaurant/restaurant-sign.jpg"
+										src="/images/voucher1.jpg"
 										class="img-thumbnail" alt="Custom Image"></span>
 								</h2>
 								<br>
-								<spam id="button">
+								<span id="button">
 								<button type="submit" class="btnMore" id="changeImg">Change
 									profile image</button>
-								</spam>
+								</span>
 							</div>
 							<!-- Section Header End -->
 							<div id="profileForm"
@@ -374,7 +379,7 @@
 										</div>
 										<div class="form-group">
 											<label for="name">Price</label> <input
-												style="border-radius: 0px !important" type="name"
+												style="border-radius: 0px !important" 
 												class="form-control" id="name" name='menuprice'
 												value="price">
 										</div>
@@ -398,10 +403,11 @@
 				</div>
 				<!-- /row -->
 			</div>
-			<!-- /menu-carousel -->
+		
 		</div>
 		<!-- /menus-container -->
-		</div>
+		
+		
 		<!-- /container -->
 	</section>
 
@@ -491,7 +497,7 @@
 														class="sr-only" for="guest">Guest</label> <select
 														style="border-radius: 0px !important" id="guest"
 														name="guest" class="form-control">
-														<option value="foodType" name="type">{{restaurant.foodType}}</option>
+														<option value="foodType" >{{restaurant.foodType}}</option>
 													</select>
 												</div>
 											</div>
