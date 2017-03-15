@@ -60,7 +60,7 @@
 			<div class="sp-slide main-slides">
 				<div class="img-overlay"></div>
 				<img class="sp-image"
-					src="/images/slider/{{restaurant.foodType}}1.jpg" alt="Slider 1" />
+					src="/images/restaurant-type/{{restaurant.name}}.jpg" alt="Slider 1" />
 				<h1 class="imagetext1" data-position="center"
 					data-show-transition="left" data-hide-transition="right"
 					data-show-delay="1500" data-hide-delay="200">
@@ -74,7 +74,7 @@
 			<div class="sp-slide main-slides">
 				<div class="img-overlay"></div>
 				<img class="sp-image"
-					src="/images/slider/{{restaurant.foodType}}2.jpg" alt="Slider 2" />
+					src="/images/restaurant-type/{{restaurant.name}}.jpg" alt="Slider 2" />
 				<h1 class="imagetext1" data-position="center"
 					data-show-transition="left" data-hide-transition="right"
 					data-show-delay="1500" data-hide-delay="200">
@@ -106,7 +106,7 @@
 					style="float: left">
 					<div class="google-maps">
 						<!--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1736780674373!2d-3.697183684952735!3d40.427152979363896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288e608ea2d9%3A0xd858967da80c4fa8!2sFoster&#39;s+Hollywood!5e0!3m2!1ses!2ses!4v1485849876354" width="100%" height="450px" frameborder="0" style="border:0"></iframe>-->
-						<img src="/images/santo-restaurant/restaurant-sign.jpg">
+						<img src="/images/restaurant-type/{{restaurant.name}}.jpg">
 					</div>
 				</div>
 				<div
@@ -688,7 +688,7 @@
 										class="recommendations-filter-btn-group">
 										<div class="item recommendations-item web seo">
 											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
 													<ul>
 														<li>
 															<h1 class="shadow">{{reviewUser.name}}</h1> <span
@@ -701,7 +701,7 @@
 													</ul>
 												</div>
 												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10"
-													style="border-left-style: solid;">
+													>
 													<p style="margin: 5px;">{{content}}</p>
 													<p style="margin: 5px;">{{date}}</p>
 												</div>
