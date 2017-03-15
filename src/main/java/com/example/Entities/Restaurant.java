@@ -28,7 +28,6 @@ public class Restaurant {
 	interface Reviews {}
 	interface Bookings {}
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonView(Basic.class)
