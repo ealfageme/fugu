@@ -30,39 +30,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.authorizeRequests().antMatchers("/search-web/").permitAll();
 		 http.authorizeRequests().antMatchers("/city/**").permitAll();
 		 http.authorizeRequests().antMatchers("/clients/").permitAll();
+		 
 		 // Private pages (all other pages)
-		 //http.authorizeRequests().anyRequest().authenticated();
 		 for(User user : users.findAll()){
 			 System.out.println(user.getName());
 			 http.authorizeRequests().antMatchers("/private-client/").hasAnyRole("USER");
 		 }
-		 
 		 for(Restaurant restaurant : restaurants.findAll()){
 			 System.out.println(restaurant.getName());
 			 http.authorizeRequests().antMatchers("/private-restaurant/").hasAnyRole("RESTAURANT");
 		 }
 		 
-		 //http.authorizeRequests().antMatchers("/private-client/john-lennon").hasAnyRole("USER"+"john-lennon");
-		 //http.authorizeRequests().antMatchers("/private-restaurant/*").hasAnyRole("RESTAURANT");
 		 // Login form
-		 http.formLogin().loginPage("/main/");
+		 http.formLogin().loginPage("/main2/");
 		 http.formLogin().usernameParameter("loginemail");
 		 http.formLogin().passwordParameter("loginpassword");
-		 http.formLogin().defaultSuccessUrl("/default/");
-		 http.formLogin().failureUrl("/main/");
+		 http.formLogin().defaultSuccessUrl("/main/");
+		 http.formLogin().failureUrl("/main2/");
 		 // Logout
 		 http.logout().logoutSuccessUrl("/main/");
 		
-		 // Disable CSRF at the moment
-		 //http.csrf().disable();
-		// User
+
 		
 	 }
 	 
 	 @Override
 	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		 // User
-		 // Database authentication provider
 	     
 	     auth.authenticationProvider(authenticationProviderRestaurant);
 	     auth.authenticationProvider(authenticationProviderUser);

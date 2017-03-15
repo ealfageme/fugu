@@ -219,7 +219,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		voucherRepository.save(voucher5);
 		voucherRepository.save(voucher6);
 		
-		//RELACION USER - REVIEW
+		// USER - REVIEW RELATION
 		
 		Review review1 = new Review("Fucking amazing", 5.0, new Date());
 		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
@@ -247,7 +247,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		reviewRepository.save(review6);
 
 		
-		//RELACION USER - BOOKING
+		// USER - BOOKING RELATION
 		Booking booking1 = new Booking(new Date(), 5,"One high chair for the baby");
 		Booking booking2 = new Booking(new Date(), 2,"Champagne");
 		Booking booking3 = new Booking(new Date(), 3,"High chair");
@@ -273,7 +273,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		bookingRepository.save(booking4);
 		bookingRepository.save(booking5);
 		bookingRepository.save(booking6);
-    	//restaurantRepository.save(new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT"+"American Whey"));
     }
 
 	

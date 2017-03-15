@@ -23,13 +23,11 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
-		System.out.println(auth.getName());
 		Restaurant restaurant = restaurantRepository.findByEmail(auth.getName());
 		if (restaurant == null) {
 			System.out.println("Restaurant not found");
 			throw new BadCredentialsException("Restaurant not found");
 		}
-		System.out.println(auth.getCredentials());
 		String password = (String) auth.getCredentials();
 		if (!new BCryptPasswordEncoder().matches(password, restaurant.getPassword())) {
 			System.out.println("wrong pass");
@@ -37,8 +35,7 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 		}
 
 		List<GrantedAuthority> roles = new ArrayList<>();
-			roles.add(new SimpleGrantedAuthority(restaurant.getRoles()));
-			
+			roles.add(new SimpleGrantedAuthority(restaurant.getRoles()));	
 		return new UsernamePasswordAuthenticationToken(restaurant.getEmail(), password, roles);
 	}
 

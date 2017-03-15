@@ -73,14 +73,6 @@ public class RestaurantController {
 		return new ResponseEntity<>(restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), page), HttpStatus.OK);
 	}
 	
-	/*@ResponseBody
-	@JsonView(User.Basic.class)
-	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
-	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session,@RequestParam(required=false) String pagenumber) {
-		session.setMaxInactiveInterval(-1);
-		//Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
-		return  new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
-	}*/
 	
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
