@@ -2,6 +2,7 @@ package com.example.Controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.security.core.Authentication;
@@ -62,13 +64,23 @@ public class RestaurantController {
 		session.setMaxInactiveInterval(-1);
 		return new ResponseEntity<>(restaurantRepository.findOne(id), HttpStatus.OK);
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
 	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(10);
 		
-		return new ResponseEntity<>(restaurantRepository.findAll(page), HttpStatus.OK);
+		return new ResponseEntity<>(restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), page), HttpStatus.OK);
 	}
+	
+	/*@ResponseBody
+	@JsonView(User.Basic.class)
+	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session,@RequestParam(required=false) String pagenumber) {
+		session.setMaxInactiveInterval(-1);
+		//Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
+		return  new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
+	}*/
 	
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")

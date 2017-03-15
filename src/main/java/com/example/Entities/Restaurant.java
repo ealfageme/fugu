@@ -20,24 +20,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Restaurant {
-	public interface Basic {
-	}
-
-	interface Users {
-	}
-	interface Menus {
-	}
-
-	interface Vouchers {
-	}
-	interface Cities {
-	}
-
-	interface Reviews {
-	}
-	interface Bookings {
-	}
-
+	public interface Basic {}
+	interface Users {}
+	interface Menus {}
+	interface Vouchers {}
+	interface Cities {}
+	interface Reviews {}
+	interface Bookings {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
