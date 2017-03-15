@@ -91,11 +91,18 @@
                             </div>
                     </div>
                     <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <form role="form" method='post'>
-                        <input id="followPulsed" type="hidden" name='followPulsed' value="">
-                        <button type="submit" class="btnMore"  id="follow" style="margin:10px;" onClick="followButtonPulsed()">Follow</button>
-                        <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="">
-                         <button type="submit" style='display:none;' class="btnMore" id="unfollow" style="margin:10px;" onClick="unfollowButtonPulsed()">Unfollow</button>
+                        <form role="form" method='get'>
+                        {{#followButton}}
+                        <input id="followPulsed" type="hidden" name='followPulsed' value="true">
+                        <button type="submit" class="btnMore"  id="follow" style="margin:10px;" >Follow</button>
+                       	{{/followButton}}
+                       	<input type="hidden" name="_csrf" value="{{token}}"/>
+                       	</form>
+						<form role="form" method='get'>
+                       	{{#unfollowButton}}
+                        <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
+                        <button type="submit" class="btnMore" id="unfollow" style="margin:10px;" >Unfollow</button>
+                         {{/unfollowButton}}
                          <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
