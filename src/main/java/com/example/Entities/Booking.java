@@ -1,8 +1,6 @@
 package com.example.Entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.example.Entities.*;
-import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 
 @Entity
 public class Booking {
@@ -29,10 +24,10 @@ public class Booking {
 	}
 
 	@ManyToOne
-	@JsonView(Users.class)
+	@JsonIgnore
 	private User bookingUser = new User();
 	@ManyToOne
-	@JsonView(Restaurants.class)
+	@JsonIgnore
 	private Restaurant bookingRestaurant = new Restaurant();
 	
 	@Id

@@ -15,8 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import com.example.Entities.*;
 import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 @Component
 public class RestaurantRepositoryAuthenticationProvider implements AuthenticationProvider {
 

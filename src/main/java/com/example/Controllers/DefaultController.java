@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Entities.*;
 import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 
 @Controller
 public class DefaultController {

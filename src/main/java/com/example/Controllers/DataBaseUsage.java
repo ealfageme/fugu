@@ -1,22 +1,15 @@
 package com.example.Controllers;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Entities.*;
 import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
