@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import com.example.Entities.*;
 import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 
 
 @Configuration

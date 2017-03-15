@@ -4,19 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
-import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.security.core.Authentication;
@@ -36,7 +31,6 @@ import com.example.Entities.Booking;
 import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
 import com.example.Entities.Review;
-import com.example.Entities.User;
 import com.example.Entities.Voucher;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.MenuRepository;
@@ -62,16 +56,8 @@ public class RestaurantController {
 	@Autowired
 	private VoucherRepository voucherRepository;
 	
-	/*@ResponseBody
-	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
-	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session) {
-		session.setMaxInactiveInterval(-1);
-		return new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
-	}*/
 	
 	@ResponseBody
-	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value="/restaurants/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
@@ -79,19 +65,11 @@ public class RestaurantController {
 	}
 	
 	@ResponseBody
-	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
-	public ResponseEntity<List<Restaurant>> getRestaurants(HttpSession session,@RequestParam(required=false) String pagenumber) {
-		session.setMaxInactiveInterval(-1);
-		if(pagenumber==null)pagenumber="0";
-		Pageable page = new PageRequest(Integer.parseInt(pagenumber), 2);
-		Page<Restaurant> restaurants = restaurantRepository.findAll(page);
-		List<Restaurant> resList=new ArrayList<>();
-		for(Restaurant restaurant:restaurants){
-			resList.add(restaurant);
-		}
-		System.out.println(restaurants.getTotalPages());
-		return new ResponseEntity<>(resList, HttpStatus.OK);
+	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
+		session.setMaxInactiveInterval(10);
+		
+		return new ResponseEntity<>(restaurantRepository.findAll(page), HttpStatus.OK);
 	}
 	
 	/*@ResponseBody
