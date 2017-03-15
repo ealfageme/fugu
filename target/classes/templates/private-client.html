@@ -44,11 +44,11 @@
 						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
-					</ul>
-					<form action="/main/" method='post'>
+						<li><form action="/main/" method='post'>
 					<button type="submit" class="signInBtn"> SignOut</button>
 					<input type="hidden" name="_csrf" value="{{token}}"/>
-					</form> 
+					</form> </li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -61,16 +61,22 @@
 				<div
 					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 					<h2>
-						<span class="highlight-text">{{user.name}}<img
-							src="/images/clients/250x250_24105534pedro-leon.jpg"
-							class="img-circle" alt="Custom Image"></span>
+						<span class="highlight-text">{{user.name}}
+						<img src="/images/clients/{{user.name}}.jpg" class="img-circle" alt="Custom Image"/>
+						
+						
+						</span>
 					</h2>
 					<p>{{user.description}}</p>
 					<br>
-					<spam id="button">
-					<button type="submit" class="btnMore" id="changeImg">Change
-						profile image</button>
-					</spam>
+					
+					<form method="post" enctype="multipart/form-data">
+					<span id="button">
+					<label>Image file:</label><input type="file" name="file" />
+					</span>
+					<input type='submit' name='enviar' value='Enviar' />
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+					</form>
 				</div>
 				<!-- Section Header End -->
 				<div id="profileForm"
@@ -160,10 +166,10 @@
 				</div>
 			</div>
 		</div>
-		
-	</section>
 		</div>
 	</section>
+		
+	
 	<section id="deals" class="section-wrapper">
 		<br> <br> <br>
 		<div class="container">
