@@ -6,13 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -25,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entities.User;
 import com.example.Repositories.RestaurantRepository;
@@ -77,30 +72,16 @@ public class ClientController {
 		return user;
 	}
 	
-	@ResponseBody
-	@JsonView(User.Basic.class)
-	@RequestMapping(value="/clients/", method=RequestMethod.GET)
-	public ResponseEntity<Page<User>> getClients(HttpSession session) {
-		session.setMaxInactiveInterval(-1);
-		Pageable page = createPageRequest();
-		Page<User> pages=userRepository.findAll(page);
-		System.out.println(pages.getNumberOfElements());
-		return new ResponseEntity<>(userRepository.findAll(page), HttpStatus.OK);
-	}
-	private Pageable createPageRequest() {
-	    return new PageRequest(0, 2);
-	}
-	
-	/*@ResponseBody
-	@JsonView(User.Basic.class)
-	@RequestMapping(value="/clients/", method=RequestMethod.GET)
-	public ResponseEntity<List<User>> getClients(HttpSession session) {
-		session.setMaxInactiveInterval(-1);
-		return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
-	}*/
 	
 	@ResponseBody
-	@JsonView(User.Basic.class)
+	@RequestMapping(value="/clients/", method=RequestMethod.GET)
+	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Page<User> users = userRepository.findAll(page);
+		return new ResponseEntity<>(users, HttpStatus.OK);
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/clients/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
 		session.setMaxInactiveInterval(-1);

@@ -9,10 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import com.example.Entities.*;
-import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 @Configuration
 public class CSRFHandlerConfiguration extends WebMvcConfigurerAdapter {
 	

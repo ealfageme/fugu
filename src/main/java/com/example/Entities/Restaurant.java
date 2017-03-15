@@ -1,12 +1,9 @@
 package com.example.Entities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,13 +13,9 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.example.Entities.Menu.Basic;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.example.Entities.*;
-import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 
 @Entity
@@ -72,22 +65,22 @@ public class Restaurant {
 	private String password;
 	
 	@ManyToMany (mappedBy="restaurants")
-	@JsonView(User.class)
+	@JsonIgnore
 	private List<User> users = new ArrayList<>();
 	@OneToMany (mappedBy="restaurantMenu")
-	@JsonView(Menus.class)
+	@JsonIgnore
 	private List<Menu> menus = new ArrayList<>();
 	@OneToMany(mappedBy="restaurant")
-	@JsonView(Vouchers.class)
+	@JsonIgnore
 	private List<Voucher> vouchers = new ArrayList<>();
 	@OneToMany(mappedBy="bookingRestaurant")
-	@JsonView(Bookings.class)
+	@JsonIgnore
 	private List<Booking> bookings = new ArrayList<>();
 	@ManyToOne
-	@JsonView(Cities.class)
+	@JsonIgnore
 	private City city;
 	@OneToMany(mappedBy="reviewRestaurant")
-	@JsonView(Reviews.class)
+	@JsonIgnore
 	private List<Review> restaurantReviews = new ArrayList<>();
 	
 	public Restaurant (){}

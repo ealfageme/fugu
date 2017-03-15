@@ -10,14 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import com.example.Entities.User.Basic;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.example.Entities.*;
-import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 @Entity
 public class Voucher {
 	interface Basic {
@@ -39,7 +34,7 @@ public class Voucher {
 	private long id;
 	
 	@ManyToOne
-	@JsonView(Restaurants.class)
+	@JsonIgnore
 	private Restaurant restaurant = new Restaurant();
 	@ManyToMany
 	@JsonView(Users.class)

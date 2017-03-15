@@ -3,19 +3,14 @@ package com.example.Entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.example.Entities.Booking.Users;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.example.Entities.*;
-import com.example.Repositories.*;
-import com.example.Security.*;
-import com.example.Controllers.*;
 @Entity
 public class City {
 
@@ -32,7 +27,7 @@ public class City {
 	private long id;
 	
 	@OneToMany(mappedBy="city")
-	@JsonView(Restaurants.class)
+	@JsonIgnore
 	private List<Restaurant> cityResturants = new ArrayList<>();
 	
 	
