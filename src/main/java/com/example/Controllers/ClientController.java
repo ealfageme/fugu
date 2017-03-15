@@ -1,6 +1,5 @@
 package com.example.Controllers;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -27,19 +26,20 @@ import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 @Controller
 public class ClientController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private RestaurantRepository restaurantRepository;
-	
+
 	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
-	public String publicClient(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,  @RequestParam(required=false) String followPulsed, @RequestParam(required=false) String unfollowPulsed) {
-		
+	public String publicClient(Model model, HttpServletRequest request, Authentication authentication,
+			@PathVariable String name, @RequestParam(required = false) String followPulsed,
+			@RequestParam(required = false) String unfollowPulsed) {
+
 		model.addAttribute("user", userRepository.findByName(name));
 		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
 		model.addAttribute("following", userRepository.findByName(name).getFollowing());
@@ -50,52 +50,66 @@ public class ClientController {
 		/*
 		 * Following feature has to be implemented
 		 */
-			if(request.isUserInRole("USER")){
-				String userloggin = authentication.getName();
-				if (followPulsed!=null) {			
-					userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
-					userRepository.save(userRepository.findByEmail(userloggin));
-				}else if (unfollowPulsed!=null) {			
-					userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
-					userRepository.save(userRepository.findByEmail(userloggin));
-				}
+		if (request.isUserInRole("USER")) {
+			String userloggin = authentication.getName();
+			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			
+			
+			if (followPulsed != null) {
+				System.out.println("Entra follow");
+				userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
+				userRepository.save(userRepository.findByEmail(userloggin));
 			}
+			
+			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			
+			if (unfollowPulsed != null) {
+				System.out.println("Entra unfollow");
+				userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
+				userRepository.save(userRepository.findByEmail(userloggin));
+			}
+			
+			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+		}
 		return "public-client";
 	}
-	
+
 	@ResponseBody
 	@JsonView(User.Basic.class)
-	@RequestMapping(value="/clients/", method=RequestMethod.POST)
+	@RequestMapping(value = "/clients/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public User addClient(@RequestBody User user,HttpSession session) {
+	public User addClient(@RequestBody User user, HttpSession session) {
 		session.setMaxInactiveInterval(-1);
 		return user;
 	}
-	
-	
+
 	@ResponseBody
-	@RequestMapping(value="/clients/", method=RequestMethod.GET)
+	@RequestMapping(value = "/clients/", method = RequestMethod.GET)
 	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(-1);
 		Page<User> users = userRepository.findAll(page);
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/clients/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/clients/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
 		session.setMaxInactiveInterval(-1);
-		return  new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+		return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
 	}
-	
+
 	@JsonView(User.Basic.class)
 	@RequestMapping("/private-client/")
-	public String privateClient(Model model,HttpServletRequest request,Authentication authentication,
-			@RequestParam(required=false) String username,@RequestParam(required=false) String useremail,@RequestParam(required=false) String userdescription,
-			@RequestParam(required=false) String favouritefood, @RequestParam(required=false) String password,
-			@RequestParam(required=false) String confirmpassword, @RequestParam(required= false) Integer userage) {
-		try{
-			if(request.isUserInRole("USER")){
+	public String privateClient(Model model, HttpServletRequest request, Authentication authentication,
+			@RequestParam(required = false) String username, @RequestParam(required = false) String useremail,
+			@RequestParam(required = false) String userdescription,
+			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
+			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
+		try {
+			if (request.isUserInRole("USER")) {
 				String userloggin = authentication.getName();
 				model.addAttribute("user", userRepository.findByEmail(userloggin));
 				model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
@@ -104,27 +118,26 @@ public class ClientController {
 				model.addAttribute("vouchers", userRepository.findByEmail(userloggin).getUserVouchers());
 				model.addAttribute("reviews", userRepository.findByEmail(userloggin).getReviews());
 				model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-				
-				if (username!=null) {
+
+				if (username != null) {
 					User user = userRepository.findByEmail(userloggin);
 					user.setName(username);
 					user.setEmail(useremail);
 					user.setDescription(userdescription);
 					user.setFavouriteFood(favouritefood);
-					if (password.equals(confirmpassword)){
+					if (password.equals(confirmpassword)) {
 						user.setPassword(password);
 					}
 					userRepository.save(user);
-					if ((userage>10) && (userage<100))
+					if ((userage > 10) && (userage < 100))
 						user.setAge(userage);
 				}
-		}
-		}catch(NullPointerException ex){
+			}
+		} catch (NullPointerException ex) {
 			ex.printStackTrace();
-			
+
 		}
 		return "private-client";
 	}
-	
-	
+
 }

@@ -106,18 +106,28 @@ public class RestaurantController {
 		}
 		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
+			model.addAttribute("favButton", !userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
+			model.addAttribute("unfavButton", userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
 			if (favPulsed!=null) {	
 				
 				userRepository.findByEmail(userloggin).getRestaurants().add(restaurantRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 				restaurantRepository.findByName(name).getUsers().add(userRepository.findByEmail(userloggin));
 				restaurantRepository.save(restaurantRepository.findByName(name));
-			}else if (unfavPulsed!=null) {
+	
+			}
+			model.addAttribute("favButton", !userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
+			model.addAttribute("unfavButton", userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
+			if (unfavPulsed!=null) {
+				
 				userRepository.findByEmail(userloggin).getRestaurants().remove(restaurantRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 				restaurantRepository.findByName(name).getUsers().remove(userRepository.findByEmail(userloggin));
 				restaurantRepository.save(restaurantRepository.findByName(name));
+				
 			}
+			model.addAttribute("favButton", !userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
+			model.addAttribute("unfavButton", userRepository.findByEmail(userloggin).getRestaurants().contains(restaurantRepository.findByName(name)));
 		}
 		return "public-restaurant";
 	}

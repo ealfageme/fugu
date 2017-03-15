@@ -154,11 +154,18 @@
 			</div>
 		</div>
 		<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <form role="form" method='post'>
-                        <input type="hidden" id="favPulsed" name="favPulsed" />
-                        <button type="submit" class="btnMore"  id="fav" style="margin:10px;" onClick="favButtonPulsed()">Fav</button>
-                         <input type="hidden" id="unfavPulsed" name="unfavPulsed" />
-                         <button type="submit" style='display:none;' class="btnMore" id="unfav" onClick="favButtonPulsed()"  style="margin:10px;">UnFav</button>
+                        <form role="form" method='get'>
+                        {{#favButton}}
+                        <input type="hidden" id="favPulsed" name="favPulsed" value="true"/>
+                        <button type="submit" class="btnMore"  id="fav" style="margin:10px;">Fav</button>
+                         {{/favButton}}
+                         <input type="hidden" name="_csrf" value="{{token}}"/>
+                         </form>
+                         <form role="form" method='get'>
+                         {{#unfavButton}}
+                         <input type="hidden" id="unfavPulsed" name="unfavPulsed" value="true"/>
+                         <button type="submit" class="btnMore" id="unfav" style="margin:10px;">UnFav</button>
+                         {{/unfavButton}}
                          <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
