@@ -68,7 +68,7 @@
 		<!-- Slides -->
 		<div class="image section-header">
 
-			<img src="/images/santo-restaurant/santo-restaurant.jpg"
+			<img src="/images/restaurant-type/{{restaurant.name}}.jpg"
 				alt="Slider 1" />
 
 			<h2 class="imagetext1" data-position="center"
@@ -90,15 +90,15 @@
 					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 					<h2>
 						<span class="highlight-text">{{restaurant.name}}<img
-							src="/images/santo-restaurant/restaurant-sign.jpg"
+							src="/images/restaurant-type/{{restaurant.name}}.jpg"
 							class="img-thumbnail" alt="Custom Image"></span>
 					</h2>
 					<p>{{restaurant.description}}</p>
 					<br>
-					<spam id="button">
+					<span id="button">
 					<button type="submit" class="btnMore" id="changeImg">Change
 						profile image</button>
-					</spam>
+					</span>
 				</div>
 				<!-- Section Header End -->
 				<div id="profileForm"
@@ -198,7 +198,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<h1 class="shadow"></h1>
-									</li>
+									
 									<!-- Filter Button Start -->
 									{{#bookings}}
 									<div id="recommendations-filter"
@@ -233,7 +233,7 @@
 											</div>
 										</div>
 										<!-- Filter Button End -->
-										<!-- Portfolio Items -->
+										
 									</div>
 									<br> {{/bookings}}
 

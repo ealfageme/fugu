@@ -44,7 +44,7 @@
 						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
-						<li><form action="/main/" method='post'>
+						<li class="signin"><form action="/main/" method='post'>
 					<button type="submit" class="signInBtn"> SignOut</button>
 					<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form> </li>
@@ -200,18 +200,10 @@
 									src="/images/day-food/breakfast.jpg" alt="Custom Image">
 								</a>
 								<p style="margin-top: 5px;">Expiry date : {{expiryDate}}</p>
-								<button type="button" class="btnMore" href="images/QR/qr1.png">Download
-									QR</button>
 							</div>
 						</div>
 						{{/vouchers}}
-						<div
-							class="col-md-12 col-sm-12 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="btnMorePadding">
-								<button type="button" class="btnMore">See More</button>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -243,7 +235,7 @@
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/images/clients/natural.png" class="img-circle"
+											<img src="/images/restaurant-type/{{name}}.jpg" class="img-circle"
 												id="imgPerfil">{{name}}
 										</h6>
 									</div>
@@ -264,7 +256,7 @@
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/images/profile-pictures/foto-perfil1.jpg"
+											<img src="/images/clients/{{name}}.jpg"
 												class="img-circle" id="imgPerfil">{{name}}
 										</h6>
 									</div>
@@ -315,20 +307,15 @@
 							</li>
 						</ul>
 					</div>
-					<!-- Filter Button End -->
-					<!-- Portfolio Items -->
 					<div class="item recommendations-item web seo">
 						<a href="public-restaurant.html"><img
-							src="/images/img-portfolio/American1.png"> </a>
+							src="/images/restaurant-type/{{name}}.jpg"> </a>
 					</div>
 					<br>
 				</div>
 				{{/generalRestaurants}}
 
 			</div>
-		</div>
-		<div class=" col-lg-2 col-lg-offset-5">
-			<button type="button" class="btnMore btn-block">See more</button>
 		</div>
 	</section>
 	<!-- Portfolio Section End -->

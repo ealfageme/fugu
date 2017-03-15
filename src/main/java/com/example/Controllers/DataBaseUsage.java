@@ -128,10 +128,10 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu12);
 		menuRepository.save(menu13);
 
-		User user1 = new User("john","john@website.com","Description","pass",21, "Italian","ROLE_USER");
-		User user2 = new User("peter","peter@website.com","Description","pass",31, "Tapas","ROLE_USER");
-		User user3 = new User("samuel","samuel@website.com","Description","pass",54, "Thai","ROLE_USER");	
-		User user4 = new User("lucas","lucas@website.com","Description","pass",69, "American","ROLE_USER");	
+		User user1 = new User("John","john@website.com","Description","pass",21, "Italian","ROLE_USER");
+		User user2 = new User("Peter","peter@website.com","Description","pass",31, "Tapas","ROLE_USER");
+		User user3 = new User("Samuel","samuel@website.com","Description","pass",54, "Thai","ROLE_USER");	
+		User user4 = new User("Lucas","lucas@website.com","Description","pass",69, "American","ROLE_USER");	
 
 		
 		user1.getRestaurant().add(rest1);
