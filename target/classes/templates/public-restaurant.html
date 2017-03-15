@@ -48,6 +48,17 @@
 						<li><a href="#vouchers">VOUCHERS</a></li>
 						<li>{{#inSession}}<a href="#reviews">REVIEWS</a>{{/inSession}}</li>
 						<li><a href="#feedback">FEEDBACK</a></li>
+						 <li>{{#inSession}}
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> <input
+									type="hidden" name="_csrf" value="{{token}}" />
+							</form>
+							<form class="navbar-form navbar-right" method="get"
+								action="/default/">
+								<button class="signInBtn">Visit profile</button>
+							</form> {{/inSession}}
+							</li>
 					</ul>
 				</div>
 			</div>

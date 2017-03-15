@@ -47,6 +47,7 @@ public class ClientController {
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		/*
 		 * Following feature has to be implemented
 		 */
