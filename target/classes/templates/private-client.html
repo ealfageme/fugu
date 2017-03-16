@@ -36,140 +36,24 @@
 				<button class="navbar-toggler hidden-md-up pull-right" type="button"
 					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-				
+
 					<ul class="nav navbar-nav">
-						<li><a href="#profile">PROFILE</a></li>
 						<li><a href="#deals">DEALS</a></li>
 						<li><a href="#following">FOLLOWING</a></li>
 						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
+						<li><a href="#profile">{{user.name}}</a></li>
 						<li class="signin"><form action="/main2/" method='post'>
-					<button type="submit" class="signInBtn"> SignOut</button>
-					<input type="hidden" name="_csrf" value="{{token}}"/>
-					</form> </li>
+								<button type="submit" class="signInBtn">SignOut</button>
+								<input type="hidden" name="_csrf" value="{{token}}" />
+							</form></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<section id="profile" class="profile-sec section-wrapper description">
-		<br> <br> <br>
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">{{user.name}}
-						<img src="/images/clients/{{user.name}}.jpg" class="img-circle" alt="Custom Image"/>
-						
-						
-						</span>
-					</h2>
-					<p>{{user.description}}</p>
-					<br>
-					
-					<form method="post" enctype="multipart/form-data">
-					<span id="button">
-					<label>Image file:</label><input type="file" name="file" />
-					</span>
-					<input type='submit' name='enviar' value='Enviar' />
-					<input type="hidden" name="_csrf" value="{{token}}"/>
-					</form>
-				</div>
-				<!-- Section Header End -->
-				<div id="profileForm"
-					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-						<h1>Change data</h1>
-						
-						<form   role="form" method='post'>
-							<div class="form-group">
-								<label for="name">Account Name:</label> <input
-									style="border-radius: 0px !important" 
-									class="form-control" name='username' id = 'username' value="{{user.name}}">
-							</div>
-						
-							<div class="form-group">
-								<label for="email">Email:</label> <input
-									style="border-radius: 0px !important" type="email"
-									class="form-control" id="email" name = 'useremail'value="{{user.email}}">
-							</div>
-						
-							<div class="form-group">
-								<label for="name">Description:</label>
-								<textarea style="border-radius: 0px !important"
-									class="form-control" id="exampleTextarea" name='userdescription' rows="3">{{user.description}}</textarea>
-							</div>
-						
-							<div class="form-group">
-								<label for="email">Favourite food:</label> <input
-									style="border-radius: 0px !important"
-									class="form-control" name='favouritefood' value="{{user.favouriteFood}}">
-							</div>
-						
-							<div class="form-group">
-								<label for="pwd">New password</label> <input
-									style="border-radius: 0px !important" type="password"
-									class="form-control" id="pwd" name='password' placeholder="Enter new password">
-							</div>
-						
-						
-							<div class="form-group">
-								<label for="pwd">Repeat new password</label> <input
-									style="border-radius: 0px !important" type="password"
-									class="form-control" id="pwd" name='confirmpassword' placeholder="Repeat new password">
-							</div>
-						
-						
-							<div class="form-group">
-								<label for="age" style="margin-bottom: 10px;">How old
-									are you?</label> <input style="border-radius: 0px !important"
-									type="text" class="form-control" id="age" name='userage' value={{user.age}}>
-							</div>
-						
-						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-							<button type='submit' class="btnMore" > Update</button>
-							<input type="hidden" name="_csrf" value="{{token}}"/>
-							<a href="#modalwindow" data-toggle="modal">
-								<button type="submit" class="btnMore">Delete</button>
-							</a>
-						</div>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="modal " id="modalwindow">
-			<div class="modal-dialog">
-				<div class="modal-content"
-					style="background-color: #efefef; border-radius: 0;">
-					<div class="modal-header"
-						style="background-color: #28292e !important;">
-						<button type="button" class="close" data-dismiss="modal"
-							style="color: #ffffff;">&times;</button>
-						
-					</div>
-					<div class="modal-body">
-						<h2>Are you sure that you want to delete your profile?</h2>
-						
-							<div >
-								<button type='submit' class="btnMore">Yes</button>
-								
-							</div>
-						
 
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-		</div>
-	</section>
-		
-	
 	<section id="deals" class="section-wrapper">
 		<br> <br> <br>
 		<div class="container">
@@ -181,33 +65,33 @@
 						<span class="highlight-text">Deals</span>
 					</h2>
 					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"><h3>Some
-						restaurants have sent offers to you</h3>
-				<!-- Section Header End -->
-				<div class="our-offers">
-					<div class="row">
-						{{#vouchers}}
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon">
-									<h2>{{restaurant.name}}</h2>
-									<h3>{{name}}</h3>
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+					<h3>Some restaurants have sent offers to you</h3>
+					<!-- Section Header End -->
+					<div class="our-offers">
+						<div class="row">
+							{{#vouchers}}
+							<div
+								class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
+								data-wow-delay=".2s">
+								<div class="service-box">
+									<div class="icon">
+										<h2>{{restaurant.name}}</h2>
+										<h3>{{name}}</h3>
+									</div>
+									<p>{{description}}</p>
+									<a href="public-restaurant.html"> <img
+										src="/images/day-food/breakfast.jpg" alt="Custom Image">
+									</a>
+									<p style="margin-top: 5px;">Expiry date : {{expiryDate}}</p>
 								</div>
-								<p>{{description}}</p>
-								<a href="public-restaurant.html"> <img
-									src="/images/day-food/breakfast.jpg" alt="Custom Image">
-								</a>
-								<p style="margin-top: 5px;">Expiry date : {{expiryDate}}</p>
 							</div>
+							{{/vouchers}}
+
 						</div>
-						{{/vouchers}}
-						
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 	</section>
 	<section class="menus style3" id="following">
@@ -231,12 +115,13 @@
 							<h2>Restaurants</h2>
 							{{#restaurants}}
 							<div class="menu-column">
-								<button onClick=" window.location.href='/public-restaurant/{{name}}'"
+								<button
+									onClick=" window.location.href='/public-restaurant/{{name}}'"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/images/restaurant-type/{{name}}.jpg" class="img-circle"
-												id="imgPerfil">{{name}}
+											<img src="/images/restaurant-type/{{name}}.jpg"
+												class="img-circle" id="imgPerfil">{{name}}
 										</h6>
 									</div>
 								</button>
@@ -252,12 +137,13 @@
 							<h2>People</h2>
 							{{#following}}
 							<div class="menu-column">
-								<button onClick=" window.location.href='/public-client/{{name}}'"
+								<button
+									onClick=" window.location.href='/public-client/{{name}}'"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/images/clients/{{name}}.jpg"
-												class="img-circle" id="imgPerfil">{{name}}
+											<img src="/images/clients/{{name}}.jpg" class="img-circle"
+												id="imgPerfil">{{name}}
 										</h6>
 									</div>
 								</button>
@@ -341,10 +227,11 @@
 										class="recommendations-filter-btn-group">
 										<div class="item recommendations-item web seo">
 											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-right-style: solid;">
 													<ul>
 														<li>
-															<h1 class="shadow">{{reviewRestaurant.name}}</h1> 
+															<h1 class="shadow">{{reviewRestaurant.name}}</h1>
 															<p>{{rate}}</p>
 														</li>
 													</ul>
@@ -358,8 +245,7 @@
 										<!-- Filter Button End -->
 										<!-- Portfolio Items -->
 									</div>
-									<br>
-									{{/reviews}}	
+									<br> {{/reviews}}
 								</div>
 								<button type="button" class="btnMore">See more</button>
 							</div>
@@ -371,10 +257,132 @@
 			</div>
 		</div>
 	</section>
-	
+
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">{{user.name}} <img
+							src="/images/clients/{{user.name}}.jpg" class="img-circle"
+							alt="Custom Image" />
+
+
+						</span>
+					</h2>
+					<p>{{user.description}}</p>
+					<br>
+
+					<form method="post" enctype="multipart/form-data">
+						<span id="button"> <label>Image file:</label><input
+							type="file" name="file" />
+						</span> <input type='submit' name='enviar' value='Enviar' /> <input
+							type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+
+						<form role="form" method='post'>
+							<div class="form-group">
+								<label for="name">Account Name:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name='username' id='username' value="{{user.name}}">
+							</div>
+
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" id="email" name='useremail'
+									value="{{user.email}}">
+							</div>
+
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea"
+									name='userdescription' rows="3">{{user.description}}</textarea>
+							</div>
+
+							<div class="form-group">
+								<label for="email">Favourite food:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name='favouritefood' value="{{user.favouriteFood}}">
+							</div>
+
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" name='password'
+									placeholder="Enter new password">
+							</div>
+
+
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" name='confirmpassword'
+									placeholder="Repeat new password">
+							</div>
+
+
+							<div class="form-group">
+								<label for="age" style="margin-bottom: 10px;">How old
+									are you?</label> <input style="border-radius: 0px !important"
+									type="text" class="form-control" id="age" name='userage'
+									value={{user.age}}>
+							</div>
+
+							<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
+								<button type='submit' class="btnMore">Update</button>
+								<input type="hidden" name="_csrf" value="{{token}}" /> <a
+									href="#modalwindow" data-toggle="modal">
+									<button type="submit" class="btnMore">Delete</button>
+								</a>
+							</div>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal " id="modalwindow">
+				<div class="modal-dialog">
+					<div class="modal-content"
+						style="background-color: #efefef; border-radius: 0;">
+						<div class="modal-header"
+							style="background-color: #28292e !important;">
+							<button type="button" class="close" data-dismiss="modal"
+								style="color: #ffffff;">&times;</button>
+
+						</div>
+						<div class="modal-body">
+							<h2>Are you sure that you want to delete your profile?</h2>
+
+							<div>
+								<button type='submit' class="btnMore">Yes</button>
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+
 	<!-- Contact Section End -->
 
-	
+
 	<!-- Contact Section End -->
 	<section class="footer-container">
 		<div class="container">

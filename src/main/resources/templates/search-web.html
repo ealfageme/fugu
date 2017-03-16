@@ -39,37 +39,47 @@
 					data-toggle="collapse" data-target="#collapsingNavbar">?</button>
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 					<ul class="nav navbar-nav">
-						<li class="signin">
-						<li class="signin">
-							<form class="navbar-form navbar-right" role="form" method='post'>
+						<li class="signin">{{#outSession}}
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
 								<div class="input-group">
 									<span class="input-group-addon"
 										style="border-radius: 0px !important; background: #fff;"><i
 										class="glyphicon glyphicon-user"></i></span> <input id="email"
-										type="email" class="form-control"
-										style="border-radius: 0px !important" name="email" value=""
-										placeholder="Email Address">
+										type="email" class="form-control method='post'"
+										style="border-radius: 0px !important" name="loginemail"
+										value="" placeholder="Email Address">
 								</div>
 								<div class="input-group">
 									<span class="input-group-addon"
 										style="border-radius: 0px !important; background: #fff;"><i
 										class="glyphicon glyphicon-lock"></i></span> <input id="password"
 										type="password" class="form-control"
-										style="border-radius: 0px !important" name="password" value=""
-										placeholder="Password">
+										style="border-radius: 0px !important" name="loginpassword"
+										value="" placeholder="Password">
 								</div>
-								<button type="submit" class="logInBtn"
-									onClick=" window.location.href='private-client.html'">Login</button>
+								<input type="submit" class="logInBtn" value="Login" /> <input
+									type="hidden" name="_csrf" value="{{token}}" />
+
+								<!--<button type="submit" class="logInBtn" onClick=" window.location.href='private-client.html'">Login Restaurant</button>-->
 								<a href="#modalwindow2" data-toggle="modal"
 									style="padding: 0px !important">
 									<button type="submit" class="signInBtn">Sign in</button>
 								</a>
-								<input type="hidden" name="_csrf" value="{{token}}"/>
+							</form> {{/outSession}} {{#inSession}}
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> <input
+									type="hidden" name="_csrf" value="{{token}}" />
 							</form>
-						</li>
-						<li><a href="#contact">CONTACT US</a></li>
-					</ul>
-				</div>
+							<form class="navbar-form navbar-right" method="get"
+								action="/default/">
+								<button class="signInBtn">Visit profile</button>
+							</form> {{/inSession}}
+			</li>
+			<li><a href="#contact">CONTACT US</a></li>
+			</ul>
+			</div>
 			</div>
 		</nav>
 	</header>
@@ -84,9 +94,9 @@
 					<div class="col-md-12">
 						<div class="input-group" id="adv-search">
 							<form class="form-horizontal" role="form" action="" method='post'>
-									<input type="text" class="form-control"
-										placeholder="Search by a restaurant name" name="name" />
-										<input type="hidden" name="_csrf" value="{{token}}"/>
+								<input type="text" class="form-control"
+									placeholder="Search by a restaurant name" name="name" /> <input
+									type="hidden" name="_csrf" value="{{token}}" />
 							</form>
 							<div class="input-group-btn">
 								<div class="btn-group" role="group">
@@ -94,7 +104,8 @@
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown" aria-expanded="false"></button>
 										<div class="dropdown-menu dropdown-menu-right" role="menu">
-											<form class="form-horizontal" role="form" action="" method='post'>
+											<form class="form-horizontal" role="form" action=""
+												method='post'>
 												<div class="form-group">
 													<label for="filter">Food type</label> <select
 														class="form-control" name="foodType">
@@ -125,7 +136,7 @@
 												<button type="submit" class="btn btn-primary">
 													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 												</button>
-												<input type="hidden" name="_csrf" value="{{token}}"/>
+												<input type="hidden" name="_csrf" value="{{token}}" />
 											</form>
 										</div>
 									</div>
@@ -195,7 +206,7 @@
 											<div class="col-md-2">
 												<button type="submit" class="btnMore">Search</button>
 											</div>
-											<input type="hidden" name="_csrf" value="{{token}}"/>
+											<input type="hidden" name="_csrf" value="{{token}}" />
 										</form>
 									</div>
 								</div>
@@ -339,7 +350,7 @@
 									</div>
 								</div>
 							</div>
-							<input type="hidden" name="_csrf" value="{{token}}"/>
+							<input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</div>
 				</div>
@@ -391,24 +402,25 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form" method='post'>
-							<div class="form-group" >
+						<form role="form" method='post'>
+							<div class="form-group">
 								<input type="text" class="form-control formmargin"
-									name='restaurantname' placeholder="Restaurant name" id="restaurantname" required> 
-								<input
-									type="text" class="form-control formmargin" name='address'
-									placeholder="Address" id="restaurantaddress" required> <br>
+									name='restaurantname' placeholder="Restaurant name"
+									id="restaurantname" required> <input type="text"
+									class="form-control formmargin" name='address'
+									placeholder="Address" id="restaurantaddress" required>
+								<br>
 								<div class="form-group">
-									  <label for="filter">City </label> <select
-										class="form-control" style="border-radius: 0px !important"
-										name='restaurantcity'>
-										  <option value="Madrid" selected
+									<label for="filter">City </label> <select class="form-control"
+										style="border-radius: 0px !important" name='restaurantcity'>
+										<option value="Madrid" selected
 											style="border-radius: 0px !important">Madrid</option>
-										<option value="Barcelona" style="border-radius: 0px !important">Barcelona</option>
+										<option value="Barcelona"
+											style="border-radius: 0px !important">Barcelona</option>
 										<option value="Valencia" style="border-radius: 0px !important">Valencia</option>
 										<option value="Sevilla" style="border-radius: 0px !important">Sevilla</option>
 										<option value="Zaragoza" style="border-radius: 0px !important">Zaragoza</option>
-										<option value="Bilbao" style="border-radius: 0px !important">Bilbao</option>		
+										<option value="Bilbao" style="border-radius: 0px !important">Bilbao</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -427,40 +439,38 @@
 										<option value="Italian" style="border-radius: 0px !important">Italian</option>
 									</select>
 								</div>
-								<br>
-								<input type="email" class="form-control formmargin" name='email'
-									placeholder="Email" id="restaurantemail" required> 
+								<br> <input type="email" class="form-control formmargin"
+									name='email' placeholder="Email" id="restaurantemail" required>
 								<input type="text" class="form-control formmargin" name='phone'
-									placeholder="Phone" id="restaurantphone" required> 
-								<span id='message_restaurant_phone'></span>  
-								<br>
-								<label for="name" >Description:</label>
-								<br>
-									<textarea style="border-radius: 0px !important"
-										class="form-control" id="restaurantdescription" name='restaurantdescription' rows="3" required></textarea>
-								<br>	
-								<label for="name" >Password (6 characters min.):</label>		
-								<input name="password"
-									id="password_restaurant" type="password"
-									class="form-control formmargin" placeholder="Password" required>
-								<input type="password" name="confirm_password"
-									id="confirm_password_restaurant" class="form-control formmargin"
-									placeholder="Confirm password" required> <br>
-														
-								<img src="/images/restaurant.png">
-								<span id='message_restaurant'></span> 
+									placeholder="Phone" id="restaurantphone" required> <span
+									id='message_restaurant_phone'></span> <br> <label
+									for="name">Description:</label> <br>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="restaurantdescription"
+									name='restaurantdescription' rows="3" required></textarea>
+								<br> <label for="name">Password (6 characters
+									min.):</label> <input name="password" id="password_restaurant"
+									type="password" class="form-control formmargin"
+									placeholder="Password" required> <input type="password"
+									name="confirm_password" id="confirm_password_restaurant"
+									class="form-control formmargin" placeholder="Confirm password"
+									required> <br> <img src="/images/restaurant.png">
+								<span id='message_restaurant'></span>
 								<p class="formmargin">Upload a profile picture</p>
-								<input type="file" class="form-control-file" id="exampleInputFile"
-									aria-describedby="fileHelp"><!-- logInBtn btnMore -->
-									 <button type='submit' class="logInBtn" id='sendrestaurant' disabled>Send</button>
-									 <span id='message_restaurant_button'>Fill the form before register</span> 
-						</div>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
-					</form>
-				</div>
+								<input type="file" class="form-control-file"
+									id="exampleInputFile" aria-describedby="fileHelp">
+								<!-- logInBtn btnMore -->
+								<button type='submit' class="logInBtn" id='sendrestaurant'
+									disabled>Send</button>
+								<span id='message_restaurant_button'>Fill the form before
+									register</span>
+							</div>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form>
+					</div>
 
+				</div>
 			</div>
-		</div>
 		</div>
 		<div class="modal " id="modalwindow">
 			<div class="modal-dialog">
@@ -480,17 +490,15 @@
 					</div>
 					<div class="modal-body">
 						<p class="formmargin">Introduce your following details:</p>
-						<form  role="form"method='post' >
+						<form role="form" method='post'>
 							<div class="form-group">
 								<input type="text" class="form-control formmargin" name='name'
-									placeholder="Name" id="usernameform"> 
-								<input type="text"
-									class="form-control formmargin" name='useremail'
-									placeholder="Email" id="useremailform"> 
-								<br> 
-								<input type="text" class="form-control formmargin" name='age'
-									placeholder="Age" id="userageform">
-									<span id='message_user_age'></span>  
+									placeholder="Name" id="usernameform"> <input
+									type="text" class="form-control formmargin" name='useremail'
+									placeholder="Email" id="useremailform"> <br> <input
+									type="text" class="form-control formmargin" name='age'
+									placeholder="Age" id="userageform"> <span
+									id='message_user_age'></span>
 								<div class="form-group">
 									<label for="filter">Favourite food</label> <select
 										class="form-control" style="border-radius: 0px !important"
@@ -506,30 +514,27 @@
 										<option value="Indian" style="border-radius: 0px !important">Indian</option>
 										<option value="Italian" style="border-radius: 0px !important">Italian</option>
 									</select>
-								</div>							
-								<br>
-								<label for="name">Description:</label>
-								<br>
-									<textarea style="border-radius: 0px !important"
-										class="form-control" id="userdescriptionform" name='clientdescription' rows="3"></textarea>
-								<br> 
-								<label for="name" >Password (6 characters min.):</label>		
-								<input
-									name='userpassword' type="password"
-									class="form-control formmargin" placeholder="Password" id="password_client">
-								<input type="password" id="confirm_password_client"
-									name="confirm_password" class="form-control formmargin"
-									placeholder="Confirm password" id="confirm_password_client"> <br>
+								</div>
+								<br> <label for="name">Description:</label> <br>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="userdescriptionform"
+									name='clientdescription' rows="3"></textarea>
+								<br> <label for="name">Password (6 characters
+									min.):</label> <input name='userpassword' type="password"
+									class="form-control formmargin" placeholder="Password"
+									id="password_client"> <input type="password"
+									id="confirm_password_client" name="confirm_password"
+									class="form-control formmargin" placeholder="Confirm password"
+									id="confirm_password_client"> <br>
 							</div>
-							
-							<img src="/images/profile.png"> 
-							<span id="message_client"></span>
+
+							<img src="/images/profile.png"> <span id="message_client"></span>
 							<p class="formmargin">Upload a profile picture</p>
 							<input type="file" class="form-control-file"
-								id="exampleInputFile" aria-describedby="fileHelp"> 
-								<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
-								<span id='message_user_button'>Fill the form before register</span> 
-								<input type="hidden" name="_csrf" value="{{token}}"/>
+								id="exampleInputFile" aria-describedby="fileHelp">
+							<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
+							<span id='message_user_button'>Fill the form before
+								register</span> <input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 
 					</div>
@@ -538,7 +543,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 	<footer>
 		<div class="container">

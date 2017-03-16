@@ -45,19 +45,20 @@
 					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="#profile">{{restaurant.name}}</a></li>
+
 						<li><a href="#reservations">RESERVATIONS</a></li>
 						<li><a href="#current-deals">CURRENT DEALS</a></li>
 						<li><a href="#menu">MENU CARD</a></li>
 						<li><a href="#voucher">VOUCHERS</a></li>
 						<li><a href="#feedback">FEEDBACK</a></li>
 						<li><a href="#clients">CLIENTS</a></li>
+						<li><a href="#profile">{{restaurant.name}}</a></li>
 						<li class="signin"><form action="/main2/" method='post'>
-						<button type="submit" class="signInBtn"> SignOut</button>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
-						</form> </li>
+								<button type="submit" class="signInBtn">SignOut</button>
+								<input type="hidden" name="_csrf" value="{{token}}" />
+							</form></li>
 					</ul>
-					
+
 				</div>
 			</div>
 		</nav>
@@ -81,94 +82,7 @@
 		</div>
 		<!-- Slides End -->
 	</section>
-	<section id="profile" class="profile-sec section-wrapper description">
-		<br> <br> <br>
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">{{restaurant.name}}<img
-							src="/images/restaurant-type/{{restaurant.name}}.jpg"
-							class="img-thumbnail" alt="Custom Image"></span>
-					</h2>
-					<p>{{restaurant.description}}</p>
-					<br>
-					<span id="button">
-					<button type="submit" class="btnMore" id="changeImg">Change
-						profile image</button>
-					</span>
-				</div>
-				<!-- Section Header End -->
-				<div id="profileForm"
-					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-						<h1>Change data</h1>
-						<form role="form" method='post'>
-							<div class="form-group">
-								<label for="name">Restaurant Name:</label> <input
-									style="border-radius: 0px !important" 
-									class="form-control" name="namerest"
-									value="{{restaurant.name}}">
-							</div>
-							<div class="form-group">
-								<label for="name">Location:</label> <input
-									style="border-radius: 0px !important" 
-									class="form-control" name="location"
-									value="{{restaurant.address}}">
-							</div>
-							<div class="form-group">
-								<label for="name">Description:</label>
-								<textarea style="border-radius: 0px !important"
-									class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
-							</div>
-							<div class="form-group">
-								<label for="name">Telephone:</label> <input
-									style="border-radius: 0px !important"
-									class="form-control" name="telephone"
-									value="{{restaurant.phone}}">
-							</div>
-							<div class="form-group">
-								<label for="email">Email:</label> <input
-									style="border-radius: 0px !important" type="email"
-									class="form-control" name="emailrest"
-									value="{{restaurant.email}}">
-							</div>
-							<div class="form-group">
-								<label for="pwd">New password</label> <input
-									style="border-radius: 0px !important" type="password"
-									class="form-control" name="pwd"
-									placeholder="Enter new password">
-							</div>
-							<div class="form-group">
-								<label for="pwd">Repeat new password</label> <input
-									style="border-radius: 0px !important" type="password"
-									class="form-control" name="confirmpwd"
-									placeholder="Repeat new password">
-							</div>
-							<label for="pwd">Foods you serve:</label>
-							<br>
-							 <input type="checkbox" name="Breakfast" value=true checked='checked'> Breakfast 
-							 <input type="checkbox"name="Lunch" value=true checked='checked'> Lunch 
-							 <input type="checkbox" name="Dinner" value=true checked='checked'> Dinner<br>
-							<div class="form-group">
-								<label for="exampleInputFile">Add pictures of the
-									restaurant</label> <input style="border-radius: 0px !important"
-									type="file" class="form-control-file" id="exampleInputFile"
-									aria-describedby="fileHelp">
-							</div>
-							<div class="col-md-3 col-md-offset-10">
-								<button type='submit' class="btnMore">Update</button>
-							</div>
-							<input type="hidden" name="_csrf" value="{{token}}"/>
-						</form>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!-- Main Slider End -->
 	<section id="reservations"
 		class="about-sec section-wrapper description">
@@ -198,7 +112,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<h1 class="shadow"></h1>
-									
+
 									<!-- Filter Button Start -->
 									{{#bookings}}
 									<div id="recommendations-filter"
@@ -233,7 +147,7 @@
 											</div>
 										</div>
 										<!-- Filter Button End -->
-										
+
 									</div>
 									<br> {{/bookings}}
 
@@ -247,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 
 	<section id="current-deals" class="section-wrapper">
@@ -342,12 +256,13 @@
 						</div>
 						{{/menu}}
 						<section id="voucher">
-						<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-							<h2>
-								<span class="highlight-text">Vouchers</span>
-							</h2>
-						</div>
-					</section>
+							<div
+								class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+								<h2>
+									<span class="highlight-text">Vouchers</span>
+								</h2>
+							</div>
+						</section>
 					</div>
 					<div class="container">
 						<div class="row">
@@ -356,13 +271,12 @@
 								class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 								<h2>
 									<span class="highlight-text">Dish image<img
-										src="/images/voucher1.jpg"
-										class="img-thumbnail" alt="Custom Image"></span>
+										src="/images/voucher1.jpg" class="img-thumbnail"
+										alt="Custom Image"></span>
 								</h2>
-								<br>
-								<span id="button">
-								<button type="submit" class="btnMore" id="changeImg">Change
-									profile image</button>
+								<br> <span id="button">
+									<button type="submit" class="btnMore" id="changeImg">Change
+										profile image</button>
 								</span>
 							</div>
 							<!-- Section Header End -->
@@ -379,9 +293,8 @@
 										</div>
 										<div class="form-group">
 											<label for="name">Price</label> <input
-												style="border-radius: 0px !important" 
-												class="form-control" id="name" name='menuprice'
-												value="price">
+												style="border-radius: 0px !important" class="form-control"
+												id="name" name='menuprice' value="price">
 										</div>
 										<div class="form-group">
 											<label for="name">Description:</label>
@@ -393,7 +306,7 @@
 										<div class="col-md-3 col-md-offset-10">
 											<input type="submit" class="btnMore" value='Create'>
 										</div>
-										<input type="hidden" name="_csrf" value="{{token}}"/>
+										<input type="hidden" name="_csrf" value="{{token}}" />
 									</form>
 
 								</div>
@@ -403,11 +316,11 @@
 				</div>
 				<!-- /row -->
 			</div>
-		
+
 		</div>
 		<!-- /menus-container -->
-		
-		
+
+
 		<!-- /container -->
 	</section>
 
@@ -435,7 +348,8 @@
 										class="recommendations-filter-btn-group">
 										<div class="item recommendations-item web seo">
 											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-left-style: solid;">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-left-style: solid;">
 													<ul>
 														<li>
 															<h1 class="shadow">{{reviewUser.name}}</h1> <span
@@ -496,7 +410,7 @@
 														class="sr-only" for="guest">Guest</label> <select
 														style="border-radius: 0px !important" id="guest"
 														name="guest" class="form-control">
-														<option value="foodType" >{{restaurant.foodType}}</option>
+														<option value="foodType">{{restaurant.foodType}}</option>
 													</select>
 												</div>
 											</div>
@@ -560,8 +474,8 @@
 												<input type="submit" class="btnMore"
 													value='Send group offer'>
 											</div>
-											<input type="hidden" name="_csrf" value="{{token}}"/>	
-									</form>
+											<input type="hidden" name="_csrf" value="{{token}}" />
+										</form>
 									</div>
 								</div>
 								<br>
@@ -603,6 +517,91 @@
 			</div>
 		</div>
 	</section>
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">{{restaurant.name}}<img
+							src="/images/restaurant-type/{{restaurant.name}}.jpg"
+							class="img-thumbnail" alt="Custom Image"></span>
+					</h2>
+					<p>{{restaurant.description}}</p>
+					<br> <span id="button">
+						<button type="submit" class="btnMore" id="changeImg">Change
+							profile image</button>
+					</span>
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+						<form role="form" method='post'>
+							<div class="form-group">
+								<label for="name">Restaurant Name:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="namerest" value="{{restaurant.name}}">
+							</div>
+							<div class="form-group">
+								<label for="name">Location:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="location" value="{{restaurant.address}}">
+							</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
+							</div>
+							<div class="form-group">
+								<label for="name">Telephone:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="telephone" value="{{restaurant.phone}}">
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" name="emailrest"
+									value="{{restaurant.email}}">
+							</div>
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="pwd"
+									placeholder="Enter new password">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="confirmpwd"
+									placeholder="Repeat new password">
+							</div>
+							<label for="pwd">Foods you serve:</label> <br> <input
+								type="checkbox" name="Breakfast" value=true checked='checked'>
+							Breakfast <input type="checkbox" name="Lunch" value=true
+								checked='checked'> Lunch <input type="checkbox"
+								name="Dinner" value=true checked='checked'> Dinner<br>
+							<div class="form-group">
+								<label for="exampleInputFile">Add pictures of the
+									restaurant</label> <input style="border-radius: 0px !important"
+									type="file" class="form-control-file" id="exampleInputFile"
+									aria-describedby="fileHelp">
+							</div>
+							<div class="col-md-3 col-md-offset-10">
+								<button type='submit' class="btnMore">Update</button>
+							</div>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
 	<!-- Contact Section End -->
 	<section class="footer-container">
 		<div class="container">
