@@ -19,36 +19,58 @@ import com.example.Repositories.UserRepository;
 
 @Controller
 public class SearchWebController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private CityRepository cityRepository;
-	
-	@RequestMapping(value="/search-web/", method = { RequestMethod.GET, RequestMethod.POST })
-	public String main(Model model, HttpServletRequest request, Authentication authentication, @RequestParam(required=false) String restaurantname, 
-			 @RequestParam(required=false) String restaurantaddress,@RequestParam(required=false) String kindoffood,
-			 @RequestParam(required=false) String restaurantcity,@RequestParam(required=false) String restaurantemail,
-			 @RequestParam(required=false) String restaurantphone,@RequestParam(required=false) String restaurantdescription,
-			 @RequestParam(required=false) String restaurantpassword,@RequestParam(required=false) String username,
-			@RequestParam(required=false) String useremail,@RequestParam(required=false) String userage,
-			@RequestParam(required=false) String favouritefood,@RequestParam(required=false) String userdescription,
-			@RequestParam(required=false) String userpassword) {
-		model.addAttribute("restaurant", restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0), new Double(5.0), new PageRequest(0, 4)));
-		if (restaurantname!=null){
-			Restaurant rest= new Restaurant (restaurantname,restaurantaddress,restaurantdescription,restaurantemail,kindoffood,Integer.parseInt(restaurantphone), 0, 0,restaurantpassword,true,true,true,"ROLE_RESTAURANT");
+
+	@RequestMapping(value = "/search-web/", method = { RequestMethod.GET, RequestMethod.POST })
+	public String main(@RequestParam(required = false) String name, @RequestParam(required = false) String city,
+			@RequestParam(required = false) String foodType, @RequestParam(required = false) Double min,
+			@RequestParam(required = false) Double max, @RequestParam(required = false) Double minPrice,
+			@RequestParam(required = false) Double maxPrice, Model model, HttpServletRequest request,
+			Authentication authentication, @RequestParam(required = false) String restaurantname,
+			@RequestParam(required = false) String restaurantaddress, @RequestParam(required = false) String kindoffood,
+			@RequestParam(required = false) String restaurantcity,
+			@RequestParam(required = false) String restaurantemail,
+			@RequestParam(required = false) String restaurantphone,
+			@RequestParam(required = false) String restaurantdescription,
+			@RequestParam(required = false) String restaurantpassword, @RequestParam(required = false) String username,
+			@RequestParam(required = false) String useremail, @RequestParam(required = false) String userage,
+			@RequestParam(required = false) String favouritefood,
+			@RequestParam(required = false) String userdescription,
+			@RequestParam(required = false) String userpassword) {
+		if (name != null) {
+			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+		} else if (city != null && foodType != null) {
+			model.addAttribute("restaurants", restaurantRepository.findByFoodTypeAndCityName(foodType, city));
+		}
+		if (name != null) {
+			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+		} else if (min != null && max != null && minPrice != null && maxPrice != null) {
+			model.addAttribute("restaurants",
+					restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
+		}
+		model.addAttribute("restaurant", restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0),
+				new Double(5.0), new PageRequest(0, 4)));
+		if (restaurantname != null) {
+			Restaurant rest = new Restaurant(restaurantname, restaurantaddress, restaurantdescription, restaurantemail,
+					kindoffood, Integer.parseInt(restaurantphone), 0, 0, restaurantpassword, true, true, true,
+					"ROLE_RESTAURANT");
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
-		if (username!=null){
-			User user = new User(username,useremail,userdescription, userpassword ,Integer.parseInt(userage),favouritefood,"ROLE_USER");
+		if (username != null) {
+			User user = new User(username, useremail, userdescription, userpassword, Integer.parseInt(userage),
+					favouritefood, "ROLE_USER");
 			userRepository.save(user);
 		}
-		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
-		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT"));
-		
+		model.addAttribute("inSession", (request.isUserInRole("USER") || request.isUserInRole("RESTAURANT")));
+		model.addAttribute("outSession", !request.isUserInRole("USER") && !request.isUserInRole("RESTAURANT"));
+
 		return "search-web";
 	}
 }
