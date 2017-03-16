@@ -51,6 +51,8 @@ public class ClientController {
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		String fileName = "profileImage.jpg";
+		model.addAttribute("fileName", fileName);
 		/*
 		 * Following feature has to be implemented
 		 */
@@ -113,6 +115,8 @@ public class ClientController {
 			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
 			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
 		try {
+			String fileName = "profileImage.jpg";
+			model.addAttribute("fileName", fileName);
 			if (request.isUserInRole("USER")) {
 				String userloggin = authentication.getName();
 				model.addAttribute("user", userRepository.findByEmail(userloggin));
