@@ -12,12 +12,12 @@ public class DefaultController {
     @RequestMapping("/default/")
     public String defaultAfterLogin(HttpServletRequest request,Authentication authentication) {
     	System.out.println("entro");
-    		if (request.isUserInRole("USER")) {
-    			System.out.println("entro2");
-                return "redirect:/private-client/";}
-    		if (request.isUserInRole("RESTAURANT")) {
-    			System.out.println("entro2");
-                    return "redirect:/private-restaurant/";}
+		if (request.isUserInRole("USER")) {
+            return "redirect:/private-client/";
+        }
+		if (request.isUserInRole("RESTAURANT")) {
+            return "redirect:/private-restaurant/";
+        }
     	return "redirect:/main/";
     }
 }
