@@ -11,10 +11,13 @@ public class DefaultController {
 	
     @RequestMapping("/default/")
     public String defaultAfterLogin(HttpServletRequest request,Authentication authentication) {
-    		if (request.isUserInRole("USER")) {
-                return "redirect:/private-client/";}
-    		if (request.isUserInRole("RESTAURANT")) {
-                    return "redirect:/private-restaurant/";}
+		if (request.isUserInRole("USER")) {
+            return "redirect:/private-client/";
+        }
+		if (request.isUserInRole("RESTAURANT")) {
+            return "redirect:/private-restaurant/";
+        }
+
     	return "redirect:/main/";
     }
 }

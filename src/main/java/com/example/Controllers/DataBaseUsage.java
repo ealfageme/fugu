@@ -1,5 +1,7 @@
 package com.example.Controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -220,13 +222,29 @@ public class DataBaseUsage implements CommandLineRunner{
 		voucherRepository.save(voucher6);
 		
 		// USER - REVIEW RELATION
-		
-		Review review1 = new Review("Fucking amazing", 5.0, new Date());
-		Review review2 = new Review("This restaurant must be improved", 2.2, new Date());
-		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, new Date());
-		Review review4 = new Review("Cute decoration, friendly staff and a good cook, also dogs allowed My favourite restaurant for English Breakfast!!!", 5.0, new Date());
-		Review review5 = new Review("This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!", 2.2, new Date());
-		Review review6 = new Review("Nice and near to Liverpool Street station. Lovely food with good service and the atmosphere is buzzing as it gets quite busy in the evening would definitely go again.", 4.1, new Date());
+		Date date1=new Date();
+		Date date2=new Date();
+		Date date3=new Date();
+		Date date4=new Date();
+		Date date5=new Date();
+		Date date6=new Date();
+		try {
+			date1= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-24 22:00");
+			date2= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-04-04 22:30");
+			date3= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-05-16 20:00");
+			date4= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-20 12:00");
+			date5= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-05-01 14:00");
+			date6= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-04-14 21:00");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Review review1 = new Review("Fucking amazing", 5.0, date1);
+		Review review2 = new Review("This restaurant must be improved", 2.2, date2);
+		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, date3);
+		Review review4 = new Review("Cute decoration, friendly staff and a good cook, also dogs allowed My favourite restaurant for English Breakfast!!!", 5.0, date4);
+		Review review5 = new Review("This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!", 2.2, date5);
+		Review review6 = new Review("Nice and near to Liverpool Street station. Lovely food with good service and the atmosphere is buzzing as it gets quite busy in the evening would definitely go again.", 4.1, date6);
 		review1.setUser(user1);
 		review2.setUser(user2);
 		review3.setUser(user3);
@@ -248,12 +266,12 @@ public class DataBaseUsage implements CommandLineRunner{
 
 		
 		// USER - BOOKING RELATION
-		Booking booking1 = new Booking(new Date(), 5,"One high chair for the baby");
-		Booking booking2 = new Booking(new Date(), 2,"Champagne");
-		Booking booking3 = new Booking(new Date(), 3,"High chair");
-		Booking booking4 = new Booking(new Date(), 4,"");
-		Booking booking5 = new Booking(new Date(), 1,"");
-		Booking booking6 = new Booking(new Date(), 6,"");
+		Booking booking1 = new Booking(date1, 5,"One high chair for the baby");
+		Booking booking2 = new Booking(date2, 2,"Champagne");
+		Booking booking3 = new Booking(date3, 3,"High chair");
+		Booking booking4 = new Booking(date4, 4,"");
+		Booking booking5 = new Booking(date5, 1,"");
+		Booking booking6 = new Booking(date6, 6,"");
 		booking1.setBookingUser(user1);
 		booking2.setBookingUser(user3);
 		booking3.setBookingUser(user1);

@@ -53,7 +53,8 @@
 						<li><a href="#feedback">FEEDBACK</a></li>
 						<li><a href="#clients">CLIENTS</a></li>
 						<li><a href="#profile">{{restaurant.name}}</a></li>
-						<li class="signin"><form action="/main2/" method='post'>
+						<li class="signin">
+						<form class="navbar-form navbar-right" action="/main2/" method='post'>
 								<button type="submit" class="signInBtn">SignOut</button>
 								<input type="hidden" name="_csrf" value="{{token}}" />
 							</form></li>
@@ -98,25 +99,24 @@
 
 			</div>
 		</div>
-
-
 		<div class="ratings-wrapper wow bounceIn">
 			<div class="container">
 				<div class="row">
 					<!-- Section Header -->
 					<div
-						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
 						<!-- Works -->
 						<div class="recommendations-works wow fadeIn"
 							data-wow-duration="2s">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<h1 class="shadow"></h1>
+									<h1 class="shadow">In Process</h1>
 
 									<!-- Filter Button Start -->
-									{{#bookings}}
+									{{#bookingsInProcess}}
 									<div id="recommendations-filter"
 										class="recommendations-filter-btn-group">
+	
 										<div id="{{-index}}" class="item recommendations-item web seo">
 											<div class="row">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
@@ -131,17 +131,22 @@
 													<p style="margin: 5px;">Date: {{date}}</p>
 													<p style="margin: 5px;">{{number}} people coming</p>
 													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
 												</div>
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<br>
 													<button type="button" class="btnMore">Contact</button>
 													<span class="hiddenclass">
-														<button type="button" class="btnMore"
+													<form action="/private-restaurant/">
+														<input type="hidden" name="acceptPulsed" value="Accepted">
+														<input type="hidden" name="acceptPulsedID" value={{id}}>
+														<button type="input" class="btnMore"
 															onClick="acceptReservation({{-index}})"
 															id="{{-index}}-button">
 															Accept <span class="glyphicon glyphicon-ok-circle"
 																aria-hidden="true"></span>
 														</button>
+													</form>
 													</span>
 												</div>
 											</div>
@@ -149,7 +154,7 @@
 										<!-- Filter Button End -->
 
 									</div>
-									<br> {{/bookings}}
+									<br> {{/bookingsInProcess}}
 
 								</div>
 								<br>
@@ -161,7 +166,57 @@
 				</div>
 			</div>
 		</div>
+				<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">Accepted</h1>
 
+									<!-- Filter Button Start -->
+									{{#bookingsAccepted}}
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+	
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{bookingUser.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{date}}</p>
+													<p style="margin: 5px;">{{number}} people coming</p>
+													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> {{/bookingsAccepted}}
+
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<section id="current-deals" class="section-wrapper">
@@ -349,7 +404,7 @@
 										<div class="item recommendations-item web seo">
 											<div class="row">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
-													style="border-left-style: solid;">
+													style="border-right-style: solid;">
 													<ul>
 														<li>
 															<h1 class="shadow">{{reviewUser.name}}</h1> <span

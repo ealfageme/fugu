@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.Entities.User;
+import com.example.Repositories.BookingRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -31,6 +32,8 @@ public class ClientController {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 
@@ -128,6 +131,8 @@ public class ClientController {
 				model.addAttribute("vouchers", userRepository.findByEmail(userloggin).getUserVouchers());
 				model.addAttribute("reviews", userRepository.findByEmail(userloggin).getReviews());
 				model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingUser("Accepted",userRepository.findByEmail(userloggin)));
+				model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingUser("In Process",userRepository.findByEmail(userloggin)));
 
 				if (username != null) {
 					User user = userRepository.findByEmail(userloggin);

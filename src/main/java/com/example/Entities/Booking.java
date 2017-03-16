@@ -40,7 +40,8 @@ public class Booking {
 	private int number;
 	@JsonView(Basic.class)
 	private String specialRequirements;
-	
+	@JsonView(Basic.class)
+	private String state;
 	public Booking(){}
 	public Booking(Date date, int number,String specialRequirements) {
 		super();
@@ -49,8 +50,15 @@ public class Booking {
 		//this.user = user;
 		this.number = number;
 		this.specialRequirements=specialRequirements;
+		this.state = "In process";
 	}
 
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public User getBookingUser() {
 		return bookingUser;
 	}
