@@ -26,7 +26,7 @@ import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
 
 @Controller
-public class FileUploadController {
+public class ClientFileUploadController {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
