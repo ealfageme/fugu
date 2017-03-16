@@ -148,7 +148,7 @@ public class RestaurantController {
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
-	@RequestParam(required=false)Boolean Dinner) {
+	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID) {
 		try{
 			if(request.isUserInRole("RESTAURANT")){
 		
@@ -156,6 +156,8 @@ public class RestaurantController {
 				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));
 				model.addAttribute("menu", restaurantRepository.findByEmail(restaurantloggin).getMenus());
 				model.addAttribute("bookings", restaurantRepository.findByEmail(restaurantloggin).getBookings());
+				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingRestaurant("Accepted",restaurantRepository.findByEmail(restaurantloggin)));
+				model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingRestaurant("In Process",restaurantRepository.findByEmail(restaurantloggin)));
 				model.addAttribute("vouchers", restaurantRepository.findByEmail(restaurantloggin).getVouchers());
 				model.addAttribute("reviews", restaurantRepository.findByEmail(restaurantloggin).getRestaurantReviews());
 				if (namerest!=null){
@@ -188,6 +190,10 @@ public class RestaurantController {
 					voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);}
+				if (acceptPulsed!=null){
+					Booking booking= bookingRepository.findById(acceptPulsedID);
+					booking.setState("Accepted");
+					bookingRepository.save(booking);} 
 				if (menuname!=null){
 					Menu menu= new Menu(menuname,menuprice,menudescription);
 					menu.setRestaurantMenu(restaurantRepository.findByEmail(restaurantloggin));
