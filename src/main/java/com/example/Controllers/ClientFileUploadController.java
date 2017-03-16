@@ -47,6 +47,8 @@ public class ClientFileUploadController {
 			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
 			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
 		try {
+			String fileName = "profileImage.jpg";
+			model.addAttribute("fileName", fileName);
 			if (request.isUserInRole("USER")) {
 				String userloggin = authentication.getName();
 				model.addAttribute("user", userRepository.findByEmail(userloggin));
@@ -77,6 +79,7 @@ public class ClientFileUploadController {
 		String fileName = "profileImage.jpg";
 
 		if (!file.isEmpty()) {
+			model.addAttribute("fileName", fileName);
 			try {
 
 				File filesFolder = new File(FILES_FOLDER);
@@ -95,7 +98,7 @@ public class ClientFileUploadController {
 
 			} catch (Exception e) {
 
-				model.addAttribute("fileName", fileName);
+
 				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
 
 				return "private-client";

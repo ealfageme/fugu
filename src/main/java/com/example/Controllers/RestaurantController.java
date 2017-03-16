@@ -81,6 +81,8 @@ public class RestaurantController {
 			@RequestParam(required=false) String specialRequirements,
 			@RequestParam(required=false) Integer rate, @RequestParam(required=false) String content,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
+		String fileName = "profileImageRestaurant.jpg";
+		model.addAttribute("fileName", fileName);
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
@@ -150,6 +152,8 @@ public class RestaurantController {
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
 	@RequestParam(required=false)Boolean Dinner) {
 		try{
+			String fileName = "profileImageRestaurant.jpg";
+			model.addAttribute("fileName", fileName);
 			if(request.isUserInRole("RESTAURANT")){
 		
 				String restaurantloggin = authentication.getName();

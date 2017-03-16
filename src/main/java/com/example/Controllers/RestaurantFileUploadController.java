@@ -62,6 +62,8 @@ public class RestaurantFileUploadController {
 			@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
 			@RequestParam(required=false)Boolean Dinner) {
 		try{
+			String fileName = "profileImageRestaurant.jpg";
+			model.addAttribute("fileName", fileName);
 			if(request.isUserInRole("RESTAURANT")){
 		
 				String restaurantloggin = authentication.getName();
