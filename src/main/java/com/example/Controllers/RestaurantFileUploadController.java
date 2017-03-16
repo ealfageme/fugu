@@ -24,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
-import com.example.Entities.User;
 import com.example.Entities.Voucher;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
