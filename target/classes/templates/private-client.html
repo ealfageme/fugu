@@ -44,10 +44,11 @@
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
 						<li><a href="#profile">{{user.name}}</a></li>
-						<li class="signin"><form action="/main2/" method='post'>
+						<li class="signin">
+						<form class="navbar-form navbar-right" action="/main2/" method='post'>
 								<button type="submit" class="signInBtn">SignOut</button>
 								<input type="hidden" name="_csrf" value="{{token}}" />
-							</form></li>
+						</form></li>
 					</ul>
 				</div>
 			</div>

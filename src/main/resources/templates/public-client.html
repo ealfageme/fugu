@@ -45,16 +45,14 @@
                         <li> <a href="#profile">PROFILE</a> </li>
                         <li> <a href="#following">FOLLOWING</a> </li>
                         <li> <a href="#opinions">OPINIONS</a> </li>
-                        <li>{{#inSession}}
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> <input
-									type="hidden" name="_csrf" value="{{token}}" />
-							</form>
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
-								<button class="signInBtn">Visit profile</button>
-							</form> {{/inSession}}
+                        <li class="signin">{{#inSession}}
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<input type="submit" class="signInBtn" value="SignOut" /> 
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form> 
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>{{/inSession}}
 							</li>
                     </ul>
                 </div>

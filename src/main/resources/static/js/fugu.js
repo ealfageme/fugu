@@ -1,4 +1,3 @@
-function sendFuguFeedback() {
 	let username=document.getElementById("username").value;
 	let email=document.getElementById("useremail").value;
 	let body=document.getElementById("message").value;
