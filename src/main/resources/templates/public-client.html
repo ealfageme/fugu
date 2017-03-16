@@ -45,16 +45,14 @@
                         <li> <a href="#profile">PROFILE</a> </li>
                         <li> <a href="#following">FOLLOWING</a> </li>
                         <li> <a href="#opinions">OPINIONS</a> </li>
-                        <li>{{#inSession}}
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> <input
-									type="hidden" name="_csrf" value="{{token}}" />
-							</form>
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
-								<button class="signInBtn">Visit profile</button>
-							</form> {{/inSession}}
+                        <li class="signin">{{#inSession}}
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<input type="submit" class="signInBtn" value="SignOut" /> 
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form> 
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>{{/inSession}}
 							</li>
                     </ul>
                 </div>
@@ -73,7 +71,8 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">{{user.name}}<img src="/images/clients/{{user.name}}.jpg" class="img-circle" alt="Custom Image"></span></h2>
+                    <h2><span class="highlight-text">{{user.name}}<img
+							src="/private-client/image/{{fileName}}"  class="img-circle" alt="Custom Image"/></span></h2>
 
                 </div>
                 <!-- Section Header End -->

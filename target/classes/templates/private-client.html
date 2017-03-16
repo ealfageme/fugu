@@ -44,10 +44,13 @@
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
 						<li><a href="#profile">{{user.name}}</a></li>
-						<li class="signin"><form action="/main2/" method='post'>
+						<li class="signin">
+							<form class="navbar-form navbar-right" action="/main2/"
+								method='post'>
 								<button type="submit" class="signInBtn">SignOut</button>
 								<input type="hidden" name="_csrf" value="{{token}}" />
-							</form></li>
+							</form>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -265,23 +268,19 @@
 				<!-- Section Header -->
 				<div
 					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">{{user.name}} <img
-							src="/images/clients/{{user.name}}.jpg" class="img-circle"
-							alt="Custom Image" />
-
-
-						</span>
-					</h2>
+					<form action="/private-client/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' /><br /> <img
+							src="/private-client/image/{{fileName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Enviar' />
+						<input type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+					<br>
 					<p>{{user.description}}</p>
 					<br>
-
-					<form method="post" enctype="multipart/form-data">
-						<span id="button"> <label>Image file:</label><input
-							type="file" name="file" />
-						</span> <input type='submit' name='enviar' value='Enviar' /> <input
-							type="hidden" name="_csrf" value="{{token}}" />
-					</form>
 				</div>
 				<!-- Section Header End -->
 				<div id="profileForm"

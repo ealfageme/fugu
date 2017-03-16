@@ -69,16 +69,18 @@
 									style="padding: 0px !important">
 									<button type="submit" class="signInBtn">Sign in</button>
 								</a>
-							</form> {{/outSession}} {{#inSession}}
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> <input
-									type="hidden" name="_csrf" value="{{token}}" />
-							</form>
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
+							</form> 
+							{{/outSession}} 
+							{{#inSession}}		
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+								<input type="hidden" name="_csrf" value="{{token}}" />
+							</form> 
+							<form class="navbar-form navbar-right" method="get" action="/default/">
 								<button class="signInBtn">Visit profile</button>
-							</form> {{/inSession}}
+							</form>
+							{{/inSession}}
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -251,10 +253,8 @@
 			</div>
 			<!-- /menu-carousel -->
 			<div class="col-md-4 col-md-offset-4 morediv">
-				<button class="btnMore" id="prevRestaurants" style="display: none;">Prev
-					Restaurant</button>
-				<button class="btnMore pull-right" id="moreRestaurants">Next
-					restaurants</button>
+				<button class="btnMore" id="prevRestaurants" style="display: none;">Prev Restaurant</button>
+				<button class="btnMore pull-right" id="moreRestaurants">Next restaurants</button>
 			</div>
 		</div>
 		<!-- /container -->
