@@ -2,6 +2,7 @@ package com.example.Controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -169,7 +170,7 @@ public class RestaurantController {
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
-	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID) {
+	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID,@RequestParam(required=false) Integer expiry) throws ParseException {
 		try{
 			String restaurantloggin = authentication.getName();
 			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
@@ -218,7 +219,24 @@ public class RestaurantController {
 
 				}
 				if (vouchername != null) {
-					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date());
+					 Calendar calendar = Calendar.getInstance();
+				     calendar.setTime(new Date());
+				     if(expiry==1){
+					       calendar.add(Calendar.DAY_OF_YEAR, 7);
+				}else if(expiry==2){
+				       calendar.add(Calendar.DAY_OF_YEAR, 14);
+				}else if(expiry==3){
+						calendar.add(Calendar.DAY_OF_YEAR, 21);
+					}else if(expiry==4){
+						       calendar.add(Calendar.MONTH, 1);
+					}else if(expiry==5){
+						calendar.add(Calendar.MONTH, 2);
+					}else if(expiry==6){
+						calendar.add(Calendar.MONTH, 3);
+					}else if(expiry==7){
+						calendar.add(Calendar.MONTH, 6);
+					}
+					Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime());					
 					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
