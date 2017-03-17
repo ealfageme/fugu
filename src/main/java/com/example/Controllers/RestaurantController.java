@@ -2,7 +2,6 @@ package com.example.Controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -90,7 +89,7 @@ public class RestaurantController {
 			@RequestParam(required=false) String specialRequirements,
 			@RequestParam(required=false) Integer rate, @RequestParam(required=false) String content,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
-		String fileName = "profileImageRestaurant.jpg";
+		String fileName = "profileImageRestaurant"+restaurantRepository.findByName(name).getId()+".jpg";
 		model.addAttribute("fileName", fileName);
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		Page<Menu> menu=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,5));
@@ -163,11 +162,11 @@ public class RestaurantController {
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
 	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID) {
 		try{
-			String fileName = "profileImageRestaurant.jpg";
+			String restaurantloggin = authentication.getName();
+			String fileName = "profileImageRestaurant"+restaurantRepository.findByEmail(restaurantloggin).getId()+".jpg";
 			model.addAttribute("fileName", fileName);
 			
 			if(request.isUserInRole("RESTAURANT")){
-				String restaurantloggin = authentication.getName();
 				Page<Menu> menus=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(restaurantRepository.findByEmail(restaurantloggin).getName()),new PageRequest(0,5));
 				model.addAttribute("BigMenu", menus.getNumberOfElements()>4);
 				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));

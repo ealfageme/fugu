@@ -76,7 +76,8 @@ public class ClientFileUploadController {
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 		}
-		String fileName = "profileImage.jpg";
+		String userloggin = authentication.getName();
+		String fileName = "profileImage"+userRepository.findByEmail(userloggin).getId()+".jpg";
 
 		if (!file.isEmpty()) {
 			model.addAttribute("fileName", fileName);

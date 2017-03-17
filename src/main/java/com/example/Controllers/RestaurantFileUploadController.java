@@ -24,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
-import com.example.Entities.User;
 import com.example.Entities.Voucher;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
@@ -51,67 +50,74 @@ public class RestaurantFileUploadController {
 
 	@RequestMapping(value = "/private-restaurant/image/upload", method = RequestMethod.POST)
 	public String handleFileUpload(Model model, @RequestParam("imageTitle") String imageTitle,
-			@RequestParam("file") MultipartFile file, HttpServletRequest request,Authentication authentication, @RequestParam(required=false) String type,
-			@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,
-			@RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,
-			@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,
-			@RequestParam(required=false) Double menuprice, @RequestParam(required=false)String namerest,
-			@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
-			@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
-			@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
-			@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
-			@RequestParam(required=false)Boolean Dinner) {
-		try{
-			String fileName = "profileImageRestaurant.jpg";
+			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication,
+			@RequestParam(required = false) String type, @RequestParam(required = false) Integer max,
+			@RequestParam(required = false) Integer min, @RequestParam(required = false) String vouchername,
+			@RequestParam(required = false) String voucherdescription,
+			@RequestParam(required = false) String menudescription, @RequestParam(required = false) String menuname,
+			@RequestParam(required = false) Double menuprice, @RequestParam(required = false) String namerest,
+			@RequestParam(required = false) String location, @RequestParam(required = false) Integer telephone,
+			@RequestParam(required = false) String descriptionrest, @RequestParam(required = false) String emailrest,
+			@RequestParam(required = false) String pwd, @RequestParam(required = false) String confirmpwd,
+			@RequestParam(required = false) Boolean Breakfast, @RequestParam(required = false) Boolean Lunch,
+			@RequestParam(required = false) Boolean Dinner) {
+		try {
+			String restaurantloggin = authentication.getName();
+			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
+					+ ".jpg";
 			model.addAttribute("fileName", fileName);
-			if(request.isUserInRole("RESTAURANT")){
-		
-				String restaurantloggin = authentication.getName();
+			if (request.isUserInRole("RESTAURANT")) {
+
 				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));
 				model.addAttribute("menu", restaurantRepository.findByEmail(restaurantloggin).getMenus());
 				model.addAttribute("bookings", restaurantRepository.findByEmail(restaurantloggin).getBookings());
 				model.addAttribute("vouchers", restaurantRepository.findByEmail(restaurantloggin).getVouchers());
-				model.addAttribute("reviews", restaurantRepository.findByEmail(restaurantloggin).getRestaurantReviews());
-				if (namerest!=null){
+				model.addAttribute("reviews",
+						restaurantRepository.findByEmail(restaurantloggin).getRestaurantReviews());
+				if (namerest != null) {
 					Restaurant restaurant = restaurantRepository.findByEmail(restaurantloggin);
 					restaurant.setName(namerest);
 					restaurant.setAddress(location);
 					restaurant.setDescription(descriptionrest);
 					restaurant.setPhone(telephone);
 					restaurant.setEmail(emailrest);
-					if (pwd.equals(confirmpwd)){
+					if (pwd.equals(confirmpwd)) {
 						restaurant.setPassword(pwd);
 					}
 					if (Breakfast != null)
 						restaurant.setBreakfast(true);
-					else 
+					else
 						restaurant.setBreakfast(false);
 					if (Lunch != null)
 						restaurant.setLunch(true);
-					else 
+					else
 						restaurant.setLunch(false);
 					if (Dinner != null)
 						restaurant.setDinner(true);
-					else 
+					else
 						restaurant.setDinner(false);
 					restaurantRepository.save(restaurant);
-				
+
 				}
-				if (vouchername!=null){
-					Voucher voucher= new Voucher(vouchername,voucherdescription,new Date());
-					voucher.setVoucherUsers(userRepository.findByAgeBetween(min,max));
+				if (vouchername != null) {
+					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date());
+					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
-					voucherRepository.save(voucher);}
-				if (menuname!=null){
-					Menu menu= new Menu(menuname,menuprice,menudescription);
+					voucherRepository.save(voucher);
+				}
+				if (menuname != null) {
+					Menu menu = new Menu(menuname, menuprice, menudescription);
 					menu.setRestaurantMenu(restaurantRepository.findByEmail(restaurantloggin));
-					menuRepository.save(menu);}
+					menuRepository.save(menu);
+				}
 			}
-		}catch(NullPointerException ex){
+		} catch (NullPointerException ex) {
 			ex.printStackTrace();
-			
+
 		}
-		String fileName = "profileImageRestaurant.jpg";
+		String restaurantloggin = authentication.getName();
+		String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
+				+ ".jpg";
 
 		if (!file.isEmpty()) {
 			try {

@@ -50,35 +50,40 @@ public class ClientController {
 		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
 		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
 		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
-		String fileName = "profileImage.jpg";
+		model.addAttribute("inSession", (request.isUserInRole("USER") || request.isUserInRole("RESTAURANT")));
+		String fileName = "profileImage" + userRepository.findByName(name).getId() + ".jpg";
 		model.addAttribute("fileName", fileName);
 		/*
 		 * Following feature has to be implemented
 		 */
 		if (request.isUserInRole("USER")) {
 			String userloggin = authentication.getName();
-			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
-			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
-			
-			
+			model.addAttribute("followButton",
+					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton",
+					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+
 			if (followPulsed != null) {
 				System.out.println("Entra follow");
 				userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 			}
-			
-			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
-			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
-			
+
+			model.addAttribute("followButton",
+					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton",
+					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+
 			if (unfollowPulsed != null) {
 				System.out.println("Entra unfollow");
 				userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 			}
-			
-			model.addAttribute("followButton", !userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
-			model.addAttribute("unfollowButton", userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+
+			model.addAttribute("followButton",
+					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+			model.addAttribute("unfollowButton",
+					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
 		}
 		return "public-client";
 	}
@@ -115,10 +120,10 @@ public class ClientController {
 			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
 			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
 		try {
-			String fileName = "profileImage.jpg";
+			String userloggin = authentication.getName();
+			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
 			model.addAttribute("fileName", fileName);
 			if (request.isUserInRole("USER")) {
-				String userloggin = authentication.getName();
 				model.addAttribute("user", userRepository.findByEmail(userloggin));
 				model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
 				model.addAttribute("following", userRepository.findByEmail(userloggin).getFollowing());
