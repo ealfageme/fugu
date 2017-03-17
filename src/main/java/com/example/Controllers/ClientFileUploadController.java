@@ -47,10 +47,11 @@ public class ClientFileUploadController {
 			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
 			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
 		try {
-			String fileName = "profileImage.jpg";
+			String userloggin = authentication.getName();
+			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
 			model.addAttribute("fileName", fileName);
 			if (request.isUserInRole("USER")) {
-				String userloggin = authentication.getName();
+				
 				model.addAttribute("user", userRepository.findByEmail(userloggin));
 				model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
 				model.addAttribute("following", userRepository.findByEmail(userloggin).getFollowing());

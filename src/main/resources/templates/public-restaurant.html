@@ -58,7 +58,7 @@
 								action="/default/">
 								<button class="signInBtn">Visit profile</button>
 							</form> {{/inSession}}
-							</li>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -71,7 +71,8 @@
 			<div class="sp-slide main-slides">
 				<div class="img-overlay"></div>
 				<img class="sp-image"
-					src="/images/restaurant-type/{{restaurant.name}}.jpg" alt="Slider 1" />
+					src="/images/restaurant-type/{{restaurant.name}}.jpg"
+					alt="Slider 1" />
 				<h1 class="imagetext1" data-position="center"
 					data-show-transition="left" data-hide-transition="right"
 					data-show-delay="1500" data-hide-delay="200">
@@ -85,7 +86,8 @@
 			<div class="sp-slide main-slides">
 				<div class="img-overlay"></div>
 				<img class="sp-image"
-					src="/images/restaurant-type/{{restaurant.name}}.jpg" alt="Slider 2" />
+					src="/images/restaurant-type/{{restaurant.name}}.jpg"
+					alt="Slider 2" />
 				<h1 class="imagetext1" data-position="center"
 					data-show-transition="left" data-hide-transition="right"
 					data-show-delay="1500" data-hide-delay="200">
@@ -117,8 +119,7 @@
 					style="float: left">
 					<div class="google-maps">
 						<!--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1736780674373!2d-3.697183684952735!3d40.427152979363896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288e608ea2d9%3A0xd858967da80c4fa8!2sFoster&#39;s+Hollywood!5e0!3m2!1ses!2ses!4v1485849876354" width="100%" height="450px" frameborder="0" style="border:0"></iframe>-->
-						<img
-							src="/private-client/image/{{fileName}}" />
+						<img src="/private-client/image/{{fileName}}" />
 					</div>
 				</div>
 				<div
@@ -166,21 +167,20 @@
 			</div>
 		</div>
 		<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <form role="form" method='get'>
-                        {{#favButton}}
-                        <input type="hidden" id="favPulsed" name="favPulsed" value="true"/>
-                        <button type="submit" class="btnMore"  id="fav" style="margin:10px;">Fav</button>
-                         {{/favButton}}
-                         <input type="hidden" name="_csrf" value="{{token}}"/>
-                         </form>
-                         <form role="form" method='get'>
-                         {{#unfavButton}}
-                         <input type="hidden" id="unfavPulsed" name="unfavPulsed" value="true"/>
-                         <button type="submit" class="btnMore" id="unfav" style="margin:10px;">UnFav</button>
-                         {{/unfavButton}}
-                         <input type="hidden" name="_csrf" value="{{token}}"/>
-                        </form>   
-                    </div>
+			<form role="form" method='get'>
+				{{#favButton}} <input type="hidden" id="favPulsed" name="favPulsed"
+					value="true" />
+				<button type="submit" class="btnMore" id="fav" style="margin: 10px;">Fav</button>
+				{{/favButton}} <input type="hidden" name="_csrf" value="{{token}}" />
+			</form>
+			<form role="form" method='get'>
+				{{#unfavButton}} <input type="hidden" id="unfavPulsed"
+					name="unfavPulsed" value="true" />
+				<button type="submit" class="btnMore" id="unfav"
+					style="margin: 10px;">UnFav</button>
+				{{/unfavButton}} <input type="hidden" name="_csrf" value="{{token}}" />
+			</form>
+		</div>
 	</section>
 	<section id="booking" class="about-sec section-wrapper description">
 		<div class="container">
@@ -409,7 +409,7 @@
 							<textarea class="form-control" id="exampleTextarea" rows="2"
 								style="border-radius: 0px !important" name="specialRequirements"></textarea>
 						</div>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
+						<input type="hidden" name="_csrf" value="{{token}}" />
 					</form>
 				</div>
 			</div>
@@ -432,11 +432,11 @@
 				<!-- Section Header End -->
 				<div class="our-services">
 					<div class="row">
-					{{#restaurant.breakfast}}
+						{{#restaurant.breakfast}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
-							
+
 							<div class="service-box">
 								<div class="icon">
 									<h3>Breakfast</h3>
@@ -444,10 +444,9 @@
 								<p>To start the day in the perfect way</p>
 								<img src="/images/day-food/breakfast.jpg" alt="Custom Image">
 							</div>
-							
+
 						</div>
-						{{/restaurant.breakfast}}
-						{{#restaurant.lunch}}
+						{{/restaurant.breakfast}} {{#restaurant.lunch}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
@@ -459,8 +458,7 @@
 								<img src="/images/day-food/lunch.jpg" alt="Custom Image">
 							</div>
 						</div>
-						{{/restaurant.lunch}}
-						{{#restaurant.dinner}}
+						{{/restaurant.lunch}} {{#restaurant.dinner}}
 						<div
 							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
 							data-wow-delay=".2s">
@@ -503,6 +501,8 @@
 							<div class="menu-column">
 								<div class="food">
 									<div class="food-desc">
+										<img
+											src="/private-restaurant/menu/image/menuImageRestaurant{{restaurantId}}{{-index}}.jpg" />
 										<h6 class="food-name">{{dish}}</h6>
 										<div class="dots"></div>
 										<div class="food-price">
@@ -701,7 +701,8 @@
 										class="recommendations-filter-btn-group">
 										<div class="item recommendations-item web seo">
 											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-right-style: solid;">
 													<ul>
 														<li>
 															<h1 class="shadow">{{reviewUser.name}}</h1> <span
@@ -713,8 +714,7 @@
 														</li>
 													</ul>
 												</div>
-												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10"
-													>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
 													<p style="margin: 5px;">{{content}}</p>
 													<p style="margin: 5px;">{{date}}</p>
 												</div>
@@ -777,8 +777,8 @@
 							</div>
 							<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
 								<textarea style="border-radius: 0px !important" rows="7"
-									cols="100" class="form-control" name="content" placeholder="Message"
-									id="message" required
+									cols="100" class="form-control" name="content"
+									placeholder="Message" id="message" required
 									data-validation-required-message="Please enter your message"
 									minlength="3"
 									data-validation-minlength-message="Min 5 characters"
@@ -789,12 +789,12 @@
 							</div>
 							<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
 								<div class="form-group">
-								<label>Rate: </label> <input
-									style="border-radius: 0px !important" type="text"
-									class="form-control" id="rate" name='rate' placeholder="5">
-							</div>
-								<button type="submit"  class="btnMore">send</button>
-								<input type="hidden" name="_csrf" value="{{token}}"/>
+									<label>Rate: </label> <input
+										style="border-radius: 0px !important" type="text"
+										class="form-control" id="rate" name='rate' placeholder="5">
+								</div>
+								<button type="submit" class="btnMore">send</button>
+								<input type="hidden" name="_csrf" value="{{token}}" />
 							</div>
 							<!-- Modal -->
 							<div class="modal fade" id="exampleModalLong" tabindex="-1"
@@ -821,9 +821,9 @@
 										</div>
 									</div>
 								</div>
-							
+
 							</div>
-							<input type="hidden" name="_csrf" value="{{token}}"/>
+							<input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</div>
 				</div>
