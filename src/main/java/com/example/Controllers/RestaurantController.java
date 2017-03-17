@@ -87,7 +87,7 @@ public class RestaurantController {
 	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,@RequestParam(required=false) String bookingday,
 			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
 			@RequestParam(required=false) String specialRequirements,
-			@RequestParam(required=false) Integer rate, @RequestParam(required=false) String content,
+			@RequestParam(required=false) String rate, @RequestParam(required=false) String content,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
 		String fileName = "profileImageRestaurant"+restaurantRepository.findByName(name).getId()+".jpg";
 		model.addAttribute("fileName", fileName);
@@ -112,10 +112,12 @@ public class RestaurantController {
 		model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,4)));
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
+		model.addAttribute("inSession", request.isUserInRole("USER"));
+		model.addAttribute("outSession", !request.isUserInRole("USER"));
 		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
-			if (rate!=null) {	
-				Review review = new Review(content,rate,new Date());
+			if (rate!=null) {
+				Review review = new Review(content,Integer.parseInt(rate),new Date());
 				review.setReviewRestaurant(restaurantRepository.findByName(name));
 				review.setReviewUser(userRepository.findByEmail(userloggin));
 				reviewRepository.save(review);
