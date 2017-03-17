@@ -54,10 +54,12 @@
 						<li><a href="#clients">CLIENTS</a></li>
 						<li><a href="#profile">{{restaurant.name}}</a></li>
 						<li class="signin">
-						<form class="navbar-form navbar-right" action="/main2/" method='post'>
+							<form class="navbar-form navbar-right" action="/main2/"
+								method='post'>
 								<button type="submit" class="signInBtn">SignOut</button>
 								<input type="hidden" name="_csrf" value="{{token}}" />
-							</form></li>
+							</form>
+						</li>
 					</ul>
 
 				</div>
@@ -116,7 +118,7 @@
 									{{#bookingsInProcess}}
 									<div id="recommendations-filter"
 										class="recommendations-filter-btn-group">
-	
+
 										<div id="{{-index}}" class="item recommendations-item web seo">
 											<div class="row">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
@@ -137,16 +139,16 @@
 													<br>
 													<button type="button" class="btnMore">Contact</button>
 													<span class="hiddenclass">
-													<form action="/private-restaurant/">
-														<input type="hidden" name="acceptPulsed" value="Accepted">
-														<input type="hidden" name="acceptPulsedID" value={{id}}>
-														<button type="input" class="btnMore"
-															onClick="acceptReservation({{-index}})"
-															id="{{-index}}-button">
-															Accept <span class="glyphicon glyphicon-ok-circle"
-																aria-hidden="true"></span>
-														</button>
-													</form>
+														<form action="/private-restaurant/">
+															<input type="hidden" name="acceptPulsed" value="Accepted">
+															<input type="hidden" name="acceptPulsedID" value={{id}}>
+															<button type="input" class="btnMore"
+																onClick="acceptReservation({{-index}})"
+																id="{{-index}}-button">
+																Accept <span class="glyphicon glyphicon-ok-circle"
+																	aria-hidden="true"></span>
+															</button>
+														</form>
 													</span>
 												</div>
 											</div>
@@ -166,7 +168,7 @@
 				</div>
 			</div>
 		</div>
-				<div class="ratings-wrapper wow bounceIn">
+		<div class="ratings-wrapper wow bounceIn">
 			<div class="container">
 				<div class="row">
 					<!-- Section Header -->
@@ -183,7 +185,7 @@
 									{{#bookingsAccepted}}
 									<div id="recommendations-filter"
 										class="recommendations-filter-btn-group">
-	
+
 										<div id="{{-index}}" class="item recommendations-item web seo">
 											<div class="row">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
@@ -286,7 +288,9 @@
 				<!-- Section Header End -->
 				<div class="menus-container">
 					<!-- menu -->
-					<div class="menu row">
+					<div class="menu row" id="menus">
+					<button id="restaurantid" value="{{restaurant.id}}" style="display: none;"></button>
+					<button id="reference" value="0" style="display: none;"></button>
 						{{#menu}}
 						<div class="col-md-6 wow fadeInRight animated"
 							style="visibility: visible; animation-name: fadeInRight;">
@@ -310,70 +314,77 @@
 							<!-- /menu-column -->
 						</div>
 						{{/menu}}
-						<section id="voucher">
-							<div
-								class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-								<h2>
-									<span class="highlight-text">Vouchers</span>
-								</h2>
-							</div>
-						</section>
+						<!-- /col-md-6 -->
 					</div>
-					<div class="container">
-						<div class="row">
-							<!-- Section Header -->
-							<div
-								class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-								<h2>
-									<span class="highlight-text">Dish image<img
-										src="/images/voucher1.jpg" class="img-thumbnail"
-										alt="Custom Image"></span>
-								</h2>
-								<br> <span id="button">
-									<button type="submit" class="btnMore" id="changeImg">Change
-										profile image</button>
-								</span>
-							</div>
-							<!-- Section Header End -->
-							<div id="profileForm"
-								class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-								<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-									<h1>Add new dish to menu</h1>
-									<form role="form" method='post'>
-										<div class="form-group">
-											<label for="name">Dish Name:</label> <input
-												style="border-radius: 0px !important" type="text"
-												class="form-control" id="name" name='menuname'
-												placeholder=" dish name">
-										</div>
-										<div class="form-group">
-											<label for="name">Price</label> <input
-												style="border-radius: 0px !important" class="form-control"
-												id="name" name='menuprice' value="price">
-										</div>
-										<div class="form-group">
-											<label for="name">Description:</label>
-											<textarea style="border-radius: 0px !important"
-												class="form-control" id="exampleTextarea"
-												name='menudescription' rows="3" placeholder="Description"></textarea>
-										</div>
+					{{#BigMenu}}
+					<div class="col-md-2 col-md-offset-5 morediv">
+						<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
+					</div>
+					{{/BigMenu}}
+					<!-- /row -->
+				</div>
+					<section id="voucher">
+						<div
+							class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+							<h2>
+								<span class="highlight-text">Vouchers</span>
+							</h2>
+						</div>
+					</section>
+				</div>
 
-										<div class="col-md-3 col-md-offset-10">
-											<input type="submit" class="btnMore" value='Create'>
-										</div>
-										<input type="hidden" name="_csrf" value="{{token}}" />
-									</form>
+				<div class="container">
+					<div class="row">
+						<!-- Section Header -->
+						<div
+							class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+							<h2>
+								<span class="highlight-text">Dish image<img
+									src="/images/voucher1.jpg" class="img-thumbnail"
+									alt="Custom Image"></span>
+							</h2>
+							<br> <span id="button">
+								<button type="submit" class="btnMore" id="changeImg">Change
+									profile image</button>
+							</span>
+						</div>
+						<!-- Section Header End -->
+						<div id="profileForm"
+							class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+							<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+								<h1>Add new dish to menu</h1>
+								<form role="form" method='post'>
+									<div class="form-group">
+										<label for="name">Dish Name:</label> <input
+											style="border-radius: 0px !important" type="text"
+											class="form-control" id="name" name='menuname'
+											placeholder=" dish name">
+									</div>
+									<div class="form-group">
+										<label for="name">Price</label> <input
+											style="border-radius: 0px !important" class="form-control"
+											id="name" name='menuprice' value="price">
+									</div>
+									<div class="form-group">
+										<label for="name">Description:</label>
+										<textarea style="border-radius: 0px !important"
+											class="form-control" id="exampleTextarea"
+											name='menudescription' rows="3" placeholder="Description"></textarea>
+									</div>
 
-								</div>
+									<div class="col-md-3 col-md-offset-10">
+										<input type="submit" class="btnMore" value='Create'>
+									</div>
+									<input type="hidden" name="_csrf" value="{{token}}" />
+								</form>
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- /row -->
 			</div>
-
+			<!-- /row -->
 		</div>
-		<!-- /menus-container -->
 
 
 		<!-- /container -->
@@ -579,8 +590,8 @@
 				<!-- Section Header -->
 				<div
 					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-						<span class="highlight-text">{{restaurant.name}}</span>
-						<form action="/private-restaurant/image/upload" method="post"
+					<span class="highlight-text">{{restaurant.name}}</span>
+					<form action="/private-restaurant/image/upload" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" name='imageTitle' /><br /> <img
 							src="/private-client/image/{{fileName}}" />
@@ -592,7 +603,7 @@
 					</form>
 					<br>
 					<p>{{restaurant.description}}</p>
-					
+
 				</div>
 				<!-- Section Header End -->
 				<div id="profileForm"
@@ -732,10 +743,9 @@
 	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="/js/jquery.sliderPro.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
-	<!--<script src="/contact/jqBootstrapValidation.js"></script>
-	<script src="/contact/contact_me.js"></script>-->
 	<script src="/js/custom.js"></script>
 	<script src="/js/fugu.js"></script>
+	<script src="/js/ajax2.js"></script>
 
 </body>
 

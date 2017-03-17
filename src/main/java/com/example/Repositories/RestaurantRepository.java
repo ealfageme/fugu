@@ -20,12 +20,12 @@ public interface RestaurantRepository extends JpaRepository<Restaurant,Long>{
 	List<Restaurant> findByRateGreaterThan(Double min);
 	List<Restaurant> findByRateLessThan(Double max);
 	Page<Restaurant> findByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page);
-	//City es null
+	//City null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndFoodType(Double minPrice, Double maxPrice, Double min, Double max, String food);
-	//Food type es null
+	//Food type null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndCityName(Double minPrice, Double maxPrice, Double min, Double max, String city);
-	//Las dos son null
+	//Both null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetween(Double minPrice, Double maxPrice, Double min, Double max);
-	//Ninguna es null
+	//None is null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndCityNameAndFoodType(Double minPrice, Double maxPrice, Double min, Double max, String city, String food);
 }

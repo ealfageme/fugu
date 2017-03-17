@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -66,6 +67,14 @@ public class RestaurantController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/restaurants/{id}/menus", method=RequestMethod.GET)
+	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant=restaurantRepository.findOne(id);
+		return new ResponseEntity<>(menuRepository.findByRestaurantMenu(restaurant,page), HttpStatus.OK);
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
 	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(10);
@@ -84,6 +93,8 @@ public class RestaurantController {
 		String fileName = "profileImageRestaurant.jpg";
 		model.addAttribute("fileName", fileName);
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		Page<Menu> menu=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,5));
+		model.addAttribute("BigMenu", menu.getNumberOfElements()>4);
 		if(bookingday!=null && bookinghour!=null){
 			System.out.println(bookingday+" "+bookinghour);
 			Date date=new Date();
@@ -99,7 +110,7 @@ public class RestaurantController {
 			bookingRepository.save(booking);
 		}	
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
-		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,4)));
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
 		if(request.isUserInRole("USER")){
@@ -149,16 +160,18 @@ public class RestaurantController {
 	@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
-	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,
+	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
 	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID) {
 		try{
 			String fileName = "profileImageRestaurant.jpg";
 			model.addAttribute("fileName", fileName);
+			
 			if(request.isUserInRole("RESTAURANT")){
-		
 				String restaurantloggin = authentication.getName();
+				Page<Menu> menus=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(restaurantRepository.findByEmail(restaurantloggin).getName()),new PageRequest(0,5));
+				model.addAttribute("BigMenu", menus.getNumberOfElements()>4);
 				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));
-				model.addAttribute("menu", restaurantRepository.findByEmail(restaurantloggin).getMenus());
+				model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(restaurantRepository.findByEmail(restaurantloggin).getName()),new PageRequest(0,4)));
 				model.addAttribute("bookings", restaurantRepository.findByEmail(restaurantloggin).getBookings());
 				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingRestaurant("Accepted",restaurantRepository.findByEmail(restaurantloggin)));
 				model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingRestaurant("In Process",restaurantRepository.findByEmail(restaurantloggin)));
