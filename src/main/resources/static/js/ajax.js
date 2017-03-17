@@ -86,3 +86,6 @@ $( "#prevRestaurants" ).on( "click", function() {
 	    alert( "error" );
 	});
 });
+
+
+

@@ -494,7 +494,9 @@
 				<!-- Section Header End -->
 				<div class="menus-container">
 					<!-- menu -->
-					<div class="menu row">
+					<div class="menu row" id="menus">
+					<button id="restaurantid" value="{{restaurant.id}}" style="display: none;"></button>
+					<button id="reference" value="0" style="display: none;"></button>
 						{{#menu}}
 						<div class="col-md-6 wow fadeInRight animated"
 							style="visibility: visible; animation-name: fadeInRight;">
@@ -522,6 +524,11 @@
 						{{/menu}}
 						<!-- /col-md-6 -->
 					</div>
+					{{#BigMenu}}
+					<div class="col-md-2 col-md-offset-5 morediv">
+						<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
+					</div>
+					{{/BigMenu}}
 					<!-- /row -->
 				</div>
 				<!-- /menu-carousel -->
@@ -752,12 +759,11 @@
 						us how was your experience</p>
 				</div>
 				<!-- Section Header End -->
+				{{#inSession}}
 				<div class="contact-details">
 					<!-- Contact Form -->
 					<div class="contact-form wow bounceInRight">
-						<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
 						<form name="sentMessage" id="contactForm" novalidate method='post'>
-
 							<div class="form-group col-md-3 col-l-3 col-s-3 col-xs-12 "
 								id="recommendations-filter" style="height: 235px">
 								<h2 style="color: #80cc0c !important;">{{restaurant.name}}</h2>
@@ -772,7 +778,7 @@
 									class="glyphicon glyphicon-star"
 									style="color: #80cc0c !important;"></span>
 								<hr>
-								<h4>RATE : {{restaurant.rate}}</h4>
+								<h4>CURRENT RATE : {{restaurant.rate}}</h4>
 								<br>
 							</div>
 							<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
@@ -789,11 +795,17 @@
 							</div>
 							<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
 								<div class="form-group">
-									<label>Rate: </label> <input
-										style="border-radius: 0px !important" type="text"
-										class="form-control" id="rate" name='rate' placeholder="5">
+									<label for="filter" >Rate</label> <select
+										class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;" 
+										name='rate'>
+										<option value="1" selected style="border-radius: 0px !important">1</option>
+										<option value="2" style="border-radius: 0px !important">2</option>
+										<option value="3" style="border-radius: 0px !important">3</option>
+										<option value="4" style="border-radius: 0px !important">4</option>
+										<option value="5" style="border-radius: 0px !important">5</option>
+									</select>
 								</div>
-								<button type="submit" class="btnMore">send</button>
+								<button type="submit" class="btnMore">Send</button>
 								<input type="hidden" name="_csrf" value="{{token}}" />
 							</div>
 							<!-- Modal -->
@@ -827,6 +839,12 @@
 						</form>
 					</div>
 				</div>
+				{{/inSession}}
+				{{#outSession}}
+				<div style="text-align: center;margin: 20px;">
+					<h1>Log in before sending feedback!</h1>
+				</div>
+				{{/outSession}}
 			</div>
 		</div>
 	</section>
@@ -897,10 +915,9 @@
 	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="/js/jquery.sliderPro.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
-	<!--<script src="/contact/jqBootstrapValidation.js"></script>
-	<script src="/contact/contact_me.js"></script>-->
 	<script src="/js/custom.js"></script>
 	<script src="/js/fugu.js"></script>
+	<script src="/js/ajax2.js"></script>
 
 </body>
 

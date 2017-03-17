@@ -288,7 +288,9 @@
 				<!-- Section Header End -->
 				<div class="menus-container">
 					<!-- menu -->
-					<div class="menu row">
+					<div class="menu row" id="menus">
+					<button id="restaurantid" value="{{restaurant.id}}" style="display: none;"></button>
+					<button id="reference" value="0" style="display: none;"></button>
 						{{#menu}}
 						<div class="col-md-6 wow fadeInRight animated"
 							style="visibility: visible; animation-name: fadeInRight;">
@@ -313,14 +315,7 @@
 							<!-- /menu-column -->
 						</div>
 						{{/menu}}
-						<section id="voucher">
-							<div
-								class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-								<h2>
-									<span class="highlight-text">Vouchers</span>
-								</h2>
-							</div>
-						</section>
+						<!-- /col-md-6 -->
 					</div>
 					<div class="container">
 						<div class="row">
@@ -367,15 +362,17 @@
 										<input type="hidden" name="_csrf" value="{{token}}" />
 									</form>
 								</div>
-							</div>
-						</div>
+					{{#BigMenu}}
+					<div class="col-md-2 col-md-offset-5 morediv">
+						<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
 					</div>
+					{{/BigMenu}}
+					<!-- /row -->
 				</div>
-				<!-- /row -->
+				</div>
 			</div>
-
+			<!-- /row -->
 		</div>
-		<!-- /menus-container -->
 
 
 		<!-- /container -->
@@ -734,10 +731,9 @@
 	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="/js/jquery.sliderPro.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
-	<!--<script src="/contact/jqBootstrapValidation.js"></script>
-	<script src="/contact/contact_me.js"></script>-->
 	<script src="/js/custom.js"></script>
 	<script src="/js/fugu.js"></script>
+	<script src="/js/ajax2.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function sendFuguFeedback() {
 	let username=document.getElementById("username").getAttribute("name");
 	let email=document.getElementById("useremail").getAttribute("name");
@@ -7,8 +7,6 @@ function sendFuguFeedback() {
 }
 
 function sendFuguFeedbackOut() {
-=======
->>>>>>> d21942b6b72c5c50b6933035921465548eb8e646
 	let username=document.getElementById("username").value;
 	let email=document.getElementById("useremail").value;
 	let body=document.getElementById("message").value;

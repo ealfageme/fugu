@@ -94,7 +94,7 @@
 					<div class="col-md-12">
 						<div class="input-group" id="adv-search">
 							<form class="form-horizontal" role="form" action="" method='post'>
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
 									placeholder="Search by a restaurant name" name="name" /> <input
 									type="hidden" name="_csrf" value="{{token}}" />
 							</form>
@@ -103,12 +103,12 @@
 									<div class="dropdown dropdown-lg">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown" aria-expanded="false"></button>
-										<div class="dropdown-menu dropdown-menu-right" role="menu">
+										<div class="dropdown-menu dropdown-menu-right" role="menu" style="border-radius: 0px !important; -webkit-appearance: none;">
 											<form class="form-horizontal" role="form" action=""
 												method='post'>
 												<div class="form-group">
 													<label for="filter">Food type</label> <select
-														class="form-control" name="foodType">
+														class="form-control" name="foodType" style="border-radius: 0px !important; -webkit-appearance: none;">
 														<option value="" selected></option>
 														<option value="Chinese">Chinese</option>
 														<option value="Japanese">Japanese</option>
@@ -122,7 +122,7 @@
 													</select>
 												</div>
 												<div class="form-group">
-													<label for="filter">City</label> <select
+													<label for="filter">City</label> <select style="border-radius: 0px !important; -webkit-appearance: none;"
 														class="form-control" name="city">
 														<option value="" selected></option>
 														<option value="Madrid">Madrid</option>
@@ -133,8 +133,8 @@
 														<option value="Bilbao">Bilbao</option>
 													</select>
 												</div>
-												<button type="submit" class="btn btn-primary">
-													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												<button type="submit" class="btnMore">
+													<span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
 												</button>
 												<input type="hidden" name="_csrf" value="{{token}}" />
 											</form>
@@ -170,36 +170,36 @@
 									<div class="row">
 										<form role="form" method='post'>
 											<div class="col-md-3">
-												<div class="input-group">
-													<span class="input-group-addon">&gt;</span> <input
+												<div class="input-group" >
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														name="minPrice"> <span class="input-group-addon">€</span>
+														name="minPrice"> <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="input-group">
-													<span class="input-group-addon">&lt;</span> <input
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)"
-														name="maxPrice"> <span class="input-group-addon">€</span>
+														name="maxPrice"> <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="input-group">
-													<span class="input-group-addon">&gt;</span> <input
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)" name="min">
-													<span class="input-group-addon"><span
-														class="glyphicon glyphicon-star"></span></span>
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
+														class="glyphicon glyphicon-star" ></span></span>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="input-group">
-													<span class="input-group-addon">&lt;</span> <input
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span> <input
 														type="text" class="form-control"
 														aria-label="Amount (to the nearest dollar)" name="max">
-													<span class="input-group-addon"><span
+													<span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
 														class="glyphicon glyphicon-star"></span></span>
 												</div>
 											</div>

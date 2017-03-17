@@ -3,6 +3,7 @@ package com.example.Controllers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.security.core.Authentication;
@@ -62,8 +64,15 @@ public class RestaurantController {
 		return new ResponseEntity<>(restaurantRepository.findOne(id), HttpStatus.OK);
 	}
 
+	@RequestMapping(value="/restaurants/{id}/menus", method=RequestMethod.GET)
+	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant=restaurantRepository.findOne(id);
+		return new ResponseEntity<>(menuRepository.findByRestaurantMenu(restaurant,page), HttpStatus.OK);
+	}
+	
 	@ResponseBody
-	@RequestMapping(value = "/restaurants/", method = RequestMethod.GET)
+	@RequestMapping(value="/restaurants/", method=RequestMethod.GET)
 	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(10);
 
@@ -74,21 +83,19 @@ public class RestaurantController {
 
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
-	public String publicRestaurant(Model model, HttpServletRequest request, Authentication authentication,
-			@PathVariable String name, @RequestParam(required = false) String bookingday,
-			@RequestParam(required = false) String bookinghour, @RequestParam(required = false) String guests,
-			@RequestParam(required = false) String specialRequirements, @RequestParam(required = false) Integer rate,
-			@RequestParam(required = false) String content, @RequestParam(required = false) String unfavPulsed,
-			@RequestParam(required = false) String favPulsed) {
-		String fileName = "profileImageRestaurant" + restaurantRepository.findByName(name).getId() + ".jpg";
+	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,@RequestParam(required=false) String bookingday,
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
+			@RequestParam(required=false) String specialRequirements,
+			@RequestParam(required=false) String rate, @RequestParam(required=false) String content,
+			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
+		String fileName = "profileImageRestaurant"+restaurantRepository.findByName(name).getId()+".jpg";
 		model.addAttribute("fileName", fileName);
-		String fileMenuName = "menuImageRestaurant"
-				+restaurantRepository.findByName(name).getId()+ (restaurantRepository.findByName(name).getMenus().size() + 1) + ".jpg";
-		model.addAttribute("fileMenuName", fileMenuName);
-		model.addAttribute("inSession", (request.isUserInRole("USER") || request.isUserInRole("RESTAURANT")));
-		if (bookingday != null && bookinghour != null) {
-			System.out.println(bookingday + " " + bookinghour);
-			Date date = new Date();
+		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		Page<Menu> menu=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,5));
+		model.addAttribute("BigMenu", menu.getNumberOfElements()>4);
+		if(bookingday!=null && bookinghour!=null){
+			System.out.println(bookingday+" "+bookinghour);
+			Date date=new Date();
 			try {
 				date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-" + bookingday + " " + bookinghour);
 			} catch (ParseException e) {
@@ -102,13 +109,16 @@ public class RestaurantController {
 		}
 		model.addAttribute("restaurantId", restaurantRepository.findByName(name).getId());
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
-		model.addAttribute("menu", restaurantRepository.findByName(name).getMenus());
+		model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,4)));
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-		if (request.isUserInRole("USER")) {
+
+		model.addAttribute("inSession", request.isUserInRole("USER"));
+		model.addAttribute("outSession", !request.isUserInRole("USER"));
+		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
-			if (rate != null) {
-				Review review = new Review(content, rate, new Date());
+			if (rate!=null) {
+				Review review = new Review(content,Integer.parseInt(rate),new Date());
 				review.setReviewRestaurant(restaurantRepository.findByName(name));
 				review.setReviewUser(userRepository.findByEmail(userloggin));
 				reviewRepository.save(review);
@@ -149,20 +159,18 @@ public class RestaurantController {
 	}
 
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/private-restaurant/", method = { RequestMethod.POST, RequestMethod.GET })
-	public String privateRestaurant(Model model, HttpServletRequest request, Authentication authentication,
-			@RequestParam(required = false) String type, @RequestParam(required = false) Integer max,
-			@RequestParam(required = false) Integer min, @RequestParam(required = false) String vouchername,
-			@RequestParam(required = false) String voucherdescription,
-			@RequestParam(required = false) String menudescription, @RequestParam(required = false) String menuname,
-			@RequestParam(required = false) Double menuprice, @RequestParam(required = false) String namerest,
-			@RequestParam(required = false) String location, @RequestParam(required = false) Integer telephone,
-			@RequestParam(required = false) String descriptionrest, @RequestParam(required = false) String emailrest,
-			@RequestParam(required = false) String pwd, @RequestParam(required = false) String confirmpwd,
-			@RequestParam(required = false) Boolean Breakfast, @RequestParam(required = false) Boolean Lunch,
-			@RequestParam(required = false) Boolean Dinner, @RequestParam(required = false) String acceptPulsed,
-			@RequestParam(required = false) Long acceptPulsedID) {
-		try {
+	@RequestMapping("/private-restaurant/")
+	public String privateRestaurant(Model model, HttpServletRequest request,Authentication authentication, @RequestParam(required=false) String type,
+	@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,
+	@RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,
+	@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,
+	@RequestParam(required=false) Double menuprice, @RequestParam(required=false)String namerest,
+	@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
+	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
+	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
+	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
+	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID) {
+		try{
 			String restaurantloggin = authentication.getName();
 			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
 					+ ".jpg";
@@ -172,8 +180,10 @@ public class RestaurantController {
 			model.addAttribute("fileMenuName", fileMenuName);
 			if (request.isUserInRole("RESTAURANT")) {
 				model.addAttribute("restaurantId", restaurantRepository.findByEmail(restaurantloggin).getId());
+				Page<Menu> menus=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(restaurantRepository.findByEmail(restaurantloggin).getName()),new PageRequest(0,5));
+				model.addAttribute("BigMenu", menus.getNumberOfElements()>4);
 				model.addAttribute("restaurant", restaurantRepository.findByEmail(restaurantloggin));
-				model.addAttribute("menu", restaurantRepository.findByEmail(restaurantloggin).getMenus());
+				model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(restaurantRepository.findByEmail(restaurantloggin).getName()),new PageRequest(0,4)));
 				model.addAttribute("bookings", restaurantRepository.findByEmail(restaurantloggin).getBookings());
 				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingRestaurant("Accepted",
 						restaurantRepository.findByEmail(restaurantloggin)));

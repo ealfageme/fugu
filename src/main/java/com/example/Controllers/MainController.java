@@ -48,7 +48,6 @@ public class MainController {
 		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT"));
 		
 		if(request.isUserInRole("USER")){
-			System.out.println(authentication.getName());
 			model.addAttribute("feedbackname", userRepository.findByEmail(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
 		}else if(request.isUserInRole("RESTAURANT")){
