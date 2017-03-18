@@ -139,7 +139,7 @@
 													<br>
 													<button type="button" class="btnMore">Contact</button>
 													<div class="hiddenclass">
-														<form role="form" action="/accept-reservation/">
+														<form role="form" method="post" action="/accept-reservation/">
 															<div>
 																<input type="hidden" name="acceptPulsed"
 																	value="Accepted"> <input type="hidden"
@@ -150,7 +150,9 @@
 																	Accept <span class="glyphicon glyphicon-ok-circle"
 																		aria-hidden="true"></span>
 																</button>
+																
 															</div>
+															<input type="hidden" name="_csrf" value="{{token}}" />
 														</form>
 													</div>
 												</div>

@@ -265,7 +265,7 @@ public class RestaurantController {
 		return "private-restaurant";
 	}
 	
-	@RequestMapping("/accept-reservation/")
+	@RequestMapping(value = "/accept-reservation/", method = RequestMethod.POST)
 	public String acceptReservation(Model model,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID){
 		if (acceptPulsed != null) {
 			Booking booking = bookingRepository.findById(acceptPulsedID);
