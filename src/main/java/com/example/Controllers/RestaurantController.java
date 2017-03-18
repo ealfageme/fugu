@@ -170,7 +170,7 @@ public class RestaurantController {
 	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
 	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
 	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
-	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID,@RequestParam(required=false) Integer expiry) throws ParseException {
+	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false) Integer expiry) throws ParseException {
 		try{
 			String restaurantloggin = authentication.getName();
 			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
@@ -241,11 +241,7 @@ public class RestaurantController {
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
 				}
-				if (acceptPulsed != null) {
-					Booking booking = bookingRepository.findById(acceptPulsedID);
-					booking.setState("Accepted");
-					bookingRepository.save(booking);
-				}
+				
 				if (menuname != null) {
 					boolean repeated = false;
 					Menu menu = new Menu(menuname, menuprice, menudescription);
@@ -267,6 +263,16 @@ public class RestaurantController {
 
 		}
 		return "private-restaurant";
+	}
+	
+	@RequestMapping("/accept-reservation/")
+	public String acceptReservation(Model model,@RequestParam(required=false)String acceptPulsed,@RequestParam(required=false) Long acceptPulsedID){
+		if (acceptPulsed != null) {
+			Booking booking = bookingRepository.findById(acceptPulsedID);
+			booking.setState("Accepted");
+			bookingRepository.save(booking);
+		}
+		return "redirect:/private-restaurant/";
 	}
 
 	

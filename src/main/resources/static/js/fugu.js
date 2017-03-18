@@ -133,5 +133,13 @@ function acceptReservation(index){
 	document.getElementById(index+'-button').style.display = 'none'; 
 }
 
+$('#price').on('keyup', function () {
+	if(!isNumber($('#price').val())){
+		$('#message_dish_price').html('Price must be nuberic').css('color', 'red');
+	}else{
+		$('#message_dish_price').html('');
+	}
+});
+
 
 

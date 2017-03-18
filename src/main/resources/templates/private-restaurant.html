@@ -138,18 +138,21 @@
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<br>
 													<button type="button" class="btnMore">Contact</button>
-													<span class="hiddenclass">
-														<form action="/private-restaurant/">
-															<input type="hidden" name="acceptPulsed" value="Accepted">
-															<input type="hidden" name="acceptPulsedID" value={{id}}>
-															<button type="input" class="btnMore"
-																onClick="acceptReservation({{-index}})"
-																id="{{-index}}-button">
-																Accept <span class="glyphicon glyphicon-ok-circle"
-																	aria-hidden="true"></span>
-															</button>
+													<div class="hiddenclass">
+														<form role="form" action="/accept-reservation/">
+															<div>
+																<input type="hidden" name="acceptPulsed"
+																	value="Accepted"> <input type="hidden"
+																	name="acceptPulsedID" value={{id}}>
+																<button type="input" class="btnMore"
+																	onClick="acceptReservation({{-index}})"
+																	id="{{-index}}-button">
+																	Accept <span class="glyphicon glyphicon-ok-circle"
+																		aria-hidden="true"></span>
+																</button>
+															</div>
 														</form>
-													</span>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -425,8 +428,9 @@
 				<div class="menus-container">
 					<!-- menu -->
 					<div class="menu row" id="menus">
-					<button id="restaurantid" value="{{restaurant.id}}" style="display: none;"></button>
-					<button id="reference" value="0" style="display: none;"></button>
+						<button id="restaurantid" value="{{restaurant.id}}"
+							style="display: none;"></button>
+						<button id="reference" value="0" style="display: none;"></button>
 						{{#menu}}
 						<div class="col-md-6 wow fadeInRight animated"
 							style="visibility: visible; animation-name: fadeInRight;">
@@ -456,7 +460,8 @@
 					</div>
 					{{#BigMenu}}
 					<div class="col-md-2 col-md-offset-5 morediv">
-						<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
+						<button style="position: relative; left: 25%;" class="btnMore"
+							id="seeMore">See More</button>
 					</div>
 					{{/BigMenu}}
 					<!-- /row -->
@@ -468,63 +473,65 @@
 		<!-- /container -->
 	</section>
 	<section class="menus style3" id="menu">
-					<div class="container">
-						<div class="row">
-							<!-- Section Header -->
-							<div
-								class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-								<form action="/private-restaurant/menu/image/upload"
-									method="post" enctype="multipart/form-data">
-									<input type="hidden" name='imageTitle' value="hola" /><br />
-									<img src="/private-restaurant/menu/image/{{fileMenuName}}" />
-									<p>
-										<label>Image file:</label><input type="file" name="file" />
-									</p>
-									<input type='submit' name='enviar' value='Change menu image' />
-									<input type="hidden" name="_csrf" value="{{token}}" />
-								</form>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<form action="/private-restaurant/menu/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' value="hola" /><br /> <img
+							src="/private-restaurant/menu/image/{{fileMenuName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Change menu image' /> <input
+							type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</div>
+				<br> <br> <br>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Add new dish to menu</h1>
+						<form role="form" method="post" action="/private-restaurant/">
+							<div class="form-group">
+								<label for="name">Dish Name:</label> <input
+									style="border-radius: 0px !important" type="text"
+									class="form-control" id="imageTitle" name='menuname'
+									placeholder="Dish Name">
 							</div>
-							<br> <br> <br>
-							<!-- Section Header End -->
-							<div id="profileForm"
-								class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-								<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-									<h1>Add new dish to menu</h1>
-									<form role="form" method="post" action="/private-restaurant/">
-										<div class="form-group">
-											<label for="name">Dish Name:</label> <input
-												style="border-radius: 0px !important" type="text"
-												class="form-control" id="imageTitle" name='menuname'>
-										</div>
-										<div class="form-group">
-											<label for="name">Price</label> <input
-												style="border-radius: 0px !important" class="form-control"
-												id="name" name='menuprice' value="Price">
-										</div>
-										<div class="form-group">
-											<label for="name">Description:</label>
-											<textarea style="border-radius: 0px !important"
-												class="form-control" id="exampleTextarea"
-												name='menudescription' rows="3" placeholder="Description"></textarea>
-										</div>
+							<div class="form-group">
 
-										<div class="col-md-3 col-md-offset-10">
-											<input type="submit" class="btnMore" value='Create'>
-											<br>
-										</div>
-										<input type="hidden" name="_csrf" value="{{token}}" />
-									</form>
-								</div>
-
-								<!-- /row -->
+								<label for="name">Price</label> <input type="text"
+									class="form-control formmargin" name='menuprice'
+									placeholder="Price" id="price" required> <span
+									id='message_dish_price'></span>
 							</div>
-						</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea"
+									name='menudescription' rows="3" placeholder="Description"></textarea>
+							</div>
+
+							<div class="col-md-3 col-md-offset-10">
+								<input type="submit" class="btnMore" value='Create'> <br>
+							</div>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</form>
 					</div>
+
 					<!-- /row -->
 				</div>
+			</div>
+		</div>
+		<!-- /row -->
+		</div>
 
 
-				<!-- /container -->
+		<!-- /container -->
 	</section>
 
 	<section id="feedback" class="bgSection ratings-section">
