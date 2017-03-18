@@ -302,7 +302,7 @@
 		<!-- Works -->
 		<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
 			<div class="row">
-				{{#generalRestaurants}}
+				{{#recommendedRestaurants}}
 				<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-1">
 					<!-- Filter Button Start -->
 					<div id="recommendations-filter"
@@ -314,12 +314,12 @@
 						</ul>
 					</div>
 					<div class="item recommendations-item web seo">
-						<a href="public-restaurant.html"><img
-							src="/images/restaurant-type/{{name}}.jpg"> </a>
+						<a href="/public-restaurant/{{name}}/"><img
+							src="/private-restaurant/image/profileImageRestaurant{{id}}.jpg"> </a>
 					</div>
 					<br>
 				</div>
-				{{/generalRestaurants}}
+				{{/recommendedRestaurants}}
 
 			</div>
 		</div>

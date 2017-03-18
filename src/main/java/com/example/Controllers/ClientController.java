@@ -1,5 +1,8 @@
 package com.example.Controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.example.Entities.Restaurant;
 import com.example.Entities.User;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.RestaurantRepository;
@@ -134,6 +138,20 @@ public class ClientController {
 				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingUser("Accepted",userRepository.findByEmail(userloggin)));
 				model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingUser("In Process",userRepository.findByEmail(userloggin)));
 
+				List<Restaurant> recommendedRestaurants = new ArrayList<>();
+				User conectedUser = userRepository.findByEmail(userloggin);
+				for(Restaurant rest : restaurantRepository.findAll()){
+					System.out.println("rest food: "+rest.getFoodType());
+					System.out.println("user food: "+conectedUser.getFavouriteFood());
+					if ((rest.getFoodType().equalsIgnoreCase(conectedUser.getFavouriteFood()))&&!(conectedUser.getRestaurants().contains(rest))){
+						System.out.println("entra");
+						recommendedRestaurants.add(rest);
+			
+					}
+				}
+				
+				model.addAttribute("recommendedRestaurants", recommendedRestaurants);
+				
 				if (username != null) {
 					User user = userRepository.findByEmail(userloggin);
 					user.setName(username);

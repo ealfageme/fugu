@@ -180,7 +180,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		user2.getRestaurant().add(rest1);
 		user3.getRestaurant().add(rest2);
 		user4.getRestaurant().add(rest2);
-		user1.getRestaurant().add(rest4);
+		//user1.getRestaurant().add(rest4);
 		user1.getRestaurant().add(rest5);
 		user2.getRestaurant().add(rest6);
 		user3.getRestaurant().add(rest7);
@@ -199,7 +199,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		rest1.getUsers().add(user2);
 		rest2.getUsers().add(user3);
 		rest2.getUsers().add(user4);
-		rest4.getUsers().add(user1);
+		//rest4.getUsers().add(user1);
 		rest5.getUsers().add(user1);
 		rest6.getUsers().add(user2);
 		rest7.getUsers().add(user3);
