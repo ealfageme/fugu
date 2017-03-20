@@ -26,17 +26,11 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
-<!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-        <script type="text/javascript" src="js/selectivizr.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 
 	<header>
-		<!-- Navigation Menu start-->
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
 			<div class="container">
@@ -296,7 +290,7 @@
 							<div class="col-md-10 col-md-offset-1">
 								<div class="form-section">
 									<div class="row">
-										<form role="form" method='post'>
+										<form role="form" method='post' action="/private-restaurant/voucher">
 											<div style="border-radius: 0px !important" class="col-md-3">
 												<div style="border-radius: 0px !important"
 													class="form-group">
@@ -505,7 +499,7 @@
 					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
 					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 						<h1>Add new dish to menu</h1>
-						<form role="form" method="post" action="/private-restaurant/">
+						<form role="form" method="post" action="/private-restaurant/menu">
 							<div class="form-group">
 								<label for="name">Dish Name:</label> <input
 									style="border-radius: 0px !important" type="text"
@@ -631,7 +625,7 @@
 					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
 					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 						<h1>Change data</h1>
-						<form role="form" method='post'>
+						<form role="form" method='post' action="/private-restaurant/modify">
 							<div class="form-group">
 								<label for="name">Restaurant Name:</label> <input
 									style="border-radius: 0px !important" class="form-control"

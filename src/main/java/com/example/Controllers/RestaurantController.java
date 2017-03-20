@@ -84,47 +84,20 @@ public class RestaurantController {
 
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/public-restaurant/{name}")
-	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,@RequestParam(required=false) String bookingday,
-			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
-			@RequestParam(required=false) String specialRequirements,
-			@RequestParam(required=false) String rate, @RequestParam(required=false) String content,
+	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
 		String fileName = "profileImageRestaurant"+restaurantRepository.findByName(name).getId()+".jpg";
 		model.addAttribute("fileName", fileName);
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		Page<Menu> menu=menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,5));
 		model.addAttribute("BigMenu", menu.getNumberOfElements()>4);
-		if(bookingday!=null && bookinghour!=null){
-			System.out.println(bookingday+" "+bookinghour);
-			Date date=new Date();
-			try {
-				date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-" + bookingday + " " + bookinghour);
-			} catch (ParseException e) {
-				return null;
-			}
-			Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
-			booking.setBookingRestaurant(restaurantRepository.findByName(name));
-			long id = 1;
-			booking.setBookingUser(userRepository.findOne(id));
-			bookingRepository.save(booking);
-		}
 		model.addAttribute("restaurantId", restaurantRepository.findByName(name).getId());
 		model.addAttribute("restaurant", restaurantRepository.findByName(name));
 		model.addAttribute("menu", menuRepository.findByRestaurantMenu(restaurantRepository.findByName(name),new PageRequest(0,4)));
 		model.addAttribute("vouchers", restaurantRepository.findByName(name).getVouchers());
 		model.addAttribute("reviews", restaurantRepository.findByName(name).getRestaurantReviews());
-
 		model.addAttribute("inSession", request.isUserInRole("USER"));
 		model.addAttribute("outSession", !request.isUserInRole("USER"));
-		if(request.isUserInRole("USER")){
-			String userloggin = authentication.getName();
-			if (rate!=null) {
-				Review review = new Review(content,Integer.parseInt(rate),new Date());
-				review.setReviewRestaurant(restaurantRepository.findByName(name));
-				review.setReviewUser(userRepository.findByEmail(userloggin));
-				reviewRepository.save(review);
-			}
-		}
 		if (request.isUserInRole("USER")) {
 			String userloggin = authentication.getName();
 			model.addAttribute("favButton", !userRepository.findByEmail(userloggin).getRestaurants()
@@ -161,16 +134,7 @@ public class RestaurantController {
 
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping("/private-restaurant/")
-	public String privateRestaurant(Model model, HttpServletRequest request,Authentication authentication, @RequestParam(required=false) String type,
-	@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,
-	@RequestParam(required=false) String vouchername, @RequestParam(required=false) String voucherdescription,
-	@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,
-	@RequestParam(required=false) Double menuprice, @RequestParam(required=false)String namerest,
-	@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
-	@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,
-	@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,
-	@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,Pageable page,
-	@RequestParam(required=false)Boolean Dinner,@RequestParam(required=false) Integer expiry) throws ParseException {
+	public String privateRestaurant(Model model, HttpServletRequest request,Authentication authentication) throws ParseException {
 		try{
 			String restaurantloggin = authentication.getName();
 			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
@@ -193,70 +157,6 @@ public class RestaurantController {
 				model.addAttribute("vouchers", restaurantRepository.findByEmail(restaurantloggin).getVouchers());
 				model.addAttribute("reviews",
 						restaurantRepository.findByEmail(restaurantloggin).getRestaurantReviews());
-				if (namerest != null) {
-					Restaurant restaurant = restaurantRepository.findByEmail(restaurantloggin);
-					restaurant.setName(namerest);
-					restaurant.setAddress(location);
-					restaurant.setDescription(descriptionrest);
-					restaurant.setPhone(telephone);
-					restaurant.setEmail(emailrest);
-					if (pwd.equals(confirmpwd)) {
-						restaurant.setPassword(pwd);
-					}
-					if (Breakfast != null)
-						restaurant.setBreakfast(true);
-					else
-						restaurant.setBreakfast(false);
-					if (Lunch != null)
-						restaurant.setLunch(true);
-					else
-						restaurant.setLunch(false);
-					if (Dinner != null)
-						restaurant.setDinner(true);
-					else
-						restaurant.setDinner(false);
-					restaurantRepository.save(restaurant);
-
-				}
-				if (vouchername != null) {
-					 Calendar calendar = Calendar.getInstance();
-				     calendar.setTime(new Date());
-				     if(expiry==1){
-					       calendar.add(Calendar.DAY_OF_YEAR, 7);
-				}else if(expiry==2){
-				       calendar.add(Calendar.DAY_OF_YEAR, 14);
-				}else if(expiry==3){
-						calendar.add(Calendar.DAY_OF_YEAR, 21);
-					}else if(expiry==4){
-						       calendar.add(Calendar.MONTH, 1);
-					}else if(expiry==5){
-						calendar.add(Calendar.MONTH, 2);
-					}else if(expiry==6){
-						calendar.add(Calendar.MONTH, 3);
-					}else if(expiry==7){
-						calendar.add(Calendar.MONTH, 6);
-					}
-					Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime());					
-					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
-					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
-					voucherRepository.save(voucher);
-				}
-				
-				if (menuname != null) {
-					boolean repeated = false;
-					Menu menu = new Menu(menuname, menuprice, menudescription);
-					for(Menu m: restaurantRepository.findByEmail(restaurantloggin).getMenus()){
-						if(m.getDish().equals(menuname)){
-							repeated=true;
-							break;
-						}
-					}
-					if (!repeated) {
-						menu.setRestaurantMenu(restaurantRepository.findByEmail(restaurantloggin));
-						menuRepository.save(menu);
-					}
-				}
-
 			}
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
@@ -274,6 +174,130 @@ public class RestaurantController {
 		}
 		return "redirect:/private-restaurant/";
 	}
+	
+	@RequestMapping(value = "/public-restaurant/{name}/book", method = RequestMethod.POST)
+	public String bookTable(Model model,@RequestParam(required=false) String bookingday,
+			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
+			@RequestParam(required=false) String specialRequirements,@PathVariable String name){
+		Date date=new Date();
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-" + bookingday + " " + bookinghour);
+		} catch (ParseException e) {
+			return null;
+		}
+		Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
+		booking.setBookingRestaurant(restaurantRepository.findByName(name));
+		long id = 1;
+		booking.setBookingUser(userRepository.findOne(id));
+		bookingRepository.save(booking);
+		return "redirect:/public-restaurant/{name}";
+	}
+	
+	@RequestMapping(value = "/public-restaurant/{name}/review", method = RequestMethod.POST)
+	public String writeReview(Model model,HttpServletRequest request,Authentication authentication,@PathVariable String name,
+			@RequestParam(required=false) String rate, @RequestParam(required=false) String content){
+		if(request.isUserInRole("USER")){
+			String userloggin = authentication.getName();
+			if (rate!=null) {
+				Review review = new Review(content,Integer.parseInt(rate),new Date());
+				review.setReviewRestaurant(restaurantRepository.findByName(name));
+				review.setReviewUser(userRepository.findByEmail(userloggin));
+				reviewRepository.save(review);
+			}
+		}
+		return "redirect:/public-restaurant/{name}";
+	}
 
+	@RequestMapping(value = "/private-restaurant/modify", method = RequestMethod.POST)
+	public String modifyRestaurant(Model model, @RequestParam(required=false)String namerest,
+			@RequestParam(required=false)String location, @RequestParam(required=false)Integer telephone,
+			@RequestParam(required=false)String descriptionrest,@RequestParam(required=false)String emailrest,@RequestParam(required=false)Boolean Dinner,
+			@RequestParam(required=false)String pwd,@RequestParam(required=false)String confirmpwd,Authentication authentication,
+			@RequestParam(required=false)Boolean Breakfast,@RequestParam(required=false)Boolean Lunch,HttpServletRequest request){
+		if (request.isUserInRole("RESTAURANT")) {
+			if (namerest != null) {
+				Restaurant restaurant = restaurantRepository.findByEmail(authentication.getName());
+				restaurant.setName(namerest);
+				restaurant.setAddress(location);
+				restaurant.setDescription(descriptionrest);
+				restaurant.setPhone(telephone);
+				restaurant.setEmail(emailrest);
+				if (pwd.equals(confirmpwd)) {
+					restaurant.setPassword(pwd);
+				}
+				if (Breakfast != null)
+					restaurant.setBreakfast(true);
+				else
+					restaurant.setBreakfast(false);
+				if (Lunch != null)
+					restaurant.setLunch(true);
+				else
+					restaurant.setLunch(false);
+				if (Dinner != null)
+					restaurant.setDinner(true);
+				else
+					restaurant.setDinner(false);
+				restaurantRepository.save(restaurant);
+
+			}
+		}
+		return "redirect:/private-restaurant/";
+	}
+	
+	@RequestMapping(value = "/private-restaurant/voucher", method = RequestMethod.POST)
+	public String addVoucher(Model model, @RequestParam(required=false) String vouchername,
+			@RequestParam(required=false) String voucherdescription,HttpServletRequest request,@RequestParam(required=false) Integer expiry,
+			@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,Authentication authentication){
+		if (request.isUserInRole("RESTAURANT")) {
+			if (vouchername != null) {
+				 Calendar calendar = Calendar.getInstance();
+			     calendar.setTime(new Date());
+			     if(expiry==1){
+				       calendar.add(Calendar.DAY_OF_YEAR, 7);
+			}else if(expiry==2){
+			       calendar.add(Calendar.DAY_OF_YEAR, 14);
+			}else if(expiry==3){
+					calendar.add(Calendar.DAY_OF_YEAR, 21);
+				}else if(expiry==4){
+					       calendar.add(Calendar.MONTH, 1);
+				}else if(expiry==5){
+					calendar.add(Calendar.MONTH, 2);
+				}else if(expiry==6){
+					calendar.add(Calendar.MONTH, 3);
+				}else if(expiry==7){
+					calendar.add(Calendar.MONTH, 6);
+				}
+				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime());					
+				voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
+				voucher.setRestaurant(restaurantRepository.findByEmail(authentication.getName()));
+				voucherRepository.save(voucher);
+			}
+		}
+		return "redirect:/private-restaurant/";
+	}
+	
+	@RequestMapping(value = "/private-restaurant/menu", method = RequestMethod.POST)
+	public String addMenu(Model model, @RequestParam(required=false) String vouchername,
+			@RequestParam(required=false) String voucherdescription,HttpServletRequest request,@RequestParam(required=false) String type,
+			@RequestParam(required=false) String menudescription,@RequestParam(required=false) String menuname,
+			@RequestParam(required=false) Double menuprice,Authentication authentication){
+		if (request.isUserInRole("RESTAURANT")) {
+			if (menuname != null) {
+				boolean repeated = false;
+				Menu menu = new Menu(menuname, menuprice, menudescription);
+				for(Menu m: restaurantRepository.findByEmail(authentication.getName()).getMenus()){
+					if(m.getDish().equals(menuname)){
+						repeated=true;
+						break;
+					}
+				}
+				if (!repeated) {
+					menu.setRestaurantMenu(restaurantRepository.findByEmail(authentication.getName()));
+					menuRepository.save(menu);
+				}
+			}
+		}
+		return "redirect:/private-restaurant/";
+	}
 	
 }

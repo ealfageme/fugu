@@ -57,9 +57,6 @@ public class ClientController {
 		model.addAttribute("inSession", (request.isUserInRole("USER") || request.isUserInRole("RESTAURANT")));
 		String fileName = "profileImage" + userRepository.findByName(name).getId() + ".jpg";
 		model.addAttribute("fileName", fileName);
-		/*
-		 * Following feature has to be implemented
-		 */
 		if (request.isUserInRole("USER")) {
 			String userloggin = authentication.getName();
 			model.addAttribute("followButton",
@@ -68,7 +65,6 @@ public class ClientController {
 					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
 
 			if (followPulsed != null) {
-				System.out.println("Entra follow");
 				userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 			}
@@ -79,7 +75,6 @@ public class ClientController {
 					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
 
 			if (unfollowPulsed != null) {
-				System.out.println("Entra unfollow");
 				userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
 				userRepository.save(userRepository.findByEmail(userloggin));
 			}
@@ -118,11 +113,7 @@ public class ClientController {
 
 	@JsonView(User.Basic.class)
 	@RequestMapping("/private-client/")
-	public String privateClient(Model model, HttpServletRequest request, Authentication authentication,
-			@RequestParam(required = false) String username, @RequestParam(required = false) String useremail,
-			@RequestParam(required = false) String userdescription,
-			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
-			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage) {
+	public String privateClient(Model model, HttpServletRequest request, Authentication authentication) {
 		try {
 			String userloggin = authentication.getName();
 			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
@@ -141,36 +132,41 @@ public class ClientController {
 				List<Restaurant> recommendedRestaurants = new ArrayList<>();
 				User conectedUser = userRepository.findByEmail(userloggin);
 				for(Restaurant rest : restaurantRepository.findAll()){
-					System.out.println("rest food: "+rest.getFoodType());
-					System.out.println("user food: "+conectedUser.getFavouriteFood());
 					if ((rest.getFoodType().equalsIgnoreCase(conectedUser.getFavouriteFood()))&&!(conectedUser.getRestaurants().contains(rest))){
-						System.out.println("entra");
 						recommendedRestaurants.add(rest);
-			
 					}
-				}
-				
+				}		
 				model.addAttribute("recommendedRestaurants", recommendedRestaurants);
-				
-				if (username != null) {
-					User user = userRepository.findByEmail(userloggin);
-					user.setName(username);
-					user.setEmail(useremail);
-					user.setDescription(userdescription);
-					user.setFavouriteFood(favouritefood);
-					if (password.equals(confirmpassword)) {
-						user.setPassword(password);
-					}
-					userRepository.save(user);
-					if ((userage > 10) && (userage < 100))
-						user.setAge(userage);
-				}
 			}
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 
 		}
 		return "private-client";
+	}
+	
+	@RequestMapping("/private-client/modify")
+	public String modifyClient(Model model, HttpServletRequest request, Authentication authentication,
+			@RequestParam(required = false) String username, @RequestParam(required = false) String useremail,
+			@RequestParam(required = false) String userdescription,
+			@RequestParam(required = false) String favouritefood, @RequestParam(required = false) String password,
+			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage){
+		if (request.isUserInRole("USER")) {
+			if (username != null) {
+				User user = userRepository.findByEmail(authentication.getName());
+				user.setName(username);
+				user.setEmail(useremail);
+				user.setDescription(userdescription);
+				user.setFavouriteFood(favouritefood);
+				if (password.equals(confirmpassword)) {
+					user.setPassword(password);
+				}
+				userRepository.save(user);
+				if ((userage > 10) && (userage < 100))
+					user.setAge(userage);
+			}
+		}
+		return "redirect:/private-client/";
 	}
 
 }
