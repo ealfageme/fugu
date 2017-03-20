@@ -45,14 +45,13 @@
 						<li><a href="#menu">MENU</a></li>
 						<li><a href="#gallery">GALLERY</a></li>
 						<li><a href="#vouchers">VOUCHERS</a></li>
-						<li>{{#inSession}}<a href="#reviews">REVIEWS</a></li>
+						<li><a href="#reviews">REVIEWS</a></li>
 						<li><a href="#feedback">FEEDBACK</a></li>
-						<li class="signin">
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> <input
-									type="hidden" name="_csrf" value="{{token}}" />
-							</form>
+						<li class="signin">{{#inSession}}
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+								<input type="hidden" name="_csrf" value="{{token}}" />
+							</form> 
 							<form class="navbar-form navbar-right" method="get"
 								action="/default/">
 								<button class="signInBtn">Visit profile</button>

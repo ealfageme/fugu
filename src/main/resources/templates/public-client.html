@@ -23,11 +23,6 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-        <script type="text/javascript" src="js/selectivizr.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -47,9 +42,9 @@
                         <li> <a href="#opinions">OPINIONS</a> </li>
                         <li class="signin">{{#inSession}}
 						<form class="navbar-form navbar-right" method="post" action="/main2/">
-							<input type="submit" class="signInBtn" value="SignOut" /> 
-							<input type="hidden" name="_csrf" value="{{token}}" />
-						</form> 
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+								<input type="hidden" name="_csrf" value="{{token}}" />
+							</form>  
 						<form class="navbar-form navbar-right" method="get" action="/default/">
 							<button class="signInBtn">Visit profile</button>
 						</form>{{/inSession}}

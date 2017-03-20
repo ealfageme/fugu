@@ -49,11 +49,10 @@
 						<li><a href="#clients">CLIENTS</a></li>
 						<li><a href="#profile">{{restaurant.name}}</a></li>
 						<li class="signin">
-							<form class="navbar-form navbar-right" action="/main2/"
-								method='post'>
-								<button type="submit" class="signInBtn">SignOut</button>
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
 								<input type="hidden" name="_csrf" value="{{token}}" />
-							</form>
+							</form> 
 						</li>
 					</ul>
 
