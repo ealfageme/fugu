@@ -60,6 +60,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
     * Description: If you are identified like a restaurant, you have the possibility of change offers, menu or send offers to a potential group of clients.
 * __Public client__
     ![Public client](src/main/resources/static/images/captures/public-client-1.png)
+    ![Public client](src/main/resources/static/images/captures/public-client-2.png)
       * Description: This is the client profile that everyone can see. For example you can check a following section, profile section, and finally, an opinion section about some restaurants.
 * __Public restaurant__
     ![Public restaurant](src/main/resources/static/images/captures/public-restaurant-1.png)
