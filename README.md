@@ -79,6 +79,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
 
 * __Search page__
     ![Search page](src/main/resources/static/images/captures/search-page-1.png)
+    ![Search page](src/main/resources/static/images/captures/search-page-2.png)
       * Description: If you want to search a restaurant according to your tastes, this is the perfect page. You have some filters and inputs fields in order to find your perfect place.
     
     
