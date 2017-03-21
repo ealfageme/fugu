@@ -62,22 +62,21 @@
 	</header>
 
 
-	<section>
-		<!-- Slides -->
-		<div class="image section-header">
-
-			<img src="/images/restaurant-type/{{restaurant.name}}.jpg"
-				alt="Slider 1" />
-
-			<h2 class="imagetext1" data-position="center"
-				data-show-transition="left" data-hide-transition="right"
-				data-show-delay="1500" data-hide-delay="200">
-				<span class="highlight-texts"><span
-					class="section-color2 highlight-text border2">Welcome to
-						your profile, {{restaurant.name}}</span> </span>
-			</h2>
+	<section class="slider-pro slider" id="slider">
+		<div class="sp-slides">
+			<div class="sp-slide main-slides">
+				<div class="img-overlay"></div>
+				<img class="sp-image" style="background-color:#FFFFFF;"
+					src="/images/restaurant-type/{{restaurant.foodType}}.jpg"
+					alt="Slider 1" />
+				<h1 class="imagetext1" data-position="center"
+					data-show-transition="left" data-hide-transition="right"
+					data-show-delay="1500" data-hide-delay="200">
+					<span class="highlight-texts"><span
+						class="section-color2 highlight-text border2">Welcome to {{restaurant.foodType}}</span> </span>
+				</h1>
+			</div>
 		</div>
-		<!-- Slides End -->
 	</section>
 
 	<!-- Main Slider End -->
