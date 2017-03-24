@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Autowired
 	    public UserRepositoryAuthenticationProvider authenticationProviderUser;
 	 @Autowired
@@ -17,25 +17,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 protected void configure(HttpSecurity http) throws Exception {
 	
 		 // Public pages
-		 http.authorizeRequests().antMatchers("/main/").permitAll();
-		 http.authorizeRequests().antMatchers("/public-client/**").permitAll();
-		 http.authorizeRequests().antMatchers("/public-restaurant/**").permitAll();
-		 http.authorizeRequests().antMatchers("/search-web/").permitAll();
-		 http.authorizeRequests().antMatchers("/city/**").permitAll();
-		 http.authorizeRequests().antMatchers("/clients/").permitAll();
+		 http.authorizeRequests().antMatchers("/api/main/").permitAll();
+		 http.authorizeRequests().antMatchers("/api/public-client/**").permitAll();
+		 http.authorizeRequests().antMatchers("/api/public-restaurant/**").permitAll();
+		 http.authorizeRequests().antMatchers("/api/search-web/").permitAll();
+		 http.authorizeRequests().antMatchers("/api/city/**").permitAll();
+		 http.authorizeRequests().antMatchers("/api/clients/").permitAll();
 		 
 		 // Private pages (all other pages)
-		 http.authorizeRequests().antMatchers("/private-client/").hasAnyRole("USER");
-		 http.authorizeRequests().antMatchers("/private-restaurant/").hasAnyRole("RESTAURANT");
+		 http.authorizeRequests().antMatchers("/api/private-client/").hasAnyRole("USER");
+		 http.authorizeRequests().antMatchers("/api/private-restaurant/").hasAnyRole("RESTAURANT");
 		 
 		 // Login form
-		 http.formLogin().loginPage("/main2/");
+		 http.formLogin().loginPage("/api/main2/");
 		 http.formLogin().usernameParameter("loginemail");
 		 http.formLogin().passwordParameter("loginpassword");
-		 http.formLogin().defaultSuccessUrl("/main/");
-		 http.formLogin().failureUrl("/main2/");
+		 http.formLogin().defaultSuccessUrl("/api/main/");
+		 http.formLogin().failureUrl("/api/main2/");
 		 // Logout
-		 http.logout().logoutSuccessUrl("/main/");
+		 http.logout().logoutSuccessUrl("/api/main/");
 		
 
 		
