@@ -15,11 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import com.example.Entities.*;
 import com.example.Repositories.*;
+
 @Component
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private UserComponent userComponent;
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
@@ -37,6 +40,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 
 		List<GrantedAuthority> roles = new ArrayList<>();
 			roles.add(new SimpleGrantedAuthority(user.getRoles()));
+			userComponent.setLoggedUser(user);
 		return new UsernamePasswordAuthenticationToken(user.getEmail(), password, roles);
 	}
 
