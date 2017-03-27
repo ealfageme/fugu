@@ -50,7 +50,7 @@ public class Restaurant {
 	private String roles;
 	@JsonView(Basic.class)
 	private Integer phone;
-	@JsonView(Basic.class)
+	@JsonIgnore
 	private String password;
 	
 	@ManyToMany (mappedBy="restaurants")
