@@ -32,11 +32,12 @@ public class RestaurantRestController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
-	
-	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic,
-	User.Basic, Menu.Basic, Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
-	Restaurant.Vouchers, Restaurant.Bookings{}
-	
+
+	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic, User.Basic, Menu.Basic,
+			Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
+			Restaurant.Vouchers, Restaurant.Bookings {
+	}
+
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
 	@RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET)
@@ -49,7 +50,59 @@ public class RestaurantRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 	@ResponseBody
+	@JsonView(RestaurantDetail.class)
+	@RequestMapping(value = "/api/restaurants/", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public Restaurant postRestaurant(HttpSession session, @RequestBody Restaurant rest) {
+		session.setMaxInactiveInterval(-1);
+		restaurantRepository.save(rest);
+		return rest;
+	}
+
+	@ResponseBody
+	@JsonView(RestaurantDetail.class)
+	@RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Restaurant> putRestaurant(HttpSession session, @PathVariable long id, @RequestBody Restaurant updatedRestaurant) {
+		session.setMaxInactiveInterval(-1);
+		
+		Restaurant rest = restaurantRepository.findOne(id);
+		if (rest != null) {
+			updatedRestaurant.setId(id);
+			restaurantRepository.save(updatedRestaurant);
+			return new ResponseEntity<>(updatedRestaurant, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@ResponseBody
+	@JsonView(RestaurantDetail.class)
+	@RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Restaurant> deleteRestaurant(HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		restaurantRepository.delete(id);
+		return new ResponseEntity<>(null, HttpStatus.OK);
+
+	}
+
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/api/restaurants/", method = RequestMethod.GET)
+	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Page<Restaurant> restaurants = restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0),
+				new Double(5.0), page);
+		if (restaurants != null) {
+			return new ResponseEntity<>(restaurants, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/menus", method = RequestMethod.GET)
 	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
 		session.setMaxInactiveInterval(-1);
@@ -61,26 +114,15 @@ public class RestaurantRestController {
 		}
 
 	}
-
-	@ResponseBody
-	@RequestMapping(value = "/api/restaurants/", method = RequestMethod.GET)
-	public ResponseEntity<Page<Restaurant>> getRestaurants(HttpSession session, Pageable page) {
-		session.setMaxInactiveInterval(10);
-		Page<Restaurant> restaurants = restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0),
-				new Double(5.0), page);
-		if (restaurants != null) {
-			return new ResponseEntity<>(restaurants, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 	
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/restauants/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/restaurants/{id}/menus", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant, HttpSession session) {
+	public Menu postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page, Menu newMenu) {
 		session.setMaxInactiveInterval(-1);
-		return new ResponseEntity<>(restaurant, HttpStatus.OK);
+		Restaurant restaurant = restaurantRepository.findOne(id);
+		restaurant.getMenus().add(newMenu);
+		return newMenu;
 	}
 }
