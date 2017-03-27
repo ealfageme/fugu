@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Restaurant {
 	public interface Cities {}
 	public interface Reviews {}
 	public interface Bookings {}
-	
+	public interface Restaurants {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,17 +55,17 @@ public class Restaurant {
 	@JsonIgnore
 	private String password;
 	
-	@ManyToMany (mappedBy="restaurants")
-	@JsonIgnore
+	@ManyToMany(mappedBy="restaurants")
+	@JsonView(Users.class)
 	private List<User> users = new ArrayList<>();
 	@OneToMany (mappedBy="restaurantMenu")
-	@JsonIgnore
+	@JsonView(Menus.class)
 	private List<Menu> menus = new ArrayList<>();
 	@OneToMany(mappedBy="restaurant")
-	@JsonIgnore
+	@JsonView(Restaurants.class)
 	private List<Voucher> vouchers = new ArrayList<>();
 	@OneToMany(mappedBy="bookingRestaurant")
-	@JsonIgnore
+	@JsonView(Bookings.class)
 	private List<Booking> bookings = new ArrayList<>();
 	@ManyToOne
 	@JsonView(Cities.class)

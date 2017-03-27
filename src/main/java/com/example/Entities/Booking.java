@@ -8,26 +8,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.Entities.Restaurant.Restaurants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Booking {
 	
-	interface Basic {
+	public interface Basic {
 	}
 
-	interface Restaurants {
+	public interface Restaurants {
 	}
 
-	interface Users {
+	public interface Users {
 	}
 
 	@ManyToOne
-	@JsonIgnore
+	@JsonView(Users.class)
 	private User bookingUser = new User();
 	@ManyToOne
-	@JsonIgnore
+	@JsonView(Restaurants.class)
 	private Restaurant bookingRestaurant = new Restaurant();
 	
 	@Id

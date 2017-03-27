@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.example.Entities.Restaurant.Cities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -21,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class User {
 	public interface Basic {}
-	interface Users {}
-	interface Restaurants {}
-	interface Reviews {}
-	interface Bookigns {}
-	interface Vouchers {}
+	public interface Users {}
+	public interface Restaurants {}
+	public interface Reviews {}
+	public interface Bookings {}
+	public interface Vouchers {}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,20 +49,20 @@ public class User {
 	private String roles;
 
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JsonIgnore
-	private List<Restaurant> restaurants = new ArrayList<>();
 	@ManyToMany
-	@JsonIgnore
+	@JsonView(Restaurants.class)
+	private List<Restaurant> restaurants = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JsonView(Users.class)
 	private List<User> following = new ArrayList<>();
 	@OneToMany(mappedBy = "reviewUser")
-	@JsonIgnore
+	@JsonView(Reviews.class)
 	private List<Review> reviews = new ArrayList<>();
 	@OneToMany(mappedBy = "bookingUser")
-	@JsonIgnore
+	@JsonView(Bookings.class)
 	private List<Booking> bookings = new ArrayList<>();
 	@ManyToMany(mappedBy="voucherUsers")
-	@JsonIgnore
+	@JsonView(Vouchers.class)
 	private List<Voucher> userVouchers = new ArrayList<>();
 
 	public User() {}

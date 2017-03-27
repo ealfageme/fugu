@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entities.Menu;
+import com.example.Entities.Voucher;
+import com.example.Entities.Booking;
 import com.example.Entities.City;
 import com.example.Entities.Review;
+import com.example.Entities.User;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
@@ -30,7 +33,8 @@ public class RestaurantRestController {
 	@Autowired
 	private MenuRepository menuRepository;
 	
-	interface RestaurantDetail extends Restaurant.Basic, Restaurant.Reviews, Restaurant.Cities, City.Basic, Review.Basic, Restaurant.Users, Restaurant.Menus,
+	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic,
+	User.Basic, Menu.Basic, Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
 	Restaurant.Vouchers, Restaurant.Bookings{}
 	
 	@ResponseBody

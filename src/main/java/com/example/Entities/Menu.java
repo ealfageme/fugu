@@ -5,14 +5,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.Entities.Restaurant.Restaurants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Menu {
-	interface Basic {
+	public interface Basic {
 	}
 
-	interface Restaurants {
+	public interface Restaurants {
 	}
 	
 	@JsonView(Basic.class)
@@ -27,7 +28,7 @@ public class Menu {
 	private long id;
 	
 	@ManyToOne 
-	@JsonIgnore
+	@JsonView(Restaurants.class)
 	private Restaurant restaurantMenu;
 	
 	public Menu(){}

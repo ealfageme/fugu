@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Entities.Booking;
+import com.example.Entities.Restaurant;
+import com.example.Entities.Review;
 import com.example.Entities.User;
+import com.example.Entities.Voucher;
 import com.example.Repositories.UserRepository;
+import com.example.RestControllers.RestaurantRestController.RestaurantDetail;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -25,8 +30,10 @@ public class ClientRestController {
 	@Autowired
 	private UserRepository userRepository;
 
+	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews, Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
+	User.Vouchers, User.Bookings{}
+	
 	@ResponseBody
-	@JsonView(User.Basic.class)
 	@RequestMapping(value = "/api/clients/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> addClient(@RequestBody User user, HttpSession session) {
@@ -47,6 +54,7 @@ public class ClientRestController {
 	}
 
 	@ResponseBody
+	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/api/clients/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
 		session.setMaxInactiveInterval(-1);

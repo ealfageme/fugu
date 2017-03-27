@@ -24,8 +24,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.example.Entities.Booking;
+import com.example.Entities.City;
+import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
+import com.example.Entities.Review;
 import com.example.Entities.User;
+import com.example.Entities.Voucher;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
@@ -33,14 +38,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Controller
 public class ClientController {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private BookingRepository bookingRepository;
 	@Autowired
 	private RestaurantRepository restaurantRepository;
-
+	
+	
+	
 	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
 	public String publicClient(Model model, HttpServletRequest request, Authentication authentication,
