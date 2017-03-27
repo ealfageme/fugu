@@ -14,26 +14,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entities.Menu;
+import com.example.Entities.City;
+import com.example.Entities.Review;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 public class RestaurantRestController {
-
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
 	
+	interface RestaurantDetail extends Restaurant.Basic, Restaurant.Reviews, Restaurant.Cities, City.Basic, Review.Basic, Restaurant.Users, Restaurant.Menus,
+	Restaurant.Vouchers, Restaurant.Bookings{}
 	
 	@ResponseBody
+	@JsonView(RestaurantDetail.class)
 	@RequestMapping(value = "/api/restaurants/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		return new ResponseEntity<>(restaurantRepository.findOne(id), HttpStatus.OK);
 	}
-
+	@ResponseBody
 	@RequestMapping(value="/api/restaurants/{id}/menus", method=RequestMethod.GET)
 	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
 		session.setMaxInactiveInterval(-1);

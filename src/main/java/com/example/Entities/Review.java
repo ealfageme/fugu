@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Review {
-	interface Basic {
+	public interface Basic {
 	}
 
 	interface Users {
