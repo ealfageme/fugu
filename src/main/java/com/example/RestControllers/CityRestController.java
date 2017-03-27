@@ -21,20 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Entities.City;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.CityRepository;
+import com.example.RestControllers.ClientRestController.UserDetail;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @RestController
 public class CityRestController {
-	
+	interface CityDetail extends City.Basic,City.Restaurants,Restaurant.Basic{}
 	@Autowired
 	private CityRepository cityRepository;
 	@ResponseBody
+	@JsonView(City.Basic.class)
 	@RequestMapping(value = "/api/city/", method = RequestMethod.GET)
 	public ResponseEntity<List<City>> getCities(){
 	return new ResponseEntity<>(cityRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@ResponseBody
+	@JsonView(CityDetail.class)
 	@RequestMapping(value = "/api/city/{name}", method = RequestMethod.GET)
 	public ResponseEntity<List<Restaurant>> getCitie(@PathVariable String name){
 	return new ResponseEntity<>(cityRepository.findByName(name).getCityResturants(), HttpStatus.OK);
