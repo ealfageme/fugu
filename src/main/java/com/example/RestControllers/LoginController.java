@@ -1,4 +1,4 @@
-package com.example.Controllers;
+package com.example.RestControllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Entities.Restaurant;
 import com.example.Entities.User;
+import com.example.Security.RestaurantComponent;
 import com.example.Security.UserComponent;
 
 /**
@@ -26,24 +28,32 @@ public class LoginController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+	private RestaurantComponent restaurantComponent;
+
 
 	@RequestMapping("/api/logIn")
-	public ResponseEntity<User> logIn() {
+	public ResponseEntity<Object> logIn() {
 
-		if (!userComponent.isLoggedUser()) {
+		if (!userComponent.isLoggedUser()&&!restaurantComponent.isLoggedRestaurant()) {
 			log.info("Not user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
+		} else if(userComponent.isLoggedUser()){
 			User loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as " + loggedUser.getName());
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+		}else{
+			Restaurant loggedRestaurant = restaurantComponent.getLoggedRestaurant();
+			log.info("Logged as " + loggedRestaurant.getName());
+			return new ResponseEntity<>(loggedRestaurant, HttpStatus.OK);
 		}
 	}
 
 	@RequestMapping("/api/logOut")
 	public ResponseEntity<Boolean> logOut(HttpSession session) {
 
-		if (!userComponent.isLoggedUser()) {
+		if (!userComponent.isLoggedUser()&&!restaurantComponent.isLoggedRestaurant()) {
 			log.info("No user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {

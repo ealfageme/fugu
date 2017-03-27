@@ -21,12 +21,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Restaurant {
 	public interface Basic {}
-	interface Users {}
-	interface Menus {}
-	interface Vouchers {}
-	interface Cities {}
-	interface Reviews {}
-	interface Bookings {}
+	public interface Users {}
+	public interface Menus {}
+	public interface Vouchers {}
+	public interface Cities {}
+	public interface Reviews {}
+	public interface Bookings {}
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,10 +67,10 @@ public class Restaurant {
 	@JsonIgnore
 	private List<Booking> bookings = new ArrayList<>();
 	@ManyToOne
-	@JsonIgnore
+	@JsonView(Cities.class)
 	private City city;
 	@OneToMany(mappedBy="reviewRestaurant")
-	@JsonIgnore
+	@JsonView(Reviews.class)
 	private List<Review> restaurantReviews = new ArrayList<>();
 	
 	public Restaurant (){}

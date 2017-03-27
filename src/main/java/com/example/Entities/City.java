@@ -17,7 +17,7 @@ public class City {
 	public interface Basic {
 	}
 
-	interface Restaurants {
+	public interface Restaurants {
 	}
 	@JsonView(Basic.class)
 	private String name;
@@ -27,7 +27,7 @@ public class City {
 	private long id;
 	
 	@OneToMany(mappedBy="city")
-	@JsonIgnore
+	@JsonView(Restaurants.class)
 	private List<Restaurant> cityResturants = new ArrayList<>();
 	
 	
