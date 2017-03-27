@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 public class ClientRestController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value = "/api/clients/", method = RequestMethod.POST)
@@ -39,13 +39,22 @@ public class ClientRestController {
 	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(-1);
 		Page<User> users = userRepository.findAll(page);
-		return new ResponseEntity<>(users, HttpStatus.OK);
+		if (users != null) {
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/api/clients/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
 		session.setMaxInactiveInterval(-1);
-		return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+		User user = userRepository.findById(id);
+		if (user != null) {
+			return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 }

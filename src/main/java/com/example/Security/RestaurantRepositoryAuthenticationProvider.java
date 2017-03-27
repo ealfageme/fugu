@@ -20,7 +20,9 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 
 	@Autowired
 	private RestaurantRepository restaurantRepository;
-
+	@Autowired
+	private RestaurantComponent restaurantComponent;
+	
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 		Restaurant restaurant = restaurantRepository.findByEmail(auth.getName());
@@ -35,7 +37,8 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 		}
 
 		List<GrantedAuthority> roles = new ArrayList<>();
-			roles.add(new SimpleGrantedAuthority(restaurant.getRoles()));	
+			roles.add(new SimpleGrantedAuthority(restaurant.getRoles()));
+			restaurantComponent.setLoggedRestaurant(restaurant);
 		return new UsernamePasswordAuthenticationToken(restaurant.getEmail(), password, roles);
 	}
 
