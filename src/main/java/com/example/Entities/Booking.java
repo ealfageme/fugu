@@ -46,9 +46,7 @@ public class Booking {
 	public Booking(){}
 	public Booking(Date date, int number,String specialRequirements) {
 		super();
-		//this.restaurant = restaurant;
 		this.date = date;
-		//this.user = user;
 		this.number = number;
 		this.specialRequirements=specialRequirements;
 		this.state = "In process";

@@ -26,6 +26,7 @@ import com.example.Entities.City;
 import com.example.Entities.Review;
 import com.example.Entities.User;
 import com.example.Entities.Restaurant;
+import com.example.Repositories.BookingRepository;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
@@ -39,6 +40,8 @@ public class RestaurantRestController {
 	private MenuRepository menuRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
 
 	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic, User.Basic, Menu.Basic,
 			Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
@@ -133,9 +136,9 @@ public class RestaurantRestController {
 		return newMenu;
 	}
 	@ResponseBody
-	@JsonView(Restaurant.Basic.class)
+	@JsonView(Booking.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/book", method = RequestMethod.POST)
-	public Booking postRestaurantBooks(HttpSession session, @PathVariable long id,Booking newBooking, Authentication authentication) {
+	public Booking postRestaurantBooks(HttpSession session, @PathVariable long id,@RequestBody Booking newBooking, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant restaurant = restaurantRepository.findOne(id);
 			newBooking.setBookingUser(userRepository.findByEmail(authentication.getName()));
@@ -143,6 +146,7 @@ public class RestaurantRestController {
 			if (restaurant != null) {
 				restaurant.getBookings().add(newBooking);
 		}
+		bookingRepository.save(newBooking);
 		return newBooking;
 	}
 }
