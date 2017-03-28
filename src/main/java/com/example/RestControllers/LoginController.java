@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entities.Restaurant;
 import com.example.Entities.User;
-import com.example.RestControllers.ClientRestController.UserDetail;
 import com.example.Security.RestaurantComponent;
 import com.example.Security.UserComponent;
 import com.fasterxml.jackson.annotation.JsonView;

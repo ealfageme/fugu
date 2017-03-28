@@ -7,11 +7,11 @@ $( "#moreRestaurants" ).on( "click", function() {
 	pagenumber++;
 	$("#restaurants").replaceWith( '<div id="restaurants"> <img class="img-responsive" style="max-width: 20%;margin:auto;"src="/images/logo/spinner-loop.gif" alt="Custom Image"></div>' );
 	$.ajax({
-		url : "https://localhost:8443/restaurants/?page="+pagenumber+"&size=4"
+		url : "https://localhost:8443/api/restaurants/?page="+pagenumber+"&size=4"
 	}).done(function(data) {		
 		console.log(data);
 		console.log(data.content[0].name);
-		console.log("https://localhost:8443/restaurants/?page="+pagenumber+"&size=4");
+		console.log("https://localhost:8443/api/restaurants/?page="+pagenumber+"&size=4");
 		console.log(pagenumber);
 		var web="'/public-restaurant/"+data.content[0].name+"'";
 		var html2='<div class="menu row rowmar">';
@@ -49,11 +49,11 @@ $( "#prevRestaurants" ).on( "click", function() {
 	pagenumber--;
 	$("#restaurants").replaceWith( '<div id="restaurants"> <img class="img-responsive" style="max-width: 20%;margin:auto;"src="/images/logo/spinner-loop.gif" alt="Custom Image"></div>' );
 	$.ajax({
-		url : "https://localhost:8443/restaurants/?page="+pagenumber+"&size=4"
+		url : "https://localhost:8443/api/restaurants/?page="+pagenumber+"&size=4"
 	}).done(function(data) {		
 		console.log(data);
 		console.log(data.content[0].name);
-		console.log("https://localhost:8443/restaurants/?page="+pagenumber+"&size=4");
+		console.log("https://localhost:8443/api/restaurants/?page="+pagenumber+"&size=4");
 		console.log(pagenumber);
 		var web="'/public-restaurant/"+data.content[0].name+"'";
 		var html2='<div class="menu row rowmar">';

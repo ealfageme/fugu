@@ -34,7 +34,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// Use Http Basic Authentication
 		http.httpBasic();
-
+		
 		// Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> {
 		});

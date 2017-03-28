@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-
-
 
 @Entity
 public class Restaurant {
@@ -52,6 +49,8 @@ public class Restaurant {
 	private String roles;
 	@JsonView(Basic.class)
 	private Integer phone;
+	@JsonView(Basic.class)
+	private Double rate;
 	@JsonIgnore
 	private String password;
 	
@@ -106,7 +105,6 @@ public class Restaurant {
 	public void setMenuPrice(Double menuPrice) {
 		this.menuPrice = menuPrice;
 	}
-	private Double rate;
 	public Double getRate() {
 		return rate;
 	}

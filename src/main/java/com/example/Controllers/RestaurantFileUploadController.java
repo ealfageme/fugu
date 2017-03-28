@@ -44,7 +44,6 @@ public class RestaurantFileUploadController {
 
 	private List<String> imageTitles = new ArrayList<>();
 
-	// PROFILE
 	@RequestMapping(value = "/private-restaurant/image/upload", method = RequestMethod.POST)
 	public String handleFileUpload(Model model, @RequestParam("imageTitle") String imageTitle,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication,
