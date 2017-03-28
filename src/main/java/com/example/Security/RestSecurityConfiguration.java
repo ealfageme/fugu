@@ -26,10 +26,11 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/city/**").permitAll();
 
 		// Private pages (all other pages)
-		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/clients/").hasAnyRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/").hasAnyRole("RESTAURANT");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/clients/**").hasAnyRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/restaurants/**").hasAnyRole("RESTAURANT");
+		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/clients/**").hasAnyRole("ROLE_USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/**").hasAnyRole("ROLE_RESTAURANT");
+		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/1/book").hasAnyRole("ROLE_USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/clients/**").hasAnyRole("ROLE_USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/restaurants/**").hasAnyRole("ROLE_RESTAURANT");
 
 		// Use Http Basic Authentication
 		http.httpBasic();

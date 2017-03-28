@@ -135,15 +135,13 @@ public class RestaurantRestController {
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/book", method = RequestMethod.POST)
-	public Booking postRestaurantBooks(HttpSession session, @PathVariable long id,Booking newBooking, Authentication authentication,HttpServletRequest request) {
+	public Booking postRestaurantBooks(HttpSession session, @PathVariable long id,Booking newBooking, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant restaurant = restaurantRepository.findOne(id);
-		if (request.isUserInRole("USER")){
 			newBooking.setBookingUser(userRepository.findByEmail(authentication.getName()));
 			newBooking.setBookingRestaurant(restaurant);
 			if (restaurant != null) {
 				restaurant.getBookings().add(newBooking);
-		}
 		}
 		return newBooking;
 	}
