@@ -48,13 +48,12 @@ public class User {
 	@JsonView(Basic.class)
 	private String roles;
 
-	
-	@ManyToMany
-	@JsonView(Restaurants.class)
-	private List<Restaurant> restaurants = new ArrayList<>();
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JsonView(Users.class)
 	private List<User> following = new ArrayList<>();
+	@ManyToMany
+	@JsonView(Restaurants.class)
+	private List<Restaurant> restaurants = new ArrayList<>();
 	@OneToMany(mappedBy = "reviewUser")
 	@JsonView(Reviews.class)
 	private List<Review> reviews = new ArrayList<>();

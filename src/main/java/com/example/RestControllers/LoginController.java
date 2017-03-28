@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Entities.Restaurant;
 import com.example.Entities.User;
+import com.example.RestControllers.ClientRestController.UserDetail;
 import com.example.Security.RestaurantComponent;
 import com.example.Security.UserComponent;
+import com.fasterxml.jackson.annotation.JsonView;
 
 /**
  * This class is used to provide REST endpoints to logIn and logOut to the
@@ -32,18 +34,26 @@ public class LoginController {
 	@Autowired
 	private RestaurantComponent restaurantComponent;
 
-
-	@RequestMapping("/api/logIn")
-	public ResponseEntity<Object> logIn() {
-
-		if (!userComponent.isLoggedUser()&&!restaurantComponent.isLoggedRestaurant()) {
+	@JsonView(User.Basic.class)
+	@RequestMapping("/api/logIn/user")
+	public ResponseEntity<User> logInUser() {
+		if (!userComponent.isLoggedUser()) {
 			log.info("Not user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else if(userComponent.isLoggedUser()){
+		} else {
 			User loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as " + loggedUser.getName());
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
-		}else{
+		}
+	}
+	
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping("/api/logIn/restaurant")
+	public ResponseEntity<Restaurant> logInRestaurant() {
+		if (!restaurantComponent.isLoggedRestaurant()) {
+			log.info("Not restaurant logged");
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		} else{
 			Restaurant loggedRestaurant = restaurantComponent.getLoggedRestaurant();
 			log.info("Logged as " + loggedRestaurant.getName());
 			return new ResponseEntity<>(loggedRestaurant, HttpStatus.OK);
