@@ -7,15 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.Entities.Booking;
-import com.example.Entities.City;
-import com.example.Entities.Restaurant;
-import com.example.Entities.Review;
-import com.example.Entities.User;
-import com.example.Entities.Voucher;
 import com.example.Repositories.CityRepository;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Controller
 public class CityController {
@@ -23,7 +15,6 @@ public class CityController {
 	@Autowired
 	private CityRepository cityRepository;
 	
-	@JsonView(City.Basic.class)
 	@RequestMapping("/city/{name}")
 	public String city(Model model, @PathVariable String name, HttpServletRequest request) {
 		model.addAttribute("city", cityRepository.findByName(name));

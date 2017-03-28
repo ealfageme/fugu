@@ -4,37 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import com.example.Entities.Booking;
-import com.example.Entities.City;
-import com.example.Entities.Menu;
 import com.example.Entities.Restaurant;
-import com.example.Entities.Review;
 import com.example.Entities.User;
-import com.example.Entities.Voucher;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Controller
 public class ClientController {
@@ -46,9 +30,6 @@ public class ClientController {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	
-	
-	
-	@JsonView(User.Basic.class)
 	@RequestMapping("/public-client/{name}")
 	public String publicClient(Model model, HttpServletRequest request, Authentication authentication,
 			@PathVariable String name, @RequestParam(required = false) String followPulsed,
@@ -94,31 +75,7 @@ public class ClientController {
 		return "public-client";
 	}
 
-	@ResponseBody
-	@JsonView(User.Basic.class)
-	@RequestMapping(value = "/clients/", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public User addClient(@RequestBody User user, HttpSession session) {
-		session.setMaxInactiveInterval(-1);
-		return user;
-	}
 
-	@ResponseBody
-	@RequestMapping(value = "/clients/", method = RequestMethod.GET)
-	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
-		session.setMaxInactiveInterval(-1);
-		Page<User> users = userRepository.findAll(page);
-		return new ResponseEntity<>(users, HttpStatus.OK);
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/clients/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getClient(@PathVariable long id, HttpSession session) {
-		session.setMaxInactiveInterval(-1);
-		return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
-	}
-
-	@JsonView(User.Basic.class)
 	@RequestMapping("/private-client/")
 	public String privateClient(Model model, HttpServletRequest request, Authentication authentication) {
 		try {

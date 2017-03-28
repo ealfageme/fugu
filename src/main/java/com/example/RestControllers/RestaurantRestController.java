@@ -109,7 +109,7 @@ public class RestaurantRestController {
 	}
 
 	@ResponseBody
-	@JsonView(Restaurant.Basic.class)
+	@JsonView(Menu.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/menus", method = RequestMethod.GET)
 	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
 		session.setMaxInactiveInterval(-1);
@@ -123,7 +123,7 @@ public class RestaurantRestController {
 	}
 	
 	@ResponseBody
-	@JsonView(Restaurant.Basic.class)
+	@JsonView(Menu.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/menus", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Menu postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page, Menu newMenu) {

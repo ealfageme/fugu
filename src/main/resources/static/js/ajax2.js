@@ -5,10 +5,10 @@ $( "#seeMore" ).on( "click", function() {
 	pagenumber++;
 	$("#menus").append( '<div id="spinner"> <img class="img-responsive" style="max-width: 20%;margin:auto;"src="/images/logo/spinner-loop.gif" alt="Custom Image"></div>' );
 	$.ajax({
-		url : "https://localhost:8443/restaurants/"+restaurantid+"/menus/?page="+pagenumber+"&size=4"
+		url : "https://localhost:8443/api/restaurants/"+restaurantid+"/menus/?page="+pagenumber+"&size=4"
 	}).done(function(data) {		
 		console.log(data);
-		console.log("https://localhost:8443/restaurants/"+restaurantid+"/menus/?page="+pagenumber+"&size=4");
+		console.log("https://localhost:8443/api/restaurants/"+restaurantid+"/menus/?page="+pagenumber+"&size=4");
 		console.log(data.content[0].name);
 		$( "#spinner" ).delay( 800 );
 		$("#spinner").replaceWith('');
