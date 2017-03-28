@@ -1,5 +1,8 @@
 package com.example.RestControllers;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +28,7 @@ import com.example.Entities.User;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
+import com.example.Repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -32,6 +37,8 @@ public class RestaurantRestController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic, User.Basic, Menu.Basic,
 			Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
@@ -124,5 +131,20 @@ public class RestaurantRestController {
 		Restaurant restaurant = restaurantRepository.findOne(id);
 		restaurant.getMenus().add(newMenu);
 		return newMenu;
+	}
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/book", method = RequestMethod.POST)
+	public Booking postRestaurantBooks(HttpSession session, @PathVariable long id,Booking newBooking, Authentication authentication,HttpServletRequest request) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant = restaurantRepository.findOne(id);
+		if (request.isUserInRole("USER")){
+			newBooking.setBookingUser(userRepository.findByEmail(authentication.getName()));
+			newBooking.setBookingRestaurant(restaurant);
+			if (restaurant != null) {
+				restaurant.getBookings().add(newBooking);
+		}
+		}
+		return newBooking;
 	}
 }

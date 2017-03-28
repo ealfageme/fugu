@@ -47,7 +47,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> {
 		});
-
+		http.csrf().disable();
 
 	}
 
