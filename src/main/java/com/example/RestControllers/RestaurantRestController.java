@@ -129,10 +129,12 @@ public class RestaurantRestController {
 	@JsonView(Menu.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/menus", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Menu postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page, Menu newMenu) {
+	public Menu postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page, @RequestBody Menu newMenu) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant restaurant = restaurantRepository.findOne(id);
 		restaurant.getMenus().add(newMenu);
+		newMenu.setRestaurantMenu(restaurant);
+		menuRepository.save(newMenu);
 		return newMenu;
 	}
 	@ResponseBody
@@ -148,5 +150,14 @@ public class RestaurantRestController {
 		}
 		bookingRepository.save(newBooking);
 		return newBooking;
+	}
+	
+	@ResponseBody
+	@JsonView(Booking.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/book", method = RequestMethod.GET)
+	public Page<Booking> getRestaurantBooks(HttpSession session, @PathVariable long id,Booking newBooking, Authentication authentication, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant = restaurantRepository.findOne(id);
+		return bookingRepository.findByBookingRestaurant(restaurant, page);
 	}
 }
