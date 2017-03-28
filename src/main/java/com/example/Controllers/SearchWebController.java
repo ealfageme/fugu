@@ -58,14 +58,13 @@ public class SearchWebController {
 				new Double(5.0), new PageRequest(0, 4)));
 		if (restaurantname != null) {
 			Restaurant rest = new Restaurant(restaurantname, restaurantaddress, restaurantdescription, restaurantemail,
-					kindoffood, Integer.parseInt(restaurantphone), 0, 0, restaurantpassword, true, true, true,
-					"ROLE_RESTAURANT");
+					kindoffood, Integer.parseInt(restaurantphone), 0, 0, restaurantpassword, true, true, true);
 			rest.setCity(cityRepository.findByName(restaurantcity));
 			restaurantRepository.save(rest);
 		}
 		if (username != null) {
 			User user = new User(username, useremail, userdescription, userpassword, Integer.parseInt(userage),
-					favouritefood, "ROLE_USER");
+					favouritefood);
 			userRepository.save(user);
 		}
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));

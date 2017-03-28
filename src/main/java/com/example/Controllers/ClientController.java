@@ -82,25 +82,23 @@ public class ClientController {
 			String userloggin = authentication.getName();
 			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
 			model.addAttribute("fileName", fileName);
-			if (request.isUserInRole("USER")) {
-				model.addAttribute("user", userRepository.findByEmail(userloggin));
-				model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
-				model.addAttribute("following", userRepository.findByEmail(userloggin).getFollowing());
-				model.addAttribute("bookings", userRepository.findByEmail(userloggin).getBookings());
-				model.addAttribute("vouchers", userRepository.findByEmail(userloggin).getUserVouchers());
-				model.addAttribute("reviews", userRepository.findByEmail(userloggin).getReviews());
-				model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-				model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingUser("Accepted",userRepository.findByEmail(userloggin)));
-				model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingUser("In Process",userRepository.findByEmail(userloggin)));
+			model.addAttribute("user", userRepository.findByEmail(userloggin));
+			model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
+			model.addAttribute("following", userRepository.findByEmail(userloggin).getFollowing());
+			model.addAttribute("bookings", userRepository.findByEmail(userloggin).getBookings());
+			model.addAttribute("vouchers", userRepository.findByEmail(userloggin).getUserVouchers());
+			model.addAttribute("reviews", userRepository.findByEmail(userloggin).getReviews());
+			model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+			model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingUser("Accepted",userRepository.findByEmail(userloggin)));
+			model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingUser("In Process",userRepository.findByEmail(userloggin)));
 
-				List<Restaurant> recommendedRestaurants = new ArrayList<>();
-				User conectedUser = userRepository.findByEmail(userloggin);
-				for(Restaurant rest : restaurantRepository.findAll()){
-					if ((rest.getFoodType().equalsIgnoreCase(conectedUser.getFavouriteFood()))&&!(conectedUser.getRestaurants().contains(rest))){
-						recommendedRestaurants.add(rest);
-					}
-				}		
-				model.addAttribute("recommendedRestaurants", recommendedRestaurants);
+			List<Restaurant> recommendedRestaurants = new ArrayList<>();
+			User conectedUser = userRepository.findByEmail(userloggin);
+			for(Restaurant rest : restaurantRepository.findAll()){
+				if ((rest.getFoodType().equalsIgnoreCase(conectedUser.getFavouriteFood()))&&!(conectedUser.getRestaurants().contains(rest))){
+					recommendedRestaurants.add(rest);
+				}	
+			model.addAttribute("recommendedRestaurants", recommendedRestaurants);
 			}
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();

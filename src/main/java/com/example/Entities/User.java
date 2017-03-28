@@ -64,14 +64,14 @@ public class User {
 	private List<Voucher> userVouchers = new ArrayList<>();
 
 	public User() {}
-	public User(String name, String email, String description, String password, int age, String favouriteFood, String roles) {
+	public User(String name, String email, String description, String password, int age, String favouriteFood) {
 		this.name = name;
 		this.email = email;
 		this.description = description;
 		this.password =  new BCryptPasswordEncoder().encode(password);
 		this.age = age;
 		this.favouriteFood = favouriteFood;
-		this.roles = roles;
+		this.roles = "ROLE_USER";
 
 	}
 	public List<User> getFollowing() {

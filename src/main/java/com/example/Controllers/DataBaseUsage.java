@@ -51,17 +51,17 @@ public class DataBaseUsage implements CommandLineRunner{
 		cityRepository.save(city5);
 		cityRepository.save(city6);
 		
-		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest11 = new Restaurant ("American Whey2","Avenida España 43 ","Description","american@whey2.com","American",658742154, 5.0, 15.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest2 = new Restaurant ("Meson Mariano","Avenida America 2","Description","meson@mariano.com","tapas",652312342, 4.9, 12.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest3 = new Restaurant ("Meson Felipe","Avenida Barcelona 43","Description","meson@felipe.com","Galician",123213123, 3.5,5.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest4 = new Restaurant ("Meson Lito","Calle de la amagura 5","Description","meson@lito.com","Italian",123213123, 1.6,13.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest5 = new Restaurant ("Meson Daniel","Plaza de España 69","Description","meson@daniel.com","Japanese",123213123, 3.2,16.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest6 = new Restaurant ("Meson Eulalio","Calle Margaret 12","Description","meson@eulalio.com","Chinese",123213123, 4.8,18.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest7 = new Restaurant ("Meson Eusebio","Callejón Paco 1","Description","meson@eusebio.com","Mexican", 123213123,3.1,12.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest8 = new Restaurant ("Meson Gento","Calle azulona 76","Description","meson@gento.com","Indian",123213123, 3.5,15.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest9 = new Restaurant ("Meson Genaro","Plaza de la reina 3","Description","meson@genaro.com","Thai",123213123, 4.1,20.0,"password",true,true,true,"ROLE_RESTAURANT");
-		Restaurant rest10 = new Restaurant ("Meson Agapito","Avenida Pablo","Description","meson@agapito.com","Galician",123213123,2.6,8.0,"password",true,true,true,"ROLE_RESTAURANT");
+		Restaurant rest1 = new Restaurant ("American Whey","Avenida España 43 ","Description","american@whey.com","American",658742154, 5.0, 15.0,"password",true,true,true);
+		Restaurant rest11 = new Restaurant ("American Whey2","Avenida España 43 ","Description","american@whey2.com","American",658742154, 5.0, 15.0,"password",true,true,true);
+		Restaurant rest2 = new Restaurant ("Meson Mariano","Avenida America 2","Description","meson@mariano.com","tapas",652312342, 4.9, 12.0,"password",true,true,true);
+		Restaurant rest3 = new Restaurant ("Meson Felipe","Avenida Barcelona 43","Description","meson@felipe.com","Galician",123213123, 3.5,5.0,"password",true,true,true);
+		Restaurant rest4 = new Restaurant ("Meson Lito","Calle de la amagura 5","Description","meson@lito.com","Italian",123213123, 1.6,13.0,"password",true,true,true);
+		Restaurant rest5 = new Restaurant ("Meson Daniel","Plaza de España 69","Description","meson@daniel.com","Japanese",123213123, 3.2,16.0,"password",true,true,true);
+		Restaurant rest6 = new Restaurant ("Meson Eulalio","Calle Margaret 12","Description","meson@eulalio.com","Chinese",123213123, 4.8,18.0,"password",true,true,true);
+		Restaurant rest7 = new Restaurant ("Meson Eusebio","Callejón Paco 1","Description","meson@eusebio.com","Mexican", 123213123,3.1,12.0,"password",true,true,true);
+		Restaurant rest8 = new Restaurant ("Meson Gento","Calle azulona 76","Description","meson@gento.com","Indian",123213123, 3.5,15.0,"password",true,true,true);
+		Restaurant rest9 = new Restaurant ("Meson Genaro","Plaza de la reina 3","Description","meson@genaro.com","Thai",123213123, 4.1,20.0,"password",true,true,true);
+		Restaurant rest10 = new Restaurant ("Meson Agapito","Avenida Pablo","Description","meson@agapito.com","Galician",123213123,2.6,8.0,"password",true,true,true);
 		
 		rest1.setCity(city1);
 		rest11.setCity(city3);
@@ -169,10 +169,10 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu25);
 		menuRepository.save(menu26);
 
-		User user1 = new User("John","john@website.com","Description","pass",21, "Italian","ROLE_USER");
-		User user2 = new User("Peter","peter@website.com","Description","pass",31, "Tapas","ROLE_USER");
-		User user3 = new User("Samuel","samuel@website.com","Description","pass",54, "Thai","ROLE_USER");	
-		User user4 = new User("Lucas","lucas@website.com","Description","pass",69, "American","ROLE_USER");	
+		User user1 = new User("John","john@website.com","Description","pass",21, "Italian");
+		User user2 = new User("Peter","peter@website.com","Description","pass",31, "Tapas");
+		User user3 = new User("Samuel","samuel@website.com","Description","pass",54, "Thai");	
+		User user4 = new User("Lucas","lucas@website.com","Description","pass",69, "American");	
 
 		
 		user1.getRestaurant().add(rest1);

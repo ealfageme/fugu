@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.example.Entities.User.Basic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -75,7 +76,7 @@ public class Restaurant {
 	
 	public Restaurant (){}
 	public Restaurant( String name, String address, String description, String email, String foodTypes,
-			Integer phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner,String roles) {
+			Integer phone, double rate, double menuPrice, String password, boolean breakfast, boolean lunch, boolean dinner) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -84,7 +85,7 @@ public class Restaurant {
 		this.foodType = foodTypes;
 		this.phone = phone;
 		this.rate = rate;
-		this.roles = roles;
+		this.roles = "ROLE_RESTAURANT";
 		this.menuPrice = menuPrice;
 		this.password = new BCryptPasswordEncoder().encode(password);
 		this.breakfast=breakfast;
