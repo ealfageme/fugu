@@ -28,6 +28,7 @@ import com.example.Entities.User;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.MenuRepository;
 import com.example.Repositories.RestaurantRepository;
+import com.example.Repositories.ReviewRepository;
 import com.example.Repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -37,6 +38,8 @@ public class RestaurantRestController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
 	@Autowired
 	private UserRepository userRepository;
 
@@ -132,6 +135,32 @@ public class RestaurantRestController {
 		restaurant.getMenus().add(newMenu);
 		return newMenu;
 	}
+	
+	@ResponseBody
+	@JsonView(Review.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/reviews", method = RequestMethod.GET)
+	public ResponseEntity<Page<Review>> getRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant = restaurantRepository.findOne(id);
+		if (restaurant != null) {
+			return new ResponseEntity<>(reviewRepository.findByReviewRestaurant(restaurant, page), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+	}
+	
+	@ResponseBody
+	@JsonView(Review.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/reviews", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public Review postRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page, Review newReview) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant = restaurantRepository.findOne(id);
+		restaurant.getRestaurantReviews().add(newReview);
+		return newReview;
+	}
+	
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/book", method = RequestMethod.POST)
