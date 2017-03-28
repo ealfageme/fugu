@@ -32,15 +32,6 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/api/private-client/").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/api/private-restaurant/").hasAnyRole("RESTAURANT");
 
-		// Login form
-		//http.formLogin().loginPage("/api/logIn/");
-		http.formLogin().usernameParameter("loginemail");
-		http.formLogin().passwordParameter("loginpassword");
-		http.formLogin().defaultSuccessUrl("/api/main/");
-		http.formLogin().failureUrl("/api/main2/");
-		// Logout
-		http.logout().logoutSuccessUrl("/api/main/");
-		
 		// Use Http Basic Authentication
 		http.httpBasic();
 
