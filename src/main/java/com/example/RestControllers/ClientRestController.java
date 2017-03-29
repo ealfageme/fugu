@@ -1,5 +1,8 @@
 package com.example.RestControllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,6 +83,39 @@ public class ClientRestController {
 		userRepository.delete(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 
+	}
+
+	@ResponseBody
+	@JsonView(UserDetail.class)
+	@RequestMapping(value = "/api/clients/{id}/following", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		User user = userRepository.findOne(id);
+		if (user != null) {
+			return new ResponseEntity<>(user.getFollowing(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+	}
+	
+	@ResponseBody
+	@JsonView(User.Basic.class)
+	@RequestMapping(value = "/api/clients/{id}/follow", method = RequestMethod.POST)
+	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		User user2follow = userRepository.findOne(id);
+		if (request.isUserInRole("USER")) {
+			User userSession = userRepository.findByEmail(authentication.getName());
+			if (user2follow != null) {
+				userSession.getFollowing().add(user2follow);
+				userRepository.save(userSession);
+				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		return null;
 	}
 
 	@ResponseBody
