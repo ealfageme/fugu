@@ -88,8 +88,10 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
+
 	@RequestMapping(value = "/{id}/following", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
+
 		session.setMaxInactiveInterval(-1);
 		User user = userRepository.findOne(id);
 		if (user != null) {
@@ -102,7 +104,30 @@ public class ClientRestController {
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)
-	@RequestMapping(value = "/{id}/follow", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/{id}/unfollow", method = RequestMethod.DELETE)
+	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		User user2follow = userRepository.findOne(id);
+		if (request.isUserInRole("USER")) {
+			User userSession = userRepository.findByEmail(authentication.getName());
+			if (user2follow != null) {
+				if(userSession.getFollowing().contains(user2follow)){
+					userSession.getFollowing().remove(user2follow);
+					userRepository.save(userSession);
+				}
+				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		return null;
+	}
+	
+	@ResponseBody
+	@JsonView(User.Basic.class)
+	@RequestMapping(value = "/api/clients/{id}/follow", method = RequestMethod.POST)
+
 	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user2follow = userRepository.findOne(id);
