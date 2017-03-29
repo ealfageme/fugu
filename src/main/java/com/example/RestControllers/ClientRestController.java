@@ -35,9 +35,10 @@ public class ClientRestController {
 	@Autowired
 	private UserRepository userRepository;
 
-	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews, Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
-	User.Vouchers, User.Bookings{}
-	
+	interface UserDetail extends User.Basic, User.Restaurants, User.Reviews, Review.Basic, Voucher.Basic, Booking.Basic,
+			Restaurant.Basic, User.Vouchers, User.Bookings {
+	}
+
 	@ResponseBody
 	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -54,12 +55,16 @@ public class ClientRestController {
 	@ResponseBody
 	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public User postClient(HttpSession session, @RequestBody User user) {
+	public ResponseEntity<User> postClient(HttpSession session, @RequestBody User user) {
 		session.setMaxInactiveInterval(-1);
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		userRepository.save(user);
-		return user;
+		if (userRepository.findByName(user.getName()) == null) {
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			userRepository.save(user);
+			return new ResponseEntity<>(user, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+
 	}
 
 	@ResponseBody
@@ -67,7 +72,7 @@ public class ClientRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<User> putUser(HttpSession session, @PathVariable long id, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
-		
+
 		User user = userRepository.findOne(id);
 		if (user != null) {
 			updatedUser.setId(id);
@@ -76,16 +81,6 @@ public class ClientRestController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-
-	@ResponseBody
-	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<User> deleteUser(HttpSession session, @PathVariable long id) {
-		session.setMaxInactiveInterval(-1);
-		userRepository.delete(id);
-		return new ResponseEntity<>(null, HttpStatus.OK);
-
 	}
 
 	@ResponseBody
@@ -103,18 +98,19 @@ public class ClientRestController {
 		}
 
 	}
-	
+
 	@ResponseBody
 	@JsonView(User.Basic.class)
 
 	@RequestMapping(value = "/{id}/unfollow", method = RequestMethod.DELETE)
-	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication,
+			HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user2follow = userRepository.findOne(id);
 		if (request.isUserInRole("USER")) {
 			User userSession = userRepository.findByEmail(authentication.getName());
 			if (user2follow != null) {
-				if(userSession.getFollowing().contains(user2follow)){
+				if (userSession.getFollowing().contains(user2follow)) {
 					userSession.getFollowing().remove(user2follow);
 					userRepository.save(userSession);
 				}
@@ -125,12 +121,13 @@ public class ClientRestController {
 		}
 		return null;
 	}
-	
+
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value = "/api/clients/{id}/follow", method = RequestMethod.POST)
 
-	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication,
+			HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user2follow = userRepository.findOne(id);
 		if (request.isUserInRole("USER")) {
@@ -138,7 +135,7 @@ public class ClientRestController {
 			if (user2follow != null) {
 				userSession.getFollowing().add(user2follow);
 				userRepository.save(userSession);
-				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.OK);
+				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.CREATED);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
