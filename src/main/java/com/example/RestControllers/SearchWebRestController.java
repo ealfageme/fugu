@@ -19,12 +19,13 @@ import com.example.Repositories.RestaurantRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
+@RequestMapping("/api/search-web")
 public class SearchWebRestController {
 	@Autowired
 	private RestaurantRepository  restaurantRepository;
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/search-web/name", method = RequestMethod.GET)
+	@RequestMapping(value = "/name", method = RequestMethod.GET)
 	public ResponseEntity<Restaurant> getRestaurantByName(@RequestParam String name) {
 		Restaurant restaurant = restaurantRepository.findByName(name);
 		if (restaurant != null) {
@@ -35,14 +36,14 @@ public class SearchWebRestController {
 	}
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value ="/api/search-web/foodtypeandcity", method = RequestMethod.GET)
+	@RequestMapping(value ="/foodtypeandcity", method = RequestMethod.GET)
 	public ResponseEntity<List<Restaurant>> getRestaurantByTypeFoodAndCity ( @RequestParam String typeFood,@RequestParam String city){
 		List<Restaurant> restaurants = restaurantRepository.findByFoodTypeAndCityName(typeFood, city);
 		return new ResponseEntity<>(restaurants, HttpStatus.OK);
 	}
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value ="/api/search-web/filters", method = RequestMethod.GET)
+	@RequestMapping(value ="/filters", method = RequestMethod.GET)
 	public ResponseEntity<List<Restaurant>> getRestaurantByfilters ( @RequestParam Double min,@RequestParam Double max,
 			@RequestParam Double minPrice, @RequestParam Double maxPrice){
 		List<Restaurant> restaurants = restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max);

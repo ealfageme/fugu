@@ -29,6 +29,7 @@ import com.example.Repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
+@RequestMapping("/api/clients")
 public class ClientRestController {
 
 	@Autowired
@@ -39,7 +40,7 @@ public class ClientRestController {
 	
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getClient(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user = userRepository.findOne(id);
@@ -52,7 +53,7 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/signin", method = RequestMethod.POST)
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public User postClient(HttpSession session, @RequestBody User user) {
 		session.setMaxInactiveInterval(-1);
@@ -63,7 +64,7 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<User> putUser(HttpSession session, @PathVariable long id, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
 		
@@ -79,7 +80,7 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<User> deleteUser(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		userRepository.delete(id);
@@ -89,8 +90,10 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/{id}/following", method = RequestMethod.GET)
-	public ResponseEntity<List<User>> UserFollowing(HttpSession session, @PathVariable long id) {
+
+	@RequestMapping(value = "/{id}/following", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
+
 		session.setMaxInactiveInterval(-1);
 		User user = userRepository.findOne(id);
 		if (user != null) {
@@ -103,7 +106,8 @@ public class ClientRestController {
 	
 	@ResponseBody
 	@JsonView(User.Basic.class)
-	@RequestMapping(value = "/api/clients/{id}/unfollow", method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/{id}/unfollow", method = RequestMethod.DELETE)
 	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user2follow = userRepository.findOne(id);
@@ -125,6 +129,7 @@ public class ClientRestController {
 	@ResponseBody
 	@JsonView(User.Basic.class)
 	@RequestMapping(value = "/api/clients/{id}/follow", method = RequestMethod.POST)
+
 	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		User user2follow = userRepository.findOne(id);
@@ -143,7 +148,7 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(User.Basic.class)
-	@RequestMapping(value = "/api/clients/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(-1);
 		Page<User> users = userRepository.findAll(page);
