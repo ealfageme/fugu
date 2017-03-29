@@ -1,8 +1,7 @@
 package com.example.RestControllers;
 
-import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,11 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.Entities.City;
 import com.example.Entities.Restaurant;
 import com.example.Repositories.RestaurantRepository;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -26,27 +23,31 @@ public class SearchWebRestController {
 	@Autowired
 	private RestaurantRepository  restaurantRepository;
 	@ResponseBody
-	@JsonView(City.Basic.class)
-	@RequestMapping(value = "/api/search-web/", method = RequestMethod.GET)
-	public ResponseEntity<Page<Restaurant>> getRestaurants( Pageable page) {
-		Page<Restaurant> restaurants = restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0),
-				new Double(5.0), page);
-		if (restaurants != null) {
-			return new ResponseEntity<>(restaurants, HttpStatus.OK);
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/api/search-web/name", method = RequestMethod.GET)
+	public ResponseEntity<Restaurant> getRestaurantByName(@RequestParam String name) {
+		Restaurant restaurant = restaurantRepository.findByName(name);
+		if (restaurant != null) {
+			return new ResponseEntity<>(restaurant, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	@ResponseBody
-	@JsonView(City.Basic.class)
-	@RequestMapping(value = "/api/search-web/", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public List<Restaurant> getRestaurantsSearched(Pageable page, @RequestBody Double minValue,@RequestBody Double maxValue,
-				@RequestBody Double minRank,@RequestBody Double maxRank) {
-		List<Restaurant>restaurants =restaurantRepository.findByMenuPriceBetweenAndRateBetween(minValue, maxValue, minRank, maxRank);
-		
-		return  restaurants;
-	
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value ="/api/search-web/foodtypeandcity", method = RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurantByTypeFoodAndCity ( @RequestParam String typeFood,@RequestParam String city){
+		List<Restaurant> restaurants = restaurantRepository.findByFoodTypeAndCityName(typeFood, city);
+		return new ResponseEntity<>(restaurants, HttpStatus.OK);
 	}
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value ="/api/search-web/filters", method = RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurantByfilters ( @RequestParam Double min,@RequestParam Double max,
+			@RequestParam Double minPrice, @RequestParam Double maxPrice){
+		List<Restaurant> restaurants = restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max);
+		return new ResponseEntity<>(restaurants, HttpStatus.OK);
+	}
+	
 	
 }
