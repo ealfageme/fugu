@@ -1,5 +1,8 @@
 package com.example.RestControllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -221,4 +224,43 @@ public class RestaurantRestController {
 		return voucherRepository.findByRestaurant(restaurant, page);
 	}
 
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/unfollow", method = RequestMethod.DELETE)
+	public ResponseEntity<List<Restaurant>> deleteUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant2unfollow = restaurantRepository.findOne(id);
+		if (request.isUserInRole("USER")) {
+			User userSession = userRepository.findByEmail(authentication.getName());
+			if (restaurant2unfollow != null) {
+				if(userSession.getRestaurants().contains(restaurant2unfollow)){
+					userSession.getRestaurants().remove(restaurant2unfollow);
+					userRepository.save(userSession);
+				}
+				return new ResponseEntity<>(userSession.getRestaurants(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		return null;
+	}
+	
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/api/restaurants/{id}/follow", method = RequestMethod.POST)
+	public ResponseEntity<List<Restaurant>> postUserFollows(HttpServletRequest request, Authentication authentication, HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		Restaurant restaurant2follow = restaurantRepository.findOne(id);
+		if (request.isUserInRole("USER")) {
+			User userSession = userRepository.findByEmail(authentication.getName());
+			if (restaurant2follow != null) {
+				userSession.getRestaurants().add(restaurant2follow);
+				userRepository.save(userSession);
+				return new ResponseEntity<>(userSession.getRestaurants(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		return null;
+	}
 }
