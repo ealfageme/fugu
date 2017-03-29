@@ -52,7 +52,7 @@ public class Restaurant {
 	private Integer phone;
 	@JsonView(Basic.class)
 	private Double rate;
-	@JsonIgnore
+	@JsonView(Basic.class)
 	private String password;
 	
 	@ManyToMany(mappedBy="restaurants")

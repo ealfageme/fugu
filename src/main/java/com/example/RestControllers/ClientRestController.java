@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,10 +52,11 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/api/clients/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/clients/signin", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public User postClient(HttpSession session, @RequestBody User user) {
 		session.setMaxInactiveInterval(-1);
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		userRepository.save(user);
 		return user;
 	}

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,10 +93,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
-	@RequestMapping(value = "/api/restaurants/", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/restaurants/signin", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Restaurant postRestaurant(HttpSession session, @RequestBody Restaurant rest) {
 		session.setMaxInactiveInterval(-1);
+		rest.setPassword(new BCryptPasswordEncoder().encode(rest.getPassword()));
 		restaurantRepository.save(rest);
 		return rest;
 	}
