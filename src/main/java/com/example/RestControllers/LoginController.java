@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonView;
  * NOTE: This class is not intended to be modified by app developer.
  */
 @RestController
+@RequestMapping("/api")
 public class LoginController {
 
 	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
@@ -34,7 +35,7 @@ public class LoginController {
 	private RestaurantComponent restaurantComponent;
 
 	@JsonView(User.Basic.class)
-	@RequestMapping("/api/logIn/user")
+	@RequestMapping("/logIn/user")
 	public ResponseEntity<User> logInUser() {
 		if (!userComponent.isLoggedUser()) {
 			log.info("Not user logged");
@@ -47,7 +48,7 @@ public class LoginController {
 	}
 	
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping("/api/logIn/restaurant")
+	@RequestMapping("/logIn/restaurant")
 	public ResponseEntity<Restaurant> logInRestaurant() {
 		if (!restaurantComponent.isLoggedRestaurant()) {
 			log.info("Not restaurant logged");
@@ -59,7 +60,7 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping("/api/logOut")
+	@RequestMapping("/logOut")
 	public ResponseEntity<Boolean> logOut(HttpSession session) {
 
 		if (!userComponent.isLoggedUser()&&!restaurantComponent.isLoggedRestaurant()) {
