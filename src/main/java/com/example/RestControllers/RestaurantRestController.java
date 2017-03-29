@@ -159,10 +159,12 @@ public class RestaurantRestController {
 	@JsonView(Review.Basic.class)
 	@RequestMapping(value = "/api/restaurants/{id}/reviews", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Review postRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page, Review newReview) {
+	public Review postRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page, @RequestBody Review newReview,Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant restaurant = restaurantRepository.findOne(id);
-		restaurant.getRestaurantReviews().add(newReview);
+		newReview.setReviewRestaurant(restaurant);
+		newReview.setUser((User)authentication.getCredentials());
+		reviewRepository.save(newReview);
 		return newReview;
 	}
 	
