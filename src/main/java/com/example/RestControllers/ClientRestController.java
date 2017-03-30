@@ -76,6 +76,7 @@ public class ClientRestController {
 		User user = userRepository.findByEmail(authenticate.getName());
 		if (user != null) {
 			updatedUser.setId(userRepository.findByEmail(authenticate.getName()).getId());
+			updatedUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			userRepository.save(updatedUser);
 			return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 		} else {

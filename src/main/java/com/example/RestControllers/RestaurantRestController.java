@@ -63,6 +63,7 @@ public class RestaurantRestController {
 		Restaurant rest = restaurantService.restaurantServiceFindByEmail(authenticate.getName());
 		if (rest != null) {
 			updatedRestaurant.setId(restaurantService.restaurantServiceFindByEmail(authenticate.getName()).getId());
+			updatedRestaurant.setPassword(new BCryptPasswordEncoder().encode(rest.getPassword()));
 			restaurantService.restaurantServiceSave(updatedRestaurant);
 			return new ResponseEntity<>(updatedRestaurant, HttpStatus.OK);
 		} else {
