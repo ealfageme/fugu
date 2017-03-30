@@ -71,14 +71,6 @@ public class RestaurantRestController {
 		}
 	}
 
-	@ResponseBody
-	@JsonView(RestaurantDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Restaurant> deleteRestaurant(HttpSession session, @PathVariable long id) {
-		session.setMaxInactiveInterval(-1);
-		restaurantService.restaurantServiceDelete(id);
-		return new ResponseEntity<>(null, HttpStatus.OK);
-	}
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
