@@ -34,7 +34,7 @@ public class ClientRestController {
 	@Autowired
 	private UserRepository userRepository;
 
-	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews, Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
+	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews,/* User.Users,*/ Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
 	User.Vouchers, User.Bookings{}
 	
 	@ResponseBody
@@ -87,7 +87,7 @@ public class ClientRestController {
 	}
 
 	@ResponseBody
-	@JsonView(UserDetail.class)
+	@JsonView(User.Basic.class)
 
 	@RequestMapping(value = "/{id}/following", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
