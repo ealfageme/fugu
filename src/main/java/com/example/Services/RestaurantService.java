@@ -91,4 +91,7 @@ public class RestaurantService {
 	public Booking bookingRepositoryfindBySpecialRequirements(String special){
 		return bookingRepository.findBySpecialRequirements(special);
 	}
+	public Restaurant restaurantServiceFindByEmail(String email){
+		return restaurantRepository.findByEmail(email);
+	}
 }

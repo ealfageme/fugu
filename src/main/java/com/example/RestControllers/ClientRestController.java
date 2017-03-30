@@ -69,13 +69,13 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<User> putUser(HttpSession session, @PathVariable long id, @RequestBody User updatedUser) {
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	public ResponseEntity<User> putUser(HttpSession session, Authentication authenticate, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
 
-		User user = userRepository.findOne(id);
+		User user = userRepository.findByEmail(authenticate.getName());
 		if (user != null) {
-			updatedUser.setId(id);
+			updatedUser.setId(userRepository.findByEmail(authenticate.getName()).getId());
 			userRepository.save(updatedUser);
 			return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 		} else {
