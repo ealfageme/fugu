@@ -56,14 +56,13 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Restaurant> putRestaurant(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	public ResponseEntity<Restaurant> putRestaurant(HttpSession session, Authentication authenticate,
 			@RequestBody Restaurant updatedRestaurant) {
 		session.setMaxInactiveInterval(-1);
-
-		Restaurant rest = restaurantService.restaurantServiceFindOne(id);
+		Restaurant rest = restaurantService.restaurantServiceFindByEmail(authenticate.getName());
 		if (rest != null) {
-			updatedRestaurant.setId(id);
+			updatedRestaurant.setId(restaurantService.restaurantServiceFindByEmail(authenticate.getName()).getId());
 			restaurantService.restaurantServiceSave(updatedRestaurant);
 			return new ResponseEntity<>(updatedRestaurant, HttpStatus.OK);
 		} else {

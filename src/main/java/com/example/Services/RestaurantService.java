@@ -55,6 +55,9 @@ public class RestaurantService {
 	public void restaurantServiceDelete(Long id){
 		restaurantRepository.delete(id);
 	}
+	public Restaurant restaurantServiceFindByEmail(String email){
+		return restaurantRepository.findByEmail(email);
+	}
 	//Menu
 	public Page<Menu> restaurantServiceFindByRestaurantMenu(Restaurant restaurant, Pageable page){
 		return menuRepository.findByRestaurantMenu(restaurant, page);
@@ -117,5 +120,7 @@ public class RestaurantService {
 	public User userRepositoryfindOne(Long id){
 		return userRepository.findOne(id);
 	}
+
 	
+
 }
