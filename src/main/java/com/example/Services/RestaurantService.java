@@ -1,5 +1,7 @@
 package com.example.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +36,7 @@ public class RestaurantService {
 	@Autowired
 	private VoucherRepository voucherRepository;
 	
+	//Restaurant
 	public Restaurant restaurantServiceFindOne(Long id){
 		return restaurantRepository.findOne(id);
 	}
@@ -43,9 +46,16 @@ public class RestaurantService {
 	public Restaurant restaurantServiceFindByName(String name){
 		return restaurantRepository.findByName(name);
 	}
+	public Restaurant restaurantRepositoryFindByEmail(String email){
+		return restaurantRepository.findByEmail(email);
+	}
 	public Page<Restaurant> restaurantServicefindByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page){
 		return restaurantRepository.findByRateBetweenOrderByRateDesc(min, max, page);
 	}
+	public void restaurantServiceDelete(Long id){
+		restaurantRepository.delete(id);
+	}
+	//Menu
 	public Page<Menu> restaurantServiceFindByRestaurantMenu(Restaurant restaurant, Pageable page){
 		return menuRepository.findByRestaurantMenu(restaurant, page);
 	}
@@ -54,10 +64,11 @@ public class RestaurantService {
 	}
 	public void restaurantServiceMenuSave (Menu menu){
 		menuRepository.save(menu);
+	} 
+	public Page<Menu> menuRepositoryfindByRestaurantMenu(Restaurant restaurant,Pageable page){
+		return menuRepository.findByRestaurantMenu(restaurant,page);
 	}
-	public void restaurantServiceDelete(Long id){
-		restaurantRepository.delete(id);
-	}
+	//Review
 	public Page<Review> reviewRepositoryfindByReviewRestaurant(Restaurant restaurant,Pageable page){
 		return reviewRepository.findByReviewRestaurant(restaurant, page);
 	}
@@ -67,23 +78,9 @@ public class RestaurantService {
 	public Review reviewRepositoryfindByContent(String content){
 		return reviewRepository.findByContent(content);
 	}
+	//booking
 	public void bookingRepositorysave(Booking booking){
 		bookingRepository.save(booking);
-	}
-	public Page<Voucher> voucherRepositoryfindByRestaurant(Restaurant restaurant,Pageable page){
-		return voucherRepository.findByRestaurant(restaurant, page);
-	}
-	public User userRepositoryfindByEmail(String email){
-		return userRepository.findByEmail(email);
-	}
-	public void userRepositorysave(User user){
-		userRepository.save(user);
-	}
-	public void voucherRepositorysave(Voucher voucher){
-			voucherRepository.save(voucher);
-	}
-	public Voucher voucherRepositoryfindByName(String name){
-		return voucherRepository.findByName(name);
 	}
 	public Page<Booking> bookingRepositoryfindByBookingRestaurant(Restaurant restaurant, Pageable page){
 		return bookingRepository.findByBookingRestaurant(restaurant,page);
@@ -91,4 +88,34 @@ public class RestaurantService {
 	public Booking bookingRepositoryfindBySpecialRequirements(String special){
 		return bookingRepository.findBySpecialRequirements(special);
 	}
+	public Booking bookingRepositoryfindById(long id){
+		return bookingRepository.findById(id);
+	}
+	public List<Booking> bookingRepositoryfindByStateAndBookingRestaurant(String accept,Restaurant restaurant){
+		return bookingRepository.findByStateAndBookingRestaurant(accept,restaurant);
+	}
+	//Voucher
+	public Page<Voucher> voucherRepositoryfindByRestaurant(Restaurant restaurant,Pageable page){
+		return voucherRepository.findByRestaurant(restaurant, page);
+	}
+	public void voucherRepositorysave(Voucher voucher){
+		voucherRepository.save(voucher);
+	}
+	public Voucher voucherRepositoryfindByName(String name){
+		return voucherRepository.findByName(name);
+	}
+	//User
+	public User userRepositoryfindByEmail(String email){
+		return userRepository.findByEmail(email);
+	}
+	public void userRepositorysave(User user){
+		userRepository.save(user);
+	}
+	public List<User> userRepositoryfindByAgeBetween(int min, int max){
+		return userRepository.findByAgeBetween(min,max);
+	}
+	public User userRepositoryfindOne(Long id){
+		return userRepository.findOne(id);
+	}
+	
 }
