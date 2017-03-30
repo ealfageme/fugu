@@ -16,16 +16,14 @@ import com.example.Entities.User;
 import com.example.Repositories.CityRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
+import com.example.Services.SearchWebService;
 
 @Controller
 public class SearchWebController {
 
+
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private RestaurantRepository restaurantRepository;
-	@Autowired
-	private CityRepository cityRepository;
+	private SearchWebService  searchWebService;
 
 	@RequestMapping(value = "/search-web/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String main(@RequestParam(required = false) String name, @RequestParam(required = false) String city,
@@ -44,38 +42,38 @@ public class SearchWebController {
 			@RequestParam(required = false) String userdescription,
 			@RequestParam(required = false) String userpassword) {
 		if (name != null) {
-			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+			model.addAttribute("restaurants", searchWebService.serviceRestaurantFindByNameIgnoreCase(name));
 		} else if (city != null && foodType != null) {
-			model.addAttribute("restaurants", restaurantRepository.findByFoodTypeAndCityName(foodType, city));
+			model.addAttribute("restaurants", searchWebService.serviceRestaurantFindByFoodTypeAndCityName(foodType, city));
 		}
 		if (name != null) {
-			model.addAttribute("restaurants", restaurantRepository.findByNameIgnoreCase(name));
+			model.addAttribute("restaurants", searchWebService.serviceRestaurantFindByNameIgnoreCase(name));
 		} else if (min != null && max != null && minPrice != null && maxPrice != null) {
 			model.addAttribute("restaurants",
-					restaurantRepository.findByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, min, max));
+					searchWebService.serviceRestaurantFindByMenuPriceBetweenAndRateBetween(minPrice, maxPrice, minPrice, maxPrice));
 		}
-		model.addAttribute("restaurant", restaurantRepository.findByRateBetweenOrderByRateDesc(new Double(0.0),
+		model.addAttribute("restaurant", searchWebService.serviceRestaurantFindByRateBetweenOrderByRateDesc(new Double(0.0),
 				new Double(5.0), new PageRequest(0, 4)));
 		if (restaurantname != null) {
 			Restaurant rest = new Restaurant(restaurantname, restaurantaddress, restaurantdescription, restaurantemail,
 					kindoffood, Integer.parseInt(restaurantphone), 0, 0, restaurantpassword, true, true, true);
-			rest.setCity(cityRepository.findByName(restaurantcity));
-			restaurantRepository.save(rest);
+			rest.setCity(searchWebService.serviceCityFindByName(restaurantcity));
+			searchWebService.serviceRestaurantSave(rest);
 		}
 		if (username != null) {
 			User user = new User(username, useremail, userdescription, userpassword, Integer.parseInt(userage),
 					favouritefood);
-			userRepository.save(user);
+			searchWebService.serviceUserSave(user);
 		}
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
 		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT"));
 		
 		if(request.isUserInRole("USER")){
 			System.out.println(authentication.getName());
-			model.addAttribute("feedbackname", userRepository.findByEmail(authentication.getName()).getName());
+			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailUser(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
 		}else if(request.isUserInRole("RESTAURANT")){
-			model.addAttribute("feedbackname", restaurantRepository.findByEmail(authentication.getName()).getName());
+			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailRestaurant(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
 		}
 
