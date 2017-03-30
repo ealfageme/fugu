@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.Entities.*;
 public interface VoucherRepository extends JpaRepository<Voucher,Long>{
 	Page<Voucher> findByRestaurant(Restaurant restaurant, Pageable page);
+	Voucher findByName (String name);
 }

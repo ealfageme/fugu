@@ -52,8 +52,7 @@ public class User{
 	private long id;
 	@JsonView(Basic.class)
 	private String name;
-	//@JsonView(Basic.class)
-	@JsonIgnore
+	@JsonView(Basic.class)
 	private String password;
 	@JsonView(Basic.class)
 	private String email;
