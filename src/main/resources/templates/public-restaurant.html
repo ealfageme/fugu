@@ -50,7 +50,6 @@
 						<li class="signin">{{#inSession}}
 							<form class="navbar-form navbar-right" method="post" action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" /> 
-								<input type="hidden" name="_csrf" value="{{token}}" />
 							</form> 
 							<form class="navbar-form navbar-right" method="get"
 								action="/default/">
@@ -150,14 +149,14 @@
 				{{#favButton}} <input type="hidden" id="favPulsed" name="favPulsed"
 					value="true" />
 				<button type="submit" class="btnMore" id="fav" style="margin: 10px;">Fav</button>
-				{{/favButton}} <input type="hidden" name="_csrf" value="{{token}}" />
+				{{/favButton}}
 			</form>
 			<form role="form" method='get'>
 				{{#unfavButton}} <input type="hidden" id="unfavPulsed"
 					name="unfavPulsed" value="true" />
 				<button type="submit" class="btnMore" id="unfav"
 					style="margin: 10px;">UnFav</button>
-				{{/unfavButton}} <input type="hidden" name="_csrf" value="{{token}}" />
+				{{/unfavButton}} 
 			</form>
 		</div>
 	</section>
@@ -387,7 +386,6 @@
 							<textarea class="form-control" id="exampleTextarea" rows="2"
 								style="border-radius: 0px !important" name="specialRequirements"></textarea>
 						</div>
-						<input type="hidden" name="_csrf" value="{{token}}" />
 					</form>
 				</div>
 			</div>
@@ -779,7 +777,6 @@
 									</select>
 								</div>
 								<button type="submit" class="btnMore">Send</button>
-								<input type="hidden" name="_csrf" value="{{token}}" />
 							</div>
 							<!-- Modal -->
 							<div class="modal fade" id="exampleModalLong" tabindex="-1"
@@ -808,7 +805,6 @@
 								</div>
 
 							</div>
-							<input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</div>
 				</div>

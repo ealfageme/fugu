@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 http.formLogin().failureUrl("/main2/");
 		 // Logout
 		 http.logout().logoutSuccessUrl("/main/");
-		
+		 http.csrf().disable();
 
 		
 	 }

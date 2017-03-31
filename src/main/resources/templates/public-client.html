@@ -43,7 +43,6 @@
                         <li class="signin">{{#inSession}}
 						<form class="navbar-form navbar-right" method="post" action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" /> 
-								<input type="hidden" name="_csrf" value="{{token}}" />
 							</form>  
 						<form class="navbar-form navbar-right" method="get" action="/default/">
 							<button class="signInBtn">Visit profile</button>
@@ -101,14 +100,12 @@
                         <input id="followPulsed" type="hidden" name='followPulsed' value="true">
                         <button type="submit" class="btnMore"  id="follow" style="margin:10px;" >Follow</button>
                        	{{/followButton}}
-                       	<input type="hidden" name="_csrf" value="{{token}}"/>
                        	</form>
 						<form role="form" method='get'>
                        	{{#unfollowButton}}
                         <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
                         <button type="submit" class="btnMore" id="unfollow" style="margin:10px;" >Unfollow</button>
                          {{/unfollowButton}}
-                         <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>   
                     </div>
                 </div>
