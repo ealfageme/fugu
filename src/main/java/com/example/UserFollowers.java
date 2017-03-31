@@ -79,7 +79,7 @@ public class UserFollowers {
 				jgen.writeNumberField("id", booking.getId());
 				jgen.writeNumberField("number", booking.getNumber());
 				jgen.writeStringField("specialRequirements", booking.getSpecialRequirements());
-				jgen.writeStringField("date", booking.getDate().toString());
+				jgen.writeObjectField("date", booking.getDate());
 				jgen.writeEndObject();
 			}
 			jgen.writeEndArray();
@@ -88,7 +88,7 @@ public class UserFollowers {
 			for(Review review: user.getReviews()){
 				jgen.writeStartObject();
 				jgen.writeNumberField("id", review.getId());
-				jgen.writeStringField("date", review.getDate().toString());
+				jgen.writeObjectField("date", review.getDate());
 				jgen.writeStringField("content", review.getContent());
 				jgen.writeNumberField("rate", review.getRate());
 				jgen.writeEndObject();

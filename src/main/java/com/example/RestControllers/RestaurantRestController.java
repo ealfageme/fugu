@@ -153,7 +153,7 @@ public class RestaurantRestController {
 	public ResponseEntity<Review> postRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page,
 			@RequestBody Review newReview, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
-		if (restaurantService.reviewRepositoryfindByContent(newReview.getContent()) == null) {
+		if (restaurantService.reviewRepositoryfindByContent(newReview.getContent()) != null) {
 			Restaurant restaurant = restaurantService.restaurantServiceFindOne(id);
 			newReview.setReviewRestaurant(restaurant);
 			newReview.setUser((User) authentication.getCredentials());
