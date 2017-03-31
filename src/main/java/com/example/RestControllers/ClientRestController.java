@@ -26,6 +26,7 @@ import com.example.Entities.Review;
 import com.example.Entities.User;
 import com.example.Entities.Voucher;
 import com.example.Repositories.UserRepository;
+import com.example.Services.ClientService;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class ClientRestController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private ClientService clientService;
 
 
 	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews,/* User.Users,*/ Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
@@ -44,9 +45,9 @@ public class ClientRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getClient(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
-		User user = userRepository.findOne(id);
+		User user = clientService.clientServiceFindOne(id);
 		if (user != null) {
-			return new ResponseEntity<>(userRepository.findOne(id), HttpStatus.OK);
+			return new ResponseEntity<>(clientService.clientServiceFindOne(id), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -57,9 +58,9 @@ public class ClientRestController {
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public ResponseEntity<User> postClient(HttpSession session, @RequestBody User user) {
 		session.setMaxInactiveInterval(-1);
-		if (userRepository.findByName(user.getName()) == null) {
+		if (clientService.clientServiceFindByName(user.getName())== null) {
 			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-			userRepository.save(user);
+			clientService.clientServiceSave(user);
 			return new ResponseEntity<>(user, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -73,18 +74,18 @@ public class ClientRestController {
 	public ResponseEntity<User> putUser(HttpSession session, Authentication authenticate, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
 
-		User user = userRepository.findByEmail(authenticate.getName());
+		User user = clientService.clientServiceFindByEmail(authenticate.getName());
 		if (user != null) {
-			updatedUser.setId(userRepository.findByEmail(authenticate.getName()).getId());
+			updatedUser.setId(clientService.clientServiceFindByEmail(authenticate.getName()).getId());
 			updatedUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-			userRepository.save(updatedUser);
+			clientService.clientServiceSave(updatedUser);
 			return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@ResponseBody
+	/*@ResponseBody
 	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<User> deleteUser(HttpSession session, @PathVariable long id) {
@@ -92,7 +93,7 @@ public class ClientRestController {
 		userRepository.delete(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 
-	}
+	}*/
 
 	@ResponseBody
 	@JsonView(User.Basic.class)
@@ -100,7 +101,7 @@ public class ClientRestController {
 	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
 
 		session.setMaxInactiveInterval(-1);
-		User user = userRepository.findOne(id);
+		User user = clientService.clientServiceFindOne(id);
 		if (user != null) {
 			return new ResponseEntity<>(user.getFollowing(), HttpStatus.OK);
 		} else {
@@ -116,13 +117,13 @@ public class ClientRestController {
 	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication,
 			HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
-		User user2follow = userRepository.findOne(id);
+		User user2follow = clientService.clientServiceFindOne(id);
 		if (request.isUserInRole("USER")) {
-			User userSession = userRepository.findByEmail(authentication.getName());
+			User userSession = clientService.clientServiceFindByEmail(authentication.getName());
 			if (user2follow != null) {
 				if (userSession.getFollowing().contains(user2follow)) {
 					userSession.getFollowing().remove(user2follow);
-					userRepository.save(userSession);
+					clientService.clientServiceSave(userSession);
 				}
 				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.OK);
 			} else {
@@ -139,12 +140,12 @@ public class ClientRestController {
 	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication,
 			HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
-		User user2follow = userRepository.findOne(id);
+		User user2follow = clientService.clientServiceFindOne(id);
 		if (request.isUserInRole("USER")) {
-			User userSession = userRepository.findByEmail(authentication.getName());
+			User userSession = clientService.clientServiceFindByEmail(authentication.getName());
 			if (user2follow != null) {
 				userSession.getFollowing().add(user2follow);
-				userRepository.save(userSession);
+				clientService.clientServiceSave(userSession);
 				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.CREATED);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -158,7 +159,7 @@ public class ClientRestController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<Page<User>> getClients(HttpSession session, Pageable page) {
 		session.setMaxInactiveInterval(-1);
-		Page<User> users = userRepository.findAll(page);
+		Page<User> users = clientService.clientServiceFindAll(page);
 		if (users != null) {
 			return new ResponseEntity<>(users, HttpStatus.OK);
 		} else {
