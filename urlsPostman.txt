@@ -1,9 +1,582 @@
 Clients:
+With John session:
 
-/api/clients/{id} GET
-/api/clients/signin POST
-/api/clients/ PUT
-/api/clients/ GET
-/api/clients/{id}/following GET
-/api/clients//{id}/unfollow	DELETE
+REQUEST /api/clients/2 GET
+ANSWER
+{
+    "id": 2,
+    "name": "Peter",
+    "email": "peter@website.com",
+    "age": 31,
+    "description": "Description",
+    "favouriteFood": "Tapas",
+    "followingUsers": [
+        {
+            "id": 4,
+            "nameFollowing": "Samuel",
+            "emailFollowing": "samuel@website.com"
+        }
+    ],
+    "followingRestaurants": [
+        {
+            "id": 1,
+            "nameFollowing": "American Whey",
+            "emailFollowing": "american@whey.com"
+        },
+        {
+            "id": 6,
+            "nameFollowing": "Meson Eulalio",
+            "emailFollowing": "meson@eulalio.com"
+        },
+        {
+            "id": 10,
+            "nameFollowing": "Meson Agapito",
+            "emailFollowing": "meson@agapito.com"
+        }
+    ],
+    "vouchers": [
+        {
+            "id": 3,
+            "voucherName": "30% discount",
+            "voucherDescription": "Available on mondays only"
+        },
+        {
+            "id": 4,
+            "voucherName": "40% discount",
+            "voucherDescription": "Available on tuesdays only"
+        }
+    ],
+    "booking": [
+        {
+            "id": 5,
+            "number": 1,
+            "specialRequirements": "",
+            "date": "2017-05-01 14:00:00.0"
+        },
+        {
+            "id": 6,
+            "number": 6,
+            "specialRequirements": "",
+            "date": "2017-04-14 21:00:00.0"
+        }
+    ],
+    "reviews": [
+        {
+            "id": 2,
+            "date": "2017-03-31 10:11:41.0",
+            "content": "This restaurant must be improved",
+            "rate": 2.2
+        },
+        {
+            "id": 5,
+            "date": "2017-03-31 10:11:41.0",
+            "content": "This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!",
+            "rate": 2.2
+        }
+    ]
+}
+REQUEST /api/clients/signin POST
+ANSWER
+REQUEST /api/clients/ PUT
+ANSWER
+
+REQUEST /api/clients/ GET
+ANSWER
+{
+    "number": 0,
+    "numberOfElements": 4,
+    "totalElements": 4,
+    "totalPages": 1,
+    "size": 20,
+    "content": [
+        {
+            "id": 1,
+            "name": "John",
+            "email": "john@website.com",
+            "age": 21,
+            "description": "Description",
+            "favouriteFood": "Italian",
+            "followingUsers": [
+                {
+                    "id": 2,
+                    "nameFollowing": "Peter",
+                    "emailFollowing": "peter@website.com"
+                }
+            ],
+            "followingRestaurants": [
+                {
+                    "id": 1,
+                    "nameFollowing": "American Whey",
+                    "emailFollowing": "american@whey.com"
+                },
+                {
+                    "id": 2,
+                    "nameFollowing": "Meson Mariano",
+                    "emailFollowing": "meson@mariano.com"
+                },
+                {
+                    "id": 5,
+                    "nameFollowing": "Meson Daniel",
+                    "emailFollowing": "meson@daniel.com"
+                },
+                {
+                    "id": 9,
+                    "nameFollowing": "Meson Genaro",
+                    "emailFollowing": "meson@genaro.com"
+                },
+                {
+                    "id": 8,
+                    "nameFollowing": "Meson Gento",
+                    "emailFollowing": "meson@gento.com"
+                }
+            ],
+            "vouchers": [
+                {
+                    "id": 1,
+                    "voucherName": "2*1 in salads",
+                    "voucherDescription": "Come with a friend and eat for the half price"
+                },
+                {
+                    "id": 2,
+                    "voucherName": "FREE drinks on fridays",
+                    "voucherDescription": "Every friday we offer free drinks with hamburger menus"
+                }
+            ],
+            "booking": [
+                {
+                    "id": 1,
+                    "number": 5,
+                    "specialRequirements": "One high chair for the baby",
+                    "date": "2017-03-24 22:00:00.0"
+                },
+                {
+                    "id": 3,
+                    "number": 3,
+                    "specialRequirements": "High chair",
+                    "date": "2017-05-16 20:00:00.0"
+                }
+            ],
+            "reviews": [
+                {
+                    "id": 1,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "Fucking amazing",
+                    "rate": 5
+                },
+                {
+                    "id": 4,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "Cute decoration, friendly staff and a good cook, also dogs allowed My favourite restaurant for English Breakfast!!!",
+                    "rate": 5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Peter",
+            "email": "peter@website.com",
+            "age": 31,
+            "description": "Description",
+            "favouriteFood": "Tapas",
+            "followingUsers": [
+                {
+                    "id": 4,
+                    "nameFollowing": "Samuel",
+                    "emailFollowing": "samuel@website.com"
+                }
+            ],
+            "followingRestaurants": [
+                {
+                    "id": 1,
+                    "nameFollowing": "American Whey",
+                    "emailFollowing": "american@whey.com"
+                },
+                {
+                    "id": 6,
+                    "nameFollowing": "Meson Eulalio",
+                    "emailFollowing": "meson@eulalio.com"
+                },
+                {
+                    "id": 10,
+                    "nameFollowing": "Meson Agapito",
+                    "emailFollowing": "meson@agapito.com"
+                }
+            ],
+            "vouchers": [
+                {
+                    "id": 3,
+                    "voucherName": "30% discount",
+                    "voucherDescription": "Available on mondays only"
+                },
+                {
+                    "id": 4,
+                    "voucherName": "40% discount",
+                    "voucherDescription": "Available on tuesdays only"
+                }
+            ],
+            "booking": [
+                {
+                    "id": 5,
+                    "number": 1,
+                    "specialRequirements": "",
+                    "date": "2017-05-01 14:00:00.0"
+                },
+                {
+                    "id": 6,
+                    "number": 6,
+                    "specialRequirements": "",
+                    "date": "2017-04-14 21:00:00.0"
+                }
+            ],
+            "reviews": [
+                {
+                    "id": 2,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "This restaurant must be improved",
+                    "rate": 2.2
+                },
+                {
+                    "id": 5,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!",
+                    "rate": 2.2
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Lucas",
+            "email": "lucas@website.com",
+            "age": 69,
+            "description": "Description",
+            "favouriteFood": "American",
+            "followingUsers": [],
+            "followingRestaurants": [
+                {
+                    "id": 2,
+                    "nameFollowing": "Meson Mariano",
+                    "emailFollowing": "meson@mariano.com"
+                },
+                {
+                    "id": 8,
+                    "nameFollowing": "Meson Gento",
+                    "emailFollowing": "meson@gento.com"
+                },
+                {
+                    "id": 1,
+                    "nameFollowing": "American Whey",
+                    "emailFollowing": "american@whey.com"
+                }
+            ],
+            "vouchers": [],
+            "booking": [],
+            "reviews": []
+        },
+        {
+            "id": 4,
+            "name": "Samuel",
+            "email": "samuel@website.com",
+            "age": 54,
+            "description": "Description",
+            "favouriteFood": "Thai",
+            "followingUsers": [
+                {
+                    "id": 1,
+                    "nameFollowing": "John",
+                    "emailFollowing": "john@website.com"
+                },
+                {
+                    "id": 2,
+                    "nameFollowing": "Peter",
+                    "emailFollowing": "peter@website.com"
+                }
+            ],
+            "followingRestaurants": [
+                {
+                    "id": 2,
+                    "nameFollowing": "Meson Mariano",
+                    "emailFollowing": "meson@mariano.com"
+                },
+                {
+                    "id": 7,
+                    "nameFollowing": "Meson Eusebio",
+                    "emailFollowing": "meson@eusebio.com"
+                },
+                {
+                    "id": 10,
+                    "nameFollowing": "Meson Agapito",
+                    "emailFollowing": "meson@agapito.com"
+                }
+            ],
+            "vouchers": [
+                {
+                    "id": 5,
+                    "voucherName": "50% discount",
+                    "voucherDescription": "Available on thursdays only"
+                },
+                {
+                    "id": 6,
+                    "voucherName": "10% discount",
+                    "voucherDescription": "Available on fridays only"
+                }
+            ],
+            "booking": [
+                {
+                    "id": 2,
+                    "number": 2,
+                    "specialRequirements": "Champagne",
+                    "date": "2017-04-04 22:30:00.0"
+                },
+                {
+                    "id": 4,
+                    "number": 4,
+                    "specialRequirements": "",
+                    "date": "2017-03-20 00:00:00.0"
+                }
+            ],
+            "reviews": [
+                {
+                    "id": 3,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "If you want to spend a good time eating, come here",
+                    "rate": 4.1
+                },
+                {
+                    "id": 6,
+                    "date": "2017-03-31 10:11:41.0",
+                    "content": "Nice and near to Liverpool Street station. Lovely food with good service and the atmosphere is buzzing as it gets quite busy in the evening would definitely go again.",
+                    "rate": 4.1
+                }
+            ]
+        }
+    ]
+}
+REQUEST /api/clients/1/following GET 
+ANSWER[
+    {
+        "id": 4,
+        "name": "Samuel",
+        "email": "samuel@website.com",
+        "age": 54,
+        "description": "Description",
+        "favouriteFood": "Thai",
+        "followingUsers": [
+            {
+                "id": 1,
+                "nameFollowing": "John",
+                "emailFollowing": "john@website.com"
+            },
+            {
+                "id": 2,
+                "nameFollowing": "Peter",
+                "emailFollowing": "peter@website.com"
+            }
+        ],
+        "followingRestaurants": [
+            {
+                "id": 2,
+                "nameFollowing": "Meson Mariano",
+                "emailFollowing": "meson@mariano.com"
+            },
+            {
+                "id": 7,
+                "nameFollowing": "Meson Eusebio",
+                "emailFollowing": "meson@eusebio.com"
+            },
+            {
+                "id": 10,
+                "nameFollowing": "Meson Agapito",
+                "emailFollowing": "meson@agapito.com"
+            }
+        ],
+        "vouchers": [
+            {
+                "id": 5,
+                "voucherName": "50% discount",
+                "voucherDescription": "Available on thursdays only"
+            },
+            {
+                "id": 6,
+                "voucherName": "10% discount",
+                "voucherDescription": "Available on fridays only"
+            }
+        ],
+        "booking": [
+            {
+                "id": 2,
+                "number": 2,
+                "specialRequirements": "Champagne",
+                "date": "2017-04-04 22:30:00.0"
+            },
+            {
+                "id": 4,
+                "number": 4,
+                "specialRequirements": "",
+                "date": "2017-03-20 00:00:00.0"
+            }
+        ],
+        "reviews": [
+            {
+                "id": 3,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "If you want to spend a good time eating, come here",
+                "rate": 4.1
+            },
+            {
+                "id": 6,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "Nice and near to Liverpool Street station. Lovely food with good service and the atmosphere is buzzing as it gets quite busy in the evening would definitely go again.",
+                "rate": 4.1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Peter",
+        "email": "peter@website.com",
+        "age": 31,
+        "description": "Description",
+        "favouriteFood": "Tapas",
+        "followingUsers": [
+            {
+                "id": 4,
+                "nameFollowing": "Samuel",
+                "emailFollowing": "samuel@website.com"
+            }
+        ],
+        "followingRestaurants": [
+            {
+                "id": 1,
+                "nameFollowing": "American Whey",
+                "emailFollowing": "american@whey.com"
+            },
+            {
+                "id": 6,
+                "nameFollowing": "Meson Eulalio",
+                "emailFollowing": "meson@eulalio.com"
+            },
+            {
+                "id": 10,
+                "nameFollowing": "Meson Agapito",
+                "emailFollowing": "meson@agapito.com"
+            }
+        ],
+        "vouchers": [
+            {
+                "id": 3,
+                "voucherName": "30% discount",p
+                "voucherDescription": "Available on mondays only"
+            },
+            {
+                "id": 4,
+                "voucherName": "40% discount",
+                "voucherDescription": "Available on tuesdays only"
+            }
+        ],
+        "booking": [
+            {
+                "id": 5,
+                "number": 1,
+                "specialRequirements": "",
+                "date": "2017-05-01 14:00:00.0"
+            },
+            {
+                "id": 6,
+                "number": 6,
+                "specialRequirements": "",
+                "date": "2017-04-14 21:00:00.0"
+            }
+        ],
+        "reviews": [
+            {
+                "id": 2,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "This restaurant must be improved",
+                "rate": 2.2
+            },
+            {
+                "id": 5,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!",
+                "rate": 2.2
+            }
+        ]
+    }
+]
+REQUEST /api/clients//4/unfollow DELETE
+ANSWER
+[
+    {
+        "id": 2,
+        "name": "Peter",
+        "email": "peter@website.com",
+        "age": 31,
+        "description": "Description",
+        "favouriteFood": "Tapas",
+        "followingUsers": [
+            {
+                "id": 4,
+                "nameFollowing": "Samuel",
+                "emailFollowing": "samuel@website.com"
+            }
+        ],
+        "followingRestaurants": [
+            {
+                "id": 1,
+                "nameFollowing": "American Whey",
+                "emailFollowing": "american@whey.com"
+            },
+            {
+                "id": 6,
+                "nameFollowing": "Meson Eulalio",
+                "emailFollowing": "meson@eulalio.com"
+            },
+            {
+                "id": 10,
+                "nameFollowing": "Meson Agapito",
+                "emailFollowing": "meson@agapito.com"
+            }
+        ],
+        "vouchers": [
+            {
+                "id": 3,
+                "voucherName": "30% discount",
+                "voucherDescription": "Available on mondays only"
+            },
+            {
+                "id": 4,
+                "voucherName": "40% discount",
+                "voucherDescription": "Available on tuesdays only"
+            }
+        ],
+        "booking": [
+            {
+                "id": 5,
+                "number": 1,
+                "specialRequirements": "",
+                "date": "2017-05-01 14:00:00.0"
+            },
+            {
+                "id": 6,
+                "number": 6,
+                "specialRequirements": "",
+                "date": "2017-04-14 21:00:00.0"
+            }
+        ],
+        "reviews": [
+            {
+                "id": 2,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "This restaurant must be improved",
+                "rate": 2.2
+            },
+            {
+                "id": 5,
+                "date": "2017-03-31 10:11:41.0",
+                "content": "This place have classic British dishes, served in a nery warm, homely, atmosphere. Love their calves' liver dish - it never fails. Welcoming staff and good service!",
+                "rate": 2.2
+            }
+        ]
+    }
+]
 /api/clients/{id}/follow POST
