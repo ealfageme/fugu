@@ -209,10 +209,24 @@ ___
 ```
 ## LOGIN CONTROLLER
 
+___
 - api/logIn/user
-- REQUEST:GET
-- URL:
+- REQUEST: GET
+- URL: https://localhost:8443/api/logIn/user
 - ANSWER:
+```
+
+{
+  "id": 4,
+  "name": "Samuel",
+  "password": "$2a$10$kvbgsF80wfsM4IQbsLoskOMNG1fZ9E52bKKbnpJq4TYD3MC.fKHfu",
+  "email": "samuel@website.com",
+  "age": 54,
+  "description": "Description",
+  "favouriteFood": "Thai",
+  "roles": "ROLE_USER"
+}
+```
 ___
 - api/logIn/restaurant
 - REQUEST: GET
@@ -328,13 +342,66 @@ ___
 - /api/clients/signin
 - REQUEST: POST
 - URL: https://localhost:8443/api/clients/signin
+- BODY RAW:
+```
+{
+
+    "name": "Samuel23",
+    "password": "$2a$10$kvbgsF80wfsM4IQbsLoskOMNG1fZ9E52bKKbnpJq4TYD3MC.fKHfu",
+    "email": "32samuel@website32.com",
+    "age": 54,
+    "description": "Description",
+    "favouriteFood": "Thai",
+    "roles": "ROLE_USER"
+}
+```
 - ANSWER:
+```
+{
+    "id": 5,
+    "name": "Samuel23",
+    "password": "$2a$10$Rw864bOSVpLADtLjpwFeNuRIp03Vtp8e3D9i.CGDRIi0Z7tvwOJ1K",
+    "email": "32samuel@website32.com",
+    "age": 54,
+    "description": "Description",
+    "favouriteFood": "Thai",
+    "roles": "ROLE_USER"
+}
+```
 ___
 - /api/clients/
 - REQUEST: PUT
-- URL: https://localhost:8443/api/clients
+- URL: https://localhost:8443/api/clients/
+- BODY RAW: 
+```
+{
+    "id": 1,
+    "name": "John2",
+    "password": "pass2",
+    "email": "john2@website.com",
+    "age": 21,
+    "description": "Description",
+    "favouriteFood": "Italian",
+    "roles": "ROLE_USER"
+}
+```
 - ANSWER:
-
+```
+{
+    "id": 1,
+    "name": "John2",
+    "password": "$2a$10$i5uoOlxkslxGGzPsXrh5wuZ1w8DxLhp5jEJ.7N.dARiiH9XiKoEaK",
+    "email": "john2@website.com",
+    "age": 21,
+    "description": "Description",
+    "favouriteFood": "Italian",
+    "roles": "ROLE_USER",
+    "restaurants": [],
+    "reviews": [],
+    "bookings": [],
+    "userVouchers": []
+}
+```
 ___
 - /api/clients/
 - REQUEST: GET
@@ -1983,12 +2050,46 @@ ___
 - /api/restaurant/{id}/reviews
 - REQUEST: POST
 - URL: /api/restaurant/3/reviews
+- BODY RAW:
+```
+        {
+            "content": "This restaurant should be improved",
+            "rate": 3.2,
+            "date": 1490977645000
+        }
+ ```
 - ANSWER:
+ ```
+{
+    "content": "This restaurant should be improved",
+    "rate": 3.2,
+    "date": 1490977645000,
+    "id": 7
+}
+ ```
 ___
 - /api/restaurant/{id}/book
 - REQUEST: POST
 - URL: /api/restaurant/1/book
+- BODY RAW:
+ ```
+{
+    "date": 1490389200000,
+    "number": 4,
+    "specialRequirements": "next to the door",
+    "state": "In process"
+}
+ ```
 - ANSWER
+ ```
+{
+    "id": 7,
+    "date": 1490389200000,
+    "number": 4,
+    "specialRequirements": "next to the door",
+    "state": "In process"
+}
+ ```
 ___
 - /api/restaurant/{id}/book 
 - REQUEST: GET
@@ -2013,10 +2114,26 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/book
+- /api/restaurant/{id}/voucher
 - REQUEST: POST
-- URL: /api/restaurant/2/book
+- URL: /api/restaurant/2/voucher
+- BODY RAW:
+```
+        {
+            "name": "2*1 in all our products",
+            "description": "Come with a friend and eat for the half price",
+            "expiryDate": 1490978162000
+        }
+```
 - ANSWER:
+```
+{
+    "name": "2*1 in all our products",
+    "description": "Come with a friend and eat for the half price",
+    "expiryDate": 1490978162000,
+    "id": 7
+}
+```
 ___
 - /api/restaurant/{id}/voucher
 - REQUEST  GET
@@ -2042,10 +2159,178 @@ ___
 ___
 -  /api/restaurant/{id}/follow 
 - REQUEST: POST
-- URL:  /api/restaurant/2/follow 
+- URL:  /api/restaurant/5/follow 
 - ANSWER:
+```
+[
+    {
+        "id": 1,
+        "name": "American Whey",
+        "address": "Avenida España 43 ",
+        "description": "Description",
+        "email": "american@whey.com",
+        "foodType": "American",
+        "menuPrice": 15,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 658742154,
+        "rate": 5,
+        "password": "$2a$10$9C7fG4P452vJC.BzPfvYn.t1kOXzuj55bqh47AXllDjQI5rgjFlRq"
+    },
+    {
+        "id": 2,
+        "name": "Meson Mariano",
+        "address": "Avenida America 2",
+        "description": "Description",
+        "email": "meson@mariano.com",
+        "foodType": "tapas",
+        "menuPrice": 12,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 652312342,
+        "rate": 4.9,
+        "password": "$2a$10$nbDFip3N2BGDkTgHNfxMJu6L4c7CILrI39waz4ui9H5WUCLf3V2su"
+    },
+    {
+        "id": 5,
+        "name": "Meson Daniel",
+        "address": "Plaza de España 69",
+        "description": "Description",
+        "email": "meson@daniel.com",
+        "foodType": "Japanese",
+        "menuPrice": 16,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 3.2,
+        "password": "$2a$10$OZsH6DRe4gU1m5FpsO1WS.bSaw2xPRlpBayTDpdr.Feius3tmZlwO"
+    },
+    {
+        "id": 9,
+        "name": "Meson Genaro",
+        "address": "Plaza de la reina 3",
+        "description": "Description",
+        "email": "meson@genaro.com",
+        "foodType": "Thai",
+        "menuPrice": 20,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 4.1,
+        "password": "$2a$10$P/Wdf.FdthZo/BiXDwmAhO7NVWvtZJOjRvJqG/N5QVW3Mb6pI2w0K"
+    },
+    {
+        "id": 8,
+        "name": "Meson Gento",
+        "address": "Calle azulona 76",
+        "description": "Description",
+        "email": "meson@gento.com",
+        "foodType": "Indian",
+        "menuPrice": 15,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 3.5,
+        "password": "$2a$10$9fP.oOIDCOVfwJVOBhAM9OfOXve/7mJ4qNDt9VkvN50zGTNCZBEjK"
+    },
+    {
+        "id": 5,
+        "name": "Meson Daniel",
+        "address": "Plaza de España 69",
+        "description": "Description",
+        "email": "meson@daniel.com",
+        "foodType": "Japanese",
+        "menuPrice": 16,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 3.2,
+        "password": "$2a$10$OZsH6DRe4gU1m5FpsO1WS.bSaw2xPRlpBayTDpdr.Feius3tmZlwO"
+    }
+]
+```
 ___
 - /api/restaurant/{id}/unfollow
 - REQUEST  POST
-- URL: /api/restaurant/2/unfollow
+- URL: /api/restaurant/5/unfollow
 - ANSWER:
+```
+[
+    {
+        "id": 1,
+        "name": "American Whey",
+        "address": "Avenida España 43 ",
+        "description": "Description",
+        "email": "american@whey.com",
+        "foodType": "American",
+        "menuPrice": 15,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 658742154,
+        "rate": 5,
+        "password": "$2a$10$rL48F4MxcU.1yuKWLBAZXOswSezSDm2xQ2v6O5U0mDDrBZYUw7Kl."
+    },
+    {
+        "id": 5,
+        "name": "Meson Daniel",
+        "address": "Plaza de España 69",
+        "description": "Description",
+        "email": "meson@daniel.com",
+        "foodType": "Japanese",
+        "menuPrice": 16,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 3.2,
+        "password": "$2a$10$RYemdjKM7EUooc8FqD4YiOycqbxx1ory.K2wuV247GYnTP9ocXqju"
+    },
+    {
+        "id": 9,
+        "name": "Meson Genaro",
+        "address": "Plaza de la reina 3",
+        "description": "Description",
+        "email": "meson@genaro.com",
+        "foodType": "Thai",
+        "menuPrice": 20,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 4.1,
+        "password": "$2a$10$Oy515Ahv9EJXrTw2UFthUOp.hdv0IEZK6Z0m8AEAiUtyTlt6RnPVu"
+    },
+    {
+        "id": 8,
+        "name": "Meson Gento",
+        "address": "Calle azulona 76",
+        "description": "Description",
+        "email": "meson@gento.com",
+        "foodType": "Indian",
+        "menuPrice": 15,
+        "breakfast": true,
+        "lunch": true,
+        "dinner": true,
+        "roles": "ROLE_RESTAURANT",
+        "phone": 123213123,
+        "rate": 3.5,
+        "password": "$2a$10$CJSUbIgO5eELXVI5eTqPMOz.4QskbPf7fi.vkM1Xtc012iVr9tTyW"
+    }
+]
+```
