@@ -1,3 +1,9 @@
+# API
+- Search-Web
+- Login Controller
+- Client
+- City
+
 ## Search-Web
 
 - /api/search-web/name
@@ -764,7 +770,7 @@ ___
 ]
 ```
 ___ 
-- /api/clients//4/unfollow
+- /api/clients/{id}/unfollow
 - REQUEST: DELETE
 - URL: 
 - ANSWER:
@@ -842,5 +848,98 @@ ___
             }
         ]
     }
+]
+```
+
+## City
+
+- /api/city/
+- REQUEST: GET
+- URL: https://localhost:8443/api/city/
+- ANSWER:
+```
+[
+    {
+        "name": "Madrid",
+        "id": 1
+    },
+    {
+        "name": "Barcelona",
+        "id": 2
+    },
+    {
+        "name": "Valencia",
+        "id": 3
+    },
+    {
+        "name": "Sevilla",
+        "id": 4
+    },
+    {
+        "name": "Zaragoza",
+        "id": 5
+    },
+    {
+        "name": "Bilbao",
+        "id": 6
+    }
+]
+```
+___
+
+- /api/city/{name}
+- REQUEST: GET
+- URL:https://localhost:8443/api/city/Madrid
+- ANSWER:
+```
+[
+  {
+    "id": 1,
+    "name": "American Whey",
+    "address": "Avenida España 43 ",
+    "description": "Description",
+    "email": "american@whey.com",
+    "foodType": "American",
+    "menuPrice": 15,
+    "breakfast": true,
+    "lunch": true,
+    "dinner": true,
+    "roles": "ROLE_RESTAURANT",
+    "phone": 658742154,
+    "rate": 5,
+    "password": "$2a$10$q1LCivWQJ/oIpHgAgwQTu.6R6vaf5Hk3MeajHBuvldTCseFZRCXk."
+  },
+  {
+    "id": 8,
+    "name": "Meson Gento",
+    "address": "Calle azulona 76",
+    "description": "Description",
+    "email": "meson@gento.com",
+    "foodType": "Indian",
+    "menuPrice": 15,
+    "breakfast": true,
+    "lunch": true,
+    "dinner": true,
+    "roles": "ROLE_RESTAURANT",
+    "phone": 123213123,
+    "rate": 3.5,
+    "password": "$2a$10$ujl8G7tATKdjiPp6FuZsCeZklhAys3rJpwPF9ha5MSVfhYu6v7Fk."
+  },
+  {
+    "id": 10,
+    "name": "Meson Agapito",
+    "address": "Avenida Pablo",
+    "description": "Description",
+    "email": "meson@agapito.com",
+    "foodType": "Galician",
+    "menuPrice": 8,
+    "breakfast": true,
+    "lunch": true,
+    "dinner": true,
+    "roles": "ROLE_RESTAURANT",
+    "phone": 123213123,
+    "rate": 2.6,
+    "password": "$2a$10$cLmGm9Z1D50ioFMEOz/ydebyZ9MZcHxbS9TtM7MTK3.i2r4nH6vI6"
+  }
 ]
 ```
