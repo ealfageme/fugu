@@ -19,58 +19,55 @@ import com.example.Entities.User;
 import com.example.Repositories.BookingRepository;
 import com.example.Repositories.RestaurantRepository;
 import com.example.Repositories.UserRepository;
+import com.example.Services.ClientService;
 
 @Controller
 public class ClientController {
 	
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private BookingRepository bookingRepository;
-	@Autowired
-	private RestaurantRepository restaurantRepository;
+	private ClientService clientService;
 	
 	@RequestMapping("/public-client/{name}")
 	public String publicClient(Model model, HttpServletRequest request, Authentication authentication,
 			@PathVariable String name, @RequestParam(required = false) String followPulsed,
 			@RequestParam(required = false) String unfollowPulsed) {
 
-		model.addAttribute("user", userRepository.findByName(name));
-		model.addAttribute("restaurants", userRepository.findByName(name).getRestaurants());
-		model.addAttribute("following", userRepository.findByName(name).getFollowing());
-		model.addAttribute("bookings", userRepository.findByName(name).getBookings());
-		model.addAttribute("vouchers", userRepository.findByName(name).getUserVouchers());
-		model.addAttribute("reviews", userRepository.findByName(name).getReviews());
-		model.addAttribute("generalRestaurants", restaurantRepository.findAll());
+		model.addAttribute("user", clientService.userRepositoryfindByName(name));
+		model.addAttribute("restaurants", clientService.userRepositoryfindByName(name).getRestaurants());
+		model.addAttribute("following", clientService.userRepositoryfindByName(name).getFollowing());
+		model.addAttribute("bookings", clientService.userRepositoryfindByName(name).getBookings());
+		model.addAttribute("vouchers", clientService.userRepositoryfindByName(name).getUserVouchers());
+		model.addAttribute("reviews", clientService.userRepositoryfindByName(name).getReviews());
+		model.addAttribute("generalRestaurants", clientService.restaurantRepositoryfindAll());
 		model.addAttribute("inSession", (request.isUserInRole("USER") || request.isUserInRole("RESTAURANT")));
-		String fileName = "profileImage" + userRepository.findByName(name).getId() + ".jpg";
+		String fileName = "profileImage" + clientService.userRepositoryfindByName(name).getId() + ".jpg";
 		model.addAttribute("fileName", fileName);
 		if (request.isUserInRole("USER")) {
 			String userloggin = authentication.getName();
 			model.addAttribute("followButton",
-					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					!clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 			model.addAttribute("unfollowButton",
-					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 
 			if (followPulsed != null) {
-				userRepository.findByEmail(userloggin).getFollowing().add(userRepository.findByName(name));
-				userRepository.save(userRepository.findByEmail(userloggin));
+				clientService.userRestaurantfindByEmail(userloggin).getFollowing().add(clientService.userRepositoryfindByName(name));
+				clientService.userRepositorysave(clientService.userRestaurantfindByEmail(userloggin));
 			}
 
 			model.addAttribute("followButton",
-					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					!clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 			model.addAttribute("unfollowButton",
-					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 
 			if (unfollowPulsed != null) {
-				userRepository.findByEmail(userloggin).getFollowing().remove(userRepository.findByName(name));
-				userRepository.save(userRepository.findByEmail(userloggin));
+				clientService.userRestaurantfindByEmail(userloggin).getFollowing().remove(clientService.userRepositoryfindByName(name));
+				clientService.userRepositorysave(clientService.userRestaurantfindByEmail(userloggin));
 			}
 
 			model.addAttribute("followButton",
-					!userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					!clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 			model.addAttribute("unfollowButton",
-					userRepository.findByEmail(userloggin).getFollowing().contains(userRepository.findByName(name)));
+					clientService.userRestaurantfindByEmail(userloggin).getFollowing().contains(clientService.userRepositoryfindByName(name)));
 		}
 		return "public-client";
 	}
@@ -80,21 +77,21 @@ public class ClientController {
 	public String privateClient(Model model, HttpServletRequest request, Authentication authentication) {
 		try {
 			String userloggin = authentication.getName();
-			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
+			String fileName = "profileImage" + clientService.userRestaurantfindByEmail(userloggin).getId() + ".jpg";
 			model.addAttribute("fileName", fileName);
-			model.addAttribute("user", userRepository.findByEmail(userloggin));
-			model.addAttribute("restaurants", userRepository.findByEmail(userloggin).getRestaurants());
-			model.addAttribute("following", userRepository.findByEmail(userloggin).getFollowing());
-			model.addAttribute("bookings", userRepository.findByEmail(userloggin).getBookings());
-			model.addAttribute("vouchers", userRepository.findByEmail(userloggin).getUserVouchers());
-			model.addAttribute("reviews", userRepository.findByEmail(userloggin).getReviews());
-			model.addAttribute("generalRestaurants", restaurantRepository.findAll());
-			model.addAttribute("bookingsAccepted", bookingRepository.findByStateAndBookingUser("Accepted",userRepository.findByEmail(userloggin)));
-			model.addAttribute("bookingsInProcess", bookingRepository.findByStateAndBookingUser("In Process",userRepository.findByEmail(userloggin)));
+			model.addAttribute("user", clientService.userRestaurantfindByEmail(userloggin));
+			model.addAttribute("restaurants", clientService.userRestaurantfindByEmail(userloggin).getRestaurants());
+			model.addAttribute("following", clientService.userRestaurantfindByEmail(userloggin).getFollowing());
+			model.addAttribute("bookings", clientService.userRestaurantfindByEmail(userloggin).getBookings());
+			model.addAttribute("vouchers", clientService.userRestaurantfindByEmail(userloggin).getUserVouchers());
+			model.addAttribute("reviews", clientService.userRestaurantfindByEmail(userloggin).getReviews());
+			model.addAttribute("generalRestaurants", clientService.restaurantRepositoryfindAll());
+			model.addAttribute("bookingsAccepted", clientService.bookingRepositoryfindByStateAndBookingUser("Accepted",clientService.userRestaurantfindByEmail(userloggin)));
+			model.addAttribute("bookingsInProcess", clientService.bookingRepositoryfindByStateAndBookingUser("In Process",clientService.userRestaurantfindByEmail(userloggin)));
 
 			List<Restaurant> recommendedRestaurants = new ArrayList<>();
-			User conectedUser = userRepository.findByEmail(userloggin);
-			for(Restaurant rest : restaurantRepository.findAll()){
+			User conectedUser = clientService.userRestaurantfindByEmail(userloggin);
+			for(Restaurant rest : clientService.restaurantRepositoryfindAll()){
 				if ((rest.getFoodType().equalsIgnoreCase(conectedUser.getFavouriteFood()))&&!(conectedUser.getRestaurants().contains(rest))){
 					recommendedRestaurants.add(rest);
 				}	
@@ -115,7 +112,7 @@ public class ClientController {
 			@RequestParam(required = false) String confirmpassword, @RequestParam(required = false) Integer userage){
 		if (request.isUserInRole("USER")) {
 			if (username != null) {
-				User user = userRepository.findByEmail(authentication.getName());
+				User user = clientService.userRestaurantfindByEmail(authentication.getName());
 				user.setName(username);
 				user.setEmail(useremail);
 				user.setDescription(userdescription);
@@ -123,7 +120,7 @@ public class ClientController {
 				if (password.equals(confirmpassword)) {
 					user.setPassword(password);
 				}
-				userRepository.save(user);
+				clientService.userRepositorysave(user);
 				if ((userage > 10) && (userage < 100))
 					user.setAge(userage);
 			}

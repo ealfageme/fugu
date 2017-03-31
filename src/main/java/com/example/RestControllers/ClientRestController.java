@@ -35,9 +35,9 @@ public class ClientRestController {
 	@Autowired
 	private UserRepository userRepository;
 
-	interface UserDetail extends User.Basic, User.Restaurants, User.Reviews, Review.Basic, Voucher.Basic, Booking.Basic,
-			Restaurant.Basic, User.Vouchers, User.Bookings {
-	}
+
+	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews,/* User.Users,*/ Review.Basic, Voucher.Basic, Booking.Basic, Restaurant.Basic,
+	User.Vouchers, User.Bookings{}
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
@@ -69,13 +69,14 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<User> putUser(HttpSession session, @PathVariable long id, @RequestBody User updatedUser) {
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	public ResponseEntity<User> putUser(HttpSession session, Authentication authenticate, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
 
-		User user = userRepository.findOne(id);
+		User user = userRepository.findByEmail(authenticate.getName());
 		if (user != null) {
-			updatedUser.setId(id);
+			updatedUser.setId(userRepository.findByEmail(authenticate.getName()).getId());
+			updatedUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			userRepository.save(updatedUser);
 			return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 		} else {
@@ -85,7 +86,16 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView(UserDetail.class)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<User> deleteUser(HttpSession session, @PathVariable long id) {
+		session.setMaxInactiveInterval(-1);
+		userRepository.delete(id);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 
+	}
+
+	@ResponseBody
+	@JsonView(User.Basic.class)
 	@RequestMapping(value = "/{id}/following", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
 

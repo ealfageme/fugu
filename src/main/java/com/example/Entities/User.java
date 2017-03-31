@@ -1,8 +1,8 @@
 package com.example.Entities;
 
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,16 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
+public class User{
 
-public class User {
 	public interface Basic {}
 	public interface Users {}
 	public interface Restaurants {}
@@ -158,4 +155,6 @@ public class User {
 	public void setRestaurant(ArrayList<Restaurant> Restaurant) {
 		this.restaurants = Restaurant;
 	}
+	
+
 }
