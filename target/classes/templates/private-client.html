@@ -47,7 +47,6 @@
 						<li class="signin">
 							<form class="navbar-form navbar-right" method="post" action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" /> 
-								<input type="hidden" name="_csrf" value="{{token}}" />
 							</form> 
 						</li>
 					</ul>
@@ -388,7 +387,6 @@
 							<label>Image file:</label><input type="file" name="file" />
 						</p>
 						<input type='submit' name='enviar' value='Enviar' />
-						<input type="hidden" name="_csrf" value="{{token}}" />
 					</form>
 					<br>
 					<p>{{user.description}}</p>
@@ -452,12 +450,10 @@
 
 							<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 								<button type='submit' class="btnMore">Update</button>
-								<input type="hidden" name="_csrf" value="{{token}}" /> <a
 									href="#modalwindow" data-toggle="modal">
 									<button type="submit" class="btnMore">Delete</button>
 								</a>
 							</div>
-							<input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</div>
 				</div>
