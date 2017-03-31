@@ -58,6 +58,7 @@ public class ClientRestController {
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public ResponseEntity<User> postClient(HttpSession session, @RequestBody User user) {
 		session.setMaxInactiveInterval(-1);
+		System.out.println(user.getName());
 		if (clientService.userRepositoryfindByName(user.getName())== null) {
 			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			clientService.userRepositorysave(user);

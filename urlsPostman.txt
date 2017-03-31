@@ -1,0 +1,9 @@
+Clients:
+
+/api/clients/{id} GET
+/api/clients/signin POST
+/api/clients/ PUT
+/api/clients/ GET
+/api/clients/{id}/following GET
+/api/clients//{id}/unfollow	DELETE
+/api/clients/{id}/follow POST
