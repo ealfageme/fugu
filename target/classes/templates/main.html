@@ -29,9 +29,7 @@
 
 <body>
 	<div id="fb-root"></div>
-
-
-
+	<input type="hidden" name='oauth' id="oauth">
 	<script>
 		// This is called with the results from from FB.getLoginStatus().
 		function statusChangeCallback(response) {
@@ -43,11 +41,12 @@
 			// for FB.getLoginStatus().
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
+				document.getElementById("oauth").value = accessToken = response.authResponse.accessToken;
+				console.log(accessToken = response.authResponse.accessToken);
 				testAPI();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
-				document.getElementById('status').innerHTML = 'Please log '
-						+ 'into this app.';
+				console.log('Please log into this app.');
 			}
 		}
 
@@ -55,8 +54,10 @@
 		// Button.  See the onlogin handler attached to it in the sample
 		// code below.
 		function checkLoginState() {
+			console.log("AQUI");
 			FB.getLoginStatus(function(response) {
 				statusChangeCallback(response);
+				window.top.location = "/main/";
 			});
 		}
 
@@ -84,8 +85,8 @@
 			FB.getLoginStatus(function(response) {
 				statusChangeCallback(response);
 			});
-
 		};
+		
 
 		// Load the SDK asynchronously
 		(function(d, s, id) {
@@ -154,26 +155,30 @@
 
 							</form>
 						</li>
-						<li style="margin-top: 27px;">
-						<form action="/facebook/" method="post">
-								<input type="hidden" name="scope" value="user_posts" />
-								<p>
-									<button style="background-color:transparent;border-width: 0px;" class="fb-login-button" type="submit">Connect to Facebook</button>
-								</p>
-							</form>
+						<li>
+								<a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/main/'+accessToken;}});">
+									<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
+								</a>
 								</li> {{/outSession}}
 						{{#inSession}}
-						<li>
+						<li class="signin">
 							<form class="navbar-form navbar-right" method="post"
 								action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" /> 
 								
 							</form>
+							</li>
+						<li class="signin">
 							<form class="navbar-form navbar-right" method="get"
 								action="/default/">
 								<button class="signInBtn">Visit profile</button>
 							</form>
-						</li> {{/inSession}}
+						</li>	
+						<li>
+							<a style="margin-top: 5px;"onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
+							</a> </li>
+						 {{/inSession}}
 					</ul>
 				</div>
 			</div>
