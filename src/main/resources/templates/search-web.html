@@ -27,6 +27,9 @@
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<input type="hidden" name='oauth' id="oauth">
+	<script src="/js/facebook.js"></script>
 	<!-- Header End -->
 	<header>
 		<!-- Navigation Menu start-->
@@ -62,14 +65,33 @@
 									style="padding: 0px !important">
 									<button type="submit" class="signInBtn">Sign in</button>
 								</a>
-							</form> {{/outSession}} {{#inSession}}
-							<form class="navbar-form navbar-right" method="post" action="/main2/">
+							</form>
+							<li>
+						<a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/main/'+accessToken;}});">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
+						</a>
+						</li> {{/outSession}} {{#inSession}}
+						{{#inNormalSession}}
+						<li class="signin">
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" /> 
-							</form> 
+								
+							</form>
+							</li>
+						{{/inNormalSession}}
+						<li class="signin">
 							<form class="navbar-form navbar-right" method="get"
 								action="/default/">
 								<button class="signInBtn">Visit profile</button>
-							</form> {{/inSession}}
+							</form>
+						</li>
+						{{#inFacebookSession}}	
+						<li>
+							<a style="margin-top: 5px;"onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
+							</a> </li>{{/inFacebookSession}}	
+						 {{/inSession}}
 			</li>
 			<li><a href="#contact">CONTACT US</a></li>
 			</ul>

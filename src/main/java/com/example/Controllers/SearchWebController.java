@@ -5,6 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
+import org.springframework.social.InvalidAuthorizationException;
+import org.springframework.social.RevokedAuthorizationException;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +28,10 @@ public class SearchWebController {
 
 	@Autowired
 	private SearchWebService  searchWebService;
+	@Autowired
+	private MainController controller;
+	
+	private Facebook facebook;
 
 	@RequestMapping(value = "/search-web/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String main(@RequestParam(required = false) String name, @RequestParam(required = false) String city,
@@ -65,8 +73,23 @@ public class SearchWebController {
 					favouritefood);
 			searchWebService.serviceUserSave(user);
 		}
-		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
-		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT"));
+		User userProfile=new User();
+		try{
+			facebook = new FacebookTemplate(controller.getAccessToken());
+			String [] fields = { "id", "email","name"};
+			userProfile = facebook.fetchObject("me", User.class, fields);userProfile.setRoles("USER");
+			System.out.println(userProfile.getName());
+		}catch(RevokedAuthorizationException e){
+			System.out.println("1");
+			facebook=null;
+		}catch(InvalidAuthorizationException ex){
+			System.out.println("2");
+			facebook=null;
+		}
+		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")||facebook!=null));
+		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT")&&facebook==null);
+		model.addAttribute("inNormalSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		model.addAttribute("inFacebookSession", facebook!=null);
 		
 		if(request.isUserInRole("USER")){
 			System.out.println(authentication.getName());
@@ -75,6 +98,9 @@ public class SearchWebController {
 		}else if(request.isUserInRole("RESTAURANT")){
 			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailRestaurant(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
+		}else if(facebook!=null){
+			model.addAttribute("feedbackname", userProfile.getName());
+			model.addAttribute("feedbackemail", "");
 		}
 
 		return "search-web";

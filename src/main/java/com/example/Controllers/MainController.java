@@ -1,10 +1,15 @@
 package com.example.Controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.social.InvalidAuthorizationException;
 import org.springframework.social.RevokedAuthorizationException;
 import org.springframework.social.connect.Connection;
@@ -26,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Entities.*;
 import com.example.Repositories.*;
+import com.example.Security.UserComponent;
 
 @Controller
 public class MainController {
@@ -36,7 +42,11 @@ public class MainController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private CityRepository cityRepository;
+	@Autowired
+	private UserComponent userComponent;
 	
+
+	private Facebook facebook;
 	private String accessToken;
 
 	@RequestMapping(value="/main/", method = { RequestMethod.GET, RequestMethod.POST })
@@ -58,13 +68,11 @@ public class MainController {
 			User user = new User(username,useremail,userdescription, userpassword ,Integer.parseInt(userage),favouritefood);
 			userRepository.save(user);
 		}
-		Facebook facebook=null;
 		User userProfile=new User();
 		try{
 			facebook = new FacebookTemplate(accessToken);
 			String [] fields = { "id", "email","name"};
-			userProfile = facebook.fetchObject("me", User.class, fields);userProfile.setRoles("USER");
-			System.out.println(userProfile.getName());
+			userProfile = facebook.fetchObject("me", User.class, fields);
 		}catch(RevokedAuthorizationException e){
 			facebook=null;
 		}catch(InvalidAuthorizationException ex){
@@ -72,13 +80,13 @@ public class MainController {
 		}
 		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")||facebook!=null));
 		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT")&&facebook==null);
-		
+		model.addAttribute("inNormalSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		model.addAttribute("inFacebookSession", facebook!=null);
+
 		if(request.isUserInRole("USER")){
-			System.out.println("user");
 			model.addAttribute("feedbackname", userRepository.findByEmail(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
 		}else if(request.isUserInRole("RESTAURANT")){
-			System.out.println("restaurant");
 			model.addAttribute("feedbackname", restaurantRepository.findByEmail(authentication.getName()).getName());
 			model.addAttribute("feedbackemail", authentication.getName());
 		}else if(facebook!=null){
@@ -99,14 +107,43 @@ public class MainController {
 		return "error";
 	}
 	
-	@RequestMapping("/main/{token}")
-	public String facebook(Model model, @PathVariable String token) {
-		this.accessToken=token;
-		return "redirect:/main/";
-	}
 	@RequestMapping("/main/logout")
-	public String facebooklogout(Model model) {
+	public String facebooklogout(Model model,Authentication auth) {
 		this.accessToken=null;
+		User user = userRepository.findByEmail(auth.getName());
+		userRepository.delete(user);
 		return "redirect:/main/";
 	}
+	
+	@RequestMapping("/facebooklogin/{token}")
+	public String facebooklogin(Model model, @PathVariable String token) {
+		this.accessToken=token;
+		User userProfile=new User();
+		try{
+			facebook = new FacebookTemplate(accessToken);
+			String [] fields = { "id", "email","name"};
+			userProfile = facebook.fetchObject("me", User.class, fields);userProfile.setRoles("USER");
+			List<GrantedAuthority> roles = new ArrayList<>();
+			userProfile.setRoles("ROLE_USER");
+			roles.add(new SimpleGrantedAuthority(userProfile.getRoles()));
+			userComponent.setLoggedUser(userProfile);
+		}catch(RevokedAuthorizationException e){
+			facebook=null;
+		}catch(InvalidAuthorizationException ex){
+			facebook=null;
+		}
+		model.addAttribute("loginemail", "email");
+		model.addAttribute("loginpassword", "password");
+		return "facebooklogin";
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+	
+	
 }

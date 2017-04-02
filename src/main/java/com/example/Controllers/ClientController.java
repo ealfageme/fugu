@@ -77,7 +77,12 @@ public class ClientController {
 	public String privateClient(Model model, HttpServletRequest request, Authentication authentication) {
 		try {
 			String userloggin = authentication.getName();
-			String fileName = "profileImage" + clientService.userRestaurantfindByEmail(userloggin).getId() + ".jpg";
+			String fileName;
+			if(request.isUserInRole("FACEBOOK")){
+				fileName = "profileImage1.jpg";
+			}else{
+				fileName = "profileImage" + clientService.userRestaurantfindByEmail(userloggin).getId() + ".jpg";
+			}
 			model.addAttribute("fileName", fileName);
 			model.addAttribute("user", clientService.userRestaurantfindByEmail(userloggin));
 			model.addAttribute("restaurants", clientService.userRestaurantfindByEmail(userloggin).getRestaurants());
@@ -89,6 +94,8 @@ public class ClientController {
 			model.addAttribute("bookingsAccepted", clientService.bookingRepositoryfindByStateAndBookingUser("Accepted",clientService.userRestaurantfindByEmail(userloggin)));
 			model.addAttribute("bookingsInProcess", clientService.bookingRepositoryfindByStateAndBookingUser("In Process",clientService.userRestaurantfindByEmail(userloggin)));
 
+			model.addAttribute("inNormalSession", request.isUserInRole("USER"));
+			model.addAttribute("inFacebookSession", request.isUserInRole("FACEBOOK"));
 			List<Restaurant> recommendedRestaurants = new ArrayList<>();
 			User conectedUser = clientService.userRestaurantfindByEmail(userloggin);
 			for(Restaurant rest : clientService.restaurantRepositoryfindAll()){

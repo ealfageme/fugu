@@ -26,6 +26,9 @@
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<input type="hidden" name='oauth' id="oauth">
+	<script src="/js/facebook.js"></script>
 	<header>
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
@@ -44,11 +47,20 @@
 						<li><a href="#opinions">OPINIONS</a></li>
 						<li><a href="#gallery">RESTAURANTS</a></li>
 						<li><a href="#profile">{{user.name}}</a></li>
+						{{#inNormalSession}}
 						<li class="signin">
-							<form class="navbar-form navbar-right" method="post" action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> 
-							</form> 
-						</li>
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" />
+
+							</form>
+						</li> {{/inNormalSession}}
+						{{#inFacebookSession}}
+						<li><a style="margin-top: 5px;"
+							onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
+								<button type="submit" class="loginBtn loginBtn--facebook">Log
+									out</button>
+						</a></li>{{/inFacebookSession}}
 					</ul>
 				</div>
 			</div>
@@ -382,7 +394,7 @@
 					<form action="/private-client/image/upload" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" name='imageTitle' /><br /> <img
-							src="/private-client/image/{{fileName}}" />
+							src="/private-client/image/{{fileName}}" alt="Facebook Image"/>
 						<p>
 							<label>Image file:</label><input type="file" name="file" />
 						</p>
@@ -450,7 +462,7 @@
 
 							<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 								<button type='submit' class="btnMore">Update</button>
-									href="#modalwindow" data-toggle="modal">
+									<a href="#modalwindow" data-toggle="modal">
 									<button type="submit" class="btnMore">Delete</button>
 								</a>
 							</div>

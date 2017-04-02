@@ -17,6 +17,9 @@ public class DefaultController {
 		if (request.isUserInRole("RESTAURANT")) {
             return "redirect:/private-restaurant/";
         }
+		if (request.isUserInRole("FACEBOOK")) {
+            return "redirect:/private-client/";
+        }
 
     	return "redirect:/main/";
     }
