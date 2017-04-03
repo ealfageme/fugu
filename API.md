@@ -3,6 +3,7 @@
 - Login Controller
 - Client
 - City
+- Restaurant
 
 ## Search-Web
 
@@ -839,7 +840,7 @@ ___
 ___ 
 - /api/clients/{id}/unfollow
 - REQUEST: DELETE
-- URL: 
+- URL: https://localhost:8443/api/clients/2/unfollow
 - ANSWER:
 ```
 [
@@ -1012,9 +1013,9 @@ ___
 ```
 ## RESTAURANT
 
-- /api/restaurant/{id}
+- /api/restaurants/{id}
 - REQUEST: GET
-- URL: https://localhost:8443/api/restaurant/1
+- URL: https://localhost:8443/api/restaurants/1
 - ANSWER: 
 ```
 {
@@ -1344,9 +1345,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/ 
+- /api/restaurants/ 
 - REQUEST: PUT
-- URL: https://localhost:8443/api/restaurant/
+- URL: https://localhost:8443/api/restaurants/
 - ANSWER: 
 ```
 {
@@ -1553,9 +1554,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/
+- /api/restaurants/
 - REQUEST: GET
-- URL: https://localhost:8443/api/restaurant/
+- URL: https://localhost:8443/api/restaurants/
 - ANSWER: 
 ```
 {
@@ -1761,9 +1762,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/signin 
+- /api/restaurants/signin 
 - REQUEST: POST
-- URL: https://localhost:8443/api/restaurant/signin 
+- URL: https://localhost:8443/api/restaurants/signin 
 - ANSWER: 
 ```
 {
@@ -1970,9 +1971,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/menus 
+- /api/restaurants/{id}/menus 
 - REQUEST: GET
-- URL: https://localhost:8443/api/restaurant/2/menus GET
+- URL: https://localhost:8443/api/restaurants/2/menus GET
 - ANSWER: 
 ```
 {
@@ -1998,9 +1999,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/menus 
+- /api/restaurants/{id}/menus 
 - REQUEST: POST
-- URL /api/restaurant/2/menus POST
+- URL https://localhost:8443/api/restaurants/2/menus POST
 - ANSWER:
 ```
 {
@@ -2012,9 +2013,9 @@ ___
 ```
 ___
 
-- /api/restaurant/{id}/menus
+- /api/restaurants/{id}/menus
 - REQUEST: POST
-- URL: /api/restaurant/2/menus 
+- URL: https://localhost:8443/api/restaurants/2/menus 
 - ANSWER:
 ```
 {
@@ -2025,9 +2026,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/reviews
+- /api/restaurants/{id}/reviews
 - REQUEST  GET
-- URL: /api/restaurant/3/reviews
+- URL: https://localhost:8443/api/restaurants/3/reviews
 - ANSWER:
 ```
 {
@@ -2047,9 +2048,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/reviews
+- /api/restaurants/{id}/reviews
 - REQUEST: POST
-- URL: /api/restaurant/3/reviews
+- URL: https://localhost:8443/api/restaurants/3/reviews
 - BODY RAW:
 ```
         {
@@ -2068,9 +2069,9 @@ ___
 }
  ```
 ___
-- /api/restaurant/{id}/book
+- /api/restaurants/{id}/book
 - REQUEST: POST
-- URL: /api/restaurant/1/book
+- URL: https://localhost:8443/api/restaurants/1/book
 - BODY RAW:
  ```
 {
@@ -2091,7 +2092,7 @@ ___
 }
  ```
 ___
-- /api/restaurant/{id}/book 
+- /api/restaurants/{id}/book 
 - REQUEST: GET
 - URL: /api/restaurant/2/book 
 - ANSWER:
@@ -2114,7 +2115,7 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/voucher
+- /api/restaurants/{id}/voucher
 - REQUEST: POST
 - URL: /api/restaurant/2/voucher
 - BODY RAW:
@@ -2135,9 +2136,9 @@ ___
 }
 ```
 ___
-- /api/restaurant/{id}/voucher
+- /api/restaurants/{id}/voucher
 - REQUEST  GET
-- URL: /api/restaurant/2/voucher
+- URL: https://localhost:8443/api/restaurants/2/voucher
 - ANSWER:
 ```
 {
@@ -2157,9 +2158,9 @@ ___
 }
 ```
 ___
--  /api/restaurant/{id}/follow 
+-  /api/restaurants/{id}/follow 
 - REQUEST: POST
-- URL:  /api/restaurant/5/follow 
+- URL:  https://localhost:8443/api/restaurants/5/follow 
 - ANSWER:
 ```
 [
@@ -2262,9 +2263,9 @@ ___
 ]
 ```
 ___
-- /api/restaurant/{id}/unfollow
+- /api/restaurants/{id}/unfollow
 - REQUEST  POST
-- URL: /api/restaurant/5/unfollow
+- URL: https://localhost:8443/api/restaurants/5/unfollow
 - ANSWER:
 ```
 [
