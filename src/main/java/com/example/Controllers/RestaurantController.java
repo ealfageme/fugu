@@ -127,7 +127,7 @@ public class RestaurantController {
 	@RequestMapping(value = "/public-restaurant/{name}/book", method = RequestMethod.POST)
 	public String bookTable(Model model,@RequestParam(required=false) String bookingday,
 			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
-			@RequestParam(required=false) String specialRequirements,@PathVariable String name){
+			@RequestParam(required=false) String specialRequirements,@PathVariable String name, Authentication authentication){
 		Date date=new Date();
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-" + bookingday + " " + bookinghour);
@@ -136,7 +136,8 @@ public class RestaurantController {
 		}
 		Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
 		booking.setBookingRestaurant(restaurantService.restaurantServiceFindByName(name));
-		long id = 1;
+		String userloggin = authentication.getName();
+		long id = (restaurantService.userRepositoryfindByEmail(userloggin)).getId();
 		booking.setBookingUser(restaurantService.userRepositoryfindOne(id));
 		restaurantService.bookingRepositorysave(booking);
 		return "redirect:/public-restaurant/{name}";
