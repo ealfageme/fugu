@@ -120,16 +120,13 @@ public class RestaurantRestController {
 	public ResponseEntity<Menu> postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page,
 			@RequestBody Menu newMenu) {
 		session.setMaxInactiveInterval(-1);
-		
-		if (restaurantService.restaurantServiceMenuFindDish(newMenu.getDish()) == null) {
-			Restaurant restaurant = restaurantService.restaurantServiceFindOne(id);
-			restaurant.getMenus().add(newMenu);
-			newMenu.setRestaurantMenu(restaurant);
-			restaurantService.restaurantServiceMenuSave(newMenu);
-			return new ResponseEntity<>(newMenu, HttpStatus.CREATED);
-		} else {
-			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
+		Restaurant restaurant = restaurantService.restaurantServiceFindOne(id);
+		 if (restaurantService.checkMenu(newMenu,restaurant.getEmail())){
+			 restaurantService.saveMenu(newMenu, restaurant.getEmail());	 
+			 return new ResponseEntity<>(newMenu, HttpStatus.CREATED);
+		 } else {
+			 return new ResponseEntity<>(HttpStatus.CONFLICT);
+		 }
 	}
 
 	@ResponseBody

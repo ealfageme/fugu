@@ -232,17 +232,10 @@ public class RestaurantController {
 			@RequestParam(required=false) Double menuprice,Authentication authentication){
 		if (request.isUserInRole("RESTAURANT")) {
 			if (menuname != null) {
-				boolean repeated = false;
 				Menu menu = new Menu(menuname, menuprice, menudescription);
-				for(Menu m: restaurantService.restaurantRepositoryFindByEmail(authentication.getName()).getMenus()){
-					if(m.getDish().equals(menuname)){
-						repeated=true;
-						break;
-					}
-				}
-				if (!repeated) {
-					menu.setRestaurantMenu(restaurantService.restaurantRepositoryFindByEmail(authentication.getName()));
-					restaurantService.restaurantServiceMenuSave(menu);
+				if ( restaurantService.checkMenu(menu,authentication.getName())){
+					restaurantService.saveMenu(menu, authentication.getName());
+
 				}
 			}
 		}
