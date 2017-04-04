@@ -46,6 +46,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
     ![main page](src/main/resources/static/images/captures/main-1.png)
     ![main page](src/main/resources/static/images/captures/main-2.png)
     ![main page](src/main/resources/static/images/captures/main-3.png)
+    ![main page](src/main/resources/static/images/captures/main-4.png)
       * Description: This is the first page you can see in our application. You have a login section and a sign in section too. If you only want to see some superficial information you have some sections to inspect our services.
 * __City__
     ![city](src/main/resources/static/images/captures/city-1.png)
