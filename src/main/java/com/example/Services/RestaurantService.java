@@ -37,26 +37,23 @@ public class RestaurantService {
 	private VoucherRepository voucherRepository;
 	
 	//Restaurant
-	public Restaurant restaurantServiceFindOne(Long id){
+	public Restaurant restaurantRepositoryFindOne(Long id){
 		return restaurantRepository.findOne(id);
 	}
-	public void restaurantServiceSave(Restaurant restaurant){
+	public void restaurantRepositorySave(Restaurant restaurant){
 		restaurantRepository.save(restaurant);
 	}
-	public Restaurant restaurantServiceFindByName(String name){
+	public Restaurant restaurantRepositoryFindByName(String name){
 		return restaurantRepository.findByName(name);
 	}
 	public Restaurant restaurantRepositoryFindByEmail(String email){
 		return restaurantRepository.findByEmail(email);
 	}
-	public Page<Restaurant> restaurantServicefindByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page){
+	public Page<Restaurant> restaurantRepositoryfindByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page){
 		return restaurantRepository.findByRateBetweenOrderByRateDesc(min, max, page);
 	}
-	public void restaurantServiceDelete(Long id){
+	public void restaurantRepositoryDelete(Long id){
 		restaurantRepository.delete(id);
-	}
-	public Restaurant restaurantServiceFindByEmail(String email){
-		return restaurantRepository.findByEmail(email);
 	}
 	//Menu
 	public Page<Menu> restaurantServiceFindByRestaurantMenu(Restaurant restaurant, Pageable page){

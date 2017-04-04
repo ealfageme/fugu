@@ -80,27 +80,25 @@ public class SearchWebController {
 			userProfile = facebook.fetchObject("me", User.class, fields);userProfile.setRoles("USER");
 			System.out.println(userProfile.getName());
 		}catch(RevokedAuthorizationException e){
-			System.out.println("1");
 			facebook=null;
 		}catch(InvalidAuthorizationException ex){
-			System.out.println("2");
 			facebook=null;
 		}
-		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")||facebook!=null));
-		model.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT")&&facebook==null);
-		model.addAttribute("inNormalSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
-		model.addAttribute("inFacebookSession", facebook!=null);
+		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")||facebook!=null))
+			.addAttribute("outSession", !request.isUserInRole("USER")&&!request.isUserInRole("RESTAURANT")&&facebook==null)
+			.addAttribute("inNormalSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")))
+			.addAttribute("inFacebookSession", facebook!=null);
 		
 		if(request.isUserInRole("USER")){
 			System.out.println(authentication.getName());
-			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailUser(authentication.getName()).getName());
-			model.addAttribute("feedbackemail", authentication.getName());
+			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailUser(authentication.getName()).getName())
+				.addAttribute("feedbackemail", authentication.getName());
 		}else if(request.isUserInRole("RESTAURANT")){
-			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailRestaurant(authentication.getName()).getName());
-			model.addAttribute("feedbackemail", authentication.getName());
+			model.addAttribute("feedbackname", searchWebService.serviceFindByEmailRestaurant(authentication.getName()).getName())
+				.addAttribute("feedbackemail", authentication.getName());
 		}else if(facebook!=null){
-			model.addAttribute("feedbackname", userProfile.getName());
-			model.addAttribute("feedbackemail", "");
+			model.addAttribute("feedbackname", userProfile.getName())
+				.addAttribute("feedbackemail", "");
 		}
 
 		return "search-web";

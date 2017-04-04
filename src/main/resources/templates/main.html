@@ -75,7 +75,7 @@
 							</form>
 						</li>
 						<li>
-						<a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/facebooklogin/'+accessToken;}});">
+						<a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/facebooklogin/'+accessToken;}},{scope: 'email'});">
 							<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
 						</a>
 						</li> {{/outSession}} {{#inSession}} {{#inNormalSession}}
@@ -94,8 +94,7 @@
 						</li> {{#inFacebookSession}}
 						<li><a style="margin-top: 5px;"
 							onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
-								<button type="submit" class="loginBtn loginBtn--facebook">Log
-									out</button>
+								<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
 						</a></li>{{/inFacebookSession}} {{/inSession}}
 					</ul>
 				</div>
