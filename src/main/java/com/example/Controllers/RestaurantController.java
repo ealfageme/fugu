@@ -36,48 +36,44 @@ public class RestaurantController {
 	@RequestMapping("/public-restaurant/{name}")
 	public String publicRestaurant(Model model,HttpServletRequest request,Authentication authentication, @PathVariable String name,
 			@RequestParam(required=false) String unfavPulsed,@RequestParam(required=false) String favPulsed) {
-		String fileName = "profileImageRestaurant"+restaurantService.restaurantServiceFindByName(name).getId()+".jpg";
-		model.addAttribute("fileName", fileName);
-		model.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
-		Page<Menu> menu=restaurantService.restaurantServiceFindByRestaurantMenu(restaurantService.restaurantServiceFindByName(name),new PageRequest(0,5));
-		model.addAttribute("BigMenu", menu.getNumberOfElements()>4);
-		model.addAttribute("restaurantId", restaurantService.restaurantServiceFindByName(name).getId());
-		model.addAttribute("restaurant", restaurantService.restaurantServiceFindByName(name));
-		model.addAttribute("menu", restaurantService.restaurantServiceFindByRestaurantMenu(restaurantService.restaurantServiceFindByName(name),new PageRequest(0,4)));
-		model.addAttribute("vouchers", restaurantService.restaurantServiceFindByName(name).getVouchers());
-		model.addAttribute("reviews", restaurantService.restaurantServiceFindByName(name).getRestaurantReviews());
-		model.addAttribute("inSession", request.isUserInRole("USER"));
-		model.addAttribute("outSession", !request.isUserInRole("USER"));
+		String fileName = "profileImageRestaurant"+restaurantService.restaurantRepositoryFindByName(name).getId()+".jpg";
+		model.addAttribute("fileName", fileName)
+			.addAttribute("inSession", (request.isUserInRole("USER")||request.isUserInRole("RESTAURANT")));
+		Page<Menu> menu=restaurantService.restaurantServiceFindByRestaurantMenu(restaurantService.restaurantRepositoryFindByName(name),new PageRequest(0,5));
+		model.addAttribute("BigMenu", menu.getNumberOfElements()>4)
+			.addAttribute("restaurantId", restaurantService.restaurantRepositoryFindByName(name).getId())
+			.addAttribute("restaurant", restaurantService.restaurantRepositoryFindByName(name))
+			.addAttribute("menu", restaurantService.restaurantServiceFindByRestaurantMenu(restaurantService.restaurantRepositoryFindByName(name),new PageRequest(0,4)))
+			.addAttribute("vouchers", restaurantService.restaurantRepositoryFindByName(name).getVouchers())
+			.addAttribute("reviews", restaurantService.restaurantRepositoryFindByName(name).getRestaurantReviews())
+			.addAttribute("inSession", request.isUserInRole("USER"))
+			.addAttribute("outSession", !request.isUserInRole("USER"));
 		if (request.isUserInRole("USER")) {
 			String userloggin = authentication.getName();
 			model.addAttribute("favButton", ! restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 			model.addAttribute("unfavButton", restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 			if (favPulsed != null) {
-
-				restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants().add(restaurantService.restaurantServiceFindByName(name));
+				restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants().add(restaurantService.restaurantRepositoryFindByName(name));
 				restaurantService.userRepositorysave(restaurantService.userRepositoryfindByEmail(userloggin));
-				restaurantService.restaurantServiceFindByName(name).getUsers().add(restaurantService.userRepositoryfindByEmail(userloggin));
-				restaurantService.restaurantServiceSave(restaurantService.restaurantServiceFindByName(name));
-
+				restaurantService.restaurantRepositoryFindByName(name).getUsers().add(restaurantService.userRepositoryfindByEmail(userloggin));
+				restaurantService.restaurantRepositorySave(restaurantService.restaurantRepositoryFindByName(name));
 			}
 			model.addAttribute("favButton", !restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 			model.addAttribute("unfavButton",restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 			if (unfavPulsed != null) {
-
-				restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants().remove(restaurantService.restaurantServiceFindByName(name));
+				restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants().remove(restaurantService.restaurantRepositoryFindByName(name));
 				restaurantService.userRepositorysave(restaurantService.userRepositoryfindByEmail(userloggin));
-				restaurantService.restaurantServiceFindByName(name).getUsers().remove(restaurantService.userRepositoryfindByEmail(userloggin));
-				restaurantService.restaurantServiceSave(restaurantService.restaurantServiceFindByName(name));
-
+				restaurantService.restaurantRepositoryFindByName(name).getUsers().remove(restaurantService.userRepositoryfindByEmail(userloggin));
+				restaurantService.restaurantRepositorySave(restaurantService.restaurantRepositoryFindByName(name));
 			}
 			model.addAttribute("favButton", !restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 			model.addAttribute("unfavButton", restaurantService.userRepositoryfindByEmail(userloggin).getRestaurants()
-					.contains(restaurantService.restaurantServiceFindByName(name)));
+					.contains(restaurantService.restaurantRepositoryFindByName(name)));
 		}
 		return "public-restaurant";
 	}
@@ -94,18 +90,18 @@ public class RestaurantController {
 			model.addAttribute("fileMenuName", fileMenuName);
 			if (request.isUserInRole("RESTAURANT")) {
 				model.addAttribute("restaurantId", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getId());
-				Page<Menu> menus=restaurantService.menuRepositoryfindByRestaurantMenu(restaurantService.restaurantServiceFindByName(restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getName()),new PageRequest(0,5));
-				model.addAttribute("BigMenu", menus.getNumberOfElements()>4);
-				model.addAttribute("restaurant", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin));
-				model.addAttribute("menu",restaurantService.menuRepositoryfindByRestaurantMenu(restaurantService.restaurantServiceFindByName(restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getName()),new PageRequest(0,4)));
-				model.addAttribute("bookings", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getBookings());
-				model.addAttribute("bookingsAccepted",restaurantService.bookingRepositoryfindByStateAndBookingRestaurant("Accepted",
-						restaurantService.restaurantRepositoryFindByEmail(restaurantloggin)));
-				model.addAttribute("bookingsInProcess", restaurantService.bookingRepositoryfindByStateAndBookingRestaurant("In Process",
-						restaurantService.restaurantRepositoryFindByEmail(restaurantloggin)));
-				model.addAttribute("vouchers", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getVouchers());
-				model.addAttribute("reviews",
-						restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getRestaurantReviews());
+				Page<Menu> menus=restaurantService.menuRepositoryfindByRestaurantMenu(restaurantService.restaurantRepositoryFindByName(restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getName()),new PageRequest(0,5));
+				model.addAttribute("BigMenu", menus.getNumberOfElements()>4)
+				.addAttribute("restaurant", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin))
+				.addAttribute("menu",restaurantService.menuRepositoryfindByRestaurantMenu(restaurantService
+						.restaurantRepositoryFindByName(restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getName()),new PageRequest(0,4)))
+				.addAttribute("bookings", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getBookings())
+				.addAttribute("bookingsAccepted",restaurantService.bookingRepositoryfindByStateAndBookingRestaurant("Accepted",
+						restaurantService.restaurantRepositoryFindByEmail(restaurantloggin)))
+				.addAttribute("bookingsInProcess", restaurantService.bookingRepositoryfindByStateAndBookingRestaurant("In Process",
+						restaurantService.restaurantRepositoryFindByEmail(restaurantloggin)))
+				.addAttribute("vouchers", restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getVouchers())
+				.addAttribute("reviews",restaurantService.restaurantRepositoryFindByEmail(restaurantloggin).getRestaurantReviews());
 			}
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
@@ -135,7 +131,7 @@ public class RestaurantController {
 			return null;
 		}
 		Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
-		booking.setBookingRestaurant(restaurantService.restaurantServiceFindByName(name));
+		booking.setBookingRestaurant(restaurantService.restaurantRepositoryFindByName(name));
 		long id = 1;
 		booking.setBookingUser(restaurantService.userRepositoryfindOne(id));
 		restaurantService.bookingRepositorysave(booking);
@@ -147,9 +143,9 @@ public class RestaurantController {
 			@RequestParam(required=false) String rate, @RequestParam(required=false) String content){
 		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
-			if (rate!=null) {
+			if (rate != null) {
 				Review review = new Review(content,Integer.parseInt(rate),new Date());
-				review.setReviewRestaurant(restaurantService.restaurantServiceFindByName(name));
+				review.setReviewRestaurant(restaurantService.restaurantRepositoryFindByName(name));
 				review.setReviewUser(restaurantService.userRepositoryfindByEmail(userloggin));
 				restaurantService.reviewRepositorysave(review);
 			}
@@ -186,7 +182,7 @@ public class RestaurantController {
 					restaurant.setDinner(true);
 				else
 					restaurant.setDinner(false);
-				restaurantService.restaurantServiceSave(restaurant);
+				restaurantService.restaurantRepositorySave(restaurant);
 
 			}
 		}
@@ -201,19 +197,19 @@ public class RestaurantController {
 			if (vouchername != null) {
 				 Calendar calendar = Calendar.getInstance();
 			     calendar.setTime(new Date());
-			     if(expiry==1){
+			     if (expiry == 1) {
 				       calendar.add(Calendar.DAY_OF_YEAR, 7);
-			}else if(expiry==2){
-			       calendar.add(Calendar.DAY_OF_YEAR, 14);
-			}else if(expiry==3){
-					calendar.add(Calendar.DAY_OF_YEAR, 21);
-				}else if(expiry==4){
+				}else if (expiry == 2) {
+				       calendar.add(Calendar.DAY_OF_YEAR, 14);
+				}else if (expiry == 3) {
+						calendar.add(Calendar.DAY_OF_YEAR, 21);
+				}else if(expiry == 4){
 					       calendar.add(Calendar.MONTH, 1);
-				}else if(expiry==5){
+				}else if(expiry == 5){
 					calendar.add(Calendar.MONTH, 2);
-				}else if(expiry==6){
+				}else if(expiry == 6){
 					calendar.add(Calendar.MONTH, 3);
-				}else if(expiry==7){
+				}else if(expiry == 7){
 					calendar.add(Calendar.MONTH, 6);
 				}
 				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime());					
@@ -235,6 +231,7 @@ public class RestaurantController {
 				Menu menu = new Menu(menuname, menuprice, menudescription);
 				if ( restaurantService.checkMenu(menu,authentication.getName())){
 					restaurantService.saveMenu(menu, authentication.getName());
+
 
 				}
 			}

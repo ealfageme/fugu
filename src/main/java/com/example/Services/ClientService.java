@@ -25,25 +25,30 @@ public class ClientService {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	
-	public User userRepositoryfindByName(String name){
+	public User userRepositoryFindByName(String name){
 		return userRepository.findByName(name);
 	}
-	public User userRepositoryfindOne(Long id){
+	public User userRepositoryFindOne(Long id){
 		return userRepository.findOne(id);
 	}
-	public User userRestaurantfindByEmail(String email){
+	public User userRepositoryFindByEmail(String email){
 		return userRepository.findByEmail(email);
 	}
-	public Page<User> userRepositoryfindAll(Pageable page){
+	public Page<User> userRepositoryFindAll(Pageable page){
 		return userRepository.findAll(page);
 	}
-	public Iterable<Restaurant> restaurantRepositoryfindAll(){
+	public Iterable<Restaurant> restaurantRepositoryFindAll(){
 		return  restaurantRepository.findAll();
 	}
 	public void userRepositorysave(User user){
 		 userRepository.save(user);
 	}
-	public List<Booking> bookingRepositoryfindByStateAndBookingUser(String state,User user){
+	public List<Booking> bookingRepositoryFindByStateAndBookingUser(String state,User user){
 		return bookingRepository.findByStateAndBookingUser(state, user);
+	}
+	
+	public User userRepositoryDeleteUser(User user){
+		userRepository.delete(user);
+		return user;
 	}
 }
