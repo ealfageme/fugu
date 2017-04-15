@@ -68,4 +68,12 @@ public class Menu {
 	public String getDescription(){
 		return this.description;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		boolean isequal =false;
+		Menu menu = (Menu) o;
+		isequal = (menu.getDish().equals(this.dish)) && (menu.getPrice().equals(this.price));
+		return isequal;
+	}
 }

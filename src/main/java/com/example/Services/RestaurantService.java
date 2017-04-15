@@ -118,6 +118,21 @@ public class RestaurantService {
 		return userRepository.findOne(id);
 	}
 
-	
+	public boolean checkMenu(Menu menu, String email){
+		boolean repeated = false;
+		List<Menu> menus = restaurantRepository.findByEmail(email).getMenus();
+		for (Menu m : menus){
+			if (menu.equals(m)){
+				repeated = true;
+				break;
+			}
+		}
+		return !repeated;
+	}
+	public void saveMenu(Menu menu, String email){
+		menu.setRestaurantMenu(restaurantRepository.findByEmail(email));
+		menuRepository.save(menu);
+		restaurantRepository.findByEmail(email).getMenus().add(menu);
+	}
 
 }
