@@ -5,13 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CityComponent } from './city/city.component';
+import { MainComponent } from './main/main.component';
 import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CityComponent
+    CityComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
