@@ -53,6 +53,18 @@ public class RestaurantRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	@ResponseBody
+	@JsonView(RestaurantDetail.class)
+	@RequestMapping(value = "/city/{city}", method = RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurant(HttpSession session, @PathVariable String city) {
+		session.setMaxInactiveInterval(-1);
+		List<Restaurant> rests = restaurantService.restaurantRepositoryFindByCity(city);
+		if (rests != null) {
+			return new ResponseEntity<>(rests, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)

@@ -10,13 +10,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CityComponent implements OnInit {
   city: string;
   inSession: boolean;
+  private restaurants: string[] = [];
+
   constructor(private http: Http, activatedRoute: ActivatedRoute) {
-    this.http.get('https://localhost:8443/api/restaurants/').subscribe(
-      response => console.log(response.json()),
+     this.city = activatedRoute.snapshot.params['name'];
+    this.http.get('https://localhost:8443/api/restaurants/city/' + this.city).subscribe(
+      response => {
+        console.log(response);
+        const data = response.json();
+        for (let i = 0; i < data.length; i++) {
+          const restaurant = data[i];
+          this.restaurants.push(restaurant);
+        }
+      },
       error => console.error(error)
     );
-    this.city = activatedRoute.snapshot.params['name'];
-    this.inSession = false;
+    this.inSession = false; 
    }
 
   ngOnInit() {

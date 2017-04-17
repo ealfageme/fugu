@@ -49,6 +49,9 @@ public class RestaurantService {
 	public Restaurant restaurantRepositoryFindByEmail(String email){
 		return restaurantRepository.findByEmail(email);
 	}
+	public List<Restaurant> restaurantRepositoryFindByCity(String city){
+		return restaurantRepository.findByCityName(city);
+	}
 	public Page<Restaurant> restaurantRepositoryfindByRateBetweenOrderByRateDesc(Double min, Double max, Pageable page){
 		return restaurantRepository.findByRateBetweenOrderByRateDesc(min, max, page);
 	}

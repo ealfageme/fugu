@@ -140,10 +140,10 @@
                 <!-- Section Header End -->
                 <div class="menus-container">
                     <!-- menu -->
-                    <div *ngFor="let restaurant of restaurants" class="menu row rowmar">
-                        <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="menu row rowmar">
+                        <div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
-                                <!--<button (Click) = [window.location.href='/public-restaurant/{{name}}'] class="food">-->
+                                <button  class="food">
                                     <div class="food-desc">
                                         <h6 class="food-name">{{restaurant.name}} ({{restaurant.foodType}})</h6>
                                         <br>
@@ -155,7 +155,8 @@
                                     <!-- /food-desc -->
                                     <div class="food-details"> <span>{{restaurant.address}}</span> </div>
                                     <!-- /food-details -->
-                                <!--</button>-->  
+                                </button>
+                                
                             </div>
                             <!-- /menu-column -->
                         </div>
