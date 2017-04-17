@@ -11,6 +11,8 @@ export class MainComponent implements OnInit {
   inSession: boolean;
   facebookSession: boolean;
   private restaurants: string[] = [];
+  email: string;
+  password: string;
 
   constructor(private http: Http) {
     this.inSession = false;
@@ -29,6 +31,10 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  logIn() {
+    console.log(this.email + " " + this.password);
   }
 
 }
