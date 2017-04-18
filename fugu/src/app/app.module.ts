@@ -12,6 +12,7 @@ import { SearchWebComponent } from './search-web/search-web.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { PublicClientComponent } from './public-client/public-client.component';
+import { PrivateClientComponent } from './private-client/private-client.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PublicClientComponent } from './public-client/public-client.component';
     SearchWebComponent,
     FooterComponent,
     ErrorComponent,
-    PublicClientComponent
+    PublicClientComponent,
+    PrivateClientComponent
   ],
   imports: [
     BrowserModule,
