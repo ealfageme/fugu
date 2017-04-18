@@ -27,31 +27,31 @@
                 <button type="submit" class="signInBtn">Sign in</button>
               </a>
             </form>
-            </li>
-            <li *ngIf="!inSession">
-              <a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/main/'+accessToken;}});">
-                <button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
-              </a>
-            </li>
-            <li *ngIf="inSession && !facebookSession" class="signin">
-              <form class="navbar-form navbar-right" method="post" action="/main2/">
-                <input type="submit" class="signInBtn" value="SignOut" />
+          </li>
+          <li *ngIf="!inSession">
+            <a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/main/'+accessToken;}});">
+              <button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
+            </a>
+          </li>
+          <li *ngIf="inSession && !facebookSession" class="signin">
+            <form class="navbar-form navbar-right" method="post" action="/main2/">
+              <input type="submit" class="signInBtn" value="SignOut" />
 
-              </form>
-            </li>
-            <li *ngIf="inSession" class="signin">
-              <form class="navbar-form navbar-right" method="get" action="/default/">
-                <button class="signInBtn">Visit profile</button>
-              </form>
-            </li>
+            </form>
+          </li>
+          <li *ngIf="inSession" class="signin">
+            <form class="navbar-form navbar-right" method="get" action="/default/">
+              <button class="signInBtn">Visit profile</button>
+            </form>
+          </li>
 
-            <li>
-              <a *ngIf="inSession && facebookSession" style="margin-top: 5px;" onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
-                <button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
-              </a>
-            </li>
+          <li>
+            <a *ngIf="inSession && facebookSession" style="margin-top: 5px;" onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
+              <button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
+            </a>
+          </li>
 
-            <li><a href="#contact">CONTACT US</a></li>
+          <li><a href="#contact">CONTACT US</a></li>
         </ul>
       </div>
     </div>
@@ -139,24 +139,30 @@
                   <form role="form" method='post'>
                     <div class="col-md-3">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="minPrice">                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span> 
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="minPrice">                        
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="maxPrice">                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>                        
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="maxPrice">                        
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="min">
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>                        
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="min">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
 														class="glyphicon glyphicon-star" ></span></span>
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="max">
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>                        
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="max">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
 														class="glyphicon glyphicon-star"></span></span>
                       </div>
@@ -362,7 +368,8 @@
               </div>
               <br> <input type="email" class="form-control formmargin" name='email' placeholder="Email" id="restaurantemail"
                 required>
-              <input type="text" class="form-control formmargin" name='phone' placeholder="Phone" id="restaurantphone" required>              <span id='message_restaurant_phone'></span> <br> <label for="name">Description:</label> <br>
+              <input type="text" class="form-control formmargin" name='phone' placeholder="Phone" id="restaurantphone" required>              
+              <span id='message_restaurant_phone'></span> <br> <label for="name">Description:</label> <br>
               <textarea style="border-radius: 0px !important" class="form-control" id="restaurantdescription" name='restaurantdescription'
                 rows="3" required></textarea>
               <br> <label for="name">Password (6 characters
@@ -398,7 +405,8 @@
           <form role="form" method='post'>
             <div class="form-group">
               <input type="text" class="form-control formmargin" name='name' placeholder="Name" id="usernameform">
-              <input type="text" class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform">              <br> <input type="text" class="form-control formmargin" name='age' placeholder="Age" id="userageform">
+              <input type="text" class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform">              
+              <br> <input type="text" class="form-control formmargin" name='age' placeholder="Age" id="userageform">
               <span id='message_user_age'></span>
               <div class="form-group">
                 <label for="filter">Favourite food</label> <select class="form-control" style="border-radius: 0px !important"
