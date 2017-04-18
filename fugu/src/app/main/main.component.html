@@ -266,9 +266,9 @@
 			</div>
 			<!-- /menu-carousel -->
 			<div class="col-md-4 col-md-offset-4 morediv">
-				<button class="btnMore" id="prevRestaurants" style="display: none;">Prev
+				<button *ngIf="prevRestaurant" class="btnMore" id="prevRestaurants" (click)="prevRestaurants()">Prev
 					Restaurant</button>
-				<button class="btnMore pull-right" id="moreRestaurants">Next
+				<button *ngIf="nextRestaurant" class="btnMore pull-right" id="moreRestaurants" (click)="nextRestaurants()">Next
 					restaurants</button>
 			</div>
 		</div>
