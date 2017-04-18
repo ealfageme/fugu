@@ -8,12 +8,14 @@ import { CityComponent } from './city/city.component';
 import { MainComponent } from './main/main.component';
 import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
+import { SearchWebComponent } from './search-web/search-web.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CityComponent,
-    MainComponent
+    MainComponent,
+    SearchWebComponent
   ],
   imports: [
     BrowserModule,
