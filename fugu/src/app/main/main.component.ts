@@ -22,6 +22,7 @@ export class MainComponent implements OnInit {
     this.facebookSession = false;
     this.http.get('https://localhost:8443/api/restaurants/?page=' + this.pagenumber + '&size=4').subscribe(
       response => {
+        console.log(response);
         const  data = response.json();
         for (let i = 0; i < data.content.length; i++) {
           const  restaurant = data.content[i];
@@ -35,7 +36,7 @@ export class MainComponent implements OnInit {
   }
 
   logIn() {
-    console.log(this.email + " " + this.password);
+    console.log(this.email + ' ' + this.password);
   }
 
   nextRestaurants() {
