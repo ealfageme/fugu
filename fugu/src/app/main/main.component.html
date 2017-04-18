@@ -43,9 +43,9 @@
 					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="#cities">CITIES</a></li>
-						<li><a href="#top-rated">TOP-RATED</a></li>
-						<li><a href="#contact">CONTACT US</a></li> 
+						<li><a (click)="goTo('#cities')">CITIES</a></li>
+						<li><a (click)="goTo('#top-rated')">TOP-RATED</a></li>
+						<li><a (click)="goTo('#contact')">CONTACT US</a></li> 
 						<li *ngIf="!inSession" class="signin">
 							<form class="navbar-form navbar-right" method="post"
 								action="/main2/">
@@ -66,9 +66,9 @@
 										value="" placeholder="Password">
 								</div>
 								<button (click)="logIn()" type="submit" class="logInBtn" >Login </button>
-								<a href="#modalwindow2" data-toggle="modal"
+								<a data-toggle="modal"
 									style="padding: 0px !important">
-									<button type="submit" class="signInBtn">Sign in</button>
+									<button (click)="modalWindow2.open()" type="submit" class="signInBtn" >Sign in</button>
 								</a>
 
 							</form>
@@ -389,23 +389,86 @@
 		</div>
 	</section>
 	<section id="register">
-		<div class="modal " id="modalwindow2">
-			<div class="modal-dialog">
-				<div class="modal-content"
+		<modal  #modalWindow>
+				<modal-content
 					style="background-color: #efefef; border-radius: 0;">
-					<div class="modal-header"
+					<modal-header
 						style="background-color: #28292e !important;">
 						<button type="button" class="close" data-dismiss="modal"
 							style="color: #ffffff;">&times;</button>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#"
+							<li class="active"><a (click)="modalWindow2.open()"
+								data-toggle="modal" data-dismiss="modal"
+								style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
+							<li><a (click)="modalWindow.open()"
+								style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
+						</ul>
+					</modal-header>
+					<modal-content>
+						<p class="formmargin">Introduce your following details:</p>
+						<form role="form" action="/main/">
+							<div class="form-group">
+								<input type="text" class="form-control formmargin"
+									name='username' placeholder="Name" id="usernameform"> <input
+									type="text" class="form-control formmargin" name='useremail'
+									placeholder="Email" id="useremailform"> <br> <input
+									type="text" class="form-control formmargin" name='userage'
+									placeholder="Age" id="userageform"> <span
+									id='message_user_age'></span>
+								<div class="form-group">
+									<label for="filter">Favourite food</label> <select
+										class="form-control"
+										style="border-radius: 0px !important; -webkit-appearance: none;"
+										name='favouritefood'>
+										<option value="Chinese" selected
+											style="border-radius: 0px !important">Chinese</option>
+										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
+										<option value="American" style="border-radius: 0px !important">American</option>
+										<option value="Thai" style="border-radius: 0px !important">Thai</option>
+										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
+										<option value="Galician" style="border-radius: 0px !important">Galician</option>
+										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
+										<option value="Indian" style="border-radius: 0px !important">Indian</option>
+										<option value="Italian" style="border-radius: 0px !important">Italian</option>
+									</select>
+								</div>
+								<br> <label for="name">Description:</label> <br>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="userdescriptionform"
+									name='userdescription' rows="3"></textarea>
+								<br> <label for="name">Password (6 characters
+									min.):</label> <input name='userpassword' type="password"
+									class="form-control formmargin" placeholder="Password"
+									id="password_client"> <input type="password"
+									id="confirm_password_client" name="confirm_password"
+									class="form-control formmargin" placeholder="Confirm password"
+									id="confirm_password_client"> <br>
+							</div>
+
+							<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+							<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
+							<span id='message_user_button'>Fill the form before
+								register</span> 
+						</form>
+					</modal-content>
+				</modal-content>
+		</modal>
+		<modal #modalWindow2>
+				<modal-content
+					style="background-color: #efefef; border-radius: 0;">
+					<modal-header
+						style="background-color: #28292e !important;">
+						<button type="button" class="close" data-dismiss="modal"
+							style="color: #ffffff;">&times;</button>
+						<ul class="nav navbar-nav">
+							<li class="active"><a (click)="modalWindow2.open()" 
 								style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
-							<li><a href="#modalwindow" data-toggle="modal"
+							<li><a (click)="modalWindow.open()" data-toggle="modal"
 								data-dismiss="modal"
 								style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
 						</ul>
-					</div>
-					<div class="modal-body">
+					</modal-header>
+					<modal-content>
 						<p class="formmargin">Introduce your following details:</p>
 						<form role="form" action="/main/">
 							<div class="form-group">
@@ -420,7 +483,7 @@
 										style="border-radius: 0px !important; -webkit-appearance: none;"
 										name='restaurantcity'>
 										<option value="Madrid" selected
-											style="border-radius: 0px !important">Madrid</option>
+											>Madrid</option>
 										<option value="Barcelona"
 											style="border-radius: 0px !important">Barcelona</option>
 										<option value="Valencia" style="border-radius: 0px !important">Valencia</option>
@@ -471,82 +534,10 @@
 									id='message_restaurant_button'>Fill the form before
 									register</span>
 							</div>
-
 						</form>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div class="modal " id="modalwindow">
-			<div class="modal-dialog">
-				<div class="modal-content"
-					style="background-color: #efefef; border-radius: 0;">
-					<div class="modal-header"
-						style="background-color: #28292e !important;">
-						<button type="button" class="close" data-dismiss="modal"
-							style="color: #ffffff;">&times;</button>
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="#modalwindow2"
-								data-toggle="modal" data-dismiss="modal"
-								style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
-							<li><a href="#"
-								style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
-						</ul>
-					</div>
-					<div class="modal-body">
-						<p class="formmargin">Introduce your following details:</p>
-						<form role="form" action="/main/">
-							<div class="form-group">
-								<input type="text" class="form-control formmargin"
-									name='username' placeholder="Name" id="usernameform"> <input
-									type="text" class="form-control formmargin" name='useremail'
-									placeholder="Email" id="useremailform"> <br> <input
-									type="text" class="form-control formmargin" name='userage'
-									placeholder="Age" id="userageform"> <span
-									id='message_user_age'></span>
-								<div class="form-group">
-									<label for="filter">Favourite food</label> <select
-										class="form-control"
-										style="border-radius: 0px !important; -webkit-appearance: none;"
-										name='favouritefood'>
-										<option value="Chinese" selected
-											style="border-radius: 0px !important">Chinese</option>
-										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
-										<option value="American" style="border-radius: 0px !important">American</option>
-										<option value="Thai" style="border-radius: 0px !important">Thai</option>
-										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
-										<option value="Galician" style="border-radius: 0px !important">Galician</option>
-										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
-										<option value="Indian" style="border-radius: 0px !important">Indian</option>
-										<option value="Italian" style="border-radius: 0px !important">Italian</option>
-									</select>
-								</div>
-								<br> <label for="name">Description:</label> <br>
-								<textarea style="border-radius: 0px !important"
-									class="form-control" id="userdescriptionform"
-									name='userdescription' rows="3"></textarea>
-								<br> <label for="name">Password (6 characters
-									min.):</label> <input name='userpassword' type="password"
-									class="form-control formmargin" placeholder="Password"
-									id="password_client"> <input type="password"
-									id="confirm_password_client" name="confirm_password"
-									class="form-control formmargin" placeholder="Confirm password"
-									id="confirm_password_client"> <br>
-							</div>
-
-							<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
-							<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
-							<span id='message_user_button'>Fill the form before
-								register</span> 
-						</form>
-
-					</div>
-
-
-				</div>
-			</div>
-		</div>
+					</modal-content>
+				</modal-content>
+		</modal>
 	</section>
 	<!-- Footer End -->
 	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>

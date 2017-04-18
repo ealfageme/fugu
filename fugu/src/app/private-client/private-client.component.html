@@ -1,0 +1,464 @@
+<div id="fb-root"></div>
+	<input type="hidden" name='oauth' id="oauth">
+	<script src="/js/facebook.js"></script>
+	<header>
+		<!-- Navigation Menu start-->
+		<nav id="topNav" class="navbar navbar-default main-menu">
+			<div class="container">
+				<a href="/main/"> <img class="logo2" id="logo2"
+					src="/images/logo/logo2.png" alt="logo2">
+				</a>
+				<button class="navbar-toggler hidden-md-up pull-right" type="button"
+					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+
+					<ul class="nav navbar-nav">
+						<li><a href="#deals">DEALS</a></li>
+						<li><a href="#following">FOLLOWING</a></li>
+						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
+						<li><a href="#opinions">OPINIONS</a></li>
+						<li><a href="#gallery">RESTAURANTS</a></li>
+						<li><a href="#profile">{{user.name}}</a></li>
+						<div *ngIf="inNormalSession">
+						<li class="signin">
+							<form class="navbar-form navbar-right" method="post"
+								action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" />
+
+							</form>
+						</li> </div>
+						<div *ngIf="inFacebookSession">
+						<li><a style="margin-top: 5px;"
+							>
+								<button type="submit" class="loginBtn loginBtn--facebook">Log
+									out</button>
+						</a></li></div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<section id="deals" class="section-wrapper">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Deals</span>
+					</h2>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+					<h3>Some restaurants have sent offers to you</h3>
+					<!-- Section Header End -->
+					<div class="our-offers">
+						<div class="row">
+							<div *ngFor="let voucher of vouchers">
+							<div
+								class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
+								data-wow-delay=".2s">
+								<div class="service-box">
+									<div class="icon">
+										<h2>American Whey</h2>
+										<h3>{{voucher.name}}</h3>
+									</div>
+									<p>{{voucher.description}}</p>
+									<a href="public-restaurant.html"> <img
+										src="/images/day-food/breakfast.jpg" alt="Custom Image">
+									</a>
+									<p style="margin-top: 5px;">Expiry date : {{voucher.expiryDate}}</p>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		<section id="reservations"
+		class="about-sec section-wrapper description">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Reservations</span>
+					</h2>
+				</div>
+
+			</div>
+		</div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">In Process</h1>
+
+									<!-- Filter Button Start -->
+									<div *ngFor="let book of bookingsInProcess">
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+	
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">American Whey</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{book.date}}</p>
+													<p style="margin: 5px;">{{book.number}} people coming</p>
+													<p style="margin: 5px;">{{book.specialRequirements}}</p>
+													<p style="margin: 5px;">{{book.state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> 
+                  </div>
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+				<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">Accepted</h1>
+
+									<!-- Filter Button Start -->
+									
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+	
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{bookingRestaurant.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{date}}</p>
+													<p style="margin: 5px;">{{number}} people coming</p>
+													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> 
+
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="following">
+
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Following</span>
+					</h2>
+				</div>
+				<!-- Section Header End -->
+				<div class="menus-container">
+					<!-- menu -->
+					<div class="menu row">
+						<div class="col-md-6 wow fadeInRight animated"
+							style="visibility: visible; animation-name: fadeInRight;"
+							id="followingRestaurants">
+							<h2>Restaurants</h2>
+							
+							<div class="menu-column">
+								<button
+									
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/restaurant-type/{{name}}.jpg"
+												class="img-circle" id="imgPerfil">{{name}}
+										</h6>
+									</div>
+								</button>
+							</div>
+							
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+						<div class="col-md-6 wow fadeInLeft animated"
+							style="visibility: visible; animation-name: fadeInLeft;"
+							id="followingPeople">
+							<h2>People</h2>
+							
+							<div class="menu-column">
+								<button
+									
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/clients/{{name}}.jpg" class="img-circle"
+												id="imgPerfil">{{name}}
+										</h6>
+									</div>
+								</button>
+							</div>
+							
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+					</div>
+				</div>
+				<!-- /menu-carousel -->
+			</div>
+			<!-- /menus-container -->
+		</div>
+		<!-- /container -->
+	</section>
+	<section id="recommendations" class="bgSection recommendations-section">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Recommendations</span>
+					</h2>
+
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We
+						have found the next restaurants based on previous experience</p>
+				</div>
+				<!-- Section Header End -->
+			</div>
+		</div>
+		<!-- Works -->
+		<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+			<div class="row">
+				
+				<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-lg-offset-1">
+					<!-- Filter Button Start -->
+					<div id="recommendations-filter"
+						class="recommendations-filter-btn-group">
+						<ul>
+							<li>
+								<h1>{{name}}</h1>
+							</li>
+						</ul>
+					</div>
+					<div class="item recommendations-item web seo">
+						<a href="/public-restaurant/{{name}}/"><img
+							src="/private-restaurant/image/profileImageRestaurant{{id}}.jpg"> </a>
+					</div>
+					<br>
+				</div>
+				
+
+			</div>
+		</div>
+	</section>
+	<!-- Portfolio Section End -->
+	<section id="opinions" class="bgSection ratings-section">
+		<br> <br> <br>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<h2>
+							<span class="highlight-text-inverted">Opinions</span>
+						</h2>
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<!-- Filter Button Start -->
+									
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-right-style: solid;">
+													<ul>
+														<li>
+															<h1 class="shadow">{{reviewRestaurant.name}}</h1>
+															<p>{{rate}}</p>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+													<p style="margin: 5px;">{{content}} - {{date}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br> 
+								</div>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<form action="/private-client/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' /><br /> <img
+							src="/private-client/image/{{fileName}}" alt="Facebook Image"/>
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Enviar' />
+					</form>
+					<br>
+					<p>{{user.description}}</p>
+					<br>
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+
+						<form role="form" method='post' action="/private-client/modify">
+							<div class="form-group">
+								<label for="name">Account Name:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name='username' id='username' value="{{user.name}}">
+							</div>
+
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" id="email" name='useremail'
+									value="{{user.email}}">
+							</div>
+
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea"
+									name='userdescription' rows="3">{{user.description}}</textarea>
+							</div>
+
+							<div class="form-group">
+								<label for="email">Favourite food:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name='favouritefood' value="{{user.favouriteFood}}">
+							</div>
+
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" name='password'
+									placeholder="Enter new password">
+							</div>
+
+
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" id="pwd" name='confirmpassword'
+									placeholder="Repeat new password">
+							</div>
+
+
+							<div class="form-group">
+								<label for="age" style="margin-bottom: 10px;">How old
+									are you?</label> <input style="border-radius: 0px !important"
+									type="text" class="form-control" id="age" name='userage'
+									value={{user.age}}>
+							</div>
+
+							<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
+								<button type='submit' class="btnMore">Update</button>
+									<a href="#modalwindow" data-toggle="modal">
+									<button type="submit" class="btnMore">Delete</button>
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal " id="modalwindow">
+				<div class="modal-dialog">
+					<div class="modal-content"
+						style="background-color: #efefef; border-radius: 0;">
+						<div class="modal-header"
+							style="background-color: #28292e !important;">
+							<button type="button" class="close" data-dismiss="modal"
+								style="color: #ffffff;">&times;</button>
+
+						</div>
+						<div class="modal-body">
+							<h2>Are you sure that you want to delete your profile?</h2>
+							<div>
+								<button type='submit' class="btnMore">Yes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
