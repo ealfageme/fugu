@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { SearchWebComponent } from './search-web/search-web.component';
+import {ModalModule} from "ngx-modal";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchWebComponent } from './search-web/search-web.component';
     FormsModule,
     HttpModule,
     RouterModule,
-    routing
+    routing,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

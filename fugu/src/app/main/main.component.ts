@@ -31,7 +31,6 @@ export class MainComponent implements OnInit {
       error => console.error(error)
     );
   }
-
   ngOnInit() {
   }
 
@@ -75,6 +74,9 @@ export class MainComponent implements OnInit {
       },
     error => console.error(error)
     );
+  }
+  goTo(location: string): void {
+    window.location.hash = location;
   }
 }
 
