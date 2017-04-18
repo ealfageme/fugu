@@ -13,10 +13,10 @@ export class CityComponent implements OnInit {
   private restaurants: string[] = [];
 
   constructor(private http: Http, activatedRoute: ActivatedRoute) {
-     this.city = activatedRoute.snapshot.params['name'];
+    this.city = activatedRoute.snapshot.params['name'];
     this.http.get('https://localhost:8443/api/restaurants/city/' + this.city).subscribe(
       response => {
-        console.log(response);
+        console.log(response.json());
         const data = response.json();
         for (let i = 0; i < data.length; i++) {
           const restaurant = data[i];

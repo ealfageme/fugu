@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SearchWebComponent } from './search-web/search-web.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
+import { PublicClientComponent } from './public-client/public-client.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ErrorComponent } from './error/error.component';
     MainComponent,
     SearchWebComponent,
     FooterComponent,
-    ErrorComponent
+    ErrorComponent,
+    PublicClientComponent
   ],
   imports: [
     BrowserModule,
