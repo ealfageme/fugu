@@ -8,7 +8,7 @@ import { MainComponent } from './main/main.component';
 import { routing } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { SearchWebComponent } from './search-web/search-web.component';
-import {ModalModule} from 'ngx-modal';
+import { ModalModule } from 'ngx-modal';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { PublicRestaurantComponent } from './public-restaurant/public-restaurant.component';

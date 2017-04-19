@@ -34,7 +34,7 @@ export class PublicRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/menus').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/1/menus/?page=0&size=4').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
