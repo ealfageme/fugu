@@ -1,0 +1,646 @@
+<header>
+		<!-- Navigation Menu start-->
+		<nav id="topNav" class="navbar navbar-default main-menu">
+			<div class="container">
+				<a href="/main/"><img class="logo2" id="logo2"
+					src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+				<button class="navbar-toggler hidden-md-up pull-right" type="button"
+					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+					<ul class="nav navbar-nav">
+
+						<li><a href="#reservations">RESERVATIONS</a></li>
+						<li><a href="#current-deals">CURRENT DEALS</a></li>
+						<li><a href="#menu">MENU CARD</a></li>
+						<li><a href="#voucher">VOUCHERS</a></li>
+						<li><a href="#feedback">FEEDBACK</a></li>
+						<li><a href="#clients">CLIENTS</a></li>
+				<!--		<li><a href="#profile">{{restaurant.name}}</a></li>-->
+						<li class="signin">
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+							</form> 
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	<section class="slider-pro slider" id="slider">
+		<div class="sp-slides">
+			<div *ngIf="restaurant" class="sp-slide main-slides">
+				<img  class="sp-image" style="background-color:#FFFFFF;"
+					src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg"
+					alt="Slider 1" />
+				<h1 class="imagetext1" data-position="center"
+					data-show-transition="left" data-hide-transition="right"
+					data-show-delay="1500" data-hide-delay="200">
+					<span class="highlight-texts"><span *ngIf="restaurant"
+						class="section-color2 highlight-text border2">Welcome to {{restaurant.foodType}}</span> </span>
+				</h1>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Slider End -->
+	<section id="reservations"
+		class="about-sec section-wrapper description">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Reservations</span>
+					</h2>
+				</div>
+
+			</div>
+		</div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">In Process</h1>
+
+									<!-- Filter Button Start -->
+									<div *ngIf="bookingsInProcess">"
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+												<!--			<h1 class="shadow">{{bookingUser.name}}</h1> -->
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p *ngIf="restaurant" style="margin: 5px;">Date: {{restaurant.bookings.date}}</p>
+													<p *ngIf="restaurant" style="margin: 5px;">{{restaurant.bookings.number}} people coming</p>
+													<p *ngIf="restaurant" style="margin: 5px;">{{restaurant.bookings.specialRequirements}}</p>
+													<p  *ngIf="restaurant" style="margin: 5px;">{{restaurant.bookings.state}}</p>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<br>
+													<button type="button" class="btnMore">Contact</button>
+													<div class="hiddenclass">
+														<form role="form" method="post" action="/accept-reservation/">
+															<div>
+																<input type="hidden" name="acceptPulsed"
+																	value="Accepted"> <input type="hidden"
+																	name="acceptPulsedID" value={{id}}>
+															<!--	<button type="input" class="btnMore"
+																	onClick="acceptReservation({{-index}})"
+																	id="{{-index}}-button">
+																	Accept <span class="glyphicon glyphicon-ok-circle"
+																		aria-hidden="true"></span>
+																</button> -->
+																
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> </div>
+
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">Accepted</h1>
+
+									<!-- Filter Button Start -->
+									<div *ngIf="inNormalSession">
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+														<!--	<h1 class="shadow">{{bookingUser.name}}</h1> -->
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{date}}</p>
+													<p style="margin: 5px;">{{number}} people coming</p>
+													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> </div>
+
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="current-deals" class="section-wrapper">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Current deals</span>
+					</h2>
+
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here
+						you can manage the vouchers you're offering</p>
+				</div>
+				<!-- Section Header End -->
+
+				<div class="our-offers">
+
+
+					<div class="row">
+						<div *ngIf="inNormalSession">
+						<div
+							class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown"
+							data-wow-delay=".2s">
+							<div class="service-box">
+								<div class="icon">
+							<!--		<h3>{{name}}</h3> -->
+								</div>
+							<!--	<p>{{description}}</p> -->
+							<!--	<p>{{expiryDate}}</p> -->
+								<button
+									onClick=" window.location.href='private-restaurant.html'"
+									class="food">
+									<img src="/src/assets/images/voucher1.jpg" alt="Custom Image">
+								</button>
+								<br> <br>
+							</div>
+						</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="clients">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Clients</span>
+					</h2>
+					<h3>Potential clients</h3>
+				</div>
+				<div class="search">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="form-section">
+									<div class="row">
+										<form role="form" method='post' action="/private-restaurant/voucher">
+											<div style="border-radius: 0px !important" class="col-md-3">
+												<div *ngIf="restaurant" style="border-radius: 0px !important"
+													class="form-group">
+													<label style="border-radius: 0px !important"
+														class="sr-only" for="guest">Guest</label> <select
+														style="border-radius: 0px !important" id="guest"
+														name="guest" class="form-control">
+														<option value="foodType">{{restaurant.foodType}}</option>
+													</select>
+												</div>
+											</div>
+											
+											
+											<div class="form-group">
+												<div class="col-md-2">
+													<p>Age between :</p>
+												</div>
+												<div class="col-md-2">
+												
+													<div class="input-group">
+														
+														<span style="border-radius: 0px !important"
+															class="input-group-addon">&gt;</span> <input
+															style="border-radius: 0px !important" type="text"
+															class="form-control" name='min'
+															aria-label="Amount (to the nearest dollar)"
+															placeholder="0"> <span
+															style="border-radius: 0px !important"
+															class="input-group-addon"></span>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="input-group">
+														<span style="border-radius: 0px !important"
+															class="input-group-addon">&lt;</span> <input
+															style="border-radius: 0px !important" type="text"
+															class="form-control" name='max'
+															aria-label="Amount (to the nearest dollar)"
+															placeholder="99"> <span
+															style="border-radius: 0px !important"
+															class="input-group-addon"></span>
+													</div>
+												</div>
+												<label for="name"></label>
+												<div
+													class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+													<h3>Offer</h3>
+												</div>
+												<input type="text" class="form-control formmargin"
+													name='vouchername' placeholder="Voucher name">
+												<textarea style="border-radius: 0px !important"
+													class="form-control" id="exampleTextarea" rows="3"
+													placeholder="Enter a brief description of the offer"
+													name='voucherdescription'></textarea>
+											</div>
+											<div class="col-md-3">
+												<div class="paddingtop">
+													<div class="form-group">
+														<label class="sr-only" for="expiry">Guest</label> <select
+															id="expiry" name="expiry" class="form-control">
+															<option value="1">Expiry: 1 week</option>
+															<option value="2">Expiry: 2 weeks</option>
+															<option value="3">Expiry: 3 weeks</option>
+															<option value="4">Expiry: 1 month</option>
+															<option value="5">Expiry: 2 months</option>
+															<option value="6">Expiry: 3 month</option>
+															<option value="7">Expiry: 6 months</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-2  ">
+												<input style="border-radius: 0px !important" type="file"
+													class="form-control-file" id="exampleInputFi"
+													aria-describedby="fileHelp">
+											</div>
+											<div class="col-md-3 col-md-offset-10">
+												<input type="submit" class="btnMore"
+													value='Send group offer'>
+											</div>
+										</form>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Section Header End -->
+			</div>
+		</div>
+
+		<!-- /col-md-6 -->
+		<br>
+		<!-- /container -->
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h2 class="section-header">
+							<span class="section-color">You want to delete your
+								profile. Are you sure?</span>
+						</h2>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							aria-label="Close">Cancel</button>
+						<button type="button" class="btn btnMore " data-dismiss="modal"
+							aria-label="Close">Accept</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="menu">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<br> <br> <br> <br> <br>
+					<h2>
+						<span class="highlight-text">Menu</span>
+					</h2>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose
+						the dish that best suits you</p>
+				</div>
+				<!-- Section Header End -->
+				<div *ngIf="restaurant" class="menus-container">
+					<!-- menu -->
+					<div class="menu row" id="menus">
+						<button id="restaurantid" value="{{restaurant.id}}"
+							style="display: none;"></button>
+						<button id="reference" value="0" style="display: none;"></button>
+						<div *ngIf="restaurant.menu">
+						<div class="col-md-6 wow fadeInRight animated"
+							style="visibility: visible; animation-name: fadeInRight;">
+							<div class="menu-column">
+								<div class="food">
+									<div class="food-desc">
+										<img
+											src="/src/assets/private-restaurant/menu/image/menuImageRestaurant{{restaurantId}}{{-index}}.jpg" />
+									<!--	<h6 class="food-name">{{dish}}</h6> -->
+										<div class="dots"></div>
+										<div class="food-price">
+										<!--	<span>{{price}}€</span> -->
+										</div>
+										<!-- /food-price -->
+									</div>
+									<!-- /food-desc -->
+									<div class="food-details">
+									<!--	<span>{{description}}</span> -->
+									</div>
+									<!-- /food-details -->
+								</div>
+							</div>
+							<!-- /menu-column -->
+						</div>
+						</div>
+						<!-- /col-md-6 -->
+					</div>
+					<div *ngIf="BigMenu">
+					<div class="col-md-2 col-md-offset-5 morediv">
+						<button style="position: relative; left: 25%;" class="btnMore"
+							id="seeMore">See More</button>
+					</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /menu-carousel -->
+			</div>
+			<!-- /menus-container -->
+		</div>
+		<!-- /container -->
+	</section>
+	<section class="menus style3" id="menu">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<form action="/src/assets/private-restaurant/menu/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' value="hola" /><br /> <img
+							src="/private-restaurant/menu/image/{{fileMenuName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Change menu image' /> <input>
+					</form>
+				</div>
+				<br> <br> <br>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Add new dish to menu</h1>
+						<form role="form" method="post" action="/private-restaurant/menu">
+							<div class="form-group">
+								<label for="name">Dish Name:</label> <input
+									style="border-radius: 0px !important" type="text"
+									class="form-control" id="imageTitle" name='menuname'
+									placeholder="Dish Name">
+							</div>
+							<div class="form-group">
+
+								<label for="name">Price</label> <input type="text"
+									class="form-control formmargin" name='menuprice'
+									placeholder="Price" id="price" required> <span
+									id='message_dish_price'></span>
+							</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea"
+									name='menudescription' rows="3" placeholder="Description"></textarea>
+							</div>
+
+							<div class="col-md-3 col-md-offset-10">
+								<input type="submit" class="btnMore" value='Create'> <br>
+							</div>
+						</form>
+					</div>
+
+					<!-- /row -->
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+		
+
+
+		<!-- /container -->
+	</section>
+
+	<section id="feedback" class="bgSection ratings-section">
+		<br> <br> <br>
+		<div class="parallax-overlay"></div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<h2>
+							<span class="highlight-text-inverted">Feedback</span>
+						</h2>
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div *ngIf="reviews">
+									<!-- Filter Button Start -->
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-right-style: solid;">
+													<ul>
+														<li>
+														<!--	<h1 class="shadow">{{reviewUser.name}}</h1> --><span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star-empty"></span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+													<p style="margin: 5px;">{{content}}</p>
+													<p style="margin: 5px;">{{date}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br> </div>
+								</div>
+								<button type="button" class="btnMore">See more</button>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+				<!--	<span class="highlight-text">{{restaurant.name}}</span> -->
+					<form action="/private-restaurant/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' /><br /> <img
+							src="/private-client/image/{{fileName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Change profile image' />
+					</form>
+					<br>
+				<!--	<p>{{restaurant.description}}</p> -->
+
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+						<form role="form" method='post' action="/private-restaurant/modify">
+							<div class="form-group">
+								<label for="name">Restaurant Name:</label><!-- <input
+									style="border-radius: 0px !important" class="form-control"
+									name="namerest" value="{{restaurant.name}}">-->
+							</div>
+							<div class="form-group">
+								<label for="name">Location:</label> <input *ngIf="restaurant"
+									style="border-radius: 0px !important" class="form-control"
+									name="location" value="{{restaurant.address}}">
+							</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" name="descriptionrest" rows="3"><!--{{restaurant.description}}--></textarea>
+							</div>
+							<div class="form-group">
+								<label for="name">Telephone:</label> <input *ngIf="restaurant"
+									style="border-radius: 0px !important" class="form-control"
+									name="telephone" value="{{restaurant.phone}}">
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" name="emailrest"
+									value="{{restaurant.email}}">
+							</div>
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="pwd"
+									placeholder="Enter new password">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="confirmpwd"
+									placeholder="Repeat new password">
+							</div>
+							<label for="pwd">Foods you serve:</label> <br> <input
+								type="checkbox" name="Breakfast" value=true checked='checked'>
+							Breakfast <input type="checkbox" name="Lunch" value=true
+								checked='checked'> Lunch <input type="checkbox"
+								name="Dinner" value=true checked='checked'> Dinner<br>
+							<div class="form-group">
+								<label for="exampleInputFile">Add pictures of the
+									restaurant</label> <input style="border-radius: 0px !important"
+									type="file" class="form-control-file" id="exampleInputFile"
+									aria-describedby="fileHelp">
+							</div>
+							<div class="col-md-3 col-md-offset-10">
+								<button type='submit' class="btnMore">Update</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section End -->
+	

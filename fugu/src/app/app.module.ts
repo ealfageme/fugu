@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { PublicRestaurantComponent } from './public-restaurant/public-restaurant.component';
 import { PublicClientComponent } from './public-client/public-client.component';
 import { PrivateClientComponent } from './private-client/private-client.component';
+import { PrivateRestaurantComponent } from './private-restaurant/private-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PrivateClientComponent } from './private-client/private-client.componen
     ErrorComponent,
     PublicRestaurantComponent,
     PublicClientComponent,
-    PrivateClientComponent
+    PrivateClientComponent,
+    PrivateRestaurantComponent
   ],
   imports: [
     BrowserModule,

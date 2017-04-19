@@ -6,6 +6,7 @@ import { CityComponent } from './city/city.component';
 import { MainComponent } from './main/main.component';
 import { ErrorComponent} from './error/error.component';
 import { PublicRestaurantComponent} from './public-restaurant/public-restaurant.component';
+import { PrivateRestaurantComponent} from './private-restaurant/private-restaurant.component';
 
 const appRoutes = [
   { path: 'new/city/:name', component: CityComponent,  },
@@ -14,6 +15,7 @@ const appRoutes = [
   { path: 'new/main', component: MainComponent,  },
   { path: 'new/search-web', component: SearchWebComponent, },
   { path: 'new/public-restaurant', component: PublicRestaurantComponent, },
+  { path: 'new/private-restaurant', component:  PrivateRestaurantComponent, },
   { path: '', redirectTo: 'new/main', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }
 ];
