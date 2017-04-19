@@ -1,210 +1,179 @@
-	<div id="fb-root"></div>
-	<input type="hidden" name='oauth' id="oauth">
-	<script src="/src/assets/src/assets/js/facebook.js"></script>
+<div id="fb-root"></div>
+<input type="hidden" name='oauth' id="oauth">
+<script src="/src/assets/src/assets/js/facebook.js"></script>
 
-	<!-- Header End -->
-	<header>
-		<!-- Navigation Menu start-->
-		<nav id="topNav" class="navbar navbar-default main-menu">
-			<div class="container">
-				<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" style="padding-right: 100"
-					src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-				<button class="navbar-toggler hidden-md-up pull-right" type="button"
-					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
-				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-					<ul class="nav navbar-nav">
-						<li><a (click)="goTo('#cities')">CITIES</a></li>
-						<li><a (click)="goTo('#top-rated')">TOP-RATED</a></li>
-						<li><a (click)="goTo('#contact')">CONTACT US</a></li> 
-						<li *ngIf="!inSession" class="signin">
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<div class="input-group">
-									<span class="input-group-addon"
-										style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-user"></i></span> <input  [(ngModel)]="email" id="email"
-										type="email" class="form-control"
-										style="border-radius: 0px !important;" name="loginemail"
-										value="" placeholder="Email Address">
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"
-										style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-lock"></i></span> <input [(ngModel)]="password" id="password"
-										type="password" class="form-control"
-										style="border-radius: 0px !important;" name="loginpassword"
-										value="" placeholder="Password">
-								</div>
-								<button (click)="login()" type="submit" class="logInBtn" >Login </button>
-								<a data-toggle="modal"
-									style="padding: 0px !important">
-									<button (click)="modalWindow2.open()" type="submit" class="signInBtn" >Sign in</button>
-								</a>
+<!-- Header End -->
+<header>
+	<!-- Navigation Menu start-->
+	<nav id="topNav" class="navbar navbar-default main-menu">
+		<div>
+			<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+				<ul class="nav navbar-nav">
+					<li><a (click)="goTo('#cities')">CITIES</a></li>
+					<li><a (click)="goTo('#top-rated')">TOP-RATED</a></li>
+					<li><a (click)="goTo('#contact')">CONTACT US</a></li>
+					<li *ngIf="!inSession" class="signin">
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<div class="input-group" style="width: 35%;">
+								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-user"></i></span>
+								<input [(ngModel)]="email" id="email" type="email" class="form-control" style="border-radius: 0px !important;" name="loginemail"
+								 value="" placeholder="Email Address">
+							</div>
+							<div class="input-group" style="width: 35%;">
+								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-lock"></i></span> <input [(ngModel)]="password" id="password" type="password"
+								 class="form-control" style="border-radius: 0px !important;" name="loginpassword" value="" placeholder="Password">
+							</div>
+							<button (click)="login()" type="submit" class="logInBtn">Login </button>
+							<a data-toggle="modal" style="padding: 0px !important">
+								<button (click)="modalWindow2.open()" type="submit" class="signInBtn">Sign in</button>
+							</a>
 
-							</form>
-						</li>
-						<li *ngIf="!inSession">
-						<a style="margin-top: 5px;" >
+						</form>
+					</li>
+					<li *ngIf="!inSession">
+						<a style="margin-top: 5px;">
 							<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
 						</a>
-						</li> 
-						<li *ngIf="inSession && !facebookSession" class="signin">
-							<form class="navbar-form navbar-right" method="post"
-								action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" />
+					</li>
+					<li *ngIf="inSession && !facebookSession" class="signin">
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<input type="submit" class="signInBtn" value="SignOut" />
 
-							</form>
-						</li> 
-						<li *ngIf="inSession" class="signin">
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
-								<button class="signInBtn">Visit profile</button>
-							</form>
-						</li> 
-						<li *ngIf="inSession && facebookSession"><a style="margin-top: 5px;">
-								<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
-						</a></li>
-					</ul>
-				</div>
+						</form>
+					</li>
+					<li *ngIf="inSession" class="signin">
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>
+					</li>
+					<li *ngIf="inSession && facebookSession">
+						<a style="margin-top: 5px;">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
+						</a>
+					</li>
+				</ul>
 			</div>
-		</nav>
-	</header>
-	<section>
-		<div>
-			<video autoplay loop class="embed-responsive-item"  style="position: absolute" >
-				<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
-			</video>
-			<div class="container">
-				<div class="row">
-					<div
-						class="col-md-12 col-sm-12 col-xs-12">
-						<br> <br> <br> <br> <br> <br> <br>
-						<br> <br> <br> <br> <br> <br> <br>
-						<br> <br>
-						<h2 class="imagetext1" data-position="center" 
-							data-show-transition="left" data-hide-transition="right"
-							data-show-delay="1500" data-hide-delay="200"
-							style="font-size: 5.0vw;">
-							<span class="highlight-texts"><span
+		</div>
+	</nav>
+</header>
+<section style="position:relative;">
+	<div style="position:relative;">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<h2 style="position:absolute;float:left;
+    			z-index:300000;text-align: center; font-size: 5.0vw; transform: translate(10%, 50%);" >
+				<span class="highlight-texts"><span
 								class="section-color2 highlight-text border2">Search your
-								
-									perfect restaurant here</span> </span> <a [routerLink]="['/new/search-web']"><img
-								src="/src/assets/images/search-icon.png" alt="Search Page"
-								class="img-responsive" style="margin: auto;"> </a>
-						</h2>
-					</div>
-				</div>
-			</div>
+									perfect restaurant here</span> </span>
+				<a [routerLink]="['/new/search-web']"><img src="/src/assets/images/search-icon.png" alt="Search Page" class="img-responsive" style="margin: auto;"> </a>
+			</h2>
 		</div>
-	</section>
-	<!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
-	<br> <br> <br> <br> <br> <br> <br>
-	<br> <br> <br> <br> <br> <br> <br>
-	<br> <br> <br> <br> <br> <br> <br>
-	<section id="cities">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div class="col-md-12 col-sm-12 col-xs-12 section-header wow ">
-					<h2>
-						<span class="highlight-text">Cities</span>
-					</h2>
-				</div>
-				<!-- Section Header End -->
-				<div class="our-services">
-					<div class="row">
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/new/city','Madrid']">
-									<h1 class="display-4 border">Madrid</h1> <img
-									src="/src/assets/images/cities/madrid.jpg" alt="Custom Image">
-								</a>
-							</div>
+		<video autoplay loop class="embed-responsive-item" style="position: relative;
+				bottom: 0%;
+				left: 0%;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+				background: #000;float:left;">
+			<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
+		</video>
+		
+	</div>
+</section>
+<!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
+
+<section style="margin: 0px auto;
+    margin-top: 800px;" id="cities">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow ">
+				<h2>
+					<span class="highlight-text">Cities</span>
+				</h2>
+			</div>
+			<!-- Section Header End -->
+			<div class="our-services">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/new/city','Madrid']">
+								<h1 class="display-4 border">Madrid</h1> <img src="/src/assets/images/cities/madrid.jpg" alt="Custom Image">
+							</a>
 						</div>
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/new/city','Barcelona']">
-									<h1 class="display-4 border">Barcelona</h1> <img
-									src="/src/assets/images/cities/barcelona.jpg" alt="Custom Image">
-								</a>
-							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/new/city','Barcelona']">
+								<h1 class="display-4 border">Barcelona</h1> <img src="/src/assets/images/cities/barcelona.jpg" alt="Custom Image">
+							</a>
 						</div>
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/new/city','Valencia']">
-									<h1 class="display-4 border">Valencia</h1> <img
-									src="/src/assets/images/cities/valencia.jpg" alt="Custom Image">
-								</a>
-							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/new/city','Valencia']">
+								<h1 class="display-4 border">Valencia</h1> <img src="/src/assets/images/cities/valencia.jpg" alt="Custom Image">
+							</a>
 						</div>
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/new/city','Sevilla']"><h1 class="display-4 border">Sevilla</h1>
-									<img src="/src/assets/images/cities/sevilla.jpg" alt="Custom Image">
-								</a>
-							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/new/city','Sevilla']">
+								<h1 class="display-4 border">Sevilla</h1>
+								<img src="/src/assets/images/cities/sevilla.jpg" alt="Custom Image">
+							</a>
 						</div>
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/city','Zaragoza']"><h1 class="display-4 border">Zaragoza</h1>
-									<img src="/src/assets/images/cities/zaragoza.jpg" alt="Custom Image">
-								</a>
-							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/city','Zaragoza']">
+								<h1 class="display-4 border">Zaragoza</h1>
+								<img src="/src/assets/images/cities/zaragoza.jpg" alt="Custom Image">
+							</a>
 						</div>
-						<div
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon"></div>
-								<a [routerLink]="['/new/city','Bilbao']"><h1 class="display-4 border">Bilbao</h1>
-									<img src="/src/assets/images/cities/bilbao.jpg" alt="Custom Image">
-								</a>
-							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon"></div>
+							<a [routerLink]="['/new/city','Bilbao']">
+								<h1 class="display-4 border">Bilbao</h1>
+								<img src="/src/assets/images/cities/bilbao.jpg" alt="Custom Image">
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="menus style3" id="top-rated">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Top-Rated Restaurants</span>
-					</h2>
-				</div>
-				<!-- Section Header End -->
-				<div class="menus-container" id="restaurants">
-					<!-- menu -->
+	</div>
+</section>
+<section  class="menus style3" id="top-rated">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Top-Rated Restaurants</span>
+				</h2>
+			</div>
+			<!-- Section Header End -->
+			<div class="menus-container" id="restaurants">
+				<!-- menu -->
 
-					<div class="menu row rowmar">
-						
-						<div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated"
-							style="visibility: visible; animation-name: fadeInRight;">
+				<div class="menu row rowmar">
 
-							<div class="menu-column">
+					<div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
 
-								<button
-									
-									value="0" id="reference" class="food">
+						<div class="menu-column">
+
+							<button value="0" id="reference" class="food">
 
 
 									<div class="food-desc">
@@ -227,173 +196,134 @@
 								</button>
 
 
-							</div>
-							<!-- /food -->
 						</div>
-						
-						<!-- /menu-column -->
+						<!-- /food -->
 					</div>
-					<!-- /col-md-6 -->
+
+					<!-- /menu-column -->
 				</div>
-				<!-- /row -->
+				<!-- /col-md-6 -->
 			</div>
-			<!-- /menu-carousel -->
-			<div class="col-md-4 col-md-offset-4 morediv">
-				<button *ngIf="prevRestaurant" class="btnMore" id="prevRestaurants" (click)="prevRestaurants()">Prev
-					Restaurant</button>
-				<button *ngIf="nextRestaurant" class="btnMore pull-right" id="moreRestaurants" (click)="nextRestaurants()">Next
-					restaurants</button>
-			</div>
+			<!-- /row -->
 		</div>
-		<!-- /container -->
-	</section>
-	<!-- Client Section End -->
-	<section id="contact" class="section-wrapper contact-section"
-		data-stellar-background-ratio="0.5">
-		<div class="parallax-overlay"></div>
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Contact Us</span>
-					</h2>
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 feedbackmar">We
-						love feedback. Fill out the form below and we'll get back to you
-						as soon as possible.</p>
-				</div>
-				<!-- Section Header End -->
-				<div class="contact-details">
-					<!-- Contact Form -->
-					<div class="contact-form wow bounceInRight">
-						<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-						<form name="sentMessage" id="contactForm" novalidate method='post'>
-						
-							<div *ngIf="!inSession" class="col-md-6">
-								<input id="username" type="text"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Full Name" required name="feedbackname" value=""
-									data-validation-required-message="Please enter your name" />
-								<p class="help-block"></p>
-							</div>
-							<div *ngIf="!inSession" class="col-md-6 emailmar">
-								<input id="useremail" type="email"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Email" required name="feedbackemail" value=""
-									data-validation-required-message="Please enter your email" />
-							</div>
-							<div *ngIf="!inSession" class="col-md-12">
-								<textarea rows="7" cols="100"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="5"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize:none"></textarea>
-							</div>
-							<div *ngIf="!inSession" class="col-md-6 col-md-offset-5 footermargin morediv">
-								<div id="success"></div>
-								<a >
-									<button type="button" class="btnMore" data-toggle="modal"
-										data-target="#exampleModalLong">Submit Messages</button>
-								</a>
-							</div>
-							
-							<div *ngIf="inSession" class="col-md-6" style="display: none;">
-								<input id="username" type="text"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Full Name" required name=""
-									data-validation-required-message="Please enter your name" />
-								<p class="help-block"></p>
-							</div>
-							<div *ngIf="inSession" class="col-md-6 emailmar" style="display: none;">
-								<input id="useremail" type="email"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Email" required name=""
-									data-validation-required-message="Please enter your email" />
-							</div>
-							<div *ngIf="inSession" class="col-md-12">
-								<textarea rows="7" cols="100"
-									style="border-radius: 0px !important" class="form-control"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="5"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize:none"></textarea>
-							</div>
-							<div *ngIf="inSession" class="col-md-6 col-md-offset-5 footermargin morediv">
-								<div id="success"></div>
-								<a >
-									<button type="button" class="btnMore" data-toggle="modal"
-										data-target="#exampleModalLong">Submit Messages</button>
-								</a>
-							</div>
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModalLong" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLongTitle"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
+		<!-- /menu-carousel -->
+		<div class="col-md-4 col-md-offset-4 morediv">
+			<button *ngIf="prevRestaurant" class="btnMore" id="prevRestaurants" (click)="prevRestaurants()">Prev
+					Restaurant</button>
+			<button *ngIf="nextRestaurant" class="btnMore pull-right" id="moreRestaurants" (click)="nextRestaurants()">Next
+					restaurants</button>
+		</div>
+	</div>
+	<!-- /container -->
+</section>
+<!-- Client Section End -->
+<section  id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
+	<div class="parallax-overlay"></div>
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Contact Us</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 feedbackmar">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+			</div>
+			<!-- Section Header End -->
+			<div class="contact-details">
+				<!-- Contact Form -->
+				<div class="contact-form wow bounceInRight">
+					<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
+					<form name="sentMessage" id="contactForm" novalidate method='post'>
+
+						<div *ngIf="!inSession" class="col-md-6">
+							<input id="username" type="text" style="border-radius: 0px !important" class="form-control" placeholder="Full Name" required
+							 name="feedbackname" value="" data-validation-required-message="Please enter your name" />
+							<p class="help-block"></p>
+						</div>
+						<div *ngIf="!inSession" class="col-md-6 emailmar">
+							<input id="useremail" type="email" style="border-radius: 0px !important" class="form-control" placeholder="Email" required
+							 name="feedbackemail" value="" data-validation-required-message="Please enter your email" />
+						</div>
+						<div *ngIf="!inSession" class="col-md-12">
+							<textarea rows="7" cols="100" style="border-radius: 0px !important" class="form-control" placeholder="Message" id="message"
+							 required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters"
+							 maxlength="999" style="resize:none"></textarea>
+						</div>
+						<div *ngIf="!inSession" class="col-md-6 col-md-offset-5 footermargin morediv">
+							<div id="success"></div>
+							<a>
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+							</a>
+						</div>
+
+						<div *ngIf="inSession" class="col-md-6" style="display: none;">
+							<input id="username" type="text" style="border-radius: 0px !important" class="form-control" placeholder="Full Name" required
+							 name="" data-validation-required-message="Please enter your name" />
+							<p class="help-block"></p>
+						</div>
+						<div *ngIf="inSession" class="col-md-6 emailmar" style="display: none;">
+							<input id="useremail" type="email" style="border-radius: 0px !important" class="form-control" placeholder="Email" required
+							 name="" data-validation-required-message="Please enter your email" />
+						</div>
+						<div *ngIf="inSession" class="col-md-12">
+							<textarea rows="7" cols="100" style="border-radius: 0px !important" class="form-control" placeholder="Message" id="message"
+							 required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters"
+							 maxlength="999" style="resize:none"></textarea>
+						</div>
+						<div *ngIf="inSession" class="col-md-6 col-md-offset-5 footermargin morediv">
+							<div id="success"></div>
+							<a>
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+							</a>
+						</div>
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
-										</div>
-										<div class="modal-body">
-											<h2 class="section-header">
-												<span class="section-color">Message sent succesfully.
+									</div>
+									<div class="modal-body">
+										<h2 class="section-header">
+											<span class="section-color">Message sent succesfully.
 													Thank you for the feedback!</span>
 
-											</h2>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btnMore "
-												data-dismiss="modal" aria-label="Close">Got it!</button>
-										</div>
+										</h2>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Got it!</button>
 									</div>
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</section>
-	<section id="register">
-		<modal  #modalWindow>
-				<modal-content
-					style="background-color: #efefef; border-radius: 0;">
-					<modal-header
-						style="background-color: #28292e !important;">
-						<button type="button" class="close" data-dismiss="modal"
-							style="color: #ffffff;">&times;</button>
-						<ul class="nav navbar-nav">
-							<li class="active"><a (click)="modalWindow2.open()"
-								data-toggle="modal" data-dismiss="modal"
-								style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
-							<li><a (click)="modalWindow.open()"
-								style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
-						</ul>
-					</modal-header>
-					<modal-content>
-						<p class="formmargin">Introduce your following details:</p>
-						<form role="form" action="/main/">
-							<div class="form-group">
-								<input type="text" class="form-control formmargin"
-									name='username' placeholder="Name" id="usernameform"> <input
-									type="text" class="form-control formmargin" name='useremail'
-									placeholder="Email" id="useremailform"> <br> <input
-									type="text" class="form-control formmargin" name='userage'
-									placeholder="Age" id="userageform"> <span
-									id='message_user_age'></span>
-								<div class="form-group">
-									<label for="filter">Favourite food</label> <select
-										class="form-control"
-										style="border-radius: 0px !important; -webkit-appearance: none;"
-										name='favouritefood'>
+	</div>
+</section>
+<section id="register">
+	<modal #modalWindow>
+		<modal-content style="background-color: #efefef; border-radius: 0;">
+			<modal-header style="background-color: #28292e !important;">
+				<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+				<ul class="nav navbar-nav">
+					<li class="active"><a (click)="modalWindow2.open()" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
+					<li><a (click)="modalWindow.open()" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
+				</ul>
+			</modal-header>
+			<modal-content>
+				<p class="formmargin">Introduce your following details:</p>
+				<form role="form" action="/main/">
+					<div class="form-group">
+						<input type="text" class="form-control formmargin" name='username' placeholder="Name" id="usernameform"> <input type="text"
+						 class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform"> <br> <input type="text" class="form-control formmargin"
+						 name='userage' placeholder="Age" id="userageform"> <span id='message_user_age'></span>
+						<div class="form-group">
+							<label for="filter">Favourite food</label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='favouritefood'>
 										<option value="Chinese" selected
 											style="border-radius: 0px !important">Chinese</option>
 										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
@@ -405,57 +335,43 @@
 										<option value="Indian" style="border-radius: 0px !important">Indian</option>
 										<option value="Italian" style="border-radius: 0px !important">Italian</option>
 									</select>
-								</div>
-								<br> <label for="name">Description:</label> <br>
-								<textarea style="border-radius: 0px !important"
-									class="form-control" id="userdescriptionform"
-									name='userdescription' rows="3"></textarea>
-								<br> <label for="name">Password (6 characters
-									min.):</label> <input name='userpassword' type="password"
-									class="form-control formmargin" placeholder="Password"
-									id="password_client"> <input type="password"
-									id="confirm_password_client" name="confirm_password"
-									class="form-control formmargin" placeholder="Confirm password"
-									id="confirm_password_client"> <br>
-							</div>
+						</div>
+						<br> <label for="name">Description:</label> <br>
+						<textarea style="border-radius: 0px !important" class="form-control" id="userdescriptionform" name='userdescription' rows="3"></textarea>
+						<br> <label for="name">Password (6 characters
+									min.):</label> <input name='userpassword' type="password" class="form-control formmargin" placeholder="Password"
+						 id="password_client"> <input type="password" id="confirm_password_client" name="confirm_password" class="form-control formmargin"
+						 placeholder="Confirm password" id="confirm_password_client"> <br>
+					</div>
 
-							<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
-							<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
-							<span id='message_user_button'>Fill the form before
-								register</span> 
-						</form>
-					</modal-content>
-				</modal-content>
-		</modal>
-		<modal #modalWindow2>
-				<modal-content
-					style="background-color: #efefef; border-radius: 0;">
-					<modal-header
-						style="background-color: #28292e !important;">
-						<button type="button" class="close" data-dismiss="modal"
-							style="color: #ffffff;">&times;</button>
-						<ul class="nav navbar-nav">
-							<li class="active"><a (click)="modalWindow2.open()" 
-								style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
-							<li><a (click)="modalWindow.open()" data-toggle="modal"
-								data-dismiss="modal"
-								style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
-						</ul>
-					</modal-header>
-					<modal-content>
-						<p class="formmargin">Introduce your following details:</p>
-						<form role="form" action="/main/">
-							<div class="form-group">
-								<input type="text" class="form-control formmargin"
-									name='restaurantname' placeholder="Restaurant name"
-									id="restaurantname" required> <input type="text"
-									class="form-control formmargin" name='restaurantaddress'
-									placeholder="Address" id="restaurantaddress" required>
-								<br>
-								<div class="form-group">
-									<label for="filter">City </label> <select class="form-control"
-										style="border-radius: 0px !important; -webkit-appearance: none;"
-										name='restaurantcity'>
+					<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+					<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
+					<span id='message_user_button'>Fill the form before
+								register</span>
+				</form>
+			</modal-content>
+		</modal-content>
+	</modal>
+	<modal #modalWindow2>
+		<modal-content style="background-color: #efefef; border-radius: 0;">
+			<modal-header style="background-color: #28292e !important;">
+				<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+				<ul class="nav navbar-nav">
+					<li class="active"><a (click)="modalWindow2.open()" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
+					<li><a (click)="modalWindow.open()" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
+				</ul>
+			</modal-header>
+			<modal-content>
+				<p class="formmargin">Introduce your following details:</p>
+				<form role="form" action="/main/">
+					<div class="form-group">
+						<input type="text" class="form-control formmargin" name='restaurantname' placeholder="Restaurant name" id="restaurantname"
+						 required> <input type="text" class="form-control formmargin" name='restaurantaddress' placeholder="Address" id="restaurantaddress"
+						 required>
+						<br>
+						<div class="form-group">
+							<label for="filter">City </label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='restaurantcity'>
 										<option value="Madrid" selected
 											>Madrid</option>
 										<option value="Barcelona"
@@ -465,12 +381,10 @@
 										<option value="Zaragoza" style="border-radius: 0px !important">Zaragoza</option>
 										<option value="Bilbao" style="border-radius: 0px !important">Bilbao</option>
 									</select>
-								</div>
-								<div class="form-group">
-									<label for="filter">Food type </label> <select
-										class="form-control"
-										style="border-radius: 0px !important; -webkit-appearance: none;"
-										name='kindoffood'>
+						</div>
+						<div class="form-group">
+							<label for="filter">Food type </label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='kindoffood'>
 										<option value="Chinese" selected
 											style="border-radius: 0px !important">Chinese</option>
 										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
@@ -482,34 +396,26 @@
 										<option value="Indian" style="border-radius: 0px !important">Indian</option>
 										<option value="Italian" style="border-radius: 0px !important">Italian</option>
 									</select>
-								</div>
-								<br> <input type="email" class="form-control formmargin"
-									name='restaurantemail' placeholder="Email" id="restaurantemail"
-									required> <input type="text"
-									class="form-control formmargin" name='restaurantphone'
-									placeholder="Phone" id="restaurantphone" required> <span
-									id='message_restaurant_phone'></span> <br> <label
-									for="name">Description:</label> <br>
-								<textarea style="border-radius: 0px !important"
-									class="form-control" id="restaurantdescription"
-									name='restaurantdescription' rows="3" required></textarea>
-								<br> <label for="name">Password (6 characters
-									min.):</label> <input name="restaurantpassword"
-									id="password_restaurant" type="password"
-									class="form-control formmargin" placeholder="Password" required>
-								<input type="password" name="confirm_password"
-									id="confirm_password_restaurant"
-									class="form-control formmargin" placeholder="Confirm password"
-									required> <br> <img src="/src/assets/images/restaurant.png">
-								<span id='message_restaurant'></span>
-								<!-- logInBtn btnMore -->
-								<button type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
-								 <span
-									id='message_restaurant_button'>Fill the form before
+						</div>
+						<br> <input type="email" class="form-control formmargin" name='restaurantemail' placeholder="Email" id="restaurantemail"
+						 required> <input type="text" class="form-control formmargin" name='restaurantphone' placeholder="Phone" id="restaurantphone"
+						 required> <span id='message_restaurant_phone'></span> <br> <label for="name">Description:</label> <br>
+						<textarea style="border-radius: 0px !important" class="form-control" id="restaurantdescription" name='restaurantdescription'
+						 rows="3" required></textarea>
+						<br> <label for="name">Password (6 characters
+									min.):</label> <input name="restaurantpassword" id="password_restaurant" type="password" class="form-control formmargin"
+						 placeholder="Password" required>
+						<input type="password" name="confirm_password" id="confirm_password_restaurant" class="form-control formmargin" placeholder="Confirm password"
+						 required> <br> <img src="/src/assets/images/restaurant.png">
+						<span id='message_restaurant'></span>
+						<!-- logInBtn btnMore -->
+						<button type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
+						<span id='message_restaurant_button'>Fill the form before
 									register</span>
-							</div>
-						</form>
-					</modal-content>
-				</modal-content>
-		</modal>
-	</section>
+					</div>
+				</form>
+			</modal-content>
+		</modal-content>
+	</modal>
+</section>
+<footer></footer>

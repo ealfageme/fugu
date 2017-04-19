@@ -6,7 +6,11 @@
   <!-- Navigation Menu start-->
   <nav id="topNav" class="navbar navbar-default main-menu">
     <div class="container">
+<<<<<<< HEAD
+      <a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+=======
       <a href="/new/main/"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+>>>>>>> 7500a2da3cb648b68b9a41f34c5054d650e0001b
       <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">?</button>
       <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
         <ul class="nav navbar-nav">
@@ -23,7 +27,7 @@
                   style="border-radius: 0px !important" name="loginpassword" value="" placeholder="Password">
               </div>
               <input type="submit" class="logInBtn" value="Login" />
-              <a href="#modalwindow2" data-toggle="modal" style="padding: 0px !important">
+              <a (click)="goTo('#modalwindow2')" data-toggle="modal" style="padding: 0px !important">
                 <button type="submit" class="signInBtn">Sign in</button>
               </a>
             </form>
@@ -36,7 +40,6 @@
           <li *ngIf="inSession && !facebookSession" class="signin">
             <form class="navbar-form navbar-right" method="post" action="/main2/">
               <input type="submit" class="signInBtn" value="SignOut" />
-
             </form>
           </li>
           <li *ngIf="inSession" class="signin">
@@ -51,7 +54,7 @@
             </a>
           </li>
 
-          <li><a href="#contact">CONTACT US</a></li>
+          <li><a (click)="goTo('#contact')">CONTACT US</a></li>
         </ul>
       </div>
     </div>
@@ -59,11 +62,17 @@
 </header>
 <!-- Header End -->
 <section>
-  <div class="embed-responsive embed-responsive-16by9">
-    <video autoplay loop class="embed-responsive-item">
+  <div class="img-overlay">
+    <video autoplay loop style="position: relative;
+				bottom: 0%;
+				left: 0%;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+				background: #000;float:left;">
       <source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
     </video>
-    <div class="container" id="search">
+    <div style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -200%); " class="imagetext1" id="search">
       <div class="row">
         <div class="col-md-12">
           <div class="input-group" id="adv-search">
@@ -75,7 +84,7 @@
               <div class="btn-group" role="group">
                 <div class="dropdown dropdown-lg">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
-                  <div class="dropdown-menu dropdown-menu-right" role="menu" style="border-radius: 0px !important; -webkit-appearance: none;">
+                  <div class="dropdown-menu dropdown-menu-right" role="menu">
                     <form class="form-horizontal" role="form" action="" method='post'>
                       <div class="form-group">
                         <label for="filter">Food type</label> <select class="form-control" name="foodType" style="border-radius: 0px !important; -webkit-appearance: none;">
@@ -118,7 +127,7 @@
   </div>
 </section>
 
-<section class="menus style3" id="top-rated">
+<section class="menus style3 col-md-12 col-sm-12 col-xs-12" id="top-rated" style="margin-top: -350px;">
   <div class="container">
     <div class="row">
       <!-- Section Header -->
@@ -183,7 +192,7 @@
         <div class="menu row rowmar">
           <div class="col-md-12 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
             <div class="menu-column">
-              <button *ngFor="let restaurant of restaurants" onClick=" window.location.href='/public-restaurant/'" class="food">
+              <button *ngFor="let restaurant of restaurants" [routerLink]="['/public-restaurant/']" class="food">
 									<div class="food-desc">
 										<h3 class="food-name">
 											<strong>{{restaurant.name}} ({{restaurant.foodType}})</strong>
@@ -233,7 +242,7 @@
   </div>
 </section>
 <!-- Client Section End -->
-<section id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
+<section id="contact" class="section-wrapper contact-section col-md-12 col-sm-12 col-xs-12" data-stellar-background-ratio="0.5">
   <div class="parallax-overlay"></div>
   <div class="container">
     <div class="row">
@@ -320,15 +329,15 @@
     </div>
   </div>
 </section>
-<section id="register">
+<section class="col-md-12 col-sm-12 col-xs-12" id="register">
   <div class="modal " id="modalwindow2">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: #efefef; border-radius: 0;">
         <div class="modal-header" style="background-color: #28292e !important;">
           <button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
-            <li><a href="#modalwindow" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
+            <li class="active"><a (click)="goTo('#modalwindow2')" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
+            <li><a (click)="goTo('#modalwindow')" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
           </ul>
         </div>
         <div class="modal-body">
@@ -396,8 +405,8 @@
         <div class="modal-header" style="background-color: #28292e !important;">
           <button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#modalwindow2" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
-            <li><a href="#" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
+            <li class="active"><a (click)="goTo('#modalwindow2')" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
+            <li><a (click)="goTo('#modalwindow')" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
           </ul>
         </div>
         <div class="modal-body">
@@ -447,3 +456,4 @@
   </div>
 
 </section>
+<footer></footer>
