@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { PublicRestaurantComponent } from './public-restaurant/public-restaurant.component';
 import { PublicClientComponent } from './public-client/public-client.component';
 import { PrivateClientComponent } from './private-client/private-client.component';
+import {AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { PrivateClientComponent } from './private-client/private-client.componen
     routing,
     ModalModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
