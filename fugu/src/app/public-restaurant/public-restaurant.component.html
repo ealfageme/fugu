@@ -1,342 +1,236 @@
 <header>
-		<!-- Navigation Menu start-->
-		<nav id="topNav" class="navbar navbar-default main-menu">
-			<div class="container">
-				<a href="/main/"> <img class="logo2" id="logo2"
-					src="/src/assets/images/logo/logo2.png" alt="logo2">
-				</a>
-				<button class="navbar-toggler hidden-md-up pull-right" type="button"
-					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
-				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-					<ul class="nav navbar-nav">
-						<li><a href="#about">ABOUT</a></li>
-						<li><a href="#booking">BOOKING</a></li>
-						<li><a href="#services">SERVICES</a></li>
-						<li><a href="#menu">MENU</a></li>
-						<li><a href="#gallery">GALLERY</a></li>
-						<li><a href="#vouchers">VOUCHERS</a></li>
-						<li><a href="#reviews">REVIEWS</a></li>
-						<li><a href="#feedback">FEEDBACK</a></li>
-						<li *ngIf="inSession" class="signin">
-							<form class="navbar-form navbar-right" method="post" action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> 
-							</form> 
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
-								<button class="signInBtn">Visit profile</button>
-							</form> 
-						</li>
-					</ul>
-				</div>
+	<!-- Navigation Menu start-->
+	<nav id="topNav" class="navbar navbar-default main-menu">
+		<div class="container">
+			<a href="/main/"> <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
+			</a>
+			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#booking">BOOKING</a></li>
+					<li><a href="#services">SERVICES</a></li>
+					<li><a href="#menu">MENU</a></li>
+					<li><a href="#gallery">GALLERY</a></li>
+					<li><a href="#vouchers">VOUCHERS</a></li>
+					<li><a href="#reviews">REVIEWS</a></li>
+					<li><a href="#feedback">FEEDBACK</a></li>
+					<li *ngIf="inSession" class="signin">
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<input type="submit" class="signInBtn" value="SignOut" />
+						</form>
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>
+					</li>
+				</ul>
 			</div>
-		</nav>
-	</header>
-	<!-- Header End -->
-	<section class="slider-pro slider" id="slider">
-		<div class="sp-slides">
-			<div class="sp-slide main-slides">
-				<div class="img-overlay"></div>
-				<img *ngIf="restaurant" class="sp-image"
-					src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg"
-					alt="Slider 1" />
-				<h1 class="imagetext1" data-position="center"
-					data-show-transition="left" data-hide-transition="right"
-					data-show-delay="1500" data-hide-delay="200">
+		</div>
+	</nav>
+</header>
+<!-- Header End -->
+<section>
+	<div>
+		<div>
+			<div class="img-overlay">
+				<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
+				<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right"
+				 data-show-delay="1500" data-hide-delay="200">
 					<span *ngIf="restaurant" class="highlight-texts"><span
-						class="section-color2 highlight-text border2">Welcome to {{restaurant.foodType}}</span> </span>
+						class="section-color2 highlight-text border2" style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -80%); ">Welcome to {{restaurant.name}}</span> </span>
 				</h1>
 			</div>
 		</div>
-	</section>
-	<!-- Main Slider End -->
+	</div>
+</section>
+<!-- Main Slider End -->
 
-	<section id="about" class="about-sec section-wrapper description">
-		<div class="container">
-			<div *ngIf="restaurant" class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">About</span>
-					</h2>
-					<h2
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">{{restaurant.name}}</h2>
+<section id="about" class="col-md-12 col-sm-12 col-xs-12">
+	<div class="container">
+		<div *ngIf="restaurant" class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">About</span>
+				</h2>
+				<h2 class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">{{restaurant.name}}</h2>
+			</div>
+			<!-- Section Header End -->
+			<div class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
+				<div>
+					<img *ngIf="restaurant" src="src/assets/images/files/profileImageRestaurant1.jpg" />
 				</div>
-				<!-- Section Header End -->
-				<div
-					class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown"
-					style="float: left">
-					<div>
-						<img *ngIf="restaurant" src="src/assets/images/files/profileImageRestaurant1.jpg" />
-					</div>
-				</div>
-				<div
-					class="col-md-6 col-sm-6 col-xs-12 customized-text wow fadeInDown black-ed">
-					<div class="row">
-						<div class="col-md-11">
-							<strong>Food type <span
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 customized-text wow fadeInDown black-ed">
+				<div class="row">
+					<div class="col-md-11">
+						<strong>Food type <span
 								class="glyphicon glyphicon-ice-lolly-tasted"></span></strong>
-							<p>{{restaurant.foodType}}</p>
-						</div>
+						<p>{{restaurant.foodType}}</p>
 					</div>
-					<div class="row">
-						<div class="col-md-11">
-							<strong>Description <span
+				</div>
+				<div class="row">
+					<div class="col-md-11">
+						<strong>Description <span
 								class="glyphicon glyphicon-info-sign"></span></strong>
-					<!--		<p>{{restaurant.description}}</p> -->
-						</div>
+
+						<p>{{restaurant.description}}</p>
+
 					</div>
-					<div class="row">
-						<div class="col-md-11">
-							<strong>Email <span class="glyphicon glyphicon-envelope"></span></strong>
-							<p>{{restaurant.email}}</p>
-						</div>
+				</div>
+				<div class="row">
+					<div class="col-md-11">
+						<strong>Email <span class="glyphicon glyphicon-envelope"></span></strong>
+						<p>{{restaurant.email}}</p>
 					</div>
-					<div class="row">
-						<div class="col-md-11">
-							<strong>Address <span class="glyphicon glyphicon-home"></span></strong>
-							<p>{{restaurant.address}}</p>
-						</div>
+				</div>
+				<div class="row">
+					<div class="col-md-11">
+						<strong>Address <span class="glyphicon glyphicon-home"></span></strong>
+						<p>{{restaurant.address}}</p>
 					</div>
-					<div class="row">
-						<div class="col-md-11">
-							<strong>City <span class="glyphicon glyphicon-globe"></span></strong>
-							<p>{{restaurant.city.name}}</p>
-						</div>
+				</div>
+				<div class="row">
+					<div class="col-md-11">
+						<strong>City <span class="glyphicon glyphicon-globe"></span></strong>
+						<p>{{restaurant.city.name}}</p>
 					</div>
-					<div class="row">
-						<div class="col-md-11">
-							<strong>Telephone <span
+				</div>
+				<div class="row">
+					<div class="col-md-11">
+						<strong>Telephone <span
 								class="glyphicon glyphicon-earphone"></span></strong>
-							<p>{{restaurant.phone}}</p>
-						</div>
+						<p>{{restaurant.phone}}</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-			<form *ngIf="favButton" role="form" method='get'>
-				 <input type="hidden" id="favPulsed" name="favPulsed"
-					value="true" />
-				<button type="submit" class="btnMore" id="fav" style="margin: 10px;">Fav</button>	
-			</form>
-			<form *ngIf="!favButton" role="form" method='get'>
-				 <input type="hidden" id="unfavPulsed"
-					name="unfavPulsed" value="true" />
-				<button type="submit" class="btnMore" id="unfav"
-					style="margin: 10px;">UnFav</button>
-				
-			</form>
-		</div>
-	</section>
-	
-	<section *ngIf="inSession" id="booking" class="about-sec section-wrapper description">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Booking</span>
-					</h2>
+	</div>
+	<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
+		<form *ngIf="favButton" role="form" method='get'>
+			<input type="hidden" id="favPulsed" name="favPulsed" value="true" />
+			<button type="submit" class="btnMore" id="fav" style="margin: 10px;">Fav</button>
+		</form>
+		<form *ngIf="!favButton" role="form" method='get'>
+			<input type="hidden" id="unfavPulsed" name="unfavPulsed" value="true" />
+			<button type="submit" class="btnMore" id="unfav" style="margin: 10px;">UnFav</button>
+
+		</form>
+	</div>
+</section>
+
+<section *ngIf="inSession" id="booking" class="col-md-12 col-sm-12 col-xs-12">
+	<div class="container">
+		<div class="row" style="margin-bottom: 20px;">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Booking</span>
+				</h2>
+			</div>
+			<!-- Section Header End -->
+
+			<div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
+				<div class="month">
+					<ul>
+						<li style="text-align: center;">March <br> <span style="font-size: 18px">2017</span>
+						</li>
+					</ul>
 				</div>
-				<!-- Section Header End -->
+				<table>
 
-				<div
-					class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown"
-					style="float: left">
-					<div class="month">
-						<ul>
-							<li style="text-align: center;">March <br> <span
-								style="font-size: 18px">2017</span>
-							</li>
-						</ul>
-					</div>
-					<table>
+					<tr class="weekdays col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Mo</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Tu</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">We</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Th</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Fr</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Sa</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Su</td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> </td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> </td>
+						<td onclick="selectDay(1)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="1class">&nbsp; 1</span></td>
+						<td onclick="selectDay(2)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="2class">&nbsp; 2</span></td>
+						<td onclick="selectDay(3)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="3class"> 3</span></td>
+						<td onclick="selectDay(4)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="4class"> 4</span></td>
+						<td onclick="selectDay(5)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="5class"> 5</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td onclick="selectDay(6)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="6class"> 6</span></td>
+						<td onclick="selectDay(7)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="7class"> 7</span></td>
+						<td onclick="selectDay(8)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="8class">&nbsp; 8</span></td>
+						<td onclick="selectDay(9)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="9class">&nbsp; 9</span></td>
+						<td onclick="selectDay(10)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="10class"> 10</span></td>
+						<td onclick="selectDay(11)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="11class"> 11</span></td>
+						<td onclick="selectDay(12)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="12class">12</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td onclick="selectDay(13)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="13class" class="active active-date">13</span></td>
+						<td onclick="selectDay(14)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="14class">14</span></td>
+						<td onclick="selectDay(15)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="15class">15</span></td>
+						<td onclick="selectDay(16)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="16class">16</span></td>
+						<td onclick="selectDay(17)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="17class">17</span></td>
+						<td onclick="selectDay(18)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="18class">18</span></td>
+						<td onclick="selectDay(19)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="19class">19</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td onclick="selectDay(20)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="20class">20</span></td>
+						<td onclick="selectDay(21)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="21class">21</span></td>
+						<td onclick="selectDay(22)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="22class">22</span></td>
+						<td onclick="selectDay(23)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="23class">23</span></td>
+						<td onclick="selectDay(24)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="24class">24</span></td>
+						<td onclick="selectDay(25)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="25class">25</span></td>
+						<td onclick="selectDay(26)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="26class">26</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td onclick="selectDay(27)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="27class">27</span></td>
+						<td onclick="selectDay(28)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="28class">28</span></td>
+						<td onclick="selectDay(29)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="29class">29</span></td>
+						<td onclick="selectDay(30)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="30class">30</span></td>
+						<td onclick="selectDay(31)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="31class">31</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </td>
+					</tr>
+				</table>
 
-						<tr
-							class="weekdays col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Mo</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Tu</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">We</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Th</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Fr</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Sa</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Su</td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">&nbsp &nbsp</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">&nbsp &nbsp</td>
-							<td onclick="selectDay(1)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="1class">&nbsp 1</span></td>
-							<td onclick="selectDay(2)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="2class">&nbsp 2</span></td>
-							<td onclick="selectDay(3)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="3class">&nbsp 3</span></td>
-							<td onclick="selectDay(4)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="4class">&nbsp 4</span></td>
-							<td onclick="selectDay(5)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="5class">&nbsp 5</span></td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td onclick="selectDay(6)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="6class">&nbsp 6</span></td>
-							<td onclick="selectDay(7)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="7class">&nbsp 7</span></td>
-							<td onclick="selectDay(8)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="8class">&nbsp 8</span></td>
-							<td onclick="selectDay(9)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="9class">&nbsp 9</span></td>
-							<td onclick="selectDay(10)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="10class">&nbsp 10</span></td>
-							<td onclick="selectDay(11)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="11class">&nbsp 11</span></td>
-							<td onclick="selectDay(12)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="12class">&nbsp12</span></td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td onclick="selectDay(13)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="13class" class="active active-date">13</span></td>
-							<td onclick="selectDay(14)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="14class">14</span></td>
-							<td onclick="selectDay(15)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="15class">15</span></td>
-							<td onclick="selectDay(16)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="16class">16</span></td>
-							<td onclick="selectDay(17)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="17class">17</span></td>
-							<td onclick="selectDay(18)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="18class">18</span></td>
-							<td onclick="selectDay(19)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="19class">19</span></td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td onclick="selectDay(20)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="20class">20</span></td>
-							<td onclick="selectDay(21)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="21class">21</span></td>
-							<td onclick="selectDay(22)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="22class">22</span></td>
-							<td onclick="selectDay(23)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="23class">23</span></td>
-							<td onclick="selectDay(24)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="24class">24</span></td>
-							<td onclick="selectDay(25)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="25class">25</span></td>
-							<td onclick="selectDay(26)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="26class">26</span></td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td onclick="selectDay(27)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="27class">27</span></td>
-							<td onclick="selectDay(28)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="28class">28</span></td>
-							<td onclick="selectDay(29)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="29class">29</span></td>
-							<td onclick="selectDay(30)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="30class">30</span></td>
-							<td onclick="selectDay(31)"
-								class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span
-								id="31class">31</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1">&nbsp &nbsp</td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1">&nbsp &nbsp</td>
-						</tr>
-					</table>
-
+			</div>
+			<div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
+				<div class="month" style="padding: 10px 10px !important">
+					<ul>
+						<li style="text-align: center;"><span id="day">10th</span> March <br></li>
+						<li style="text-align: center;"><span>Choose the hour</span>
+							<br></li>
+					</ul>
 				</div>
-				<div
-					class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown"
-					style="float: left">
-					<div class="month" style="padding: 10px 10px !important">
-						<ul>
-							<li style="text-align: center;"><span id="day">10th</span>
-								March <br></li>
-							<li style="text-align: center;"><span>Choose the hour</span>
-								<br></li>
-						</ul>
-					</div>
-					<table>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(1)" value="12:00"><span id="hour1"
-								class="active active-date">12:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(2)"><span id="hour2">12:30</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(3)"><span id="hour3">13:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(4)"><span id="hour4">13:30</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(5)"><span id="hour5">14:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(6)"><span id="hour6">14:30</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(7)"><span id="hour7">15:00</span></td>
+				<table>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(1)" value="12:00"><span id="hour1" class="active active-date">12:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(2)"><span id="hour2">12:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(3)"><span id="hour3">13:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(4)"><span id="hour4">13:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(5)"><span id="hour5">14:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(6)"><span id="hour6">14:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(7)"><span id="hour7">15:00</span></td>
 
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(8)"><span id="hour8">15:30</span></td>
-						</tr>
-						<tr
-							class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img wow fadeInDown">
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(9)"><span id="hour9">20:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(10)"><span id="hour10">20:30</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(11)"><span id="hour11">21:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(12)"><span id="hour12">21:30</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(13)"><span id="hour13">22:00</span></td>
-							<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-								onclick="selectHour(14)"><span id="hour14">22:30</span></td>
-						</tr>
-					</table>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(8)"><span id="hour8">15:30</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img wow fadeInDown">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(9)"><span id="hour9">20:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(10)"><span id="hour10">20:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(11)"><span id="hour11">21:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(12)"><span id="hour12">21:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(13)"><span id="hour13">22:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" onclick="selectHour(14)"><span id="hour14">22:30</span></td>
+					</tr>
+				</table>
 
-					<br>
-					<form *ngIf="restaurant" role="form" method='post'
-						action="/public-restaurant/{{restaurant.name}}/book">
-						<label for="name">How many people is coming?</label> <select
-							name="guests">
+				<br>
+				<form *ngIf="restaurant" role="form" method='post' action="/public-restaurant/{{restaurant.name}}/book">
+					<label for="name">How many people is coming?</label> <select name="guests">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -344,159 +238,143 @@
 							<option value="5">5</option>
 							<option value="6">6</option>
 						</select> <input id="bookingday" type="hidden" name='bookingday' value=''>
-						<input id="bookinghour" type="hidden" name='bookinghour' value=''>
-						<button type="submit" class="btn btn-primary bookingbtn">
+					<input id="bookinghour" type="hidden" name='bookinghour' value=''>
+					<button type="submit" class="btn btn-primary bookingbtn">
 							Book <span class="glyphicon glyphicon-ok-circle"
 								aria-hidden="true"></span>
 						</button>
-						<label for="name">Available tables: 45</label>
-						<div class="form-group">
-							<label for="name">Any special requeriment? Tell us.</label>
-							<textarea class="form-control" id="exampleTextarea" rows="2"
-								style="border-radius: 0px !important" name="specialRequirements"></textarea>
-						</div>
-					</form>
-				</div>
+					<label for="name">Available tables: 45</label>
+					<div class="form-group">
+						<label for="name">Any special requeriment? Tell us.</label>
+						<textarea class="form-control" id="exampleTextarea" rows="2" style="border-radius: 0px !important" name="specialRequirements"></textarea>
+					</div>
+				</form>
 			</div>
 		</div>
+	</div>
 
-	</section>
-	
-	<section id="services" class="section-wrapper">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Services</span>
-					</h2>
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We
-						offer you a great variety of meals.</p>
-				</div>
-				<!-- Section Header End -->
-				<div class="our-services">
-					<div *ngIf="restaurant" class="row">
-						<div *ngIf="restaurant.breakfast"
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon">
-									<h3>Breakfast</h3>
-								</div>
-								<p>To start the day in the perfect way</p>
-								<img src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
+</section>
+
+<section id="services" class="col-md-12 col-sm-12 col-xs-12">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Services</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">We offer you a great variety of meals.</p>
+			</div>
+			<!-- Section Header End -->
+			<div class="our-services">
+				<div *ngIf="restaurant" class="row">
+					<div *ngIf="restaurant.breakfast" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon">
+								<h3>Breakfast</h3>
 							</div>
-						</div>
-						<div *ngIf="restaurant.lunch"
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon">
-									<h3>Lunch</h3>
-								</div>
-								<p>Take strength for the rest of the day</p>
-								<img src="/src/assets/images/day-food/lunch.jpg" alt="Custom Image">
-							</div>
-						</div>	
-						<div *ngIf="restaurant.dinner"
-							class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon">
-									<h3>Dinner</h3>
-								</div>
-								<p>End the day with your favourite meal</p>
-								<img src="/src/assets/images/day-food/dinner.jpg" alt="Custom Image">
-							</div>
+							<p>To start the day in the perfect way</p>
+							<img src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
 						</div>
 					</div>
-					<div class="row"></div>
+					<div *ngIf="restaurant.lunch" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon">
+								<h3>Lunch</h3>
+							</div>
+							<p>Take strength for the rest of the day</p>
+							<img src="/src/assets/images/day-food/lunch.jpg" alt="Custom Image">
+						</div>
+					</div>
+					<div *ngIf="restaurant.dinner" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon">
+								<h3>Dinner</h3>
+							</div>
+							<p>End the day with your favourite meal</p>
+							<img src="/src/assets/images/day-food/dinner.jpg" alt="Custom Image">
+						</div>
+					</div>
 				</div>
+				<div class="row"></div>
 			</div>
 		</div>
-	</section>
-	<section class="menus style3" id="menu">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<br> <br> <br> <br> <br>
-					<h2>
-						<span class="highlight-text">Menu</span>
-					</h2>
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose
-						the dish that best suits you</p>
-				</div>
-				<!-- Section Header End -->
-				<div class="menus-container">
-					<!-- menu -->
-					<div *ngIf="restaurant" class="menu row" id="menus">
+	</div>
+</section>
+<section class="menus style3 col-md-12 col-sm-12 col-xs-12" id="menu">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<br> <br> <br> <br> <br>
+				<h2>
+					<span class="highlight-text">Menu</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose the dish that best suits you</p>
+			</div>
+			<!-- Section Header End -->
+			<div class="menus-container">
+				<!-- menu -->
+				<div *ngIf="restaurant" class="menu row" id="menus">
 					<button id="restaurantid" value="{{restaurant.id}}" style="display: none;"></button>
 					<button id="reference" value="0" style="display: none;"></button>
-						
-						<div *ngFor="let menu of menus; let i = index" [attr.data-index]="i" class="col-md-6 wow fadeInRight animated"
-							style="visibility: visible; animation-name: fadeInRight;">
-							<div class="menu-column">
-								<div class="food">
-									<div class="food-desc">
-										<img
-											src="src/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
-										<h6 class="food-name">{{menu.dish}}</h6>
-										<div class="dots"></div>
-										<div class="food-price">
-											<span>{{menu.price}}€</span>
-										</div>
-										<!-- /food-price -->
+
+
+					<div *ngFor="let menu of menus; let i = index" [attr.data-index]="i" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+						<div class="menu-column">
+							<div class="food">
+								<div class="food-desc">
+									<img src="src/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
+									<h6 class="food-name">{{menu.dish}}</h6>
+									<div class="dots"></div>
+									<div class="food-price">
+										<span>{{menu.price}}€</span>
+
 									</div>
-									<!-- /food-desc -->
-									<div class="food-details">
-									<!--	<span>{{menu.description}}</span> -->
-									</div>
-									<!-- /food-details -->
+									<!-- /food-price -->
 								</div>
+								<!-- /food-desc -->
+								<div class="food-details">
+									<span>{{menu.description}}</span>
+								</div>
+								<!-- /food-details -->
 							</div>
-							<!-- /menu-column -->
 						</div>
-						
-						<!-- /col-md-6 -->
+						<!-- /menu-column -->
 					</div>
-					
-					<div class="col-md-2 col-md-offset-5 morediv">
-						<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
-					</div>
-					
-					<!-- /row -->
+
+					<!-- /col-md-6 -->
 				</div>
-				<!-- /menu-carousel -->
-			</div>
-			<!-- /menus-container -->
-		</div>
-		<!-- /container -->
-	</section>
-	<section id="gallery" class="bgSection portfolio-section">
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Gallery</span>
-					</h2>
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here
-						you have some photos of our more important products.</p>
+
+				<div class="col-md-2 col-md-offset-5 morediv">
+					<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
 				</div>
-				<!-- Section Header End -->
+
+				<!-- /row -->
 			</div>
+			<!-- /menu-carousel -->
 		</div>
-		<!-- Works -->
-		<div class="portfolio-works wow fadeIn" data-wow-duration="2s">
-			<!-- Filter Button Start -->
-			<!--  <div id="portfolio-filter" class="portfolio-filter-btn-group">
+		<!-- /menus-container -->
+	</div>
+	<!-- /container -->
+</section>
+<section id="gallery" class="bgSection portfolio-section col-md-12 col-sm-12 col-xs-12">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Gallery</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you have some photos of our more important products.</p>
+			</div>
+			<!-- Section Header End -->
+		</div>
+	</div>
+	<!-- Works -->
+	<div class="portfolio-works wow fadeIn" data-wow-duration="2s">
+		<!-- Filter Button Start -->
+		<!--  <div id="portfolio-filter" class="portfolio-filter-btn-group">
 				<ul>
 					<li><a href="#" class="selected" data-filter="*">ALL</a> <a
 						href="#" data-filter=".bur">BURGERS</a> <a href="#"
@@ -504,327 +382,233 @@
 						<a href="#" data-filter=".sal">SALADS</a></li>
 				</ul>
 			</div>-->
-			<!-- Filter Button End -->
-			<div *ngIf="restaurant" class="portfolio-items">
-				<!-- Portfolio Items -->
-				<div class="item portfolio-item bur imgbor">
-					<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png"
-						alt="">
-					<div class="portfolio-details-wrapper">
-						<div class="portfolio-details">
-							<div class="portfolio-meta-btn">
-								<ul class="work-meta">
-									<li class="lighbox"><a
-										href="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png"
-										class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-								</ul>
-							</div>
+		<!-- Filter Button End -->
+		<div *ngIf="restaurant" class="portfolio-items">
+			<!-- Portfolio Items -->
+			<div style="float:left;" class="item portfolio-item bur imgbor">
+				<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png" alt="">
+				<div class="portfolio-details-wrapper">
+					<div class="portfolio-details">
+						<div class="portfolio-meta-btn">
+							<ul class="work-meta">
+								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Portfolio Items End -->
-				<!-- Portfolio Items -->
-				<div class="item portfolio-item mea imgbor">
-					<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}2.png"
-						alt="">
-					<div class="portfolio-details-wrapper">
-						<div class="portfolio-details">
-							<div class="portfolio-meta-btn">
-								<ul class="work-meta">
-									<li class="lighbox"><a
-										href="/src/assets/images/img-portfolio/{{restaurant.foodType}}2.png"
-										class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-								</ul>
-							</div>
+			</div>
+			<!-- Portfolio Items End -->
+			<!-- Portfolio Items -->
+			<div style="float:left;" class="item portfolio-item mea imgbor">
+				<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}2.png" alt="">
+				<div class="portfolio-details-wrapper">
+					<div class="portfolio-details">
+						<div class="portfolio-meta-btn">
+							<ul class="work-meta">
+								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Portfolio Items End -->
-				<!-- Portfolio Items -->
-				<div class="item portfolio-item imgbor sal">
-					<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}3.png"
-						alt="">
-					<div class="portfolio-details-wrapper">
-						<div class="portfolio-details">
-							<div class="portfolio-meta-btn">
-								<ul class="work-meta">
-									<li class="lighbox"><a
-										href="/src/assets/images/img-portfolio/{{restaurant.foodType}}3.png"
-										class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-								</ul>
-							</div>
+			</div>
+			<!-- Portfolio Items End -->
+			<!-- Portfolio Items -->
+			<div style="float:left;" class="item portfolio-item imgbor sal">
+				<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}3.png" alt="">
+				<div class="portfolio-details-wrapper">
+					<div class="portfolio-details">
+						<div class="portfolio-meta-btn">
+							<ul class="work-meta">
+								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}3.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Portfolio Items End -->
-				<!-- Portfolio Items -->
-				<div class="item portfolio-item imgbor bur">
-					<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}4.png"
-						alt="">
-					<div class="portfolio-details-wrapper">
-						<div class="portfolio-details">
-							<div class="portfolio-meta-btn">
-								<ul class="work-meta">
-									<li class="lighbox"><a
-										href="/src/assets/images/img-portfolio/{{restaurant.foodType}}4.png"
-										class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
-								</ul>
-							</div>
+			</div>
+			<!-- Portfolio Items End -->
+			<!-- Portfolio Items -->
+			<div style="float:left;" class="item portfolio-item imgbor bur">
+				<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}4.png" alt="">
+				<div class="portfolio-details-wrapper">
+					<div class="portfolio-details">
+						<div class="portfolio-meta-btn">
+							<ul class="work-meta">
+								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}4.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Portfolio Items End -->
+			</div>
+			<!-- Portfolio Items End -->
+		</div>
+	</div>
+	<!-- Works End -->
+</section>
+<section id="vouchers" class="section-wrapper col-md-12 col-sm-12 col-xs-12">
+	<br> <br> <br>
+	<div class="container">
+		<div class="row">
+
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Current deals</span>
+				</h2>
+
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you can see the vouchers that the restaurant is offering</p>
+			</div>
+			<!-- Section Header End -->
+
+			<div class="our-offers">
+
+
+				<div class="row">
+
+					<div *ngFor="let voucher of vouchers" class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12 text-xs-center wow fadeInDown"
+					 data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon">
+								<h3>{{voucher.name}}</h3>
+							</div>
+							<p>{{voucher.description}}</p>
+							<p>{{voucher.expiryDate}}</p>
+							<img src="src/assets/images/voucher1.jpg" alt="Custom Image"> <br>
+							<br>
+						</div>
+					</div>
+
+				</div>
+
 			</div>
 		</div>
-		<!-- Works End -->
-	</section>
-	<section id="vouchers" class="section-wrapper">
-		<br> <br> <br>
+	</div>
+</section>
+<!-- Portfolio Section End -->
+<section id="reviews" class="bgSection ratings-section col-md-12 col-sm-12 col-xs-12">
+	<br> <br> <br>
+	<div class="ratings-wrapper wow bounceIn">
 		<div class="container">
 			<div class="row">
-
 				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
 					<h2>
-						<span class="highlight-text">Current deals</span>
+						<span class="highlight-text-inverted">Reviews</span>
 					</h2>
+					<p>Here you have some opinions of our clients</p>
+					<!-- Works -->
+					<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+						<div class="row">
 
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here
-						you can see the vouchers that the restaurant is offering</p>
-				</div>
-				<!-- Section Header End -->
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-				<div class="our-offers">
-
-
-					<div class="row">
-						
-						<div *ngFor="let voucher of vouchers"
-							class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown"
-							data-wow-delay=".2s">
-							<div class="service-box">
-								<div class="icon">
-									<h3>{{voucher.name}}</h3>
-								</div>
-								<p>{{voucher.description}}</p>
-								<p>{{voucher.expiryDate}}</p>
-								<img src="src/assets/images/voucher1.jpg" alt="Custom Image"> <br>
-								<br>
-							</div>
-						</div>
-						
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Portfolio Section End -->
-	<section id="reviews" class="bgSection ratings-section">
-		<br> <br> <br>
-		<div class="parallax-overlay"></div>
-		<div class="ratings-wrapper wow bounceIn">
-			<div class="container">
-				<div class="row">
-					<!-- Section Header -->
-					<div
-						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-						<h2>
-							<span class="highlight-text-inverted">Reviews</span>
-						</h2>
-						<p>Here you have some opinions of our clients</p>
-						<!-- Works -->
-						<div class="recommendations-works wow fadeIn"
-							data-wow-duration="2s">
-							<div class="row">
-
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									
-									<!-- Filter Button Start -->
-									<div *ngFor="let review of reviews" id="recommendations-filter"
-										class="recommendations-filter-btn-group">
-										<div class="item recommendations-item web seo">
-											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
-													style="border-right-style: solid;">
-													<ul>
-														<li>
-															<h1 class="shadow">{{review.rate}}</h1> <span
-															class="glyphicon glyphicon-star"></span> <span
-															class="glyphicon glyphicon-star"></span> <span
-															class="glyphicon glyphicon-star"></span> <span
-															class="glyphicon glyphicon-star"></span> <span
-															class="glyphicon glyphicon-star-empty"></span>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
-													<p style="margin: 5px;">{{review.content}}</p>
-													<p style="margin: 5px;">{{review.date}}</p>
-												</div>
+								<!-- Filter Button Start -->
+								<div *ngFor="let review of reviews" id="recommendations-filter" class="recommendations-filter-btn-group" style="margin-bottom:15px;">
+									<div class="item recommendations-item web seo">
+										<div class="row">
+											<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+												<ul>
+													<li>
+														<h1 class="shadow">{{review.rate}}</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span>														<span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span>
+													</li>
+												</ul>
+											</div>
+											<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+												<p style="margin: 5px;">{{review.content}}</p>
+												<p style="margin: 5px;">{{review.date}}</p>
 											</div>
 										</div>
-										<!-- Filter Button End -->
-										<!-- Portfolio Items -->
 									</div>
-									<br> 
+									<!-- Filter Button End -->
+									<!-- Portfolio Items -->
 								</div>
+								<br>
 							</div>
-							<br>
-							<!-- Slides End -->
 						</div>
+						<br>
+						<!-- Slides End -->
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<section id="feedback" class="section-wrapper contact-section"
-		data-stellar-background-ratio="0.5">
-		<div class="parallax-overlay"></div>
-		<div class="container">
-			<div class="row">
-				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-					<h2>
-						<span class="highlight-text">Feedback</span>
-					</h2>
-					<p
-						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 feedbackmar">Tell
-						us how was your experience</p>
-				</div>
-				<!-- Section Header End -->
-				
-				<div *ngIf="inSession" class="contact-details">
-					<!-- Contact Form -->
-					<div class="contact-form wow bounceInRight">
-						<form name="sentMessage" id="contactForm" novalidate method='post' action="/public-restaurant//review">
-							<div class="form-group col-md-3 col-l-3 col-s-3 col-xs-12 "
-								id="recommendations-filter" style="height: 235px">
-								<h2 style="color: #80cc0c !important;"></h2>
-								<span class="glyphicon glyphicon-star"
-									style="color: #80cc0c !important;"></span> <span
-									class="glyphicon glyphicon-star"
-									style="color: #80cc0c !important;"></span> <span
-									class="glyphicon glyphicon-star"
-									style="color: #80cc0c !important;"></span> <span
-									class="glyphicon glyphicon-star"
-									style="color: #80cc0c !important;"></span> <span
-									class="glyphicon glyphicon-star"
-									style="color: #80cc0c !important;"></span>
-								<hr>
-								<h4 *ngIf="restaurant">CURRENT RATE : {{restaurant.rate}}</h4>
-								<br>
-							</div>
-							<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
-								<textarea style="border-radius: 0px !important" rows="7"
-									cols="100" class="form-control" name="content"
-									placeholder="Message" id="message" required
-									data-validation-required-message="Please enter your message"
-									minlength="3"
-									data-validation-minlength-message="Min 5 characters"
-									maxlength="999" style="resize:none"></textarea>
-							</div>
-							<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
-								<div class="form-group">
-									<label for="filter" >Rate</label> <select
-										class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;" 
-										name='rate'>
+	</div>
+</section>
+<section id="feedback" class="section-wrapper contact-section col-md-12 col-sm-12 col-xs-12" data-stellar-background-ratio="0.5">
+
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Feedback</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 feedbackmar">Tell us how was your experience</p>
+			</div>
+			<!-- Section Header End -->
+
+			<div *ngIf="inSession" class="contact-details">
+				<!-- Contact Form -->
+				<div class="contact-form wow bounceInRight">
+					<form name="sentMessage" id="contactForm" novalidate method='post' action="/public-restaurant//review">
+						<div *ngIf="restaurant" class="form-group col-md-3 col-l-3 col-s-3 col-xs-12 " id="recommendations-filter" style="height: 235px">
+							<h2 style="color: #80cc0c !important;">{{restaurant.name}}</h2>
+							<span class="glyphicon glyphicon-star" style="color: #80cc0c !important;"></span> <span class="glyphicon glyphicon-star"
+							 style="color: #80cc0c !important;"></span> <span class="glyphicon glyphicon-star" style="color: #80cc0c !important;"></span>							<span class="glyphicon glyphicon-star" style="color: #80cc0c !important;"></span> <span class="glyphicon glyphicon-star"
+							 style="color: #80cc0c !important;"></span>
+							<hr>
+							<h4>CURRENT RATE : {{restaurant.rate}}</h4>
+							<br>
+						</div>
+						<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
+							<textarea style="border-radius: 0px !important" rows="7" cols="100" class="form-control" name="content" placeholder="Message"
+							 id="message" required data-validation-required-message="Please enter your message" minlength="3" data-validation-minlength-message="Min 5 characters"
+							 maxlength="999" style="resize:none"></textarea>
+						</div>
+						<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
+							<div class="form-group">
+								<label for="filter">Rate</label> <select class="form-control" name='rate'>
 										<option value="1" selected style="border-radius: 0px !important">1</option>
 										<option value="2" style="border-radius: 0px !important">2</option>
 										<option value="3" style="border-radius: 0px !important">3</option>
 										<option value="4" style="border-radius: 0px !important">4</option>
 										<option value="5" style="border-radius: 0px !important">5</option>
 									</select>
-								</div>
-								<button type="submit" class="btnMore">Send</button>
 							</div>
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModalLong" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLongTitle"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
+							<button type="submit" class="btnMore">Send</button>
+						</div>
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
-										</div>
-										<div class="modal-body">
-											<h2 class="section-header">
-												<span class="section-color">Message sent succesfully.
+									</div>
+									<div class="modal-body">
+										<h2 class="section-header">
+											<span class="section-color">Message sent succesfully.
 													Thank you for the feedback!</span>
 
-											</h2>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btnMore" data-dismiss="modal"
-												aria-label="Close">Got it!</button>
-										</div>
+										</h2>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btnMore" data-dismiss="modal" aria-label="Close">Got it!</button>
 									</div>
 								</div>
-
 							</div>
-						</form>
-					</div>
-				</div>
-				
-				<div *ngIf="!inSession" style="text-align: center;margin: 20px;">
-					<h1>Log in before sending feedback!</h1>
-				</div>
-				
-			</div>
-		</div>
-	</section>
-	<section class="footer-container">
-		<div class="container">
-			<div class="row footer-containertent">
-				<div class="col-md-4">
-					<img src="src/assets/images/logo/logo.png" alt="">
-				</div>
-				<div class="col-md-4">
-					<h4>Fugu</h4>
-					<p>Both sign up as restaurant and user options availables. As
-						user, you can see the restaurant page, send feedback and rate
-						them. The restaurant user can upload the menu info, discounts and
-						vouchers, and information about the address and who's the chef.</p>
-					<h4>News & Updates</h4>
-				</div>
-				<div class="col-md-4 contac-us">
-					<h4>Contact Us</h4>
-					<ul>
-						<li><i class="fa fa-home"></i>C/Tulipan, Mostoles</li>
-						<li><i class="fa fa-phone"></i>+034 600 000 000</li>
-						<li><i class="fa fa-envelope-o"></i>fugu@website.com</li>
-					</ul>
+
+						</div>
+					</form>
 				</div>
 			</div>
-		</div>
-	</section>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="footer-containertent">
-					<ul class="footer-social-info">
-						<li><a href="https://es-es.facebook.com/"><i
-								class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/"><i
-								class="fa fa-twitter"></i></a></li>
-						<li><a href="https://es.pinterest.com/"><i
-								class="fa fa-pinterest"></i></a></li>
-						<li><a href="https://plus.google.com/?hl=es"><i
-								class="fa fa-google-plus"></i></a></li>
-					</ul>
-					<br /> <br />
-					<p>
-						Copyright © 2018. Template by: <a
-							href="http://webthemez.com/free-bootstrap-templates/">WebThemez</a>,
-						All rights reserved
-					</p>
-				</div>
+
+			<div *ngIf="!inSession" style="text-align: center;margin: 20px;">
+				<h1>Log in before sending feedback!</h1>
 			</div>
+
 		</div>
-	</footer>
+	</div>
+</section>
+
+<footer>
+</footer>

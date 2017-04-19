@@ -37,7 +37,7 @@
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
 			<div class="container">
-				<a href="/main/"><img class="logo2" id="logo2"
+				<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" style="padding-right: 100"
 					src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
 				<button class="navbar-toggler hidden-md-up pull-right" type="button"
 					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
@@ -100,24 +100,25 @@
 		</nav>
 	</header>
 	<section>
-		<div class="embed-responsive embed-responsive-16by9">
-			<video autoplay loop class="embed-responsive-item">
+		<div>
+			<video autoplay loop class="embed-responsive-item"  style="position: absolute" >
 				<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
 			</video>
 			<div class="container">
 				<div class="row">
 					<div
-						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						class="col-md-12 col-sm-12 col-xs-12">
 						<br> <br> <br> <br> <br> <br> <br>
 						<br> <br> <br> <br> <br> <br> <br>
 						<br> <br>
-						<h2 class="imagetext1" data-position="center"
+						<h2 class="imagetext1" data-position="center" 
 							data-show-transition="left" data-hide-transition="right"
 							data-show-delay="1500" data-hide-delay="200"
 							style="font-size: 5.0vw;">
 							<span class="highlight-texts"><span
 								class="section-color2 highlight-text border2">Search your
-									perfect restaurant here</span> </span> <a href="/search-web/"><img
+								
+									perfect restaurant here</span> </span> <a [routerLink]="['/new/search-web']"><img
 								src="/src/assets/images/search-icon.png" alt="Search Page"
 								class="img-responsive" style="margin: auto;"> </a>
 						</h2>
@@ -127,6 +128,9 @@
 		</div>
 	</section>
 	<!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
+	<br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br>
 	<section id="cities">
 		<div class="container">
 			<div class="row">

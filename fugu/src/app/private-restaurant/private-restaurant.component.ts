@@ -49,6 +49,17 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
+     this.http.get('https://localhost:8443/api/restaurants/1/voucher').subscribe(
+      response => {
+        console.log(response);
+        const  data = response.json();
+        for (let i = 0; i < data.content.length; i++) {
+          const voucher = data.content[i];
+          this.vouchers.push(voucher);
+        }
+      },
+      error => console.error(error)
+    );
   }
  
 

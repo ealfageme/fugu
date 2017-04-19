@@ -68,8 +68,8 @@ export class PrivateClientComponent implements OnInit {
       response => {
         console.log(response.json());
         const data = response.json();
-        for (let i = 0; i < data.vouchers.length; i++) {
-          const voucher = data.vouchers[i];
+        for (let i = 0; i < data.userVouchers.length; i++) {
+          const voucher = data.userVouchers[i];
           console.log(voucher);
           this.vouchers.push(voucher);
         }
@@ -80,10 +80,10 @@ export class PrivateClientComponent implements OnInit {
       response => {
         console.log(response.json());
         const data = response.json();
-        for (let i = 0; i < data.booking.length; i++) {
-          const book = data.booking[i];
+        for (let i = 0; i < data.bookings.length; i++) {
+          const book = data.bookings[i];
           console.log(book);
-          this.vouchers.push(book);
+          this.bookingsInProcess.push(book);
         }
       },
       error => console.error(error)
