@@ -36,7 +36,6 @@
           <li *ngIf="inSession && !facebookSession" class="signin">
             <form class="navbar-form navbar-right" method="post" action="/main2/">
               <input type="submit" class="signInBtn" value="SignOut" />
-
             </form>
           </li>
           <li *ngIf="inSession" class="signin">
@@ -59,11 +58,11 @@
 </header>
 <!-- Header End -->
 <section>
-  <div class="embed-responsive embed-responsive-16by9">
-    <video autoplay loop class="embed-responsive-item">
+  <div class="img-overlay">
+    <video autoplay loop >
       <source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
     </video>
-    <div class="container" id="search">
+    <div style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -200%); " class="imagetext1" id="search">
       <div class="row">
         <div class="col-md-12">
           <div class="input-group" id="adv-search">
@@ -75,7 +74,7 @@
               <div class="btn-group" role="group">
                 <div class="dropdown dropdown-lg">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
-                  <div class="dropdown-menu dropdown-menu-right" role="menu" style="border-radius: 0px !important; -webkit-appearance: none;">
+                  <div class="dropdown-menu dropdown-menu-right">
                     <form class="form-horizontal" role="form" action="" method='post'>
                       <div class="form-group">
                         <label for="filter">Food type</label> <select class="form-control" name="foodType" style="border-radius: 0px !important; -webkit-appearance: none;">
@@ -118,7 +117,7 @@
   </div>
 </section>
 
-<section class="menus style3" id="top-rated">
+<section class="menus style3 col-md-12 col-sm-12 col-xs-12" id="top-rated" style="margin-top: -350px;">
   <div class="container">
     <div class="row">
       <!-- Section Header -->
@@ -233,7 +232,7 @@
   </div>
 </section>
 <!-- Client Section End -->
-<section id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
+<section id="contact" class="section-wrapper contact-section col-md-12 col-sm-12 col-xs-12" data-stellar-background-ratio="0.5">
   <div class="parallax-overlay"></div>
   <div class="container">
     <div class="row">
@@ -320,7 +319,7 @@
     </div>
   </div>
 </section>
-<section id="register">
+<section class="col-md-12 col-sm-12 col-xs-12" id="register">
   <div class="modal " id="modalwindow2">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: #efefef; border-radius: 0;">
@@ -447,3 +446,4 @@
   </div>
 
 </section>
+<footer></footer>
