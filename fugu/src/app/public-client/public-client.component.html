@@ -10,9 +10,9 @@
                         <li class="active">
                             <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
                         </li>
-                        <li> <a href="#profile">PROFILE</a> </li>
-                        <li> <a href="#following">FOLLOWING</a> </li>
-                        <li> <a href="#opinions">OPINIONS</a> </li>
+                        <li> <a (click)="goTo('#profile')">PROFILE</a> </li>
+                        <li> <a (click)="goTo('#following')">FOLLOWING</a> </li>
+                        <li> <a (click)="goTo('#opinions')">OPINIONS</a> </li>
                         <li class="signin">
             <div *ngIf= "inSession">
 						<form class="navbar-form navbar-right" method="post" action="/main2/">
@@ -106,7 +106,7 @@
 							<h2>Restaurants</h2>
 							<div *ngFor="let restaurant of restaurants">
 							<div class="menu-column">
-								<button (click)="location.href='../public-restaurant/Amercican%20Whey'"
+								<button [routerLink]="['../public-restaurant/Amercican%20Whey']"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
@@ -126,7 +126,7 @@
 							<h2>People</h2>
 							<div *ngFor="let follow of following">
 							<div class="menu-column">
-								<button (click)="window.location.href='/public-client/Samuel'"
+								<button [routerLink]="['/new/public-client/Samuel']"
 									class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
