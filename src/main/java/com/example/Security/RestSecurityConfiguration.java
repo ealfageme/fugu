@@ -22,6 +22,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 		// Public pages
 		http.authorizeRequests().antMatchers("/api/main/").permitAll();
+		http.authorizeRequests().antMatchers("/api/logIn/user").permitAll();
 		http.authorizeRequests().antMatchers("/api/search-web/").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/city/**").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/clients/signin").permitAll();
