@@ -5,7 +5,7 @@
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
 			<div class="container">
-				<a href="/main/"> <img class="logo2" id="logo2"
+				<a [routerLink]="['/new/main']"> <img class="logo2" id="logo2"
 					src="/src/assets/images/logo/logo2.png" alt="logo2">
 				</a>
 				<button class="navbar-toggler hidden-md-up pull-right" type="button"
@@ -25,7 +25,6 @@
 							<form class="navbar-form navbar-right" method="post"
 								action="/main2/">
 								<input type="submit" class="signInBtn" value="SignOut" />
-
 							</form>
 						</li> </div>
 						<div *ngIf="inFacebookSession">
@@ -106,11 +105,11 @@
 									<h1 class="shadow">In Process</h1>
 
 									<!-- Filter Button Start -->
-									<div *ngFor="let book of bookingsInProcess">
+									<div *ngFor="let book of bookingsInProcess; let i=index" [attr.data-index]="i">
 									<div id="recommendations-filter"
 										class="recommendations-filter-btn-group">
 	
-										<div id="{{-index}}" class="item recommendations-item web seo">
+										<div id="i" class="item recommendations-item web seo">
 											<div class="row">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<ul>
@@ -143,7 +142,7 @@
 				</div>
 			</div>
 		</div>
-				<div class="ratings-wrapper wow bounceIn">
+			<div class="ratings-wrapper wow bounceIn">
 			<div class="container">
 				<div class="row">
 					<!-- Section Header -->
@@ -230,11 +229,10 @@
 							<!-- /menu-column -->
 						</div>
 						<!-- /col-md-6 -->
-						<div class="col-md-6 wow fadeInLeft animated"
-							style="visibility: visible; animation-name: fadeInLeft;"
+						<div class="col-md-6"
+							style="visibility: visible; animation-name: fadeInLeft; float:top"
 							id="followingPeople">
 							<h2>People</h2>
-							
 							<div class="menu-column">
 								<div *ngFor="let follow of following">
 								<button class="food">
@@ -291,8 +289,8 @@
 						</ul>
 					</div>
 					<div class="item recommendations-item web seo">
-						<a href="/public-restaurant/{{restaurant.name}}/"><img
-							src="/private-restaurant/image/profileImageRestaurant{{restaurant.id}}.jpg"> </a>
+						<a [routerLink]="['/new/public-restaurant/', restaurant.name]"><img
+							src="/src/assets/images/files/profileImageRestaurant{{restaurant.id}}.jpg"> </a>
 					</div>
 					<br>
 				</div>
