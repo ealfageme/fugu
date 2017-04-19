@@ -2,19 +2,19 @@
 	<!-- Navigation Menu start-->
 	<nav id="topNav" class="navbar navbar-default main-menu">
 		<div class="container">
-			<a href="/main/"> <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
+			<a [routerLink]="['/new/main']"> <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
 			</a>
 			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
 			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="#about">ABOUT</a></li>
-					<li><a href="#booking">BOOKING</a></li>
-					<li><a href="#services">SERVICES</a></li>
-					<li><a href="#menu">MENU</a></li>
-					<li><a href="#gallery">GALLERY</a></li>
-					<li><a href="#vouchers">VOUCHERS</a></li>
-					<li><a href="#reviews">REVIEWS</a></li>
-					<li><a href="#feedback">FEEDBACK</a></li>
+					<li><a (click)="goTo('#about')">ABOUT</a></li>
+					<li><a (click)="goTo('#booking')">BOOKING</a></li>
+					<li><a (click)="goTo('#services')">SERVICES</a></li>
+					<li><a (click)="goTo('#menu')">MENU</a></li>
+					<li><a (click)="goTo('#gallery')">GALLERY</a></li>
+					<li><a (click)="goTo('#vouchers')">VOUCHERS</a></li>
+					<li><a (click)="goTo('#reviews')">REVIEWS</a></li>
+					<li><a (click)="goTo('#feedback')">FEEDBACK</a></li>
 					<li *ngIf="inSession" class="signin">
 						<form class="navbar-form navbar-right" method="post" action="/main2/">
 							<input type="submit" class="signInBtn" value="SignOut" />

@@ -6,7 +6,7 @@
   <!-- Navigation Menu start-->
   <nav id="topNav" class="navbar navbar-default main-menu">
     <div class="container">
-      <a href="/main/"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+      <a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
       <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">?</button>
       <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
         <ul class="nav navbar-nav">
@@ -23,7 +23,7 @@
                   style="border-radius: 0px !important" name="loginpassword" value="" placeholder="Password">
               </div>
               <input type="submit" class="logInBtn" value="Login" />
-              <a href="#modalwindow2" data-toggle="modal" style="padding: 0px !important">
+              <a (click)="goTo('#modalwindow2')" data-toggle="modal" style="padding: 0px !important">
                 <button type="submit" class="signInBtn">Sign in</button>
               </a>
             </form>
@@ -51,7 +51,7 @@
             </a>
           </li>
 
-          <li><a href="#contact">CONTACT US</a></li>
+          <li><a (click)="goTo('#contact')">CONTACT US</a></li>
         </ul>
       </div>
     </div>
@@ -183,7 +183,7 @@
         <div class="menu row rowmar">
           <div class="col-md-12 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
             <div class="menu-column">
-              <button *ngFor="let restaurant of restaurants" onClick=" window.location.href='/public-restaurant/'" class="food">
+              <button *ngFor="let restaurant of restaurants" [routerLink]="['/public-restaurant/']" class="food">
 									<div class="food-desc">
 										<h3 class="food-name">
 											<strong>{{restaurant.name}} ({{restaurant.foodType}})</strong>
@@ -327,8 +327,8 @@
         <div class="modal-header" style="background-color: #28292e !important;">
           <button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
-            <li><a href="#modalwindow" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
+            <li class="active"><a (click)="goTo('#modalwindow2')" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
+            <li><a (click)="goTo('#modalwindow')" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
           </ul>
         </div>
         <div class="modal-body">
@@ -396,8 +396,8 @@
         <div class="modal-header" style="background-color: #28292e !important;">
           <button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#modalwindow2" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
-            <li><a href="#" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
+            <li class="active"><a (click)="goTo('#modalwindow2')" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
+            <li><a (click)="goTo('#modalwindow')" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
           </ul>
         </div>
         <div class="modal-body">

@@ -5,7 +5,7 @@
 		<!-- Navigation Menu start-->
 		<nav id="topNav" class="navbar navbar-default main-menu">
 			<div class="container">
-				<a href="/main/"> <img class="logo2" id="logo2"
+				<a [routerLink]="['/new/main']"> <img class="logo2" id="logo2"
 					src="/src/assets/images/logo/logo2.png" alt="logo2">
 				</a>
 				<button class="navbar-toggler hidden-md-up pull-right" type="button"
@@ -13,13 +13,13 @@
 				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 
 					<ul class="nav navbar-nav">
-						<li><a href="#deals">DEALS</a></li>
-						<li><a href="#following">FOLLOWING</a></li>
-						<li><a href="#recommendations">RECOMMENDATIONS</a></li>
-						<li><a href="#opinions">OPINIONS</a></li>
-						<li><a href="#gallery">RESTAURANTS</a></li>
+						<li><a (click)="goTo('#deals')">DEALS</a></li>
+						<li><a (click)="goTo('#following')">FOLLOWING</a></li>
+						<li><a (click)="goTo('#recommendations')">RECOMMENDATIONS</a></li>
+						<li><a (click)="goTo('#opinions')">OPINIONS</a></li>
+						<li><a (click)="goTo('#galery')">RESTAURANTS</a></li>
 
-						<li *ngIf="user"><a href="#profile">{{user.name}}</a></li>
+						<li *ngIf="user"><a (click)="goTo('#profile')">{{user.name}}</a></li>
 						<div *ngIf="inNormalSession">
 						<li class="signin">
 							<form class="navbar-form navbar-right" method="post"
@@ -65,7 +65,7 @@
 										<h3>{{voucher.name}}</h3>
 									</div>
 									<p>{{voucher.description}}</p>
-									<a href="public-restaurant.html"> <img
+									<a [routerLink]="['/new/public-restaurant']"> <img
 										src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
 									</a>
 									<p style="margin-top: 5px;">Expiry date : {{voucher.expiryDate}}</p>
@@ -291,7 +291,7 @@
 						</ul>
 					</div>
 					<div class="item recommendations-item web seo">
-						<a href="/public-restaurant/{{restaurant.name}}/"><img
+						<a [routerLink]="['/new/public-restaurant/', restaurant.name]"><img
 							src="/private-restaurant/image/profileImageRestaurant{{restaurant.id}}.jpg"> </a>
 					</div>
 					<br>
@@ -431,7 +431,7 @@
 
 							<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 								<button type='submit' class="btnMore">Update</button>
-									<a href="#modalwindow" data-toggle="modal">
+									<a (click)="goTo('#modalwindow')" data-toggle="modal">
 									<button type="submit" class="btnMore">Delete</button>
 								</a>
 							</div>
