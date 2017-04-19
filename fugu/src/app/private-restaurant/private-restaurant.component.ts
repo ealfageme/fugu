@@ -60,6 +60,17 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
+    this.http.get('https://localhost:8443/api/restaurants/1/reviews').subscribe(
+      response => {
+        console.log(response);
+        const  data = response.json();
+        for (let i = 0; i < data.content.length; i++) {
+          const review = data.content[i];
+          this.reviews.push(review);
+        }
+      },
+      error => console.error(error)
+    );
   }
  
 
