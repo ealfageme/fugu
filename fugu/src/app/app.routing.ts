@@ -10,11 +10,11 @@ import { PrivateRestaurantComponent} from './private-restaurant/private-restaura
 
 const appRoutes = [
   { path: 'new/city/:name', component: CityComponent,  },
-  { path: 'new/public-client', component: PublicClientComponent},
+  { path: 'new/public-client/:username', component: PublicClientComponent},
   { path: 'new/private-client', component: PrivateClientComponent},
   { path: 'new/main', component: MainComponent,  },
   { path: 'new/search-web', component: SearchWebComponent, },
-  { path: 'new/public-restaurant', component: PublicRestaurantComponent, },
+  { path: 'new/public-restaurant/:name', component: PublicRestaurantComponent, },
   { path: 'new/private-restaurant', component:  PrivateRestaurantComponent, },
   { path: '', redirectTo: 'new/main', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }

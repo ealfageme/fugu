@@ -32,20 +32,21 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class ClientRestController {
 
 	interface UserDetail extends User.Basic,User.Restaurants, User.Reviews,
-	Review.Basic, Voucher.Basic, Booking.Basic,
+	ReviewDetail, Voucher.Basic, Booking.Basic,
 	Restaurant.Basic,User.Vouchers, User.Bookings{}
+	interface ReviewDetail extends Review.Basic, Review.Restaurants, Restaurant.Basic {}
 	
 	@Autowired
 	private ClientService clientService;
 
 	@ResponseBody
 	@JsonView (UserDetail.class)
-	@RequestMapping (value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getClient(HttpSession session, @PathVariable long id) {
+	@RequestMapping (value = "/{name}", method = RequestMethod.GET)
+	public ResponseEntity<User> getClient(HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		User user = clientService.userRepositoryFindOne(id);
+		User user = clientService.userRepositoryFindByName(name);
 		if (user != null) {
-			return new ResponseEntity<>(clientService.userRepositoryFindOne(id), HttpStatus.OK);
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -88,10 +89,10 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView (User.Basic.class)
-	@RequestMapping (value = "/{id}/following", method = RequestMethod.GET)
-	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable long id) {
+	@RequestMapping (value = "/{name}/following", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> getUserFollowing(HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		User user = clientService.userRepositoryFindOne(id);
+		User user = clientService.userRepositoryFindByName(name);
 		if (user != null) {
 			return new ResponseEntity<>(user.getFollowing(), HttpStatus.OK);
 		} else {
@@ -101,12 +102,12 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView (User.Basic.class)
-	@RequestMapping (value = "/{id}/unfollow", method = RequestMethod.DELETE)
+	@RequestMapping (value = "/{name}/unfollow", method = RequestMethod.DELETE)
 	public ResponseEntity<List<User>> deleteUserFollows(HttpServletRequest request, Authentication authentication,
-			HttpSession session, @PathVariable long id) {
+			HttpSession session, @PathVariable String name) {
 		
 		session.setMaxInactiveInterval(-1);
-		User user2follow = clientService.userRepositoryFindOne(id);
+		User user2follow = clientService.userRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = clientService.userRepositoryFindByEmail(authentication.getName());
 			if (user2follow != null) {
@@ -124,11 +125,11 @@ public class ClientRestController {
 
 	@ResponseBody
 	@JsonView (User.Basic.class)
-	@RequestMapping (value = "/{id}/follow", method = RequestMethod.POST)
+	@RequestMapping (value = "/{name}/follow", method = RequestMethod.POST)
 	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication,
-			HttpSession session, @PathVariable long id) {
+			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		User user2follow = clientService.userRepositoryFindOne(id);
+		User user2follow = clientService.userRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = clientService.userRepositoryFindByEmail(authentication.getName());
 			if (user2follow != null) {

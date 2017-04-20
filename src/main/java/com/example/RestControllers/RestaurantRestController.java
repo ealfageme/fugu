@@ -44,10 +44,10 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant rest = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant rest = restaurantService.restaurantRepositoryFindByName(name);
 		if (rest != null) {
 			return new ResponseEntity<>(rest, HttpStatus.OK);
 		} else {
@@ -57,7 +57,7 @@ public class RestaurantRestController {
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
 	@RequestMapping(value = "/city/{city}", method = RequestMethod.GET)
-	public ResponseEntity<List<Restaurant>> getRestaurant(HttpSession session, @PathVariable String city) {
+	public ResponseEntity<List<Restaurant>> getRestaurantCity(HttpSession session, @PathVariable String city) {
 		session.setMaxInactiveInterval(-1);
 		List<Restaurant> rests = restaurantService.restaurantRepositoryFindByCity(city);
 		if (rests != null) {
@@ -115,10 +115,10 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Menu.Basic.class)
-	@RequestMapping(value = "/{id}/menus", method = RequestMethod.GET)
-	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page) {
+	@RequestMapping(value = "/{name}/menus", method = RequestMethod.GET)
+	public ResponseEntity<Page<Menu>> getRestaurantMenus(HttpSession session, @PathVariable String name, Pageable page) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 		if (restaurant != null) {
 			return new ResponseEntity<>(restaurantService.restaurantServiceFindByRestaurantMenu(restaurant, page), HttpStatus.OK);
 		} else {
@@ -129,12 +129,12 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Menu.Basic.class)
-	@RequestMapping(value = "/{id}/menus", method = RequestMethod.POST)
-	public ResponseEntity<Menu> postRestaurantMenus(HttpSession session, @PathVariable long id, Pageable page,
+	@RequestMapping(value = "/{name}/menus", method = RequestMethod.POST)
+	public ResponseEntity<Menu> postRestaurantMenus(HttpSession session, @PathVariable String name, Pageable page,
 			@RequestBody Menu newMenu) {
 		session.setMaxInactiveInterval(-1);
 
-		Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 		 if (restaurantService.checkMenu(newMenu,restaurant.getEmail())){
 			 restaurantService.saveMenu(newMenu, restaurant.getEmail());	 
 			 return new ResponseEntity<>(newMenu, HttpStatus.CREATED);
@@ -147,11 +147,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(ReviewDetail.class)
-	@RequestMapping(value = "/{id}/reviews", method = RequestMethod.GET)
-	public ResponseEntity<Page<Review>> getRestaurantReviews(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/{name}/reviews", method = RequestMethod.GET)
+	public ResponseEntity<Page<Review>> getRestaurantReviews(HttpSession session, @PathVariable String name,
 			Pageable page) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 		if (restaurant != null) {
 			return new ResponseEntity<>(restaurantService.reviewRepositoryfindByReviewRestaurant(restaurant, page), HttpStatus.OK);
 		} else {
@@ -162,12 +162,12 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Review.Basic.class)
-	@RequestMapping(value = "/{id}/reviews", method = RequestMethod.POST)
-	public ResponseEntity<Review> postRestaurantReviews(HttpSession session, @PathVariable long id, Pageable page,
+	@RequestMapping(value = "/{name}/reviews", method = RequestMethod.POST)
+	public ResponseEntity<Review> postRestaurantReviews(HttpSession session, @PathVariable String name, Pageable page,
 			@RequestBody Review newReview, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		if (restaurantService.reviewRepositoryfindByContent(newReview.getContent()) != null) {
-			Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newReview.setReviewRestaurant(restaurant);
 			newReview.setUser((User) authentication.getCredentials());
 			restaurantService.reviewRepositorysave(newReview);
@@ -179,12 +179,12 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Booking.Basic.class)
-	@RequestMapping(value = "/{id}/book", method = RequestMethod.POST)
-	public ResponseEntity<Booking> postRestaurantBooks(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/{name}/book", method = RequestMethod.POST)
+	public ResponseEntity<Booking> postRestaurantBooks(HttpSession session, @PathVariable String name,
 			@RequestBody Booking newBooking, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		if (restaurantService.bookingRepositoryfindBySpecialRequirements(newBooking.getSpecialRequirements()) == null) {
-			Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newBooking.setBookingUser(restaurantService.userRepositoryfindByEmail(authentication.getName()));
 			newBooking.setBookingRestaurant(restaurant);
 			if (restaurant != null) {
@@ -200,11 +200,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(BookingDetail.class)
-	@RequestMapping(value = "/{id}/book", method = RequestMethod.GET)
-	public ResponseEntity<Page<Booking>> getRestaurantBooks(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/{name}/book", method = RequestMethod.GET)
+	public ResponseEntity<Page<Booking>> getRestaurantBooks(HttpSession session, @PathVariable String name,
 			Authentication authentication, Pageable page) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 		if (restaurant != null) {
 			return new ResponseEntity<>(restaurantService.bookingRepositoryfindByBookingRestaurant(restaurant, page), HttpStatus.OK);
 		} else {
@@ -214,12 +214,12 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Voucher.Basic.class)
-	@RequestMapping(value = "/{id}/voucher", method = RequestMethod.POST)
-	public ResponseEntity<Voucher> postRestaurantVoucher(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/{name}/voucher", method = RequestMethod.POST)
+	public ResponseEntity<Voucher> postRestaurantVoucher(HttpSession session, @PathVariable String name,
 			@RequestBody Voucher newVoucher, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		if (restaurantService.voucherRepositoryfindByName(newVoucher.getName()) == null) {
-			Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newVoucher.setRestaurant(restaurant);
 			if (restaurant != null) {
 				restaurant.getVouchers().add(newVoucher);
@@ -233,11 +233,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Voucher.Basic.class)
-	@RequestMapping(value = "/{id}/voucher", method = RequestMethod.GET)
-	public ResponseEntity<Page<Voucher>> getRestaurantVoucher(HttpSession session, @PathVariable long id,
+	@RequestMapping(value = "/{name}/voucher", method = RequestMethod.GET)
+	public ResponseEntity<Page<Voucher>> getRestaurantVoucher(HttpSession session, @PathVariable String name,
 			Pageable page) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 		if (restaurant != null) {
 			return new ResponseEntity<>(restaurantService.voucherRepositoryfindByRestaurant(restaurant, page), HttpStatus.OK);
 		} else {
@@ -248,11 +248,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/restaurants/{id}/unfollow", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/api/restaurants/{name}/unfollow", method = RequestMethod.DELETE)
 	public ResponseEntity<List<Restaurant>> deleteUserFollows(HttpServletRequest request, Authentication authentication,
-			HttpSession session, @PathVariable long id) {
+			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant2unfollow = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant2unfollow = restaurantService.restaurantRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = restaurantService.userRepositoryfindByEmail(authentication.getName());
 			if (restaurant2unfollow != null) {
@@ -270,11 +270,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/restaurants/{id}/follow", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/restaurants/{name}/follow", method = RequestMethod.POST)
 	public ResponseEntity<List<Restaurant>> postUserFollows(HttpServletRequest request, Authentication authentication,
-			HttpSession session, @PathVariable long id) {
+			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
-		Restaurant restaurant2follow = restaurantService.restaurantRepositoryFindOne(id);
+		Restaurant restaurant2follow = restaurantService.restaurantRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = restaurantService.userRepositoryfindByEmail(authentication.getName());
 			if (restaurant2follow != null) {

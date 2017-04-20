@@ -12,10 +12,16 @@ export class SearchWebComponent implements OnInit {
   private restaurants: string[] = [];
   email: string;
   password: string;
+  maxPrice = 25;
+  minPrice = 1;
+  minRating = 0;
+  maxRating = 5;
 
   constructor(private http: Http) {
     this.inSession = false;
     this.facebookSession = false;
+    console.log(this.maxPrice);
+
     this.http.get('https://localhost:8443/api/restaurants/?page=').subscribe(
       response => {
         const  data = response.json();
@@ -32,5 +38,19 @@ export class SearchWebComponent implements OnInit {
   }
 goTo(location: string): void {
     window.location.hash = location;
+  }
+
+  searchByParam(){
+    this.restaurants = [];
+    this.http.get('https://localhost:8443/api/search-web/filters?min='+this.minRating+'&&max='+this.maxRating+'&&minPrice='+this.minPrice+'&&maxPrice='+this.maxPrice).subscribe(
+      response => {
+        const  data = response.json();
+        for (let i = 0; i < data.length; i++) {
+          const  restaurant = data[i];
+          this.restaurants.push(restaurant);
+        }
+      },
+      error => console.error(error)
+    );
   }
 }

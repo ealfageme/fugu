@@ -172,7 +172,7 @@
 					<div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
 
 						<div class="menu-column">
-
+							<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
 							<button value="0" id="reference" class="food">
 
 
@@ -194,7 +194,7 @@
 									</div>
 									<!-- /food-details -->
 								</button>
-
+								</a>
 
 						</div>
 						<!-- /food -->

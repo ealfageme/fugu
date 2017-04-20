@@ -323,7 +323,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="src/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
+									<img src="src/assets/images/files/menuImageRestaurant{{restaurant.id}}{{i+1}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -345,8 +345,8 @@
 					<!-- /col-md-6 -->
 				</div>
 
-				<div class="col-md-2 col-md-offset-5 morediv">
-					<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
+				<div *ngIf="seeMorebtn" class="col-md-2 col-md-offset-5 morediv">
+					<button (click)="seeMore()" style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
 				</div>
 
 				<!-- /row -->
@@ -564,7 +564,7 @@
 						</div>
 						<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
 							<div class="form-group">
-								<label for="filter">Rate</label> <select class="form-control" name='rate'>
+								<label for="filter">Rate</label> <select class="form-control" id= "selectStar"name='rate'>
 										<option value="1" selected style="border-radius: 0px !important">1</option>
 										<option value="2" style="border-radius: 0px !important">2</option>
 										<option value="3" style="border-radius: 0px !important">3</option>
