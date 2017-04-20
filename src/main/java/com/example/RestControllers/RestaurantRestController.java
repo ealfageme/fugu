@@ -38,8 +38,9 @@ public class RestaurantRestController {
 
 	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic, User.Basic, Menu.Basic,
 			Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
-			Restaurant.Vouchers, Restaurant.Bookings {
-	}
+			Restaurant.Vouchers, Restaurant.Bookings {}
+	interface ReviewDetail extends Review.Basic, Review.Users, User.Basic {}
+	interface BookingDetail extends Booking.Basic, Booking.Users, User.Basic {}
 
 	@ResponseBody
 	@JsonView(RestaurantDetail.class)
@@ -47,6 +48,9 @@ public class RestaurantRestController {
 	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant rest = restaurantService.restaurantRepositoryFindOne(id);
+		/*for(Review review : rest.getRestaurantReviews()){
+			review.setDate(review.getDate().);
+		}*/
 		if (rest != null) {
 			return new ResponseEntity<>(rest, HttpStatus.OK);
 		} else {
@@ -145,7 +149,7 @@ public class RestaurantRestController {
 	}
 
 	@ResponseBody
-	@JsonView(Review.Basic.class)
+	@JsonView(ReviewDetail.class)
 	@RequestMapping(value = "/{id}/reviews", method = RequestMethod.GET)
 	public ResponseEntity<Page<Review>> getRestaurantReviews(HttpSession session, @PathVariable long id,
 			Pageable page) {
@@ -198,7 +202,7 @@ public class RestaurantRestController {
 	}
 
 	@ResponseBody
-	@JsonView(Booking.Basic.class)
+	@JsonView(BookingDetail.class)
 	@RequestMapping(value = "/{id}/book", method = RequestMethod.GET)
 	public ResponseEntity<Page<Booking>> getRestaurantBooks(HttpSession session, @PathVariable long id,
 			Authentication authentication, Pageable page) {

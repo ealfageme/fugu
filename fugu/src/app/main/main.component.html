@@ -357,8 +357,8 @@
 			<modal-header style="background-color: #28292e !important;">
 				<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
 				<ul class="nav navbar-nav">
-					<li class="active"><a (click)="modalWindow2.open()" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
-					<li><a (click)="modalWindow.open()" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
+					<li class="active"><a (click)="modalWindow2.open(); modalWindow.close();" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
+					<li><a (click)="modalWindow.open(); modalWindow2.close();" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
 				</ul>
 			</modal-header>
 			<modal-content>
