@@ -80,7 +80,7 @@
             </form>
             <div class="input-group-btn">
               <div class="btn-group" role="group">
-               
+
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@
                   <form role="form" method='post'>
                     <div class="col-md-3">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">min</span>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="minPrice" [ngModelOptions]="{standalone: 0}"
                           name="minP">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">max</span>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="maxPrice" [ngModelOptions]="{standalone: 100}"
                           name="maxP">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">min</span>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="minRating" [ngModelOptions]="{standalone: 0}"
                           name="minR">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
@@ -137,7 +137,7 @@
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
-                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>
+                        <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">max</span>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="maxRating" [ngModelOptions]="{standalone: 5}"
                           name="maxR">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
@@ -148,6 +148,49 @@
                       <button type="submit" (click)="searchByParam()" class="btnMore">Search</button>
                     </div>
                   </form>
+                  <div>
+                    <br>
+                    <form>
+                      <div class="col-md-5">
+                        <div class="paddingtop">
+                          <div class="form-group">
+                            <select id="cities" name="cities" [(ngModel)]="city" class="form-control">
+															<option value="Madrid">Madrid</option>
+															<option value="Barcelona">Barcelona</option>
+															<option value="Valencia">Valencia</option>
+															<option value="Sevilla">Sevilla</option>
+															<option value="Zaragoza">Zaragoza</option>
+															<option value="Bilbao">Bilbao</option>
+															
+														</select>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="paddingtop">
+                          <div class="form-group">
+                            <select id="kindfood" name="kindfood" [(ngModel)]="typefood" class="form-control">
+															<option value="Chinese">Chinese</option>
+															<option value="Japanese">Japanese</option>
+															<option value="American">American</option>
+															<option value="Thai">Thai</option>
+															<option value="Tapas">Tapas</option>
+															<option value="Galician">Galician</option>
+															<option value="Mexican">Mexican</option>
+                              <option value="Italian">Italian</option>
+                              <option value="Indian">Indian</option>
+                              
+														</select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2"> 
+                          <button type="submit" (click)="searchByCityAndType()" class="btnMore">Search</button>
+                      </div>
+
+                    </form>
+                  </div>
                 </div>
               </div>
               <br>

@@ -17,65 +17,69 @@ export class SearchWebComponent implements OnInit {
   minPrice = 1;
   minRating = 0;
   maxRating = 5;
-  city : String;
-  typefood : String;
-  nameRestaurant : String;
+  city: String;
+  typefood: String;
+  nameRestaurant: String;
 
 
   constructor(private http: Http) {
     this.inSession = false;
+    //dates as default
+    this.city = "Madrid";
+    this.typefood = "Chinese";
     this.facebookSession = false;
-    console.log(this.maxPrice);
+    
 
     this.http.get('https://localhost:8443/api/restaurants/?page=').subscribe(
       response => {
-        const  data = response.json();
+        const data = response.json();
         for (let i = 0; i < data.content.length; i++) {
-          const  restaurant = data.content[i];
+          const restaurant = data.content[i];
           this.restaurants.push(restaurant);
         }
       },
       error => console.error(error)
     );
-   }
+  }
 
   ngOnInit() {
   }
-goTo(location: string): void {
+  goTo(location: string): void {
     window.location.hash = location;
   }
 
-  searchByParam(){
+  searchByParam() {
     this.restaurants = [];
-    this.http.get('https://localhost:8443/api/search-web/filters?min='+this.minRating+'&&max='+this.maxRating+'&&minPrice='+this.minPrice+'&&maxPrice='+this.maxPrice).subscribe(
+    this.http.get('https://localhost:8443/api/search-web/filters?min=' + this.minRating + '&&max=' + this.maxRating + '&&minPrice=' + this.minPrice + '&&maxPrice=' + this.maxPrice).subscribe(
       response => {
-        const  data = response.json();
+        const data = response.json();
         for (let i = 0; i < data.length; i++) {
-          const  restaurant = data[i];
+          const restaurant = data[i];
           this.restaurants.push(restaurant);
         }
       },
       error => console.error(error)
     );
   }
-    searchByCityAndType(){
+  searchByCityAndType() {
     this.restaurants = [];
-    this.http.get('https://localhost:8443/api/search-web/foodtypeandcity?typeFood='+this.typefood+'&&city='+this.city).subscribe(
+    
+    this.http.get('https://localhost:8443/api/search-web/foodtypeandcity?typeFood=' + this.typefood + '&&city=' + this.city).subscribe(
       response => {
-        const  data = response.json();
+        const data = response.json();
         for (let i = 0; i < data.length; i++) {
-          const  restaurant = data[i];
+          const restaurant = data[i];
           this.restaurants.push(restaurant);
         }
       },
       error => console.error(error)
     );
   }
-     searchByName(){
+  searchByName() {
     this.restaurants = [];
-    this.http.get('https://localhost:8443/api/search-web/name?name='+this.nameRestaurant).subscribe(
+    this.http.get('https://localhost:8443/api/search-web/name?name=' + this.nameRestaurant).subscribe(
       response => {
-        const  restaurant = response.json();
+        const restaurant = response.json();
         this.restaurants.push(restaurant);
       },
       error => console.error(error)
