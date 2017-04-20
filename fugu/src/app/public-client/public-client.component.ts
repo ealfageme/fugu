@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-client',
@@ -14,20 +15,21 @@ export class PublicClientComponent implements OnInit {
   private restaurants: string[] = [];
   private following: string[] = [];
   private reviews: string[] = [];
-  private user:string;
+  private user: string;
+  private username: string;
 
 
-  constructor(private http: Http) { 
-    this.inSession=false;
-    this.followButton=false;
-    this.unfollowButton=true;
+  constructor(private http: Http, activatedRoute: ActivatedRoute) {
+    this.username = activatedRoute.snapshot.params['username'];
+    this.inSession = false;
+    this.followButton = false;
+    this.unfollowButton = true;
     this.http.get('https://localhost:8443/api/restaurants/').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();
         for (let i = 0; i < data.content.length; i++) {
           const restaurant = data.content[i];
-          console.log(restaurant);
           this.restaurants.push(restaurant);
         }
       },
@@ -45,7 +47,7 @@ export class PublicClientComponent implements OnInit {
       },
       error => console.error(error)
     );
-     this.http.get('https://localhost:8443/api/clients/1').subscribe(
+     this.http.get('https://localhost:8443/api/clients/' + this.username).subscribe(
       response => {
         console.log(response.json());
         const data = response.json();

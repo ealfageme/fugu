@@ -50,7 +50,7 @@ export class PrivateClientComponent implements OnInit {
       },
       error => console.error(error)
     );
-     this.http.get('https://localhost:8443/api/clients/1').subscribe(
+     this.http.get('https://localhost:8443/api/clients/john').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();
@@ -64,7 +64,7 @@ export class PrivateClientComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/clients/1').subscribe(
+    this.http.get('https://localhost:8443/api/clients/john').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();
@@ -76,7 +76,7 @@ export class PrivateClientComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/clients/1').subscribe(
+    this.http.get('https://localhost:8443/api/clients/john').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();

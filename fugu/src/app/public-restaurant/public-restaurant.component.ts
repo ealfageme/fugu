@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-restaurant',
@@ -14,6 +15,7 @@ export class PublicRestaurantComponent implements OnInit {
   prevRestaurant = false;
   facebookSession: boolean;
   private restaurant: string;
+  private restaurantname: string;
   email: string;
   password: string;
   pagenumber = 0;
@@ -21,11 +23,12 @@ export class PublicRestaurantComponent implements OnInit {
   private vouchers: string[] = [];
   private reviews: string[] = [];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, activatedRoute: ActivatedRoute) {
+    this.restaurantname = activatedRoute.snapshot.params['name'];
     this.favButton = true;
     this.inSession = true;
     this.facebookSession = false;
-    this.http.get('https://localhost:8443/api/restaurants/1').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/' + this.restaurantname).subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -34,7 +37,7 @@ export class PublicRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/menus/?page=0&size=4').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/' + this.restaurantname + '/menus/?page=0&size=4').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -45,7 +48,7 @@ export class PublicRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/voucher').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/' + this.restaurantname + '/voucher').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -56,7 +59,7 @@ export class PublicRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/reviews').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/' + this.restaurantname + '/reviews').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
