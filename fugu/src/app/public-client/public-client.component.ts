@@ -24,7 +24,7 @@ export class PublicClientComponent implements OnInit {
     this.inSession = false;
     this.followButton = false;
     this.unfollowButton = true;
-    this.http.get('https://localhost:8443/api/restaurants/').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/?page=0&size=4').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();

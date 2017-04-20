@@ -345,8 +345,8 @@
 					<!-- /col-md-6 -->
 				</div>
 
-				<div class="col-md-2 col-md-offset-5 morediv">
-					<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
+				<div *ngIf="seeMorebtn" class="col-md-2 col-md-offset-5 morediv">
+					<button (click)="seeMore()" style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
 				</div>
 
 				<!-- /row -->
