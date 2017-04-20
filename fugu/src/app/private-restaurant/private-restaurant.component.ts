@@ -28,7 +28,7 @@ export class PrivateRestaurantComponent implements OnInit {
     this.inSession = false;
     this.followButton = false;
     this.unfollowButton = true;
-    this.http.get('https://localhost:8443/api/restaurants/1').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/American%20Whey').subscribe(
       response => {
         console.log(response.json());
         const data = response.json();
@@ -39,7 +39,7 @@ export class PrivateRestaurantComponent implements OnInit {
 },
       error => console.error(error)
     );
-   this.http.get('https://localhost:8443/api/restaurants/1/menus').subscribe(
+   this.http.get('https://localhost:8443/api/restaurants/American%20Whey/menus').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -50,7 +50,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-     this.http.get('https://localhost:8443/api/restaurants/1/voucher').subscribe(
+     this.http.get('https://localhost:8443/api/restaurants/American%20Whey/voucher').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -61,7 +61,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/book').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/American%20Whey/book').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -72,7 +72,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => console.error(error)
     );
-    this.http.get('https://localhost:8443/api/restaurants/1/reviews').subscribe(
+    this.http.get('https://localhost:8443/api/restaurants/American%20Whey/reviews').subscribe(
       response => {
         console.log(response);
         const  data = response.json();
@@ -84,7 +84,6 @@ export class PrivateRestaurantComponent implements OnInit {
       error => console.error(error)
     );
   }
- 
 
   ngOnInit() {
   }

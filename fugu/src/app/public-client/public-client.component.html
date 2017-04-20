@@ -1,97 +1,96 @@
 <body>
 
-    <header>
-        <!-- Navigation Menu start-->
-        <nav id="topNav" class="navbar navbar-default main-menu">
-            <div class="container">
-                <a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-                <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
-                        </li>
-                        <li> <a (click)="goTo('#profile')">PROFILE</a> </li>
-                        <li> <a (click)="goTo('#following')">FOLLOWING</a> </li>
-                        <li> <a (click)="goTo('#opinions')">OPINIONS</a> </li>
-                        <li class="signin">
-            <div *ngIf= "inSession">
-						<form class="navbar-form navbar-right" method="post" action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> 
-							</form>  
-						<form class="navbar-form navbar-right" method="get" action="/default/">
-							<button class="signInBtn">Visit profile</button>
-						</form>
-            </div>
-							</li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- Main Slider End -->
-    <section id="profile" class="profile-sec section-wrapper description">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-          <div *ngIf="user">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">{{user.name}}<img
-							src="/private-client/image/{{fileName}}"  class="img-circle" alt="Custom Image"/></span></h2>
+	<header>
+		<!-- Navigation Menu start-->
+		<nav id="topNav" class="navbar navbar-default main-menu">
+			<div class="container">
+				<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
+						</li>
+						<li> <a (click)="goTo('#profile')">PROFILE</a> </li>
+						<li> <a (click)="goTo('#following')">FOLLOWING</a> </li>
+						<li> <a (click)="goTo('#opinions')">OPINIONS</a> </li>
+						<li class="signin">
+							<div *ngIf="inSession">
+								<form class="navbar-form navbar-right" method="post" action="/main2/">
+									<input type="submit" class="signInBtn" value="SignOut" />
+								</form>
+								<form class="navbar-form navbar-right" method="get" action="/default/">
+									<button class="signInBtn">Visit profile</button>
+								</form>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Main Slider End -->
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br>
+		<br>
+		<br>
+		<div class="container">
+			<div *ngIf="user">
+				<div class="row">
+					<!-- Section Header -->
+					<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+						<h2><span class="highlight-text">{{user.name}}<img
+							src="src/assets/images/files/profileImage{{user.id}}.jpg"  class="img-circle" alt="Custom Image"/></span></h2>
 
-                </div>
-                <!-- Section Header End -->
-                <div id="profileForm" class="col-l-7 col-md-7 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-                    <div id="formCol" class="col-l-7 col-md-7 col-sm-7 col-xs-12">
-                        <h1>Data</h1>
-                            <div class="form-group">
-                                <label for="name">Name:</label>
-                                <label>{{user.name}}</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <label>{{user.email}}</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd">Bio:</label>
-                                <label>{{user.description}}</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd">Age:</label>
-                                <label>{{user.age}}</label>
-                            </div>
-                            <div class="form-group">
-                                <label for="pwd">Favourite food:</label>
-                                <label>{{user.favouriteFood}}</label>
-                            </div>
-                    </div>
-                    <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <form role="form" method='get'>
-                        <div *ngIf="followButton">
-                        <input id="followPulsed" type="hidden" name='followPulsed' value="true">
-                        <button type="submit" class="btnMore"  id="follow" style="margin:10px;" >Follow</button>
-                        </div>
-                       	</form>
-						            <form role="form" method='get'>
-                       	<div *ngIf="unfollowButton">
-                        <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
-                        <button type="submit" class="btnMore" id="unfollow" style="margin:10px;" >Unfollow</button>
-                       	</div>
-                        </form>   
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-    </section>
-    <section class="menus style3" id="following">
+					</div>
+					<!-- Section Header End -->
+					<div id="profileForm" class="col-l-7 col-md-7 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+						<div id="formCol" class="col-l-7 col-md-7 col-sm-7 col-xs-12">
+							<h1>Data</h1>
+							<div class="form-group">
+								<label for="name">Name:</label>
+								<label>{{user.name}}</label>
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label>
+								<label>{{user.email}}</label>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Bio:</label>
+								<label>{{user.description}}</label>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Age:</label>
+								<label>{{user.age}}</label>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Favourite food:</label>
+								<label>{{user.favouriteFood}}</label>
+							</div>
+						</div>
+						<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
+							<form role="form" method='get'>
+								<div *ngIf="followButton">
+									<input id="followPulsed" type="hidden" name='followPulsed' value="true">
+									<button type="submit" class="btnMore" id="follow" style="margin:10px;">Follow</button>
+								</div>
+							</form>
+							<form role="form" method='get'>
+								<div *ngIf="unfollowButton">
+									<input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
+									<button type="submit" class="btnMore" id="unfollow" style="margin:10px;">Unfollow</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="following">
 		<div class="container">
 			<div class="row">
 				<!-- Section Header -->
-				<div
-					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
 					<h2>
 						<span class="highlight-text">Following</span>
 					</h2>
@@ -100,14 +99,11 @@
 				<div class="menus-container">
 					<!-- menu -->
 					<div class="menu row">
-						<div class="col-md-6 wow fadeInRight animated"
-							style="visibility: visible; animation-name: fadeInRight;"
-							id="followingRestaurants">
+						<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
 							<h2>Restaurants</h2>
 							<div *ngFor="let restaurant of restaurants">
-							<div class="menu-column">
-								<button [routerLink]="['../public-restaurant/Amercican%20Whey']"
-									class="food">
+								<div class="menu-column">
+									<button [routerLink]="['/new/public-restaurant/'+restaurant.name]" class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
 											<img src="/src/assets/images/restaurant-type/{{restaurant.name}}.jpg" class="img-circle"
@@ -115,27 +111,24 @@
 										</h6>
 									</div>
 								</button>
-							</div>
+								</div>
 							</div>
 							<!-- /menu-column -->
 						</div>
 						<!-- /col-md-6 -->
-						<div class="col-md-6 wow fadeInLeft animated"
-							style="visibility: visible; animation-name: fadeInLeft;"
-							id="followingPeople">
+						<div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;" id="followingPeople">
 							<h2>People</h2>
 							<div *ngFor="let follow of following">
-							<div class="menu-column">
-								<button [routerLink]="['/new/public-client/Samuel']"
-									class="food">
-									<div class="food-desc">
-										<h6 class="food-name">
-											<img src="/src/assets/images/clients/{{follow.name}}.jpg"
-												class="img-circle" id="imgPerfil">{{follow.name}}
-										</h6>
-									</div>
-								</button>
-							</div>
+								<div class="menu-column">
+									<button [routerLink]="['/new/public-client/'+follow.name]" class="food">
+										<div class="food-desc">
+											<h6 class="food-name">
+												<img src="/src/assets/images/clients/{{follow.name}}.jpg"
+													class="img-circle" id="imgPerfil">{{follow.name}}
+											</h6>
+										</div>
+									</button>
+								</div>
 							</div>
 							<!-- /menu-column -->
 						</div>
@@ -148,47 +141,44 @@
 		</div>
 		<!-- /container -->
 	</section>
-    <!-- Portfolio Section End -->
-  	<section id="opinions" class="bgSection ratings-section">
+	<!-- Portfolio Section End -->
+	<section id="opinions" class="bgSection ratings-section">
 		<br> <br> <br>
 		<div class="ratings-wrapper wow bounceIn">
 			<div class="container">
 				<div class="row">
 					<!-- Section Header -->
-					<div
-						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
 						<h2>
 							<span class="highlight-text-inverted">Opinions</span>
 						</h2>
 						<!-- Works -->
-						<div class="recommendations-works wow fadeIn"
-							data-wow-duration="2s">
+						<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<!-- Filter Button Start -->
 									<div *ngFor="let review of reviews">
-									<div id="recommendations-filter"
-										class="recommendations-filter-btn-group">
-										<div class="item recommendations-item web seo">
-											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
-													<ul>
-														<li>
-															<h1 class="shadow">American Whey</h1> 
-															<p>{{review.rate}}</p>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
-													<p style="margin: 5px;">{{review.content}} - {{review.date}}</p>
+										<div id="recommendations-filter" class="recommendations-filter-btn-group">
+											<div class="item recommendations-item web seo">
+												<div class="row">
+													<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+														<ul>
+															<li>
+																<h1 class="shadow">{{review.reviewRestaurant.name}}</h1>
+																<p>{{review.rate}}</p>
+															</li>
+														</ul>
+													</div>
+													<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+														<p style="margin: 5px;">{{review.content}} - {{review.date}}</p>
+													</div>
 												</div>
 											</div>
+											<!-- Filter Button End -->
+											<!-- Portfolio Items -->
 										</div>
-										<!-- Filter Button End -->
-										<!-- Portfolio Items -->
+										<br>
 									</div>
-									<br>
-									</div>	
 								</div>
 							</div>
 							<br>
@@ -199,4 +189,4 @@
 			</div>
 		</div>
 	</section>
-    <!-- Contact Section End -->
+	<!-- Contact Section End -->
