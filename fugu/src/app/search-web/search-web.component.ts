@@ -21,7 +21,7 @@ export class SearchWebComponent implements OnInit {
   typefood : String;
   nameRestaurant : String;
 
-  
+
   constructor(private http: Http) {
     this.inSession = false;
     this.facebookSession = false;
@@ -75,11 +75,8 @@ goTo(location: string): void {
     this.restaurants = [];
     this.http.get('https://localhost:8443/api/search-web/name?name='+this.nameRestaurant).subscribe(
       response => {
-        const  data = response.json();
-        for (let i = 0; i < data.length; i++) {
-          const  restaurant = data[i];
-          this.restaurants.push(restaurant);
-        }
+        const  restaurant = response.json();
+        this.restaurants.push(restaurant);
       },
       error => console.error(error)
     );
