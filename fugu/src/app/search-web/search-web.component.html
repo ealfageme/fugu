@@ -3,58 +3,60 @@
 <script src="/src/assets/js/facebook.js"></script>
 <!-- Header End -->
 <header>
-  <!-- Navigation Menu start-->
-  <nav id="topNav" class="navbar navbar-default main-menu">
-    <div class="container">
-      <a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-      <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">?</button>
-      <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-        <ul class="nav navbar-nav">
-          <li *ngIf="!inSession" class="signin">
-            <form class="navbar-form navbar-right" method="post" action="/main2/">
-              <div class="input-group">
-                <span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-user"></i></span> <input id="email" type="email" class="form-control method='post'"
-                  style="border-radius: 0px !important" name="loginemail" value="" placeholder="Email Address">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-lock"></i></span> <input id="password" type="password" class="form-control"
-                  style="border-radius: 0px !important" name="loginpassword" value="" placeholder="Password">
-              </div>
-              <input type="submit" class="logInBtn" value="Login" />
-              <a (click)="goTo('#modalwindow2')" data-toggle="modal" style="padding: 0px !important">
-                <button type="submit" class="signInBtn">Sign in</button>
-              </a>
-            </form>
-          </li>
-          <li *ngIf="!inSession">
-            <a style="margin-top: 5px;" onclick="FB.login(function(response) {if (response.authResponse) {console.log(accessToken = response.authResponse.accessToken);window.top.location = '/main/'+accessToken;}});">
-              <button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
-            </a>
-          </li>
-          <li *ngIf="inSession && !facebookSession" class="signin">
-            <form class="navbar-form navbar-right" method="post" action="/main2/">
-              <input type="submit" class="signInBtn" value="SignOut" />
-            </form>
-          </li>
-          <li *ngIf="inSession" class="signin">
-            <form class="navbar-form navbar-right" method="get" action="/default/">
-              <button class="signInBtn">Visit profile</button>
-            </form>
-          </li>
 
-          <li>
-            <a *ngIf="inSession && facebookSession" style="margin-top: 5px;" onclick="FB.logout(function(response){window.top.location = '/main/logout';});">
-              <button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
-            </a>
-          </li>
+	<!-- Navigation Menu start-->
+	<nav id="topNav" class="navbar navbar-default main-menu">
+		<div>
+			<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+				<ul class="nav navbar-nav">
+					<li><a (click)="goTo('#contact')">CONTACT US</a></li>
+					<li *ngIf="!inSession" class="signin">
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<div class="input-group" style="width: 35%;">
+								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-user"></i></span>
+								<input [(ngModel)]="email" id="email" type="email" class="form-control" style="border-radius: 0px !important;" name="loginemail"
+								 value="" placeholder="Email Address">
+							</div>
+							<div class="input-group" style="width: 35%;">
+								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-lock"></i></span> <input [(ngModel)]="password" id="password" type="password"
+								 class="form-control" style="border-radius: 0px !important;" name="loginpassword" value="" placeholder="Password">
+							</div>
+							<button (click)="login()" type="submit" class="logInBtn">Login </button>
+							<a data-toggle="modal" style="padding: 0px !important">
+								<button (click)="modalWindow2.open()" type="submit" class="signInBtn">Sign in</button>
+							</a>
 
-          <li><a (click)="goTo('#contact')">CONTACT US</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+						</form>
+					</li>
+					<li *ngIf="!inSession">
+						<a style="margin-top: 5px;">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
+						</a>
+					</li>
+					<li *ngIf="inSession && !facebookSession" class="signin">
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+							<input type="submit" class="signInBtn" value="SignOut" />
+
+						</form>
+					</li>
+					<li *ngIf="inSession" class="signin">
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>
+					</li>
+					<li *ngIf="inSession && facebookSession">
+						<a style="margin-top: 5px;">
+							<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
 <!-- Header End -->
 <section>
@@ -445,11 +447,120 @@
           </form>
 
         </div>
-
-
       </div>
     </div>
   </div>
+<modal #modalWindow>
+		<modal-content style="background-color: #efefef; border-radius: 0;">
+			<modal-header style="background-color: #28292e !important;">
+				<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+				<ul class="nav navbar-nav">
+					<li class="active"><a (click)="modalWindow2.open()" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">RESTAURANT</a></li>
+					<li><a (click)="modalWindow.open()" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">CLIENT</a></li>
+				</ul>
+			</modal-header>
+			<modal-content>
+				<p class="formmargin">Introduce your following details:</p>
+				<form role="form" action="/main/">
+					<div class="form-group">
+						<input type="text" class="form-control formmargin" name='username' placeholder="Name" id="usernameform"> <input type="text"
+						 class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform"> <br> <input type="text" class="form-control formmargin"
+						 name='userage' placeholder="Age" id="userageform"> <span id='message_user_age'></span>
+						<div class="form-group">
+							<label for="filter">Favourite food</label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='favouritefood'>
+										<option value="Chinese" selected
+											style="border-radius: 0px !important">Chinese</option>
+										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
+										<option value="American" style="border-radius: 0px !important">American</option>
+										<option value="Thai" style="border-radius: 0px !important">Thai</option>
+										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
+										<option value="Galician" style="border-radius: 0px !important">Galician</option>
+										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
+										<option value="Indian" style="border-radius: 0px !important">Indian</option>
+										<option value="Italian" style="border-radius: 0px !important">Italian</option>
+									</select>
+						</div>
+						<br> <label for="name">Description:</label> <br>
+						<textarea style="border-radius: 0px !important" class="form-control" id="userdescriptionform" name='userdescription' rows="3"></textarea>
+						<br> <label for="name">Password (6 characters
+									min.):</label> <input name='userpassword' type="password" class="form-control formmargin" placeholder="Password"
+						 id="password_client"> <input type="password" id="confirm_password_client" name="confirm_password" class="form-control formmargin"
+						 placeholder="Confirm password" id="confirm_password_client"> <br>
+					</div>
 
+					<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+					<button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
+					<span id='message_user_button'>Fill the form before
+								register</span>
+				</form>
+			</modal-content>
+		</modal-content>
+	</modal>
+	<modal #modalWindow2>
+		<modal-content style="background-color: #efefef; border-radius: 0;">
+			<modal-header style="background-color: #28292e !important;">
+				<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+				<ul class="nav navbar-nav">
+					<li class="active"><a (click)="modalWindow2.open(); modalWindow.close();" style="border-radius: 0 !important; color: #777; font-weight: 700; background-color: #efefef">RESTAURANT</a></li>
+					<li><a (click)="modalWindow.open(); modalWindow2.close();" data-toggle="modal" data-dismiss="modal" style="border-radius: 0 !important; color: #777; font-weight: 700;">CLIENT</a></li>
+				</ul>
+			</modal-header>
+			<modal-content>
+				<p class="formmargin">Introduce your following details:</p>
+				<form role="form" action="/main/">
+					<div class="form-group">
+						<input type="text" class="form-control formmargin" name='restaurantname' placeholder="Restaurant name" id="restaurantname"
+						 required> <input type="text" class="form-control formmargin" name='restaurantaddress' placeholder="Address" id="restaurantaddress"
+						 required>
+						<br>
+						<div class="form-group">
+							<label for="filter">City </label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='restaurantcity'>
+										<option value="Madrid" selected
+											>Madrid</option>
+										<option value="Barcelona"
+											style="border-radius: 0px !important">Barcelona</option>
+										<option value="Valencia" style="border-radius: 0px !important">Valencia</option>
+										<option value="Sevilla" style="border-radius: 0px !important">Sevilla</option>
+										<option value="Zaragoza" style="border-radius: 0px !important">Zaragoza</option>
+										<option value="Bilbao" style="border-radius: 0px !important">Bilbao</option>
+									</select>
+						</div>
+						<div class="form-group">
+							<label for="filter">Food type </label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+							 name='kindoffood'>
+										<option value="Chinese" selected
+											style="border-radius: 0px !important">Chinese</option>
+										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
+										<option value="American" style="border-radius: 0px !important">American</option>
+										<option value="Thai" style="border-radius: 0px !important">Thai</option>
+										<option value="Tapas" style="border-radius: 0px !important">Tapas</option>
+										<option value="Galician" style="border-radius: 0px !important">Galician</option>
+										<option value="Mexican" style="border-radius: 0px !important">Mexican</option>
+										<option value="Indian" style="border-radius: 0px !important">Indian</option>
+										<option value="Italian" style="border-radius: 0px !important">Italian</option>
+									</select>
+						</div>
+						<br> <input type="email" class="form-control formmargin" name='restaurantemail' placeholder="Email" id="restaurantemail"
+						 required> <input type="text" class="form-control formmargin" name='restaurantphone' placeholder="Phone" id="restaurantphone"
+						 required> <span id='message_restaurant_phone'></span> <br> <label for="name">Description:</label> <br>
+						<textarea style="border-radius: 0px !important" class="form-control" id="restaurantdescription" name='restaurantdescription'
+						 rows="3" required></textarea>
+						<br> <label for="name">Password (6 characters
+									min.):</label> <input name="restaurantpassword" id="password_restaurant" type="password" class="form-control formmargin"
+						 placeholder="Password" required>
+						<input type="password" name="confirm_password" id="confirm_password_restaurant" class="form-control formmargin" placeholder="Confirm password"
+						 required> <br> <img src="/src/assets/images/restaurant.png">
+						<span id='message_restaurant'></span>
+						<!-- logInBtn btnMore -->
+						<button type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
+						<span id='message_restaurant_button'>Fill the form before
+									register</span>
+					</div>
+				</form>
+			</modal-content>
+		</modal-content>
+	</modal>
 </section>
 <footer></footer>

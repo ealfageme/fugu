@@ -48,6 +48,9 @@ public class RestaurantRestController {
 	public ResponseEntity<Restaurant> getRestaurant(HttpSession session, @PathVariable long id) {
 		session.setMaxInactiveInterval(-1);
 		Restaurant rest = restaurantService.restaurantRepositoryFindOne(id);
+		/*for(Review review : rest.getRestaurantReviews()){
+			review.setDate(review.getDate().);
+		}*/
 		if (rest != null) {
 			return new ResponseEntity<>(rest, HttpStatus.OK);
 		} else {
