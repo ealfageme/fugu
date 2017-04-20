@@ -93,7 +93,7 @@ $('#userageform').on('keyup', function () {
 		$('#message_user_age').html('Age must be nuberic').css('color', 'red');
 		$('#message_user_button').html('Fill the form before register');
 		document.getElementById('senduser').className = "logInBtn";
-	}else{f
+	}else{
 		$('#message_user_age').html('');
 		if($('#userdescriptionform').val().length>0 && $('#usernameform').val().length>0 && $('#usernameform').val().length>0 
 		    	&& $('#password_client').val() == $('#confirm_password_client').val()

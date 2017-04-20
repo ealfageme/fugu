@@ -9,6 +9,8 @@ import { Http } from '@angular/http';
 export class PublicRestaurantComponent implements OnInit {
 
   inSession: boolean;
+  oldDay:string="13";
+  oldHour:string="1";
   favButton: boolean;
   nextRestaurant = true;
   prevRestaurant = false;
@@ -71,7 +73,26 @@ export class PublicRestaurantComponent implements OnInit {
 
   ngOnInit() {
   }
-goTo(location: string): void {
+  
+  goTo(location: string): void {
     window.location.hash = location;
   }
+  
+    selectDay(newDay) {
+	  document.getElementById(this.oldDay+"class").className = "";
+	  document.getElementById(newDay+"class").className = "active active-date";
+	  this.oldDay=newDay;
+	  document.getElementById("day").innerHTML=newDay+"th";
+	  document.getElementById("bookingday").nodeValue = newDay;
+	  return false;
+  }
+
+  selectHour(newHour) {
+	document.getElementById("hour"+this.oldHour).className = "";
+	document.getElementById("hour"+newHour).className = "active active-date";
+	this.oldHour=newHour;
+	document.getElementById("bookinghour").nodeValue = document.getElementById("hour"+newHour).innerHTML;
+	return false;
+  }
+
 }
