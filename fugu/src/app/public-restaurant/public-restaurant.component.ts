@@ -17,7 +17,7 @@ export class PublicRestaurantComponent implements OnInit {
   nextRestaurant = true;
   prevRestaurant = false;
   facebookSession: boolean;
-  private restaurant: string;
+   restaurant: string;
   private restaurantname: string;
   email: string;
   password: string;
