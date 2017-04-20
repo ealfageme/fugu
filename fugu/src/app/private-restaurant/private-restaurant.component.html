@@ -30,13 +30,14 @@
 <section *ngIf="restaurant" class="slider-pro slider" id="slider">
 	<div class="sp-slides">
 		<div class="img-overlay">
-				<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
-				<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right"
-				 data-show-delay="1500" data-hide-delay="200">
-					<span *ngIf="restaurant" class="highlight-texts"><span
-						class="section-color2 highlight-text border2" style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -80%); ">Welcome to {{restaurant.name}}</span> </span>
-				</h1>
-			</div>
+			<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
+			<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center"
+			 data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
+				<span *ngIf="restaurant" class="highlight-texts">
+					<span
+						class="section-color2 highlight-text border2" style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -80%); ">Welcome to {{restaurant.name}}</span>				</span>
+			</h1>
+		</div>
 	</div>
 </section>
 
@@ -65,7 +66,7 @@
 								<h1 class="shadow">In Process</h1>
 
 								<!-- Filter Button Start -->
-								<div *ngFor="let booking of restaurant.bookings; let i = index"[attr.data-index]="i">
+								<div *ngFor="let booking of restaurant.bookings; let i = index" [attr.data-index]="i">
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
 										<div id="{{i}}" class="item recommendations-item web seo">
@@ -90,12 +91,10 @@
 														<form role="form" method="post" action="/accept-reservation/">
 															<div>
 																<input type="hidden" name="acceptPulsed" value="Accepted"> <input type="hidden" name="acceptPulsedID" value={{id}}>
-																<button type="input" class="btnMore"
-																	onClick="acceptReservation(i)"
-																	id="{{i}}-button">
+																<button type="input" class="btnMore" onClick="acceptReservation(i)" id="{{i}}-button">
 																	Accept <span class="glyphicon glyphicon-ok-circle"
 																		aria-hidden="true"></span>
-																</button> 
+																</button>
 
 															</div>
 														</form>
@@ -130,7 +129,7 @@
 								<h1 class="shadow">Accepted</h1>
 
 								<!-- Filter Button Start -->
-								<div *ngFor="let booking of restaurant.bookings; let i = index"[attr.data-index]="i">
+								<div *ngFor="let booking of restaurant.bookings; let i = index" [attr.data-index]="i">
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
 										<div id="{{i}}" class="item recommendations-item web seo">
@@ -138,7 +137,7 @@
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<ul>
 														<li>
-																<h1 class="shadow">{{booking.id}}</h1> 
+															<h1 class="shadow">{{booking.id}}</h1>
 														</li>
 													</ul>
 												</div>
@@ -206,21 +205,19 @@
 		</div>
 	</div>
 </section>
-<section  *ngIf="restaurant" class="menus style3" id="clients">
+<section *ngIf="restaurant" class="menus style3" id="clients">
 	<br> <br> <br>
 	<div class="container">
 		<div class="row">
-
-			<!-- Section Header -->
-			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-				<h2>
-					<span class="highlight-text">Clients</span>
-				</h2>
-				<h3>Potential clients</h3>
-			</div>
 			<div class="search">
 				<div class="container">
 					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+							<h2>
+								<span class="highlight-text">Clients</span>
+							</h2>
+							<h3>Potential clients</h3>
+						</div>
 						<div class="col-md-10 col-md-offset-1">
 							<div class="form-section">
 								<div class="row">
@@ -228,8 +225,7 @@
 										<div style="border-radius: 0px !important" class="col-md-3">
 											<div *ngIf="restaurant" style="border-radius: 0px !important" class="form-group">
 												<label style="border-radius: 0px !important" class="sr-only" for="guest">Guest</label>
-												 <select 
-												 id="guest" name="guest" class="form-control">
+												<select id="guest" name="guest" class="form-control">
 														<option value="foodType">{{restaurant.foodType}}</option>
 													</select>
 											</div>
@@ -246,16 +242,14 @@
 
 													<span style="border-radius: 0px !important" class="input-group-addon">&gt;</span> <input style="border-radius: 0px !important"
 													 type="text" class="form-control" name='min' aria-label="Amount (to the nearest dollar)" placeholder="0">
-													<span
-													 style="border-radius: 0px !important" class="input-group-addon"></span>
+													<span style="border-radius: 0px !important" class="input-group-addon"></span>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="input-group">
 													<span style="border-radius: 0px !important" class="input-group-addon">&lt;</span> <input style="border-radius: 0px !important"
 													 type="text" class="form-control" name='max' aria-label="Amount (to the nearest dollar)" placeholder="99">
-													<span
-													 style="border-radius: 0px !important" class="input-group-addon"></span>
+													<span style="border-radius: 0px !important" class="input-group-addon"></span>
 												</div>
 											</div>
 											<label for="name"></label>
@@ -364,7 +358,7 @@
 						</div>
 						<!-- /menu-column -->
 					</div>
-				
+
 				</div>
 				<div class="col-md-2 col-md-offset-5 morediv">
 					<button style="position: relative; left: 25%;" class="btnMore" id="seeMore">See More</button>
@@ -377,7 +371,7 @@
 	</div>
 	<!-- /container -->
 </section>
-<section  *ngIf="restaurant" class="menus style3" id="menu">
+<section *ngIf="restaurant" class="menus style3" id="menu">
 	<div class="container">
 		<div class="row">
 			<!-- Section Header -->
@@ -491,8 +485,7 @@
 					</p>
 					<input type='submit' name='enviar' value='Change profile image' />
 				</form>
-				<br>
-				{{restaurant.description}}
+				<br> {{restaurant.description}}
 
 			</div>
 			<!-- Section Header End -->
@@ -502,9 +495,7 @@
 					<form role="form" method='post' action="/private-restaurant/modify">
 						<div class="form-group">
 							<label for="name">Restaurant Name:</label>
-							<input
-									style="border-radius: 0px !important" class="form-control"
-									name="namerest" value="{{restaurant.name}}">
+							<input style="border-radius: 0px !important" class="form-control" name="namerest" value="{{restaurant.name}}">
 						</div>
 						<div class="form-group">
 							<label for="name">Location:</label> <input *ngIf="restaurant" style="border-radius: 0px !important" class="form-control"
