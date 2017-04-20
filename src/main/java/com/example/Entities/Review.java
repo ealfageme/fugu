@@ -26,7 +26,7 @@ public class Review {
 	@JsonView(Basic.class)
 	private double rate;
 	@JsonView(Basic.class)
-	private Date date;
+	private String date;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonView(Basic.class)
@@ -40,11 +40,11 @@ public class Review {
 	private Restaurant reviewRestaurant = new Restaurant();
 	
 	public Review(){}
-	public Review(String content, double rate, Date date) {
+	public Review(String content, double rate, String date) {
 		super();
 		this.content = content;
 		this.rate = rate;
-		this.date = new Date();
+		this.date = new Date().toString();
 		//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		//dateFormat.format(cal);
 
@@ -93,11 +93,11 @@ public class Review {
 		this.rate = rate;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}	
 }

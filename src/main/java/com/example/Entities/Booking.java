@@ -36,7 +36,7 @@ public class Booking {
 	@JsonView(Basic.class)
 	private long id;
 	@JsonView(Basic.class)
-	private Date date;
+	private String date;
 	@JsonView(Basic.class)
 	private int number;
 	@JsonView(Basic.class)
@@ -44,7 +44,7 @@ public class Booking {
 	@JsonView(Basic.class)
 	private String state;
 	public Booking(){}
-	public Booking(Date date, int number,String specialRequirements) {
+	public Booking(String date, int number,String specialRequirements) {
 		super();
 		this.date = date;
 		this.number = number;
@@ -82,10 +82,10 @@ public class Booking {
 	public void setRestaurant(Restaurant restaurant) {
 		//this.restaurant = restaurant;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getNumber() {

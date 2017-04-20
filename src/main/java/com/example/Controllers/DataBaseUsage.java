@@ -235,12 +235,12 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		userRepository.save(user2);
 		
-		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date());
-		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date());
-		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date());
-		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date());
-		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date());
-		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date());
+		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date().toString());
+		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date().toString());
+		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date().toString());
+		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date().toString());
+		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date().toString());
+		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date().toString());
 		voucher1.getVoucherUsers().add(user1);
 		voucher2.getVoucherUsers().add(user1);
 		voucher3.getVoucherUsers().add(user2);
@@ -261,23 +261,12 @@ public class DataBaseUsage implements CommandLineRunner{
 		voucherRepository.save(voucher6);
 		
 		// USER - REVIEW RELATION
-		Date date1=new Date();
-		Date date2=new Date();
-		Date date3=new Date();
-		Date date4=new Date();
-		Date date5=new Date();
-		Date date6=new Date();
-		try {
-			date1= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-24 22:00");
-			date2= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-04-04 22:30");
-			date3= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-05-16 20:00");
-			date4= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-20 12:00");
-			date5= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-05-01 14:00");
-			date6= new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-04-14 21:00");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String date1=new Date().toString();
+		String date2=new Date().toString();
+		String date3=new Date().toString();
+		String date4=new Date().toString();
+		String date5=new Date().toString();
+		String date6=new Date().toString();
 		Review review1 = new Review("Fucking amazing", 5.0, date1);
 		Review review2 = new Review("This restaurant must be improved", 2.2, date2);
 		Review review3 = new Review("If you want to spend a good time eating, come here", 4.1, date3);

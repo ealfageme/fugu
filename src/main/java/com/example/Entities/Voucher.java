@@ -28,7 +28,7 @@ public class Voucher {
 	@JsonView(Basic.class)
 	private String description;
 	@JsonView(Basic.class)
-	private Date expiryDate;
+	private String expiryDate;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonView(Basic.class)
@@ -43,7 +43,7 @@ public class Voucher {
 
 	
 	public Voucher(){}
-	public Voucher(String name, String description, Date expiryDate) {
+	public Voucher(String name, String description, String expiryDate) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -82,7 +82,7 @@ public class Voucher {
 		this.description = description;
 	}
 
-	public Date getExpiryDate() {
+	public String getExpiryDate() {
 		return expiryDate;
 	}
 
@@ -94,7 +94,7 @@ public class Voucher {
 		this.restaurant = restaurant;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
+	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 

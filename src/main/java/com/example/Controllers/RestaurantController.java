@@ -124,12 +124,8 @@ public class RestaurantController {
 	public String bookTable(Model model,@RequestParam(required=false) String bookingday,
 			@RequestParam(required=false) String bookinghour,@RequestParam(required=false) String guests,
 			@RequestParam(required=false) String specialRequirements,@PathVariable String name, Authentication authentication){
-		Date date=new Date();
-		try {
-			date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse("2017-03-" + bookingday + " " + bookinghour);
-		} catch (ParseException e) {
-			return null;
-		}
+		String date=new Date().toString();
+		date = "2017-03-" + bookingday + " " + bookinghour;
 		Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
 		booking.setBookingRestaurant(restaurantService.restaurantRepositoryFindByName(name));
 		long id = 1;
@@ -144,7 +140,7 @@ public class RestaurantController {
 		if(request.isUserInRole("USER")){
 			String userloggin = authentication.getName();
 			if (rate != null) {
-				Review review = new Review(content,Integer.parseInt(rate),new Date());
+				Review review = new Review(content,Integer.parseInt(rate),new Date().toString());
 				review.setReviewRestaurant(restaurantService.restaurantRepositoryFindByName(name));
 				review.setReviewUser(restaurantService.userRepositoryfindByEmail(userloggin));
 				restaurantService.reviewRepositorysave(review);
@@ -212,7 +208,7 @@ public class RestaurantController {
 				}else if(expiry == 7){
 					calendar.add(Calendar.MONTH, 6);
 				}
-				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime());					
+				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime().toString());					
 				voucher.setVoucherUsers(restaurantService.userRepositoryfindByAgeBetween(min, max));
 				voucher.setRestaurant(restaurantService.restaurantRepositoryFindByEmail(authentication.getName()));
 				restaurantService.voucherRepositorysave(voucher);

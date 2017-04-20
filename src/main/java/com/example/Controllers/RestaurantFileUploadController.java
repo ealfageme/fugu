@@ -99,7 +99,7 @@ public class RestaurantFileUploadController {
 
 				}
 				if (vouchername != null) {
-					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date());
+					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString());
 					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
@@ -225,7 +225,7 @@ public class RestaurantFileUploadController {
 
 				}
 				if (vouchername != null) {
-					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date());
+					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString());
 					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
