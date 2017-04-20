@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
+
 @Component({
   selector: 'app-search-web',
   templateUrl: './search-web.component.html',
@@ -16,6 +17,10 @@ export class SearchWebComponent implements OnInit {
   minPrice = 1;
   minRating = 0;
   maxRating = 5;
+  city : String;
+  typefood : String;
+  nameRestaurant : String;
+
 
   constructor(private http: Http) {
     this.inSession = false;
@@ -49,6 +54,29 @@ goTo(location: string): void {
           const  restaurant = data[i];
           this.restaurants.push(restaurant);
         }
+      },
+      error => console.error(error)
+    );
+  }
+    searchByCityAndType(){
+    this.restaurants = [];
+    this.http.get('https://localhost:8443/api/search-web/foodtypeandcity?typeFood='+this.typefood+'&&city='+this.city).subscribe(
+      response => {
+        const  data = response.json();
+        for (let i = 0; i < data.length; i++) {
+          const  restaurant = data[i];
+          this.restaurants.push(restaurant);
+        }
+      },
+      error => console.error(error)
+    );
+  }
+     searchByName(){
+    this.restaurants = [];
+    this.http.get('https://localhost:8443/api/search-web/name?name='+this.nameRestaurant).subscribe(
+      response => {
+        const  restaurant = response.json();
+        this.restaurants.push(restaurant);
       },
       error => console.error(error)
     );

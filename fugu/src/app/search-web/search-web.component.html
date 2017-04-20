@@ -80,42 +80,7 @@
             </form>
             <div class="input-group-btn">
               <div class="btn-group" role="group">
-                <div class="dropdown dropdown-lg">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
-                  <div class="dropdown-menu dropdown-menu-right" role="menu">
-                    <form class="form-horizontal" role="form" action="" method='post'>
-                      <div class="form-group">
-                        <label for="filter">Food type</label> <select class="form-control" name="foodType" style="border-radius: 0px !important; -webkit-appearance: none;">
-														<option value="" selected></option>
-														<option value="Chinese">Chinese</option>
-														<option value="Japanese">Japanese</option>
-														<option value="American">American</option>
-														<option value="Thai">Thai</option>
-														<option value="Tapas">Tapas</option>
-														<option value="Galician">Galician</option>
-														<option value="Mexican">Mexican</option>
-														<option value="Indian">Indian</option>
-														<option value="Italian">Italian</option>
-													</select>
-                      </div>
-                      <div class="form-group">
-                        <label for="filter">City</label> <select style="border-radius: 0px !important; -webkit-appearance: none;"
-                          class="form-control" name="city">
-														<option value="" selected></option>
-														<option value="Madrid">Madrid</option>
-														<option value="Barcelona">Barcelona</option>
-														<option value="Valencia">Valencia</option>
-														<option value="Sevilla">Sevilla</option>
-														<option value="Zaragoza">Zaragoza</option>
-														<option value="Bilbao">Bilbao</option>
-													</select>
-                      </div>
-                      <button type="submit" class="btnMore">
-													<span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
-												</button>
-                    </form>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -123,6 +88,7 @@
       </div>
     </div>
   </div>
+
 </section>
 
 <section class="menus style3 col-md-12 col-sm-12 col-xs-12" id="top-rated" style="margin-top: -350px;">
@@ -147,21 +113,24 @@
                     <div class="col-md-3">
                       <div class="input-group">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>
-                        <input   type="text" class="form-control" aria-label="Amount (to the nearest dollar)"[(ngModel)]="minPrice" [ngModelOptions]="{standalone: 0}" name="minP">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="minPrice" [ngModelOptions]="{standalone: 0}"
+                          name="minP">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="input-group">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="maxPrice" [ngModelOptions]="{standalone: 100}" name ="maxP">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="maxPrice" [ngModelOptions]="{standalone: 100}"
+                          name="maxP">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">€</span>
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&gt;</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="minRating"[ngModelOptions]="{standalone: 0}" name = "minR">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="minRating" [ngModelOptions]="{standalone: 0}"
+                          name="minR">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
 														class="glyphicon glyphicon-star" ></span></span>
                       </div>
@@ -169,7 +138,8 @@
                     <div class="col-md-2">
                       <div class="input-group">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;">&lt;</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  [(ngModel)]="maxRating" [ngModelOptions]="{standalone: 5}" name = "maxR">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="maxRating" [ngModelOptions]="{standalone: 5}"
+                          name="maxR">
                         <span class="input-group-addon" style="border-radius: 0px !important; -webkit-appearance: none;"><span
 														class="glyphicon glyphicon-star"></span></span>
                       </div>
@@ -466,13 +436,11 @@
         <form role="form" action="/main/">
           <div class="form-group">
             <input type="text" class="form-control formmargin" name='username' placeholder="Name" id="usernameform">
-            <input
-              type="text" class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform"> <br> <input type="text" class="form-control formmargin" name='userage' placeholder="Age" id="userageform">
-              <span
-                id='message_user_age'></span>
-                <div class="form-group">
-                  <label for="filter">Favourite food</label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
-                    name='favouritefood'>
+            <input type="text" class="form-control formmargin" name='useremail' placeholder="Email" id="useremailform"> <br>            <input type="text" class="form-control formmargin" name='userage' placeholder="Age" id="userageform">
+            <span id='message_user_age'></span>
+            <div class="form-group">
+              <label for="filter">Favourite food</label> <select class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;"
+                name='favouritefood'>
 										<option value="Chinese" selected
 											style="border-radius: 0px !important">Chinese</option>
 										<option value="Japanese" style="border-radius: 0px !important">Japanese</option>
@@ -484,13 +452,13 @@
 										<option value="Indian" style="border-radius: 0px !important">Indian</option>
 										<option value="Italian" style="border-radius: 0px !important">Italian</option>
 									</select>
-                </div>
-                <br> <label for="name">Description:</label> <br>
-                <textarea style="border-radius: 0px !important" class="form-control" id="userdescriptionform" name='userdescription' rows="3"></textarea>
-                <br> <label for="name">Password (6 characters
+            </div>
+            <br> <label for="name">Description:</label> <br>
+            <textarea style="border-radius: 0px !important" class="form-control" id="userdescriptionform" name='userdescription' rows="3"></textarea>
+            <br> <label for="name">Password (6 characters
 									min.):</label> <input name='userpassword' type="password" class="form-control formmargin" placeholder="Password"
-                  id="password_client"> <input type="password" id="confirm_password_client" name="confirm_password" class="form-control formmargin"
-                  placeholder="Confirm password" id="confirm_password_client"> <br>
+              id="password_client"> <input type="password" id="confirm_password_client" name="confirm_password" class="form-control formmargin"
+              placeholder="Confirm password" id="confirm_password_client"> <br>
           </div>
 
           <img src="/src/assets/images/profile.png"> <span id="message_client"></span>
