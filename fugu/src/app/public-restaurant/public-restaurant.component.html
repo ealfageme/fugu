@@ -1,42 +1,12 @@
-<header>
-	<!-- Navigation Menu start-->
-	<nav id="topNav" class="navbar navbar-default main-menu">
-		<div class="container">
-			<a [routerLink]="['/new/main']"> <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
-			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-				<ul class="nav navbar-nav">
-					<li><a (click)="goTo('#about')">ABOUT</a></li>
-					<li><a (click)="goTo('#booking')">BOOKING</a></li>
-					<li><a (click)="goTo('#services')">SERVICES</a></li>
-					<li><a (click)="goTo('#menu')">MENU</a></li>
-					<li><a (click)="goTo('#gallery')">GALLERY</a></li>
-					<li><a (click)="goTo('#vouchers')">VOUCHERS</a></li>
-					<li><a (click)="goTo('#reviews')">REVIEWS</a></li>
-					<li><a (click)="goTo('#feedback')">FEEDBACK</a></li>
-					<li *ngIf="inSession" class="signin">
-						<form class="navbar-form navbar-right" method="post" action="/main2/">
-							<input type="submit" class="signInBtn" value="SignOut" />
-						</form>
-						<form class="navbar-form navbar-right" method="get" action="/default/">
-							<button class="signInBtn">Visit profile</button>
-						</form>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-</header>
-<!-- Header End -->
 <section>
 	<div>
 		<div>
 			<div class="img-overlay">
 				<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
-				<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right"
-				 data-show-delay="1500" data-hide-delay="200">
+				<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center"
+				 data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
 					<span *ngIf="restaurant" class="highlight-texts"><span
-						class="section-color2 highlight-text border2" style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -80%); ">Welcome to {{restaurant.name}}</span> </span>
+						class="section-color2 highlight-text border2" style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -80%); ">Welcome to {{restaurant.name}}</span>					</span>
 				</h1>
 			</div>
 		</div>
@@ -564,7 +534,7 @@
 						</div>
 						<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
 							<div class="form-group">
-								<label for="filter">Rate</label> <select class="form-control" id= "selectStar"name='rate'>
+								<label for="filter">Rate</label> <select class="form-control" id="selectStar" name='rate'>
 										<option value="1" selected style="border-radius: 0px !important">1</option>
 										<option value="2" style="border-radius: 0px !important">2</option>
 										<option value="3" style="border-radius: 0px !important">3</option>

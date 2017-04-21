@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-main',
@@ -25,8 +24,7 @@ export class MainComponent implements OnInit {
   loading = false;
   returnUrl: string;
 
-  constructor(private http: Http, private route: ActivatedRoute, private router: Router,
-        private authenticationService: AuthenticationService) {
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router) {
     this.inSession = false;
     this.facebookSession = false;
     this.http.get('https://localhost:8443/api/restaurants/?page=' + this.pagenumber + '&size=4').subscribe(
@@ -42,24 +40,12 @@ export class MainComponent implements OnInit {
     );
   }
   ngOnInit() {
-    // reset login status
-        this.authenticationService.logout();
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {
     console.log(this.email + ' ' + this.password);
-            this.loading = true;
-        this.authenticationService.login(this.email, this.password)
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    console.error(error);
-                    this.loading = false;
-                });
   }
 
   nextRestaurants() {

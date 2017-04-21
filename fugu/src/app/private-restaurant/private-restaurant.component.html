@@ -1,32 +1,3 @@
-<header *ngIf="restaurant">
-	<!-- Navigation Menu start-->
-	<nav id="topNav" class="navbar navbar-default main-menu">
-		<div class="container">
-			<a href="/main/"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
-			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-				<ul class="nav navbar-nav">
-
-					<li><a href="#reservations">RESERVATIONS</a></li>
-					<li><a href="#current-deals">CURRENT DEALS</a></li>
-					<li><a href="#menu">MENU CARD</a></li>
-					<li><a href="#voucher">VOUCHERS</a></li>
-					<li><a href="#feedback">FEEDBACK</a></li>
-					<li><a href="#clients">CLIENTS</a></li>
-					<li><a href="#profile">{{restaurant.name}}</a></li>
-					<li class="signin">
-						<form class="navbar-form navbar-right" method="post" action="/main2/">
-							<input type="submit" class="signInBtn" value="SignOut" />
-						</form>
-					</li>
-				</ul>
-
-			</div>
-		</div>
-	</nav>
-</header>
-
-
 <section *ngIf="restaurant" class="slider-pro slider" id="slider">
 	<div class="sp-slides">
 		<div class="img-overlay">
@@ -67,7 +38,7 @@
 
 								<!-- Filter Button Start -->
 
-								<div *ngFor="let booking of bookings; let i = index"[attr.data-index]="i">
+								<div *ngFor="let booking of bookings; let i = index" [attr.data-index]="i">
 
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
@@ -132,7 +103,7 @@
 
 								<!-- Filter Button Start -->
 
-								<div *ngFor="let booking of bookings; let i = index"[attr.data-index]="i">
+								<div *ngFor="let booking of bookings; let i = index" [attr.data-index]="i">
 
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
@@ -142,7 +113,7 @@
 													<ul>
 														<li>
 
-																<h1 class="shadow">{{booking.bookingUser.name}}</h1> 
+															<h1 class="shadow">{{booking.bookingUser.name}}</h1>
 
 														</li>
 													</ul>

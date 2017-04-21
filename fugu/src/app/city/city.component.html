@@ -1,121 +1,112 @@
-    <div id="fb-root"></div>
-	<input type="hidden" name='oauth' id="oauth">
-	<script src="/src/assets/src/assets/js/facebook.js"></script>
+<section>
+    <!-- Slides -->
+    <div class="image section-header">
 
-	<!-- Header End -->
-<header>
-        <nav id="topNav" class="navbar navbar-default main-menu">
-            <div class="container">
-                <a [routerLink]="['/new/main']">
-                    <img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2">
-                </a>
-                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
-                <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-                    <ul class="nav navbar-nav">
-                        <li> <a href="#types">RESTAURANT TYPES</a> </li>
-                        <li> <a href="#featured">FEATURED RESTAURANTS</a> </li>
-                        <li *ngIf="inSession" class="signin">			
-							<form class="navbar-form navbar-right" method="post" action="/main2/">
-								<input type="submit" class="signInBtn" value="SignOut" /> 
-							</form> 
-							<form class="navbar-form navbar-right" method="get"
-								action="/default/">
-								<button class="signInBtn">Visit profile</button>
-							</form>
-						</li>
-                    </ul>
-                </div>
+        <!--<img src="/src/assets/images/cities/city-{{city.name}}.jpg" alt="Slider 1" />-->
+        <img src="/src/assets/images/cities/city-{{city}}.jpg" alt="Slider 1" />
+        <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500"
+            data-hide-delay="200">
+            <span class="highlight-texts"><span class="section-color2 highlight-text border2">{{city}}</span>
+            </span>
+        </h2>
+    </div>
+    <!-- Slides End -->
+</section>
+
+<!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
+<section id="types">
+    <div class="container">
+        <div class="row">
+            <!-- Section Header -->
+            <div class="col-md-12 col-sm-12 col-xs-12 section-header wow ">
+                <h2><span class="highlight-text">Featured types of restaurant in {{name}}</span></h2>
             </div>
-        </nav>
-
-
-    </header>
-    <section>
-        <!-- Slides -->
-        <div class="image section-header">
-
-            <!--<img src="/src/assets/images/cities/city-{{city.name}}.jpg" alt="Slider 1" />-->
-            <img src="/src/assets/images/cities/city-{{city}}.jpg" alt="Slider 1" />
-            <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
-                <span class="highlight-texts"><span class="section-color2 highlight-text border2">{{city}}</span>
-                </span></h2>
-        </div>
-        <!-- Slides End -->
-    </section>
-
-    <!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
-    <section id="types">
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "><h2><span class="highlight-text">Featured types of restaurant in {{name}}</span></h2></div>
-                <!-- Section Header End -->
-                <div class="our-services">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div>
-                                <a href="/search-web/?foodType=Tapas&city={{city}}">
-                                    <h1 class="display-4 border">Tapas</h1><img src="/src/assets/images/restaurant-type/tapas.jpg" alt="Custom Image"> </a>
-                            </div>
+            <!-- Section Header End -->
+            <div class="our-services">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Tapas&city={{city}}">
+                                <h1 class="display-4 border">Tapas</h1><img src="/src/assets/images/restaurant-type/tapas.jpg" alt="Custom Image"> </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div>
-                                <a href="/search-web/?foodType=Galician&city=">
-                                    <h1 class="display-4 border">Galician</h1><img src="/src/assets/images/restaurant-type/galician.jpg" alt="Custom Image"> </a>
-                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Galician&city=">
+                                <h1 class="display-4 border">Galician</h1><img src="/src/assets/images/restaurant-type/galician.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div>
-                                <a href="/search-web/?foodType=Italian&city=">
-                                    <h1 class="display-4 border">Italian</h1><img src="/src/assets/images/restaurant-type/italian.jpg" alt="Custom Image"> </a>
-                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Italian&city=">
+                                <h1 class="display-4 border">Italian</h1><img src="/src/assets/images/restaurant-type/italian.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=Japanese&city="><h1 class="display-4 border">Japanese</h1> <img src="/src/assets/images/restaurant-type/japanese.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Japanese&city=">
+                                <h1 class="display-4 border">Japanese</h1> <img src="/src/assets/images/restaurant-type/japanese.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=Chinese&city="><h1 class="display-4 border">Chinese</h1> <img src="/src/assets/images/restaurant-type/chinese.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Chinese&city=">
+                                <h1 class="display-4 border">Chinese</h1> <img src="/src/assets/images/restaurant-type/chinese.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=Mexican&city="><h1 class="display-4 border">Mexican</h1> <img src="/src/assets/images/restaurant-type/mexican.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Mexican&city=">
+                                <h1 class="display-4 border">Mexican</h1> <img src="/src/assets/images/restaurant-type/mexican.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=American&city="><h1 class="display-4 border">American</h1> <img src="/src/assets/images/restaurant-type/american.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=American&city=">
+                                <h1 class="display-4 border">American</h1> <img src="/src/assets/images/restaurant-type/american.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=Indian&city="><h1 class="display-4 border">Indian</h1> <img src="/src/assets/images/restaurant-type/indian.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Indian&city=">
+                                <h1 class="display-4 border">Indian</h1> <img src="/src/assets/images/restaurant-type/indian.jpg" alt="Custom Image">                                </a>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon"> </div> <a href="/search-web/?foodType=Thai&city="><h1 class="display-4 border">Thai</h1> <img src="/src/assets/images/restaurant-type/thai.jpg" alt="Custom Image"> </a> </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                        <div class="service-box">
+                            <div class="icon"> </div>
+                            <a href="/search-web/?foodType=Thai&city=">
+                                <h1 class="display-4 border">Thai</h1> <img src="/src/assets/images/restaurant-type/thai.jpg" alt="Custom Image"> </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="menus style3" id="featured">
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Featured Restaurants</span></h2> </div>
-                <!-- Section Header End -->
-                <div class="menus-container">
-                    <!-- menu -->
-                    <div class="menu row rowmar">
-                        <div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-                            <div class="menu-column">
-                                <button  class="food" [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+<section class="menus style3" id="featured">
+    <div class="container">
+        <div class="row">
+            <!-- Section Header -->
+            <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+                <h2><span class="highlight-text">Featured Restaurants</span></h2>
+            </div>
+            <!-- Section Header End -->
+            <div class="menus-container">
+                <!-- menu -->
+                <div class="menu row rowmar">
+                    <div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+                        <div class="menu-column">
+                            <button class="food" [routerLink]="['/new/public-restaurant/'+restaurant.name]">
                                     <div class="food-desc">
                                         <h6 class="food-name">{{restaurant.name}} ({{restaurant.foodType}})</h6>
                                         <br>
@@ -128,16 +119,16 @@
                                     <div class="food-details"> <span>{{restaurant.address}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
-                                
-                            </div>
-                            <!-- /menu-column -->
+
                         </div>
+                        <!-- /menu-column -->
                     </div>
-                    <!-- /row -->
                 </div>
-                <!-- /menu-carousel -->
+                <!-- /row -->
             </div>
-            <!-- /menus-container -->
+            <!-- /menu-carousel -->
         </div>
-        <!-- /container -->
-    </section>
+        <!-- /menus-container -->
+    </div>
+    <!-- /container -->
+</section>

@@ -3,65 +3,9 @@
 <script src="/src/assets/src/assets/js/facebook.js"></script>
 
 <!-- Header End -->
-<header>
-	<!-- Navigation Menu start-->
-	<nav id="topNav" class="navbar navbar-default main-menu">
-		<div>
-			<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
-			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
-			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-				<ul class="nav navbar-nav">
-					<li><a (click)="goTo('#cities')">CITIES</a></li>
-					<li><a (click)="goTo('#top-rated')">TOP-RATED</a></li>
-					<li><a (click)="goTo('#contact')">CONTACT US</a></li>
-					<li *ngIf="!inSession" class="signin">
-						<form class="navbar-form navbar-right" method="post" action="/main2/">
-							<div class="input-group" style="width: 35%;">
-								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-user"></i></span>
-								<input [(ngModel)]="email" id="email" type="email" class="form-control" style="border-radius: 0px !important;" name="loginemail"
-								 value="" placeholder="Email Address">
-							</div>
-							<div class="input-group" style="width: 35%;">
-								<span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
-										class="glyphicon glyphicon-lock"></i></span> <input [(ngModel)]="password" id="password" type="password"
-								 class="form-control" style="border-radius: 0px !important;" name="loginpassword" value="" placeholder="Password">
-							</div>
-							<button (click)="login()" type="submit" class="logInBtn">Login </button>
-							<a data-toggle="modal" style="padding: 0px !important">
-								<button (click)="modalWindow2.open()" type="submit" class="signInBtn">Sign in</button>
-							</a>
 
-						</form>
-					</li>
-					<li *ngIf="!inSession">
-						<a style="margin-top: 5px;">
-							<button type="submit" class="loginBtn loginBtn--facebook">Log in</button>
-						</a>
-					</li>
-					<li *ngIf="inSession && !facebookSession" class="signin">
-						<form class="navbar-form navbar-right" method="post" action="/main2/">
-							<input type="submit" class="signInBtn" value="SignOut" />
-
-						</form>
-					</li>
-					<li *ngIf="inSession" class="signin">
-						<form class="navbar-form navbar-right" method="get" action="/default/">
-							<button class="signInBtn">Visit profile</button>
-						</form>
-					</li>
-					<li *ngIf="inSession && facebookSession">
-						<a style="margin-top: 5px;">
-							<button type="submit" class="loginBtn loginBtn--facebook">Log out</button>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-</header>
-<section style="position:relative;">
-	<div style="position:relative;">
+<section >
+	<div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<h2 style="position:absolute;float:left;
     			z-index:300000;text-align: center; font-size: 5.0vw; transform: translate(10%, 50%);" >
@@ -71,13 +15,7 @@
 				<a [routerLink]="['/new/search-web']"><img src="/src/assets/images/search-icon.png" alt="Search Page" class="img-responsive" style="margin: auto;"> </a>
 			</h2>
 		</div>
-		<video autoplay loop class="embed-responsive-item" style="position: relative;
-				bottom: 0%;
-				left: 0%;
-				height: 100%;
-				width: 100%;
-				overflow: hidden;
-				background: #000;float:left;">
+		<video autoplay loop class="embed-responsive-item" style="min-width:100%;">
 			<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
 		</video>
 		
@@ -85,8 +23,7 @@
 </section>
 <!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
 
-<section style="margin: 0px auto;
-    margin-top: 800px;" id="cities">
+<section  id="cities">
 	<div class="container">
 		<div class="row">
 			<!-- Section Header -->

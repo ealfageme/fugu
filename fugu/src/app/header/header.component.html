@@ -1,0 +1,40 @@
+<header><nav id="topNav" class="navbar navbar-default main-menu">
+  <div>
+    <a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+    <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+    <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+      <ul class="nav navbar-nav" style="float:right;">
+        <li *ngIf="!loginService.isLogged" class="signin" >
+          <form class="navbar-form navbar-right" method="post">
+            <div class="input-group" style="width: 35%;">
+              <span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-user"></i></span>
+              <input #email  id="email" type="email" class="form-control" style="border-radius: 0px !important;" name="loginemail"
+                value="" placeholder="Email Address">
+            </div>
+            <div class="input-group" style="width: 35%;">
+              <span class="input-group-addon" style="border-radius: 0px !important; background: #fff;"><i
+										class="glyphicon glyphicon-lock"></i></span> <input #pass id="password" type="password"
+                class="form-control" style="border-radius: 0px !important;" name="loginpassword" value="" placeholder="Password">
+            </div>
+            <button (click)="logIn($event, user.value, pass.value)" type="submit" class="logInBtn">Login </button>
+            <a data-toggle="modal" style="padding: 0px !important">
+              <button (click)="modalWindow2.open()" type="submit" class="signInBtn">Sign in</button>
+            </a>
+          </form>
+        </li>
+        <li *ngIf="loginService.isLogged" class="signin">
+          <form class="navbar-form navbar-right">
+            <input (click)="logOut()" type="submit" class="signInBtn" value="SignOut" />
+          </form>
+        </li>
+        <li *ngIf="loginService.isLogged" class="signin">
+          <form class="navbar-form navbar-right" method="get" action="/default/">
+            <button class="signInBtn">Visit profile</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
