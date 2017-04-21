@@ -40,12 +40,6 @@ export class MainComponent implements OnInit {
     );
   }
   ngOnInit() {
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
-  login() {
-    console.log(this.email + ' ' + this.password);
   }
 
   nextRestaurants() {
