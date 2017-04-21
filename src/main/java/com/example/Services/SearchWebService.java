@@ -34,6 +34,14 @@ public class SearchWebService {
 	public List<Restaurant> serviceRestaurantFindByFoodTypeAndCityName(String typeFood, String city) {
 		return restaurantRepository.findByFoodTypeAndCityName(typeFood, city);
 	}
+	public List<Restaurant> serviceRestaurantFindAllParam(String typeFood, String city, Double min, Double max,
+			Double minPrice, Double maxPrice) {
+		return restaurantRepository.findByFoodTypeAndCityNameAndMenuPriceBetweenAndRateBetween(typeFood, city,min,max, minPrice,maxPrice);
+	}
+	public List<Restaurant> serviceRestaurantFindAllParam2(String city, Double min, Double max,
+			Double minPrice, Double maxPrice) {
+		return restaurantRepository.findByCityNameAndMenuPriceBetweenAndRateBetween(city,min,max, minPrice,maxPrice);
+	}
 
 	public List<Restaurant> serviceRestaurantFindByMenuPriceBetweenAndRateBetween(Double minPrice, Double maxPrice,
 			Double min, Double max) {
