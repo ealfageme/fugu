@@ -151,7 +151,7 @@
                   <div>
                     <br>
                     <form>
-                      <div class="col-md-5">
+                      <div class="col-md-6">
                         <div class="paddingtop">
                           <div class="form-group">
                             <select id="cities" name="cities" [(ngModel)]="city" class="form-control">
@@ -167,10 +167,11 @@
 
                         </div>
                       </div>
-                      <div class="col-md-5">
+                      <div class="col-md-6">
                         <div class="paddingtop">
                           <div class="form-group">
                             <select id="kindfood" name="kindfood" [(ngModel)]="typefood" class="form-control">
+                              <option value="All">All</option>
 															<option value="Chinese">Chinese</option>
 															<option value="Japanese">Japanese</option>
 															<option value="American">American</option>
@@ -185,10 +186,6 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-2"> 
-                          <button type="submit" (click)="searchByCityAndType()" class="btnMore">Search</button>
-                      </div>
-
                     </form>
                   </div>
                 </div>
