@@ -35,6 +35,8 @@ public class ClientRestController {
 	ReviewDetail, Voucher.Basic, Booking.Basic,
 	Restaurant.Basic,User.Vouchers, User.Bookings{}
 	interface ReviewDetail extends Review.Basic, Review.Restaurants, Restaurant.Basic {}
+	interface BookingDetail extends Booking.Basic, Booking.Restaurants, Restaurant.Basic {}
+	interface VoucherDetail extends Voucher.Basic, Voucher.Restaurants, Restaurant.Basic {}
 	
 	@Autowired
 	private ClientService clientService;
@@ -95,6 +97,32 @@ public class ClientRestController {
 		User user = clientService.userRepositoryFindByName(name);
 		if (user != null) {
 			return new ResponseEntity<>(user.getFollowing(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@ResponseBody
+	@JsonView (VoucherDetail.class)
+	@RequestMapping (value = "/{name}/vouchers", method = RequestMethod.GET)
+	public ResponseEntity<List<Voucher>> getUserVoucher(HttpSession session, @PathVariable String name) {
+		session.setMaxInactiveInterval(-1);
+		User user = clientService.userRepositoryFindByName(name);
+		if (user != null) {
+			return new ResponseEntity<>(user.getUserVouchers(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@ResponseBody
+	@JsonView (BookingDetail.class)
+	@RequestMapping (value = "/{name}/book", method = RequestMethod.GET)
+	public ResponseEntity<List<Booking>> getUserBooking(HttpSession session, @PathVariable String name) {
+		session.setMaxInactiveInterval(-1);
+		User user = clientService.userRepositoryFindByName(name);
+		if (user != null) {
+			return new ResponseEntity<>(user.getBookings(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
