@@ -20,6 +20,7 @@ export class PrivateClientComponent implements OnInit {
     private reviews: string[] = [];
     private vouchers: string[] = [];
     private bookingsInProcess: string[] = [];
+    private bookingsAccepted: string[] = [];
     private user: string;
 
 
@@ -37,6 +38,30 @@ export class PrivateClientComponent implements OnInit {
             },
             error => console.error(error)
         );
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/book').subscribe(
+            response => {
+                const data = response.json();
+                for (let i = 0; i < data.length; i++) {
+                  const book = data[i];
+                    if (book.state === 'In process') {
+                        this.bookingsInProcess.push(book);
+                    } else {
+                        this.bookingsAccepted.push(book);
+                    }
+                }
+            },
+            error => console.error(error)
+        );
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/vouchers').subscribe(
+            response => {
+                const data = response.json();
+                for (let i = 0; i < data.length; i++) {
+                  const voucher = data[i];
+                  this.vouchers.push(voucher);
+                }
+            },
+            error => console.error(error)
+        );
         this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name).subscribe(
             response => {
                 const data = response.json();
@@ -49,14 +74,7 @@ export class PrivateClientComponent implements OnInit {
                   const review = data.reviews[i];
                   this.reviews.push(review);
                 }
-                for (let i = 0; i < data.userVouchers.length; i++) {
-                  const voucher = data.userVouchers[i];
-                  this.vouchers.push(voucher);
-                }
-                for (let i = 0; i < data.bookings.length; i++) {
-                  const book = data.bookings[i];
-                  this.bookingsInProcess.push(book);
-                }
+                
             },
             error => console.error(error)
         );
