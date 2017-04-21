@@ -28,6 +28,8 @@ public interface RestaurantRepository extends  PagingAndSortingRepository<Restau
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndCityName(Double minPrice, Double maxPrice, Double min, Double max, String city);
 	//Both null
 	List<Restaurant> findByMenuPriceBetweenAndRateBetween(Double minPrice, Double maxPrice, Double min, Double max);
-	//None is null
+	List<Restaurant> findByFoodTypeAndCityNameAndMenuPriceBetweenAndRateBetween(String city, String food, Double min, Double max,Double minPrice, Double maxPrice);
+	List<Restaurant> findByCityNameAndMenuPriceBetweenAndRateBetween( String city, Double min, Double max,Double minPrice, Double maxPrice);
+	
 	List<Restaurant> findByMenuPriceBetweenAndRateBetweenAndCityNameAndFoodType(Double minPrice, Double maxPrice, Double min, Double max, String city, String food);
 }

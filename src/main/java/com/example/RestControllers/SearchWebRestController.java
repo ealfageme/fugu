@@ -44,6 +44,22 @@ public class SearchWebRestController {
 	}
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value ="/AllParam", method = RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurantByParam ( @RequestParam String typeFood,@RequestParam String city,
+			@RequestParam Double min,@RequestParam Double max,@RequestParam Double minRate, @RequestParam Double maxRate){
+		List<Restaurant> restaurants = searchWebService.serviceRestaurantFindAllParam(typeFood, city,min, max ,minRate,maxRate);
+		return new ResponseEntity<>(restaurants, HttpStatus.OK);
+	}
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value ="/AllParamWithoutType", method = RequestMethod.GET)
+	public ResponseEntity<List<Restaurant>> getRestaurantByParam2 ( @RequestParam String city,
+			@RequestParam Double min,@RequestParam Double max,@RequestParam Double minRate, @RequestParam Double maxRate){
+		List<Restaurant> restaurants = searchWebService.serviceRestaurantFindAllParam2(city,min, max ,minRate,maxRate);
+		return new ResponseEntity<>(restaurants, HttpStatus.OK);
+	}
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
 	@RequestMapping(value ="/filters", method = RequestMethod.GET)
 	public ResponseEntity<List<Restaurant>> getRestaurantByfilters ( @RequestParam Double min,@RequestParam Double max,
 			@RequestParam Double minPrice, @RequestParam Double maxPrice){
