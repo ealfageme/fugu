@@ -19,7 +19,7 @@ export class SearchWebComponent implements OnInit {
   maxRating = 5;
   city: String;
   typefood: String;
-  nameRestaurant: String;
+  nameRestaurant = '';
 
 
   constructor(private http: Http) {

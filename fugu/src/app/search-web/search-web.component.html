@@ -13,15 +13,18 @@
       <div class="row">
         <div class="col-md-12">
           <div class="input-group" id="adv-search">
-            <form class="form-horizontal" role="form" action="" method='post'>
-              <input type="text" class="form-control" style="border-radius: 0px !important; -webkit-appearance: none;" placeholder="Search by a restaurant name"
-                name="name" />
-            </form>
-            <div class="input-group-btn">
-              <div class="btn-group" role="group">
 
-              </div>
-            </div>
+            <input [(ngModel)]="nameRestaurant" type="text" class="form-control" placeholder="Search restaurant by name">
+            <span class="input-group-btn">
+              <span class="btnMore">
+                <button class="btn btn-secondary" type="btnMore" (click)="searchByName()"><a  ng-href="#aux">
+                  
+                    <span class="glyphicon glyphicon-search" aria-hidden="true" ></span></a>
+            
+            </button>
+            </span>
+            </span>
+
           </div>
         </div>
       </div>
@@ -134,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="menus-container">
+      <div class="menus-container" name="aux">
         <!-- menu -->
         <div class="menu row rowmar">
           <div class="col-md-12 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
