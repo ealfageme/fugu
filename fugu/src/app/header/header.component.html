@@ -29,8 +29,8 @@
           </form>
         </li>
         <li *ngIf="loginService.isLogged" class="signin">
-          <form class="navbar-form navbar-right" method="get" action="/default/">
-            <button class="signInBtn">Visit profile</button>
+          <form class="navbar-form navbar-right">
+            <button class="signInBtn" (click)="visitProfile()">Visit profile</button>
           </form>
         </li>
       </ul>

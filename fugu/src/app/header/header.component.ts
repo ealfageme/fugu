@@ -8,15 +8,19 @@ import { LoginService } from '../services/login.service';
 })
 export class HeaderComponent {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   logIn(event: any, user: string, pass: string) {
 
     event.preventDefault();
 
-    this.loginService.logIn(user, pass).subscribe(
+    this.loginService.logInUser(user, pass).subscribe(
       u => console.log(u),
-      error => alert('Invalid user or password')
+      error => console.log('Invalid user or password')
+    );
+    this.loginService.logInRestaurant(user, pass).subscribe(
+      u => console.log(u),
+      error => console.log('Invalid restaurant or password')
     );
   }
 
@@ -25,6 +29,13 @@ export class HeaderComponent {
       response => { },
       error => console.log('Error when trying to log out: ' + error)
     );
+  }
+  visitProfile() {
+    if (this.loginService.user.roles.indexOf('ROLE_RESTAURANT') !== -1) {
+      this.router.navigate(['/new/private-restaurant/']);
+    } else {
+      this.router.navigate(['/new/private-client/']);
+    }
   }
 
 }

@@ -8,11 +8,7 @@ import { Http } from '@angular/http';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private http: Http) {
-    this.http.get('https://localhost:8443/api/restaurants/').subscribe(
-      response => console.log(response.json()),
-      error => console.error(error)
-      );
+  constructor() {
    }
 
   ngOnInit() {

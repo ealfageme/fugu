@@ -43,10 +43,9 @@ export class LoginService {
     private processLogInResponse(response) {
         this.isLogged = true;
         this.user = response.json();
-        this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
     }
 
-    logIn(user: string, pass: string) {
+    logInUser(user: string, pass: string) {
 
         const userPass = user + ':' + pass;
 
@@ -58,6 +57,24 @@ export class LoginService {
         const options = new RequestOptions({ withCredentials: true, headers });
 
         return this.http.get(URL + '/logIn/user', options).map(
+            response => {
+                this.processLogInResponse(response);
+                return this.user;
+            }
+        );
+    }
+    logInRestaurant(user: string, pass: string) {
+
+        const userPass = user + ':' + pass;
+
+        const headers = new Headers({
+            'Authorization': 'Basic ' + utf8_to_b64(userPass),
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+        return this.http.get(URL + '/logIn/restaurant', options).map(
             response => {
                 this.processLogInResponse(response);
                 return this.user;
