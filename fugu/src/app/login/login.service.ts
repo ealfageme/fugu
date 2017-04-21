@@ -6,15 +6,15 @@ const URL = 'https://localhost:8443/api';
 
 export interface User {
     id?: number;
-    name: string;
-    roles: string[];
+    email: string;
+    roles: string;
 }
 
 @Injectable()
 export class LoginService {
 
     isLogged = false;
-    isAdmin = false;
+    isUser = false;
     user: User;
 
     constructor(private http: Http) {
@@ -24,6 +24,7 @@ export class LoginService {
     reqIsLogged() {
 
         const headers = new Headers({
+            
             'X-Requested-With': 'XMLHttpRequest'
         });
 
@@ -43,7 +44,7 @@ export class LoginService {
     private processLogInResponse(response) {
         this.isLogged = true;
         this.user = response.json();
-        this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
+        this.isUser = this.user.roles==='ROLE_USER';
     }
 
     logIn(user: string, pass: string) {
@@ -70,7 +71,7 @@ export class LoginService {
         return this.http.get(URL + '/logOut', { withCredentials: true }).map(
             response => {
                 this.isLogged = false;
-                this.isAdmin = false;
+                this.isUser = false;
                 return response;
             }
         );
@@ -82,3 +83,4 @@ function utf8_to_b64(str) {
         return String.fromCharCode(<any>'0x' + p1);
     }));
 }
+

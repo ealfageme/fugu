@@ -17,7 +17,7 @@
 										class="glyphicon glyphicon-lock"></i></span> <input #pass id="password" type="password"
                 class="form-control" style="border-radius: 0px !important;" name="loginpassword" value="" placeholder="Password">
             </div>
-            <button (click)="logIn($event, user.value, pass.value)" type="submit" class="logInBtn">Login </button>
+            <button (click)="logIn($event, email.value, pass.value)" type="submit" class="logInBtn">Login </button>
             <a data-toggle="modal" style="padding: 0px !important">
               <button (click)="modalWindow2.open()" type="submit" class="signInBtn">Sign in</button>
             </a>
