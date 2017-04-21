@@ -17,7 +17,8 @@ import { PrivateClientComponent } from './private-client/private-client.componen
 
 import { PrivateRestaurantComponent } from './private-restaurant/private-restaurant.component';
 
-import {AuthenticationService } from './services/authentication.service';
+import {LoginService } from './services/login.service';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {AuthenticationService } from './services/authentication.service';
     PublicRestaurantComponent,
     PublicClientComponent,
     PrivateClientComponent,
-    PrivateRestaurantComponent
+    PrivateRestaurantComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import {AuthenticationService } from './services/authentication.service';
     routing,
     ModalModule
   ],
-  providers: [AuthenticationService],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
