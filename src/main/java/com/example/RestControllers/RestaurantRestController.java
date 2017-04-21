@@ -1,5 +1,6 @@
 package com.example.RestControllers;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +31,7 @@ import com.example.Entities.Review;
 import com.example.Entities.User;
 import com.example.Entities.Restaurant;
 import com.example.Services.RestaurantService;
+import com.example.Services.ClientService;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -35,6 +39,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class RestaurantRestController {
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private ClientService userService;
 
 	interface RestaurantDetail extends Restaurant.Basic, City.Basic, Review.Basic, User.Basic, Menu.Basic,
 			Voucher.Basic, Booking.Basic, Restaurant.Reviews, Restaurant.Cities, Restaurant.Users, Restaurant.Menus,
@@ -181,22 +187,27 @@ public class RestaurantRestController {
 	@JsonView(Booking.Basic.class)
 	@RequestMapping(value = "/{name}/book", method = RequestMethod.POST)
 	public ResponseEntity<Booking> postRestaurantBooks(HttpSession session, @PathVariable String name,
-			@RequestBody Booking newBooking, Authentication authentication) {
+			Authentication authentication,@RequestParam String bookingday,
+			@RequestParam String bookinghour,@RequestParam String guests,
+			@RequestParam String specialRequirements) {
 		session.setMaxInactiveInterval(-1);
-		if (restaurantService.bookingRepositoryfindBySpecialRequirements(newBooking.getSpecialRequirements()) == null) {
+		if (restaurantService.bookingRepositoryfindBySpecialRequirements(specialRequirements) == null) {
+			String date=new Date().toString();
+			date = "2017-04-" + bookingday + " " + bookinghour;
+			Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
 			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
-			newBooking.setBookingUser(restaurantService.userRepositoryfindByEmail(authentication.getName()));
-			newBooking.setBookingRestaurant(restaurant);
-			if (restaurant != null) {
-				restaurant.getBookings().add(newBooking);
-			}
-			restaurantService.bookingRepositorysave(newBooking);
-			return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
+			booking.setBookingRestaurant(restaurant);
+			booking.setBookingUser(userService.userRepositoryFindByEmail(authentication.getName()));
+				restaurant.getBookings().add(booking);
+
+			restaurantService.bookingRepositorysave(booking);
+			return new ResponseEntity<>(booking, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 
 	}
+		
 
 	@ResponseBody
 	@JsonView(BookingDetail.class)

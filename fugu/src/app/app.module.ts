@@ -14,11 +14,12 @@ import { ErrorComponent } from './error/error.component';
 import { PublicRestaurantComponent } from './public-restaurant/public-restaurant.component';
 import { PublicClientComponent } from './public-client/public-client.component';
 import { PrivateClientComponent } from './private-client/private-client.component';
-
 import { PrivateRestaurantComponent } from './private-restaurant/private-restaurant.component';
-
-import {LoginService } from './services/login.service';
 import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
+
+import {BookingService } from './booking/booking.service';
+import {LoginService } from './services/login.service';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HeaderComponent } from './header/header.component';
     PublicClientComponent,
     PrivateClientComponent,
     PrivateRestaurantComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { HeaderComponent } from './header/header.component';
     routing,
     ModalModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

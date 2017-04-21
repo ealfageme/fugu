@@ -11,8 +11,6 @@ export class PublicRestaurantComponent implements OnInit {
 
   inSession: boolean;
   seeMorebtn: boolean;
-  oldDay = '13';
-  oldHour = '1';
   favButton: boolean;
   nextRestaurant = true;
   prevRestaurant = false;
@@ -25,6 +23,7 @@ export class PublicRestaurantComponent implements OnInit {
   private menus: string[] = [];
   private vouchers: string[] = [];
   private reviews: string[] = [];
+  private bookings: string[] = [];
 
   constructor(private http: Http, activatedRoute: ActivatedRoute) {
     this.restaurantname = activatedRoute.snapshot.params['name'];
@@ -102,21 +101,5 @@ export class PublicRestaurantComponent implements OnInit {
     window.location.hash = location;
   }
   
-    selectDay(newDay) {
-	  document.getElementById(this.oldDay+"class").className = "";
-	  document.getElementById(newDay+"class").className = "active active-date";
-	  this.oldDay=newDay;
-	  document.getElementById("day").innerHTML=newDay+"th";
-	  document.getElementById("bookingday").nodeValue = newDay;
-	  return false;
-  }
-
-  selectHour(newHour) {
-	document.getElementById("hour"+this.oldHour).className = "";
-	document.getElementById("hour"+newHour).className = "active active-date";
-	this.oldHour=newHour;
-	document.getElementById("bookinghour").nodeValue = document.getElementById("hour"+newHour).innerHTML;
-	return false;
-  }
 
 }
