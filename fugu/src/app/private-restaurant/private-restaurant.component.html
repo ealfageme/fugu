@@ -359,35 +359,35 @@
 					<p>
 						<label>Image file:</label><input type="file" name="file" />
 					</p>
-					<input type='submit' name='enviar' value='Change menu image' /> <input>
+					<input type='submit' name='enviar' value='Change menu image' /> 
 				</form>
 			</div>
 			<br> <br> <br>
 			<!-- Section Header End -->
 			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-				<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 					<h1>Add new dish to menu</h1>
 					<form role="form" method="post" action="/private-restaurant/menu">
 						<div class="form-group">
-							<label for="name">Dish Name:</label> <input style="border-radius: 0px !important" type="text" class="form-control"
-							 id="imageTitle" name='menuname' placeholder="Dish Name">
+							<label >Dish Name:</label> <input  [(ngModel)]="nameDish" [ngModelOptions]="{standalone: true}"   style="border-radius: 0px !important" type="text" class="form-control"
+							 id="imageTitle">
 						</div>
 						<div class="form-group">
 
-							<label for="name">Price</label> <input type="text" class="form-control formmargin" name='menuprice' placeholder="Price"
+							<label >Price</label> <input [(ngModel)]="priceDish" [ngModelOptions]="{standalone: true}" type="text" class="form-control formmargin" name='menuprice' placeholder="Price"
 							 id="price" required> <span id='message_dish_price'></span>
 						</div>
 						<div class="form-group">
-							<label for="name">Description:</label>
-							<textarea style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
+							<label >Description:</label>
+							<textarea [(ngModel)]="descriptionDish" [ngModelOptions]="{standalone: true}" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
 							 placeholder="Description"></textarea>
 						</div>
 
 						<div class="col-md-3 col-md-offset-10">
-							<input type="submit" class="btnMore" value='Create'> <br>
+							<button (click)="createMenu()"type="submit" class="btnMore" value='Create'>Create Menu </button>
 						</div>
 					</form>
-				</div>
+				</div> 
 
 				<!-- /row -->
 			</div>
