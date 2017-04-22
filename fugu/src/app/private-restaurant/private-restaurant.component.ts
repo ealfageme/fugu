@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Http  } from '@angular/http';
+import {  Http, RequestOptions, Headers  } from '@angular/http';
 import { LoginService } from './../services/login.service';
 import { Router } from '@angular/router';
 
@@ -209,8 +209,14 @@ export class PrivateRestaurantComponent implements OnInit {
                             'city': {'name': this.restaurantUpdate.city, id: cityId},
                             'restaurantReviews': []
                           };
-                          console.log(datarestaurant);
-      this.http.put('https://localhost:8443/api/restaurants/', datarestaurant).subscribe(
+      console.log(datarestaurant);
+      const headers = new Headers({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      });
+      const options = new RequestOptions({ withCredentials: true, headers });
+
+      this.http.put('https://localhost:8443/api/restaurants/', datarestaurant, options).subscribe(
         response => console.log(response),
         error => console.error(error)
       );

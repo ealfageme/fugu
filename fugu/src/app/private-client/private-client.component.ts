@@ -1,6 +1,6 @@
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import {  Http  } from '@angular/http';
+import {  Http, RequestOptions, Headers  } from '@angular/http';
 
 interface User {
     username: string;
@@ -124,8 +124,13 @@ export class PrivateClientComponent implements OnInit {
                       'favouriteFood': this.client.favouritefood,
                       'roles': 'ROLE_USER'
                     };
-                    console.log(dataclient);
-    this.http.put('https://localhost:8443/api/clients/', dataclient).subscribe(
+    console.log(dataclient);
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      });
+      const options = new RequestOptions({ withCredentials: true, headers });
+    this.http.put('https://localhost:8443/api/clients/', dataclient, options).subscribe(
       response => console.log(response),
       error => console.error(error)
     );
