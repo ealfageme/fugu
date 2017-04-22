@@ -187,21 +187,16 @@ public class RestaurantRestController {
 	@JsonView(Booking.Basic.class)
 	@RequestMapping(value = "/{name}/book", method = RequestMethod.POST)
 	public ResponseEntity<Booking> postRestaurantBooks(HttpSession session, @PathVariable String name,
-			Authentication authentication,@RequestParam String bookingday,
-			@RequestParam String bookinghour,@RequestParam String guests,
-			@RequestParam String specialRequirements) {
+			Authentication authentication,@RequestBody Booking newBooking) {
 		session.setMaxInactiveInterval(-1);
-		if (restaurantService.bookingRepositoryfindBySpecialRequirements(specialRequirements) == null) {
-			String date=new Date().toString();
-			date = "2017-04-" + bookingday + " " + bookinghour;
-			Booking booking = new Booking(date, Integer.parseInt(guests), specialRequirements);
+		if (restaurantService.bookingRepositoryfindById(newBooking.getId()) == null) {
 			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
-			booking.setBookingRestaurant(restaurant);
-			booking.setBookingUser(userService.userRepositoryFindByEmail(authentication.getName()));
-				restaurant.getBookings().add(booking);
+			newBooking.setBookingRestaurant(restaurant);
+			newBooking.setBookingUser(userService.userRepositoryFindByEmail(authentication.getName()));
+				restaurant.getBookings().add(newBooking);
 
-			restaurantService.bookingRepositorysave(booking);
-			return new ResponseEntity<>(booking, HttpStatus.CREATED);
+			restaurantService.bookingRepositorysave(newBooking);
+			return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}

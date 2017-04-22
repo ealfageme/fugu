@@ -9,20 +9,24 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  date: string =new Date().toString();
   newBooking: boolean;
+  private restaurantName : string;
+  state: string;
   booking: Booking;
   oldDay = '13';
   oldHour = '1';
   constructor(private _router: Router, activatedRoute: ActivatedRoute, private service: BookingService,private loginService: LoginService,) {
     const id = activatedRoute.snapshot.params['id'];
+    this.restaurantName = activatedRoute.snapshot.params['name'];
     if (id) {
-      service.getBooking(id).subscribe(
+      service.getBooking(id, this.restaurantName).subscribe(
         book => this.booking = book,
         error => console.error(error)
       );
       this.newBooking = false;
     } else {
-      this.booking = { date: '', guests: 0,specialRequirements: '',restaurantName: '', userName: '' }; 
+      this.booking = { date: '', guests: '0',specialRequirements: '', state: ''};
       this.newBooking = true;
     }
   }
@@ -36,11 +40,14 @@ export class BookingComponent implements OnInit {
   }
 
   save() {
-    this.service.saveBook(this.booking).subscribe(
+    console.log("guardando booking");
+		this.booking.date = "2017-04-" +"12"+ " " + "10";
+    this.booking.state = "In process"
+    console.log("esta es la hora en el componente"+this.booking.date);
+    this.service.saveBook(this.booking, this.restaurantName).subscribe(
       book => { },
       error => console.error('Error creating new book: ' + error)
     );
-    window.history.back();
   }
       selectDay(newDay) {
 	  document.getElementById(this.oldDay+"class").className = "";

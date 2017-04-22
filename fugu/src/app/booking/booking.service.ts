@@ -6,33 +6,34 @@ import 'rxjs/Rx';
 export interface Booking {
   id?: number;
   date: string;
-  guests: number;
+  guests: string;
   specialRequirements: string;
-  restaurantName: string;
-  userName: string;
+  state: string;
 }
-
-const URL = 'http://localhost:8080/api/'+this.restaurantName+'book';
 
 @Injectable()
 export class BookingService {
 
   constructor(private http: Http) { }
-
-  getBooking(i : number) {
-      return this.http.get(URL +i, { withCredentials: true })
+  
+  getBooking(i : number,restaurantName: string) {
+    const getURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/book';
+      return this.http.get(getURL +i, { withCredentials: true })
         .map(response => response.json())
         .catch(error => this.handleError(error));
     }
 
-  getBookings() {
-    return this.http.get(URL , { withCredentials: true })
+  getBookings(restaurantName: string) {
+    const getURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/book';
+    return this.http.get(getURL , { withCredentials: true })
       .map(response => response.json())
       .catch(error => this.handleError(error));
   }
 
-  saveBook(booking: Booking) {
+  saveBook(booking: Booking, restaurantName: string) {
+    const saveURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/book';
     const body = JSON.stringify(booking);
+    console.log(body);
     const headers = new Headers({
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
@@ -40,30 +41,30 @@ export class BookingService {
     const options = new RequestOptions({ withCredentials: true, headers });
 
     if (!booking.id) {
-      return this.http.post(URL, body, options)
+      return this.http.post(saveURL, body, options)
         .map(response => response.json())
         .catch(error => this.handleError(error));
     } else {
-      return this.http.put(URL + booking.id, body, options)
+      return this.http.put(saveURL + booking.id, body, options)
         .map(response => response.json())
         .catch(error => this.handleError(error));
     }
   }
 
-  removeBook(booking: Booking) {
-
+  removeBook(booking: Booking, restaurantName:string) {
+    const removeURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/book';
     const headers = new Headers({
       'X-Requested-With': 'XMLHttpRequest'
     });
     const options = new RequestOptions({ withCredentials: true, headers });
 
-    return this.http.delete(URL + booking.id, options)
+    return this.http.delete(removeURL + booking.id, options)
       .map(response => undefined)
       .catch(error => this.handleError(error));
   }
 
-  updateBook(booking: Booking) {
-    booking.date= "2017-04-" + "2" + " " + "5";
+  updateBook(booking: Booking, restaurantName: string) {
+    const updateURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/book';
     const body = JSON.stringify(booking);
     const headers = new Headers({
       'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ export class BookingService {
     });
     const options = new RequestOptions({ withCredentials: true, headers });
 
-    return this.http.put(URL + booking.id, body, options)
+    return this.http.put(updateURL + booking.id, body, options)
       .map(response => response.json())
       .catch(error => this.handleError(error));
   }
