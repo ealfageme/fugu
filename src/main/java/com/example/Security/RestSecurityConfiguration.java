@@ -33,7 +33,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/**/book").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/**/reviews").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/restaurants/").hasAnyRole("RESTAURANT");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/clients/**").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/clients/**").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/restaurants/**").hasAnyRole("RESTAURANT");
 
 		// Use Http Basic Authentication
