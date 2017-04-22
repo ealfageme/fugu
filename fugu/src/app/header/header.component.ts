@@ -69,6 +69,7 @@ export class HeaderComponent {
       response => { },
       error => console.log('Error when trying to log out: ' + error)
     );
+    this.router.navigate(['/new/main']);
   }
   visitProfile() {
     if (this.loginService.user.roles.indexOf('ROLE_RESTAURANT') !== -1) {

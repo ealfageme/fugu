@@ -17,12 +17,12 @@ export class PrivateRestaurantComponent implements OnInit {
   private followButton: boolean;
   private unfollowButton: boolean;
   private restaurants: string[] = [];
-  private bookings: string[] = [];
   private following: string[] = [];
   private reviews: string[] = [];
   private vouchers: string[] = [];
   private menus: string[] = [];
   private bookingsInProcess: string[] = [];
+  private bookingsAccepted: string[] = [];
   restaurant: string;
   private user: string;
 
@@ -72,7 +72,11 @@ export class PrivateRestaurantComponent implements OnInit {
         const  data = response.json();
         for (let i = 0; i < data.content.length; i++) {
           const book = data.content[i];
-          this.bookings.push(book);
+          if (book.state === 'In process') {
+                        this.bookingsInProcess.push(book);
+                    } else {
+                        this.bookingsAccepted.push(book);
+                    }
         }
       },
       error =>  {
