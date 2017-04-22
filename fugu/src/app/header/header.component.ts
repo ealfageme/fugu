@@ -10,6 +10,7 @@ interface Restaurant {
     city?: string;
     foodtype?: string;
     phone?: number;
+    description?: string;
     email: string;
     password: string;
     confirmPassword: string;
@@ -28,7 +29,6 @@ interface User {
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
- // dataclient: any;
   public user: User;
   public restaurant: Restaurant;
   ngOnInit() {
@@ -54,13 +54,14 @@ export class HeaderComponent {
 
     event.preventDefault();
 
-    this.loginService.logInUser(user, pass).subscribe(
-      u => console.log(u),
-      error => console.log('Invalid user or password')
-    );
     this.loginService.logInRestaurant(user, pass).subscribe(
       u => console.log(u),
       error => console.log('Invalid restaurant or password')
+    );
+
+    this.loginService.logInUser(user, pass).subscribe(
+      u => console.log(u),
+      error => console.log('Invalid user or password')
     );
   }
 
@@ -79,7 +80,7 @@ export class HeaderComponent {
     }
   }
 
-  sendForm(){
+  sendFormUser(){
     //CLIENT
     console.log(this.user.username);
     console.log(this.user.email);
@@ -101,15 +102,57 @@ export class HeaderComponent {
       response => console.log(response),
       error => console.error(error)
     );
+  }
+
+  sendFormRestaurant(){
     //RESTAURANT
     console.log(this.restaurant.restaurantname);
     console.log(this.restaurant.address);
     console.log(this.restaurant.city);
     console.log(this.restaurant.foodtype);
     console.log(this.restaurant.phone);
+    console.log(this.restaurant.description);
     console.log(this.restaurant.email);
     console.log(this.restaurant.password);
     console.log(this.restaurant.confirmPassword);
+    let cityId = 0;
+    if(this.restaurant.city==="Madrid"){
+      cityId=1
+    }else if (this.restaurant.city==="Barcelona"){
+      cityId=2
+    }else if (this.restaurant.city==="Valencia"){
+      cityId=3
+    }else if (this.restaurant.city==="Sevilla"){
+      cityId=4
+    }else if (this.restaurant.city==="Zaragoza"){
+      cityId=5
+    }else{
+      cityId=6
+    }
+
+    let datarestaurant = {"name": this.restaurant.restaurantname, 
+                          "address": this.restaurant.address,
+                          "description": this.restaurant.description,
+                          "email": this.restaurant.email,
+                          "foodType": this.restaurant.foodtype,
+                          "menuPrice": 15,
+                          "breakfast": true,
+                          "lunch": true,
+                          "dinner": true,
+                          "roles": "ROLE_RESTAURANT",
+                          "phone": this.restaurant.phone,
+                          "rate": 5,
+                          "password": this.user.password,    
+                          "users": [],
+                          "menus": [],
+                          "bookings": [],
+                          "city": {"name": this.restaurant.city, id: cityId},
+                          "restaurantReviews": []              
+                        }
+    this.http.post('https://localhost:8443/api/restaurants/signin', datarestaurant).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
   }
 
 }

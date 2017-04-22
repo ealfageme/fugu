@@ -32,10 +32,15 @@ export class LoginService {
         this.http.get(URL + '/logIn/user', options).subscribe(
             response => this.processLogInResponse(response),
             error => {
-                if (error.status !== 401) {
-                    console.error('Error when asking if logged: ' +
-                        JSON.stringify(error));
-                }
+                this.http.get(URL + '/logIn/restaurant', options).subscribe(
+                    response => this.processLogInResponse(response),
+                    error => {
+                        if (error.status !== 401) {
+                            console.error('Error when asking if logged: ' +
+                                JSON.stringify(error));
+                    }
+            }
+        );
             }
         );
     }
