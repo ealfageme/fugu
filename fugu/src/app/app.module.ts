@@ -20,6 +20,8 @@ import { BookingComponent } from './booking/booking.component';
 
 import {BookingService } from './booking/booking.service';
 import {LoginService } from './services/login.service';
+import {SigninService } from './services/signin.service';
+
 
 
 @NgModule({
@@ -45,7 +47,7 @@ import {LoginService } from './services/login.service';
     routing,
     ModalModule
   ],
-  providers: [LoginService, BookingService],
+  providers: [LoginService, BookingService, SigninService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
