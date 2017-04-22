@@ -1,6 +1,8 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-public-restaurant',
@@ -25,7 +27,7 @@ export class PublicRestaurantComponent implements OnInit {
   private reviews: string[] = [];
   private bookings: string[] = [];
 
-  constructor(private http: Http, activatedRoute: ActivatedRoute) {
+  constructor(private http: Http, activatedRoute: ActivatedRoute, private loginService: LoginService) {
     this.restaurantname = activatedRoute.snapshot.params['name'];
     this.favButton = true;
     this.seeMorebtn = true;
@@ -99,6 +101,22 @@ export class PublicRestaurantComponent implements OnInit {
   
   goTo(location: string): void {
     window.location.hash = location;
+  }
+
+  sendReview(rate: number,text:string){
+      let day = new Date();
+      console.log(text);
+      console.log(rate)
+      const review= {
+            "content": text,
+            "rate": rate,
+            "date": day
+      }
+       this.http.post('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/reviews',  review).subscribe(
+        response  =>  console.log(response),
+        error  =>  console.error(error)
+      );
+   
   }
   
 

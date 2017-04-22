@@ -175,7 +175,7 @@ public class RestaurantRestController {
 		if (restaurantService.reviewRepositoryfindByContent(newReview.getContent()) != null) {
 			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newReview.setReviewRestaurant(restaurant);
-			newReview.setUser((User) authentication.getCredentials());
+			newReview.setUser(null);
 			restaurantService.reviewRepositorysave(newReview);
 			return new ResponseEntity<>(newReview, HttpStatus.CREATED);
 		} else {
