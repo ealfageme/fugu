@@ -29,6 +29,10 @@ public class Voucher {
 	private String description;
 	@JsonView(Basic.class)
 	private String expiryDate;
+	@JsonView(Basic.class)
+	private String min;
+	@JsonView(Basic.class)
+	private String max;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonView(Basic.class)
@@ -43,13 +47,27 @@ public class Voucher {
 
 	
 	public Voucher(){}
-	public Voucher(String name, String description, String expiryDate) {
+	public Voucher(String name, String description, String expiryDate, String min, String max) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.expiryDate = expiryDate;
+		this.min = min;
+		this.max = max;
 	}
 	
+	public String getMin() {
+		return min;
+	}
+	public void setMin(String min) {
+		this.min = min;
+	}
+	public String getMax() {
+		return max;
+	}
+	public void setMax(String max) {
+		this.max = max;
+	}
 	public long getId() {
 		return id;
 	}

@@ -17,10 +17,12 @@ import { PrivateClientComponent } from './private-client/private-client.componen
 import { PrivateRestaurantComponent } from './private-restaurant/private-restaurant.component';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
+import { VoucherComponent } from './voucher/voucher.component';
 
 import {BookingService } from './booking/booking.service';
 import {LoginService } from './services/login.service';
 import {SigninService } from './services/signin.service';
+import {VoucherService } from './voucher/voucher.service';
 
 
 
@@ -37,7 +39,8 @@ import {SigninService } from './services/signin.service';
     PrivateClientComponent,
     PrivateRestaurantComponent,
     HeaderComponent,
-    BookingComponent
+    BookingComponent,
+    VoucherComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import {SigninService } from './services/signin.service';
     routing,
     ModalModule
   ],
-  providers: [LoginService, BookingService, SigninService],
+  providers: [LoginService, BookingService, SigninService, VoucherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
