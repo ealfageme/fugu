@@ -85,7 +85,7 @@
 					</div>
 
 					<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
-					<button (click)="sendFormUser();" type='submit' class="logInBtn" id='senduser'>Send</button>
+					<button (click)="sendFormUser(); modalWindow2.close(); modalWindow2.close();" type='submit' class="logInBtn" id='senduser'>Send</button>
 				</form>
 			</modal-content>
 		</modal-content>
@@ -152,7 +152,7 @@
       				</small>
 						  <br> <img src="/src/assets/images/restaurant.png">
 						<!-- logInBtn btnMore -->
-						<button (click)="sendFormRestaurant();" type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
+						<button (click)="sendFormRestaurant(); modalWindow2.close() modalWindow.close()" type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
 					</div>
 				</form>
 			</modal-content>
