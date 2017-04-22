@@ -32,6 +32,8 @@ public class RestaurantRepositoryAuthenticationProvider implements Authenticatio
 		}
 		String password = (String) auth.getCredentials();
 		if (!new BCryptPasswordEncoder().matches(password, restaurant.getPassword())) {
+			System.out.println(password);
+			System.out.println(restaurant.getPassword());
 			System.out.println("wrong pass");
 			throw new BadCredentialsException("Wrong password");
 		}

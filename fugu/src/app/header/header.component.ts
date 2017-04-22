@@ -142,11 +142,11 @@ export class HeaderComponent {
                           "roles": "ROLE_RESTAURANT",
                           "phone": this.restaurant.phone,
                           "rate": 5,
-                          "password": this.user.password,    
+                          "password": this.restaurant.password,    
                           "users": [],
                           "menus": [],
                           "bookings": [],
-                          "city": {"name": this.restaurant.city, id: cityId},
+                          "city": {"name": this.restaurant.city, "id": cityId},
                           "restaurantReviews": []              
                         }
     this.http.post('https://localhost:8443/api/restaurants/signin', datarestaurant).subscribe(
