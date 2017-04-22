@@ -29,7 +29,6 @@ interface User {
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
- // dataclient: any;
   public user: User;
   public restaurant: Restaurant;
   ngOnInit() {
@@ -55,13 +54,14 @@ export class HeaderComponent {
 
     event.preventDefault();
 
-    this.loginService.logInUser(user, pass).subscribe(
-      u => console.log(u),
-      error => console.log('Invalid user or password')
-    );
     this.loginService.logInRestaurant(user, pass).subscribe(
       u => console.log(u),
       error => console.log('Invalid restaurant or password')
+    );
+
+    this.loginService.logInUser(user, pass).subscribe(
+      u => console.log(u),
+      error => console.log('Invalid user or password')
     );
   }
 

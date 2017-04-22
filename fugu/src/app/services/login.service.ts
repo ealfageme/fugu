@@ -38,8 +38,8 @@ export class LoginService {
                         if (error.status !== 401) {
                             console.error('Error when asking if logged: ' +
                                 JSON.stringify(error));
-                        }
                     }
+            }
         );
             }
         );
