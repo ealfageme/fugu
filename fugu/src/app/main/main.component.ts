@@ -83,7 +83,7 @@ export class MainComponent implements OnInit {
   }
   
   sendFuguFeedback() {
-  console.log("ola k ase in");
+ 
 	/*let username=document.getElementById("username").getAttribute("name");
 	let email=document.getElementById("useremail").getAttribute("name");
 	let body=document.getElementById("message").nodeValue;

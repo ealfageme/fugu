@@ -47,8 +47,8 @@ public class RestaurantFileUploadController {
 	@RequestMapping(value = "/private-restaurant/image/upload", method = RequestMethod.POST)
 	public String handleFileUpload(Model model, @RequestParam("imageTitle") String imageTitle,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication,
-			@RequestParam(required = false) String type, @RequestParam(required = false) Integer max,
-			@RequestParam(required = false) Integer min, @RequestParam(required = false) String vouchername,
+			@RequestParam(required = false) String type, @RequestParam(required = false) String max,
+			@RequestParam(required = false) String min, @RequestParam(required = false) String vouchername,
 			@RequestParam(required = false) String voucherdescription,
 			@RequestParam(required = false) String menudescription, @RequestParam(required = false) String menuname,
 			@RequestParam(required = false) Double menuprice, @RequestParam(required = false) String namerest,
@@ -99,8 +99,8 @@ public class RestaurantFileUploadController {
 
 				}
 				if (vouchername != null) {
-					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString());
-					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
+					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString(), min, max);
+					voucher.setVoucherUsers(userRepository.findByAgeBetween(Integer.parseInt(min), Integer.parseInt(max)));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
 				}
@@ -173,8 +173,8 @@ public class RestaurantFileUploadController {
 	@RequestMapping(value = "/private-restaurant/menu/image/upload", method = RequestMethod.POST)
 	public String handleFileUploadMenu(Model model, @RequestParam("imageTitle") String imageTitle,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication,
-			@RequestParam(required = false) String type, @RequestParam(required = false) Integer max,
-			@RequestParam(required = false) Integer min, @RequestParam(required = false) String vouchername,
+			@RequestParam(required = false) String type, @RequestParam(required = false) String max,
+			@RequestParam(required = false) String min, @RequestParam(required = false) String vouchername,
 			@RequestParam(required = false) String voucherdescription,
 			@RequestParam(required = false) String menudescription, @RequestParam(required = false) String menuname,
 			@RequestParam(required = false) Double menuprice, @RequestParam(required = false) String namerest,
@@ -225,8 +225,8 @@ public class RestaurantFileUploadController {
 
 				}
 				if (vouchername != null) {
-					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString());
-					voucher.setVoucherUsers(userRepository.findByAgeBetween(min, max));
+					Voucher voucher = new Voucher(vouchername, voucherdescription, new Date().toString(), min, max);
+					voucher.setVoucherUsers(userRepository.findByAgeBetween(Integer.parseInt(min), Integer.parseInt(max)));
 					voucher.setRestaurant(restaurantRepository.findByEmail(restaurantloggin));
 					voucherRepository.save(voucher);
 				}

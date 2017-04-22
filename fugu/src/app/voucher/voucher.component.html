@@ -1,0 +1,88 @@
+<div *ngIf="loginService.isLogged">
+	<br> <br> <br>
+	<div class="container">
+		<div class="row">
+			<div class="search">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+							<h2>
+								<span class="highlight-text">Clients</span>
+							</h2>
+							<h3>Potential clients</h3>
+						</div>
+						<div class="col-md-10 col-md-offset-1">
+							<div class="form-section">
+								<div class="row">
+									<form role="form" method='post' action="/private-restaurant/voucher">
+										<div style="border-radius: 0px !important" class="col-md-3">
+											<div style="border-radius: 0px !important" class="form-group">
+												<label style="border-radius: 0px !important" class="sr-only" for="guest">Guest</label>
+														<p value="foodType">{{foodType}}</p>
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<div class="col-md-2">
+												<p>Age between :</p>
+											</div>
+											<div class="col-md-2">
+
+												<div class="input-group">
+
+													<span style="border-radius: 0px !important" class="input-group-addon">&gt;</span> <input style="border-radius: 0px !important"
+													 type="text" class="form-control" [(ngModel)]="voucher.min"  [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)" placeholder="0">
+													<span style="border-radius: 0px !important" class="input-group-addon"></span>
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="input-group">
+													<span style="border-radius: 0px !important" class="input-group-addon">&lt;</span> <input style="border-radius: 0px !important"
+													 type="text" class="form-control" [(ngModel)]="voucher.max"  [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)" placeholder="99">
+													<span style="border-radius: 0px !important" class="input-group-addon"></span>
+												</div>
+											</div>
+											<label for="name"></label>
+											<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+												<h3>Offer</h3>
+											</div>
+                      <div *ngIf="voucher">
+											<input  [(ngModel)]="voucher.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control formmargin"  placeholder="Voucher name">
+											<textarea style="border-radius: 0px !important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer"
+											 [(ngModel)]="voucher.description" [ngModelOptions]="{standalone: true}"></textarea>
+                      </div>
+										</div>
+										<div class="col-md-3">
+											<div class="paddingtop">
+												<div class="form-group">
+													<label class="sr-only" for="expiry">Guest</label> <select id="expiryDate" [(ngModel)]="voucher.expiryDate" [ngModelOptions]="{standalone: true}" class="form-control">
+															<option value="1">Expiry: 1 week</option>
+															<option value="2">Expiry: 2 weeks</option>
+															<option value="3">Expiry: 3 weeks</option>
+															<option value="4">Expiry: 1 month</option>
+															<option value="5">Expiry: 2 months</option>
+															<option value="6">Expiry: 3 month</option>
+															<option value="7">Expiry: 6 months</option>
+														</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2  ">
+											<input style="border-radius: 0px !important" type="file" class="form-control-file" id="exampleInputFi" aria-describedby="fileHelp">
+										</div>
+										<div class="col-md-3 col-md-offset-10">
+											<input (click)="save()" class="btnMore" value='Send group offer'>
+										</div>
+									</form>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Section Header End --> 
+		</div>
+	</div>
+  </div>

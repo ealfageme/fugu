@@ -175,7 +175,7 @@ public class RestaurantRestController {
 		if (restaurantService.reviewRepositoryfindByContent(newReview.getContent()) != null) {
 			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newReview.setReviewRestaurant(restaurant);
-			newReview.setUser((User) authentication.getCredentials());
+			newReview.setUser(null);
 			restaurantService.reviewRepositorysave(newReview);
 			return new ResponseEntity<>(newReview, HttpStatus.CREATED);
 		} else {
@@ -225,11 +225,13 @@ public class RestaurantRestController {
 			@RequestBody Voucher newVoucher, Authentication authentication) {
 		session.setMaxInactiveInterval(-1);
 		if (restaurantService.voucherRepositoryfindByName(newVoucher.getName()) == null) {
+			System.out.println(name);
 			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
 			newVoucher.setRestaurant(restaurant);
 			if (restaurant != null) {
 				restaurant.getVouchers().add(newVoucher);
 			}
+			newVoucher.setVoucherUsers(userService.userRepositoryFindByAgeBetween(Integer.parseInt(newVoucher.getMin()), Integer.parseInt(newVoucher.getMax())));
 			restaurantService.voucherRepositorysave(newVoucher);
 			return new ResponseEntity<>(newVoucher, HttpStatus.CREATED);
 		} else {

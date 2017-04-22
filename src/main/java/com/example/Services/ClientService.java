@@ -51,4 +51,7 @@ public class ClientService {
 		userRepository.delete(user);
 		return user;
 	}
+	public List<User> userRepositoryFindByAgeBetween(int min, int max){
+	return userRepository.findByAgeBetween(min,max);
+	}
 }

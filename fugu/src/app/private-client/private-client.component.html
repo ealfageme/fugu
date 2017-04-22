@@ -155,7 +155,9 @@
 					<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
 						<h2>Restaurants</h2>
 						<div *ngFor="let restaurant of restaurants">
-							<div class="menu-column">
+							<div class="menu-column" *ngIf="restaurant">
+								<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+
 								<button class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
@@ -163,7 +165,7 @@
 												class="img-circle" id="imgPerfil">{{restaurant.name}}
 										</h6>
 									</div>
-								</button>
+								</button></a>
 							</div>
 						</div>
 						<!-- /menu-column -->
@@ -172,7 +174,8 @@
 					<div class="col-md-6" style="visibility: visible; animation-name: fadeInLeft">
 						<h2>People</h2>
 						<div *ngFor="let follow of following">
-							<div class="menu-column">
+							<div class="menu-column" *ngIf = "follow">
+								<a  [routerLink]="['/new/public-client/'+follow.name]">
 								<button class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
@@ -181,6 +184,7 @@
 										</h6>
 									</div>		
 								</button>
+								</a>
 							</div>
 						</div>
 					</div>
