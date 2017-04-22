@@ -38,7 +38,7 @@
 
 								<!-- Filter Button Start -->
 
-								<div *ngFor="let booking of bookings; let i = index" [attr.data-index]="i">
+								<div *ngFor="let booking of bookingsInProcess; let i = index" [attr.data-index]="i">
 
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
@@ -103,7 +103,7 @@
 
 								<!-- Filter Button Start -->
 
-								<div *ngFor="let booking of bookings; let i = index" [attr.data-index]="i">
+								<div *ngFor="let booking of bookingsAccepted; let i = index" [attr.data-index]="i">
 
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 
@@ -274,35 +274,35 @@
 					<p>
 						<label>Image file:</label><input type="file" name="file" />
 					</p>
-					<input type='submit' name='enviar' value='Change menu image' /> <input>
+					<input type='submit' name='enviar' value='Change menu image' /> 
 				</form>
 			</div>
 			<br> <br> <br>
 			<!-- Section Header End -->
 			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-				<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 					<h1>Add new dish to menu</h1>
 					<form role="form" method="post" action="/private-restaurant/menu">
 						<div class="form-group">
-							<label for="name">Dish Name:</label> <input style="border-radius: 0px !important" type="text" class="form-control"
-							 id="imageTitle" name='menuname' placeholder="Dish Name">
+							<label >Dish Name:</label> <input  [(ngModel)]="nameDish" [ngModelOptions]="{standalone: true}"   style="border-radius: 0px !important" type="text" class="form-control"
+							 id="imageTitle">
 						</div>
 						<div class="form-group">
 
-							<label for="name">Price</label> <input type="text" class="form-control formmargin" name='menuprice' placeholder="Price"
+							<label >Price</label> <input [(ngModel)]="priceDish" [ngModelOptions]="{standalone: true}" type="text" class="form-control formmargin" name='menuprice' placeholder="Price"
 							 id="price" required> <span id='message_dish_price'></span>
 						</div>
 						<div class="form-group">
-							<label for="name">Description:</label>
-							<textarea style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
+							<label >Description:</label>
+							<textarea [(ngModel)]="descriptionDish" [ngModelOptions]="{standalone: true}" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
 							 placeholder="Description"></textarea>
 						</div>
 
 						<div class="col-md-3 col-md-offset-10">
-							<input type="submit" class="btnMore" value='Create'> <br>
+							<button (click)="createMenu()"type="submit" class="btnMore" value='Create'>Create Menu </button>
 						</div>
 					</form>
-				</div>
+				</div> 
 
 				<!-- /row -->
 			</div>
@@ -386,34 +386,39 @@
 					<h1>Change data</h1>
 					<form role="form" method='post' action="/private-restaurant/modify">
 						<div class="form-group">
-							<label for="name">Restaurant Name:</label>
-							<input style="border-radius: 0px !important" class="form-control" name="namerest" value="{{restaurant.name}}">
+							<label for="name">Restaurant Name: {{restaurant.name}}</label>
 						</div>
 						<div class="form-group">
-							<label for="name">Location:</label> <input *ngIf="restaurant" style="border-radius: 0px !important" class="form-control"
+							<label for="name">Location:</label> <input *ngIf="restaurant" [(ngModel)]="restaurantUpdate.address" style="border-radius: 0px !important" class="form-control"
 							 name="location" value="{{restaurant.address}}">
 						</div>
 						<div class="form-group">
 							<label for="name">Description:</label>
-							<textarea style="border-radius: 0px !important" class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
+							<textarea [(ngModel)]="restaurantUpdate.description" style="border-radius: 0px !important" class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
 						</div>
 						<div class="form-group">
-							<label for="name">Telephone:</label> <input *ngIf="restaurant" style="border-radius: 0px !important" class="form-control"
+							<label for="name">Telephone:</label> <input *ngIf="restaurant" [(ngModel)]="restaurantUpdate.phone" style="border-radius: 0px !important" class="form-control"
 							 name="telephone" value="{{restaurant.phone}}">
 						</div>
 						<div class="form-group">
-							<label for="email">Email:</label> <input style="border-radius: 0px !important" type="email" class="form-control" name="emailrest"
+							<label for="email">Email:</label> <input  [(ngModel)]="restaurantUpdate.email"style="border-radius: 0px !important" type="email" class="form-control" name="emailrest"
 							 value="{{restaurant.email}}">
 						</div>
 						<div class="form-group">
-							<label for="pwd">New password</label> <input style="border-radius: 0px !important" type="password" class="form-control"
+							<label for="pwd">New password</label> <input [(ngModel)]="restaurantUpdate.password" style="border-radius: 0px !important" type="password" class="form-control"
 							 name="pwd" placeholder="Enter new password">
+							 <small [hidden]="restaurantUpdate.password.length >= 6" class="text-danger">
+        							Password minimum length is 6 characters
+      						</small>
 						</div>
 						<div class="form-group">
-							<label for="pwd">Repeat new password</label> <input style="border-radius: 0px !important" type="password" class="form-control"
+							<label for="pwd">Repeat new password</label> <input [(ngModel)]="restaurantUpdate.confirmPassword" style="border-radius: 0px !important" type="password" class="form-control"
 							 name="confirmpwd" placeholder="Repeat new password">
+							 <small [hidden]="restaurantUpdate.password === restaurantUpdate.confirmPassword" class="text-danger">
+        						Passwords must be equal
+      						</small>
 						</div>
-						<label for="pwd">Foods you serve:</label> <br> <input type="checkbox" name="Breakfast" value=true checked='checked'>						Breakfast <input type="checkbox" name="Lunch" value=true checked='checked'> Lunch <input type="checkbox" name="Dinner"
+						<label for="pwd">Foods you serve:</label> <br> <input type="checkbox" name="Breakfast" value=true checked='checked'>Breakfast <input type="checkbox" name="Lunch" value=true checked='checked'> Lunch <input type="checkbox" name="Dinner"
 						 value=true checked='checked'> Dinner<br>
 						<div class="form-group">
 							<label for="exampleInputFile">Add pictures of the
@@ -421,7 +426,10 @@
 							 aria-describedby="fileHelp">
 						</div>
 						<div class="col-md-3 col-md-offset-10">
-							<button type='submit' class="btnMore">Update</button>
+							<small [hidden]="restaurantUpdate.password === restaurantUpdate.confirmPassword && restaurantUpdate.password.length >= 6" class="text-danger">
+								Fill the form to update
+      						</small>
+							<button [hidden]="restaurantUpdate.password !== restaurantUpdate.confirmPassword || restaurantUpdate.password.length < 6" (click)="updateRestaurant()" type='submit' class="btnMore">Update</button>
 						</div>
 					</form>
 

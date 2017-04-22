@@ -74,14 +74,16 @@ public class ClientRestController {
 	@RequestMapping (value = "/", method = RequestMethod.PUT)
 	public ResponseEntity<User> putUser(HttpSession session, Authentication authenticate, @RequestBody User updatedUser) {
 		session.setMaxInactiveInterval(-1);
-		User user = clientService.userRepositoryFindByEmail(authenticate.getName());
+		User user = clientService.userRepositoryFindByEmail(updatedUser.getEmail());
 		if (user != null) {
 			if (updatedUser != null) {
-				updatedUser.setId(clientService.userRepositoryFindByEmail(authenticate.getName()).getId());
-				updatedUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+				updatedUser.setId(clientService.userRepositoryFindByEmail(updatedUser.getEmail()).getId());
+				updatedUser.setFollowing(clientService.userRepositoryFindByEmail(updatedUser.getEmail()).getFollowing());
+				updatedUser.setRestaurants(clientService.userRepositoryFindByEmail(updatedUser.getEmail()).getRestaurants());
+				updatedUser.setPassword(new BCryptPasswordEncoder().encode(updatedUser.getPassword()));
 				clientService.userRepositorysave(updatedUser);
 				return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-			}else{
+			} else {
 				return null;
 			}
 		} else {

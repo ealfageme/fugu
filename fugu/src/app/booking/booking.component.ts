@@ -40,10 +40,8 @@ export class BookingComponent implements OnInit {
   }
 
   save() {
-    console.log("guardando booking");
 		this.booking.date = "2017-04-" +"12"+ " " + "10";
     this.booking.state = "In process"
-    console.log("esta es la hora en el componente"+this.booking.date);
     this.service.saveBook(this.booking, this.restaurantName).subscribe(
       book => { },
       error => console.error('Error creating new book: ' + error)

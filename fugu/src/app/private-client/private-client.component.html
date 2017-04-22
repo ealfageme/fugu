@@ -267,46 +267,52 @@
 
 					<form role="form" method='post' action="/private-client/modify">
 						<div class="form-group">
-							<label for="name">Account Name:</label> <input *ngIf="user" style="border-radius: 0px !important" class="form-control"
-							 name='username' id='username' value="{{user.name}}">
+							<label *ngIf="user">Account Name: {{user.name}}</label>
 						</div>
 
 						<div class="form-group">
-							<label for="email">Email:</label> <input *ngIf="user" style="border-radius: 0px !important" type="email" class="form-control"
+							<label >Email:</label> <input *ngIf="user" [(ngModel)]="client.email" style="border-radius: 0px !important" type="email" class="form-control"
 							 id="email" name='useremail' value="{{user.email}}">
 						</div>
 
 						<div class="form-group">
-							<label for="name">Description:</label>
-							<textarea *ngIf="user" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='userdescription'
+							<label >Description:</label>
+							<textarea *ngIf="user" [(ngModel)]="client.description" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='userdescription'
 							 rows="3">{{user.description}}</textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="email">Favourite food:</label> <input *ngIf="user" style="border-radius: 0px !important" class="form-control"
+							<label for="email">Favourite food:</label> <input *ngIf="user" [(ngModel)]="client.favouritefood" style="border-radius: 0px !important" class="form-control"
 							 name='favouritefood' value="{{user.favouriteFood}}">
 						</div>
 
 						<div class="form-group">
-							<label for="pwd">New password</label> <input style="border-radius: 0px !important" type="password" class="form-control"
+							<label for="pwd">New password</label> <input [(ngModel)]="client.password" style="border-radius: 0px !important" type="password" class="form-control"
 							 id="pwd" name='password' placeholder="Enter new password">
+							 <small [hidden]="client.password.length >= 6" class="text-danger">
+        							Password minimum length is 6 characters
+      						</small>
 						</div>
 
 
 						<div class="form-group">
-							<label for="pwd">Repeat new password</label> <input style="border-radius: 0px !important" type="password" class="form-control"
+							<label for="pwd">Repeat new password</label> <input [(ngModel)]="client.confirmPassword" style="border-radius: 0px !important" type="password" class="form-control"
 							 id="pwd" name='confirmpassword' placeholder="Repeat new password">
+							 <small [hidden]="client.password === client.confirmPassword" class="text-danger">
+        				Passwords must be equal
+      				</small>
 						</div>
-
-
 						<div class="form-group">
 							<label for="age" style="margin-bottom: 10px;">How old
-									are you?</label> <input *ngIf="user" style="border-radius: 0px !important" type="text" class="form-control"
+									are you?</label> <input *ngIf="user" [(ngModel)]="client.age" style="border-radius: 0px !important" type="text" class="form-control"
 							 id="age" name='userage' value={{user.age}}>
 						</div>
 
 						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-							<button type='submit' class="btnMore">Update</button>
+							<small [hidden]="client.password === client.confirmPassword && client.password.length >= 6" class="text-danger">
+								Fill the form to update
+      						</small>
+							<button [hidden]="client.password !== client.confirmPassword || client.password.length < 6" type='submit' class="btnMore" (click)="updateUser()">Update</button>
 							<a (click)="goTo('#modalwindow')" data-toggle="modal">
 								<button type="submit" class="btnMore">Delete</button>
 							</a>
