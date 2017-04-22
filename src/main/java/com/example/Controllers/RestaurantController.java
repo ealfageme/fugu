@@ -188,7 +188,7 @@ public class RestaurantController {
 	@RequestMapping(value = "/private-restaurant/voucher", method = RequestMethod.POST)
 	public String addVoucher(Model model, @RequestParam(required=false) String vouchername,
 			@RequestParam(required=false) String voucherdescription,HttpServletRequest request,@RequestParam(required=false) Integer expiry,
-			@RequestParam(required=false) Integer max, @RequestParam(required=false) Integer min,Authentication authentication){
+			@RequestParam(required=false) String max, @RequestParam(required=false) String min,Authentication authentication){
 		if (request.isUserInRole("RESTAURANT")) {
 			if (vouchername != null) {
 				 Calendar calendar = Calendar.getInstance();
@@ -208,8 +208,8 @@ public class RestaurantController {
 				}else if(expiry == 7){
 					calendar.add(Calendar.MONTH, 6);
 				}
-				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime().toString());					
-				voucher.setVoucherUsers(restaurantService.userRepositoryfindByAgeBetween(min, max));
+				Voucher voucher = new Voucher(vouchername, voucherdescription,  calendar.getTime().toString(), min,max);					
+				voucher.setVoucherUsers(restaurantService.userRepositoryfindByAgeBetween(Integer.parseInt(min),Integer.parseInt(max)));
 				voucher.setRestaurant(restaurantService.restaurantRepositoryFindByEmail(authentication.getName()));
 				restaurantService.voucherRepositorysave(voucher);
 			}

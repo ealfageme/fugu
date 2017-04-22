@@ -1,6 +1,16 @@
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import  {  Http  }  from  '@angular/http';
+import {  Http  } from '@angular/http';
+
+interface User {
+    username: string;
+    age?: number;
+    favouritefood?: string;
+    description?: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
 
 @Component({
     selector: 'app-private-client',
@@ -9,6 +19,7 @@ import  {  Http  }  from  '@angular/http';
 })
 export class PrivateClientComponent implements OnInit {
 
+    client: User;
     private city: string;
     private inNormalSession: boolean;
     private inFacebookSession: boolean;
@@ -34,7 +45,8 @@ export class PrivateClientComponent implements OnInit {
                 for (let i = 0; i < data.length; i++)  {
                   const follow = data[i];
                   this.following.push(follow);
-                }
+            }
+    console.log(data);
             },
             error => console.error(error)
         );
@@ -66,6 +78,15 @@ export class PrivateClientComponent implements OnInit {
             response => {
                 const data = response.json();
                 this.user = data;
+                this.client = {
+                    username: data.name,
+                    age: data.age,
+                    favouritefood: data.favouriteFood,
+                    description: data.description,
+                    email: data.email,
+                    password: data.password,
+                    confirmPassword: ''
+                };
                 for (let i = 0; i < data.restaurants.length; i++)  {
                   const restaurant = data.restaurants[i];
                   this.restaurants.push(restaurant);
@@ -74,16 +95,39 @@ export class PrivateClientComponent implements OnInit {
                   const review = data.reviews[i];
                   this.reviews.push(review);
                 }
-                
             },
             error => console.error(error)
         );
     }
 
     ngOnInit() {
+        this.client = {
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        };
     }
 
     goTo(location: string): void {
         window.location.hash = location;
     }
+
+    updateUser() {
+    // CLIENT
+
+    const dataclient = {'name': this.client.username,
+                      'password': this.client.password,
+                      'email': this.client.email,
+                      'age': this.client.age,
+                      'description': this.client.description,
+                      'favouriteFood': this.client.favouritefood,
+                      'roles': 'ROLE_USER'
+                    };
+                    console.log(dataclient);
+    this.http.put('https://localhost:8443/api/clients/', dataclient).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
+  }
 }

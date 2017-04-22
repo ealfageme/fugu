@@ -235,12 +235,12 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		userRepository.save(user2);
 		
-		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date().toString());
-		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date().toString());
-		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date().toString());
-		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date().toString());
-		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date().toString());
-		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date().toString());
+		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date().toString(), "16", "67");
+		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date().toString(), "12" , "35");
+		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date().toString(),"1", "90");
+		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date().toString(), "15", "65");
+		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date().toString(), "0", "50");
+		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date().toString(), "18", "30");
 		voucher1.getVoucherUsers().add(user1);
 		voucher2.getVoucherUsers().add(user1);
 		voucher3.getVoucherUsers().add(user2);
