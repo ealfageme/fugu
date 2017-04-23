@@ -85,31 +85,31 @@
 				</div>
 				<table>
 					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(1)" value="12:00"><span id="hour1" class="active active-date">12:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(2)"><span id="hour2">12:30</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(3)"><span id="hour3">13:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(4)"><span id="hour4">13:30</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(5)"><span id="hour5">14:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(6)"><span id="hour6">14:30</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(7)"><span id="hour7">15:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('12:00')" value="12:00"><span id="12:00" class="active active-date">12:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('12:30')"><span id="12:30">12:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('13:00')"><span id="13:00">13:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('13:30')"><span id="13:30">13:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('14:00')"><span id="14:00">14:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('14:30')"><span id="14:30">14:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('15:00')"><span id="15:00">15:00</span></td>
 
 					</tr>
 					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(8)"><span id="hour8">15:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('15:30')"><span id="15:30">15:30</span></td>
 					</tr>
 					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img wow fadeInDown">
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(9)"><span id="hour9">20:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(10)"><span id="hour10">20:30</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(11)"><span id="hour11">21:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(12)"><span id="hour12">21:30</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(13)"><span id="hour13">22:00</span></td>
-						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour(14)"><span id="hour14">22:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('20:00')"><span id="20:00">20:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('20:30')"><span id="20:30">20:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('21:00')"><span id="21:00">21:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('21:30')"><span id="21:30">21:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('22:00')"><span id="22:00">22:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('22:30')"><span id="22:30">22:30</span></td>
 					</tr>
 				</table>
 
 				<br>
 				<form role="form" method='post' >
-					<label for="name">How many people is coming?</label> <select [(ngModel)]="booking.guests" name="guests">
+					<label >How many people is coming?</label> <select [(ngModel)]="guests" name="guests">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>

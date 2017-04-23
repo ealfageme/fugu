@@ -1,0 +1,6 @@
+select#guest {
+    height: calc(3.25rem + 2px);
+}
+select#expiry {
+    height: calc(3.25rem + 2px);
+}

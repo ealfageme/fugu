@@ -393,22 +393,22 @@
 							<h4>CURRENT RATE : {{restaurant.rate}}</h4>
 							<br>
 						</div>
-						<div class="col-l-6 col-md-6 col-s-6 col-xs-6">
-							<textarea style="border-radius: 0px !important" rows="7" cols="100" class="form-control" name="content" placeholder="Message"
+						<div class="col-l-6 col-md-6 col-s-6 col-xs-6" *ngIf="restaurant">
+							<textarea style="border-radius: 0px !important" rows="7" cols="100" class="form-control" [(ngModel)]="content" placeholder="Message" [ngModelOptions]="{standalone: true}"
 							 id="message" required data-validation-required-message="Please enter your message" minlength="3" data-validation-minlength-message="Min 5 characters"
 							 maxlength="999" style="resize:none"></textarea>
 						</div>
 						<div class="col-l-3 col-md-3 col-s-3 col-xs-6">
-							<div class="form-group">
-								<label for="filter">Rate</label> <select class="form-control" id="selectStar" name='rate'>
-										<option value="1" selected style="border-radius: 0px !important">1</option>
-										<option value="2" style="border-radius: 0px !important">2</option>
-										<option value="3" style="border-radius: 0px !important">3</option>
-										<option value="4" style="border-radius: 0px !important">4</option>
-										<option value="5" style="border-radius: 0px !important">5</option>
+							<div class="form-group" *ngIf="restaurant">
+								<label >Rate</label> <select [(ngModel)]='rate'[ngModelOptions]="{standalone: true}" class="form-control" id="selectStar" >
+										<option value=1 selected style="border-radius: 0px !important">1</option>
+										<option value=2 style="border-radius: 0px !important">2</option>
+										<option value=3 style="border-radius: 0px !important">3</option>
+										<option value=4 style="border-radius: 0px !important">4</option>
+										<option value=5 style="border-radius: 0px !important">5</option>
 									</select>
 							</div>
-							<button type="submit" class="btnMore" (click)="sendReview(rate,content)">Send</button>
+							<button type="submit" class="btnMore" (click)="sendReview()">Send</button>
 						</div>
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
