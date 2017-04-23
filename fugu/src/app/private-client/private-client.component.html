@@ -253,12 +253,11 @@
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 				<form action="/private-client/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' /><br /> <img src="src/assets/images/files/profileImage1.jpg" alt="Facebook Image"
+					<input type="hidden" name='imageTitle' /><br /> <img src="src/assets/images/files/profileImage1.jpg" alt="Profile Image"
 					/>
 					<p>
-						<label>Image file:</label><input type="file" name="file" />
+						<label>Image file:</label><input (change)="fileChange($event)" type="file" name="file" />
 					</p>
-					<input type='submit' name='enviar' value='Enviar' />
 				</form>
 				<br>
 				<p *ngIf="user">{{user.description}}</p>

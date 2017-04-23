@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-
+import { LoginService } from './../services/login.service';
 
 @Component({
   selector: 'app-search-web',
@@ -22,7 +22,7 @@ export class SearchWebComponent implements OnInit {
   nameRestaurant = '';
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private loginService: LoginService) {
     this.inSession = false;
     //dates as default
     this.city = "Madrid";

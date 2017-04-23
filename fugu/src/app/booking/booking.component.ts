@@ -9,14 +9,17 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  date: string =new Date().toString();
+  date: string = new Date().toString();
   newBooking: boolean;
-  private restaurantName : string;
+  guests: string;
+  private restaurantName: string;
   state: string;
   booking: Booking;
   oldDay = '13';
-  oldHour = '1';
-  constructor(private _router: Router, activatedRoute: ActivatedRoute, private service: BookingService,private loginService: LoginService,) {
+  oldHour = '12:00';
+  constructor(private _router: Router, activatedRoute: ActivatedRoute,
+    private service: BookingService, private loginService: LoginService) {
+
     const id = activatedRoute.snapshot.params['id'];
     this.restaurantName = activatedRoute.snapshot.params['name'];
     if (id) {
@@ -26,42 +29,45 @@ export class BookingComponent implements OnInit {
       );
       this.newBooking = false;
     } else {
-      this.booking = { date: '', guests: '0',specialRequirements: '', state: ''};
+      this.booking = { date: '', number: '0', specialRequirements: '', state: '' };
       this.newBooking = true;
     }
   }
 
   ngOnInit() {
   }
- 
+
 
   cancel() {
     window.history.back();
   }
 
   save() {
-		this.booking.date = "2017-04-" +"12"+ " " + "10";
-    this.booking.state = "In process"
+    this.booking.date = '2017-04-' + this.oldDay + ' ' + this.oldHour;
+    this.booking.state = 'In process';
+    this.booking.number = this.guests;
+    console.log(this.guests + ' ' + this.booking.number);
     this.service.saveBook(this.booking, this.restaurantName).subscribe(
       book => { },
       error => console.error('Error creating new book: ' + error)
     );
   }
-      selectDay(newDay) {
-	  document.getElementById(this.oldDay+"class").className = "";
-	  document.getElementById(newDay+"class").className = "active active-date";
-	  this.oldDay=newDay;
-	  document.getElementById("day").innerHTML=newDay+"th";
-	  document.getElementById("bookingday").nodeValue = newDay;
-	  return false;
+  selectDay(newDay) {
+    document.getElementById(this.oldDay + "class").className = "";
+    console.log(newDay);
+    document.getElementById(newDay + "class").className = "active active-date";
+    this.oldDay = newDay;
+    document.getElementById("day").innerHTML = newDay + "th";
+    document.getElementById("bookingday").nodeValue = newDay;
+    return false;
   }
 
   selectHour(newHour) {
-	document.getElementById("hour"+this.oldHour).className = "";
-	document.getElementById("hour"+newHour).className = "active active-date";
-	this.oldHour=newHour;
-	document.getElementById("bookinghour").nodeValue = document.getElementById("hour"+newHour).innerHTML;
-	return false;
+    document.getElementById(this.oldHour).className = "";
+    document.getElementById(newHour).className = "active active-date";
+    this.oldHour = newHour;
+    console.log(newHour);
+    return false;
   }
 }
 
