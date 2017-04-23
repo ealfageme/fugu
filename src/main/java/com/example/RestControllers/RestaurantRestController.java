@@ -256,7 +256,7 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/restaurants/{name}/unfollow", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{name}/unfollow", method = RequestMethod.DELETE)
 	public ResponseEntity<List<Restaurant>> deleteUserFollows(HttpServletRequest request, Authentication authentication,
 			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
@@ -278,10 +278,11 @@ public class RestaurantRestController {
 
 	@ResponseBody
 	@JsonView(Restaurant.Basic.class)
-	@RequestMapping(value = "/api/restaurants/{name}/follow", method = RequestMethod.POST)
+	@RequestMapping(value = "/{name}/follow", method = RequestMethod.POST)
 	public ResponseEntity<List<Restaurant>> postUserFollows(HttpServletRequest request, Authentication authentication,
 			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
+		System.out.println("entra");
 		Restaurant restaurant2follow = restaurantService.restaurantRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = restaurantService.userRepositoryfindByEmail(authentication.getName());

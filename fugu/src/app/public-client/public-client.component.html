@@ -45,7 +45,7 @@
 								</div>
 							</form>
 							<form role="form" method='get'>
-								<div *ngIf="unfollowButton">
+								<div *ngIf="!followButton">
 									<input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
 									<button (click)="unfollow()" class="btnMore" id="unfollow" style="margin:10px;">Unfollow</button>
 								</div>

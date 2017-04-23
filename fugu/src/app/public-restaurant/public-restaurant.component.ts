@@ -1,6 +1,6 @@
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -119,6 +119,32 @@ export class PublicRestaurantComponent implements OnInit {
         error  =>  console.error(error)
       );
    
+  }
+  fav(){
+    console.log('https://localhost:8443/api/restaurants/' + this.restaurantname +"/follow")
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    this.favButton = false;
+    const options = new RequestOptions({ withCredentials: true, headers});
+    this.http.post('https://localhost:8443/api/restaurants/' + this.restaurantname +"/follow","",options).subscribe(
+        response  =>  console.log(response),
+        error  =>  console.error(error)
+      );
+  }
+    unfav(){
+    console.log('https://localhost:8443/api/restaurants/' + this.restaurantname +"/follow")
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    this.favButton = true;
+    const options = new RequestOptions({ withCredentials: true, headers});
+    this.http.delete('https://localhost:8443/api/restaurants/' + this.restaurantname +"/unfollow",options).subscribe(
+        response  =>  console.log(response),
+        error  =>  console.error(error)
+      );
   }
   
 

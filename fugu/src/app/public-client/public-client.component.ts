@@ -12,7 +12,6 @@ export class PublicClientComponent implements OnInit {
   private city: string;
   private inSession: boolean;
   private followButton: boolean;
-  private unfollowButton: boolean;
   private restaurants: string[] = [];
   private following: string[] = [];
   private reviews: string[] = [];
@@ -39,18 +38,23 @@ export class PublicClientComponent implements OnInit {
   binding(params) {
     this.username = params['username'];
     this.inSession = false;
-    console.log("voy a hacer el get")
-    this.http.get('https://localhost:8443/api/clients/'+this.username+'/isfollowing').subscribe(
+    console.log("voy a hacer el get");
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true});
+    this.http.get('https://localhost:8443/api/clients/'+this.username+'/isfollowing', options).subscribe(
       response => {
-        const  data = response.json;
+        const  data = response.json()._body;
           this.followButton = true;
-          this.unfollowButton = false;
-          console.log(data[0]);
+          console.log(data);
+           console.log(data);
+            console.log(data);
           if(data!=null)
           {
             console.log("ya le sigue");
             this.followButton = false;
-            this.unfollowButton = true;
           }
       },
       error => console.error(error)
@@ -110,7 +114,6 @@ export class PublicClientComponent implements OnInit {
       'X-Requested-With': 'XMLHttpRequest'
     });
     this.followButton = false;
-    this.unfollowButton = true;
     const options = new RequestOptions({ withCredentials: true});
     this.http.post('https://localhost:8443/api/clients/' + this.username +"/follow","",options).subscribe(
         response  =>  console.log(response),
@@ -124,7 +127,6 @@ export class PublicClientComponent implements OnInit {
       'X-Requested-With': 'XMLHttpRequest'
     });
     this.followButton = true;
-    this.unfollowButton = false;
     const options = new RequestOptions({ withCredentials: true});
     this.http.delete('https://localhost:8443/api/clients/' + this.username +"/unfollow",options).subscribe(
         response  =>  console.log(response),

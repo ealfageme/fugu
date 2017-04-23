@@ -180,14 +180,16 @@ public class ClientRestController {
 	public ResponseEntity<User> isFollowing(HttpServletRequest request,HttpSession session,Authentication authentication,  @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
 		if (request.isUserInRole("USER")) {
-			boolean isfollowing = clientService.userRepositoryFindByEmail(authentication.getName()).getFollowing().contains(clientService.userRepositoryFindByEmail(name));
+			boolean isfollowing = clientService.userRepositoryFindByEmail(authentication.getName()).getFollowing().contains(clientService.userRepositoryFindByName(name));
 			if (isfollowing) {
+				System.out.println("lsigue");
 				return new ResponseEntity<>(clientService.userRepositoryFindByEmail(name), HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		}
-		return null;
+		System.out.println("no le sigue");
+		return new ResponseEntity<>(null,HttpStatus.OK);
 	}
 
 	@ResponseBody
