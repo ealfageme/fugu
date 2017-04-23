@@ -36,7 +36,7 @@ public class ClientFileUploadRestController {
 	 */
 
 	@RequestMapping(value = "/api/clients/image/upload", method = RequestMethod.POST)
-	public String handleFileUpload(Model model, @RequestParam("imageTitle") String imageTitle,
+	public String handleFileUpload(Model model,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication) {
 			String userloggin = authentication.getName();
 			String fileName = "profileImage" + userRepository.findByEmail(userloggin).getId() + ".jpg";
@@ -52,7 +52,7 @@ public class ClientFileUploadRestController {
 				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
 				file.transferTo(uploadedFile);
 
-				imageTitles.add(imageTitle);
+				//imageTitles.add(imageTitle);
 
 				return fileName;
 

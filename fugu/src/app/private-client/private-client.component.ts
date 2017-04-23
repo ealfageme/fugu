@@ -1,6 +1,7 @@
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import {  Http, RequestOptions, Headers  } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 interface User {
     username: string;
@@ -135,4 +136,43 @@ export class PrivateClientComponent implements OnInit {
       error => console.error(error)
     );
   }
+
+  uploadProfilePicture() {
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      });
+      const dataclient = {'name': this.client.username,
+                      'password': this.client.password,
+                      'email': this.client.email,
+                      'age': this.client.age,
+                      'description': this.client.description,
+                      'favouriteFood': this.client.favouritefood,
+                      'roles': 'ROLE_USER'
+                    };
+      const options = new RequestOptions({ withCredentials: true, headers });
+    this.http.post('https://localhost:8443/api/clients/image/upload', dataclient, options).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
+  }
+
+  fileChange(event) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+        const file: File = fileList[0];
+        const formData: FormData = new FormData();
+        formData.append('file', file, file.name);
+        //formData.append('imageTitle', file, file.name);
+        const headers = new Headers();
+        //headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ withCredentials: true });
+        this.http.post('https://localhost:8443/api/clients/image/upload', formData, options)
+            .subscribe(
+                data => console.log('success'),
+                error => console.log(error)
+            );
+    }
+}
 }
