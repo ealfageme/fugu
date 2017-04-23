@@ -26,6 +26,8 @@ export class PublicRestaurantComponent implements OnInit {
   private vouchers: string[] = [];
   private reviews: string[] = [];
   private bookings: string[] = [];
+  private rate: number = 1;
+  private content: String = "Please enter your message";
 
   constructor(private http: Http, activatedRoute: ActivatedRoute, private loginService: LoginService) {
     this.restaurantname = activatedRoute.snapshot.params['name'];
@@ -103,13 +105,13 @@ export class PublicRestaurantComponent implements OnInit {
     window.location.hash = location;
   }
 
-  sendReview(rate: number,text:string){
+  sendReview(){
       let day = new Date();
-      console.log(text);
-      console.log(rate)
+      console.log(this.content);
+      console.log(this.rate)
       const review= {
-            "content": text,
-            "rate": rate,
+            "content": this.content,
+            "rate": this.rate,
             "date": day
       }
        this.http.post('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/reviews',  review).subscribe(
