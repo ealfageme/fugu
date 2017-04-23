@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 export interface Booking {
   id?: number;
   date: string;
-  guests: string;
+  number: string;
   specialRequirements: string;
   state: string;
 }

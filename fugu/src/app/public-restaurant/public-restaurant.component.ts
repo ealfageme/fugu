@@ -26,8 +26,8 @@ export class PublicRestaurantComponent implements OnInit {
   private vouchers: string[] = [];
   private reviews: string[] = [];
   private bookings: string[] = [];
-  private rate: number = 1;
-  private content: String = "Please enter your message";
+  private rate = 1;
+  private content: String = 'Please enter your message';
 
   constructor(private http: Http, activatedRoute: ActivatedRoute, private loginService: LoginService) {
     this.restaurantname = activatedRoute.snapshot.params['name'];
@@ -100,26 +100,24 @@ export class PublicRestaurantComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   goTo(location: string): void {
     window.location.hash = location;
   }
 
-  sendReview(){
+  sendReview() {
       let day = new Date();
       console.log(this.content);
-      console.log(this.rate)
-      const review= {
-            "content": this.content,
-            "rate": this.rate,
-            "date": day
-      }
+      console.log(this.rate);
+      const review = {
+            'content': this.content,
+            'rate': this.rate,
+            'date': day
+      };
        this.http.post('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/reviews',  review).subscribe(
         response  =>  console.log(response),
         error  =>  console.error(error)
       );
-   
   }
-  
 
 }
