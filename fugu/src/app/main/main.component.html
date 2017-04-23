@@ -4,11 +4,11 @@
 
 <!-- Header End -->
 
-<section >
+<section>
 	<div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<h2 style="position:absolute;float:left;
-    			z-index:1;text-align: center; font-size: 5.0vw; transform: translate(10%, 50%);" >
+    			z-index:1;text-align: center; font-size: 5.0vw; transform: translate(10%, 50%);">
 				<span class="highlight-texts"><span
 								class="section-color2 highlight-text border2">Search your
 									perfect restaurant here</span> </span>
@@ -18,12 +18,12 @@
 		<video autoplay loop class="embed-responsive-item" style="min-width:100%;">
 			<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
 		</video>
-		
+
 	</div>
 </section>
 <!-- class="section-wrapper" / si se quiere poner que vayan apareciendo segun se va bajando-->
 
-<section  id="cities">
+<section id="cities">
 	<div class="container">
 		<div class="row">
 			<!-- Section Header -->
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 </section>
-<section  class="menus style3" id="top-rated">
+<section class="menus style3" id="top-rated">
 	<div class="container">
 		<div class="row">
 			<!-- Section Header -->
@@ -110,7 +110,7 @@
 
 						<div class="menu-column">
 							<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
-							<button value="0" id="reference" class="food">
+								<button value="0" id="reference" class="food">
 
 
 									<div class="food-desc">
@@ -131,7 +131,7 @@
 									</div>
 									<!-- /food-details -->
 								</button>
-								</a>
+							</a>
 
 						</div>
 						<!-- /food -->
@@ -154,7 +154,7 @@
 	<!-- /container -->
 </section>
 <!-- Client Section End -->
-<section  id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
+<section id="contact" class="section-wrapper contact-section" data-stellar-background-ratio="0.5">
 	<div class="parallax-overlay"></div>
 	<div class="container">
 		<div class="row">
@@ -173,31 +173,35 @@
 					<form name="sentMessage" id="contactForm" novalidate method='post'>
 
 						<div *ngIf="!loginService.isLogged" class="col-md-6">
-							<input #username id="username" type="text" style="border-radius: 0px !important" class="form-control" placeholder="Full Name" required
-							 name="feedbackname" value="" data-validation-required-message="Please enter your name" />
+							<input [(ngModel)]="username" name="username" id="username" type="text" style="border-radius: 0px !important" class="form-control"
+							 placeholder="Full Name" required name="feedbackname" value="" data-validation-required-message="Please enter your name"
+							/>
 							<p class="help-block"></p>
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-6 emailmar">
-							<input #email2 id="useremail" type="email" style="border-radius: 0px !important" class="form-control" placeholder="Email" required
-							 name="feedbackemail" value="" data-validation-required-message="Please enter your email" />
+							<input [(ngModel)]="email2" name="email2" id="useremail" type="email" style="border-radius: 0px !important" class="form-control"
+							 placeholder="Email" required name="feedbackemail" value="" data-validation-required-message="Please enter your email"
+							/>
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-12">
-							<textarea #body rows="7" cols="100" style="border-radius: 0px !important" class="form-control" placeholder="Message" id="message"
-							 required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters"
+							<textarea [(ngModel)]="body" name="body" rows="7" cols="100" style="border-radius: 0px !important" class="form-control" placeholder="Message"
+							 id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters"
 							 maxlength="999" style="resize:none"></textarea>
 						</div>
 						<div *ngIf="loginService.isLogged" class="col-md-12">
-							<textarea #body rows="7" cols="200" style="border-radius: 0px !important" class="form-control" placeholder="Message" id="message"
+							<textarea [(ngModel)]="body" name="body" rows="7" cols="200" style="border-radius: 0px !important" class="form-control" placeholder="Message" id="message"
 							 required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters"
 							 maxlength="999" style="resize:none"></textarea>
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
-							<div id="success"></div>
+							<a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + username + ' ' + email2 ">
 								<button (click)="sendFuguFeedbackOut()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+							</a>
 						</div>
 						<div *ngIf="loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
-							<div id="success"></div>
+							<a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + loginService.user.name">
 								<button (click)="sendFuguFeedback()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+							</a>
 						</div>
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

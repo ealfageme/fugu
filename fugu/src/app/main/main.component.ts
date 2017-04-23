@@ -10,9 +10,9 @@ import {LoginService } from '../services/login.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  @ViewChild('username') username: any;
-  @ViewChild('email2') email2: any;
-  @ViewChild('body') body: any;
+  username: string;
+  email2: string;
+  body: string;
   inSession: boolean;
   nextRestaurant = true;
   prevRestaurant = false;
@@ -80,24 +80,9 @@ export class MainComponent implements OnInit {
     error => console.error(error)
     );
   }
+
   goTo(location: string): void {
     window.location.hash = location;
-  }
-  
-  sendFuguFeedback() {
- 
-	/*let username=document.getElementById("username").getAttribute("name");
-	let email=document.getElementById("useremail").getAttribute("name");
-	let body=document.getElementById("message").nodeValue;
-	window.location.href = "mailto:feedback@fugu.com?subject=Feedback&body="+body+"%0A%0AMessage written by: "+username+" ("+email+").";*/
-  }
-
- sendFuguFeedbackOut() {
-  console.log("ola k ase out");
-  console.log(this.username.nativeElement.value);
-  console.log(this.email2.nativeElement.value);
-  console.log(this.body.nativeElement.value); 
-	//this.router.navigate(['/mailto:feedback@fugu.com?subject=Feedback&body='+this.body.nativeElement.value+'%0A%0AMessage written by: '+this.username.nativeElement.value+' ("'+this.email2.nativeElement.value+'")']);
   }
 }
 
