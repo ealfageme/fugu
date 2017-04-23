@@ -380,7 +380,7 @@
 			</div>
 			<!-- Section Header End -->
 
-			<div *ngIf="inSession" class="contact-details">
+			<div *ngIf="loginService.isLogged" class="contact-details">
 				<!-- Contact Form -->
 				<div class="contact-form wow bounceInRight">
 					<form name="sentMessage" id="contactForm" novalidate method='post' action="/public-restaurant//review">
@@ -437,7 +437,7 @@
 				</div>
 			</div>
 
-			<div *ngIf="!inSession" style="text-align: center;margin: 20px;">
+			<div *ngIf="!loginService.isLogged" style="text-align: center;margin: 20px;">
 				<h1>Log in before sending feedback!</h1>
 			</div>
 

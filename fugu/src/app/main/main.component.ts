@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import {LoginService } from '../services/login.service';
 
 
 @Component({
@@ -24,8 +25,9 @@ export class MainComponent implements OnInit {
   loading = false;
   returnUrl: string;
 
-  constructor(private http: Http, private route: ActivatedRoute, private router: Router) {
-    this.inSession = false;
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
+    this.inSession = loginService.isLogged;
+    console.log("ammmmms: "+ loginService.isLogged)
     this.facebookSession = false;
     this.http.get('https://localhost:8443/api/restaurants/?page=' + this.pagenumber + '&size=4').subscribe(
       response => {

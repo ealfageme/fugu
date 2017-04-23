@@ -12,7 +12,6 @@ export interface User {
 
 @Injectable()
 export class LoginService {
-
     isLogged = false;
     isAdmin = false;
     user: User;
@@ -47,6 +46,7 @@ export class LoginService {
 
     private processLogInResponse(response) {
         this.isLogged = true;
+        console.log(this.isLogged);
         this.user = response.json();
     }
 
