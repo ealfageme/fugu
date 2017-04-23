@@ -37,17 +37,17 @@
 								<label>{{user.favouriteFood}}</label>
 							</div>
 						</div>
-						<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
+						<div *ngIf="loginService.isLogged" id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
 							<form role="form" method='get'>
 								<div *ngIf="followButton">
 									<input id="followPulsed" type="hidden" name='followPulsed' value="true">
-									<button type="submit" class="btnMore" id="follow" style="margin:10px;">Follow</button>
+									<button (click)="follow()" class="btnMore" id="follow" style="margin:10px;">Follow</button>
 								</div>
 							</form>
 							<form role="form" method='get'>
 								<div *ngIf="unfollowButton">
 									<input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
-									<button type="submit" class="btnMore" id="unfollow" style="margin:10px;">Unfollow</button>
+									<button (click)="unfollow()" class="btnMore" id="unfollow" style="margin:10px;">Unfollow</button>
 								</div>
 							</form>
 						</div>

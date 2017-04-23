@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from './../services/login.service';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-public-client',
@@ -20,7 +21,7 @@ export class PublicClientComponent implements OnInit {
   params: any;
 
 
-  constructor(private http: Http, activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private http: Http, activatedRoute: ActivatedRoute, private router: Router, private loginService: LoginService) {
     this.params = activatedRoute.params.subscribe(
       params => {
         this.binding(params);
@@ -38,8 +39,22 @@ export class PublicClientComponent implements OnInit {
   binding(params) {
     this.username = params['username'];
     this.inSession = false;
-    this.followButton = false;
-    this.unfollowButton = true;
+    console.log("voy a hacer el get")
+    this.http.get('https://localhost:8443/api/clients/'+this.username+'/isfollowing').subscribe(
+      response => {
+        const  data = response.json;
+          this.followButton = true;
+          this.unfollowButton = false;
+          console.log(data[0]);
+          if(data!=null)
+          {
+            console.log("ya le sigue");
+            this.followButton = false;
+            this.unfollowButton = true;
+          }
+      },
+      error => console.error(error)
+    );
     this.getRestaurants();
     this.getFollowers();
     this.getReviews();
@@ -87,4 +102,34 @@ export class PublicClientComponent implements OnInit {
       error => console.error(error)
     );
   }
+  follow(){
+    var body;
+    console.log('https://localhost:8443/api/clients/' + this.username +"/follow")
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    this.followButton = false;
+    this.unfollowButton = true;
+    const options = new RequestOptions({ withCredentials: true});
+    this.http.post('https://localhost:8443/api/clients/' + this.username +"/follow","",options).subscribe(
+        response  =>  console.log(response),
+        error  =>  console.error(error)
+      );
+  }
+    unfollow(){
+    console.log('https://localhost:8443/api/clients/' + this.username +"/follow")
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    this.followButton = true;
+    this.unfollowButton = false;
+    const options = new RequestOptions({ withCredentials: true});
+    this.http.delete('https://localhost:8443/api/clients/' + this.username +"/unfollow",options).subscribe(
+        response  =>  console.log(response),
+        error  =>  console.error(error)
+      );
+  }
+
 }

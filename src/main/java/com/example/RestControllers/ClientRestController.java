@@ -159,6 +159,7 @@ public class ClientRestController {
 	public ResponseEntity<List<User>> postUserFollows(HttpServletRequest request, Authentication authentication,
 			HttpSession session, @PathVariable String name) {
 		session.setMaxInactiveInterval(-1);
+		System.out.println("tambien entro");
 		User user2follow = clientService.userRepositoryFindByName(name);
 		if (request.isUserInRole("USER")) {
 			User userSession = clientService.userRepositoryFindByEmail(authentication.getName());
@@ -166,6 +167,22 @@ public class ClientRestController {
 				userSession.getFollowing().add(user2follow);
 				clientService.userRepositorysave(userSession);
 				return new ResponseEntity<>(userSession.getFollowing(), HttpStatus.CREATED);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		return null;
+	}
+	
+	@ResponseBody
+	@JsonView(User.Basic.class)
+	@RequestMapping(value = "/{name}/isfollowing", method = RequestMethod.GET)
+	public ResponseEntity<User> isFollowing(HttpServletRequest request,HttpSession session,Authentication authentication,  @PathVariable String name) {
+		session.setMaxInactiveInterval(-1);
+		if (request.isUserInRole("USER")) {
+			boolean isfollowing = clientService.userRepositoryFindByEmail(authentication.getName()).getFollowing().contains(clientService.userRepositoryFindByEmail(name));
+			if (isfollowing) {
+				return new ResponseEntity<>(clientService.userRepositoryFindByEmail(name), HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
