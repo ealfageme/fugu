@@ -256,9 +256,8 @@
 					<input type="hidden" name='imageTitle' /><br /> <img src="src/assets/images/files/profileImage1.jpg" alt="Profile Image"
 					/>
 					<p>
-						<label>Image file:</label><input (change)="fileChange($event)"  type="file" name="file" />
+						<label>Image file:</label><input (change)="fileChange($event)" type="file" name="file" />
 					</p>
-					<input (click)="uploadProfilePicture()" type='submit' name='send' value='Send' />
 				</form>
 				<br>
 				<p *ngIf="user">{{user.description}}</p>

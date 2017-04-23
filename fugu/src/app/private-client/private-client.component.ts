@@ -137,26 +137,6 @@ export class PrivateClientComponent implements OnInit {
     );
   }
 
-  uploadProfilePicture() {
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      });
-      const dataclient = {'name': this.client.username,
-                      'password': this.client.password,
-                      'email': this.client.email,
-                      'age': this.client.age,
-                      'description': this.client.description,
-                      'favouriteFood': this.client.favouritefood,
-                      'roles': 'ROLE_USER'
-                    };
-      const options = new RequestOptions({ withCredentials: true, headers });
-    this.http.post('https://localhost:8443/api/clients/image/upload', dataclient, options).subscribe(
-      response => console.log(response),
-      error => console.error(error)
-    );
-  }
-
   fileChange(event) {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
@@ -170,7 +150,7 @@ export class PrivateClientComponent implements OnInit {
         let options = new RequestOptions({ withCredentials: true });
         this.http.post('https://localhost:8443/api/clients/image/upload', formData, options)
             .subscribe(
-                data => console.log('success'),
+                data => console.log(data),
                 error => console.log(error)
             );
     }
