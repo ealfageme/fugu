@@ -75,14 +75,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
+	<div  *ngIf="loginService.isLogged" id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
 		<form *ngIf="favButton" role="form" method='get'>
-			<input type="hidden" id="favPulsed" name="favPulsed" value="true" />
-			<button type="submit" class="btnMore" id="fav" style="margin: 10px;">Fav</button>
+			<button (click)="fav()" class="btnMore" id="fav" style="margin: 10px;">Fav</button>
 		</form>
 		<form *ngIf="!favButton" role="form" method='get'>
-			<input type="hidden" id="unfavPulsed" name="unfavPulsed" value="true" />
-			<button type="submit" class="btnMore" id="unfav" style="margin: 10px;">UnFav</button>
+			<button (click)="unfav()" class="btnMore" id="unfav" style="margin: 10px;">UnFav</button>
 
 		</form>
 	</div>
