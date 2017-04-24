@@ -337,7 +337,7 @@
 								<!-- Filter Button Start -->
 								<div *ngFor="let review of reviews" id="recommendations-filter" class="recommendations-filter-btn-group" style="margin-bottom:15px;">
 									<div class="item recommendations-item web seo">
-										<div class="row">
+										<div  *ngIf="review.reviewUser" class="row">
 											<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
 												<ul>
 													<li>
