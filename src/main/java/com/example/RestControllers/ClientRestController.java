@@ -183,10 +183,8 @@ public class ClientRestController {
 			System.out.println(clientService.userRepositoryFindByName(name).getName());
 			boolean isfollowing = clientService.userRepositoryFindByEmail(authentication.getName()).getFollowing().contains(clientService.userRepositoryFindByName(name));
 			if (isfollowing) {
-				System.out.println("lsigue");
 				return new ResponseEntity<>(clientService.userRepositoryFindByName(name), HttpStatus.OK);
 			} else {
-				System.out.println("no le sigue");
 				return new ResponseEntity<>(null,HttpStatus.OK);
 			}
 		}

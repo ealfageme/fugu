@@ -296,4 +296,21 @@ public class RestaurantRestController {
 		}
 		return null;
 	}
+	
+	@ResponseBody
+	@JsonView(Restaurant.Basic.class)
+	@RequestMapping(value = "/{name}/isfollowing", method = RequestMethod.GET)
+	public ResponseEntity<Restaurant> isFollowing(HttpServletRequest request,HttpSession session,Authentication authentication,  @PathVariable String name) {
+		session.setMaxInactiveInterval(-1);
+		if (request.isUserInRole("USER")) {
+			System.out.println(restaurantService.restaurantRepositoryFindByName(name).getName());
+			boolean isfollowing = userService.userRepositoryFindByEmail(authentication.getName()).getRestaurants().contains(restaurantService.restaurantRepositoryFindByName(name));
+			if (isfollowing) {
+				return new ResponseEntity<>(restaurantService.restaurantRepositoryFindByName(name), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(null,HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 }
