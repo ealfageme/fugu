@@ -64,7 +64,7 @@
 														<form role="form" method="post" action="/accept-reservation/">
 															<div>
 																<input type="hidden" name="acceptPulsed" value="Accepted"> <input type="hidden" name="acceptPulsedID" value={{id}}>
-																<button type="input" class="btnMore" onClick="acceptReservation(i)" id="{{i}}-button">
+																<button type="input" class="btnMore" (click)="acceptReservation(i)" id="{{i}}-button">
 																	Accept <span class="glyphicon glyphicon-ok-circle"
 																		aria-hidden="true"></span>
 																</button>

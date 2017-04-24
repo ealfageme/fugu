@@ -15,6 +15,13 @@ interface Restaurant {
   password: string;
   confirmPassword: string;
 }
+export interface Booking {
+  id?: number;
+  date: string;
+  number: string;
+  specialRequirements: string;
+  state: string;
+}
 @Component({
   selector: 'app-private-restaurant',
   templateUrl: './private-restaurant.component.html',
@@ -23,6 +30,7 @@ interface Restaurant {
 export class PrivateRestaurantComponent implements OnInit {
 
   restaurantUpdate: Restaurant;
+  bookingUpdate: Booking;
   private city: string;
   private inNormalSession: boolean;
   private inFacebookSession: boolean;
@@ -34,7 +42,7 @@ export class PrivateRestaurantComponent implements OnInit {
   private reviews: string[] = [];
   private vouchers: string[] = [];
   private menus: string[] = [];
-  private bookingsInProcess: string[] = [];
+  private bookingsInProcess: Booking[] = [];
   private bookingsAccepted: string[] = [];
   restaurant: string;
   private user: string;
@@ -242,5 +250,26 @@ export class PrivateRestaurantComponent implements OnInit {
                 error => console.log(error)
                 );
         }
+    }
+
+    acceptReservation(id: number) {
+        console.log(id);
+        const booking = {
+          "id": this.bookingsInProcess[id].id,
+          "date": this.bookingsInProcess[id].date,
+          "number": this.bookingsInProcess[id].number,
+          "specialRequirements": this.bookingsInProcess[id].specialRequirements,
+          "state": 'Accepted'
+        };
+        const options = new RequestOptions({ withCredentials: true });
+    this.http.put('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book', booking, options).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['/new/error/']);
+      }
+    );
     }
 }

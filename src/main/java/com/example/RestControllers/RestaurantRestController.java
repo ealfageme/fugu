@@ -89,6 +89,26 @@ public class RestaurantRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@ResponseBody
+	@JsonView(RestaurantDetail.class)
+	@RequestMapping(value = "{name}/book", method = RequestMethod.PUT)
+	public ResponseEntity<Booking> putBooking(HttpSession session, @PathVariable String name,
+			@RequestBody Booking updatedbooking) {
+		session.setMaxInactiveInterval(-1);
+		Booking book = restaurantService.bookingRepositoryfindById(updatedbooking.getId());
+		if (book != null) {
+			Restaurant restaurant = restaurantService.restaurantRepositoryFindByName(name);
+			updatedbooking.setBookingRestaurant(restaurant);
+			updatedbooking.setBookingUser(book.getBookingUser());
+			restaurant.getBookings().add(updatedbooking);
+
+			restaurantService.bookingRepositorysave(updatedbooking);
+			return new ResponseEntity<>(updatedbooking, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+	}
 
 
 	@ResponseBody
