@@ -34,7 +34,7 @@ public class RestaurantFileUploadRestController {
 	private List<String> imageTitles = new ArrayList<>();
 
 	@RequestMapping(value = "/api/restaurants/image/upload", method = RequestMethod.POST)
-	public String handleFileUpload(Model model, @RequestParam("imageTitle") String imageTitle,
+	public String handleFileUpload(Model model,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication) {
 
 		String restaurantloggin = authentication.getName();
@@ -48,7 +48,6 @@ public class RestaurantFileUploadRestController {
 				}
 				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
 				file.transferTo(uploadedFile);
-				imageTitles.add(imageTitle);
 				return fileName;
 
 			} catch (Exception e) {

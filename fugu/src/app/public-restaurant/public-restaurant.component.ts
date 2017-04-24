@@ -35,6 +35,24 @@ export class PublicRestaurantComponent implements OnInit {
     this.seeMorebtn = true;
     this.inSession = true;
     this.facebookSession = false;
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true});
+    this.http.get('https://localhost:8443/api/restaurants/'+this.restaurantname+'/isfollowing', options).subscribe(
+      response => {
+        const  data = response.json();
+          this.favButton = true;
+          if(data!=null)
+          {
+            this.favButton = false;
+          }else{
+            this.favButton = true;
+          }
+       },
+      error => console.error(error)
+    );
     this.http.get('https://localhost:8443/api/restaurants/' + this.restaurantname).subscribe(
       response => {
         console.log(response);
