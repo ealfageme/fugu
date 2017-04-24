@@ -221,4 +221,23 @@ export class PrivateRestaurantComponent implements OnInit {
         error => console.error(error)
       );
   }
+
+  fileChange(event) {
+        const fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const formData: FormData = new FormData();
+            formData.append('file', file, file.name);
+            //formData.append('imageTitle', file, file.name);
+            const headers = new Headers();
+            //headers.append('Content-Type', 'multipart/form-data');
+            headers.append('Accept', 'application/json');
+            let options = new RequestOptions({ withCredentials: true });
+            this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
+                .subscribe(
+                data => console.log(data),
+                error => console.log(error)
+                );
+        }
+    }
 }
