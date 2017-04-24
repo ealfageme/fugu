@@ -38,7 +38,6 @@ export class PublicClientComponent implements OnInit {
   binding(params) {
     this.username = params['username'];
     this.inSession = false;
-    console.log("voy a hacer el get");
     const headers = new Headers({
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
@@ -46,15 +45,13 @@ export class PublicClientComponent implements OnInit {
     const options = new RequestOptions({ withCredentials: true});
     this.http.get('https://localhost:8443/api/clients/'+this.username+'/isfollowing', options).subscribe(
       response => {
-        const  data = response.json()._body;
+        const  data = response.json();
           this.followButton = true;
-          console.log(data);
-           console.log(data);
-            console.log(data);
           if(data!=null)
           {
-            console.log("ya le sigue");
             this.followButton = false;
+          }else{
+            this.followButton = true;
           }
       },
       error => console.error(error)
