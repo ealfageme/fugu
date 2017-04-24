@@ -228,14 +228,15 @@ export class PrivateRestaurantComponent implements OnInit {
             const file: File = fileList[0];
             const formData: FormData = new FormData();
             formData.append('file', file, file.name);
-            //formData.append('imageTitle', file, file.name);
             const headers = new Headers();
-            //headers.append('Content-Type', 'multipart/form-data');
             headers.append('Accept', 'application/json');
-            let options = new RequestOptions({ withCredentials: true });
+            const options = new RequestOptions({ withCredentials: true });
             this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
                 .subscribe(
-                data => console.log(data),
+                data => {
+                  this.router.navigate(['/new/private-restaurant/refresh']);
+                  console.log(data);
+                },
                 error => console.log(error)
                 );
         }

@@ -2,7 +2,8 @@ import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 
 interface User {
@@ -39,73 +40,68 @@ export class PrivateClientComponent implements OnInit {
     params: any;
 
 
-    constructor(private http: Http, private loginService: LoginService, activatedRoute: ActivatedRoute, private router: Router) {
-        this.params = activatedRoute.params.subscribe(
-            params => {
-
-                this.inSession = false;
-                this.followButton = false;
-                this.unfollowButton = true;
-                this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/following').subscribe(
-                    response => {
-                        const data = response.json();
-                        for (let i = 0; i < data.length; i++) {
-                            const follow = data[i];
-                            this.following.push(follow);
-                        }
-                        console.log(data);
-                    },
-                    error => console.error(error)
-                );
-                this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/book').subscribe(
-                    response => {
-                        const data = response.json();
-                        for (let i = 0; i < data.length; i++) {
-                            const book = data[i];
-                            if (book.state === 'In process') {
-                                this.bookingsInProcess.push(book);
-                            } else {
-                                this.bookingsAccepted.push(book);
-                            }
-                        }
-                    },
-                    error => console.error(error)
-                );
-                this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/vouchers').subscribe(
-                    response => {
-                        const data = response.json();
-                        for (let i = 0; i < data.length; i++) {
-                            const voucher = data[i];
-                            this.vouchers.push(voucher);
-                        }
-                    },
-                    error => console.error(error)
-                );
-                this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name).subscribe(
-                    response => {
-                        const data = response.json();
-                        this.user = data;
-                        this.client = {
-                            username: data.name,
-                            age: data.age,
-                            favouritefood: data.favouriteFood,
-                            description: data.description,
-                            email: data.email,
-                            password: data.password,
-                            confirmPassword: ''
-                        };
-                        for (let i = 0; i < data.restaurants.length; i++) {
-                            const restaurant = data.restaurants[i];
-                            this.restaurants.push(restaurant);
-                        }
-                        for (let i = 0; i < data.reviews.length; i++) {
-                            const review = data.reviews[i];
-                            this.reviews.push(review);
-                        }
-                    },
-                    error => console.error(error)
-                );
-            }
+    constructor(private http: Http, private loginService: LoginService, private router: Router) {
+        this.inSession = false;
+        this.followButton = false;
+        this.unfollowButton = true;
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/following').subscribe(
+            response => {
+                const data = response.json();
+                for (let i = 0; i < data.length; i++) {
+                    const follow = data[i];
+                    this.following.push(follow);
+                }
+                console.log(data);
+            },
+            error => console.error(error)
+        );
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/book').subscribe(
+            response => {
+                const data = response.json();
+                for (let i = 0; i < data.length; i++) {
+                    const book = data[i];
+                    if (book.state === 'In process') {
+                        this.bookingsInProcess.push(book);
+                    } else {
+                        this.bookingsAccepted.push(book);
+                    }
+                }
+            },
+            error => console.error(error)
+        );
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name + '/vouchers').subscribe(
+            response => {
+                const data = response.json();
+                for (let i = 0; i < data.length; i++) {
+                    const voucher = data[i];
+                    this.vouchers.push(voucher);
+                }
+            },
+            error => console.error(error)
+        );
+        this.http.get('https://localhost:8443/api/clients/' + this.loginService.user.name).subscribe(
+            response => {
+                const data = response.json();
+                this.user = data;
+                this.client = {
+                    username: data.name,
+                    age: data.age,
+                    favouritefood: data.favouriteFood,
+                    description: data.description,
+                    email: data.email,
+                    password: data.password,
+                    confirmPassword: ''
+                };
+                for (let i = 0; i < data.restaurants.length; i++) {
+                    const restaurant = data.restaurants[i];
+                    this.restaurants.push(restaurant);
+                }
+                for (let i = 0; i < data.reviews.length; i++) {
+                    const review = data.reviews[i];
+                    this.reviews.push(review);
+                }
+            },
+            error => console.error(error)
         );
     }
 
@@ -152,16 +148,14 @@ export class PrivateClientComponent implements OnInit {
             const file: File = fileList[0];
             const formData: FormData = new FormData();
             formData.append('file', file, file.name);
-            //formData.append('imageTitle', file, file.name);
             const headers = new Headers();
-            //headers.append('Content-Type', 'multipart/form-data');
             headers.append('Accept', 'application/json');
-            let options = new RequestOptions({ withCredentials: true });
+            const options = new RequestOptions({ withCredentials: true });
             this.http.post('https://localhost:8443/api/clients/image/upload', formData, options)
                 .subscribe(
                 data => {
                     console.log(data);
-                    this.router.navigate(['/new/private-client?refresh=1']);
+                    this.router.navigate(['/new/private-client/refresh']);
                 },
                 error => console.log(error)
                 );
