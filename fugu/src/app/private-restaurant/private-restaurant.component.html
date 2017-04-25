@@ -1,7 +1,7 @@
 <section *ngIf="restaurant" class="slider-pro slider" id="slider">
 	<div class="sp-slides">
 		<div class="img-overlay">
-			<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
+			<img *ngIf="restaurant" style="width: 100%;" src="/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
 			<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center"
 			 data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
 				<span *ngIf="restaurant" class="highlight-texts">
@@ -171,7 +171,7 @@
 							</div>
 							<p>{{voucher.description}}</p>
 							<p>{{voucher.expiryDate}}</p>
-							<img src="src/assets/images/voucher1.jpg" alt="Custom Image"> <br>
+							<img src="/assets/images/voucher1.jpg" alt="Custom Image"> <br>
 							<br>
 						</div>
 					</div>
@@ -232,7 +232,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="src/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
+									<img src="/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -268,8 +268,8 @@
 		<div class="row">
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-				<form action="/src/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' value="hola" /><br /> <img src="src/assets/images/files/profileImageRestaurant1.jpg"
+				<form action="/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
+					<input type="hidden" name='imageTitle' value="hola" /><br /> <img src="/assets/images/files/profileImageRestaurant1.jpg"
 					/>
 					<p>
 						<label>Image file:</label><input type="file" name="file" />
