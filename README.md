@@ -37,6 +37,8 @@ Both sign up as restaurant and user options availables. As user, you can see the
     ![Classes diagram](src/main/resources/static/images/ClassesDiagram.png)
 * __Templates Diagram__
     ![Templates diagram](src/main/resources/static/images/TemplatesDiagram.png)
+* __Components Diagram__
+    ![Templates diagram](src/main/resources/static/images/angularDiagram.png)
 * __Navigation Board__
     ![Browse navigation](src/main/resources/static/images/captures/navigation-board.png)
      
