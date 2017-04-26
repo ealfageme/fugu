@@ -57,7 +57,7 @@
 
 								<!-- Filter Button Start -->
 								<div *ngFor="let book of bookingsInProcess; let i=index" [attr.data-index]="i">
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="book">
 
 										<div id="i" class="item recommendations-item web seo">
 											<div class="row">
@@ -104,7 +104,7 @@
 
 								<!-- Filter Button Start -->
 								<div *ngFor="let book of bookingsAccepted; let i=index" [attr.data-index]="i">
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="book">
 
 										<div id="{{-index}}" class="item recommendations-item web seo">
 											<div class="row">
@@ -149,13 +149,13 @@
 				</h2>
 			</div>
 			<!-- Section Header End -->
-			<div class="menus-container">
+			<div class="menus-container"*ngIf="restaurant">
 				<!-- menu -->
 				<div class="menu row">
 					<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
 						<h2>Restaurants</h2>
 						<div *ngFor="let restaurant of restaurants">
-							<div class="menu-column" *ngIf="restaurant">
+							<div class="menu-column" >
 								<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
 
 								<button class="food">
@@ -177,7 +177,7 @@
 							<div class="menu-column" *ngIf = "follow">
 								<a  [routerLink]="['/new/public-client/'+follow.name]">
 								<button class="food">
-									<div class="food-desc">
+									<div class="food-desc"*ngIf="follow">
 										<h6 class="food-name">
 											<img src="/assets/images/files/profileImage{{follow.id}}.jpg" class="img-circle"
 												id="imgPerfil">{{follow.name}}
