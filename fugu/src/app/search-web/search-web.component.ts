@@ -10,8 +10,10 @@ import { LoginService } from './../services/login.service';
 export class SearchWebComponent implements OnInit {
   inSession: boolean;
   facebookSession: boolean;
-  private restaurants: string[] = [];
+  email2: string;
+  body: string;
   email: string;
+  private restaurants: string[] = [];
   password: string;
   maxPrice = 25;
   minPrice = 1;

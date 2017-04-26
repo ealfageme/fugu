@@ -233,12 +233,16 @@
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<div id="success"></div>
-								<button (click)="sendFuguFeedbackOut()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
-						</div>
+              <a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + username + ' ' + email2 ">
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+              </a>
+            </div>
 						<div *ngIf="loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<div id="success"></div>
-								<button (click)="sendFuguFeedback()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
-						</div>
+              <a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + loginService.user.name">
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+              </a>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
