@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.Repositories.RestaurantRepository;
+import com.example.Repositories.MenuRepository;
 
 
 @Controller
@@ -29,6 +30,8 @@ public class RestaurantFileUploadRestController {
 
 	@Autowired
 	private RestaurantRepository restaurantRepository;
+	@Autowired
+	private MenuRepository menuRepository;
 	private static final String FILES_FOLDER = "files";
 
 	private List<String> imageTitles = new ArrayList<>();
@@ -76,26 +79,22 @@ public class RestaurantFileUploadRestController {
 	// MENUS
 
 	@RequestMapping(value = "/api/restaurants/menu/image/upload", method = RequestMethod.POST)
-	public String handleFileUploadMenu(Model model, @RequestParam("imageTitle") String imageTitle,
+	public String handleFileUploadMenu(Model model,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication) {
-
+		System.out.println("entro en api");
 		String restaurantloggin = authentication.getName();
 		String fileMenuName = "menuImageRestaurant"
-				+restaurantRepository.findByEmail(restaurantloggin).getId()+ (restaurantRepository.findByEmail(restaurantloggin).getMenus().size() + 1) + ".jpg";
+				+restaurantRepository.findByEmail(restaurantloggin).getId()+ (menuRepository.count()+ 1) + ".jpg";
 		if (!file.isEmpty()) {
 			try {
-
 				File filesFolder = new File(FILES_FOLDER);
 				if (!filesFolder.exists()) {
 					filesFolder.mkdirs();
 				}
 
 				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileMenuName);
+				System.out.println(uploadedFile);
 				file.transferTo(uploadedFile);
-
-				imageTitles.add(imageTitle);
-
-
 				return fileMenuName;
 
 			} catch (Exception e) {

@@ -181,6 +181,26 @@ export class PrivateRestaurantComponent implements OnInit {
 
 
   }
+menuFileChange(event) {
+  console.log("subiendo")
+        const fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const formData: FormData = new FormData();
+            const imageTitle = file.name;
+            formData.append('file', file, imageTitle);
+            const headers = new Headers();
+            headers.append('Accept', 'application/json');
+            const options = new RequestOptions({ withCredentials: true });
+            this.http.post('https://localhost:8443/api/restaurants/menu/image/upload', formData, options)
+                .subscribe(
+                data => {
+                  console.log(data);
+                },
+                error => console.log(error)
+                );
+        }
+    }
 
   updateRestaurant() {
     // RESTAURANT

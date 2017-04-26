@@ -232,7 +232,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
+									<img src="/private-restaurant/image/menuImageRestaurant{{restaurant.id}}{{menu.id}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -266,23 +266,16 @@
 <section *ngIf="restaurant" class="menus style3" id="menu">
 	<div class="container">
 		<div class="row">
-			<!-- Section Header -->
-			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-				<form action="/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' value="hola" /><br /> <img src="/assets/images/files/profileImageRestaurant1.jpg"
-					/>
-					<p>
-						<label>Image file:</label><input type="file" name="file" />
-					</p>
-					<input type='submit' name='enviar' value='Change menu image' /> 
-				</form>
+			<div	class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 			</div>
-			<br> <br> <br>
+				<br> <br> <br>
+				<!-- Section Header End -->
+			<!-- Section Header -->
 			<!-- Section Header End -->
-			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+			<div id="profileForm" class="col-l-7 col-md-6 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-6 col-sm-7 col-xs-12">
 					<h1>Add new dish to menu</h1>
-					<form role="form" method="post" action="/private-restaurant/menu">
+					<form action="/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label >Dish Name:</label> <input  [(ngModel)]="nameDish" [ngModelOptions]="{standalone: true}"   style="border-radius: 0px !important" type="text" class="form-control"
 							 id="imageTitle">
@@ -297,17 +290,21 @@
 							<textarea [(ngModel)]="descriptionDish" [ngModelOptions]="{standalone: true}" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
 							 placeholder="Description"></textarea>
 						</div>
+						<p>
+						<label>Image file:</label><input (change)="menuFileChange($event)" type="file" name="file" />
+						</p>
 
-						<div class="col-md-3 col-md-offset-10">
-							<button (click)="createMenu()"type="submit" class="btnMore" value='Create'>Create Menu </button>
+						<div>
+							<button (click)="createMenu()" class="btnMore" value='Create'>Create Menu </button>
 						</div>
 					</form>
 				</div> 
 
 				<!-- /row -->
 			</div>
+			</div>
 		</div>
-	</div>
+
 	<!-- /row -->
 
 

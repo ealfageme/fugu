@@ -104,15 +104,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		Menu menu15 = new Menu("BBQ Wings ", 20.5, "with BBQ sauce");
 		Menu menu16 = new Menu("Fries", 5.0,"with ketchup and mayo" );
 		Menu menu17 = new Menu("Chicken", 12.5," with BBQ");
-		Menu menu18 = new Menu("Pasta",3.5, "with sauce");
-		Menu menu19 = new Menu("Pasta", 8.0,"with Salad" );
-		Menu menu20 = new Menu("Pork Fajita", 6.5,"with ketchup" );
-		Menu menu21 = new Menu("Pork Triple Burger", 12.5," with BBQ");
-		Menu menu22 = new Menu("Georgian Pork",3.5, "with sauce");
-		Menu menu23 = new Menu("Pork Breast Sandwich", 8.0,"with Salad" );
-		Menu menu24 = new Menu("Pork Double Burger", 15.5," with BBQ");
-		Menu menu25 = new Menu("Bulgarian Chicken",3.5, "with sauce");
-		Menu menu26 = new Menu("Pork Finger Sandwich", 8.0,"with Salad" );
 
 		menu1.setRestaurantMenu(rest1);
 		menu2.setRestaurantMenu(rest1);
@@ -131,15 +122,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		menu15.setRestaurantMenu(rest1);
 		menu16.setRestaurantMenu(rest1);
 		menu17.setRestaurantMenu(rest1);
-		menu18.setRestaurantMenu(rest1);
-		menu19.setRestaurantMenu(rest1);
-		menu20.setRestaurantMenu(rest1);
-		menu21.setRestaurantMenu(rest1);
-		menu22.setRestaurantMenu(rest1);
-		menu23.setRestaurantMenu(rest1);
-		menu24.setRestaurantMenu(rest1);
-		menu25.setRestaurantMenu(rest1);
-		menu26.setRestaurantMenu(rest1);
 		
 		
 		menuRepository.save(menu1);
@@ -159,15 +141,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		menuRepository.save(menu15);
 		menuRepository.save(menu16);
 		menuRepository.save(menu17);
-		menuRepository.save(menu18);
-		menuRepository.save(menu19);
-		menuRepository.save(menu20);
-		menuRepository.save(menu21);
-		menuRepository.save(menu22);
-		menuRepository.save(menu23);
-		menuRepository.save(menu24);
-		menuRepository.save(menu25);
-		menuRepository.save(menu26);
 
 		User user1 = new User("John","john@website.com","Description","pass",21, "Italian");
 		User user2 = new User("Peter","peter@website.com","Description","pass",31, "Tapas");
