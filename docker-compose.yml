@@ -20,11 +20,19 @@ services:
       - 8443:8443
     links:
       - mysql:mysql
-    #restart: always
     networks:
       - spring_mysql_network
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/fugu
+
+  ngfugu:
+    depends_on:
+      - fugu
+    image: ngfugu
+    container_name: ngfugu
+    ports:
+      - 4200:4200
+
 
 networks:
   spring_mysql_network:
