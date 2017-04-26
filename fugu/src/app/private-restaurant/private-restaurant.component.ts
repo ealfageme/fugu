@@ -60,7 +60,7 @@ export class PrivateRestaurantComponent implements OnInit {
     this.unfollowButton = true;
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name).subscribe(
       response => {
-        const  data = response.json();
+        const data = response.json();
         this.restaurant = data;
         this.restaurantUpdate = {
           name: data.name,
@@ -233,43 +233,64 @@ export class PrivateRestaurantComponent implements OnInit {
   }
 
   fileChange(event) {
-        const fileList: FileList = event.target.files;
-        if (fileList.length > 0) {
-            const file: File = fileList[0];
-            const formData: FormData = new FormData();
-            formData.append('file', file, file.name);
-            const headers = new Headers();
-            headers.append('Accept', 'application/json');
-            const options = new RequestOptions({ withCredentials: true });
-            this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
-                .subscribe(
-                data => {
-                  this.router.navigate(['/new/private-restaurant/refresh']);
-                  console.log(data);
-                },
-                error => console.log(error)
-                );
-        }
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      const formData: FormData = new FormData();
+      formData.append('file', file, file.name);
+      const headers = new Headers();
+      headers.append('Accept', 'application/json');
+      const options = new RequestOptions({ withCredentials: true });
+      this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
+        .subscribe(
+        data => {
+          this.router.navigate(['/new/private-restaurant/refresh']);
+          console.log(data);
+        },
+        error => console.log(error)
+        );
     }
+  }
 
-    acceptReservation(id: number) {
-        console.log(id);
-        const booking = {
-          "id": this.bookingsInProcess[id].id,
-          "date": this.bookingsInProcess[id].date,
-          "number": this.bookingsInProcess[id].number,
-          "specialRequirements": this.bookingsInProcess[id].specialRequirements,
-          "state": 'Accepted'
-        };
-        const options = new RequestOptions({ withCredentials: true });
+  acceptReservation(id: number) {
+    console.log(id);
+    const booking = {
+      "id": this.bookingsInProcess[id].id,
+      "date": this.bookingsInProcess[id].date,
+      "number": this.bookingsInProcess[id].number,
+      "specialRequirements": this.bookingsInProcess[id].specialRequirements,
+      "state": 'Accepted'
+    };
+    const options = new RequestOptions({ withCredentials: true });
     this.http.put('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book', booking, options).subscribe(
       response => {
-        console.log(response);
+        {
+          this.bookingsAccepted = [];
+    this.bookingsInProcess = [];
+    this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book').subscribe(
+      response => {
+        const data = response.json();
+        for (let i = 0; i < data.content.length; i++) {
+          const book = data.content[i];
+          if (book.state === 'In process') {
+            this.bookingsInProcess.push(book);
+          } else {
+            this.bookingsAccepted.push(book);
+          }
+        }
       },
       error => {
         console.error(error);
         this.router.navigate(['/new/error/']);
       }
     );
-    }
+        }
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['/new/error/']);
+      }
+    );
+    
+  }
 }
