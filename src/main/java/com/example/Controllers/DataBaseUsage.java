@@ -208,25 +208,24 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		userRepository.save(user2);
 		
-		Voucher voucher1 = new Voucher("2*1 in salads","Come with a friend and eat for the half price",new Date().toString(), "16", "67");
 		Voucher voucher2 = new Voucher("FREE drinks on fridays","Every friday we offer free drinks with hamburger menus",new Date().toString(), "12" , "35");
 		Voucher voucher3 = new Voucher("30% discount", "Available on mondays only", new Date().toString(),"1", "90");
 		Voucher voucher4 = new Voucher("40% discount", "Available on tuesdays only",new Date().toString(), "15", "65");
 		Voucher voucher5 = new Voucher("50% discount", "Available on thursdays only",new Date().toString(), "0", "50");
 		Voucher voucher6 = new Voucher("10% discount", "Available on fridays only",new Date().toString(), "18", "30");
-		voucher1.getVoucherUsers().add(user1);
+		
 		voucher2.getVoucherUsers().add(user1);
 		voucher3.getVoucherUsers().add(user2);
 		voucher4.getVoucherUsers().add(user2);
 		voucher5.getVoucherUsers().add(user3);
 		voucher6.getVoucherUsers().add(user3);
-		voucher1.setRestaurant(rest1);
+		
 		voucher2.setRestaurant(rest2);
 		voucher3.setRestaurant(rest3);
 		voucher4.setRestaurant(rest4);
 		voucher5.setRestaurant(rest5);
 		voucher6.setRestaurant(rest6);
-		voucherRepository.save(voucher1);
+		
 		voucherRepository.save(voucher2);
 		voucherRepository.save(voucher3);
 		voucherRepository.save(voucher4);
