@@ -19,11 +19,13 @@ export class VoucherComponent  {
   newVoucher: boolean;
   min: string;
   max: string;
+  vouchers: String[];
    
 
   private restaurantName: string;
   constructor(private _router: Router, activatedRoute: ActivatedRoute, private voucherService: VoucherService,private loginService: LoginService) { 
     const id = activatedRoute.snapshot.params['id'];
+    this.vouchers = this.voucherService.vouchers(this.restaurantName);
       this.name="";
       this.description="";
     this.restaurantName = loginService.user.name;
@@ -40,14 +42,19 @@ export class VoucherComponent  {
       }
   }
 
-  ngOnInit() {
+  ngOnInit(
+    
+  ) {
   }
   save() {
-    console.log("entro");
     this.voucherService.saveVoucher(this.voucher, this.restaurantName).subscribe(
-      book => { },
+      book => {
+        this.vouchers =[];
+        this.vouchers = this.voucherService.vouchers(this.restaurantName);
+       },
       error => console.error('Error creating new book: ' + error)
     );
+    
   }
 }
 

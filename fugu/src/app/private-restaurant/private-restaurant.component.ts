@@ -40,7 +40,6 @@ export class PrivateRestaurantComponent implements OnInit {
   private restaurants: string[] = [];
   private following: string[] = [];
   private reviews: string[] = [];
-  private vouchers: string[] = [];
   private menus: string[] = [];
   private bookingsInProcess: Booking[] = [];
   private bookingsAccepted: string[] = [];
@@ -74,7 +73,6 @@ export class PrivateRestaurantComponent implements OnInit {
           confirmPassword: ''
         };
         console.log(data);
-        console.log(this.restaurantUpdate);
       },
       error => {
         console.error(error);
@@ -96,19 +94,7 @@ export class PrivateRestaurantComponent implements OnInit {
         this.router.navigate(['/new/error/']);
       }
     );
-    this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/voucher').subscribe(
-      response => {
-        const data = response.json();
-        for (let i = 0; i < data.content.length; i++) {
-          const voucher = data.content[i];
-          this.vouchers.push(voucher);
-        }
-      },
-      error => {
-        console.error(error);
-        this.router.navigate(['/new/error/']);
-      }
-    );
+
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book').subscribe(
       response => {
         const data = response.json();
@@ -219,7 +205,7 @@ export class PrivateRestaurantComponent implements OnInit {
       'city': { 'name': this.restaurantUpdate.city, id: cityId },
       'restaurantReviews': []
     };
-    console.log(datarestaurant);
+    console.log(this.restaurantUpdate.description);
     const headers = new Headers({
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'

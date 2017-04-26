@@ -1,3 +1,42 @@
+<section *ngIf="loginService.isLogged" id="current-deals" class="section-wrapper">
+	<br> <br> <br>
+	<div class="container">
+		<div class="row">
+
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Current deals</span>
+				</h2>
+
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you can manage the vouchers you're offering</p>
+			</div>
+			<!-- Section Header End -->
+
+			<div class="our-offers">
+
+
+				<div class="row" *ngIf="voucher">
+
+					<div *ngFor="let voucher of vouchers" class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12 text-xs-center wow fadeInDown"
+					 data-wow-delay=".2s">
+						<div class="service-box">
+							<div class="icon">
+								<h3>{{voucher.name}}</h3>
+							</div>
+							<p>{{voucher.description}}</p>
+							<p>{{voucher.expiryDate}}</p>
+							<img src="/assets/images/voucher1.jpg" alt="Custom Image"> <br>
+							<br>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
 <div *ngIf="loginService.isLogged">
 	<br> <br> <br>
 	<div class="container">
@@ -18,7 +57,7 @@
 										<div style="border-radius: 0px !important" class="col-md-3">
 											<div style="border-radius: 0px !important" class="form-group">
 												<label style="border-radius: 0px !important" class="sr-only" for="guest">Guest</label>
-														<p value="foodType">{{foodType}}</p>
+												<p value="foodType">{{foodType}}</p>
 											</div>
 										</div>
 
@@ -32,14 +71,16 @@
 												<div class="input-group">
 
 													<span style="border-radius: 0px !important" class="input-group-addon">&gt;</span> <input style="border-radius: 0px !important"
-													 type="text" class="form-control" [(ngModel)]="voucher.min"  [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)" placeholder="0">
+													 type="text" class="form-control" [(ngModel)]="voucher.min" [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)"
+													 placeholder="0">
 													<span style="border-radius: 0px !important" class="input-group-addon"></span>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="input-group">
 													<span style="border-radius: 0px !important" class="input-group-addon">&lt;</span> <input style="border-radius: 0px !important"
-													 type="text" class="form-control" [(ngModel)]="voucher.max"  [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)" placeholder="99">
+													 type="text" class="form-control" [(ngModel)]="voucher.max" [ngModelOptions]="{standalone: true}" aria-label="Amount (to the nearest dollar)"
+													 placeholder="99">
 													<span style="border-radius: 0px !important" class="input-group-addon"></span>
 												</div>
 											</div>
@@ -47,16 +88,17 @@
 											<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
 												<h3>Offer</h3>
 											</div>
-                      <div *ngIf="voucher">
-											<input  [(ngModel)]="voucher.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control formmargin"  placeholder="Voucher name">
-											<textarea style="border-radius: 0px !important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer"
-											 [(ngModel)]="voucher.description" [ngModelOptions]="{standalone: true}"></textarea>
-                      </div>
+											<div *ngIf="voucher">
+												<input [(ngModel)]="voucher.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control formmargin" placeholder="Voucher name">
+												<textarea style="border-radius: 0px !important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer"
+												 [(ngModel)]="voucher.description" [ngModelOptions]="{standalone: true}"></textarea>
+											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="paddingtop">
 												<div class="form-group">
-													<label class="sr-only" for="expiry">Guest</label> <select id="expiryDate" [(ngModel)]="voucher.expiryDate" [ngModelOptions]="{standalone: true}" class="form-control">
+													<label class="sr-only" for="expiry">Guest</label> <select id="expiryDate" [(ngModel)]="voucher.expiryDate" [ngModelOptions]="{standalone: true}"
+													 class="form-control">
 															<option value="1">Expiry: 1 week</option>
 															<option value="2">Expiry: 2 weeks</option>
 															<option value="3">Expiry: 3 weeks</option>
@@ -82,7 +124,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Section Header End --> 
+			<!-- Section Header End -->
 		</div>
 	</div>
-  </div>
+</div>

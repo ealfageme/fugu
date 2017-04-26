@@ -12,7 +12,7 @@ export interface Voucher {
 
 @Injectable()
 export class VoucherService {
-
+  vous:string[];
   constructor(private http: Http) { }
   
   getVoucher(i : number,restaurantName: string) {
@@ -76,6 +76,26 @@ export class VoucherService {
     return this.http.delete(removeURL + voucher.id, options)
       .map(response => undefined)
       .catch(error => this.handleError(error));
+  }
+  vouchers(restaurantName:string){
+    this.getAllVouchers(restaurantName);
+    return this.vous;
+  }
+  getAllVouchers(restaurantName :string){
+    this.vous = [];
+    const getURL = 'https://localhost:8443/api/restaurants/'+restaurantName+'/voucher';
+    this.http.get(getURL , { withCredentials: true })
+    .subscribe(
+      response =>{
+          const data = response.json();
+        for (let i = 0; i < data.content.length; i++) {
+          const vou = data.content[i];
+          this.vous.push(vou);
+         
+        } 
+        },
+      error => console.error(error)
+    )
   }
 
   updateVoucher(voucher: Voucher, restaurantName: string) {
