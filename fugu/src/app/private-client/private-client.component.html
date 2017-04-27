@@ -106,9 +106,9 @@
 								<div *ngFor="let book of bookingsAccepted; let i=index" [attr.data-index]="i">
 									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="book">
 
-										<div id="{{-index}}" class="item recommendations-item web seo">
-											<div class="row">
-												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" *ngIf="book">
+										<div id="i" class="item recommendations-item web seo">
+											<div class="row" *ngIf="book">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<ul>
 														<li>
 															<h1 class="shadow">{{book.bookingRestaurant.name}}</h1>
@@ -116,15 +116,17 @@
 													</ul>
 												</div>
 												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-													<p style="margin: 5px;">Date: {{bookacepted.date}}</p>
-													<p style="margin: 5px;">{{bookacepted.number}} people coming</p>
-													<p style="margin: 5px;">{{bookacepted.specialRequirements}}</p>
-													<p style="margin: 5px;">{{bookacepted.state}}</p>
+													<p style="margin: 5px;">Date: {{book.date}}</p>
+													<p style="margin: 5px;">{{book.number}} people coming</p>
+													<p style="margin: 5px;">{{book.specialRequirements}}</p>
+													<p style="margin: 5px;">{{book.state}}</p>
 												</div>
 											</div>
 										</div>
 										<!-- Filter Button End -->
+
 									</div>
+									<br>
 								</div>
 								<br>
 							</div>

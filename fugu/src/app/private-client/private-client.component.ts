@@ -63,8 +63,12 @@ export class PrivateClientComponent implements OnInit {
                 for (let i = 0; i < data.length; i++) {
                     const book = data[i];
                     if (book.state === 'In process') {
+                        console.log("la reserva en proceso es");
+                        console.log(book);
                         this.bookingsInProcess.push(book);
                     } else {
+                        console.log("la reserva es");
+                        console.log(book);
                         this.bookingsAccepted.push(book);
                     }
                 }
