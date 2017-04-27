@@ -193,7 +193,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="/private-restaurant/image/menuImageRestaurant{{restaurant.id}}{{menu.id}}.jpg" />
+									<img src="https://localhost:8443/images/uploads/menuImageRestaurant{{restaurant.id}}{{menu.id}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -328,7 +328,7 @@
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 				<form action="/private-restaurant/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' /><br /> <img src="/private-restaurant/image/profileImageRestaurant{{loginService.user.id}}.jpg" />
+					<input type="hidden" name='imageTitle' /><br /> <img src="https://localhost:8443/images/uploads/profileImageRestaurant{{loginService.user.id}}.jpg" />
 					<p>
 						<label>Image file:</label><input (change)="fileChange($event)" type="file" name="file" />
 					</p>

@@ -27,7 +27,7 @@ import com.example.Repositories.UserRepository;
 public class ClientFileUploadRestController {
 	@Autowired
 	private UserRepository userRepository;
-	private static final String FILES_FOLDER = "files";
+	private static final String FILES_FOLDER = "src/main/resources/static/images/uploads/";
 
 	private List<String> imageTitles = new ArrayList<>();
 

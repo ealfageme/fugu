@@ -40,7 +40,7 @@ public class RestaurantFileUploadController {
 	private MenuRepository menuRepository;
 	@Autowired
 	private VoucherRepository voucherRepository;
-	private static final String FILES_FOLDER = "files";
+	private static final String FILES_FOLDER = "src/main/resources/static/images/uploads/";
 
 	private List<String> imageTitles = new ArrayList<>();
 
