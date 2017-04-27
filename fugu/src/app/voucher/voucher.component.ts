@@ -23,8 +23,9 @@ export class VoucherComponent  {
   loginService: LoginService;
 
   private restaurantName: string;
-  constructor(private _router: Router, activatedRoute: ActivatedRoute
-                            , private voucherService: VoucherService) {
+  constructor(private _router: Router, activatedRoute: ActivatedRoute,
+    loginServiceaux: LoginService, private voucherService: VoucherService) {
+      this.loginService = loginServiceaux;
     const id = activatedRoute.snapshot.params['id'];
     this.vouchers = this.voucherService.vouchers(this.restaurantName);
       this.name = '';

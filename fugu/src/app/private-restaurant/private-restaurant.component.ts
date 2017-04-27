@@ -48,9 +48,11 @@ export class PrivateRestaurantComponent implements OnInit {
   nameDish: string;
   descriptionDish: string;
   priceDish: number;
+  loginService: LoginService;
 
 
-  constructor(private http: Http, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, loginServiceaux: LoginService, private router: Router) {
+    this.loginService = loginServiceaux;
     this.inSession = false;
     this.nameDish = " ";
     this.descriptionDish = " ";

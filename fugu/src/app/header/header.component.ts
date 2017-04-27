@@ -49,7 +49,9 @@ export class HeaderComponent {
   }
 
   constructor(private router: Router
-  , private Signinservice: SigninService, private http: Http) { }
+    , private Signinservice: SigninService, private http: Http, loginServiceaux: LoginService) {
+    this.loginService = loginServiceaux;
+   }
 
 
   logIn(event: any, user: string, pass: string) {

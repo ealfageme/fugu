@@ -41,7 +41,8 @@ export class PrivateClientComponent implements OnInit {
     loginService: LoginService;
 
 
-    constructor(private http: Http, private router: Router) {
+    constructor(private http: Http, private router: Router, loginServiceaux: LoginService) {
+        this.loginService = loginServiceaux;
         this.inSession = false;
         this.followButton = false;
         this.unfollowButton = true;

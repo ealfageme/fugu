@@ -26,7 +26,8 @@ export class MainComponent implements OnInit {
   returnUrl: string;
   loginService: LoginService;
 
-  constructor(private http: Http, private route: ActivatedRoute, private router: Router) {
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router, loginServiceaux: LoginService ) {
+    this.loginService = loginServiceaux;
     this.inSession = this.loginService.isLogged;
     this.facebookSession = false;
     this.http.get('https://localhost:8443/api/restaurants/?page=' + this.pagenumber + '&size=4').subscribe(

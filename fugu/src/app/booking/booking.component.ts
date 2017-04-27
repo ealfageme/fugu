@@ -20,8 +20,9 @@ export class BookingComponent implements OnInit {
   loginService: LoginService;
 
   constructor(private _router: Router, activatedRoute: ActivatedRoute,
-    private service: BookingService) {
+    private service: BookingService, loginServiceaux: LoginService) {
 
+      this.loginService = loginServiceaux;
     const id = activatedRoute.snapshot.params['id'];
     this.restaurantName = activatedRoute.snapshot.params['name'];
     if (id) {

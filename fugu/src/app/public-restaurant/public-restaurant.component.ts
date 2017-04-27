@@ -30,7 +30,8 @@ export class PublicRestaurantComponent implements OnInit {
   content: String = 'Please enter your message';
   loginService: LoginService;
 
-  constructor(private http: Http, activatedRoute: ActivatedRoute)  {
+  constructor(private http: Http, activatedRoute: ActivatedRoute, loginServiceaux: LoginService)  {
+    this.loginService = loginServiceaux;
     this.restaurantname = activatedRoute.snapshot.params['name'];
     this.favButton = true;
     this.seeMorebtn = true;

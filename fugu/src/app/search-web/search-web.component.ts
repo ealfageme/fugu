@@ -25,7 +25,8 @@ export class SearchWebComponent implements OnInit {
   loginService: LoginService;
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, loginServiceaux: LoginService) {
+    this.loginService = loginServiceaux;
     this.inSession = false;
     //dates as default
     this.city = "Madrid";

@@ -18,9 +18,11 @@ export class PublicClientComponent implements OnInit {
   user: string;
   username: string;
   params: any;
+  loginService: LoginService;
 
 
-  constructor(private http: Http, activatedRoute: ActivatedRoute, private router: Router, private loginService: LoginService) {
+  constructor(private http: Http, activatedRoute: ActivatedRoute, private router: Router, loginServiceaux: LoginService) {
+    this.loginService = loginServiceaux;
     this.params = activatedRoute.params.subscribe(
       params => {
         this.binding(params);
