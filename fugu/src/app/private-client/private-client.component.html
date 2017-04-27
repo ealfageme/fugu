@@ -44,7 +44,7 @@
 
 		</div>
 	</div>
-	<div class="ratings-wrapper wow bounceIn">
+	<div *ngIf="bookingsInProcess" class="ratings-wrapper wow bounceIn">
 		<div class="container">
 			<div class="row">
 				<!-- Section Header -->
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ratings-wrapper wow bounceIn">
+	<div  *ngIf="bookingsAccepted" class="ratings-wrapper wow bounceIn">
 		<div class="container">
 			<div class="row">
 				<!-- Section Header -->

@@ -44,6 +44,8 @@ export class VoucherComponent  {
   }
 
   ngOnInit() {
+    this.vouchers =[];
+    this.vouchers = this.voucherService.vouchers(this.restaurantName);
   }
   save() {
     this.voucherService.saveVoucher(this.voucher, this.restaurantName).subscribe(
@@ -51,7 +53,7 @@ export class VoucherComponent  {
         this.vouchers =[];
         this.vouchers = this.voucherService.vouchers(this.restaurantName);
        },
-      error => console.error('Error creating new book: ' + error)
+      error => console.error('Error creating new voucher: ' + error)
     );
   }
 }

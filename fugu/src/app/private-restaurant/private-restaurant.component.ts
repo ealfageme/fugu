@@ -170,7 +170,6 @@ export class PrivateRestaurantComponent implements OnInit {
 
   }
 menuFileChange(event) {
-  console.log("subiendo")
         const fileList: FileList = event.target.files;
         if (fileList.length > 0) {
             const file: File = fileList[0];
