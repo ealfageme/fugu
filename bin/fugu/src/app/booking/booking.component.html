@@ -1,0 +1,138 @@
+<section *ngIf="loginService.isLogged" id="booking" class="col-md-12 col-sm-12 col-xs-12">
+	<div class="container">
+		<div class="row" style="margin-bottom: 20px;">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Booking</span>
+				</h2>
+			</div>
+			<!-- Section Header End -->
+
+			<div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
+				<div class="month">
+					<ul>
+						<li style="text-align: center;">April <br> <span style="font-size: 18px">2017</span>
+						</li>
+					</ul>
+				</div>
+				<table>
+
+					<tr class="weekdays col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Mo</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Tu</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">We</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Th</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Fr</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Sa</td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">Su</td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> </td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> </td>
+						<td (click)="selectDay(1)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="1class">&nbsp; 1</span></td>
+						<td (click)="selectDay(2)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="2class">&nbsp; 2</span></td>
+						<td (click)="selectDay(3)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="3class"> 3</span></td>
+						<td (click)="selectDay(4)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="4class"> 4</span></td>
+						<td (click)="selectDay(5)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="5class"> 5</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td (click)="selectDay(6)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="6class"> 6</span></td>
+						<td (click)="selectDay(7)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="7class"> 7</span></td>
+						<td (click)="selectDay(8)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="8class">&nbsp; 8</span></td>
+						<td (click)="selectDay(9)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="9class">&nbsp; 9</span></td>
+						<td (click)="selectDay(10)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="10class"> 10</span></td>
+						<td (click)="selectDay(11)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="11class"> 11</span></td>
+						<td (click)="selectDay(12)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="12class">12</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td (click)="selectDay(13)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="13class" class="active active-date">13</span></td>
+						<td (click)="selectDay(14)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="14class">14</span></td>
+						<td (click)="selectDay(15)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="15class">15</span></td>
+						<td (click)="selectDay(16)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="16class">16</span></td>
+						<td (click)="selectDay(17)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="17class">17</span></td>
+						<td (click)="selectDay(18)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="18class">18</span></td>
+						<td (click)="selectDay(19)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="19class">19</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td (click)="selectDay(20)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="20class">20</span></td>
+						<td (click)="selectDay(21)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="21class">21</span></td>
+						<td (click)="selectDay(22)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="22class">22</span></td>
+						<td (click)="selectDay(23)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="23class">23</span></td>
+						<td (click)="selectDay(24)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="24class">24</span></td>
+						<td (click)="selectDay(25)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="25class">25</span></td>
+						<td (click)="selectDay(26)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="26class">26</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td (click)="selectDay(27)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="27class">27</span></td>
+						<td (click)="selectDay(28)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="28class">28</span></td>
+						<td (click)="selectDay(29)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="29class">29</span></td>
+						<td (click)="selectDay(30)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="30class">30</span></td>
+						<td (click)="selectDay(31)" class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "><span id="31class">31</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </td>
+					</tr>
+				</table>
+
+			</div>
+			<div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
+				<div class="month" style="padding: 10px 10px !important">
+					<ul>
+						<li style="text-align: center;"><span id="day">10th</span> March <br></li>
+						<li style="text-align: center;"><span>Choose the hour</span>
+							<br></li>
+					</ul>
+				</div>
+				<table>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('12:00')" value="12:00"><span id="12:00" class="active active-date">12:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('12:30')"><span id="12:30">12:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('13:00')"><span id="13:00">13:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('13:30')"><span id="13:30">13:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('14:00')"><span id="14:00">14:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('14:30')"><span id="14:30">14:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('15:00')"><span id="15:00">15:00</span></td>
+
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img ">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('15:30')"><span id="15:30">15:30</span></td>
+					</tr>
+					<tr class="days col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-sec-img wow fadeInDown">
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('20:00')"><span id="20:00">20:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('20:30')"><span id="20:30">20:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('21:00')"><span id="21:00">21:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('21:30')"><span id="21:30">21:30</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('22:00')"><span id="22:00">22:00</span></td>
+						<td class="col-lg-1 col-md-1 col-sm-1 col-xs-1" (click)="selectHour('22:30')"><span id="22:30">22:30</span></td>
+					</tr>
+				</table>
+
+				<br>
+				<form role="form" method='post' >
+					<label >How many people is coming?</label> <select [(ngModel)]="guests" name="guests">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select> <input [(ngModel)]="booking.bokingDay" id="bookingday" type="hidden" name='bookingday' value=''>
+					<input [(ngModel)]="booking.bookingHour" id="bookinghour" type="hidden" name='bookinghour' value=''>
+					<button (click)='save()' type="submit" class="btn btn-primary bookingbtn">
+							Book <span class="glyphicon glyphicon-ok-circle"
+								aria-hidden="true"></span>
+						</button>
+					<label for="name">Available tables: 45</label>
+					<div class="form-group">
+						<label for="name">Any special requeriment? Tell us.</label>
+						<textarea class="form-control" id="exampleTextarea" rows="2" style="border-radius: 0px !important"  [(ngModel)]="booking.specialRequirements"  name="specialRequirements"></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="newBooking">
+	<p> booking.message </p>
+	</div>
+
+</section>

@@ -1,0 +1,344 @@
+<section id="deals" class="section-wrapper">
+	<br> <br> <br>
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Deals</span>
+				</h2>
+				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+					<h3>Some restaurants have sent offers to you</h3>
+					<!-- Section Header End -->
+					<div class="our-offers">
+						<div class="row">
+							<div *ngFor="let voucher of vouchers" class="col-md-4 col-sm-4 col-xs-12">
+								<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+									<div class="service-box">
+										<div class="icon">
+											<h2>{{voucher.restaurant.name}}</h2>
+											<h3>{{voucher.name}}</h3>
+										</div>
+										<p>{{voucher.description}}</p>
+										<a [routerLink]="['/new/public-restaurant']"> <img src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
+										</a>
+										<p style="margin-top: 5px;">Expiry date : {{voucher.expiryDate}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="reservations" class="about-sec section-wrapper description">
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Reservations</span>
+				</h2>
+			</div>
+
+		</div>
+	</div>
+	<div class="ratings-wrapper wow bounceIn">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<!-- Works -->
+					<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<h1 class="shadow">In Process</h1>
+
+								<!-- Filter Button Start -->
+								<div *ngFor="let book of bookingsInProcess; let i=index" [attr.data-index]="i">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+
+										<div id="i" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{book.bookingRestaurant.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{book.date}}</p>
+													<p style="margin: 5px;">{{book.number}} people coming</p>
+													<p style="margin: 5px;">{{book.specialRequirements}}</p>
+													<p style="margin: 5px;">{{book.state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+					<br>
+					<!-- Slides End -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ratings-wrapper wow bounceIn">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<!-- Works -->
+					<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<h1 class="shadow">Accepted</h1>
+
+								<!-- Filter Button Start -->
+								<div *ngFor="let book of bookingsAccepted; let i=index" [attr.data-index]="i">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{book.bookingRestaurant.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{bookacepted.date}}</p>
+													<p style="margin: 5px;">{{bookacepted.number}} people coming</p>
+													<p style="margin: 5px;">{{bookacepted.specialRequirements}}</p>
+													<p style="margin: 5px;">{{bookacepted.state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+									</div>
+								</div>
+								<br>
+							</div>
+							<br>
+						</div>
+					</div>
+					<br>
+					<!-- Slides End -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="menus style3" id="following">
+
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+				<h2>
+					<span class="highlight-text">Following</span>
+				</h2>
+			</div>
+			<!-- Section Header End -->
+			<div class="menus-container">
+				<!-- menu -->
+				<div class="menu row">
+					<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
+						<h2>Restaurants</h2>
+						<div *ngFor="let restaurant of restaurants">
+							<div class="menu-column" *ngIf="restaurant">
+								<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+
+								<button class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/private-client/image/profileImageRestaurant{{restaurant.id}}.jpg"
+												class="img-circle" id="imgPerfil">{{restaurant.name}}
+										</h6>
+									</div>
+								</button></a>
+							</div>
+						</div>
+						<!-- /menu-column -->
+					</div>
+					<!-- /col-md-6 -->
+					<div class="col-md-6" style="visibility: visible; animation-name: fadeInLeft">
+						<h2>People</h2>
+						<div *ngFor="let follow of following">
+							<div class="menu-column" *ngIf = "follow">
+								<a  [routerLink]="['/new/public-client/'+follow.name]">
+								<button class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/private-client/image/profileImage{{follow.id}}.jpg" class="img-circle"
+												id="imgPerfil">{{follow.name}}
+										</h6>
+									</div>		
+								</button>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- /menu-column -->
+				</div>
+				<!-- /col-md-6 -->
+			</div>
+			<!-- /menu-carousel -->
+		</div>
+		<!-- /menus-container -->
+	</div>
+	<!-- /container -->
+</section>
+<section id="opinions" class="bgSection ratings-section">
+	<br> <br> <br>
+	<div class="ratings-wrapper wow bounceIn">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text-inverted">Opinions</span>
+					</h2>
+					<!-- Works -->
+					<div class="recommendations-works wow fadeIn" data-wow-duration="2s">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<!-- Filter Button Start -->
+								<div *ngFor="let review of reviews">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+													<ul>
+														<li>
+															<h1 class="shadow">{{review.reviewRestaurant.name}}</h1>
+															<p>{{review.rate}}</p>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+													<p style="margin: 5px;">{{review.content}} - {{review.date}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br>
+								</div>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="profile" class="profile-sec section-wrapper description" style="margin-bottom: 20px;">
+	<br> <br> <br>
+	<div class="container">
+		<div class="row">
+			<!-- Section Header -->
+			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+				<form action="/private-client/image/upload" method="post" enctype="multipart/form-data">
+					<input type="hidden" name='imageTitle' /><br /> <img  src="/private-client/image/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
+					/>
+					<p>
+						<label>Image file:</label><input [routerLink]="['/new/private-client/']" (change)="fileChange($event)" type="file" name="file" />
+					</p>
+				</form>
+				<br>
+				<p *ngIf="user">{{user.description}}</p>
+				<br>
+			</div>
+			<!-- Section Header End -->
+			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+				<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+					<h1>Change data</h1>
+
+					<form role="form" method='post' action="/private-client/modify">
+						<div class="form-group">
+							<label *ngIf="user">Account Name: {{user.name}}</label>
+						</div>
+
+						<div class="form-group">
+							<label >Email:</label> <input *ngIf="user" [(ngModel)]="client.email" style="border-radius: 0px !important" type="email" class="form-control"
+							 id="email" name='useremail' value="{{user.email}}">
+						</div>
+
+						<div class="form-group">
+							<label >Description:</label>
+							<textarea *ngIf="user" [(ngModel)]="client.description" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='userdescription'
+							 rows="3">{{user.description}}</textarea>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Favourite food:</label> <input *ngIf="user" [(ngModel)]="client.favouritefood" style="border-radius: 0px !important" class="form-control"
+							 name='favouritefood' value="{{user.favouriteFood}}">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">New password</label> <input [(ngModel)]="client.password" style="border-radius: 0px !important" type="password" class="form-control"
+							 id="pwd" name='password' placeholder="Enter new password">
+							 <small [hidden]="client.password.length >= 6" class="text-danger">
+        							Password minimum length is 6 characters
+      						</small>
+						</div>
+
+
+						<div class="form-group">
+							<label for="pwd">Repeat new password</label> <input [(ngModel)]="client.confirmPassword" style="border-radius: 0px !important" type="password" class="form-control"
+							 id="pwd" name='confirmpassword' placeholder="Repeat new password">
+							 <small [hidden]="client.password === client.confirmPassword" class="text-danger">
+        				Passwords must be equal
+      				</small>
+						</div>
+						<div class="form-group">
+							<label for="age" style="margin-bottom: 10px;">How old
+									are you?</label> <input *ngIf="user" [(ngModel)]="client.age" style="border-radius: 0px !important" type="text" class="form-control"
+							 id="age" name='userage' value={{user.age}}>
+						</div>
+
+						<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
+							<small [hidden]="client.password === client.confirmPassword && client.password.length >= 6" class="text-danger">
+								Fill the form to update
+      						</small>
+							<button [hidden]="client.password !== client.confirmPassword || client.password.length < 6" type='submit' class="btnMore" (click)="updateUser()">Update</button>
+							<a (click)="goTo('#modalwindow')" data-toggle="modal">
+								<button type="submit" class="btnMore">Delete</button>
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal " id="modalwindow">
+			<div class="modal-dialog">
+				<div class="modal-content" style="background-color: #efefef; border-radius: 0;">
+					<div class="modal-header" style="background-color: #28292e !important;">
+						<button type="button" class="close" data-dismiss="modal" style="color: #ffffff;">&times;</button>
+
+					</div>
+					<div class="modal-body">
+						<h2>Are you sure that you want to delete your profile?</h2>
+						<div>
+							<button type='submit' class="btnMore">Yes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
