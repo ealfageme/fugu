@@ -1,0 +1,10 @@
+select#cities {
+    height: calc(4.25rem + 2px);
+    
+}select#kindfood {
+    height: calc(4.25rem + 2px);
+}
+select#prueba {
+
+    margin-top: 40px;
+}

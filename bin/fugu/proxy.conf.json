@@ -1,0 +1,10 @@
+{
+  "/private-client/image/": {
+    "target": "https://localhost:8443/",
+    "secure": false
+  },
+  "/private-restaurant/image/": {
+    "target": "https://localhost:8443/",
+    "secure": false
+  }
+}
