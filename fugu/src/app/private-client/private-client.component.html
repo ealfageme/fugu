@@ -11,7 +11,7 @@
 					<h3>Some restaurants have sent offers to you</h3>
 					<!-- Section Header End -->
 					<div class="our-offers">
-						<div class="row" *ngIf="voucher">
+						<div class="row" *ngIf="vouchers">
 							<div *ngFor="let voucher of vouchers" class="col-md-4 col-sm-4 col-xs-12">
 								<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 									<div class="service-box">
@@ -149,7 +149,7 @@
 				</h2>
 			</div>
 			<!-- Section Header End -->
-			<div class="menus-container"*ngIf="restaurant">
+			<div class="menus-container"*ngIf="restaurants">
 				<!-- menu -->
 				<div class="menu row">
 					<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">

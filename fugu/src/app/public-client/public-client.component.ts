@@ -9,14 +9,14 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./public-client.component.css']
 })
 export class PublicClientComponent implements OnInit {
-  private city: string;
-  private inSession: boolean;
-  private followButton: boolean;
-  private restaurants: string[] = [];
-  private following: string[] = [];
-  private reviews: string[] = [];
-  private user: string;
-  private username: string;
+  city: string;
+  inSession: boolean;
+  followButton: boolean;
+  restaurants: string[] = [];
+  following: string[] = [];
+  reviews: string[] = [];
+  user: string;
+  username: string;
   params: any;
 
 

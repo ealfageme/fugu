@@ -24,23 +24,24 @@ interface User {
 export class PrivateClientComponent implements OnInit {
 
     client: User;
-    private city: string;
-    private inNormalSession: boolean;
-    private inFacebookSession: boolean;
-    private inSession: boolean;
-    private followButton: boolean;
-    private unfollowButton: boolean;
-    private restaurants: string[] = [];
-    private following: string[] = [];
-    private reviews: string[] = [];
-    private vouchers: string[] = [];
-    private bookingsInProcess: string[] = [];
-    private bookingsAccepted: string[] = [];
-    private user: string;
+    city: string;
+    inNormalSession: boolean;
+    inFacebookSession: boolean;
+    inSession: boolean;
+    followButton: boolean;
+    unfollowButton: boolean;
+    restaurants: string[] = [];
+    following: string[] = [];
+    reviews: string[] = [];
+    vouchers: string[] = [];
+    bookingsInProcess: string[] = [];
+    bookingsAccepted: string[] = [];
+    user: string;
     params: any;
+    loginService: LoginService;
 
 
-    constructor(private http: Http, private loginService: LoginService, private router: Router) {
+    constructor(private http: Http, private router: Router) {
         this.inSession = false;
         this.followButton = false;
         this.unfollowButton = true;

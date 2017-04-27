@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Voucher, VoucherService } from './voucher.service';
 import { LoginService } from '../services/login.service';
-import {Component, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-voucher',
@@ -11,7 +11,7 @@ import {Component, Input} from '@angular/core';
 })
 export class VoucherComponent  {
   @Input()
-  private foodType: string;  
+  foodType: string;
   name: string;
   description: string;
   expiryDate: string;
@@ -20,16 +20,16 @@ export class VoucherComponent  {
   min: string;
   max: string;
   vouchers: String[];
-   
+  loginService: LoginService;
 
   private restaurantName: string;
-  constructor(private _router: Router, activatedRoute: ActivatedRoute, private voucherService: VoucherService,private loginService: LoginService) { 
+  constructor(private _router: Router, activatedRoute: ActivatedRoute
+                            , private voucherService: VoucherService) {
     const id = activatedRoute.snapshot.params['id'];
     this.vouchers = this.voucherService.vouchers(this.restaurantName);
-      this.name="";
-      this.description="";
-    this.restaurantName = loginService.user.name;
-    this.loginService.user.name
+      this.name = '';
+      this.description = '';
+    this.restaurantName = this.loginService.user.name;
       if (id) {
         voucherService.getVoucher(id, this.restaurantName).subscribe(
           vou => this.voucher = vou,
@@ -42,9 +42,7 @@ export class VoucherComponent  {
       }
   }
 
-  ngOnInit(
-    
-  ) {
+  ngOnInit() {
   }
   save() {
     this.voucherService.saveVoucher(this.voucher, this.restaurantName).subscribe(
@@ -54,7 +52,6 @@ export class VoucherComponent  {
        },
       error => console.error('Error creating new book: ' + error)
     );
-    
   }
 }
 

@@ -31,6 +31,8 @@ interface User {
 export class HeaderComponent {
   public user: User;
   public restaurant: Restaurant;
+  loginService: LoginService;
+
   ngOnInit() {
     this.user = {
       username: '',
@@ -46,7 +48,7 @@ export class HeaderComponent {
     };
   }
 
-  constructor(private loginService: LoginService, private router: Router
+  constructor(private router: Router
   , private Signinservice: SigninService, private http: Http) { }
 
 

@@ -31,23 +31,23 @@ export class PrivateRestaurantComponent implements OnInit {
 
   restaurantUpdate: Restaurant;
   bookingUpdate: Booking;
-  private city: string;
-  private inNormalSession: boolean;
-  private inFacebookSession: boolean;
-  private inSession: boolean;
-  private followButton: boolean;
-  private unfollowButton: boolean;
-  private restaurants: string[] = [];
-  private following: string[] = [];
-  private reviews: string[] = [];
-  private menus: string[] = [];
-  private bookingsInProcess: Booking[] = [];
-  private bookingsAccepted: string[] = [];
+  city: string;
+  inNormalSession: boolean;
+  inFacebookSession: boolean;
+  inSession: boolean;
+  followButton: boolean;
+  unfollowButton: boolean;
+  restaurants: string[] = [];
+  following: string[] = [];
+  reviews: string[] = [];
+  menus: string[] = [];
+  bookingsInProcess: Booking[] = [];
+  bookingsAccepted: string[] = [];
   restaurant: string;
-  private user: string;
+  user: string;
   nameDish: string;
-  private descriptionDish: string;
-  private priceDish: number;
+  descriptionDish: string;
+  priceDish: number;
 
 
   constructor(private http: Http, private loginService: LoginService, private router: Router) {

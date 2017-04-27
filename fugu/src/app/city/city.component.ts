@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CityComponent implements OnInit {
   city: string;
   inSession: boolean;
-  private restaurants: string[] = [];
+  restaurants: string[] = [];
 
   constructor(private http: Http, activatedRoute: ActivatedRoute) {
     this.city = activatedRoute.snapshot.params['name'];

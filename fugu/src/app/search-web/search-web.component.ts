@@ -13,7 +13,7 @@ export class SearchWebComponent implements OnInit {
   email2: string;
   body: string;
   email: string;
-  private restaurants: string[] = [];
+  restaurants: string[] = [];
   password: string;
   maxPrice = 25;
   minPrice = 1;
@@ -22,9 +22,10 @@ export class SearchWebComponent implements OnInit {
   city: String;
   typefood: String;
   nameRestaurant = '';
+  loginService: LoginService;
 
 
-  constructor(private http: Http, private loginService: LoginService) {
+  constructor(private http: Http) {
     this.inSession = false;
     //dates as default
     this.city = "Madrid";
