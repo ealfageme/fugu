@@ -32,7 +32,7 @@ public class RestaurantFileUploadRestController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
-	private static final String FILES_FOLDER = "src/main/resources/static/images/uploads/";
+	private static final String FILES_FOLDER = "images/uploads/";
 
 	private List<String> imageTitles = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class RestaurantFileUploadRestController {
 	public void handleFileDownload(@PathVariable String fileName, HttpServletResponse res)
 			throws FileNotFoundException, IOException {
 
-		File file = new File(FILES_FOLDER, fileName + ".jpg");
+		File file = new File(FILES_FOLDER, fileName);
 
 		if (file.exists()) {
 			res.setContentType("image/jpeg");

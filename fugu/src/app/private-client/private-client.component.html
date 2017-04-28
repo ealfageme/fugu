@@ -163,7 +163,7 @@
 								<button class="food">
 									<div class="food-desc" *ngIf="restaurant">
 										<h6 class="food-name">
-											<img src="https://localhost:8443/images/uploads/profileImageRestaurant{{restaurant.id}}.jpg"
+											<img src="https://localhost:8443/private-restaurant/image/profileImageRestaurant{{restaurant.id}}.jpg"
 												class="img-circle" id="imgPerfil">{{restaurant.name}}
 										</h6>
 									</div>
@@ -255,7 +255,7 @@
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 				<form action="/private-client/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' /><br /> <img  src="https://localhost:8443/images/uploads/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
+					<input type="hidden" name='imageTitle' /><br /> <img  src="https://localhost:8443/private-restaurant/image/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
 					/>
 					<p>
 						<label>Image file:</label><input [routerLink]="['/private-client/']" (change)="fileChange($event)" type="file" name="file" />
