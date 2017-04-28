@@ -240,24 +240,25 @@ menuFileChange(event) {
   }
 
   fileChange(event) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      const file: File = fileList[0];
-      const formData: FormData = new FormData();
-      formData.append('file', file, file.name);
-      const headers = new Headers();
-      headers.append('Accept', 'application/json');
-      const options = new RequestOptions({ withCredentials: true });
-      this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
-        .subscribe(
-        data => {
-          this.router.navigate(['/private-restaurant/refresh']);
-          console.log(data);
-        },
-        error => console.log(error)
-        );
+        const fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const formData: FormData = new FormData();
+            console.log(file.name);
+            formData.append('file', file, file.name);
+            const headers = new Headers();
+            headers.append('Accept', 'application/json');
+            const options = new RequestOptions({ withCredentials: true });
+            this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
+                .subscribe(
+                data => {
+                    console.log(data);
+                    this.router.navigate(['/private-restaurant/refresh']);
+                },
+                error => console.log(error)
+                );
+        }
     }
-  }
 
   acceptReservation(id: number) {
     console.log(id);

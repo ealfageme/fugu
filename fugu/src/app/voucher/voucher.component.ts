@@ -27,6 +27,7 @@ export class VoucherComponent  {
     loginServiceaux: LoginService, private voucherService: VoucherService) {
       this.loginService = loginServiceaux;
     const id = activatedRoute.snapshot.params['id'];
+    this.restaurantName = this.loginService.user.name;
     this.vouchers = this.voucherService.vouchers(this.restaurantName);
       this.name = '';
       this.description = '';

@@ -330,7 +330,7 @@
 				<form action="/private-restaurant/image/upload" method="post" enctype="multipart/form-data">
 					<input type="hidden" name='imageTitle' /><br /> <img src="https://localhost:8443/private-restaurant/image/profileImageRestaurant{{loginService.user.id}}.jpg" />
 					<p>
-						<label>Image file:</label><input (change)="fileChange($event)" type="file" name="file" />
+						<label>Image file:</label><input [routerLink]="['/private-restaurant/']" (change)="fileChange($event)" type="file" name="file" />
 					</p>
 				</form>
 				<br> {{restaurant.description}}

@@ -9,7 +9,7 @@
 					<!-- Section Header -->
 					<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 						<h2><span class="highlight-text">{{user.name}}<img
-							src="/assets/images/files/profileImage{{user.id}}.jpg"  class="img-circle" alt="Custom Image"/></span></h2>
+							src="https://localhost:8443/private-restaurant/image/profileImage{{user.id}}.jpg"  class="img-circle" alt="Custom Image"/></span></h2>
 
 					</div>
 					<!-- Section Header End -->
@@ -76,7 +76,7 @@
 									<button [routerLink]="['/public-restaurant/'+restaurant.name]" class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/private-client/image/profileImageRestaurant{{restaurant.id}}.jpg" class="img-circle"
+											<img src="https://localhost:8443/private-restaurant/image/profileImageRestaurant{{restaurant.id}}.jpg" class="img-circle"
 												id="imgPerfil">{{restaurant.name}}
 										</h6>
 									</div>
@@ -93,7 +93,7 @@
 									<button [routerLink]="['/public-client/'+follow.name]" class="food">
 										<div class="food-desc">
 											<h6 class="food-name">
-												<img src="/private-client/image/profileImage{{follow.id}}.jpg"
+												<img src="https://localhost:8443/private-restaurant/image/profileImage{{follow.id}}.jpg"
 													class="img-circle" id="imgPerfil">{{follow.name}}
 											</h6>
 										</div>

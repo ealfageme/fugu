@@ -434,7 +434,7 @@
 								<div class="food">
 									<div class="food-desc">
 										<img
-											src="/images/uploads/menuImageRestaurant{{restaurantId}}{{-index}}.jpg" />
+											src="https://localhost:8443/private-restaurant/image/menuImageRestaurant{{restaurantId}}{{-index}}.jpg" />
 										<h6 class="food-name">{{dish}}</h6>
 										<div class="dots"></div>
 										<div class="food-price">
@@ -477,7 +477,7 @@
 					<form action="/private-restaurant/menu/image/upload" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" name='imageTitle' value="hola" /><br /> <img
-							src="/images/uploads/{{fileMenuName}}" />
+							src="https://localhost:8443/private-restaurant/image/{{fileMenuName}}" />
 						<p>
 							<label>Image file:</label><input type="file" name="file" />
 						</p>
@@ -599,7 +599,7 @@
 					<form action="/private-restaurant/image/upload" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" name='imageTitle' /><br /> <img
-							src="/images/uploads/{{fileName}}" />
+							src="https://localhost:8443/private-restaurant/image/{{fileName}}" />
 						<p>
 							<label>Image file:</label><input type="file" name="file" />
 						</p>

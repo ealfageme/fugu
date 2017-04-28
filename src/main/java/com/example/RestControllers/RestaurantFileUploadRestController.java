@@ -32,31 +32,44 @@ public class RestaurantFileUploadRestController {
 	private RestaurantRepository restaurantRepository;
 	@Autowired
 	private MenuRepository menuRepository;
-	private static final String FILES_FOLDER = "images/uploads/";
+	private static final String FILES_FOLDER = "src/main/resources/static/images/uploads/";
 
 	private List<String> imageTitles = new ArrayList<>();
+
+	/*
+	 * @RequestMapping("/") public String index() { return "index"; }
+	 */
 
 	@RequestMapping(value = "/api/restaurants/image/upload", method = RequestMethod.POST)
 	public String handleFileUpload(Model model,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request, Authentication authentication) {
+			String userloggin = authentication.getName();
+			String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(userloggin).getId() + ".jpg";
 
-		String restaurantloggin = authentication.getName();
-		String fileName = "profileImageRestaurant" + restaurantRepository.findByEmail(restaurantloggin).getId()
-				+ ".jpg";
 		if (!file.isEmpty()) {
 			try {
+
 				File filesFolder = new File(FILES_FOLDER);
 				if (!filesFolder.exists()) {
 					filesFolder.mkdirs();
 				}
+
 				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
 				file.transferTo(uploadedFile);
+
+				//imageTitles.add(imageTitle);
+
 				return fileName;
 
 			} catch (Exception e) {
+
+
+				model.addAttribute("error", e.getClass().getName() + ":" + e.getMessage());
+
 				return fileName;
 			}
 		} else {
+			model.addAttribute("error", "The file is empty");
 			return fileName;
 		}
 	}
@@ -65,7 +78,7 @@ public class RestaurantFileUploadRestController {
 	public void handleFileDownload(@PathVariable String fileName, HttpServletResponse res)
 			throws FileNotFoundException, IOException {
 
-		File file = new File(FILES_FOLDER, fileName);
+		File file = new File(FILES_FOLDER, fileName + ".jpg");
 
 		if (file.exists()) {
 			res.setContentType("image/jpeg");

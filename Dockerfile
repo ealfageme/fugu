@@ -22,8 +22,8 @@ RUN npm install -g @angular/cli@1.0.1
 RUN npm install -g http-serve
 
 # copy app files
-COPY target/fugu-1.0.jar  /usr/src/app/target/
-
+COPY /target/fugu-1.0.jar  /usr/src/app/target/
+COPY /src/main/resources/static/images/uploads/ /src/main/resources/static/images/uploads/
 
 # tell the port number the container should expose
 EXPOSE 4200
