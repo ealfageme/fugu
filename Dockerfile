@@ -24,8 +24,10 @@ RUN npm install -g http-serve
 # copy app files
 COPY target/fugu-1.0.jar  /usr/src/app/target/
 
+
 # tell the port number the container should expose
 EXPOSE 4200
 
 # run the application
 CMD ["java", "-jar", "usr/src/app/target/fugu-1.0.jar"]
+

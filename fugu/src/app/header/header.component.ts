@@ -74,13 +74,13 @@ export class HeaderComponent {
       response => { },
       error => console.log('Error when trying to log out: ' + error)
     );
-    this.router.navigate(['/new/main']);
+    this.router.navigate(['/main']);
   }
   visitProfile() {
     if (this.loginService.user.roles.indexOf('ROLE_RESTAURANT') !== -1) {
-      this.router.navigate(['/new/private-restaurant/']);
+      this.router.navigate(['/private-restaurant/']);
     } else {
-      this.router.navigate(['/new/private-client/']);
+      this.router.navigate(['/private-client/']);
     }
   }
 

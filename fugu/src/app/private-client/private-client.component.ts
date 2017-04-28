@@ -161,7 +161,7 @@ export class PrivateClientComponent implements OnInit {
                 .subscribe(
                 data => {
                     console.log(data);
-                    this.router.navigate(['/new/private-client/refresh']);
+                    this.router.navigate(['/private-client/refresh']);
                 },
                 error => console.log(error)
                 );

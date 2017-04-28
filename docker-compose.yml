@@ -14,7 +14,7 @@ services:
   fugu:
     depends_on:
       - mysql
-    image: fuguimage
+    image: fugu
     container_name: fugu
     ports:
       - 8443:8443

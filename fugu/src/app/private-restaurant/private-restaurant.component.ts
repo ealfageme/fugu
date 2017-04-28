@@ -78,7 +78,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/menus').subscribe(
@@ -93,7 +93,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
 
@@ -111,7 +111,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/reviews').subscribe(
@@ -124,7 +124,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
   }
@@ -156,7 +156,7 @@ export class PrivateRestaurantComponent implements OnInit {
             },
             error => {
               console.error(error);
-              this.router.navigate(['/new/error/']);
+              this.router.navigate(['/error/']);
             }
           );
         },
@@ -251,7 +251,7 @@ menuFileChange(event) {
       this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
         .subscribe(
         data => {
-          this.router.navigate(['/new/private-restaurant/refresh']);
+          this.router.navigate(['/private-restaurant/refresh']);
           console.log(data);
         },
         error => console.log(error)
@@ -288,14 +288,14 @@ menuFileChange(event) {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
         }
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
     

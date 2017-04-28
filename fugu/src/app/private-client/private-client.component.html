@@ -20,7 +20,7 @@
 											<h3>{{voucher.name}}</h3>
 										</div>
 										<p>{{voucher.description}}</p>
-										<a [routerLink]="['/new/public-restaurant']"> <img src="/assets/images/day-food/breakfast.jpg" alt="Custom Image">
+										<a [routerLink]="['/public-restaurant']"> <img src="/assets/images/day-food/breakfast.jpg" alt="Custom Image">
 										</a>
 										<p style="margin-top: 5px;">Expiry date : {{voucher.expiryDate}}</p>
 									</div>
@@ -158,7 +158,7 @@
 						<h2>Restaurants</h2>
 						<div *ngFor="let restaurant of restaurants">
 							<div class="menu-column" >
-								<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+								<a [routerLink]="['/public-restaurant/'+restaurant.name]">
 
 								<button class="food">
 									<div class="food-desc" *ngIf="restaurant">
@@ -177,7 +177,7 @@
 						<h2>People</h2>
 						<div *ngFor="let follow of following">
 							<div class="menu-column">
-								<a  [routerLink]="['/new/public-client/'+follow.name]">
+								<a  [routerLink]="['/public-client/'+follow.name]">
 								<button class="food">
 									<div class="food-desc"*ngIf="follow">
 										<h6 class="food-name">
@@ -258,7 +258,7 @@
 					<input type="hidden" name='imageTitle' /><br /> <img  src="https://localhost:8443/images/uploads/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
 					/>
 					<p>
-						<label>Image file:</label><input [routerLink]="['/new/private-client/']" (change)="fileChange($event)" type="file" name="file" />
+						<label>Image file:</label><input [routerLink]="['/private-client/']" (change)="fileChange($event)" type="file" name="file" />
 					</p>
 				</form>
 				<br>

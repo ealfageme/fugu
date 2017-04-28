@@ -73,7 +73,7 @@
 							<h2>Restaurants</h2>
 							<div *ngFor="let restaurant of restaurants">
 								<div class="menu-column">
-									<button [routerLink]="['/new/public-restaurant/'+restaurant.name]" class="food">
+									<button [routerLink]="['/public-restaurant/'+restaurant.name]" class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
 											<img src="/private-client/image/profileImageRestaurant{{restaurant.id}}.jpg" class="img-circle"
@@ -90,7 +90,7 @@
 							<h2>People</h2>
 							<div *ngFor="let follow of following">
 								<div class="menu-column">
-									<button [routerLink]="['/new/public-client/'+follow.name]" class="food">
+									<button [routerLink]="['/public-client/'+follow.name]" class="food">
 										<div class="food-desc">
 											<h6 class="food-name">
 												<img src="/private-client/image/profileImage{{follow.id}}.jpg"
