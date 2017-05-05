@@ -27,7 +27,8 @@ Both sign up as restaurant and user options availables. As user, you can see the
 * __[Trello's Board](https://trello.com/b/CYp9X8sK/fugu)__
 
 * __[API Documentation](/API.md)__
-
+* __Docker-Hub:__
+   * https://hub.docker.com/r/ealfageme/fugu/
 * __Cool Features:__
   * Log in using Facebook
  
