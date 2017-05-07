@@ -29,9 +29,18 @@ Both sign up as restaurant and user options availables. As user, you can see the
 
 * __[API Documentation](/API.md)__
 
-* __[Docker-Hub](https://hub.docker.com/r/ealfageme/fugu/)__
-  * sudo docker pull ealfageme/fugu:v0.1
-  * sudo docker run ealfageme/fugu:v0.1
+* __[Docker-Hub](https://hub.docker.com/r/srivasd/fugu/)__
+  * sudo docker pull srivasd/fugu
+  * sudo docker-compose up srivasd/fugu
+  
+* __Getting Started__:
+  * Clone the repository or download the zip.
+  * Go to the main folder 'fugu'
+  * Type the command sudo docker pull srivasd/fugu
+  * Then sudo docker-compose up srivasd/fugu
+  * The angular app will be running in https://localhost:8443/new/index.html
+  * The regular app will be running in https://localhost:8443/main/
+  
 * __Cool Features:__
   * Log in using Facebook
  
