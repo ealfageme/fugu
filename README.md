@@ -30,6 +30,7 @@ Both sign up as restaurant and user options availables. As user, you can see the
 
 * __[Docker-Hub](https://hub.docker.com/r/ealfageme/fugu/)__
   * sudo docker pull ealfageme/fugu:v0.1
+  * sudo docker run ealfageme/fugu:v0.1
 * __Cool Features:__
   * Log in using Facebook
  
