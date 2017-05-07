@@ -14,8 +14,8 @@ services:
   fugu:
     depends_on:
       - mysql
-    image: fugu
-    container_name: fugu
+    image: srivasd/fugu
+    container_name: sfugu
     ports:
       - 8443:8443
     links:
