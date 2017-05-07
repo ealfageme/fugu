@@ -1,4 +1,5 @@
 # Fugu ![FUGU LOGO](src/main/resources/static/images/logo/logo2.png)
+[How to use fugu](https://www.youtube.com/watch?v=vsIfO0axyko&t=1s)
 ### Description
 * __This is a restaurant browser web with a search engine.__   
 Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef
