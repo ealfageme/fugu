@@ -2,32 +2,27 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="images/logo/logo.ico">
+    <link rel="shortcut icon" href="/images/logo/logo.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
-    <title>Pedro_Leon</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="elegant_font/style.css" />
+    <title>{{user.name}}</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/elegant_font/style.css" />
     <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slider-pro.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="elegant_font/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/slider-pro.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+    <link rel="stylesheet" href="/css/owl.transitions.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/elegant_font/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-        <script type="text/javascript" src="js/selectivizr.js"></script>
-    <![endif]-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,15 +31,23 @@
         <!-- Navigation Menu start-->
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html"><img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2"></a>
+                <a href="/main/"><img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2"></a>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2">
+                            <img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2">
                         </li>
                         <li> <a href="#profile">PROFILE</a> </li>
                         <li> <a href="#following">FOLLOWING</a> </li>
                         <li> <a href="#opinions">OPINIONS</a> </li>
+                        <li class="signin">{{#inSession}}
+						<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+							</form>  
+						<form class="navbar-form navbar-right" method="get" action="/default/">
+							<button class="signInBtn">Visit profile</button>
+						</form>{{/inSession}}
+							</li>
                     </ul>
                 </div>
             </div>
@@ -62,48 +65,48 @@
             <div class="row">
                 <!-- Section Header -->
                 <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Pedro_León<img src="images/clients/250x250_24105534pedro-leon.jpg" class="img-circle" alt="Custom Image"></span></h2>
+                    <h2><span class="highlight-text">{{user.name}}<img
+							src="/private-client/image/{{fileName}}"  class="img-circle" alt="Custom Image"/></span></h2>
 
                 </div>
                 <!-- Section Header End -->
                 <div id="profileForm" class="col-l-7 col-md-7 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
                     <div id="formCol" class="col-l-7 col-md-7 col-sm-7 col-xs-12">
-                        <h1>Pedro_León</h1>
-                        <form role="form">
+                        <h1>Data</h1>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <label>Pedro León Sánchez</label>
-
+                                <label>{{user.name}}</label>
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <label>Pedroleon@gmail.com</label>
+                                <label>{{user.email}}</label>
                             </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Bio:</label>
-                                <label>Football player, italian's food lover.</label>
+                                <label>{{user.description}}</label>
                             </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="pwd">Favorite Restaurant:</label>
-                                <label>Foster's Hollywood</label>
-                            </div>
-                        </form>
-                        <form role="form">
                             <div class="form-group">
                                 <label for="pwd">Age:</label>
-                                <label>22</label>
+                                <label>{{user.age}}</label>
                             </div>
-                        </form>
+                            <div class="form-group">
+                                <label for="pwd">Favourite food:</label>
+                                <label>{{user.favouriteFood}}</label>
+                            </div>
                     </div>
                     <div id="submit" class="col-l-5 col-md-5 col-sm-5 col-xs-12">
-                        <button type="button" class="btnMore" id="sendmess" style="margin:10px;">Send Message</button>
-                        <button type="button" class="btnMore" id="sendmess" style="margin:10px;">Follow</button>
+                        <form role="form" method='get'>
+                        {{#followButton}}
+                        <input id="followPulsed" type="hidden" name='followPulsed' value="true">
+                        <button type="submit" class="btnMore"  id="follow" style="margin:10px;" >Follow</button>
+                       	{{/followButton}}
+                       	</form>
+						<form role="form" method='get'>
+                       	{{#unfollowButton}}
+                        <input id="unfollowPulsed" type="hidden" name='unfollowPulsed' value="true">
+                        <button type="submit" class="btnMore" id="unfollow" style="margin:10px;" >Unfollow</button>
+                         {{/unfollowButton}}
+                        </form>   
                     </div>
                 </div>
             </div>
@@ -111,188 +114,124 @@
         </div>
     </section>
     <section class="menus style3" id="following">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
 
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Following</span></h2>
-                </div>
-                <!-- Section Header End -->
-
-                <div class="menus-container">
-                    <!-- menu -->
-                    <div class="menu row">
-                        <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
-                            <h2>Restaurants</h2>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/clients/natural.png" class="img-circle" id="imgPerfil">Natural</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/clients/aztec.png" class="img-circle" id="imgPerfil">Scaroli</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/clients/cityairline.png" class="img-circle" id="imgPerfil">huttanHome</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <button type="button" class="btnMore">See more</button>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;" id="followingPeople">
-                            <h2>People</h2>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/profile-pictures/foto-perfil1.jpg" class="img-circle" id="imgPerfil">Masseto</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/profile-pictures/foto-perfil2.jpg" class="img-circle" id="imgPerfil">Jhonas</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-client.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name"><img src="images/profile-pictures/foto-perfil3.jpg" class="img-circle" id="imgPerfil">Julio</h6>
-                                    </div>
-                                </button>
-                            </div>
-                            <button type="button" class="btnMore">See more</button>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                    </div>
-                </div>
-                <!-- /menu-carousel -->
-            </div>
-            <!-- /menus-container -->
-        </div>
-        <!-- /container -->
-    </section>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Following</span>
+					</h2>
+				</div>
+				<!-- Section Header End -->
+				<div class="menus-container">
+					<!-- menu -->
+					<div class="menu row">
+						<div class="col-md-6 wow fadeInRight animated"
+							style="visibility: visible; animation-name: fadeInRight;"
+							id="followingRestaurants">
+							<h2>Restaurants</h2>
+							{{#restaurants}}
+							<div class="menu-column">
+								<button onClick="location.href='../public-restaurant/{{name}}'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/restaurant-type/{{name}}.jpg" class="img-circle"
+												id="imgPerfil">{{name}}
+										</h6>
+									</div>
+								</button>
+							</div>
+							{{/restaurants}}
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+						<div class="col-md-6 wow fadeInLeft animated"
+							style="visibility: visible; animation-name: fadeInLeft;"
+							id="followingPeople">
+							<h2>People</h2>
+							{{#following}}
+							<div class="menu-column">
+								<button onClick=" window.location.href='/public-client/{{name}}'"
+									class="food">
+									<div class="food-desc">
+										<h6 class="food-name">
+											<img src="/images/clients/{{name}}.jpg"
+												class="img-circle" id="imgPerfil">{{name}}
+										</h6>
+									</div>
+								</button>
+							</div>
+							{{/following}}
+							<!-- /menu-column -->
+						</div>
+						<!-- /col-md-6 -->
+					</div>
+				</div>
+				<!-- /menu-carousel -->
+			</div>
+			<!-- /menus-container -->
+		</div>
+		<!-- /container -->
+	</section>
     <!-- Portfolio Section End -->
-    <section id="opinions" class="bgSection ratings-section">
-        <br>
-        <br>
-        <br>
-        <div class="parallax-overlay"></div>
-        <div class="ratings-wrapper wow bounceIn">
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <h2><span class="highlight-text-inverted">Opinions</span></h2>
-                        <!-- Works -->
-                        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <!-- Filter Button Start -->
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">AsiaHome</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Raviolli</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Only Tapas</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">DonnerLand</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br> </div>
-                                <button type="button" class="btnMore">See more</button>
-                            </div>
-                            <br>
-                            <!-- Slides End -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  	<section id="opinions" class="bgSection ratings-section">
+		<br> <br> <br>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<h2>
+							<span class="highlight-text-inverted">Opinions</span>
+						</h2>
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<!-- Filter Button Start -->
+									{{#reviews}}
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
+													<ul>
+														<li>
+															<h1 class="shadow">{{reviewRestaurant.name}}</h1> 
+															<p>{{rate}}</p>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+													<p style="margin: 5px;">{{content}} - {{date}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br>
+									{{/reviews}}	
+								</div>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
     <!-- Contact Section End -->
     <section class="footer-container">
         <div class="container">
             <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="images/logo/logo.png" alt=""> </div>
+                <div class="col-md-4"> <img src="/images/logo/logo.png" alt=""> </div>
                 <div class="col-md-4">
                     <h4>Fugu</h4>
                     <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
@@ -337,26 +276,27 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.easypiechart.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.fitvids.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.sliderPro.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="contact/jqBootstrapValidation.js"></script>
-    <script src="contact/contact_me.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <!--<script src="/contact/jqBootstrapValidation.js"></script>
+    <script src="/contact/contact_me.js"></script>-->
+    <script src="/js/custom.js"></script>
+    <script src="/js/fugu.js"></script>
 </body>
 
 </html>

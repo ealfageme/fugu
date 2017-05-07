@@ -1,7 +1,7 @@
 <header>
 	<nav id="topNav" class="navbar navbar-default main-menu">
 		<div>
-			<a [routerLink]="['/new/main']"><img class="logo2" id="logo2" src="/src/assets/images/logo/logo2.png" alt="logo2"></a>
+			<a [routerLink]="['/main']"><img class="logo2" id="logo2" src="/assets/images/logo/logo2.png" alt="logo2"></a>
 			<button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
 			<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
 				<ul class="nav navbar-nav" style="float:right;">
@@ -84,7 +84,7 @@
       				</small> <br>
 					</div>
 
-					<img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+					<img src="/assets/images/profile.png"> <span id="message_client"></span>
 					<button (click)="sendFormUser(); modalWindow2.close(); modalWindow.close();" type='submit' class="logInBtn" id='senduser'>Send</button>
 				</form>
 			</modal-content>
@@ -150,7 +150,7 @@
 						 <small [hidden]="restaurant.password === restaurant.confirmPassword" class="text-danger">
         				Passwords must be equal
       				</small>
-						  <br> <img src="/src/assets/images/restaurant.png">
+						  <br> <img src="/assets/images/restaurant.png">
 						<!-- logInBtn btnMore -->
 						<button (click)="sendFormRestaurant(); modalWindow2.close(); modalWindow.close();" type="submit" class="logInBtn" id='sendrestaurant'>Send</button>
 					</div>

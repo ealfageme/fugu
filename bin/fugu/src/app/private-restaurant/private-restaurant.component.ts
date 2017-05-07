@@ -31,27 +31,28 @@ export class PrivateRestaurantComponent implements OnInit {
 
   restaurantUpdate: Restaurant;
   bookingUpdate: Booking;
-  private city: string;
-  private inNormalSession: boolean;
-  private inFacebookSession: boolean;
-  private inSession: boolean;
-  private followButton: boolean;
-  private unfollowButton: boolean;
-  private restaurants: string[] = [];
-  private following: string[] = [];
-  private reviews: string[] = [];
-  private vouchers: string[] = [];
-  private menus: string[] = [];
-  private bookingsInProcess: Booking[] = [];
-  private bookingsAccepted: string[] = [];
+  city: string;
+  inNormalSession: boolean;
+  inFacebookSession: boolean;
+  inSession: boolean;
+  followButton: boolean;
+  unfollowButton: boolean;
+  restaurants: string[] = [];
+  following: string[] = [];
+  reviews: string[] = [];
+  menus: string[] = [];
+  bookingsInProcess: Booking[] = [];
+  bookingsAccepted: string[] = [];
   restaurant: string;
-  private user: string;
+  user: string;
   nameDish: string;
-  private descriptionDish: string;
-  private priceDish: number;
+  descriptionDish: string;
+  priceDish: number;
+  loginService: LoginService;
 
 
-  constructor(private http: Http, private loginService: LoginService, private router: Router) {
+  constructor(private http: Http, loginServiceaux: LoginService, private router: Router) {
+    this.loginService = loginServiceaux;
     this.inSession = false;
     this.nameDish = " ";
     this.descriptionDish = " ";
@@ -60,7 +61,7 @@ export class PrivateRestaurantComponent implements OnInit {
     this.unfollowButton = true;
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name).subscribe(
       response => {
-        const  data = response.json();
+        const data = response.json();
         this.restaurant = data;
         this.restaurantUpdate = {
           name: data.name,
@@ -74,11 +75,10 @@ export class PrivateRestaurantComponent implements OnInit {
           confirmPassword: ''
         };
         console.log(data);
-        console.log(this.restaurantUpdate);
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/menus').subscribe(
@@ -93,22 +93,10 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
-    this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/voucher').subscribe(
-      response => {
-        const data = response.json();
-        for (let i = 0; i < data.content.length; i++) {
-          const voucher = data.content[i];
-          this.vouchers.push(voucher);
-        }
-      },
-      error => {
-        console.error(error);
-        this.router.navigate(['/new/error/']);
-      }
-    );
+
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book').subscribe(
       response => {
         const data = response.json();
@@ -123,7 +111,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
     this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/reviews').subscribe(
@@ -136,7 +124,7 @@ export class PrivateRestaurantComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
   }
@@ -168,7 +156,7 @@ export class PrivateRestaurantComponent implements OnInit {
             },
             error => {
               console.error(error);
-              this.router.navigate(['/new/error/']);
+              this.router.navigate(['/error/']);
             }
           );
         },
@@ -181,6 +169,25 @@ export class PrivateRestaurantComponent implements OnInit {
 
 
   }
+menuFileChange(event) {
+        const fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const formData: FormData = new FormData();
+            const imageTitle = file.name;
+            formData.append('file', file, imageTitle);
+            const headers = new Headers();
+            headers.append('Accept', 'application/json');
+            const options = new RequestOptions({ withCredentials: true });
+            this.http.post('https://localhost:8443/api/restaurants/menu/image/upload', formData, options)
+                .subscribe(
+                data => {
+                  console.log(data);
+                },
+                error => console.log(error)
+                );
+        }
+    }
 
   updateRestaurant() {
     // RESTAURANT
@@ -219,7 +226,7 @@ export class PrivateRestaurantComponent implements OnInit {
       'city': { 'name': this.restaurantUpdate.city, id: cityId },
       'restaurantReviews': []
     };
-    console.log(datarestaurant);
+    console.log(this.restaurantUpdate.description);
     const headers = new Headers({
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
@@ -233,43 +240,64 @@ export class PrivateRestaurantComponent implements OnInit {
   }
 
   fileChange(event) {
-        const fileList: FileList = event.target.files;
-        if (fileList.length > 0) {
-            const file: File = fileList[0];
-            const formData: FormData = new FormData();
-            formData.append('file', file, file.name);
-            const headers = new Headers();
-            headers.append('Accept', 'application/json');
-            const options = new RequestOptions({ withCredentials: true });
-            this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
-                .subscribe(
-                data => {
-                  this.router.navigate(['/new/private-restaurant/refresh']);
-                  console.log(data);
-                },
-                error => console.log(error)
-                );
-        }
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      const formData: FormData = new FormData();
+      formData.append('file', file, file.name);
+      const headers = new Headers();
+      headers.append('Accept', 'application/json');
+      const options = new RequestOptions({ withCredentials: true });
+      this.http.post('https://localhost:8443/api/restaurants/image/upload', formData, options)
+        .subscribe(
+        data => {
+          this.router.navigate(['/private-restaurant/refresh']);
+          console.log(data);
+        },
+        error => console.log(error)
+        );
     }
+  }
 
-    acceptReservation(id: number) {
-        console.log(id);
-        const booking = {
-          "id": this.bookingsInProcess[id].id,
-          "date": this.bookingsInProcess[id].date,
-          "number": this.bookingsInProcess[id].number,
-          "specialRequirements": this.bookingsInProcess[id].specialRequirements,
-          "state": 'Accepted'
-        };
-        const options = new RequestOptions({ withCredentials: true });
+  acceptReservation(id: number) {
+    console.log(id);
+    const booking = {
+      "id": this.bookingsInProcess[id].id,
+      "date": this.bookingsInProcess[id].date,
+      "number": this.bookingsInProcess[id].number,
+      "specialRequirements": this.bookingsInProcess[id].specialRequirements,
+      "state": 'Accepted'
+    };
+    const options = new RequestOptions({ withCredentials: true });
     this.http.put('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book', booking, options).subscribe(
       response => {
-        console.log(response);
+        {
+          this.bookingsAccepted = [];
+    this.bookingsInProcess = [];
+    this.http.get('https://localhost:8443/api/restaurants/' + this.loginService.user.name + '/book').subscribe(
+      response => {
+        const data = response.json();
+        for (let i = 0; i < data.content.length; i++) {
+          const book = data.content[i];
+          if (book.state === 'In process') {
+            this.bookingsInProcess.push(book);
+          } else {
+            this.bookingsAccepted.push(book);
+          }
+        }
       },
       error => {
         console.error(error);
-        this.router.navigate(['/new/error/']);
+        this.router.navigate(['/error/']);
       }
     );
-    }
+        }
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['/error/']);
+      }
+    );
+    
+  }
 }

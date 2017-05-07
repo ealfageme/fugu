@@ -11,16 +11,16 @@
 					<h3>Some restaurants have sent offers to you</h3>
 					<!-- Section Header End -->
 					<div class="our-offers">
-						<div class="row">
+						<div class="row" *ngIf="vouchers">
 							<div *ngFor="let voucher of vouchers" class="col-md-4 col-sm-4 col-xs-12">
 								<div class="col-md-12 col-sm-12 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 									<div class="service-box">
-										<div class="icon">
+										<div class="icon" *ngIf="voucher">
 											<h2>{{voucher.restaurant.name}}</h2>
 											<h3>{{voucher.name}}</h3>
 										</div>
 										<p>{{voucher.description}}</p>
-										<a [routerLink]="['/new/public-restaurant']"> <img src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
+										<a [routerLink]="['/public-restaurant']"> <img src="/assets/images/day-food/breakfast.jpg" alt="Custom Image">
 										</a>
 										<p style="margin-top: 5px;">Expiry date : {{voucher.expiryDate}}</p>
 									</div>
@@ -44,7 +44,7 @@
 
 		</div>
 	</div>
-	<div class="ratings-wrapper wow bounceIn">
+	<div *ngIf="bookingsInProcess" class="ratings-wrapper wow bounceIn">
 		<div class="container">
 			<div class="row">
 				<!-- Section Header -->
@@ -57,10 +57,10 @@
 
 								<!-- Filter Button Start -->
 								<div *ngFor="let book of bookingsInProcess; let i=index" [attr.data-index]="i">
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="book">
 
 										<div id="i" class="item recommendations-item web seo">
-											<div class="row">
+											<div class="row" *ngIf="book">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<ul>
 														<li>
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ratings-wrapper wow bounceIn">
+	<div  *ngIf="bookingsAccepted" class="ratings-wrapper wow bounceIn">
 		<div class="container">
 			<div class="row">
 				<!-- Section Header -->
@@ -104,10 +104,10 @@
 
 								<!-- Filter Button Start -->
 								<div *ngFor="let book of bookingsAccepted; let i=index" [attr.data-index]="i">
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="book">
 
-										<div id="{{-index}}" class="item recommendations-item web seo">
-											<div class="row">
+										<div id="i" class="item recommendations-item web seo">
+											<div class="row" *ngIf="book">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<ul>
 														<li>
@@ -116,15 +116,17 @@
 													</ul>
 												</div>
 												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-													<p style="margin: 5px;">Date: {{bookacepted.date}}</p>
-													<p style="margin: 5px;">{{bookacepted.number}} people coming</p>
-													<p style="margin: 5px;">{{bookacepted.specialRequirements}}</p>
-													<p style="margin: 5px;">{{bookacepted.state}}</p>
+													<p style="margin: 5px;">Date: {{book.date}}</p>
+													<p style="margin: 5px;">{{book.number}} people coming</p>
+													<p style="margin: 5px;">{{book.specialRequirements}}</p>
+													<p style="margin: 5px;">{{book.state}}</p>
 												</div>
 											</div>
 										</div>
 										<!-- Filter Button End -->
+
 									</div>
+									<br>
 								</div>
 								<br>
 							</div>
@@ -149,19 +151,19 @@
 				</h2>
 			</div>
 			<!-- Section Header End -->
-			<div class="menus-container">
+			<div class="menus-container"*ngIf="restaurants">
 				<!-- menu -->
 				<div class="menu row">
 					<div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" id="followingRestaurants">
 						<h2>Restaurants</h2>
 						<div *ngFor="let restaurant of restaurants">
-							<div class="menu-column" *ngIf="restaurant">
-								<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+							<div class="menu-column" >
+								<a [routerLink]="['/public-restaurant/'+restaurant.name]">
 
 								<button class="food">
-									<div class="food-desc">
+									<div class="food-desc" *ngIf="restaurant">
 										<h6 class="food-name">
-											<img src="/private-client/image/profileImageRestaurant{{restaurant.id}}.jpg"
+											<img src="https://localhost:8443/images/uploads/profileImageRestaurant{{restaurant.id}}.jpg"
 												class="img-circle" id="imgPerfil">{{restaurant.name}}
 										</h6>
 									</div>
@@ -174,12 +176,12 @@
 					<div class="col-md-6" style="visibility: visible; animation-name: fadeInLeft">
 						<h2>People</h2>
 						<div *ngFor="let follow of following">
-							<div class="menu-column" *ngIf = "follow">
-								<a  [routerLink]="['/new/public-client/'+follow.name]">
+							<div class="menu-column">
+								<a  [routerLink]="['/public-client/'+follow.name]">
 								<button class="food">
-									<div class="food-desc">
+									<div class="food-desc"*ngIf="follow">
 										<h6 class="food-name">
-											<img src="/private-client/image/profileImage{{follow.id}}.jpg" class="img-circle"
+											<img src="https://localhost:8443/images/uploads/profileImage{{follow.id}}.jpg" class="img-circle"
 												id="imgPerfil">{{follow.name}}
 										</h6>
 									</div>		
@@ -216,7 +218,7 @@
 								<div *ngFor="let review of reviews">
 									<div id="recommendations-filter" class="recommendations-filter-btn-group">
 										<div class="item recommendations-item web seo">
-											<div class="row">
+											<div class="row" *ngIf="review">
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
 													<ul>
 														<li>
@@ -253,10 +255,10 @@
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 				<form action="/private-client/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' /><br /> <img  src="/private-client/image/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
+					<input type="hidden" name='imageTitle' /><br /> <img  src="https://localhost:8443/images/uploads/profileImage{{loginService.user.id}}.jpg" alt="Profile Image"
 					/>
 					<p>
-						<label>Image file:</label><input [routerLink]="['/new/private-client/']" (change)="fileChange($event)" type="file" name="file" />
+						<label>Image file:</label><input [routerLink]="['/private-client/']" (change)="fileChange($event)" type="file" name="file" />
 					</p>
 				</form>
 				<br>
@@ -269,7 +271,7 @@
 					<h1>Change data</h1>
 
 					<form role="form" method='post' action="/private-client/modify">
-						<div class="form-group">
+						<div class="form-group" *ngIf ="user">
 							<label *ngIf="user">Account Name: {{user.name}}</label>
 						</div>
 

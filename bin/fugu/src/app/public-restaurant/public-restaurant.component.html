@@ -2,7 +2,7 @@
 	<div>
 		<div>
 			<div class="img-overlay">
-				<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
+				<img *ngIf="restaurant" style="width: 100%;" src="/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
 				<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center"
 				 data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
 					<span *ngIf="restaurant" class="highlight-texts"><span
@@ -27,7 +27,7 @@
 			<!-- Section Header End -->
 			<div class="col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float: left">
 				<div>
-					<img *ngIf="restaurant" src="src/assets/images/files/profileImageRestaurant1.jpg" />
+					<img *ngIf="restaurant" src="/assets/images/files/profileImageRestaurant1.jpg" />
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 customized-text wow fadeInDown black-ed">
@@ -107,7 +107,7 @@
 								<h3>Breakfast</h3>
 							</div>
 							<p>To start the day in the perfect way</p>
-							<img src="/src/assets/images/day-food/breakfast.jpg" alt="Custom Image">
+							<img src="/assets/images/day-food/breakfast.jpg" alt="Custom Image">
 						</div>
 					</div>
 					<div *ngIf="restaurant.lunch" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
@@ -116,7 +116,7 @@
 								<h3>Lunch</h3>
 							</div>
 							<p>Take strength for the rest of the day</p>
-							<img src="/src/assets/images/day-food/lunch.jpg" alt="Custom Image">
+							<img src="/assets/images/day-food/lunch.jpg" alt="Custom Image">
 						</div>
 					</div>
 					<div *ngIf="restaurant.dinner" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
@@ -125,7 +125,7 @@
 								<h3>Dinner</h3>
 							</div>
 							<p>End the day with your favourite meal</p>
-							<img src="/src/assets/images/day-food/dinner.jpg" alt="Custom Image">
+							<img src="/assets/images/day-food/dinner.jpg" alt="Custom Image">
 						</div>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="src/assets/images/files/menuImageRestaurant{{restaurant.id}}{{i+1}}.jpg" />
+									<img src="/assets/images/files/menuImageRestaurant{{restaurant.id}}{{i+1}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -219,12 +219,12 @@
 		<div *ngIf="restaurant" class="portfolio-items">
 			<!-- Portfolio Items -->
 			<div style="float:left;" class="item portfolio-item bur imgbor">
-				<img src="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png" alt="">
+				<img src="/assets/images/img-portfolio/{{restaurant.foodType}}1.png" alt="">
 				<div class="portfolio-details-wrapper">
 					<div class="portfolio-details">
 						<div class="portfolio-meta-btn">
 							<ul class="work-meta">
-								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+								<li class="lighbox"><a href="/assets/images/img-portfolio/{{restaurant.foodType}}1.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -238,7 +238,7 @@
 					<div class="portfolio-details">
 						<div class="portfolio-meta-btn">
 							<ul class="work-meta">
-								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+								<li class="lighbox"><a href="/assets/images/img-portfolio/{{restaurant.foodType}}2.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -252,7 +252,7 @@
 					<div class="portfolio-details">
 						<div class="portfolio-meta-btn">
 							<ul class="work-meta">
-								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}3.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+								<li class="lighbox"><a href="/assets/images/img-portfolio/{{restaurant.foodType}}3.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -266,7 +266,7 @@
 					<div class="portfolio-details">
 						<div class="portfolio-meta-btn">
 							<ul class="work-meta">
-								<li class="lighbox"><a href="/src/assets/images/img-portfolio/{{restaurant.foodType}}4.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
+								<li class="lighbox"><a href="/assets/images/img-portfolio/{{restaurant.foodType}}4.png" class="featured-work-img"><i class="fa fa-search-plus"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -305,7 +305,7 @@
 							</div>
 							<p>{{voucher.description}}</p>
 							<p>{{voucher.expiryDate}}</p>
-							<img src="src/assets/images/voucher1.jpg" alt="Custom Image"> <br>
+							<img src="/assets/images/voucher1.jpg" alt="Custom Image"> <br>
 							<br>
 						</div>
 					</div>

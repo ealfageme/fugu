@@ -1,7 +1,7 @@
 <section *ngIf="restaurant" class="slider-pro slider" id="slider">
 	<div class="sp-slides">
 		<div class="img-overlay">
-			<img *ngIf="restaurant" style="width: 100%;" src="/src/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
+			<img *ngIf="restaurant" style="width: 100%;" src="/assets/images/restaurant-type/{{restaurant.foodType}}.jpg" />
 			<h1 style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -750%); " class="imagetext1" data-position="center"
 			 data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
 				<span *ngIf="restaurant" class="highlight-texts">
@@ -40,7 +40,7 @@
 
 								<div *ngFor="let booking of bookingsInProcess; let i = index" [attr.data-index]="i">
 
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="booking">
 
 										<div id="{{i}}" class="item recommendations-item web seo">
 											<div class="row">
@@ -59,7 +59,6 @@
 												</div>
 												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 													<br>
-													<button type="button" class="btnMore">Contact</button>
 													<div class="hiddenclass">
 														<form role="form" method="post" action="/accept-reservation/">
 															<div>
@@ -105,7 +104,7 @@
 
 								<div *ngFor="let booking of bookingsAccepted; let i = index" [attr.data-index]="i">
 
-									<div id="recommendations-filter" class="recommendations-filter-btn-group">
+									<div id="recommendations-filter" class="recommendations-filter-btn-group" *ngIf="booking">
 
 										<div id="{{i}}" class="item recommendations-item web seo">
 											<div class="row">
@@ -143,45 +142,7 @@
 	</div>
 </section>
 
-<section *ngIf="loginService.isLogged" id="current-deals" class="section-wrapper">
-	<br> <br> <br>
-	<div class="container">
-		<div class="row">
 
-			<!-- Section Header -->
-			<div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-				<h2>
-					<span class="highlight-text">Current deals</span>
-				</h2>
-
-				<p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you can manage the vouchers you're offering</p>
-			</div>
-			<!-- Section Header End -->
-
-			<div class="our-offers">
-
-
-				<div class="row">
-
-					<div *ngFor="let voucher of vouchers" class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12 text-xs-center wow fadeInDown"
-					 data-wow-delay=".2s">
-						<div class="service-box">
-							<div class="icon">
-								<h3>{{voucher.name}}</h3>
-							</div>
-							<p>{{voucher.description}}</p>
-							<p>{{voucher.expiryDate}}</p>
-							<img src="src/assets/images/voucher1.jpg" alt="Custom Image"> <br>
-							<br>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-</section>
 <section *ngIf="restaurant" class="menus style3" id="clients">
 	<app-voucher  [foodType]='restaurant.foodType'></app-voucher>
 
@@ -232,7 +193,7 @@
 						<div class="menu-column">
 							<div class="food">
 								<div class="food-desc">
-									<img src="src/assets/images/files/menuImageRestaurant1{{i+1}}.jpg" />
+									<img src="https://localhost:8443/images/uploads/menuImageRestaurant{{restaurant.id}}{{menu.id}}.jpg" />
 									<h6 class="food-name">{{menu.dish}}</h6>
 									<div class="dots"></div>
 									<div class="food-price">
@@ -266,23 +227,16 @@
 <section *ngIf="restaurant" class="menus style3" id="menu">
 	<div class="container">
 		<div class="row">
-			<!-- Section Header -->
-			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-				<form action="/src/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' value="hola" /><br /> <img src="src/assets/images/files/profileImageRestaurant1.jpg"
-					/>
-					<p>
-						<label>Image file:</label><input type="file" name="file" />
-					</p>
-					<input type='submit' name='enviar' value='Change menu image' /> 
-				</form>
+			<div	class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 			</div>
-			<br> <br> <br>
+				<br> <br> <br>
+				<!-- Section Header End -->
+			<!-- Section Header -->
 			<!-- Section Header End -->
-			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+			<div id="profileForm" class="col-l-7 col-md-6 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+				<div *ngIf="restaurant" id="formCol" class="col-l-12 col-md-6 col-sm-7 col-xs-12">
 					<h1>Add new dish to menu</h1>
-					<form role="form" method="post" action="/private-restaurant/menu">
+					<form action="/assets/private-restaurant/menu/image/upload" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label >Dish Name:</label> <input  [(ngModel)]="nameDish" [ngModelOptions]="{standalone: true}"   style="border-radius: 0px !important" type="text" class="form-control"
 							 id="imageTitle">
@@ -297,17 +251,21 @@
 							<textarea [(ngModel)]="descriptionDish" [ngModelOptions]="{standalone: true}" style="border-radius: 0px !important" class="form-control" id="exampleTextarea" name='menudescription' rows="3"
 							 placeholder="Description"></textarea>
 						</div>
+						<p>
+						<label>Image file:</label><input (change)="menuFileChange($event)" type="file" name="file" />
+						</p>
 
-						<div class="col-md-3 col-md-offset-10">
-							<button (click)="createMenu()"type="submit" class="btnMore" value='Create'>Create Menu </button>
+						<div>
+							<button (click)="createMenu()" class="btnMore" value='Create'>Create Menu </button>
 						</div>
 					</form>
 				</div> 
 
 				<!-- /row -->
 			</div>
+			</div>
 		</div>
-	</div>
+
 	<!-- /row -->
 
 
@@ -333,7 +291,7 @@
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div *ngFor="let review of reviews" id="recommendations-filter" class="recommendations-filter-btn-group" style="margin-bottom:15px;">
 									<div class="item recommendations-item web seo">
-										<div class="row">
+										<div class="row" *ngIf="review">
 											<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="border-right-style: solid;">
 												<ul>
 													<li>
@@ -369,9 +327,8 @@
 		<div class="row">
 			<!-- Section Header -->
 			<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-				<!--	<span class="highlight-text">{{restaurant.name}}</span> -->
 				<form action="/private-restaurant/image/upload" method="post" enctype="multipart/form-data">
-					<input type="hidden" name='imageTitle' /><br /> <img src="/private-client/image/profileImageRestaurant{{loginService.user.id}}.jpg" />
+					<input type="hidden" name='imageTitle' /><br /> <img src="https://localhost:8443/images/uploads/profileImageRestaurant{{loginService.user.id}}.jpg" />
 					<p>
 						<label>Image file:</label><input (change)="fileChange($event)" type="file" name="file" />
 					</p>
@@ -380,7 +337,7 @@
 
 			</div>
 			<!-- Section Header End -->
-			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+			<div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed" *ngIf="restaurant">
 				<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 					<h1>Change data</h1>
 					<form role="form" method='post' action="/private-restaurant/modify">

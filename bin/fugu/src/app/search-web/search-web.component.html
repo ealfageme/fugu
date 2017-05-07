@@ -7,7 +7,7 @@
 				width: 100%;
 				overflow: hidden;
 				background: #000;float:left;">
-      <source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
+      <source src="/assets/backgroundvideo.mp4" type="video/mp4">
     </video>
     <div style="position: relative;float: left;top: 50%;left: 50%;transform: translate(-50%, -200%); " class="imagetext1" id="search">
       <div class="row">
@@ -143,7 +143,7 @@
           <div class="col-md-12 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
             <div class="menu-column">
 
-              <button *ngFor="let restaurant of restaurants" [routerLink]="['/new/public-restaurant/'+restaurant.name]" class="food">
+              <button *ngFor="let restaurant of restaurants" [routerLink]="['/public-restaurant/'+restaurant.name]" class="food">
 
 									<div class="food-desc">
 										<h3 class="food-name">
@@ -152,7 +152,7 @@
 										<br>
 										<div class="row">
 											<div class="col-md-4 col-xs-9">
-												<img src="/src/assets/images/search-page/search{{restaurant.foodType}}.jpg" />
+												<img src="/assets/images/search-page/search{{restaurant.foodType}}.jpg" />
 											</div>
 											<div class="col-md-6 col-xs-9">
 												<br>
@@ -177,7 +177,7 @@
 									<!-- /food-desc -->
 									<div class="food-details">
 										<span><span class="glyphicon glyphicon-map-marker"></span>
-											 {{restaurant.address}} - Madrid</span><span><span
+											 {{restaurant.address}}</span><span><span
 											class="glyphicon glyphicon-phone"> </span>{{restaurant.phone}}</span>
 									</div>
 									<!-- /food-details -->
@@ -233,12 +233,16 @@
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<div id="success"></div>
-								<button (click)="sendFuguFeedbackOut()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
-						</div>
+              <a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + username + ' ' + email2 ">
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+              </a>
+            </div>
 						<div *ngIf="loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<div id="success"></div>
-								<button (click)="sendFuguFeedback()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
-						</div>
+              <a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + loginService.user.name">
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+              </a>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -323,7 +327,7 @@
               <br> <label for="name">Password (6 characters
 									min.):</label> <input name="password" id="password_restaurant" type="password" class="form-control formmargin" placeholder="Password"
                 required> <input type="password" name="confirm_password" id="confirm_password_restaurant" class="form-control formmargin"
-                placeholder="Confirm password" required> <br> <img src="/src/assets/images/restaurant.png">
+                placeholder="Confirm password" required> <br> <img src="/assets/images/restaurant.png">
               <span id='message_restaurant'></span>
               <p class="formmargin">Upload a profile picture</p>
               <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
@@ -379,7 +383,7 @@
                 placeholder="Confirm password" id="confirm_password_client"> <br>
             </div>
 
-            <img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+            <img src="/assets/images/profile.png"> <span id="message_client"></span>
             <p class="formmargin">Upload a profile picture</p>
             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
             <button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
@@ -430,7 +434,7 @@
               placeholder="Confirm password" id="confirm_password_client"> <br>
           </div>
 
-          <img src="/src/assets/images/profile.png"> <span id="message_client"></span>
+          <img src="/assets/images/profile.png"> <span id="message_client"></span>
           <button type='submit' class="logInBtn" id='senduser' disabled>Send</button>
           <span id='message_user_button'>Fill the form before
 								register</span>
@@ -492,7 +496,7 @@
 									min.):</label> <input name="restaurantpassword" id="password_restaurant" type="password" class="form-control formmargin"
               placeholder="Password" required>
             <input type="password" name="confirm_password" id="confirm_password_restaurant" class="form-control formmargin" placeholder="Confirm password"
-              required> <br> <img src="/src/assets/images/restaurant.png">
+              required> <br> <img src="/assets/images/restaurant.png">
             <span id='message_restaurant'></span>
             <!-- logInBtn btnMore -->
             <button type="submit" class="logInBtn" id='sendrestaurant'>Send</button>

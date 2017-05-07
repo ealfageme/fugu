@@ -18,18 +18,20 @@ export class PublicRestaurantComponent implements OnInit {
   prevRestaurant = false;
   facebookSession: boolean;
   restaurant: string;
-  private restaurantname: string;
+  restaurantname: string;
   email: string;
   password: string;
   number = 0;
-  private menus: string[] = [];
-  private vouchers: string[] = [];
-  private reviews: string[] = [];
-  private bookings: string[] = [];
-  private rate = 1;
-  private content: String = 'Please enter your message';
+  menus: string[] = [];
+  vouchers: string[] = [];
+  reviews: string[] = [];
+  bookings: string[] = [];
+  rate = 1;
+  content: String = 'Please enter your message';
+  loginService: LoginService;
 
-  constructor(private http: Http, activatedRoute: ActivatedRoute, private loginService: LoginService)  {
+  constructor(private http: Http, activatedRoute: ActivatedRoute, loginServiceaux: LoginService)  {
+    this.loginService = loginServiceaux;
     this.restaurantname = activatedRoute.snapshot.params['name'];
     this.favButton = true;
     this.seeMorebtn = true;

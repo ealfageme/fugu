@@ -12,14 +12,17 @@ export class BookingComponent implements OnInit {
   date: string = new Date().toString();
   newBooking: boolean;
   guests: string;
-  private restaurantName: string;
+  restaurantName: string;
   state: string;
   booking: Booking;
   oldDay = '13';
   oldHour = '12:00';
-  constructor(private _router: Router, activatedRoute: ActivatedRoute,
-    private service: BookingService, private loginService: LoginService) {
+  loginService: LoginService;
 
+  constructor(private _router: Router, activatedRoute: ActivatedRoute,
+    private service: BookingService, loginServiceaux: LoginService) {
+
+      this.loginService = loginServiceaux;
     const id = activatedRoute.snapshot.params['id'];
     this.restaurantName = activatedRoute.snapshot.params['name'];
     if (id) {
@@ -53,7 +56,7 @@ export class BookingComponent implements OnInit {
     );
   }
   selectDay(newDay) {
-    document.getElementById(this.oldDay + "class").className = "";
+    document.getElementById(this.oldDay + 'class').className = '';
     console.log(newDay);
     document.getElementById(newDay + "class").className = "active active-date";
     this.oldDay = newDay;

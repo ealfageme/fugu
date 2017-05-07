@@ -9,7 +9,7 @@
 					<!-- Section Header -->
 					<div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
 						<h2><span class="highlight-text">{{user.name}}<img
-							src="src/assets/images/files/profileImage{{user.id}}.jpg"  class="img-circle" alt="Custom Image"/></span></h2>
+							src="/assets/images/files/profileImage{{user.id}}.jpg"  class="img-circle" alt="Custom Image"/></span></h2>
 
 					</div>
 					<!-- Section Header End -->
@@ -73,10 +73,10 @@
 							<h2>Restaurants</h2>
 							<div *ngFor="let restaurant of restaurants">
 								<div class="menu-column">
-									<button [routerLink]="['/new/public-restaurant/'+restaurant.name]" class="food">
+									<button [routerLink]="['/public-restaurant/'+restaurant.name]" class="food">
 									<div class="food-desc">
 										<h6 class="food-name">
-											<img src="/src/assets/images/restaurant-type/{{restaurant.name}}.jpg" class="img-circle"
+											<img src="/private-client/image/profileImageRestaurant{{restaurant.id}}.jpg" class="img-circle"
 												id="imgPerfil">{{restaurant.name}}
 										</h6>
 									</div>
@@ -90,10 +90,10 @@
 							<h2>People</h2>
 							<div *ngFor="let follow of following">
 								<div class="menu-column">
-									<button [routerLink]="['/new/public-client/'+follow.name]" class="food">
+									<button [routerLink]="['/public-client/'+follow.name]" class="food">
 										<div class="food-desc">
 											<h6 class="food-name">
-												<img src="/src/assets/images/clients/{{follow.name}}.jpg"
+												<img src="/private-client/image/profileImage{{follow.id}}.jpg"
 													class="img-circle" id="imgPerfil">{{follow.name}}
 											</h6>
 										</div>

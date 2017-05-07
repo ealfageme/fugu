@@ -10,8 +10,10 @@ import { LoginService } from './../services/login.service';
 export class SearchWebComponent implements OnInit {
   inSession: boolean;
   facebookSession: boolean;
-  private restaurants: string[] = [];
+  email2: string;
+  body: string;
   email: string;
+  restaurants: string[] = [];
   password: string;
   maxPrice = 25;
   minPrice = 1;
@@ -20,9 +22,11 @@ export class SearchWebComponent implements OnInit {
   city: String;
   typefood: String;
   nameRestaurant = '';
+  loginService: LoginService;
 
 
-  constructor(private http: Http, private loginService: LoginService) {
+  constructor(private http: Http, loginServiceaux: LoginService) {
+    this.loginService = loginServiceaux;
     this.inSession = false;
     //dates as default
     this.city = "Madrid";

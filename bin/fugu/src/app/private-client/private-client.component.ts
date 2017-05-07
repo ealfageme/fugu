@@ -24,23 +24,25 @@ interface User {
 export class PrivateClientComponent implements OnInit {
 
     client: User;
-    private city: string;
-    private inNormalSession: boolean;
-    private inFacebookSession: boolean;
-    private inSession: boolean;
-    private followButton: boolean;
-    private unfollowButton: boolean;
-    private restaurants: string[] = [];
-    private following: string[] = [];
-    private reviews: string[] = [];
-    private vouchers: string[] = [];
-    private bookingsInProcess: string[] = [];
-    private bookingsAccepted: string[] = [];
-    private user: string;
+    city: string;
+    inNormalSession: boolean;
+    inFacebookSession: boolean;
+    inSession: boolean;
+    followButton: boolean;
+    unfollowButton: boolean;
+    restaurants: string[] = [];
+    following: string[] = [];
+    reviews: string[] = [];
+    vouchers: string[] = [];
+    bookingsInProcess: string[] = [];
+    bookingsAccepted: string[] = [];
+    user: string;
     params: any;
+    loginService: LoginService;
 
 
-    constructor(private http: Http, private loginService: LoginService, private router: Router) {
+    constructor(private http: Http, private router: Router, loginServiceaux: LoginService) {
+        this.loginService = loginServiceaux;
         this.inSession = false;
         this.followButton = false;
         this.unfollowButton = true;
@@ -61,8 +63,12 @@ export class PrivateClientComponent implements OnInit {
                 for (let i = 0; i < data.length; i++) {
                     const book = data[i];
                     if (book.state === 'In process') {
+                        console.log("la reserva en proceso es");
+                        console.log(book);
                         this.bookingsInProcess.push(book);
                     } else {
+                        console.log("la reserva es");
+                        console.log(book);
                         this.bookingsAccepted.push(book);
                     }
                 }
@@ -155,7 +161,7 @@ export class PrivateClientComponent implements OnInit {
                 .subscribe(
                 data => {
                     console.log(data);
-                    this.router.navigate(['/new/private-client/refresh']);
+                    this.router.navigate(['/private-client/refresh']);
                 },
                 error => console.log(error)
                 );

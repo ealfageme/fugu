@@ -2,26 +2,26 @@
 <html lang="en">
 
 <head>
-      <link rel="shortcut icon" href="images/logo/logo.ico">
+      <link rel="shortcut icon" href="/images/logo/logo.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Businnes, Portfolio, Corporate">
     <meta name="Author" content="WebThemez">
-    <title>Madrid</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="elegant_font/style.css" />
+    <title>{{city.name}}</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/elegant_font/style.css" />
     <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slider-pro.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="elegant_font/style.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/slider-pro.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.theme.css">
+    <link rel="stylesheet" href="/css/owl.transitions.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/elegant_font/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,14 +31,23 @@
     <header>
         <nav id="topNav" class="navbar navbar-default main-menu">
             <div class="container">
-                <a href="main.html">
-                    <img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2">
+                <a href="/main/">
+                    <img class="logo2" id="logo2" src="/images/logo/logo2.png" alt="logo2">
                 </a>
                 <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
                 <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
                     <ul class="nav navbar-nav">
                         <li> <a href="#types">RESTAURANT TYPES</a> </li>
                         <li> <a href="#featured">FEATURED RESTAURANTS</a> </li>
+                        <li class="signin">{{#inSession}}									
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+							</form> 
+							<form class="navbar-form navbar-right" method="get"
+								action="/default/">
+								<button class="signInBtn">Visit profile</button>
+							</form> {{/inSession}}
+							</li>
                     </ul>
                 </div>
             </div>
@@ -53,10 +62,10 @@
         <!-- Slides -->
         <div class="image section-header">
 
-            <img src="images/cities/granvia.jpg" alt="Slider 1" />
+            <img src="/images/cities/city-{{city.name}}.jpg" alt="Slider 1" />
 
             <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
-                <span class="highlight-texts"><span class="section-color2 highlight-text border2">MADRID</span>
+                <span class="highlight-texts"><span class="section-color2 highlight-text border2">{{city.name}}</span>
                 </span></h2>
         </div>
         <!-- Slides End -->
@@ -67,60 +76,57 @@
         <div class="container">
             <div class="row">
                 <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "> <a href="city.html"><h2><span class="highlight-text">Featured types of restaurant in Madrid</span></h2></a> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow "><h2><span class="highlight-text">Featured types of restaurant in {{city.name}}</span></h2></div>
                 <!-- Section Header End -->
                 <div class="our-services">
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
-                                    <h1 class="display-4 border">Tapas</h1><img src="images/restaurant-type/tapas.jpg" alt="Custom Image"> </a>
+                                <a href="/search-web/?foodType=Tapas&city={{city.name}}">
+                                    <h1 class="display-4 border">Tapas</h1><img src="/images/restaurant-type/tapas.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
-                                    <h1 class="display-4 border">Galician</h1><img src="images/restaurant-type/galician.jpg" alt="Custom Image"> </a>
+                                <a href="/search-web/?foodType=Galician&city={{city.name}}">
+                                    <h1 class="display-4 border">Galician</h1><img src="/images/restaurant-type/galician.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
                                 <div class="icon"> </div>
-                                <a href="city.html">
-                                    <h1 class="display-4 border">Italian</h1><img src="images/restaurant-type/italian.jpg" alt="Custom Image"> </a>
+                                <a href="/search-web/?foodType=Italian&city={{city.name}}">
+                                    <h1 class="display-4 border">Italian</h1><img src="/images/restaurant-type/italian.jpg" alt="Custom Image"> </a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Japanese</h1> <img src="images/restaurant-type/japanese.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=Japanese&city={{city.name}}"><h1 class="display-4 border">Japanese</h1> <img src="/images/restaurant-type/japanese.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Chinese</h1> <img src="images/restaurant-type/chinese.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=Chinese&city={{city.name}}"><h1 class="display-4 border">Chinese</h1> <img src="/images/restaurant-type/chinese.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Mexican</h1> <img src="images/restaurant-type/mexican.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=Mexican&city={{city.name}}"><h1 class="display-4 border">Mexican</h1> <img src="/images/restaurant-type/mexican.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">American</h1> <img src="images/restaurant-type/american.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=American&city={{city.name}}"><h1 class="display-4 border">American</h1> <img src="/images/restaurant-type/american.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Indian</h1> <img src="images/restaurant-type/indian.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=Indian&city={{city.name}}"><h1 class="display-4 border">Indian</h1> <img src="/images/restaurant-type/indian.jpg" alt="Custom Image"> </a> </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
                             <div class="service-box">
-                                <div class="icon"> </div> <a href="city.html"><h1 class="display-4 border">Thai</h1> <img src="images/restaurant-type/thai.jpg" alt="Custom Image"> </a> </div>
+                                <div class="icon"> </div> <a href="/search-web/?foodType=Thai&city={{city.name}}"><h1 class="display-4 border">Thai</h1> <img src="/images/restaurant-type/thai.jpg" alt="Custom Image"> </a> </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 col-md-offset-5 morediv">
-                <button type="submit" class="btnMore">SEE ALL</button>
             </div>
         </div>
     </section>
@@ -135,161 +141,28 @@
                 <div class="menus-container">
                     <!-- menu -->
                     <div class="menu row rowmar">
+                    {{#restaurants}}
                         <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
                             <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
+                                <button onClick=" window.location.href='/public-restaurant/{{name}}'" class="food">
                                     <div class="food-desc">
-                                        <h6 class="food-name">Fugu Fish & Chips</h6>
+                                        <h6 class="food-name">{{name}} ({{foodType}})</h6>
                                         <br>
                                         <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
                                         <div class="dots"></div>
-                                        <div class="food-price"> <span>8.7/10</span> </div>
+                                        <div class="food-price"> <span>{{rate}}</span> </div>
                                         <!-- /food-price -->
                                     </div>
                                     <!-- /food-desc -->
-                                    <div class="food-details"> <span>Madrid</span> </div>
+                                    <div class="food-details"> <span>{{address}}</span> </div>
                                     <!-- /food-details -->
                                 </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Golden Chippy</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.5/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Barcelona</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">The Five Fields</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Madrid</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Gastronhome</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.5/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Valencia</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">TortelliniCup </h6>
-
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.2/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Zamora</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
+                                
                             </div>
                             <!-- /menu-column -->
                         </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="menu-column">
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Marianne Buffet</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.7/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Cáceres</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Seven Park Place</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>8.4/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Malaga</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Medlar</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.9/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Vigo</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Le Gavroche</h6>
-                                        <br>
-                                        <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                        <div class="dots"></div>
-                                        <div class="food-price"> <span>7.3/10</span> </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details"> <span>Santander</span> </div>
-                                    <!-- /food-details -->
-                                </button>
-                                <!-- /food -->
-                                <div class="item portfolio-item web seo">
-                                    <button onClick=" window.location.href='public-restaurant.html'" class="food">
-                                        <div class="food-desc">
-                                            <h4 class="food-name">Gauthier Soho </h4>
-                                            <br>
-                                            <div class="food-price"> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> <span class="glyphicon glyphicon-star-empty"></span> </div>
-                                            <div class="dots"></div>
-                                            <div class="food-price"> <span>7.2/10</span> </div>
-                                            <!-- /food-price -->
-                                        </div>
-                                        <!-- /food-desc -->
-                                        <div class="food-details"> <span>Burgos </span> </div>
-                                        <!-- /food-details -->
-                                    </button>
-                                </div>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
+                        {{/restaurants}}
+                        
                     </div>
                     <!-- /row -->
                 </div>
@@ -305,7 +178,7 @@
     <section class="footer-container">
         <div class="container">
             <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="images/logo/logo.png" alt=""> </div>
+                <div class="col-md-4"> <img src="/images/logo/logo.png" alt=""> </div>
                 <div class="col-md-4">
                     <h4>Fugu</h4>
                     <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
@@ -350,26 +223,26 @@
         </div>
     </footer>
     <!-- Footer End -->
-<script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.easypiechart.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.fitvids.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.sliderPro.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="contact/jqBootstrapValidation.js"></script>
-    <script src="contact/contact_me.js"></script>
-    <script src="js/custom.js"></script>
+<script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <!--  <script src="/contact/jqBootstrapValidation.js"></script>
+    <script src="/contact/contact_me.js"></script> -->
+    <script src="/js/custom.js"></script>
 
 </body>
 

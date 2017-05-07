@@ -2,988 +2,753 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="images/logo/logo.ico">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Businnes, Portfolio, Corporate">
-    <meta name="Author" content="WebThemez">
-    <title>{{nameRestaurant}}</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="elegant_font/style.css" />
-    <!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slider-pro.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="elegant_font/style.css">
-    <link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="/images/logo/logo.ico">
 
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-        <script type="text/javascript" src="js/selectivizr.js"></script>
-    <![endif]-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Businnes, Portfolio, Corporate">
+<meta name="Author" content="WebThemez">
+<title>{{restaurant.name}}</title>
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="/elegant_font/style.css" />
+<!--[if lte IE 7]><script src="elegant_font/lte-ie7.js"></script><![endif]-->
+<link rel="stylesheet" href="/css/magnific-popup.css">
+<link rel="stylesheet" href="/css/slider-pro.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+<link rel="stylesheet" href="/css/owl.transitions.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/elegant_font/style.css">
+<link rel="stylesheet" href="/css/style.css">
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-        <!-- Navigation Menu start-->
-        <!-- Navigation Menu start-->
-        <nav id="topNav" class="navbar navbar-default main-menu">
-            <div class="container">
-                <a href="main.html"><img class="logo2" id="logo2" src="images/logo/logo2.png" alt="logo2"></a>
-                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar"> ☰ </button>
-                <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
-                    <ul class="nav navbar-nav">
-                        <li> <a href="#profile">{{nameRestaurant}}</a> </li>
-                        <li> <a href="#reservations">RESERVATIONS</a> </li>
-                        <li> <a href="#current-deals">CURRENT DEALS</a> </li>
-                        <li> <a href="#menu-card">MENU CARD</a> </li>
-                        <li> <a href="#chefs">CHEFS</a> </li>
-                        <li> <a href="#feedback">FEEDBACK</a> </li>
-                        <li> <a href="#clients">CLIENTS</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+	<header>
+		<!-- Navigation Menu start-->
+		<nav id="topNav" class="navbar navbar-default main-menu">
+			<div class="container">
+				<a href="/main/"><img class="logo2" id="logo2"
+					src="/images/logo/logo2.png" alt="logo2"></a>
+				<button class="navbar-toggler hidden-md-up pull-right" type="button"
+					data-toggle="collapse" data-target="#collapsingNavbar">☰</button>
+				<div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+					<ul class="nav navbar-nav">
+
+						<li><a href="#reservations">RESERVATIONS</a></li>
+						<li><a href="#current-deals">CURRENT DEALS</a></li>
+						<li><a href="#menu">MENU CARD</a></li>
+						<li><a href="#voucher">VOUCHERS</a></li>
+						<li><a href="#feedback">FEEDBACK</a></li>
+						<li><a href="#clients">CLIENTS</a></li>
+						<li><a href="#profile">{{restaurant.name}}</a></li>
+						<li class="signin">
+							<form class="navbar-form navbar-right" method="post" action="/main2/">
+								<input type="submit" class="signInBtn" value="SignOut" /> 
+							</form> 
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
 
 
-    <section>
-        <!-- Slides -->
-        <div class="image section-header">
+	<section class="slider-pro slider" id="slider">
+		<div class="sp-slides">
+			<div class="sp-slide main-slides">
+				<div class="img-overlay"></div>
+				<img class="sp-image" style="background-color:#FFFFFF;"
+					src="/images/restaurant-type/{{restaurant.foodType}}.jpg"
+					alt="Slider 1" />
+				<h1 class="imagetext1" data-position="center"
+					data-show-transition="left" data-hide-transition="right"
+					data-show-delay="1500" data-hide-delay="200">
+					<span class="highlight-texts"><span
+						class="section-color2 highlight-text border2">Welcome to {{restaurant.foodType}}</span> </span>
+				</h1>
+			</div>
+		</div>
+	</section>
 
-            <img src="images/santo-restaurant/santo-restaurant.jpg" alt="Slider 1" />
+	<!-- Main Slider End -->
+	<section id="reservations"
+		class="about-sec section-wrapper description">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Reservations</span>
+					</h2>
+				</div>
 
-            <h2 class="imagetext1" data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
-                <span class="highlight-texts"><span class="section-color2 highlight-text border2">Welcome to your profile,{{nameRestaurant}}</span>
-                </span>
-                </h2>
-        </div>
-        <!-- Slides End -->
-    </section>
-    <section id="profile" class="profile-sec section-wrapper description">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">{{nameRestaurant}}<img src="images/santo-restaurant/restaurant-sign.jpg" class="img-thumbnail" alt="Custom Image"></span></h2>
-                    <p>Gourmet Food restaurant</p>
-                    <br>
-                    <spam id="button">
-                        <button type="submit" class="btnMore" id="changeImg">Change profile image</button>
-                    </spam>
-                </div>
-                <!-- Section Header End -->
-                <div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-                    <div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-                        <h1>Change data</h1>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Restaurant Name:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{nameRestaurant}}>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Location:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{locRestaurant}}>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Description:</label>
-                                <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3">{{desRestaurant}}</textarea>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Telephone:</label>
-                                <input style="border-radius:0px!important" type="name" class="form-control" id="name" value={{telRestaurant}}>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input style="border-radius:0px!important" type="email" class="form-control" id="email" value={{emailRestaurant}}>
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="pwd">New password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Enter new password">
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="pwd">Repeat new password</label>
-                                <input style="border-radius:0px!important" type="password" class="form-control" id="pwd" placeholder="Repeat new password">
-                            </div>
-                        </form>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="exampleInputFile">Add pictures of the restaurant</label>
-                                <input style="border-radius:0px!important" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                            </div>
-                        </form>
-                        <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-                            <button type="button" class="btnMore" id="update">Update</button>
-                            <button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModal2" id="update">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Main Slider End -->
-    <section id="reservations" class="about-sec section-wrapper description">
-        <div class="container">
-            <div class="row">
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Reservations</span></h2> </div>
-                <!-- Section Header End -->
-                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
-                    <div class="month">
-                        <ul>
-                            <li class="prev">&#10094;</li>
-                            <li class="next">&#10095;</li>
-                            <li style="text-align: center;"> August
-                                <br> <span style="font-size:18px">2016</span> </li>
-                        </ul>
-                    </div>
-                    <ul class="weekdays">
-                        <li>Mo</li>
-                        <li>Tu</li>
-                        <li>We</li>
-                        <li>Th</li>
-                        <li>Fr</li>
-                        <li>Sa</li>
-                        <li>Su</li>
-                    </ul>
-                    <ul class="days">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li><span class="active active-date">10</span></li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                    </ul>
-                </div>
-                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 custom-sec-img wow fadeInDown" style="float:left">
-                    <div class="month" style="padding: 10px 10px !important">
-                        <ul>
-                            <li style="text-align: center;"> 10th August
-                                <br> <span style="font-size:18px">2016</span> </li>
-                            <li style="text-align: center;">Choose the date</li>
-                        </ul>
-                    </div>
-                    <ul class="days">
-                        <li><span class="active active-date">12:00</span></li>
-                        <li>12:30</li>
-                        <li><span class="active active-date">13:00</span></li>
-                        <li><span class="active active-date">13:30</span></li>
-                        <li>14:00</li>
-                        <li><span class="active active-date">14:30</span></li>
-                        <li>15:00</li>
-                        <li><span class="active active-date">15:30</span></li>
-                    </ul>
-                    <ul class="days">
-                        <li><span class="active active-date">20:00</span></li>
-                        <li>20:30</li>
-                        <li><span class="active active-date">21:00</span></li>
-                        <li><span class="active active-date">21:30</span></li>
-                        <li>22:00</li>
-                        <li><span class="active active-date">22:30</span></li>
-                    </ul>
-                    <br>
-                    <label for="name">How many people is coming?</label>
-                    <select name="guests">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
-                    <label for="name">Tables booked</label>
-                    <select name="guests">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
-                    <button type="button" class="  btn btn-primary bookingbtn">Book <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
-                    <form role="form">
-                        <label for="name">Available tables: 45</label>
-                        <div class="form-group">
-                            <label for="name">Any special requeriment? Tell us.</label>
-                            <textarea class="form-control" id="exampleTextarea" rows="2" placeholder=></textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="parallax-overlay"></div>
-        <div class="ratings-wrapper wow bounceIn">
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <!-- Works -->
-                        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <!-- Filter Button Start -->
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Pepe</h1></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <br>
-                                                    <button type="button" class="btnMore">Contact</button>
-                                                    <span class="hiddenclass"> <button type="button" class="btnMore">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Pedro</h1></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <br>
-                                                    <button type="button" class="btnMore">Contact</button>
-                                                   <span class="hiddenclass"> <button type="button" class="btnMore">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">María</h1></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <br>
-                                                    <button type="button" class="btnMore">Contact</button>
-                                                    <span class="hiddenclass"> <button type="button" class="btnMore">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Laura</h1></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-8 col-lg-8" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <br>
-                                                    <button type="button" class="btnMore">Contact</button>
-                                                    <span class="hiddenclass">
-                                                        <button type="button" class="btnMore">Accept <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br> </div>
-                                <button type="button" class="btnMore">See more</button>
-                            </div>
-                            <br>
-                            <!-- Slides End -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+			</div>
+		</div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">In Process</h1>
 
-    <section id="current-deals" class="section-wrapper">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
+									<!-- Filter Button Start -->
+									{{#bookingsInProcess}}
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
 
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Current deals</span></h2>
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{bookingUser.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{date}}</p>
+													<p style="margin: 5px;">{{number}} people coming</p>
+													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<br>
+													<button type="button" class="btnMore">Contact</button>
+													<div class="hiddenclass">
+														<form role="form" method="post" action="/accept-reservation/">
+															<div>
+																<input type="hidden" name="acceptPulsed"
+																	value="Accepted"> <input type="hidden"
+																	name="acceptPulsedID" value={{id}}>
+																<button type="input" class="btnMore"
+																	onClick="acceptReservation({{-index}})"
+																	id="{{-index}}-button">
+																	Accept <span class="glyphicon glyphicon-ok-circle"
+																		aria-hidden="true"></span>
+																</button>
+																
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
 
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here you can manage the vouchers you're offering</p>
-                </div>
-                <!-- Section Header End -->
+									</div>
+									<br> {{/bookingsInProcess}}
 
-                <div class="our-offers">
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-l-12 col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 class="shadow">Accepted</h1>
+
+									<!-- Filter Button Start -->
+									{{#bookingsAccepted}}
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+
+										<div id="{{-index}}" class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+													<ul>
+														<li>
+															<h1 class="shadow">{{bookingUser.name}}</h1>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-8 col-lg-8"
+													style="border-left-style: solid;">
+													<p style="margin: 5px;">Date: {{date}}</p>
+													<p style="margin: 5px;">{{number}} people coming</p>
+													<p style="margin: 5px;">{{specialRequirements}}</p>
+													<p style="margin: 5px;">{{state}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+
+									</div>
+									<br> {{/bookingsAccepted}}
+
+								</div>
+								<br>
+							</div>
+						</div>
+						<br>
+						<!-- Slides End -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="current-deals" class="section-wrapper">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Current deals</span>
+					</h2>
+
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Here
+						you can manage the vouchers you're offering</p>
+				</div>
+				<!-- Section Header End -->
+
+				<div class="our-offers">
 
 
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon">
-                                    <h3>2x1</h3>
-                                </div>
-                                <p>Enjoy 2 courses paying just one</p>
-                                <button onClick=" window.location.href='private-restaurant.html'" class="food">
-                                    <img src="images/voucher1.jpg" alt="Custom Image">
-                                </button>
-                                <br>
-                                <br>
-                                <button type="button" class="btnMore" style="margin-left:0!important;">Modify</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
-                            <div class="service-box">
-                                <div class="icon">
-                                    <h3>30% discount</h3>
-                                </div>
-                                <p>Recive the dicount bringing this voucher</p>
-                                <button onClick=" window.location.href='private-restaurant.html'" class="food">
-                                    <img src="images/voucher2.jpeg" alt="Custom Image">
-                                </button>
-                                <br>
-                                <br>
-                                <button type="button" class="btnMore" style="margin-left:0!important;">Modify</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5 col-md-offset-5 col-sm-5 col-xs-5">
-                    <button type="button" class="btnMore">New discount</button>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    <section id="menu-card" class="menus style3" id="menuCard">
-        <div class="container">
-            <div class="row">
+					<div class="row">
+						{{#vouchers}}
+						<div
+							class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-12 text-xs-center wow fadeInDown"
+							data-wow-delay=".2s">
+							<div class="service-box">
+								<div class="icon">
+									<h3>{{name}}</h3>
+								</div>
+								<p>{{description}}</p>
+								<p>{{expiryDate}}</p>
+								<button
+									onClick=" window.location.href='private-restaurant.html'"
+									class="food">
+									<img src="/images/voucher1.jpg" alt="Custom Image">
+								</button>
+								<br> <br>
+							</div>
+						</div>
+						{{/vouchers}}
+					</div>
 
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <h2><span class="highlight-text">Menu Card</span></h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="clients">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
 
-                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose the dish that best suits you</p>
-                </div>
-                <!-- Section Header End -->
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<h2>
+						<span class="highlight-text">Clients</span>
+					</h2>
+					<h3>Potential clients</h3>
+				</div>
+				<div class="search">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="form-section">
+									<div class="row">
+										<form role="form" method='post' action="/private-restaurant/voucher">
+											<div style="border-radius: 0px !important" class="col-md-3">
+												<div style="border-radius: 0px !important"
+													class="form-group">
+													<label style="border-radius: 0px !important"
+														class="sr-only" for="guest">Guest</label> <select
+														style="border-radius: 0px !important" id="guest"
+														name="guest" class="form-control">
+														<option value="foodType">{{restaurant.foodType}}</option>
+													</select>
+												</div>
+											</div>
+											
+											
+											<div class="form-group">
+												<div class="col-md-2">
+													<p>Age between :</p>
+												</div>
+												<div class="col-md-2">
+												
+													<div class="input-group">
+														
+														<span style="border-radius: 0px !important"
+															class="input-group-addon">&gt;</span> <input
+															style="border-radius: 0px !important" type="text"
+															class="form-control" name='min'
+															aria-label="Amount (to the nearest dollar)"
+															placeholder="0"> <span
+															style="border-radius: 0px !important"
+															class="input-group-addon"></span>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="input-group">
+														<span style="border-radius: 0px !important"
+															class="input-group-addon">&lt;</span> <input
+															style="border-radius: 0px !important" type="text"
+															class="form-control" name='max'
+															aria-label="Amount (to the nearest dollar)"
+															placeholder="99"> <span
+															style="border-radius: 0px !important"
+															class="input-group-addon"></span>
+													</div>
+												</div>
+												<label for="name"></label>
+												<div
+													class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+													<h3>Offer</h3>
+												</div>
+												<input type="text" class="form-control formmargin"
+													name='vouchername' placeholder="Voucher name">
+												<textarea style="border-radius: 0px !important"
+													class="form-control" id="exampleTextarea" rows="3"
+													placeholder="Enter a brief description of the offer"
+													name='voucherdescription'></textarea>
+											</div>
+											<div class="col-md-3">
+												<div class="paddingtop">
+													<div class="form-group">
+														<label class="sr-only" for="expiry">Guest</label> <select
+															id="expiry" name="expiry" class="form-control">
+															<option value="1">Expiry: 1 week</option>
+															<option value="2">Expiry: 2 weeks</option>
+															<option value="3">Expiry: 3 weeks</option>
+															<option value="4">Expiry: 1 month</option>
+															<option value="5">Expiry: 2 months</option>
+															<option value="6">Expiry: 3 month</option>
+															<option value="7">Expiry: 6 months</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-2  ">
+												<input style="border-radius: 0px !important" type="file"
+													class="form-control-file" id="exampleInputFi"
+													aria-describedby="fileHelp">
+											</div>
+											<div class="col-md-3 col-md-offset-10">
+												<input type="submit" class="btnMore"
+													value='Send group offer'>
+											</div>
+										</form>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Section Header End -->
+			</div>
+		</div>
 
-                <div class="menus-container">
-                    <!-- menu -->
-                    <div class="menu row">
-                        <div class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-                            <div class="menu-column">
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Black label burger</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>5.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with fries</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Wagyu burger</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>16.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with pure meat</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Missouri St. Louis</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>22.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with BBQ</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Kansas baby back</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>22.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with pepper</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Maui salad</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>15.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with chicken</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                        <div class="col-md-6 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-                            <div class="menu-column">
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">California salad</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>5.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with BBQ</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">“Roll & Rock"</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>16.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with cheese</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">"Caesar” Sandwich</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>22.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with bacon</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Chicken enchilada</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>22.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with tomato</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                                <div class="food">
-                                    <div class="food-desc">
-                                        <h6 class="food-name">Sonora steak tacos</h6>
-                                        <div class="dots"></div>
-                                        <div class="food-price">
-                                            <span>15.00</span>
-                                        </div>
-                                        <!-- /food-price -->
-                                    </div>
-                                    <!-- /food-desc -->
-                                    <div class="food-details">
-                                        <span>with BBQ</span>
-                                    </div>
-                                    <!-- /food-details -->
-                                </div>
-                                <!-- /food -->
-                            </div>
-                            <!-- /menu-column -->
-                        </div>
-                        <!-- /col-md-6 -->
-                    </div>
-                    <!-- /row -->
-                </div>
-                <div class="col-md-1 col-md-offset-5 col-sm-4 col-xs-12"></div>
-                <button type="button" class="btnMore">Modify</button>
-            </div>
-            <!-- /menu-carousel -->
-        </div>
-        <!-- /menus-container -->
-        <!-- /container -->
-    </section>
-    <section id="chefs" class="bgSection teams-section">
-        <div class="parallax-overlay"></div>
-        <div class="teams-wrapper wow bounceIn">
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <h2><span class="highlight-text-inverted">Chefs</span></h2>
-                        <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Because the quality is the most immportant thing for us, we have the best professionals in our team.</p>
-                    </div>
-                    <!-- teams Slider -->
-                    <div id="teams" class="owl-carousel teams">
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef1.png" alt="">
-                            <p class="client-info">Chris Willam</p>
-                            <p>American chef</p>
-                            <div class="center-block"></div>
-                            <button type="button" class="btnMore">Update</button>
-                        </div>
-                        <!-- Slides End -->
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef2.jpg" alt="">
-                            <p class="client-info">Randy Dode</p>
-                            <p>Canadian chef</p>
-                            <div class="center-block"></div>
-                            <button type="button" class="btnMore">Update</button>
-                        </div>
-                        <!-- Slides End -->
-                        <!-- Slides -->
-                        <div class="teams-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1"> <img src="images/img-teams/chef3.jpg" alt="">
-                            <p class="client-info">Michel Kimte</p>
-                            <p>French chef</p>
-                            <div class="center-block"></div>
-                            <button type="button" class="btnMore" align="center">Update</button>
-                        </div>
-                        <!-- Slides End -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="feedback" class="bgSection ratings-section">
-        <br>
-        <br>
-        <br>
-        <div class="parallax-overlay"></div>
-        <div class="ratings-wrapper wow bounceIn">
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                        <h2><span class="highlight-text-inverted">Feedback</span></h2>
-                        <!-- Works -->
-                        <div class="recommendations-works wow fadeIn" data-wow-duration="2s">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <!-- Filter Button Start -->
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">AsiaHome</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Raviolli</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">Only Tapas</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br>
-                                    <div id="recommendations-filter" class="recommendations-filter-btn-group">
-                                        <div class="item recommendations-item web seo">
-                                            <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                                                    <ul>
-                                                        <li>
-                                                            <h1 class="shadow">DonnerLand</h1> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star-empty"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10" style="border-left-style: solid;">
-                                                    <p style="margin:5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Filter Button End -->
-                                        <!-- Portfolio Items -->
-                                    </div>
-                                    <br> </div>
-                                <button type="button" class="btnMore">See more</button>
-                            </div>
-                            <br>
-                            <!-- Slides End -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+		<!-- /col-md-6 -->
+		<br>
+		<!-- /container -->
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h2 class="section-header">
+							<span class="section-color">You want to delete your
+								profile. Are you sure?</span>
+						</h2>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							aria-label="Close">Cancel</button>
+						<button type="button" class="btn btnMore " data-dismiss="modal"
+							aria-label="Close">Accept</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menus style3" id="menu">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+					<br> <br> <br> <br> <br>
+					<h2>
+						<span class="highlight-text">Menu</span>
+					</h2>
+					<p
+						class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Choose
+						the dish that best suits you</p>
+				</div>
+				<!-- Section Header End -->
+				<div class="menus-container">
+					<!-- menu -->
+					<div class="menu row" id="menus">
+						<button id="restaurantid" value="{{restaurant.id}}"
+							style="display: none;"></button>
+						<button id="reference" value="0" style="display: none;"></button>
+						{{#menu}}
+						<div class="col-md-6 wow fadeInRight animated"
+							style="visibility: visible; animation-name: fadeInRight;">
+							<div class="menu-column">
+								<div class="food">
+									<div class="food-desc">
+										<img
+											src="/images/uploads/menuImageRestaurant{{restaurantId}}{{-index}}.jpg" />
+										<h6 class="food-name">{{dish}}</h6>
+										<div class="dots"></div>
+										<div class="food-price">
+											<span>{{price}}€</span>
+										</div>
+										<!-- /food-price -->
+									</div>
+									<!-- /food-desc -->
+									<div class="food-details">
+										<span>{{description}}</span>
+									</div>
+									<!-- /food-details -->
+								</div>
+							</div>
+							<!-- /menu-column -->
+						</div>
+						{{/menu}}
+						<!-- /col-md-6 -->
+					</div>
+					{{#BigMenu}}
+					<div class="col-md-2 col-md-offset-5 morediv">
+						<button style="position: relative; left: 25%;" class="btnMore"
+							id="seeMore">See More</button>
+					</div>
+					{{/BigMenu}}
+					<!-- /row -->
+				</div>
+				<!-- /menu-carousel -->
+			</div>
+			<!-- /menus-container -->
+		</div>
+		<!-- /container -->
+	</section>
+	<section class="menus style3" id="menu">
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<form action="/private-restaurant/menu/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' value="hola" /><br /> <img
+							src="/images/uploads/{{fileMenuName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Change menu image' />
+					</form>
+				</div>
+				<br> <br> <br>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Add new dish to menu</h1>
+						<form role="form" method="post" action="/private-restaurant/menu">
+							<div class="form-group">
+								<label for="name">Dish Name:</label> <input
+									style="border-radius: 0px !important" type="text"
+									class="form-control" id="imageTitle" name='menuname'
+									placeholder="Dish Name">
+							</div>
+							<div class="form-group">
 
-    <section class="menus style3" id="clients">
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="row">
+								<label for="name">Price</label> <input type="text"
+									class="form-control formmargin" name='menuprice'
+									placeholder="Price" id="price" required> <span
+									id='message_dish_price'></span>
+							</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" id="exampleTextarea"
+									name='menudescription' rows="3" placeholder="Description"></textarea>
+							</div>
 
-                <!-- Section Header -->
-                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                    <h2><span class="highlight-text">Clients</span></h2>
-                    <h3> Potential clients </h3>
-                </div>
-                <div class="search">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="form-section">
-                                    <div class="row">
-                                        <form role="form">
-                                            <div class="col-md-2">
-                                                <div class="input-group">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&gt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Min">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">€</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="input-group">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&lt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Max">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">€</span>
-                                                </div>
-                                            </div>
-                                            <div style="border-radius:0px!important" class="col-md-3">
-                                                <div style="border-radius:0px!important" class="form-group">
-                                                    <label style="border-radius:0px!important"  class="sr-only" for="guest">Guest</label>
-                                                    <select style="border-radius:0px!important" id="guest" name="guest" class="form-control">
-                                                        <option value="1">Vegan food lovers</option>
-                                                        <option value="2">American food lovers</option>
-                                                        <option value="3">Indian food lovers</option>
-                                                        <option value="4">Fast food lovers</option>
-                                                        <option value="5">Chinese food lovers</option>
-                                                        <option value="1">Thai food lovers</option>
-                                                        <option value="1">People who already visited you</option>
-                                                        <option value="6">Everyone</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+							<div class="col-md-3 col-md-offset-10">
+								<input type="submit" class="btnMore" value='Create'> <br>
+							</div>
+						</form>
+					</div>
+
+					<!-- /row -->
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+		
 
 
+		<!-- /container -->
+	</section>
 
-                                            <div class="col-md-2">
-                                                <div class="input-group">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&gt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">Age</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="input-group" >
-                                                    <span style="border-radius:0px!important" class="input-group-addon">&lt;</span>
-                                                    <input style="border-radius:0px!important" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="99">
-                                                    <span style="border-radius:0px!important" class="input-group-addon">Age</span>
-                                                </div>
-                                            </div>
+	<section id="feedback" class="bgSection ratings-section">
+		<br> <br> <br>
+		<div class="parallax-overlay"></div>
+		<div class="ratings-wrapper wow bounceIn">
+			<div class="container">
+				<div class="row">
+					<!-- Section Header -->
+					<div
+						class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+						<h2>
+							<span class="highlight-text-inverted">Feedback</span>
+						</h2>
+						<!-- Works -->
+						<div class="recommendations-works wow fadeIn"
+							data-wow-duration="2s">
+							<div class="row">
+
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									{{#reviews}}
+									<!-- Filter Button Start -->
+									<div id="recommendations-filter"
+										class="recommendations-filter-btn-group">
+										<div class="item recommendations-item web seo">
+											<div class="row">
+												<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"
+													style="border-right-style: solid;">
+													<ul>
+														<li>
+															<h1 class="shadow">{{reviewUser.name}}</h1> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star"></span> <span
+															class="glyphicon glyphicon-star-empty"></span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+													<p style="margin: 5px;">{{content}}</p>
+													<p style="margin: 5px;">{{date}}</p>
+												</div>
+											</div>
+										</div>
+										<!-- Filter Button End -->
+										<!-- Portfolio Items -->
+									</div>
+									<br> {{/reviews}}
+								</div>
+								<button type="button" class="btnMore">See more</button>
+							</div>
+							<br>
+							<!-- Slides End -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
-                                            <form role="form">
-                                                <div class="form-group">
+	<section id="profile" class="profile-sec section-wrapper description">
+		<br> <br> <br>
+		<div class="container">
+			<div class="row">
+				<!-- Section Header -->
+				<div
+					class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<span class="highlight-text">{{restaurant.name}}</span>
+					<form action="/private-restaurant/image/upload" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name='imageTitle' /><br /> <img
+							src="/images/uploads/{{fileName}}" />
+						<p>
+							<label>Image file:</label><input type="file" name="file" />
+						</p>
+						<input type='submit' name='enviar' value='Change profile image' />
+					</form>
+					<br>
+					<p>{{restaurant.description}}</p>
 
-                                                    <label for="name"></label>
-                                                    <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
-                                                        <h3>Offer</h3></div>
-                                                    <textarea style="border-radius:0px!important" class="form-control" id="exampleTextarea" rows="3" placeholder="Enter a brief description of the offer"></textarea>
-                                                </div>
-                                            </form>
-                                            <div class="col-md-3">
-                                                <div class="paddingtop">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="guest">Guest</label>
-                                                        <select id="guest" name="guest" class="form-control">
-                                                            <option value="1">Expiry: 1 month</option>
-                                                            <option value="2">Expiry: 2 months</option>
-                                                            <option value="3">Expiry: 1 week</option>
-                                                            <option value="3">Expiry: 2 weeks</option>
-                                                            <option value="3">Expiry: 3 weeks</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2  ">
-                                                <input style="border-radius:0px!important" type="file" class="form-control-file" id="exampleInputFi" aria-describedby="fileHelp">
-                                            </div>
-                                            <div class="col-md-3 col-md-offset-10">
-                                                <button type="submit" class="btnMore">Send group offer</button>
-                                            </div>
-                                    </div>
+				</div>
+				<!-- Section Header End -->
+				<div id="profileForm"
+					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
+					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
+						<h1>Change data</h1>
+						<form role="form" method='post' action="/private-restaurant/modify">
+							<div class="form-group">
+								<label for="name">Restaurant Name:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="namerest" value="{{restaurant.name}}">
+							</div>
+							<div class="form-group">
+								<label for="name">Location:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="location" value="{{restaurant.address}}">
+							</div>
+							<div class="form-group">
+								<label for="name">Description:</label>
+								<textarea style="border-radius: 0px !important"
+									class="form-control" name="descriptionrest" rows="3">{{restaurant.description}}</textarea>
+							</div>
+							<div class="form-group">
+								<label for="name">Telephone:</label> <input
+									style="border-radius: 0px !important" class="form-control"
+									name="telephone" value="{{restaurant.phone}}">
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label> <input
+									style="border-radius: 0px !important" type="email"
+									class="form-control" name="emailrest"
+									value="{{restaurant.email}}">
+							</div>
+							<div class="form-group">
+								<label for="pwd">New password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="pwd"
+									placeholder="Enter new password">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Repeat new password</label> <input
+									style="border-radius: 0px !important" type="password"
+									class="form-control" name="confirmpwd"
+									placeholder="Repeat new password">
+							</div>
+							<label for="pwd">Foods you serve:</label> <br> <input
+								type="checkbox" name="Breakfast" value=true checked='checked'>
+							Breakfast <input type="checkbox" name="Lunch" value=true
+								checked='checked'> Lunch <input type="checkbox"
+								name="Dinner" value=true checked='checked'> Dinner<br>
+							<div class="form-group">
+								<label for="exampleInputFile">Add pictures of the
+									restaurant</label> <input style="border-radius: 0px !important"
+									type="file" class="form-control-file" id="exampleInputFile"
+									aria-describedby="fileHelp">
+							</div>
+							<div class="col-md-3 col-md-offset-10">
+								<button type='submit' class="btnMore">Update</button>
+							</div>
+						</form>
 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<!-- Contact Section End -->
+	<section class="footer-container">
+		<div class="container">
+			<div class="row footer-containertent">
+				<div class="col-md-4">
+					<img src="/images/logo/logo.png" alt="">
+				</div>
+				<div class="col-md-4">
+					<h4>Fugu</h4>
+					<p>Both sign up as restaurant and user options availables. As
+						user, you can see the restaurant page, send feedback and rate
+						them. The restaurant user can upload the menu info, discounts and
+						vouchers, and information about the address and who's the chef.</p>
+					<h4>News & Updates</h4>
+				</div>
+				<div class="col-md-4 contac-us">
+					<h4>Contact Us</h4>
+					<ul>
+						<li><i class="fa fa-home"></i>C/Tulipan, Mostoles</li>
+						<li><i class="fa fa-phone"></i>+034 600 000 000</li>
+						<li><i class="fa fa-envelope-o"></i>fugu@website.com</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
 
-                                    </form>
+		<div class="container">
+			<div class="row">
+				<div class="footer-containertent">
 
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Section Header End -->
-            </div>
-        </div>
+					<ul class="footer-social-info">
+						<li><a href="https://es-es.facebook.com/"><i
+								class="fa fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/"><i
+								class="fa fa-twitter"></i></a></li>
+						<li><a href="https://es.pinterest.com/"><i
+								class="fa fa-pinterest"></i></a></li>
+						<li><a href="https://plus.google.com/?hl=es"><i
+								class="fa fa-google-plus"></i></a></li>
+					</ul>
+					<br /> <br />
+					<p>
+						Copyright © 2018. Template by: <a
+							href="http://webthemez.com/free-bootstrap-templates/">WebThemez</a>,
+						All rights reserved
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End -->
 
-        <!-- /col-md-6 -->
-        <br>
-        <!-- /container -->
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                    </div>
-                    <div class="modal-body">
-                        <h2 class="section-header">
-                                                <span class="section-color">You want to delete your profile. Are you sure?</span>
-                                            </h2> </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
-                        <button type="button" class="btn btnMore " data-dismiss="modal" aria-label="Close">Accept</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section End -->
-    <section class="footer-container">
-        <div class="container">
-            <div class="row footer-containertent">
-                <div class="col-md-4"> <img src="images/logo/logo.png" alt=""> </div>
-                <div class="col-md-4">
-                    <h4>Fugu</h4>
-                    <p>Both sign up as restaurant and user options availables. As user, you can see the restaurant page, send feedback and rate them. The restaurant user can upload the menu info, discounts and vouchers, and information about the address and who's the chef.</p>
-                    <h4>News & Updates</h4> </div>
-                <div class="col-md-4 contac-us">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li><i class="fa fa-home"></i>C/Tulipan, Mostoles</li>
-                        <li><i class="fa fa-phone"></i>+034 600 000 000</li>
-                        <li><i class="fa fa-envelope-o"></i>fugu@website.com</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-
-        <div class="container">
-            <div class="row">
-                <div class="footer-containertent">
-
-                    <ul class="footer-social-info">
-                        <li>
-                            <a href="https://es-es.facebook.com/"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://es.pinterest.com/"><i class="fa fa-pinterest"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/?hl=es"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                    </ul>
-                    <br/>
-                    <br/>
-                    <p>Copyright © 2018. Template by: <a href="http://webthemez.com/free-bootstrap-templates/">WebThemez</a>, All rights reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer End -->
-
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.easypiechart.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.fitvids.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.sliderPro.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="contact/jqBootstrapValidation.js"></script>
-    <script src="contact/contact_me.js"></script>
-    <script src="js/custom.js"></script>
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/modernizr.min.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.scrollUp.min.js"></script>
+	<script src="/js/jquery.easypiechart.js"></script>
+	<script src="/js/isotope.pkgd.min.js"></script>
+	<script src="/js/jquery.fitvids.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/wow.min.js"></script>
+	<script src="/js/jquery.nav.js"></script>
+	<script src="/js/imagesloaded.pkgd.min.js"></script>
+	<script src="/js/smooth-scroll.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery.sliderPro.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/custom.js"></script>
+	<script src="/js/fugu.js"></script>
+	<script src="/js/ajax2.js"></script>
 
 </body>
 

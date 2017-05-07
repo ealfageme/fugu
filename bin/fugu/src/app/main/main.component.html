@@ -1,6 +1,6 @@
 <div id="fb-root"></div>
 <input type="hidden" name='oauth' id="oauth">
-<script src="/src/assets/src/assets/js/facebook.js"></script>
+<script src="/assets/src/assets/js/facebook.js"></script>
 
 <!-- Header End -->
 
@@ -12,11 +12,11 @@
 				<span class="highlight-texts"><span
 								class="section-color2 highlight-text border2">Search your
 									perfect restaurant here</span> </span>
-				<a [routerLink]="['/new/search-web']"><img src="/src/assets/images/search-icon.png" alt="Search Page" class="img-responsive" style="margin: auto;"> </a>
+				<a [routerLink]="['/search-web']"><img src="/assets/images/search-icon.png" alt="Search Page" class="img-responsive" style="margin: auto;"> </a>
 			</h2>
 		</div>
 		<video autoplay loop class="embed-responsive-item" style="min-width:100%;">
-			<source src="/src/assets/backgroundvideo.mp4" type="video/mp4">
+			<source src="/assets/backgroundvideo.mp4" type="video/mp4">
 		</video>
 
 	</div>
@@ -38,33 +38,33 @@
 					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 						<div class="service-box">
 							<div class="icon"></div>
-							<a [routerLink]="['/new/city','Madrid']">
-								<h1 class="display-4 border">Madrid</h1> <img src="/src/assets/images/cities/madrid.jpg" alt="Custom Image">
+							<a [routerLink]="['/city','Madrid']">
+								<h1 class="display-4 border">Madrid</h1> <img src="/assets/images/cities/madrid.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 						<div class="service-box">
 							<div class="icon"></div>
-							<a [routerLink]="['/new/city','Barcelona']">
-								<h1 class="display-4 border">Barcelona</h1> <img src="/src/assets/images/cities/barcelona.jpg" alt="Custom Image">
+							<a [routerLink]="['/city','Barcelona']">
+								<h1 class="display-4 border">Barcelona</h1> <img src="/assets/images/cities/barcelona.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 						<div class="service-box">
 							<div class="icon"></div>
-							<a [routerLink]="['/new/city','Valencia']">
-								<h1 class="display-4 border">Valencia</h1> <img src="/src/assets/images/cities/valencia.jpg" alt="Custom Image">
+							<a [routerLink]="['/city','Valencia']">
+								<h1 class="display-4 border">Valencia</h1> <img src="/assets/images/cities/valencia.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 						<div class="service-box">
 							<div class="icon"></div>
-							<a [routerLink]="['/new/city','Sevilla']">
+							<a [routerLink]="['/city','Sevilla']">
 								<h1 class="display-4 border">Sevilla</h1>
-								<img src="/src/assets/images/cities/sevilla.jpg" alt="Custom Image">
+								<img src="/assets/images/cities/sevilla.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
@@ -73,16 +73,16 @@
 							<div class="icon"></div>
 							<a [routerLink]="['/city','Zaragoza']">
 								<h1 class="display-4 border">Zaragoza</h1>
-								<img src="/src/assets/images/cities/zaragoza.jpg" alt="Custom Image">
+								<img src="/assets/images/cities/zaragoza.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
 						<div class="service-box">
 							<div class="icon"></div>
-							<a [routerLink]="['/new/city','Bilbao']">
+							<a [routerLink]="['/city','Bilbao']">
 								<h1 class="display-4 border">Bilbao</h1>
-								<img src="/src/assets/images/cities/bilbao.jpg" alt="Custom Image">
+								<img src="/assets/images/cities/bilbao.jpg" alt="Custom Image">
 							</a>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 					<div *ngFor="let restaurant of restaurants" class="col-md-6 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
 
 						<div class="menu-column">
-							<a [routerLink]="['/new/public-restaurant/'+restaurant.name]">
+							<a [routerLink]="['/public-restaurant/'+restaurant.name]">
 								<button value="0" id="reference" class="food">
 
 
@@ -195,12 +195,12 @@
 						</div>
 						<div *ngIf="!loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + username + ' ' + email2 ">
-								<button (click)="sendFuguFeedbackOut()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
 							</a>
 						</div>
 						<div *ngIf="loginService.isLogged" class="col-md-6 col-md-offset-5 footermargin morediv">
 							<a [href]="'mailto:feedback@fugu.com?subject=Feedback&body=' + body + '%0A%0AMessage written by: ' + loginService.user.name">
-								<button (click)="sendFuguFeedback()" type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
+								<button type="button" class="btnMore" data-toggle="modal" data-target="#exampleModalLong">Submit Messages</button>
 							</a>
 						</div>
 						<!-- Modal -->

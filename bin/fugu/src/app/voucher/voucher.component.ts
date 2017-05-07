@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Voucher, VoucherService } from './voucher.service';
 import { LoginService } from '../services/login.service';
-import {Component, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-voucher',
@@ -11,7 +11,7 @@ import {Component, Input} from '@angular/core';
 })
 export class VoucherComponent  {
   @Input()
-  private foodType: string;  
+  foodType: string;
   name: string;
   description: string;
   expiryDate: string;
@@ -19,15 +19,18 @@ export class VoucherComponent  {
   newVoucher: boolean;
   min: string;
   max: string;
-   
+  vouchers: String[];
+  loginService: LoginService;
 
   private restaurantName: string;
-  constructor(private _router: Router, activatedRoute: ActivatedRoute, private voucherService: VoucherService,private loginService: LoginService) { 
+  constructor(private _router: Router, activatedRoute: ActivatedRoute,
+    loginServiceaux: LoginService, private voucherService: VoucherService) {
+      this.loginService = loginServiceaux;
     const id = activatedRoute.snapshot.params['id'];
-      this.name="";
-      this.description="";
-    this.restaurantName = loginService.user.name;
-    this.loginService.user.name
+    this.vouchers = this.voucherService.vouchers(this.restaurantName);
+      this.name = '';
+      this.description = '';
+    this.restaurantName = this.loginService.user.name;
       if (id) {
         voucherService.getVoucher(id, this.restaurantName).subscribe(
           vou => this.voucher = vou,
@@ -41,12 +44,16 @@ export class VoucherComponent  {
   }
 
   ngOnInit() {
+    this.vouchers =[];
+    this.vouchers = this.voucherService.vouchers(this.restaurantName);
   }
   save() {
-    console.log("entro");
     this.voucherService.saveVoucher(this.voucher, this.restaurantName).subscribe(
-      book => { },
-      error => console.error('Error creating new book: ' + error)
+      book => {
+        this.vouchers =[];
+        this.vouchers = this.voucherService.vouchers(this.restaurantName);
+       },
+      error => console.error('Error creating new voucher: ' + error)
     );
   }
 }

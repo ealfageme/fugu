@@ -17,17 +17,18 @@ export class MainComponent implements OnInit {
   nextRestaurant = true;
   prevRestaurant = false;
   facebookSession: boolean;
-  private restaurants: string[] = [];
+  restaurants: string[] = [];
   email: string;
   password: string;
   pagenumber = 0;
   model: any = {};
   loading = false;
   returnUrl: string;
+  loginService: LoginService;
 
-  constructor(private http: Http, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
-    this.inSession = loginService.isLogged;
-    console.log("ammmmms: "+ loginService.isLogged)
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router, loginServiceaux: LoginService ) {
+    this.loginService = loginServiceaux;
+    this.inSession = this.loginService.isLogged;
     this.facebookSession = false;
     this.http.get('https://localhost:8443/api/restaurants/?page=' + this.pagenumber + '&size=4').subscribe(
       response => {
