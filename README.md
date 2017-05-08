@@ -31,14 +31,14 @@ Both sign up as restaurant and user options availables. As user, you can see the
 
 * __[Docker-Hub](https://hub.docker.com/r/srivasd/fugu/)__
   * sudo docker pull srivasd/fugu
-  * sudo docker-compose up srivasd/fugu
+  * Download the docker-compose file from the repository
+  * sudo docker-compose up
   
 * __Getting Started__:
   * Clone the repository or download the zip.
-  * Go to the main folder 'fugu'
-  * Type the command sudo docker pull srivasd/fugu
-  * Then sudo docker-compose up srivasd/fugu
-  * The angular app will be running in https://localhost:8443/new/index.html
+  * Execute it from Eclipse STS
+  * Execute the angular part using ng serve
+  * The angular app will be running in https://localhost:4200/new/main.html
   * The regular app will be running in https://localhost:8443/main/
   
 * __Cool Features:__
